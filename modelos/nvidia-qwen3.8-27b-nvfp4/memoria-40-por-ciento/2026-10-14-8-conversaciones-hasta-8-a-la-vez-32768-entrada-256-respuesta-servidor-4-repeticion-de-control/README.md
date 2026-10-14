@@ -8,11 +8,11 @@
 
 ## ¿Qué ocurrió?
 
-- **¿Terminaron todas las conversaciones?** 4/8 (en curso). Terminar significa recibir todos los tokens de respuesta solicitados.
+- **¿Terminaron todas las conversaciones?** **Sí: 8/8**. Terminar significa recibir todos los tokens de respuesta solicitados.
 - **¿Llegaron al máximo del modelo (262.144 tokens)?** No se intentó.
 - **Límite configurado en esta prueba:** 262.144 tokens, sumando entrada y respuesta.
-- **¿Se atendieron al mismo tiempo?** 4 activas en el motor; cola máxima 7.
-- **Tiempo para completar la prueba:** 159,7 s.
+- **¿Se atendieron al mismo tiempo?** 4 respuestas solapadas; cola máxima 7.
+- **Tiempo para completar la prueba:** 187,7 s.
 
 Se enviaron **8 conversaciones**, hasta **8 a la vez**. Cada una pidió **32.768 tokens de entrada + 256 de respuesta = 33.024 tokens**.
 
@@ -20,23 +20,27 @@ Se enviaron **8 conversaciones**, hasta **8 a la vez**. Cada una pidió **32.768
 
 | Conversación | Entrada | Respuesta pedida | Respuesta recibida | Total alcanzado | ¿Terminó? | ¿Llegó al máximo del modelo? |
 |---|---:|---:|---:|---:|---|---|
+| 1 | 32.768 | 256 | 256 | 33.024 | Sí | No |
 | 2 | 32.768 | 256 | 256 | 33.024 | Sí | No |
+| 3 | 32.768 | 256 | 256 | 33.024 | Sí | No |
 | 4 | 32.768 | 256 | 256 | 33.024 | Sí | No |
 | 5 | 32.768 | 256 | 256 | 33.024 | Sí | No |
 | 6 | 32.768 | 256 | 256 | 33.024 | Sí | No |
-| 1 | — | 256 | — | — | En curso | No acreditado |
-| 3 | — | 256 | — | — | En curso | No acreditado |
-| 7 | — | 256 | — | — | En curso | No acreditado |
-| 8 | — | 256 | — | — | En curso | No acreditado |
+| 7 | 32.768 | 256 | 256 | 33.024 | Sí | No |
+| 8 | 32.768 | 256 | 256 | 33.024 | Sí | No |
 
 ## Cada conversación: tiempos y velocidad
 
 | Conversación | Espera hasta primer texto (s) | Tiempo completo (s) | Tokens/s durante la respuesta | Tokens/s incluyendo la espera |
 |---|---:|---:|---:|---:|
+| 1 | 106,39 | 181,24 | 3,41 | 1,41 |
 | 2 | 16,14 | 88,16 | 3,54 | 2,90 |
+| 3 | 141,03 | 185,66 | 5,71 | 1,38 |
 | 4 | 48,37 | 122,19 | 3,45 | 2,10 |
 | 5 | 64,75 | 139,54 | 3,41 | 1,83 |
 | 6 | 31,91 | 105,03 | 3,49 | 2,44 |
+| 7 | 157,78 | 187,51 | 8,58 | 1,37 |
+| 8 | 123,68 | 183,51 | 4,26 | 1,39 |
 
 ## Todas las medidas del grupo
 
@@ -49,16 +53,16 @@ Se enviaron **8 conversaciones**, hasta **8 a la vez**. Cada una pidió **32.768
 | Máximo de peticiones enviadas a la vez | 8 |
 | Límite de solicitudes del servidor | 4 |
 | Máximo activo en el motor | 4 |
-| Máximo de respuestas solapadas | — |
-| Espera media hasta primer texto | 40,3 s |
-| Tiempo medio de respuesta completa | 113,7 s |
-| Mayor espera hasta primer texto, entre las completadas | 64,8 s |
-| Mayor tiempo completo, entre las completadas | 139,5 s |
-| Suma de los tiempos individuales | 454,9 s |
-| Tiempo total de la prueba | 159,7 s |
-| Tokens/s medios por conversación, incluyendo espera | 2,32 |
-| Tokens/s totales del grupo | 6,41 |
-| Pico de caché ocupada | 85,4% |
+| Máximo de respuestas solapadas | 4 |
+| Espera media hasta primer texto | 86,3 s |
+| Tiempo medio de respuesta completa | 149,1 s |
+| Mayor espera hasta primer texto, entre las completadas | 157,8 s |
+| Mayor tiempo completo, entre las completadas | 187,5 s |
+| Suma de los tiempos individuales | 1.192,8 s |
+| Tiempo total de la prueba | 187,7 s |
+| Tokens/s medios por conversación, incluyendo espera | 1,85 |
+| Tokens/s totales del grupo | 10,91 |
+| Pico de caché ocupada | 85,6% |
 | Máximo de solicitudes en cola | 7 |
 | Recálculos por falta de espacio en caché | 0 |
 | Tiempo observado con cola | 139,3 s |
@@ -72,8 +76,6 @@ La caché guarda información del historial. Un recálculo significa que el moto
 
 Los tiempos individuales se solapan: su suma puede superar el tiempo total de la prueba. Las velocidades cuentan tokens de respuesta, no tokens de entrada.
 
-Las medias, los máximos de tiempo y las velocidades individuales corresponden solo a las conversaciones completadas correctamente. Las cifras de una prueba en curso son parciales; no describen todavía el rendimiento final del grupo.
-
 <details>
 <summary>Cronología: cuándo se envió, empezó y terminó cada respuesta</summary>
 
@@ -81,10 +83,14 @@ Segundos desde el inicio de la prueba.
 
 | Conversación | Enviada | Primer texto | Final |
 |---|---:|---:|---:|
+| 1 | 0,06 | 106,45 | 181,30 |
 | 2 | 0,06 | 16,20 | 88,22 |
+| 3 | 0,11 | 141,14 | 185,77 |
 | 4 | 0,10 | 48,46 | 122,29 |
 | 5 | 0,09 | 64,84 | 139,63 |
 | 6 | 0,10 | 32,01 | 105,13 |
+| 7 | 0,13 | 157,91 | 187,64 |
+| 8 | 0,12 | 123,80 | 183,64 |
 
 </details>
 
