@@ -10,7 +10,7 @@ p.add_argument('--publish',action='store_true')
 p.add_argument('--message',default='Actualiza los resultados medidos del GB10')
 a=p.parse_args()
 root=pathlib.Path(__file__).resolve().parents[1];cache=pathlib.Path(a.cache_dir)
-for remote,local in [('/tmp/gb10-memory-20261014-1344','memory'),('/tmp/gb10-after30-20261014','after30'),('/tmp/gb10-reuse-20261014','reuse')]:
+for remote,local in [('/tmp/gb10-memory-20261014-1344','memory'),('/tmp/gb10-after30-20261014','after30'),('/tmp/gb10-reuse-20261014','reuse'),('/tmp/gb10-additional-20261014','additional')]:
     destination=cache/local;destination.mkdir(parents=True,exist_ok=True)
     subprocess.run(['rsync','-az','--exclude=*.tmp',a.host+':'+remote+'/',str(destination)+'/'],check=True)
 subprocess.run(['python3',str(root/'scripts/import_measurements.py'),'--source',str(cache)],cwd=root,check=True)

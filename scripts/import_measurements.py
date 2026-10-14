@@ -12,7 +12,7 @@ DEFAULT_MODEL = 'nvidia/Qwen3.8-27B-NVFP4'
 DATE = '2026-10-14'
 GROUPS = {'after30':'comparacion-de-memoria-y-concurrencia', 'memory':'pruebas-con-30-por-ciento',
           'short':'primeras-pruebas-con-historiales-cortos', 'context-40':'primeras-pruebas-con-historiales-largos',
-          'reuse':'pruebas-de-historial-reutilizado'}
+          'reuse':'pruebas-de-historial-reutilizado', 'additional':'comparaciones-adicionales'}
 
 def write(path, data):
     path.parent.mkdir(parents=True, exist_ok=True)
