@@ -152,6 +152,14 @@
     "sha256": "142af624c88a4abc6946ecd4ccc31e6335978b6a8a77c7e63acbbc917b030ae9"
   },
   {
+    "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-30-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-32768-entrada-512-respuesta-servidor-4-comparacion-adicional/mediciones.json",
+    "sha256": "c1906266c7461e32e9fe5328fa207b219ece2257e77e7738537caaa4a09c5852"
+  },
+  {
+    "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-30-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-32768-entrada-512-respuesta-servidor-4-comparacion-adicional/registro-de-ejecucion.log",
+    "sha256": "465819b55c08a530d352de34058b7e30dffdd6199d8032853158c295f9710e0f"
+  },
+  {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-30-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-8192-entrada-128-respuesta-servidor-4-comparacion-adicional/mediciones.json",
     "sha256": "4f55c77e2e731fd7af445ef0f491aaefd8d1d14fb2dd3dc69f9b38413da33edb"
   },
@@ -754,10 +762,6 @@
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparaciones-adicionales/script-de-bateria-ejecutado.py",
     "sha256": "ca8e021394694662b13f0e47454f09171b2792a95aa9ee73a65a64713d5295d3"
-  },
-  {
-    "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparaciones-adicionales/verificacion-final/memoria-30/c4-in32768-out512.log",
-    "sha256": "187f05db80b49900110568880b03c95eaa46e897bca454f73016d8fce52be1a9"
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparaciones-adicionales/verificacion-final/memoria-30/registro-del-servidor.log",
