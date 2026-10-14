@@ -332,7 +332,7 @@ def main():
         for mem in sorted({t['memory'] for t in tests}):
             folder=model_dir/f'memoria-{mem}-por-ciento';subset=[t for t in tests if t['memory']==mem]
             (folder/'README.md').write_text('\n'.join([f'# Pruebas con {mem}% de memoria','',f'[Volver a todas las pruebas del modelo](../README.md)','',
-                f'En estas pruebas se reservó el **{mem}% de la memoria del GB10** para el motor. El uso medido y la caché ocupada se muestran dentro de cada prueba.','']+campaign_progress(plan,tests,mem)+report_tables(subset,folder)))
+                f'En estas pruebas se configuró un presupuesto del **{mem}% de la memoria del GB10** para el motor. El uso medido y la caché ocupada se muestran dentro de cada prueba.','']+campaign_progress(plan,tests,mem)+report_tables(subset,folder)))
             lines.append(f'- [{mem}% de memoria]({folder.name}/README.md).')
         lines += ['', '## Equipo y configuración','',f"GB10: {number(equipment.get('memoria_total_gib'),2)} GiB. Pesos del modelo: {number(equipment.get('pesos_del_modelo_gib'),2)} GiB.",
                   f"Imagen: `{equipment.get('imagen','No registrada')}`. vLLM: `{equipment.get('version_vllm','No registrada')}`.",'',

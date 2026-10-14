@@ -168,6 +168,14 @@
     "sha256": "c0ec0280f8096e49014de841e36592db1f79384d5da4b3a326696f18b1b8157c"
   },
   {
+    "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-40-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-262016-entrada-128-respuesta-servidor-4-comparacion-adicional-espera-ampliada/mediciones.json",
+    "sha256": "0e43cf2a0d23a90c1f28eb5df5b57a3c1d5394b36636d7a4164e2c35da39a8b0"
+  },
+  {
+    "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-40-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-262016-entrada-128-respuesta-servidor-4-comparacion-adicional-espera-ampliada/registro-de-ejecucion.log",
+    "sha256": "5a4d94fe4560917cdc477dc1a9c355bc0b477d0f21f11a903563c9a87b4c4890"
+  },
+  {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-92-por-ciento/2026-10-14-512-conversaciones-hasta-512-a-la-vez-1024-entrada-512-respuesta-servidor-512-comparacion-adicional/mediciones.json",
     "sha256": "b6b4b5ac6b6868b1643ed7edd3558568250bea67ee395938af995fbe63426304"
   },
@@ -648,6 +656,10 @@
     "sha256": "6c46a86adab793df3151bef2bf788e0a0e993e5bb0853ca3e06ee434ff4bb4db"
   },
   {
+    "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-40-por-ciento/2026-10-14-arranque-contexto-262144-servidor-4-comparacion-adicional-espera-ampliada/registro-del-servidor.log",
+    "sha256": "27ce3e1aa70fa5e0fcd2778f204091e77427541f543d9f5d78ff588c4372b9dc"
+  },
+  {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-40-por-ciento/2026-10-14-arranque-contexto-262144-servidor-4/registro-del-servidor.log",
     "sha256": "42055d91e1028b53721da8842939a1d0a85d4ac342588dcfb87090baaaf4689f"
   },
@@ -773,7 +785,7 @@
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparaciones-adicionales/verificacion-final/configuracion-y-estado.json",
-    "sha256": "e422599c6581c550197fbf738bde898dc54e0ddcb0693f25e75fbbb14de0d97a"
+    "sha256": "6bc364f333cbc701abdc5192ac9f29be0f0ff8fb111659ca95d074c65f592a71"
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparaciones-adicionales/verificacion-final/ultimo-cambio-temporal.json",

@@ -2,7 +2,7 @@
 
 [Volver a todas las pruebas del modelo](../README.md)
 
-En estas pruebas se reservó el **92% de la memoria del GB10** para el motor. El uso medido y la caché ocupada se muestran dentro de cada prueba.
+En estas pruebas se configuró un presupuesto del **92% de la memoria del GB10** para el motor. El uso medido y la caché ocupada se muestran dentro de cada prueba.
 
 ## Estado de la batería prevista
 
