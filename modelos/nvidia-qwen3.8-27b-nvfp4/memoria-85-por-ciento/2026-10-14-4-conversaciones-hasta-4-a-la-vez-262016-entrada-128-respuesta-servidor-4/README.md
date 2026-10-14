@@ -9,7 +9,7 @@
 ## ¿Qué ocurrió?
 
 - **¿Terminaron todas las conversaciones?** 2/4 (errores por tiempo de espera). Terminar significa recibir todos los tokens de respuesta solicitados.
-- **¿Llegaron al máximo del modelo (262.144 tokens)?** **Sí: 2/4**.
+- **¿Llegaron al máximo del modelo (262.144 tokens)?** **Solo: 2/4**.
 - **Límite configurado en esta prueba:** 262.144 tokens, sumando entrada y respuesta.
 - **¿Se atendieron al mismo tiempo?** 1 respuesta a la vez; cola máxima 3; 2 errores de espera.
 - **Tiempo para completar la prueba:** 1.200,5 s.

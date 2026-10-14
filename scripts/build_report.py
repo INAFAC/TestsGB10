@@ -89,7 +89,9 @@ def completion(t):
 
 def maximum(t):
     if t['type']!='conversaciones':return 'No se enviaron conversaciones' if t['type']=='arranque' else 'Superarlo fue rechazado'
-    if t['reached_model']:return f"**Sí: {t['reached_model']}/{t['count']}**"
+    if t['reached_model']:
+        label='Sí' if t['all_done'] else 'Por ahora' if t.get('summary',{}).get('status')=='running' else 'Solo'
+        return f"**{label}: {t['reached_model']}/{t['count']}**"
     if t['reached_configured'] and t['context']!=t['model_max']:
         return 'Llegó a '+integer(t['context'])+'; límite reducido'
     if t['input']+t['output']==t['model_max']:return 'Todavía no' if t.get('summary',{}).get('status')=='running' else 'No'
@@ -297,7 +299,8 @@ def main():
             reaching=[t for t in subset if t['reached_model']]
             if reaching:
                 best=sorted(reaching,key=lambda t:(t['c'].get('medicion_inicial',False),-t['done']))[0]
-                statement=f"**Sí:** {best['reached_model']}/{best['count']} completadas con {integer(maximum_model)} tokens y toda la respuesta solicitada. Tiempo del grupo: {number(best['duration'])} s. {behavior(best)}."
+                result='Sí' if best['all_done'] else 'Parcial'
+                statement=f"**{result}:** {best['reached_model']}/{best['count']} completadas con {integer(maximum_model)} tokens y toda la respuesta solicitada. Tiempo del grupo: {number(best['duration'])} s. {behavior(best)}."
             else:
                 totals=[r['usage']['prompt_tokens']+r['usage']['completion_tokens'] for t in subset for r in t.get('good',[])]
                 statement=('Hasta ahora se ha completado una conversación de **'+integer(max(totals))+' tokens**. Aún no demuestra alcanzar '+integer(maximum_model)+'.') if totals else 'Todavía no hay una conversación terminada registrada con este presupuesto.'

@@ -20,7 +20,7 @@
 - **40% de memoria:** **Sí:** 1/1 completadas con 262.144 tokens y toda la respuesta solicitada. Tiempo del grupo: 560,8 s. 1 respuesta a la vez; cola máxima 1; 4 recálculos.
 - **50% de memoria:** **Sí:** 1/1 completadas con 262.144 tokens y toda la respuesta solicitada. Tiempo del grupo: 547,0 s. 1 respuesta a la vez; cola máxima 1; 2 recálculos.
 - **70% de memoria:** **Sí:** 2/2 completadas con 262.144 tokens y toda la respuesta solicitada. Tiempo del grupo: 722,3 s. 1 respuesta a la vez; cola máxima 1; 1 recálculos.
-- **85% de memoria:** **Sí:** 2/4 completadas con 262.144 tokens y toda la respuesta solicitada. Tiempo del grupo: 1.200,5 s. 1 respuesta a la vez; cola máxima 3; 2 errores de espera.
+- **85% de memoria:** **Parcial:** 2/4 completadas con 262.144 tokens y toda la respuesta solicitada. Tiempo del grupo: 1.200,5 s. 1 respuesta a la vez; cola máxima 3; 2 errores de espera.
 
 ## Qué configuración elegir
 
@@ -78,7 +78,7 @@ Las tablas principales muestran la batería con medición detallada. Cada fila e
 | [2 conversaciones; hasta 2 a la vez](memoria-70-por-ciento/2026-10-14-2-conversaciones-hasta-2-a-la-vez-262016-entrada-128-respuesta-servidor-4/README.md) | 70% | **4 activas** | 262.016 + 128 | **Sí: 2/2** | **Sí: 2/2** | 722,3 s | 1 respuesta a la vez; cola máxima 1; 1 recálculos |
 | [Arrancar el modelo con límite de 262.144 tokens](memoria-85-por-ciento/2026-10-14-arranque-contexto-262144-servidor-4/README.md) | 85% | **4 activas** | Sin conversaciones | Arrancó | No se enviaron conversaciones | 401,1 s | Arrancó |
 | [4 conversaciones; hasta 4 a la vez](memoria-85-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-131072-entrada-256-respuesta-servidor-4/README.md) | 85% | **4 activas** | 131.072 + 256 | **Sí: 4/4** | No se intentó | 813,6 s | 3 respuestas solapadas; cola máxima 3; 1 recálculos |
-| [4 conversaciones; hasta 4 a la vez](memoria-85-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-262016-entrada-128-respuesta-servidor-4/README.md) | 85% | **4 activas** | 262.016 + 128 | 2/4 (errores por tiempo de espera) | **Sí: 2/4** | 1.200,5 s | 1 respuesta a la vez; cola máxima 3; 2 errores de espera |
+| [4 conversaciones; hasta 4 a la vez](memoria-85-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-262016-entrada-128-respuesta-servidor-4/README.md) | 85% | **4 activas** | 262.016 + 128 | 2/4 (errores por tiempo de espera) | **Solo: 2/4** | 1.200,5 s | 1 respuesta a la vez; cola máxima 3; 2 errores de espera |
 
 <details>
 <summary>Comparación completa de memoria, tiempos y tokens por segundo</summary>
@@ -180,6 +180,7 @@ Esta tabla distingue las pruebas terminadas de las que todavía faltan. No inclu
 | 35% | 4 activas | Conversaciones con historiales independientes | 0/2 | Pendiente |
 | 70% | 2 activas | Conversaciones con historiales independientes | 0/1 | Pendiente |
 | 40% | 4 activas | Repeticiones de control al final de la campaña | 0/2 | Pendiente |
+| 85% | 4 activas | Comprobación con mayor tiempo de espera | 0/1 | Pendiente |
 
 ## Carpetas por memoria
 
