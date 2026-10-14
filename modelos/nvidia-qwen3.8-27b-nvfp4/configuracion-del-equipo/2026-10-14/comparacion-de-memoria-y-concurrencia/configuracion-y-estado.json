@@ -263,7 +263,13 @@
           "reused_running_server": false
         }
       ],
-      "tests": [],
+      "tests": [
+        {
+          "case": "c4-in65536-out512",
+          "exit_code": 0,
+          "elapsed_s": 240.06151763899834
+        }
+      ],
       "max_model_len": 262144,
       "kv_gib": 59.91,
       "estimated_cache_tokens": 962475.0
