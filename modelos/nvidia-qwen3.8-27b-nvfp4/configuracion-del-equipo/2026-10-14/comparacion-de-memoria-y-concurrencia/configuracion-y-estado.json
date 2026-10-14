@@ -268,6 +268,11 @@
           "case": "c4-in65536-out512",
           "exit_code": 0,
           "elapsed_s": 240.06151763899834
+        },
+        {
+          "case": "c4-in131072-out256",
+          "exit_code": 0,
+          "elapsed_s": 605.3102621699945
         }
       ],
       "max_model_len": 262144,
