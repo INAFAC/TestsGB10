@@ -17,14 +17,27 @@ import urllib.request
 
 
 def sh(args, **kw):
-    return subprocess.run(args, text=True, stdout=subprocess.PIPE,
-                          stderr=subprocess.STDOUT, **kw)
+    check = kw.pop('check', False)
+    process = subprocess.Popen(args, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, **kw)
+    try:
+        output, _ = process.communicate()
+    except BaseException:
+        try:
+            process.communicate(timeout=120)
+        except subprocess.TimeoutExpired:
+            process.terminate()
+            process.communicate(timeout=30)
+        raise
+    if check and process.returncode:
+        raise subprocess.CalledProcessError(process.returncode, args, output=output)
+    return subprocess.CompletedProcess(args, process.returncode, stdout=output)
 
 
 def main():
     p = argparse.ArgumentParser()
     p.add_argument('--compose', default='/home/canadas/ai/vllm/compose.yaml')
     p.add_argument('--results', required=True)
+    p.add_argument('--profiles-file', help='JSON list of [memory_fraction, max_num_seqs, test_cases]')
     p.add_argument('--reuse-initial', action='store_true', help='Use the first profile if the restored running server already matches')
     p.add_argument('--wait-for', help='Baseline result file that must exist before changing settings')
     p.add_argument('--wait-metadata', help='Wait until another matrix metadata reports healthy restoration')
@@ -37,6 +50,8 @@ def main():
     inspect = json.loads(sh(['docker', 'inspect', 'vllm-qwen38'], check=True).stdout)[0]
     original_cmd = inspect['Config']['Cmd']
     metadata = {'date': datetime.datetime.now().isoformat(), 'original_command': original_cmd,
+                'model': original_cmd[2],
+                'runner_sha256': hashlib.sha256(pathlib.Path(__file__).read_bytes()).hexdigest(),
                 'image': inspect['Config']['Image'], 'image_id': inspect['Image'],
                 'compose_sha256': hashlib.sha256(original).hexdigest(),
                 'restore_status': 'pending', 'profiles': []}
@@ -123,6 +138,8 @@ def main():
             (.40,64,[(64,1024,128),(64,8192,128)]),
             (.70,16,[(16,32768,256),(16,65536,128)]),
         ]
+    if a.profiles_file:
+        profiles = json.loads(pathlib.Path(a.profiles_file).read_text())
     probe = pathlib.Path(__file__).with_name('context_probe.py')
     try:
         if a.wait_metadata:
