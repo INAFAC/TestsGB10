@@ -48,7 +48,13 @@
           "reused_running_server": false
         }
       ],
-      "tests": [],
+      "tests": [
+        {
+          "case": "c4-in32768-out512",
+          "exit_code": 0,
+          "elapsed_s": 145.03516024899727
+        }
+      ],
       "request_timeout_s": 1200,
       "test_timeout_s": 1500,
       "max_model_len": 262144,
