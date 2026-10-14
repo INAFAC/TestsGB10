@@ -50,21 +50,24 @@ Son máximos observados en estas cargas sintéticas y esta configuración de vLL
 | [P04](details/2026-10-14-memory-memory-30-c4-in32768-out512.md) | Historial largo; prefijos independientes | 30% | 26,6% | 34,9% | 32.768 / 512 | 4 / 4 / 2 | 4/4 | 65,0 | 126,3 | 505,4 | 164,8 | 4,5 | 12,4 | 90,9% | 3 | 0 | Completa; cola |
 | [P05](details/2026-10-14-memory-memory-30-c4-in65536-out512.md) | Historial largo; prefijos independientes | 30% | 26,6% | 34,8% | 65.536 / 512 | 4 / 4 / 1 | 4/4 | 167,8 | 217,6 | 870,4 | 348,4 | 3,1 | 5,9 | 91,3% | 3 | 0 | Completa; cola |
 | [P06](details/2026-10-14-memory-memory-30-c1-in130816-out256.md) | Historial largo; prefijos independientes | 30% | 26,6% | 34,8% | 130.816 / 256 | 1 / 4 / 1 | 1/1 | 178,1 | 207,4 | 207,4 | 207,5 | 1,2 | 1,2 | 99,6% | 1 | 4 | Completa; recálculos |
-| [P07](details/2026-10-14-short-c1-in1024.md) | Carga corta inicial (detalle individual no guardado) | 40% | N/M | N/M | 1.024 / 128 | 1 / 4 / — | 20/20 | 0,7 | 10,6 | 212,5 | 212,5 | N/M | 12,0 | N/M | — | — | OK |
-| [P08](details/2026-10-14-short-c2-in1024.md) | Carga corta inicial (detalle individual no guardado) | 40% | N/M | N/M | 1.024 / 128 | 2 / 4 / — | 20/20 | 1,0 | 11,6 | 232,8 | 116,5 | N/M | 22,0 | N/M | — | — | OK |
-| [P09](details/2026-10-14-short-c4-in1024.md) | Carga corta inicial (detalle individual no guardado) | 40% | N/M | N/M | 1.024 / 128 | 4 / 4 / — | 20/20 | 1,4 | 12,7 | 254,1 | 63,6 | N/M | 40,2 | N/M | — | — | OK |
-| [P10](details/2026-10-14-short-c8-in1024.md) | Carga corta inicial (detalle individual no guardado) | 40% | N/M | N/M | 1.024 / 128 | 8 / 4 / — | 20/20 | 11,2 | 22,6 | 451,3 | 62,6 | N/M | 40,9 | N/M | — | — | OK |
-| [P11](details/2026-10-14-short-c4-in8192.md) | Carga corta inicial (detalle individual no guardado) | 40% | N/M | N/M | 8.192 / 128 | 4 / 4 / — | 12/12 | 5,2 | 23,5 | 282,3 | 71,2 | N/M | 21,6 | N/M | — | — | OK |
-| [P12](details/2026-10-14-context-40-c4-in32768-out512.md) | Historial largo; prefijos independientes (serie inicial) | 40% | N/M | N/M | 32.768 / 512 | 4 / 4 / 4 | 4/4 | 40,8 | 122,5 | 490,0 | 125,5 | 4,2 | 16,3 | 84,3% | 3 | 0 | OK |
-| [P13](details/2026-10-14-context-40-c4-in65536-out512.md) | Historial largo; prefijos independientes (serie inicial) | 40% | N/M | N/M | 65.536 / 512 | 4 / 4 / 2 | 4/4 | 123,1 | 207,2 | 828,7 | 267,3 | 2,7 | 7,7 | 85,6% | 3 | 0 | Completa; cola |
-| [P14](details/2026-10-14-context-40-c4-in131072-out256.md) | Historial largo; prefijos independientes (serie inicial) | 40% | N/M | N/M | 131.072 / 256 | 4 / 4 / 1 | 4/4 | 286,4 | 315,5 | 1261,8 | 504,5 | 1,1 | 2,0 | 86,0% | 3 | 0 | Completa; cola |
-| [P15](details/2026-10-14-context-40-c1-in262016-out128.md) | Contexto casi máximo; prefijos independientes (serie inicial) | 40% | N/M | N/M | 262.016 / 128 | 1 / 4 / 1 | 1/1 | 539,1 | 557,9 | 557,9 | 558,0 | 0,2 | 0,2 | 99,6% | 1 | 4 | Completa; recálculos |
-| [P16](details/2026-10-14-context-40-limit-rejection.md) | Superar el contexto máximo: rechazo esperado | 40% | N/M | N/M | 262.145 / 1 | 1 / 4 / — | 0/1 | N/M | N/M | N/M | 0,0 | N/M | N/M | N/M | — | — | Rechazo esperado (HTTP 400) |
+| [P07](details/2026-10-14-after30-memory-40-startup-262144.md) | Servidor ya preparado; contexto 262.144 | 40% | N/M | N/M | 0 / 0 | 0 / 4 / — | 0/0 | N/M | N/M | N/M | 0,0 | N/M | N/M | N/M | — | — | Arranque correcto |
+| [P08](details/2026-10-14-after30-memory-40-c1-in1024-out128.md) | Carga corta; prefijos independientes (repetición 40%) | 40% | 36,7% | 45,3% | 1.024 / 128 | 1 / 4 / 1 | 8/8 | 0,5 | 10,7 | 85,2 | 85,3 | 12,0 | 12,0 | 1,6% | 0 | 0 | OK |
+| [P09](details/2026-10-14-short-c1-in1024.md) | Carga corta inicial (detalle individual no guardado) | 40% | N/M | N/M | 1.024 / 128 | 1 / 4 / — | 20/20 | 0,7 | 10,6 | 212,5 | 212,5 | N/M | 12,0 | N/M | — | — | OK |
+| [P10](details/2026-10-14-short-c2-in1024.md) | Carga corta inicial (detalle individual no guardado) | 40% | N/M | N/M | 1.024 / 128 | 2 / 4 / — | 20/20 | 1,0 | 11,6 | 232,8 | 116,5 | N/M | 22,0 | N/M | — | — | OK |
+| [P11](details/2026-10-14-short-c4-in1024.md) | Carga corta inicial (detalle individual no guardado) | 40% | N/M | N/M | 1.024 / 128 | 4 / 4 / — | 20/20 | 1,4 | 12,7 | 254,1 | 63,6 | N/M | 40,2 | N/M | — | — | OK |
+| [P12](details/2026-10-14-short-c8-in1024.md) | Carga corta inicial (detalle individual no guardado) | 40% | N/M | N/M | 1.024 / 128 | 8 / 4 / — | 20/20 | 11,2 | 22,6 | 451,3 | 62,6 | N/M | 40,9 | N/M | — | — | OK |
+| [P13](details/2026-10-14-short-c4-in8192.md) | Carga corta inicial (detalle individual no guardado) | 40% | N/M | N/M | 8.192 / 128 | 4 / 4 / — | 12/12 | 5,2 | 23,5 | 282,3 | 71,2 | N/M | 21,6 | N/M | — | — | OK |
+| [P14](details/2026-10-14-context-40-c4-in32768-out512.md) | Historial largo; prefijos independientes (serie inicial) | 40% | N/M | N/M | 32.768 / 512 | 4 / 4 / 4 | 4/4 | 40,8 | 122,5 | 490,0 | 125,5 | 4,2 | 16,3 | 84,3% | 3 | 0 | OK |
+| [P15](details/2026-10-14-context-40-c4-in65536-out512.md) | Historial largo; prefijos independientes (serie inicial) | 40% | N/M | N/M | 65.536 / 512 | 4 / 4 / 2 | 4/4 | 123,1 | 207,2 | 828,7 | 267,3 | 2,7 | 7,7 | 85,6% | 3 | 0 | Completa; cola |
+| [P16](details/2026-10-14-context-40-c4-in131072-out256.md) | Historial largo; prefijos independientes (serie inicial) | 40% | N/M | N/M | 131.072 / 256 | 4 / 4 / 1 | 4/4 | 286,4 | 315,5 | 1261,8 | 504,5 | 1,1 | 2,0 | 86,0% | 3 | 0 | Completa; cola |
+| [P17](details/2026-10-14-context-40-c1-in262016-out128.md) | Contexto casi máximo; prefijos independientes (serie inicial) | 40% | N/M | N/M | 262.016 / 128 | 1 / 4 / 1 | 1/1 | 539,1 | 557,9 | 557,9 | 558,0 | 0,2 | 0,2 | 99,6% | 1 | 4 | Completa; recálculos |
+| [P18](details/2026-10-14-context-40-limit-rejection.md) | Superar el contexto máximo: rechazo esperado | 40% | N/M | N/M | 262.145 / 1 | 1 / 4 / — | 0/1 | N/M | N/M | N/M | 0,0 | N/M | N/M | N/M | — | — | Rechazo esperado (HTTP 400) |
 
 ## Estado de la batería: after30
 
 Se registra también si el modelo consigue arrancar con el contexto máximo solicitado. Cada intento figura también como fila en la tabla del modelo. Arrancar no garantiza que varias conversaciones largas puedan ejecutarse a la vez.
 
+- **40%**, contexto máximo 262.144: arranque correcto en 0,0 s.
 
 Restauración registrada: **pending**.
 
@@ -75,7 +78,9 @@ Se registra también si el modelo consigue arrancar con el contexto máximo soli
 - **30%**, contexto máximo 262.144: no arrancó en 310,8 s.
 - **30%**, contexto máximo 131.072: arranque correcto en 366,0 s.
 
-Restauración registrada: **pending**.
+Restauración registrada: **healthy**.
+
+**Incidencia de coordinación:** al cambiar el orden de las pruebas después del 30%, se interrumpió una recreación de Docker y el primer intento de restauración coincidió con ella. Se recuperó ejecutando el Compose original y restituyendo el nombre del contenedor. Las cuatro pruebas al 30% ya habían terminado; no se ejecutó ninguna inferencia al 50% antes de repetir el 40%. No se clasifica como fallo de capacidad del modelo.
 
 ## Validación del límite de contexto
 

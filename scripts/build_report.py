@@ -184,7 +184,7 @@ def write_detail(t):
               'Con espera incluida = tokens de salida / tiempo completo de esa solicitud. '
               'Los tokens son los devueltos por la API, no el número de mensajes SSE.', '',
               '## Memoria y planificación', '',
-              f"- Pico observado del motor GPU: {num(t['engine_pct'])}% del GB10.",
+              f"- Pico observado del motor GPU: {num(t['engine_pct'])}% del GB10 ({num(t.get('summary', {}).get('peak_gpu_engine_gib'),2)} GiB).",
               f"- Pico de memoria usada por el sistema: {num(t['system_pct'])}% del GB10.",
               f"- Pico de caché ocupada: {num(t['cache'])}% de la reserva KV.",
               f"- Máximo observado de solicitudes activas: {integer(t['active'])}.",

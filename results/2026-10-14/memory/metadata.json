@@ -17,7 +17,7 @@
   "image": "nvcr.io/nvidia/vllm:26.09-py3",
   "image_id": "sha256:557747337846eecf34486866f3d992383c6f8af869fdb0e365b5093fcaee02c2",
   "compose_sha256": "1caf0951ec1175b71b97d53ffcc557e9d9ea2e506dd046b2647603c8551fd696",
-  "restore_status": "pending",
+  "restore_status": "healthy",
   "profiles": [
     {
       "fraction": 0.3,
@@ -91,5 +91,21 @@
       "kv_gib": 11.11,
       "estimated_cache_tokens": 174762.0
     }
-  ]
+  ],
+  "restored_command": [
+    "vllm",
+    "serve",
+    "nvidia/Qwen3.8-27B-NVFP4",
+    "--gpu-memory-utilization",
+    "0.40",
+    "--max-num-seqs",
+    "4",
+    "--enable-auto-tool-choice",
+    "--tool-call-parser",
+    "qwen3_coder",
+    "--reasoning-parser",
+    "qwen3"
+  ],
+  "restore_seconds": 355.12692765999236,
+  "coordination_incident": "The requested handoff after 30% interrupted Compose recreation. The first restoration collided with it. Re-running the original Compose and restoring the container name recovered the original 40% / 4 configuration. All four 30% inference tests had finished. No 50% inference test ran before the 40% repeat."
 }
