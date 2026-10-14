@@ -87,7 +87,7 @@ def maximum(t):
     if t['reached_model']:return f"**Sí: {t['reached_model']}/{t['count']}**"
     if t['reached_configured'] and t['context']!=t['model_max']:
         return 'Llegó a '+integer(t['context'])+'; límite reducido'
-    if t['input']+t['output']==t['model_max']:return 'Todavía no' if not t['finished'] else 'No'
+    if t['input']+t['output']==t['model_max']:return 'Todavía no' if t.get('summary',{}).get('status')=='running' else 'No'
     return 'No se intentó'
 
 def behavior(t):
@@ -147,7 +147,18 @@ def write_test(t,model_dir,equipment):
         for r in t['requests']:
             u=r.get('usage') or {};inp=u.get('prompt_tokens');out=u.get('completion_tokens');total=inp+out if inp is not None and out is not None else None
             lines.append(f"| {r['index']+1} | {integer(inp)} | {integer(t['output'])} | {integer(out)} | {integer(total)} | {'Sí' if r.get('ok') else 'No'} | {'Sí' if t['model_max'] is not None and total==t['model_max'] else 'No'} |")
-        if not t['requests']:lines += ['', 'Todavía no hay conversaciones terminadas.' if not t['finished'] else 'En esta primera medición solo se guardaron cifras del grupo; no se inventan datos individuales.']
+        if 'model_id' not in t['raw']:
+            recorded={r['index'] for r in t['requests']}
+            for index in range(t['count']):
+                if index not in recorded:
+                    state='En curso' if t.get('summary',{}).get('status')=='running' else 'Sin respuesta completa registrada'
+                    lines.append(f"| {index+1} | — | {integer(t['output'])} | — | — | {state} | No acreditado |")
+        elif not t['requests']:
+            lines += ['', 'En esta primera medición solo se guardaron cifras del grupo; no se inventan datos individuales.']
+        failures=[r for r in t['requests'] if r.get('error')]
+        if failures:
+            lines += ['', '**Errores recibidos:**','']
+            lines += [f"- Conversación {r['index']+1}: {r['error']}" for r in failures]
         lines += ['', '## Cada conversación: tiempos y velocidad','',
                   '| Conversación | Espera hasta primer texto (s) | Tiempo completo (s) | Tokens/s durante la respuesta | Tokens/s incluyendo la espera |',
                   '|---|---:|---:|---:|---:|']
