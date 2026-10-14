@@ -402,6 +402,11 @@
           "case": "c8-in1024-out128",
           "exit_code": 0,
           "elapsed_s": 20.002196458997787
+        },
+        {
+          "case": "c8-in8192-out128",
+          "exit_code": 0,
+          "elapsed_s": 55.00813322899921
         }
       ],
       "max_model_len": 262144,

@@ -1,0 +1,18 @@
+{
+  "tipo": "conversaciones",
+  "modelo": "nvidia/Qwen3.8-27B-NVFP4",
+  "fecha": "2026-10-14",
+  "memoria_porcentaje": 40,
+  "limite_servidor": 8,
+  "limite_contexto_configurado": 262144,
+  "conversaciones_totales": 8,
+  "concurrencia_enviada": 8,
+  "tokens_entrada": 32768,
+  "tokens_respuesta_pedidos": 256,
+  "medicion_inicial": false,
+  "repeticion_de_control": false,
+  "comprobacion_adicional": false,
+  "espera_ampliada": false,
+  "historial_reutilizado": false,
+  "paso_historial": null
+}
