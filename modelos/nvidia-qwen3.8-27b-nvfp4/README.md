@@ -14,7 +14,7 @@
 
 ## ¿Puede llegar al máximo y terminar?
 
-- **25% de memoria:** Hasta ahora se ha completado una conversación de **33.024 tokens**. Aún no demuestra alcanzar 262.144.
+- **25% de memoria:** Hasta ahora se ha completado una conversación de **65.536 tokens**. Aún no demuestra alcanzar 262.144.
 - **30% de memoria:** Hasta ahora se ha completado una conversación de **131.072 tokens**. Aún no demuestra alcanzar 262.144. **El arranque con el máximo del modelo falló.**
 - **40% de memoria:** **Sí:** 1/1 completadas con 262.144 tokens y toda la respuesta solicitada. 1 respuesta a la vez; cola máxima 1; 4 recálculos.
 
@@ -40,7 +40,7 @@ Las tablas principales muestran la batería con medición detallada. Cada fila e
 | [4 conversaciones; hasta 4 a la vez](memoria-25-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-1024-entrada-128-respuesta-servidor-4/README.md) | 25% | **4 activas** | 1.024 + 128 | **Sí: 4/4** | No se intentó | 13,1 s | 4 respuestas solapadas; cola máxima 1 |
 | [4 conversaciones; hasta 4 a la vez](memoria-25-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-8192-entrada-128-respuesta-servidor-4/README.md) | 25% | **4 activas** | 8.192 + 128 | **Sí: 4/4** | No se intentó | 25,9 s | 4 respuestas solapadas; cola máxima 3 |
 | [4 conversaciones; hasta 4 a la vez](memoria-25-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-32768-entrada-256-respuesta-servidor-4/README.md) | 25% | **4 activas** | 32.768 + 256 | **Sí: 4/4** | No se intentó | 152,8 s | 1 respuesta a la vez; cola máxima 3 |
-| [1 conversación; hasta 1 a la vez](memoria-25-por-ciento/2026-10-14-1-conversaciones-hasta-1-a-la-vez-65280-entrada-256-respuesta-servidor-4/README.md) | 25% | **4 activas** | 65.280 + 256 | 0/1 (en curso) | No se intentó | 30,1 s | 1 activa en el motor; cola máxima 0 |
+| [1 conversación; hasta 1 a la vez](memoria-25-por-ciento/2026-10-14-1-conversaciones-hasta-1-a-la-vez-65280-entrada-256-respuesta-servidor-4/README.md) | 25% | **4 activas** | 65.280 + 256 | **Sí: 1/1** | Llegó a 65.536; límite reducido | 96,4 s | 1 respuesta a la vez; cola máxima 1; 6 recálculos |
 | [Arrancar el modelo con límite de 131.072 tokens](memoria-30-por-ciento/2026-10-14-arranque-contexto-131072-servidor-4/README.md) | 30% | **4 activas** | Sin conversaciones | Arrancó | No se enviaron conversaciones | 366,0 s | Arrancó |
 | [Arrancar el modelo con límite de 262.144 tokens](memoria-30-por-ciento/2026-10-14-arranque-contexto-262144-servidor-4/README.md) | 30% | **4 activas** | Sin conversaciones | **NO ARRANCÓ** | No se enviaron conversaciones | 310,8 s | **NO ARRANCÓ** |
 | [4 conversaciones; hasta 4 a la vez](memoria-30-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-8192-entrada-128-respuesta-servidor-4/README.md) | 30% | **4 activas** | 8.192 + 128 | **Sí: 4/4** | No se intentó | 25,6 s | 4 activas en el motor; cola máxima 3 |
@@ -68,7 +68,7 @@ Las tablas principales muestran la batería con medición detallada. Cada fila e
 | [4 conversaciones; hasta 4 a la vez](memoria-25-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-1024-entrada-128-respuesta-servidor-4/README.md) | 25% | 21,7% | 29,9% | 1.024 + 128 | 4 / 4 / 4 / 4 | **Sí: 4/4** | 2,1 | 13,0 | 51,9 | 13,1 | 9,86 | 38,96 | 25,9% | 1 | 0 | Terminó |
 | [4 conversaciones; hasta 4 a la vez](memoria-25-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-8192-entrada-128-respuesta-servidor-4/README.md) | 25% | 21,7% | 29,9% | 8.192 + 128 | 4 / 4 / 4 / 4 | **Sí: 4/4** | 9,5 | 25,2 | 100,9 | 25,9 | 5,08 | 19,75 | 96,3% | 3 | 0 | Terminó |
 | [4 conversaciones; hasta 4 a la vez](memoria-25-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-32768-entrada-256-respuesta-servidor-4/README.md) | 25% | 21,7% | 29,8% | 32.768 + 256 | 4 / 4 / 1 / 1 | **Sí: 4/4** | 72,7 | 95,4 | 381,8 | 152,8 | 3,49 | 6,70 | 100,0% | 3 | 0 | Terminó atendiendo por turnos |
-| [1 conversación; hasta 1 a la vez](memoria-25-por-ciento/2026-10-14-1-conversaciones-hasta-1-a-la-vez-65280-entrada-256-respuesta-servidor-4/README.md) | 25% | 21,7% | 29,8% | 65.280 + 256 | 1 / 4 / 1 / — | 0/1 (en curso) | No medido | No medido | No medido | 30,1 | No medido | No medido | 97,2% | 0 | 0 | En curso |
+| [1 conversación; hasta 1 a la vez](memoria-25-por-ciento/2026-10-14-1-conversaciones-hasta-1-a-la-vez-65280-entrada-256-respuesta-servidor-4/README.md) | 25% | 21,7% | 29,8% | 65.280 + 256 | 1 / 4 / 1 / 1 | **Sí: 1/1** | 71,4 | 96,3 | 96,3 | 96,4 | 2,66 | 2,65 | 97,2% | 1 | 6 | Terminó con 6 recálculos |
 | [Arrancar el modelo con límite de 131.072 tokens](memoria-30-por-ciento/2026-10-14-arranque-contexto-131072-servidor-4/README.md) | 30% | No aplica | No aplica | Sin conversaciones | Límite 4 | Arrancó | No aplica | No aplica | No aplica | 366,0 | No aplica | No aplica | No aplica | No aplica | No aplica | Arrancó |
 | [Arrancar el modelo con límite de 262.144 tokens](memoria-30-por-ciento/2026-10-14-arranque-contexto-262144-servidor-4/README.md) | 30% | No aplica | No aplica | Sin conversaciones | Límite 4 | **NO ARRANCÓ** | No aplica | No aplica | No aplica | 310,8 | No aplica | No aplica | No aplica | No aplica | No aplica | **NO ARRANCÓ** |
 | [4 conversaciones; hasta 4 a la vez](memoria-30-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-8192-entrada-128-respuesta-servidor-4/README.md) | 30% | 26,6% | 35,0% | 8.192 + 128 | 4 / 4 / 4 / — | **Sí: 4/4** | 9,2 | 24,9 | 99,5 | 25,6 | 5,15 | 20,00 | 45,0% | 3 | 0 | Terminó |
@@ -130,7 +130,7 @@ Esta tabla distingue las pruebas terminadas de las que todavía faltan. No inclu
 |---:|---:|---|---:|---|
 | 30% | 4 activas | Conversaciones con historiales independientes | 4/4 | Terminada |
 | 40% | 4 activas | Conversaciones con historiales independientes | 10/10 | Terminada |
-| 25% | 4 activas | Conversaciones con historiales independientes | 3/4 | En curso |
+| 25% | 4 activas | Conversaciones con historiales independientes | 4/4 | Terminada |
 | 20% | 4 activas | Conversaciones con historiales independientes | 0/1 | Pendiente |
 | 50% | 4 activas | Conversaciones con historiales independientes | 0/4 | Pendiente |
 | 70% | 4 activas | Conversaciones con historiales independientes | 0/3 | Pendiente |
