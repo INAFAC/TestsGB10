@@ -8,11 +8,11 @@
 
 ## ¿Qué ocurrió?
 
-- **¿Terminaron todas las conversaciones?** 292/512 (en curso). Terminar significa recibir todos los tokens de respuesta solicitados.
+- **¿Terminaron todas las conversaciones?** 309/512 (en curso). Terminar significa recibir todos los tokens de respuesta solicitados.
 - **¿Llegaron al máximo del modelo (262.144 tokens)?** No se intentó.
 - **Límite configurado en esta prueba:** 262.144 tokens, sumando entrada y respuesta.
 - **¿Se atendieron al mismo tiempo?** 309 activas en el motor; cola máxima 507.
-- **Tiempo para completar la prueba:** 788,1 s.
+- **Tiempo para completar la prueba:** 837,2 s.
 
 Se enviaron **512 conversaciones**, hasta **512 a la vez**. Cada una pidió **1.024 tokens de entrada + 512 de respuesta = 1.536 tokens**.
 
@@ -314,24 +314,24 @@ Se enviaron **512 conversaciones**, hasta **512 a la vez**. Cada una pidió **1.
 | 289 | 1.024 | 512 | 512 | 1.536 | Sí | No |
 | 290 | 1.024 | 512 | 512 | 1.536 | Sí | No |
 | 291 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 292 | 1.024 | 512 | 512 | 1.536 | Sí | No |
 | 293 | 1.024 | 512 | 512 | 1.536 | Sí | No |
-| 292 | — | 512 | — | — | En curso | No acreditado |
-| 294 | — | 512 | — | — | En curso | No acreditado |
-| 295 | — | 512 | — | — | En curso | No acreditado |
-| 296 | — | 512 | — | — | En curso | No acreditado |
-| 297 | — | 512 | — | — | En curso | No acreditado |
-| 298 | — | 512 | — | — | En curso | No acreditado |
-| 299 | — | 512 | — | — | En curso | No acreditado |
-| 300 | — | 512 | — | — | En curso | No acreditado |
-| 301 | — | 512 | — | — | En curso | No acreditado |
-| 302 | — | 512 | — | — | En curso | No acreditado |
-| 303 | — | 512 | — | — | En curso | No acreditado |
-| 304 | — | 512 | — | — | En curso | No acreditado |
-| 305 | — | 512 | — | — | En curso | No acreditado |
-| 306 | — | 512 | — | — | En curso | No acreditado |
-| 307 | — | 512 | — | — | En curso | No acreditado |
-| 308 | — | 512 | — | — | En curso | No acreditado |
-| 309 | — | 512 | — | — | En curso | No acreditado |
+| 294 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 295 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 296 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 297 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 298 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 299 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 300 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 301 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 302 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 303 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 304 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 305 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 306 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 307 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 308 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 309 | 1.024 | 512 | 512 | 1.536 | Sí | No |
 | 310 | — | 512 | — | — | En curso | No acreditado |
 | 311 | — | 512 | — | — | En curso | No acreditado |
 | 312 | — | 512 | — | — | En curso | No acreditado |
@@ -837,7 +837,24 @@ Se enviaron **512 conversaciones**, hasta **512 a la vez**. Cada una pidió **1.
 | 289 | 244,70 | 786,25 | 0,94 | 0,65 |
 | 290 | 247,72 | 787,28 | 0,95 | 0,65 |
 | 291 | 246,21 | 786,76 | 0,95 | 0,65 |
+| 292 | 250,75 | 788,29 | 0,95 | 0,65 |
 | 293 | 249,23 | 787,78 | 0,95 | 0,65 |
+| 294 | 252,28 | 788,79 | 0,95 | 0,65 |
+| 295 | 253,81 | 789,30 | 0,95 | 0,65 |
+| 296 | 257,28 | 790,29 | 0,96 | 0,65 |
+| 297 | 255,33 | 789,79 | 0,96 | 0,65 |
+| 298 | 259,40 | 790,78 | 0,96 | 0,65 |
+| 299 | 260,93 | 791,26 | 0,96 | 0,65 |
+| 300 | 262,48 | 791,76 | 0,97 | 0,65 |
+| 301 | 264,03 | 792,25 | 0,97 | 0,65 |
+| 302 | 268,71 | 793,70 | 0,97 | 0,65 |
+| 303 | 270,27 | 794,20 | 0,98 | 0,64 |
+| 304 | 267,14 | 793,21 | 0,97 | 0,65 |
+| 305 | 265,59 | 792,73 | 0,97 | 0,65 |
+| 306 | 273,29 | 795,14 | 0,98 | 0,64 |
+| 307 | 271,84 | 794,67 | 0,98 | 0,64 |
+| 308 | 274,70 | 795,62 | 0,98 | 0,64 |
+| 309 | 276,78 | 796,56 | 0,98 | 0,64 |
 
 </details>
 
@@ -854,14 +871,14 @@ Se enviaron **512 conversaciones**, hasta **512 a la vez**. Cada una pidió **1.
 | Límite de solicitudes del servidor | 512 |
 | Máximo activo en el motor | 309 |
 | Máximo de respuestas solapadas | — |
-| Espera media hasta primer texto | 100,4 s |
-| Tiempo medio de respuesta completa | 640,2 s |
-| Mayor espera hasta primer texto, entre las completadas | 249,2 s |
-| Mayor tiempo completo, entre las completadas | 787,8 s |
-| Suma de los tiempos individuales | 186.930,2 s |
-| Tiempo total de la prueba | 788,1 s |
-| Tokens/s medios por conversación, incluyendo espera | 0,82 |
-| Tokens/s totales del grupo | 189,70 |
+| Espera media hasta primer texto | 109,4 s |
+| Tiempo medio de respuesta completa | 648,5 s |
+| Mayor espera hasta primer texto, entre las completadas | 276,8 s |
+| Mayor tiempo completo, entre las completadas | 796,6 s |
+| Suma de los tiempos individuales | 200.398,5 s |
+| Tiempo total de la prueba | 837,2 s |
+| Tokens/s medios por conversación, incluyendo espera | 0,81 |
+| Tokens/s totales del grupo | 188,96 |
 | Pico de caché ocupada | 100,0% |
 | Máximo de solicitudes en cola | 507 |
 | Recálculos por falta de espacio en caché | 0 |
@@ -1176,7 +1193,24 @@ Segundos desde el inicio de la prueba.
 | 289 | 0,32 | 245,02 | 786,57 |
 | 290 | 0,32 | 248,04 | 787,60 |
 | 291 | 0,32 | 246,53 | 787,08 |
+| 292 | 0,32 | 251,07 | 788,61 |
 | 293 | 0,32 | 249,55 | 788,11 |
+| 294 | 0,32 | 252,60 | 789,11 |
+| 295 | 0,33 | 254,13 | 789,63 |
+| 296 | 0,33 | 257,61 | 790,62 |
+| 297 | 0,33 | 255,66 | 790,12 |
+| 298 | 0,33 | 259,73 | 791,11 |
+| 299 | 0,33 | 261,27 | 791,59 |
+| 300 | 0,33 | 262,81 | 792,10 |
+| 301 | 0,33 | 264,36 | 792,58 |
+| 302 | 0,33 | 269,05 | 794,03 |
+| 303 | 0,33 | 270,61 | 794,53 |
+| 304 | 0,33 | 267,48 | 793,54 |
+| 305 | 0,33 | 265,93 | 793,06 |
+| 306 | 0,34 | 273,63 | 795,48 |
+| 307 | 0,34 | 272,17 | 795,01 |
+| 308 | 0,34 | 275,04 | 795,96 |
+| 309 | 0,34 | 277,12 | 796,90 |
 
 </details>
 
