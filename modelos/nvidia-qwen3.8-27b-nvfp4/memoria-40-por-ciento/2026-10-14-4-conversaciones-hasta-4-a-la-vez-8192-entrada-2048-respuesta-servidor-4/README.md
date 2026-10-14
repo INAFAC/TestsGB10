@@ -4,13 +4,15 @@
 
 **Modelo:** `nvidia/Qwen3.8-27B-NVFP4`. **Memoria asignada:** 40% del GB10.
 
+**Límite impuesto al servidor: 4 solicitudes activas** (`--max-num-seqs 4`). Aunque se envíen más, el motor no puede superar ese límite en esta prueba. Observar ese número no demuestra que sea el máximo del GB10.
+
 ## ¿Qué ocurrió?
 
-- **¿Terminaron todas las conversaciones?** 0/4 (en curso). Terminar significa recibir todos los tokens de respuesta solicitados.
+- **¿Terminaron todas las conversaciones?** **Sí: 4/4**. Terminar significa recibir todos los tokens de respuesta solicitados.
 - **¿Llegaron al máximo del modelo (262.144 tokens)?** No se intentó.
 - **Límite configurado en esta prueba:** 262.144 tokens, sumando entrada y respuesta.
-- **¿Se atendieron al mismo tiempo?** 4 activas en el motor; cola máxima 3.
-- **Tiempo para completar la prueba:** 195,3 s.
+- **¿Se atendieron al mismo tiempo?** 4 respuestas solapadas; cola máxima 3.
+- **Tiempo para completar la prueba:** 209,7 s.
 
 Se enviaron **4 conversaciones**, hasta **4 a la vez**. Cada una pidió **8.192 tokens de entrada + 2.048 de respuesta = 10.240 tokens**.
 
@@ -18,13 +20,19 @@ Se enviaron **4 conversaciones**, hasta **4 a la vez**. Cada una pidió **8.192 
 
 | Conversación | Entrada | Respuesta pedida | Respuesta recibida | Total alcanzado | ¿Terminó? | ¿Llegó al máximo del modelo? |
 |---|---:|---:|---:|---:|---|---|
-
-Todavía no hay conversaciones terminadas.
+| 1 | 8.192 | 2.048 | 2.048 | 10.240 | Sí | No |
+| 2 | 8.192 | 2.048 | 2.048 | 10.240 | Sí | No |
+| 3 | 8.192 | 2.048 | 2.048 | 10.240 | Sí | No |
+| 4 | 8.192 | 2.048 | 2.048 | 10.240 | Sí | No |
 
 ## Cada conversación: tiempos y velocidad
 
 | Conversación | Espera hasta primer texto (s) | Tiempo completo (s) | Tokens/s durante la respuesta | Tokens/s incluyendo la espera |
 |---|---:|---:|---:|---:|
+| 1 | 4,62 | 208,29 | 10,05 | 9,83 |
+| 2 | 14,02 | 209,60 | 10,47 | 9,77 |
+| 3 | 8,03 | 208,75 | 10,20 | 9,81 |
+| 4 | 11,46 | 209,19 | 10,35 | 9,79 |
 
 ## Todas las medidas del grupo
 
@@ -37,14 +45,14 @@ Todavía no hay conversaciones terminadas.
 | Máximo de peticiones enviadas a la vez | 4 |
 | Límite de solicitudes del servidor | 4 |
 | Máximo activo en el motor | 4 |
-| Máximo de respuestas solapadas | — |
-| Espera media hasta primer texto | No medido s |
-| Tiempo medio de respuesta completa | No medido s |
-| Suma de los tiempos individuales | No medido s |
-| Tiempo total de la prueba | 195,3 s |
-| Tokens/s medios por conversación, incluyendo espera | No medido |
-| Tokens/s totales del grupo | No medido |
-| Pico de caché ocupada | 23,3% |
+| Máximo de respuestas solapadas | 4 |
+| Espera media hasta primer texto | 9,5 s |
+| Tiempo medio de respuesta completa | 209,0 s |
+| Suma de los tiempos individuales | 835,8 s |
+| Tiempo total de la prueba | 209,7 s |
+| Tokens/s medios por conversación, incluyendo espera | 9,80 |
+| Tokens/s totales del grupo | 39,07 |
+| Pico de caché ocupada | 23,5% |
 | Máximo de solicitudes en cola | 3 |
 | Recálculos por falta de espacio en caché | 0 |
 | Tiempo observado con cola | 10,2 s |
@@ -55,6 +63,20 @@ Todavía no hay conversaciones terminadas.
 La caché guarda información del historial. Un recálculo significa que el motor tuvo que desalojar trabajo y repetirlo. Una cola breve durante la lectura inicial no prueba por sí sola falta de memoria.
 
 Los tiempos individuales se solapan: su suma puede superar el tiempo total de la prueba. Las velocidades cuentan tokens de respuesta, no tokens de entrada.
+
+<details>
+<summary>Cronología: cuándo se envió, empezó y terminó cada respuesta</summary>
+
+Segundos desde el inicio de la prueba.
+
+| Conversación | Enviada | Primer texto | Final |
+|---|---:|---:|---:|
+| 1 | 0,05 | 4,67 | 208,34 |
+| 2 | 0,05 | 14,07 | 209,65 |
+| 3 | 0,05 | 8,09 | 208,80 |
+| 4 | 0,06 | 11,52 | 209,25 |
+
+</details>
 
 <details>
 <summary>Mediciones originales y registros de esta prueba</summary>

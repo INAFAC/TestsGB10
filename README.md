@@ -4,6 +4,8 @@ Resultados para decidir cuánta memoria reservar y cuántas conversaciones puede
 
 **Estado:** pruebas en curso; se publican tanto los éxitos como los fallos.
 
+**Límite actual de las pruebas publicadas: cuatro solicitudes activas, impuesto por configuración.** Observar un máximo de cuatro no demuestra que el GB10 no pueda con más.
+
 ## Resultados por modelo
 
 | Modelo | Máximo por conversación | Informe |

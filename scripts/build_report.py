@@ -108,7 +108,8 @@ def evidence(t):
 
 def write_test(t,model_dir,equipment):
     lines=['# '+t['title'],'',f"[Volver al modelo]({link(model_dir/'README.md',t['path'])}) · [Ver las pruebas con esta memoria](../README.md)",'',
-           f"**Modelo:** `{t['c']['modelo']}`. **Memoria asignada:** {t['memory']}% del GB10.",'']
+           f"**Modelo:** `{t['c']['modelo']}`. **Memoria asignada:** {t['memory']}% del GB10.",'',
+           f"**Límite impuesto al servidor: {t['limit']} solicitudes activas** (`--max-num-seqs {t['limit']}`). Aunque se envíen más, el motor no puede superar ese límite en esta prueba. Observar ese número no demuestra que sea el máximo del GB10.",'']
     if t['type']=='arranque':
         lines += [f"**Resultado: {t['state']}.**",'',f"Se comprobó el arranque con un límite de **{integer(t['context'])} tokens por conversación** y hasta **{t['limit']} solicitudes activas**.",'',
                   f"Tiempo de comprobación: **{number(t['duration'])} segundos**.",'']
@@ -181,8 +182,8 @@ def table(tests,base,full=False):
         lines=['| Prueba | Memoria asignada | Motor / GB10 | Sistema / GB10 | Entrada + respuesta | Enviadas / límite servidor / activas / respuestas solapadas | Terminadas | Espera media (s) | Respuesta media (s) | Suma individual (s) | Tiempo prueba (s) | Tokens/s por conversación | Tokens/s totales | Pico caché | Cola máxima | Recálculos | Resultado |',
                '|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|']
     else:
-        lines=['| Prueba | Memoria asignada | Tokens por conversación: entrada + respuesta | ¿Terminaron? | ¿Llegaron al máximo del modelo? | Tiempo total | Simultaneidad, colas y problemas |',
-               '|---|---:|---:|---|---|---:|---|']
+        lines=['| Prueba | Memoria asignada | Límite impuesto al servidor | Tokens por conversación: entrada + respuesta | ¿Terminaron? | ¿Llegaron al máximo del modelo? | Tiempo total | Simultaneidad, colas y problemas |',
+               '|---|---:|---:|---:|---|---|---:|---|']
     for t in tests:
         label=t['title']
         if t['type']=='conversaciones' and not t['c'].get('historial_reutilizado'):
@@ -193,11 +194,12 @@ def table(tests,base,full=False):
         if full:
             lines.append(f"| {title} | {t['memory']}% | {percent(t['engine'])} | {percent(t['system'])} | {tokens} | {t['concurrency']} / {t['limit']} / {integer(t['active'])} / {integer(t['overlap'])} | {completion(t)} | {number(t['ttft'])} | {number(t['response'])} | {number(t['sum_response'])} | {number(t['duration'])} | {number(t['request_rate'],2)} | {number(t['throughput'],2)} | {percent(t['cache'])} | {integer(t['queue'])} | {integer(t['preemptions'])} | {t['state']} |")
         else:
-            lines.append(f"| {title} | {t['memory']}% | {tokens} | {completion(t)} | {maximum(t)} | {number(t['duration'])} s | {behavior(t)} |")
+            lines.append(f"| {title} | {t['memory']}% | **{t['limit']} activas** | {tokens} | {completion(t)} | {maximum(t)} | {number(t['duration'])} s | {behavior(t)} |")
     return lines
 
 def main():
     model_summaries=[]
+    observed_limits=set()
     for model_dir in sorted(MODELS.iterdir()):
         if not model_dir.is_dir():continue
         eqfile=model_dir/'configuracion-del-equipo/equipo.json'
@@ -207,6 +209,9 @@ def main():
         tests.sort(key=lambda t:(t['memory'],t['limit'],t['input'],t['concurrency'],t['output'],t['c'].get('medicion_inicial',False),t['path'].name))
         for t in tests:write_test(t,model_dir,equipment)
         model=tests[0]['c']['modelo'];maximum_model=equipment.get('contexto_maximo_del_modelo')
+        limits=sorted({t['limit'] for t in tests if t['type']=='conversaciones'})
+        observed_limits.update(limits)
+        concurrency_note=('**Hasta ahora, las pruebas de conversaciones publicadas tienen un límite impuesto de cuatro solicitudes activas** (`--max-num-seqs 4`). Que aparezcan cuatro como máximo no demuestra el techo del GB10. Enviar ocho peticiones no levanta ese límite: pueden quedar en cola.' if limits==[4] else '**Límites impuestos al servidor que se han probado:** '+', '.join(map(str,limits))+'. Cada fila muestra el suyo. El máximo observado bajo un límite impuesto no demuestra por sí solo el máximo del GB10.')
         statuses=list((model_dir/'configuracion-del-equipo').rglob('plan-y-estado-general.json'))
         complete=bool(statuses and read(statuses[0]).get('status')=='complete')
         lines=['# '+model.split('/')[-1],'','[Volver al inicio](../../README.md) · [Cómo leer las medidas](../../GUIA-DE-LECTURA.md)','',
@@ -214,6 +219,7 @@ def main():
                '**Estado:** '+('pruebas terminadas y configuración original restaurada.' if complete else 'pruebas en curso. Los resultados se actualizan a medida que terminan.'),'',
                f'**Máximo por conversación: {integer(maximum_model)} tokens, sumando historial y respuesta.** '
                'La memoria asignada puede obligar a configurar un límite menor.','',
+               concurrency_note,'',
                '“Terminó” significa que entregó todos los tokens de respuesta solicitados. '
                '“Llegó al máximo” exige además que la suma real de entrada y respuesta alcance ese máximo; arrancar el servidor no basta.','',
                '## ¿Puede llegar al máximo y terminar?','']
@@ -251,6 +257,7 @@ def main():
     lines=['# Pruebas de modelos en el GB10','',
            'Resultados para decidir cuánta memoria reservar y cuántas conversaciones puede atender cada modelo, incluyendo historiales cercanos a su límite.','',
            '**Estado:** '+('pruebas terminadas y configuración original restaurada.' if model_summaries and all(m[-1] for m in model_summaries) else 'pruebas en curso; se publican tanto los éxitos como los fallos.'),'',
+           ('**Límite actual de las pruebas publicadas: cuatro solicitudes activas, impuesto por configuración.** Observar un máximo de cuatro no demuestra que el GB10 no pueda con más.' if observed_limits=={4} else '**Cada prueba indica el límite de solicitudes activas impuesto al servidor.** Ese límite debe distinguirse de la capacidad del GB10.'),'',
            '## Resultados por modelo','', '| Modelo | Máximo por conversación | Informe |','|---|---:|---|']
     for model,folder,limit,good,total,complete in model_summaries:
         lines.append(f'| {model.split("/")[-1]} | {integer(limit)} tokens | [Ver resultados y qué configuración elegir]({link(folder/"README.md",ROOT)}) |')
