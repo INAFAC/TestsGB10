@@ -74,10 +74,10 @@ def main():
         except Exception:
             return False
 
-    def wait_ready(label):
+    def wait_ready(label, timeout=660):
         started = time.monotonic()
         last = 0
-        while time.monotonic()-started < 660:
+        while time.monotonic()-started < timeout:
             if healthy():
                 return True, time.monotonic()-started
             state = json.loads(sh(['docker', 'inspect', 'vllm-qwen38'], check=True).stdout)[0]
@@ -192,7 +192,7 @@ def main():
                               and int(current[current.index('--max-num-seqs')+1]) == max_seqs
                               and models[0].get('max_model_len') == max_len)
                 cmd = current if reused else change(fraction, max_len, max_seqs)
-                ready, elapsed = wait_ready(label)
+                ready, elapsed = wait_ready(label, options.get('startup_timeout_s',660))
                 raw = startup_log(directory/('startup-'+str(max_len)+'.log'))
                 record['attempts'].append({'max_model_len': max_len, 'command': cmd,
                                            'ready': ready, 'startup_seconds': elapsed, 'reused_running_server': reused})

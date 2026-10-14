@@ -11,7 +11,7 @@
 - **¿Terminaron todas las conversaciones?** **Sí: 2/2**. Terminar significa recibir todos los tokens de respuesta solicitados.
 - **¿Llegaron al máximo del modelo (262.144 tokens)?** **Sí: 2/2**.
 - **Límite configurado en esta prueba:** 262.144 tokens, sumando entrada y respuesta.
-- **¿Se atendieron al mismo tiempo?** 1 respuesta a la vez; cola máxima 1; 1 recálculos.
+- **¿Se atendieron al mismo tiempo?** 1 respuesta a la vez; cola máxima 1; 1 recálculo.
 - **Tiempo para completar la prueba:** 722,3 s.
 
 Se enviaron **2 conversaciones**, hasta **2 a la vez**. Cada una pidió **262.016 tokens de entrada + 128 de respuesta = 262.144 tokens**.

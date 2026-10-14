@@ -19,7 +19,7 @@ Las tablas principales muestran la batería con medición detallada. Cada fila e
 |---|---:|---:|---:|---|---|---:|---|
 | [Arrancar el modelo con límite de 262.144 tokens](2026-10-14-arranque-contexto-262144-servidor-4/README.md) | 92% | **4 activas** | Sin conversaciones | Arrancó | No se enviaron conversaciones | 391,1 s | Arrancó |
 | [4 conversaciones; hasta 4 a la vez](2026-10-14-4-conversaciones-hasta-4-a-la-vez-131072-entrada-256-respuesta-servidor-4/README.md) | 92% | **4 activas** | 131.072 + 256 | **Sí: 4/4** | No se intentó | 556,5 s | 4 respuestas solapadas; cola máxima 3 |
-| [4 conversaciones; hasta 4 a la vez](2026-10-14-4-conversaciones-hasta-4-a-la-vez-262016-entrada-128-respuesta-servidor-4/README.md) | 92% | **4 activas** | 262.016 + 128 | 3/4 (errores por tiempo de espera) | **Solo: 3/4** | 1.216,2 s | 1 respuesta a la vez; cola máxima 3; 1 errores de espera |
+| [4 conversaciones; hasta 4 a la vez](2026-10-14-4-conversaciones-hasta-4-a-la-vez-262016-entrada-128-respuesta-servidor-4/README.md) | 92% | **4 activas** | 262.016 + 128 | 3/4 (errores por tiempo de espera) | **Solo: 3/4** | 1.216,2 s | 1 respuesta a la vez; cola máxima 3; 1 error de espera |
 
 <details>
 <summary>Comparación completa de memoria, tiempos y tokens por segundo</summary>

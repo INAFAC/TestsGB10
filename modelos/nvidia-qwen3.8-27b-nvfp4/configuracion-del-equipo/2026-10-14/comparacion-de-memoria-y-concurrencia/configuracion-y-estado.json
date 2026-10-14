@@ -546,6 +546,38 @@
       "max_model_len": 262144,
       "kv_gib": 22.94,
       "estimated_cache_tokens": 368231.0
+    },
+    {
+      "fraction": 0.7,
+      "max_num_seqs": 16,
+      "attempts": [
+        {
+          "max_model_len": 262144,
+          "command": [
+            "vllm",
+            "serve",
+            "nvidia/Qwen3.8-27B-NVFP4",
+            "--enable-auto-tool-choice",
+            "--tool-call-parser",
+            "qwen3_coder",
+            "--reasoning-parser",
+            "qwen3",
+            "--gpu-memory-utilization",
+            "0.7",
+            "--max-model-len",
+            "262144",
+            "--max-num-seqs",
+            "16"
+          ],
+          "ready": true,
+          "startup_seconds": 395.98035149900534,
+          "reused_running_server": false
+        }
+      ],
+      "tests": [],
+      "max_model_len": 262144,
+      "kv_gib": 60.12,
+      "estimated_cache_tokens": 965550.0
     }
   ]
 }

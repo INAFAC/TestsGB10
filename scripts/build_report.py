@@ -73,7 +73,7 @@ def load_test(path,equipment):
     if c.get('repeticion_de_control'):t['title']+=' (control al final de la campaña)'
     if c.get('espera_ampliada'):t['title']+=' (espera ampliada)'
     if t['all_done']:
-        t['state']=('Terminó con '+integer(t['preemptions'])+' recálculos' if t['preemptions'] else
+        t['state']=('Terminó con '+integer(t['preemptions'])+(' recálculo' if t['preemptions']==1 else ' recálculos') if t['preemptions'] else
                     'Terminó atendiendo por turnos' if t['active'] is not None and t['active']<t['concurrency'] else 'Terminó')
     elif t['failed']:t['state']='Errores por tiempo de espera' if t['timeout_errors'] else 'Hubo errores'
     elif s.get('status')=='not_admitted_within_90s':t['state']='Detenida: 90 s en cola sin iniciar'
@@ -103,8 +103,8 @@ def behavior(t):
     if t['overlap'] is not None:bits.append('1 respuesta a la vez' if t['overlap']==1 else integer(t['overlap'])+' respuestas solapadas')
     elif t['active'] is not None:bits.append('1 activa en el motor' if t['active']==1 else integer(t['active'])+' activas en el motor')
     if t['queue'] is not None:bits.append('cola máxima '+integer(t['queue']))
-    if t['preemptions']:bits.append(integer(t['preemptions'])+' recálculos')
-    if t['failed']:bits.append(integer(t['failed'])+(' errores de espera' if t['timeout_errors']==t['failed'] else ' errores'))
+    if t['preemptions']:bits.append(integer(t['preemptions'])+(' recálculo' if t['preemptions']==1 else ' recálculos'))
+    if t['failed']:bits.append(integer(t['failed'])+(' error de espera' if t['failed']==1 else ' errores de espera' ) if t['timeout_errors']==t['failed'] else integer(t['failed'])+(' error' if t['failed']==1 else ' errores'))
     return '; '.join(bits) or 'No se guardó este detalle'
 
 def evidence(t):
@@ -301,11 +301,16 @@ def main():
                 best=sorted(reaching,key=lambda t:(t['c'].get('medicion_inicial',False),-t['done']))[0]
                 result='Sí' if best['all_done'] else 'Parcial'
                 statement=f"**{result}:** {best['reached_model']}/{best['count']} completadas con {integer(maximum_model)} tokens y toda la respuesta solicitada. Tiempo del grupo: {number(best['duration'])} s. {behavior(best)}."
+                statement+=f" [Ver esta prueba]({link(best['path']/'README.md',model_dir)})."
             else:
                 totals=[r['usage']['prompt_tokens']+r['usage']['completion_tokens'] for t in subset for r in t.get('good',[])]
                 statement=('Hasta ahora se ha completado una conversación de **'+integer(max(totals))+' tokens**. Aún no demuestra alcanzar '+integer(maximum_model)+'.') if totals else 'Todavía no hay una conversación terminada registrada con este presupuesto.'
                 failed=[t for t in tests if t['memory']==mem and t['type']=='arranque' and not t['raw']['ready'] and t['context']==maximum_model]
                 if failed:statement+=' **El arranque con el máximo del modelo falló.**'
+                if not totals and any(t['type']=='arranque' and t['memory']==mem and not t['raw']['ready'] for t in tests):
+                    statement='**No arrancó con la configuración probada.** No se pudieron enviar conversaciones.'
+                elif complete and totals:
+                    statement='Máximo completado en estas pruebas: **'+integer(max(totals))+' tokens**. No se ha demostrado alcanzar '+integer(maximum_model)+'.'+(' **El arranque con el máximo del modelo falló.**' if failed else '')
             lines.append(f'- **{mem}% de memoria:** '+statement)
         previous=(model_dir/'README.md').read_text() if (model_dir/'README.md').exists() else ''
         match=re.search(r'<!-- interpretacion-inicio -->\n(.*?)\n<!-- interpretacion-fin -->',previous,re.S)
