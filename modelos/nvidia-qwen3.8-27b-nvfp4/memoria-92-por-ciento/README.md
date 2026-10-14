@@ -18,7 +18,7 @@ Las tablas principales muestran la batería con medición detallada. Cada fila e
 |---|---:|---:|---:|---|---|---:|---|
 | [Arrancar el modelo con límite de 262.144 tokens](2026-10-14-arranque-contexto-262144-servidor-4/README.md) | 92% | **4 activas** | Sin conversaciones | Arrancó | No se enviaron conversaciones | 391,1 s | Arrancó |
 | [4 conversaciones; hasta 4 a la vez](2026-10-14-4-conversaciones-hasta-4-a-la-vez-131072-entrada-256-respuesta-servidor-4/README.md) | 92% | **4 activas** | 131.072 + 256 | **Sí: 4/4** | No se intentó | 556,5 s | 4 respuestas solapadas; cola máxima 3 |
-| [4 conversaciones; hasta 4 a la vez](2026-10-14-4-conversaciones-hasta-4-a-la-vez-262016-entrada-128-respuesta-servidor-4/README.md) | 92% | **4 activas** | 262.016 + 128 | 0/4 (en curso) | Todavía no | 35,2 s | 1 activa en el motor; cola máxima 3 |
+| [4 conversaciones; hasta 4 a la vez](2026-10-14-4-conversaciones-hasta-4-a-la-vez-262016-entrada-128-respuesta-servidor-4/README.md) | 92% | **4 activas** | 262.016 + 128 | 2/4 (en curso) | **Por ahora: 2/4** | 1.068,4 s | 2 activas en el motor; cola máxima 3 |
 
 <details>
 <summary>Comparación completa de memoria, tiempos y tokens por segundo</summary>
@@ -27,6 +27,6 @@ Las tablas principales muestran la batería con medición detallada. Cada fila e
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|
 | [Arrancar el modelo con límite de 262.144 tokens](2026-10-14-arranque-contexto-262144-servidor-4/README.md) | 92% | No aplica | No aplica | Sin conversaciones | Límite 4 | Arrancó | No aplica | No aplica | No aplica | 391,1 | No aplica | No aplica | No aplica | No aplica | No aplica | Arrancó |
 | [4 conversaciones; hasta 4 a la vez](2026-10-14-4-conversaciones-hasta-4-a-la-vez-131072-entrada-256-respuesta-servidor-4/README.md) | 92% | 88,7% | 96,2% | 131.072 + 256 | 4 / 4 / 4 / 4 | **Sí: 4/4** | 299,9 | 538,3 | 2.153,1 | 556,5 | 0,48 | 1,84 | 92,4% | 3 | 0 | Terminó |
-| [4 conversaciones; hasta 4 a la vez](2026-10-14-4-conversaciones-hasta-4-a-la-vez-262016-entrada-128-respuesta-servidor-4/README.md) | 92% | 88,7% | 96,2% | 262.016 + 128 | 4 / 4 / 1 / — | 0/4 (en curso) | Pendiente | Pendiente | Pendiente | 35,2 | Pendiente | Pendiente | 10,8% | 3 | 0 | En curso |
+| [4 conversaciones; hasta 4 a la vez](2026-10-14-4-conversaciones-hasta-4-a-la-vez-262016-entrada-128-respuesta-servidor-4/README.md) | 92% | 88,7% | 96,5% | 262.016 + 128 | 4 / 4 / 2 / — | 2/4 (en curso) | 546,8 | 814,2 | 1.628,5 | 1.068,4 | 0,17 | 0,24 | 81,5% | 3 | 0 | En curso |
 
 </details>

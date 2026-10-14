@@ -21,11 +21,13 @@
 - **50% de memoria:** **Sí:** 1/1 completadas con 262.144 tokens y toda la respuesta solicitada. Tiempo del grupo: 547,0 s. 1 respuesta a la vez; cola máxima 1; 2 recálculos.
 - **70% de memoria:** **Sí:** 2/2 completadas con 262.144 tokens y toda la respuesta solicitada. Tiempo del grupo: 722,3 s. 1 respuesta a la vez; cola máxima 1; 1 recálculos.
 - **85% de memoria:** **Parcial:** 2/4 completadas con 262.144 tokens y toda la respuesta solicitada. Tiempo del grupo: 1.200,5 s. 1 respuesta a la vez; cola máxima 3; 2 errores de espera.
-- **92% de memoria:** Hasta ahora se ha completado una conversación de **131.328 tokens**. Aún no demuestra alcanzar 262.144.
+- **92% de memoria:** **Parcial:** 2/4 completadas con 262.144 tokens y toda la respuesta solicitada. Tiempo del grupo: 1.068,4 s. 2 activas en el motor; cola máxima 3.
 
 ## Qué configuración elegir
 
 <!-- interpretacion-inicio -->
+- **85%, observación provisional:** cuatro historiales de 131.072 tokens terminaron en 814 s, con un recálculo. En el grupo de cuatro conversaciones al máximo terminaron dos; las otras dos agotaron la espera de 1.200 s del cliente. No hubo recálculos en esa prueba al máximo. Se repetirá con una espera mayor, conservando el fallo original.
+- **92%, observación provisional:** cuatro historiales de 131.072 tokens terminaron en 557 s, con cuatro respuestas solapadas y sin recálculos. El pico de memoria usado por el sistema fue del 96,2%. La prueba de cuatro conversaciones al máximo sigue en curso.
 - **70%, observación provisional:** cuatro historiales de 65.536 tokens terminaron en 238 s, sin recálculos; el grupo acabó antes que al 40%, aunque la media individual fue mayor (231 frente a 208 s). Con cuatro historiales de 131.072 tokens tardó 605 s y hubo dos recálculos. Las dos conversaciones al máximo de 262.144 tokens terminaron en 722 s, con un recálculo y sin solaparse sus respuestas.
 - **50%, observación provisional:** cuatro historiales de 65.536 tokens terminaron en 282 s con cuatro recálculos de caché; la misma carga al 40% terminó en 269 s sin recálculos. Se comparará también el 50% imponiendo tres solicitudes activas. Más memoria no garantizó menor tiempo en esta carga.
 - **20%:** el servidor no arrancó ni con un límite reducido de 8.192 tokens: no quedaba presupuesto para la caché.
@@ -82,7 +84,7 @@ Las tablas principales muestran la batería con medición detallada. Cada fila e
 | [4 conversaciones; hasta 4 a la vez](memoria-85-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-262016-entrada-128-respuesta-servidor-4/README.md) | 85% | **4 activas** | 262.016 + 128 | 2/4 (errores por tiempo de espera) | **Solo: 2/4** | 1.200,5 s | 1 respuesta a la vez; cola máxima 3; 2 errores de espera |
 | [Arrancar el modelo con límite de 262.144 tokens](memoria-92-por-ciento/2026-10-14-arranque-contexto-262144-servidor-4/README.md) | 92% | **4 activas** | Sin conversaciones | Arrancó | No se enviaron conversaciones | 391,1 s | Arrancó |
 | [4 conversaciones; hasta 4 a la vez](memoria-92-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-131072-entrada-256-respuesta-servidor-4/README.md) | 92% | **4 activas** | 131.072 + 256 | **Sí: 4/4** | No se intentó | 556,5 s | 4 respuestas solapadas; cola máxima 3 |
-| [4 conversaciones; hasta 4 a la vez](memoria-92-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-262016-entrada-128-respuesta-servidor-4/README.md) | 92% | **4 activas** | 262.016 + 128 | 0/4 (en curso) | Todavía no | 35,2 s | 1 activa en el motor; cola máxima 3 |
+| [4 conversaciones; hasta 4 a la vez](memoria-92-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-262016-entrada-128-respuesta-servidor-4/README.md) | 92% | **4 activas** | 262.016 + 128 | 2/4 (en curso) | **Por ahora: 2/4** | 1.068,4 s | 2 activas en el motor; cola máxima 3 |
 
 <details>
 <summary>Comparación completa de memoria, tiempos y tokens por segundo</summary>
@@ -126,7 +128,7 @@ Las tablas principales muestran la batería con medición detallada. Cada fila e
 | [4 conversaciones; hasta 4 a la vez](memoria-85-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-262016-entrada-128-respuesta-servidor-4/README.md) | 85% | 81,6% | 88,7% | 262.016 + 128 | 4 / 4 / 2 / 1 | 2/4 (errores por tiempo de espera) | 633,2 | 943,3 | 1.886,6 | 1.200,5 | 0,14 | 0,21 | 90,6% | 3 | 0 | Errores por tiempo de espera |
 | [Arrancar el modelo con límite de 262.144 tokens](memoria-92-por-ciento/2026-10-14-arranque-contexto-262144-servidor-4/README.md) | 92% | No aplica | No aplica | Sin conversaciones | Límite 4 | Arrancó | No aplica | No aplica | No aplica | 391,1 | No aplica | No aplica | No aplica | No aplica | No aplica | Arrancó |
 | [4 conversaciones; hasta 4 a la vez](memoria-92-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-131072-entrada-256-respuesta-servidor-4/README.md) | 92% | 88,7% | 96,2% | 131.072 + 256 | 4 / 4 / 4 / 4 | **Sí: 4/4** | 299,9 | 538,3 | 2.153,1 | 556,5 | 0,48 | 1,84 | 92,4% | 3 | 0 | Terminó |
-| [4 conversaciones; hasta 4 a la vez](memoria-92-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-262016-entrada-128-respuesta-servidor-4/README.md) | 92% | 88,7% | 96,2% | 262.016 + 128 | 4 / 4 / 1 / — | 0/4 (en curso) | Pendiente | Pendiente | Pendiente | 35,2 | Pendiente | Pendiente | 10,8% | 3 | 0 | En curso |
+| [4 conversaciones; hasta 4 a la vez](memoria-92-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-262016-entrada-128-respuesta-servidor-4/README.md) | 92% | 88,7% | 96,5% | 262.016 + 128 | 4 / 4 / 2 / — | 2/4 (en curso) | 546,8 | 814,2 | 1.628,5 | 1.068,4 | 0,17 | 0,24 | 81,5% | 3 | 0 | En curso |
 
 </details>
 
