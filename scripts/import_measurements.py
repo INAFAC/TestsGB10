@@ -26,6 +26,9 @@ def main():
     parser.add_argument('--source', default=str(pathlib.Path.home()/'.cache/TestsGB10/campana-2026-10-14'))
     source=pathlib.Path(parser.parse_args().source)
     used=set(); inventory=[]
+    old_inventory=[]
+    index=model_folder(DEFAULT_MODEL)/'configuracion-del-equipo'/DATE/'inventario-de-archivos-originales.json'
+    if index.exists():old_inventory=json.loads(index.read_text())
     def copy(src,dst):
         dst.parent.mkdir(parents=True,exist_ok=True)
         shutil.copyfile(src,dst)
@@ -114,6 +117,15 @@ def main():
         'pesos_del_modelo_gib':19.95,'imagen':'nvcr.io/nvidia/vllm:26.09-py3',
         'version_vllm':'0.29.0+5013de39.dev','revision_modelo':'482ca0f3832238542f8f5295dde86b5f22711d80',
         'configuracion_a_restaurar':{'memoria_porcentaje':40,'limite_servidor':4,'contexto_maximo':262144}})
+    # A running test can produce its log before its first JSON snapshot. Once
+    # both exist, keep that log beside the test and remove its earlier archive
+    # copy only if it is still exactly the file we previously generated.
+    current_paths={entry['archivo'] for entry in inventory}
+    for entry in old_inventory:
+        obsolete=ROOT/entry['archivo']
+        if entry['archivo'] not in current_paths and obsolete.is_file() and obsolete.is_relative_to(ROOT/'modelos'):
+            if hashlib.sha256(obsolete.read_bytes()).hexdigest()==entry['sha256']:
+                obsolete.unlink()
     write(technical/'inventario-de-archivos-originales.json',inventory)
     print(f'Imported {len(inventory)} original files; explanations and data share each test folder.')
 
