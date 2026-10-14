@@ -61,11 +61,15 @@ Las medias individuales se calculan sobre las conversaciones que terminaron corr
 
 Las pruebas se ejecutan directamente contra la API del modelo, sin Open WebUI. Usan entradas sintéticas de tamaño conocido, sin conversaciones personales. Se pide una salida fija con `ignore_eos=true` y temperatura cero para comparar longitudes iguales.
 
+Se ejecuta un modelo a la vez. Esta batería compara el presupuesto de memoria, el límite de solicitudes activas y el contexto configurado, manteniendo la cuantización de los pesos y el resto de opciones del servidor. Compartir la GPU con otros modelos es un escenario distinto que no se ha medido aquí.
+
+Cada fila corresponde a una ejecución de la prueba; las medias se calculan entre sus conversaciones, no entre muchas repeticiones del mismo ensayo. Las primeras mediciones conservadas permiten contrastar parte del 40%. Diferencias pequeñas de tiempo pueden variar entre ejecuciones.
+
 Las pruebas de historial nuevo usan entradas independientes. Las de reutilización repiten el mismo historial y después lo amplían. Un historial que permanezca en caché puede empezar a responder mucho antes.
 
 Se mide la caché aproximadamente cada segundo y la memoria/temperatura GPU aproximadamente cada cinco segundos. Un pico más breve puede pasar desapercibido. Los tiempos individuales empiezan al enviar cada petición; el tiempo del grupo también incluye preparación y medición.
 
-Los arranques fallidos, rechazos e interrupciones se conservan como resultados. Una solicitud sin entrar en ejecución puede detenerse a los 90 segundos; los ensayos de la matriz tienen un límite de 1.500 segundos. No completar dentro de ese criterio no demuestra imposibilidad absoluta.
+Los arranques fallidos, rechazos e interrupciones se conservan como resultados. Una solicitud sin entrar en ejecución puede detenerse a los 90 segundos. La matriz inicial permite 1.200 segundos sin datos en cada conexión y 1.500 segundos para el grupo. Las comprobaciones con una espera mayor se identifican como **espera ampliada** y muestran sus límites dentro de la prueba. No completar dentro de un plazo no demuestra imposibilidad absoluta ni equivale a quedarse sin memoria.
 
 “No medido” significa que ese dato no se recogió; no significa que falte subir un archivo. Las primeras pruebas tenían menos mediciones y se conservan en el desplegable **Histórico: primeras mediciones con menos datos**. Las tablas principales muestran las mediciones detalladas. No se rellenan huecos con estimaciones.
 

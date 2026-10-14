@@ -32,6 +32,8 @@ def load_test(path,equipment):
         t[k]=None
     if t['type']=='arranque':
         t['title']=('Comprobar servidor ya preparado' if raw.get('reused_running_server') else 'Arrancar el modelo')+' con límite de '+integer(t['context'])+' tokens'
+        if c.get('repeticion_de_control'):t['title']+=' (control al final de la campaña)'
+        elif c.get('comprobacion_adicional'):t['title']+=' (comprobación adicional)'
         t.update(duration=raw['startup_seconds'],state='Arrancó' if raw['ready'] else '**NO ARRANCÓ**',finished=raw['ready'])
         return t
     if t['type']=='rechazo':
@@ -43,6 +45,7 @@ def load_test(path,equipment):
     t['requests']=sorted(raw.get('requests',[]),key=lambda r:r['index'])
     good=[r for r in t['requests'] if r.get('ok')]
     t['good']=good
+    t['timeout_errors']=sum(not r.get('ok') and any(word in str(r.get('error','')).lower() for word in ('timed out','timeout')) for r in t['requests'])
     if 'model_id' in raw:
         t.update(done=raw['completed'],failed=raw['failed'],duration=raw['duration'],
                  ttft=raw['mean_ttft_ms']/1000,response=raw['mean_e2el_ms']/1000,
@@ -67,12 +70,14 @@ def load_test(path,equipment):
         phase=c['paso_historial']
         t['title']=('Historial nuevo' if phase==1 else 'Repetir historial' if phase%2==0 else 'Ampliar historial')+f": {integer(t['input'])} + {integer(t['output'])} tokens"
     if c.get('medicion_inicial'):t['title']+=' (primera medición)'
+    if c.get('repeticion_de_control'):t['title']+=' (control al final de la campaña)'
+    if c.get('espera_ampliada'):t['title']+=' (espera ampliada)'
     if t['all_done']:
         t['state']=('Terminó con '+integer(t['preemptions'])+' recálculos' if t['preemptions'] else
                     'Terminó atendiendo por turnos' if t['active'] is not None and t['active']<t['concurrency'] else 'Terminó')
-    elif t['failed']:t['state']='Hubo errores'
+    elif t['failed']:t['state']='Errores por tiempo de espera' if t['timeout_errors'] else 'Hubo errores'
     elif s.get('status')=='not_admitted_within_90s':t['state']='Detenida: 90 s en cola sin iniciar'
-    elif s.get('status')=='timeout_1500s':t['state']='No terminó dentro de 1.500 s'
+    elif re.fullmatch(r'timeout_[\d.]+s',s.get('status','')):t['state']='No terminó dentro de '+number(float(s['status'][8:-1]),0)+' s'
     else:t['state']='En curso'
     return t
 
@@ -97,7 +102,7 @@ def behavior(t):
     elif t['active'] is not None:bits.append('1 activa en el motor' if t['active']==1 else integer(t['active'])+' activas en el motor')
     if t['queue'] is not None:bits.append('cola máxima '+integer(t['queue']))
     if t['preemptions']:bits.append(integer(t['preemptions'])+' recálculos')
-    if t['failed']:bits.append(integer(t['failed'])+' errores')
+    if t['failed']:bits.append(integer(t['failed'])+(' errores de espera' if t['timeout_errors']==t['failed'] else ' errores'))
     return '; '.join(bits) or 'No se guardó este detalle'
 
 def evidence(t):
@@ -159,6 +164,8 @@ def write_test(t,model_dir,equipment):
         if failures:
             lines += ['', '**Errores recibidos:**','']
             lines += [f"- Conversación {r['index']+1}: {r['error']}" for r in failures]
+            if t['timeout_errors']:
+                lines += ['', 'Al menos una conexión agotó su tiempo de espera sin completar la respuesta. Este error no demuestra por sí solo falta de memoria ni imposibilidad de terminar con un plazo mayor.']
         lines += ['', '## Cada conversación: tiempos y velocidad','',
                   '| Conversación | Espera hasta primer texto (s) | Tiempo completo (s) | Tokens/s durante la respuesta | Tokens/s incluyendo la espera |',
                   '|---|---:|---:|---:|---:|']
@@ -181,6 +188,10 @@ def write_test(t,model_dir,equipment):
                  ('Tokens recuperados de caché de prefijos',integer(s.get('prefix_cache_hits'))),('Temperatura GPU máxima',number(s.get('peak_gpu_temperature_c'))+' °C')]
         if s.get('status')=='running':
             rows=[(name,'Pendiente' if value.startswith('No medido') else value) for name,value in rows]
+        if s.get('request_timeout_s') is not None:
+            rows += [('Límite de espera sin datos en cada conexión',number(s['request_timeout_s'],0)+' s')]
+        if s.get('test_timeout_s') is not None:
+            rows += [('Tiempo máximo permitido para el grupo',number(s['test_timeout_s'],0)+' s')]
         lines += ['', '## Todas las medidas del grupo','', '| Medida | Resultado |','|---|---|']+[f'| {name} | {value} |' for name,value in rows]
         lines += ['', 'La caché guarda información del historial. Un recálculo significa que el motor tuvo que desalojar trabajo y repetirlo. Una cola breve durante la lectura inicial no prueba por sí sola falta de memoria.','',
                   'Los tiempos individuales se solapan: su suma puede superar el tiempo total de la prueba. Las velocidades cuentan tokens de respuesta, no tokens de entrada.']
@@ -206,6 +217,8 @@ def table(tests,base,full=False):
         if t['type']=='conversaciones' and not t['c'].get('historial_reutilizado'):
             label=f"{t['count']} {'conversación' if t['count']==1 else 'conversaciones'}; hasta {t['concurrency']} a la vez"
             if t['c'].get('medicion_inicial'):label+=' · primera medición'
+            if t['c'].get('repeticion_de_control'):label+=' · control al final de la campaña'
+            if t['c'].get('espera_ampliada'):label+=' · espera ampliada'
         title=f"[{label}]({link(t['path']/'README.md',base)})"
         tokens=integer(t['input'])+' + '+integer(t['output']) if t['type']!='arranque' else 'Sin conversaciones'
         if full:
@@ -242,13 +255,14 @@ def campaign_progress(plan,tests,memory=None):
            '| Memoria | Límite impuesto | Tipo de prueba | Terminadas / previstas | Estado |',
            '|---:|---:|---|---:|---|']
     for g in groups:
-        mem=g['memory_percent'];limit=g['server_limit'];reuse=g['kind']=='reuse'
-        subset=[t for t in tests if t['type']=='conversaciones' and not t['c'].get('medicion_inicial') and t['memory']==mem and t['limit']==limit and bool(t['c'].get('historial_reutilizado'))==reuse]
-        done=sum(t['finished'] or t.get('summary',{}).get('status') in ('not_admitted_within_90s','timeout_1500s') for t in subset)
+        mem=g['memory_percent'];limit=g['server_limit'];reuse=g['kind']=='reuse';control=g['kind']=='control';extended=g['kind']=='extended'
+        subset=[t for t in tests if t['type']=='conversaciones' and not t['c'].get('medicion_inicial') and t['memory']==mem and t['limit']==limit and bool(t['c'].get('historial_reutilizado'))==reuse and bool(t['c'].get('repeticion_de_control'))==control and bool(t['c'].get('espera_ampliada'))==extended]
+        done=sum(t['finished'] or t.get('summary',{}).get('status')=='not_admitted_within_90s' or t.get('summary',{}).get('status','').startswith('timeout_') for t in subset)
         starts=[t for t in tests if t['type']=='arranque' and t['memory']==mem and t['limit']==limit]
         state='Terminada' if done==g['tests'] else 'En curso' if subset else 'Pendiente'
         if not subset and starts and all(not t['raw']['ready'] for t in starts):state='No pudo arrancar; ver el fallo de arranque'
-        lines.append(f"| {mem}% | {limit} activas | {'Repetir y ampliar el mismo historial' if reuse else 'Conversaciones con historiales independientes'} | {done}/{g['tests']} | {state} |")
+        kind='Comprobación con mayor tiempo de espera' if extended else 'Repeticiones de control al final de la campaña' if control else 'Repetir y ampliar el mismo historial' if reuse else 'Conversaciones con historiales independientes'
+        lines.append(f"| {mem}% | {limit} activas | {kind} | {done}/{g['tests']} | {state} |")
     return lines+['']
 
 def main():

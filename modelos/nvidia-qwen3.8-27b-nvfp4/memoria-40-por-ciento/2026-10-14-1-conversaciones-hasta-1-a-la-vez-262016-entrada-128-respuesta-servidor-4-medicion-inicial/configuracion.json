@@ -10,6 +10,9 @@
   "tokens_entrada": 262016,
   "tokens_respuesta_pedidos": 128,
   "medicion_inicial": true,
+  "repeticion_de_control": false,
+  "comprobacion_adicional": false,
+  "espera_ampliada": false,
   "historial_reutilizado": false,
   "paso_historial": null
 }

@@ -4,5 +4,7 @@
   "fecha": "2026-10-14",
   "memoria_porcentaje": 20,
   "limite_servidor": 4,
-  "limite_contexto_configurado": 8192
+  "limite_contexto_configurado": 8192,
+  "repeticion_de_control": false,
+  "comprobacion_adicional": false
 }

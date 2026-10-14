@@ -61,6 +61,8 @@ def main():
                 context=context or profile.get('max_model_len')
         context=context or (131072 if mem==30 else 262144)
         initial=path.relative_to(source).parts[0] in ('short','context-40')
+        control=path.relative_to(source).parts[0]=='additional' and mem==40 and seqs==4
+        additional=path.relative_to(source).parts[0]=='additional'
         repeated='reuse' in path.parts or 'reuse-40' in path.parts
         phase=int(path.stem[:2]) if repeated else None
         if legacy:
@@ -72,6 +74,9 @@ def main():
             concurrency=s['concurrency'];count=s.get('num_requests',concurrency)
             inp=s['input_tokens'];out=s['output_tokens']
         suffix='-medicion-inicial' if initial else ''
+        if control:suffix+='-repeticion-de-control'
+        elif additional:suffix+='-comparacion-adicional'
+        if s.get('request_timeout_s',1200)>1200:suffix+='-espera-ampliada'
         if repeated:
             suffix='-'+str(phase)+'-'+('historial-nuevo' if phase==1 else 'historial-repetido' if phase%2==0 else 'historial-ampliado')
         name=(f'{DATE}-{count}-conversaciones-hasta-{concurrency}-a-la-vez-{inp}-entrada-{out}-respuesta-servidor-{seqs}'+suffix)
@@ -81,6 +86,9 @@ def main():
                 'memoria_porcentaje':mem,'limite_servidor':seqs,'limite_contexto_configurado':context,
                 'conversaciones_totales':count,'concurrencia_enviada':concurrency,
                 'tokens_entrada':inp,'tokens_respuesta_pedidos':out,'medicion_inicial':initial,
+                'repeticion_de_control':control,
+                'comprobacion_adicional':additional,
+                'espera_ampliada':s.get('request_timeout_s',1200)>1200,
                 'historial_reutilizado':repeated,'paso_historial':phase}
         write(dest/'configuracion.json',config)
         copy(path,dest/'mediciones.json')
@@ -91,11 +99,18 @@ def main():
         for profile in meta.get('profiles',[]):
             mem=round(profile['fraction']*100);seqs=profile.get('max_num_seqs',4)
             label='memory-'+str(mem)+(('-seqs-'+str(seqs)) if seqs!=4 else '')
+            if profile.get('request_timeout_s',1200)>1200:
+                label+='-timeout-'+str(profile['request_timeout_s'])
             for attempt in profile.get('attempts',[]):
                 context=attempt['max_model_len'];model=meta.get('model',DEFAULT_MODEL)
-                dest=model_folder(model)/f'memoria-{mem}-por-ciento'/f'{DATE}-arranque-contexto-{context}-servidor-{seqs}'
+                control=path.relative_to(source).parts[0]=='additional' and mem==40 and seqs==4
+                additional=path.relative_to(source).parts[0]=='additional'
+                suffix='-repeticion-de-control' if control else '-comparacion-adicional' if additional else ''
+                if profile.get('request_timeout_s',1200)>1200:suffix+='-espera-ampliada'
+                dest=model_folder(model)/f'memoria-{mem}-por-ciento'/f'{DATE}-arranque-contexto-{context}-servidor-{seqs}{suffix}'
                 write(dest/'configuracion.json',{'tipo':'arranque','modelo':model,'fecha':DATE,
-                    'memoria_porcentaje':mem,'limite_servidor':seqs,'limite_contexto_configurado':context})
+                    'memoria_porcentaje':mem,'limite_servidor':seqs,'limite_contexto_configurado':context,
+                    'repeticion_de_control':control,'comprobacion_adicional':additional})
                 write(dest/'mediciones.json',attempt)
                 log=path.parent/label/f'startup-{context}.log'
                 if log.exists():copy(log,dest/'registro-del-servidor.log')
@@ -110,7 +125,7 @@ def main():
                  'restored-server.log':'registro-de-restauracion.log','session.json':'plan-y-estado-general.json',
                  'server.log':'registro-del-servidor.log','summary.json':'resumen-original.json',
                  'runner-used.py':'script-de-bateria-ejecutado.py','probe-used.py':'script-de-medicion-ejecutado.py'}
-        parts=[renames.get(part,part.replace('memory-','memoria-').replace('-seqs-','-limite-servidor-')) for part in parts]
+        parts=[renames.get(part,part.replace('memory-','memoria-').replace('-seqs-','-limite-servidor-').replace('-timeout-','-espera-')) for part in parts]
         copy(path,technical/group/pathlib.Path(*parts))
     write(model_folder(DEFAULT_MODEL)/'configuracion-del-equipo'/'equipo.json',{
         'modelo':DEFAULT_MODEL,'contexto_maximo_del_modelo':262144,'memoria_total_gib':121.63,

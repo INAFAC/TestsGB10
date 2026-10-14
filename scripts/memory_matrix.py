@@ -163,17 +163,25 @@ def main():
                 time.sleep(5)
             # The baseline writes only after all requests have completed.
             time.sleep(3)
-        for profile_index, (fraction, max_seqs, cases) in enumerate(profiles):
+        for profile_index, profile in enumerate(profiles):
+            fraction, max_seqs, cases = profile[:3]
+            options = profile[3] if len(profile)>3 else {}
+            request_timeout = options.get('request_timeout_s', 1200)
+            test_timeout = options.get('test_timeout_s', 1500)
             label = 'memory-'+str(round(fraction*100))
             if max_seqs != 4:
                 label += '-seqs-'+str(max_seqs)
+            if request_timeout>1200:
+                label += '-timeout-'+str(request_timeout)
             directory = root/label
             directory.mkdir(exist_ok=True)
-            record = {'fraction': fraction, 'max_num_seqs': max_seqs, 'attempts': [], 'tests': []}
+            record = {'fraction': fraction, 'max_num_seqs': max_seqs, 'attempts': [], 'tests': [],
+                      'request_timeout_s': request_timeout, 'test_timeout_s': test_timeout}
             metadata['profiles'].append(record)
             ready = False
             context_attempts = ([8192] if fraction == .20 else [65536,32768,8192] if fraction == .25
                                 else [262144,131072,65536] if fraction == .30 else [262144])
+            context_attempts = options.get('context_attempts', context_attempts)
             for max_len in context_attempts:
                 print('PROFILE '+label+' max_context='+str(max_len), flush=True)
                 reused = False
@@ -214,6 +222,8 @@ def main():
                 command = [sys.executable, '-u', str(probe), '--concurrency', str(concurrency),
                            '--requests', str(requests), '--server-max-seqs', str(max_seqs), '--memory-fraction', str(fraction),
                            '--input-tokens', str(input_len), '--output-tokens', str(output_len),
+                           '--request-timeout', str(request_timeout),
+                           '--test-timeout', str(test_timeout),
                            '--seed', str(50000+profile_index*1000+case_index*100),
                            '--result', str(directory/(name+'.json'))]
                 started = time.monotonic()
@@ -238,12 +248,13 @@ def main():
                                     break
                             except (ValueError, KeyError):
                                 pass
-                        if elapsed > 1500:
+                        if elapsed > test_timeout:
                             active.terminate()
                             active.wait(timeout=20)
                             if partial.exists():
                                 report = json.loads(partial.read_text())
-                                report['summary']['status'] = 'timeout_1500s'
+                                report['summary']['status'] = 'timeout_'+str(test_timeout)+'s'
+                                report['summary']['test_timeout_s'] = test_timeout
                                 partial.write_text(json.dumps(report, indent=2))
                             break
                         if elapsed-last >= 30:

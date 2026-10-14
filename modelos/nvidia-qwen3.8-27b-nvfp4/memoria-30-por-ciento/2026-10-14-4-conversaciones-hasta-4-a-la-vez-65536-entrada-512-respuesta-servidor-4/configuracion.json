@@ -10,6 +10,9 @@
   "tokens_entrada": 65536,
   "tokens_respuesta_pedidos": 512,
   "medicion_inicial": false,
+  "repeticion_de_control": false,
+  "comprobacion_adicional": false,
+  "espera_ampliada": false,
   "historial_reutilizado": false,
   "paso_historial": null
 }

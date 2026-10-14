@@ -29,6 +29,8 @@ def main():
     p.add_argument('--input-tokens', type=int, required=True)
     p.add_argument('--output-tokens', type=int, default=256)
     p.add_argument('--seed', type=int, default=19000)
+    p.add_argument('--request-timeout', type=float, default=1200, help='Maximum seconds without network data per request')
+    p.add_argument('--test-timeout', type=float, help='Group timeout enforced by the external runner, for the measurement record')
     p.add_argument('--result', required=True)
     a = p.parse_args()
     count = a.requests or a.concurrency
@@ -105,7 +107,7 @@ def main():
         started = time.monotonic()
         first, usage, finish, events = None, None, None, 0
         try:
-            with urllib.request.urlopen(req, timeout=1200) as response:
+            with urllib.request.urlopen(req, timeout=a.request_timeout) as response:
                 for line in response:
                     if not line.startswith(b'data: '):
                         continue
@@ -134,7 +136,10 @@ def main():
         except Exception as e:
             return {'index': index, 'ok': False,
                     'started_at_s': started-start, 'finished_at_s': time.monotonic()-start,
-                    'total_s': time.monotonic()-started, 'error': str(e)}
+                    'first_token_at_s': None if first is None else first-start,
+                    'ttft_s': None if first is None else first-started,
+                    'usage': usage, 'finish_reason': finish, 'text_events': events,
+                    'total_s': time.monotonic()-started, 'error': str(e), 'error_type': type(e).__name__}
 
     def save(status):
         valid = [s for s in samples if 'error' not in s]
@@ -143,6 +148,8 @@ def main():
                    'server_max_num_seqs': a.server_max_seqs, 'memory_fraction': a.memory_fraction,
                    'input_tokens': a.input_tokens, 'output_tokens': a.output_tokens,
                    'seed': a.seed, 'max_model_len': model_info.get('max_model_len'),
+                   'request_timeout_s': a.request_timeout,
+                   'test_timeout_s': a.test_timeout,
                    'completed': len(good),
                    'failed': len(results)-len(good), 'duration_s': time.monotonic()-start,
                    'mean_ttft_s': sum(r['ttft_s'] or 0 for r in good)/max(1, len(good)),
