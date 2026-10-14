@@ -21,6 +21,7 @@
 - **50% de memoria:** **Sí:** 1/1 completadas con 262.144 tokens y toda la respuesta solicitada. Tiempo del grupo: 547,0 s. 1 respuesta a la vez; cola máxima 1; 2 recálculos.
 - **70% de memoria:** **Sí:** 2/2 completadas con 262.144 tokens y toda la respuesta solicitada. Tiempo del grupo: 722,3 s. 1 respuesta a la vez; cola máxima 1; 1 recálculos.
 - **85% de memoria:** **Parcial:** 2/4 completadas con 262.144 tokens y toda la respuesta solicitada. Tiempo del grupo: 1.200,5 s. 1 respuesta a la vez; cola máxima 3; 2 errores de espera.
+- **92% de memoria:** Todavía no hay una conversación terminada registrada con este presupuesto.
 
 ## Qué configuración elegir
 
@@ -79,6 +80,7 @@ Las tablas principales muestran la batería con medición detallada. Cada fila e
 | [Arrancar el modelo con límite de 262.144 tokens](memoria-85-por-ciento/2026-10-14-arranque-contexto-262144-servidor-4/README.md) | 85% | **4 activas** | Sin conversaciones | Arrancó | No se enviaron conversaciones | 401,1 s | Arrancó |
 | [4 conversaciones; hasta 4 a la vez](memoria-85-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-131072-entrada-256-respuesta-servidor-4/README.md) | 85% | **4 activas** | 131.072 + 256 | **Sí: 4/4** | No se intentó | 813,6 s | 3 respuestas solapadas; cola máxima 3; 1 recálculos |
 | [4 conversaciones; hasta 4 a la vez](memoria-85-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-262016-entrada-128-respuesta-servidor-4/README.md) | 85% | **4 activas** | 262.016 + 128 | 2/4 (errores por tiempo de espera) | **Solo: 2/4** | 1.200,5 s | 1 respuesta a la vez; cola máxima 3; 2 errores de espera |
+| [Arrancar el modelo con límite de 262.144 tokens](memoria-92-por-ciento/2026-10-14-arranque-contexto-262144-servidor-4/README.md) | 92% | **4 activas** | Sin conversaciones | Arrancó | No se enviaron conversaciones | 391,1 s | Arrancó |
 
 <details>
 <summary>Comparación completa de memoria, tiempos y tokens por segundo</summary>
@@ -120,6 +122,7 @@ Las tablas principales muestran la batería con medición detallada. Cada fila e
 | [Arrancar el modelo con límite de 262.144 tokens](memoria-85-por-ciento/2026-10-14-arranque-contexto-262144-servidor-4/README.md) | 85% | No aplica | No aplica | Sin conversaciones | Límite 4 | Arrancó | No aplica | No aplica | No aplica | 401,1 | No aplica | No aplica | No aplica | No aplica | No aplica | Arrancó |
 | [4 conversaciones; hasta 4 a la vez](memoria-85-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-131072-entrada-256-respuesta-servidor-4/README.md) | 85% | 81,6% | 88,7% | 131.072 + 256 | 4 / 4 / 4 / 3 | **Sí: 4/4** | 408,8 | 754,7 | 3.018,8 | 813,6 | 0,34 | 1,26 | 99,9% | 3 | 1 | Terminó con 1 recálculos |
 | [4 conversaciones; hasta 4 a la vez](memoria-85-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-262016-entrada-128-respuesta-servidor-4/README.md) | 85% | 81,6% | 88,7% | 262.016 + 128 | 4 / 4 / 2 / 1 | 2/4 (errores por tiempo de espera) | 633,2 | 943,3 | 1.886,6 | 1.200,5 | 0,14 | 0,21 | 90,6% | 3 | 0 | Errores por tiempo de espera |
+| [Arrancar el modelo con límite de 262.144 tokens](memoria-92-por-ciento/2026-10-14-arranque-contexto-262144-servidor-4/README.md) | 92% | No aplica | No aplica | Sin conversaciones | Límite 4 | Arrancó | No aplica | No aplica | No aplica | 391,1 | No aplica | No aplica | No aplica | No aplica | No aplica | Arrancó |
 
 </details>
 
@@ -191,6 +194,7 @@ Esta tabla distingue las pruebas terminadas de las que todavía faltan. No inclu
 - [50% de memoria](memoria-50-por-ciento/README.md).
 - [70% de memoria](memoria-70-por-ciento/README.md).
 - [85% de memoria](memoria-85-por-ciento/README.md).
+- [92% de memoria](memoria-92-por-ciento/README.md).
 
 ## Equipo y configuración
 

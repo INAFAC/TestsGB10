@@ -260,7 +260,7 @@ def campaign_progress(plan,tests,memory=None):
         mem=g['memory_percent'];limit=g['server_limit'];reuse=g['kind']=='reuse';control=g['kind']=='control';extended=g['kind']=='extended'
         subset=[t for t in tests if t['type']=='conversaciones' and not t['c'].get('medicion_inicial') and t['memory']==mem and t['limit']==limit and bool(t['c'].get('historial_reutilizado'))==reuse and bool(t['c'].get('repeticion_de_control'))==control and bool(t['c'].get('espera_ampliada'))==extended]
         done=sum(t['finished'] or t.get('summary',{}).get('status')=='not_admitted_within_90s' or t.get('summary',{}).get('status','').startswith('timeout_') for t in subset)
-        starts=[t for t in tests if t['type']=='arranque' and t['memory']==mem and t['limit']==limit]
+        starts=[t for t in tests if t['type']=='arranque' and t['memory']==mem and t['limit']==limit and bool(t['c'].get('repeticion_de_control'))==control and bool(t['c'].get('espera_ampliada'))==extended]
         state='Terminada' if done==g['tests'] else 'En curso' if subset else 'Pendiente'
         if not subset and starts and all(not t['raw']['ready'] for t in starts):state='No pudo arrancar; ver el fallo de arranque'
         kind='Comprobación con mayor tiempo de espera' if extended else 'Repeticiones de control al final de la campaña' if control else 'Repetir y ampliar el mismo historial' if reuse else 'Conversaciones con historiales independientes'

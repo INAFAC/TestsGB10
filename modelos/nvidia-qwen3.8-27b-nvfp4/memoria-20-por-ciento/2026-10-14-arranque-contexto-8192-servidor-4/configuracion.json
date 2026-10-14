@@ -6,5 +6,6 @@
   "limite_servidor": 4,
   "limite_contexto_configurado": 8192,
   "repeticion_de_control": false,
-  "comprobacion_adicional": false
+  "comprobacion_adicional": false,
+  "espera_ampliada": false
 }

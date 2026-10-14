@@ -110,7 +110,8 @@ def main():
                 dest=model_folder(model)/f'memoria-{mem}-por-ciento'/f'{DATE}-arranque-contexto-{context}-servidor-{seqs}{suffix}'
                 write(dest/'configuracion.json',{'tipo':'arranque','modelo':model,'fecha':DATE,
                     'memoria_porcentaje':mem,'limite_servidor':seqs,'limite_contexto_configurado':context,
-                    'repeticion_de_control':control,'comprobacion_adicional':additional})
+                    'repeticion_de_control':control,'comprobacion_adicional':additional,
+                    'espera_ampliada':profile.get('request_timeout_s',1200)>1200})
                 write(dest/'mediciones.json',attempt)
                 log=path.parent/label/f'startup-{context}.log'
                 if log.exists():copy(log,dest/'registro-del-servidor.log')
