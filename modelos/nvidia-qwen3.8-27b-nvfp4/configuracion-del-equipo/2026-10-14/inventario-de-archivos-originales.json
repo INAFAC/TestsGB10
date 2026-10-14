@@ -876,6 +876,10 @@
     "sha256": "74667f91124633e4703c3de8830b463f65a58376dc0d793fbdc697d3e242f5a6"
   },
   {
+    "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/plan-de-las-pruebas/comprobacion-final-del-servicio.json",
+    "sha256": "9bf37d36c6dde681acb6d929e3179f93fbd5c91a5518cdb56147a150e70758af"
+  },
+  {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/primeras-pruebas-con-historiales-largos/resumen-original.json",
     "sha256": "58090f4144ec782cdd90afc8467addf1442064f083b5c103f534841e2e7344cd"
   },
@@ -901,7 +905,7 @@
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/plan-de-las-pruebas/plan-y-estado-general.json",
-    "sha256": "91d1661509e38a405dbf9002643ed29b037cea55ffac500896fabfff075aa46e"
+    "sha256": "9f24aff48e31a8cb8ba1dcc7b906e8e8090286ef3752397b46112f27a8beead5"
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/plan-de-las-pruebas/verificacion-final-del-servicio.py",

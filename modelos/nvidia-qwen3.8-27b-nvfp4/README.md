@@ -6,7 +6,7 @@
 
 **Modelo exacto:** `nvidia/Qwen3.8-27B-NVFP4`.
 
-**Estado:** pruebas en curso. Los resultados se actualizan a medida que terminan.
+**Estado:** pruebas terminadas. Configuración original restaurada: 40% de memoria, 4 solicitudes activas como límite y 262.144 tokens por conversación.
 
 **Máximo por conversación: 262.144 tokens, sumando historial y respuesta.** La memoria asignada puede obligar a configurar un límite menor.
 
@@ -17,8 +17,8 @@
 ## ¿Puede llegar al máximo y terminar?
 
 - **20% de memoria:** **No arrancó con la configuración probada.** No se pudieron enviar conversaciones.
-- **25% de memoria:** Hasta ahora se ha completado una conversación de **65.536 tokens**. Aún no demuestra alcanzar 262.144.
-- **30% de memoria:** Hasta ahora se ha completado una conversación de **131.072 tokens**. Aún no demuestra alcanzar 262.144. **El arranque con el máximo del modelo falló.**
+- **25% de memoria:** Máximo completado en estas pruebas: **65.536 tokens**. No se ha demostrado alcanzar 262.144.
+- **30% de memoria:** Máximo completado en estas pruebas: **131.072 tokens**. No se ha demostrado alcanzar 262.144. **El arranque con el máximo del modelo falló.**
 - **35% de memoria:** **Sí:** 1/1 completadas con 262.144 tokens y toda la respuesta solicitada. Tiempo del grupo: 586,5 s. 1 respuesta a la vez; cola máxima 1; 10 recálculos. [Ver esta prueba](memoria-35-por-ciento/2026-10-14-1-conversaciones-hasta-1-a-la-vez-262016-entrada-128-respuesta-servidor-4-comparacion-adicional/README.md).
 - **40% de memoria:** **Sí:** 4/4 completadas con 262.144 tokens y toda la respuesta solicitada. Tiempo del grupo: 2.243,3 s. 1 respuesta a la vez; cola máxima 4; 16 recálculos. [Ver esta prueba](memoria-40-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-262016-entrada-128-respuesta-servidor-4-comparacion-adicional-espera-ampliada/README.md).
 - **50% de memoria:** **Sí:** 1/1 completadas con 262.144 tokens y toda la respuesta solicitada. Tiempo del grupo: 547,0 s. 1 respuesta a la vez; cola máxima 1; 2 recálculos. [Ver esta prueba](memoria-50-por-ciento/2026-10-14-1-conversaciones-hasta-1-a-la-vez-262016-entrada-128-respuesta-servidor-4/README.md).

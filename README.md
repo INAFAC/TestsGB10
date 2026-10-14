@@ -2,7 +2,7 @@
 
 Resultados para decidir cuánta memoria reservar y cuántas conversaciones puede atender cada modelo, incluyendo historiales cercanos a su límite.
 
-**Estado:** pruebas en curso; se publican tanto los éxitos como los fallos.
+**Estado:** pruebas terminadas y configuración original restaurada.
 
 **Cada prueba indica el límite de solicitudes activas impuesto al servidor.** Ese límite debe distinguirse de la capacidad del GB10.
 
