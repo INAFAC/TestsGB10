@@ -19,6 +19,11 @@
       "case": "01-cold-65536",
       "exit_code": 0,
       "seconds": 49.53673825200531
+    },
+    {
+      "case": "02-repeat-65536",
+      "exit_code": 0,
+      "seconds": 13.213594086992089
     }
   ]
 }
