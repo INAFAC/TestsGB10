@@ -125,6 +125,7 @@ def main():
         renames={'metadata.json':'configuracion-y-estado.json','override.json':'ultimo-cambio-temporal.json',
                  'restored-server.log':'registro-de-restauracion.log','session.json':'plan-y-estado-general.json',
                  'server.log':'registro-del-servidor.log','summary.json':'resumen-original.json',
+                 'planned-profiles.json':'configuraciones-previstas.json',
                  'runner-used.py':'script-de-bateria-ejecutado.py','probe-used.py':'script-de-medicion-ejecutado.py'}
         parts=[renames.get(part,part.replace('memory-','memoria-').replace('-seqs-','-limite-servidor-').replace('-timeout-','-espera-')) for part in parts]
         copy(path,technical/group/pathlib.Path(*parts))

@@ -34,6 +34,8 @@ El servidor tiene además un **límite impuesto por nosotros** de solicitudes ac
 
 Que todas terminen no implica que todas hayan respondido a la vez. Tampoco implica que el motor genere un token para cada una en cada paso.
 
+El mensaje de arranque `Maximum concurrency for ... tokens per request` es una estimación para el tamaño de contexto que indica. Es distinto del límite configurado de solicitudes activas. Las tablas muestran lo observado al ejecutar cada carga, incluyendo colas, recálculos y finalización.
+
 ## Los porcentajes de memoria
 
 | Medida | Qué significa |
