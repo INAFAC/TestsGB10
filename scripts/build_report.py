@@ -38,6 +38,15 @@ def memory(path):
 
 def read_test(path):
     raw = json.loads(path.read_text())
+    if isinstance(raw, dict) and 'http_status' in raw and 'output_requested' in raw:
+        t = dict.fromkeys(['engine_pct','system_pct','ttft','response','sum_response',
+                          'throughput','mean_request_rate','cache','queue','preemptions','active'])
+        t.update(id=ident(path), path=path, model=raw.get('model', DEFAULT_MODEL), memory=memory(path),
+                 description='Superar el contexto máximo: rechazo esperado', input=raw['input_tokens'],
+                 output=raw['output_requested'], concurrency=1, server_limit=4, count=1, completed=0,
+                 duration=raw['elapsed_s'], requests=[], kind='rejection',
+                 status='Rechazo esperado (HTTP '+str(raw['http_status'])+')')
+        return t
     if 'model_id' in raw and 'mean_ttft_ms' in raw:
         count = raw['num_prompts']
         return {'id': ident(path), 'path': path, 'model': raw['model_id'], 'memory': memory(path),
@@ -68,7 +77,10 @@ def read_test(path):
         status = 'Completa; recálculos'
     elif status == 'OK' and s.get('peak_running', s['concurrency']) < s['concurrency']:
         status = 'Completa; cola'
-    description = 'Historial nuevo; prefijos independientes'
+    description = ('Contexto casi máximo; prefijos independientes' if s['input_tokens'] >= 260000 else
+                   'Respuesta larga; prefijos independientes' if s['output_tokens'] >= 2048 else
+                   'Carga corta; prefijos independientes' if s['input_tokens'] <= 8192 else
+                   'Historial largo; prefijos independientes')
     if 'reuse' in str(path):
         description = 'Reutilización de historial: '+path.stem
     elif 'detailed-short' in str(path):
@@ -117,6 +129,13 @@ def startup_tests():
 def write_detail(t):
     path = DETAILS/(t['id']+'.md')
     source = '../'+t['path'].relative_to(ROOT).as_posix()
+    if t.get('kind') == 'rejection':
+        path.write_text('\n'.join(['# '+t['description'], '', '[Volver a la comparación](../README.md)', '',
+                       f"Se enviaron {integer(t['input'])} tokens de entrada y se pidió {t['output']} de salida.", '',
+                       'El rechazo demuestra que la API aplica el límite configurado; no mide falta de memoria.', '',
+                       f"Resultado: **{t['status']}** en {num(t['duration'],3)} s.", '',
+                       f'[Respuesta original]({source}).', '']))
+        return
     if t.get('kind') == 'startup':
         raw = t['path'].read_text()
         errors = [line for line in raw.splitlines() if 'ValueError:' in line or 'Free memory on device' in line]

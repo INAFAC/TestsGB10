@@ -30,22 +30,34 @@ Modelo exacto: `nvidia/Qwen3.8-27B-NVFP4`.
 
 Pesos cargados: **19,95 GiB**, aproximadamente **16,4% del GB10**. Ese valor no incluye caché ni buffers. Configuración original: **40%**, cuatro solicitudes y contexto máximo de 262.144 tokens. Prefix caching activado, caché KV automática BF16 y modo Mamba `align`.
 
+### Lectura provisional de los resultados
+
+La capacidad depende del historial y de la longitud de la respuesta. **Aceptar cuatro peticiones no implica procesar cuatro historiales largos simultáneamente.** La repetición completa al 40% y los presupuestos adicionales siguen pendientes.
+
+- **30%:** no arranca con contexto máximo de 262.144 tokens. Sí arranca al limitarlo a 131.072. Con cuatro solicitudes de 8.192 tokens se observaron cuatro activas; con 32.768, dos; con 65.536, una. Estas tres pruebas terminaron sin errores ni preempciones.
+- **40%, primera serie:** se observaron cuatro activas con entradas de 32.768 tokens, dos con 65.536 y una con 131.072. Cerca del máximo de 262.144 tokens, una sola solicitud terminó, pero necesitó cuatro preempciones y unos 539 segundos hasta el primer token. Este caso requiere más margen aunque el servidor consiga arrancar.
+- **Las colas importan:** al 30%, cuatro entradas de 65.536 tokens con 512 de salida tardaron unos 348 segundos en completar el grupo. Que todas terminen no las convierte en cuatro conversaciones simultáneas.
+
+Son máximos observados en estas cargas sintéticas y esta configuración de vLLM. No representan un límite universal de cualquier modelo, precisión de caché o longitud de respuesta. Las recomendaciones finales se incorporarán al terminar la matriz.
+
 | Prueba / detalle individual | Enunciado | Asignado | Motor / GB10 | Sistema / GB10 | Tokens entrada / salida | Concurrencia enviada / límite / activa | OK / total | Inicio medio (s) | Respuesta media (s) | Acumulado (s) | Duración prueba (s) | t/s conversación | t/s total | Pico caché | Cola máx. | Recálculos | Resultado |
 |---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|
 | [P01](details/2026-10-14-memory-memory-30-startup-131072.md) | Arranque con contexto máximo 131.072 | 30% | N/M | N/M | 0 / 0 | 0 / 4 / — | 0/0 | N/M | N/M | N/M | 366,0 | N/M | N/M | N/M | — | — | Arranque correcto |
 | [P02](details/2026-10-14-memory-memory-30-startup-262144.md) | Arranque con contexto máximo 262.144 | 30% | N/M | N/M | 0 / 0 | 0 / 4 / — | 0/0 | N/M | N/M | N/M | 310,8 | N/M | N/M | N/M | — | — | **FALLO DE ARRANQUE** |
-| [P03](details/2026-10-14-memory-memory-30-c4-in8192-out128.md) | Historial nuevo; prefijos independientes | 30% | 26,6% | 35,0% | 8.192 / 128 | 4 / 4 / 4 | 4/4 | 9,2 | 24,9 | 99,5 | 25,6 | 5,1 | 20,0 | 45,0% | 3 | 0 | OK |
-| [P04](details/2026-10-14-memory-memory-30-c4-in32768-out512.md) | Historial nuevo; prefijos independientes | 30% | 26,6% | 34,9% | 32.768 / 512 | 4 / 4 / 2 | 4/4 | 65,0 | 126,3 | 505,4 | 164,8 | 4,5 | 12,4 | 90,9% | 3 | 0 | Completa; cola |
-| [P05](details/2026-10-14-memory-memory-30-c4-in65536-out512.md) | Historial nuevo; prefijos independientes | 30% | 26,6% | 34,8% | 65.536 / 512 | 4 / 4 / 1 | 2/4 | 80,7 | 130,5 | 261,1 | 199,2 | 4,4 | 5,1 | 91,3% | 3 | 0 | En curso / incompleta |
-| [P06](details/2026-10-14-short-c1-in1024.md) | Carga corta inicial (detalle individual no guardado) | 40% | N/M | N/M | 1.024 / 128 | 1 / 4 / — | 20/20 | 0,7 | 10,6 | 212,5 | 212,5 | N/M | 12,0 | N/M | — | — | OK |
-| [P07](details/2026-10-14-short-c2-in1024.md) | Carga corta inicial (detalle individual no guardado) | 40% | N/M | N/M | 1.024 / 128 | 2 / 4 / — | 20/20 | 1,0 | 11,6 | 232,8 | 116,5 | N/M | 22,0 | N/M | — | — | OK |
-| [P08](details/2026-10-14-short-c4-in1024.md) | Carga corta inicial (detalle individual no guardado) | 40% | N/M | N/M | 1.024 / 128 | 4 / 4 / — | 20/20 | 1,4 | 12,7 | 254,1 | 63,6 | N/M | 40,2 | N/M | — | — | OK |
-| [P09](details/2026-10-14-short-c8-in1024.md) | Carga corta inicial (detalle individual no guardado) | 40% | N/M | N/M | 1.024 / 128 | 8 / 4 / — | 20/20 | 11,2 | 22,6 | 451,3 | 62,6 | N/M | 40,9 | N/M | — | — | OK |
-| [P10](details/2026-10-14-short-c4-in8192.md) | Carga corta inicial (detalle individual no guardado) | 40% | N/M | N/M | 8.192 / 128 | 4 / 4 / — | 12/12 | 5,2 | 23,5 | 282,3 | 71,2 | N/M | 21,6 | N/M | — | — | OK |
-| [P11](details/2026-10-14-context-40-c4-in32768-out512.md) | Historial nuevo; prefijos independientes | 40% | N/M | N/M | 32.768 / 512 | 4 / 4 / 4 | 4/4 | 40,8 | 122,5 | 490,0 | 125,5 | 4,2 | 16,3 | 84,3% | 3 | 0 | OK |
-| [P12](details/2026-10-14-context-40-c4-in65536-out512.md) | Historial nuevo; prefijos independientes | 40% | N/M | N/M | 65.536 / 512 | 4 / 4 / 2 | 4/4 | 123,1 | 207,2 | 828,7 | 267,3 | 2,7 | 7,7 | 85,6% | 3 | 0 | Completa; cola |
-| [P13](details/2026-10-14-context-40-c4-in131072-out256.md) | Historial nuevo; prefijos independientes | 40% | N/M | N/M | 131.072 / 256 | 4 / 4 / 1 | 4/4 | 286,4 | 315,5 | 1261,8 | 504,5 | 1,1 | 2,0 | 86,0% | 3 | 0 | Completa; cola |
-| [P14](details/2026-10-14-context-40-c1-in262016-out128.md) | Historial nuevo; prefijos independientes | 40% | N/M | N/M | 262.016 / 128 | 1 / 4 / 1 | 1/1 | 539,1 | 557,9 | 557,9 | 558,0 | 0,2 | 0,2 | 99,6% | 1 | 4 | Completa; recálculos |
+| [P03](details/2026-10-14-memory-memory-30-c4-in8192-out128.md) | Carga corta; prefijos independientes | 30% | 26,6% | 35,0% | 8.192 / 128 | 4 / 4 / 4 | 4/4 | 9,2 | 24,9 | 99,5 | 25,6 | 5,1 | 20,0 | 45,0% | 3 | 0 | OK |
+| [P04](details/2026-10-14-memory-memory-30-c4-in32768-out512.md) | Historial largo; prefijos independientes | 30% | 26,6% | 34,9% | 32.768 / 512 | 4 / 4 / 2 | 4/4 | 65,0 | 126,3 | 505,4 | 164,8 | 4,5 | 12,4 | 90,9% | 3 | 0 | Completa; cola |
+| [P05](details/2026-10-14-memory-memory-30-c4-in65536-out512.md) | Historial largo; prefijos independientes | 30% | 26,6% | 34,8% | 65.536 / 512 | 4 / 4 / 1 | 4/4 | 167,8 | 217,6 | 870,4 | 348,4 | 3,1 | 5,9 | 91,3% | 3 | 0 | Completa; cola |
+| [P06](details/2026-10-14-memory-memory-30-c1-in130816-out256.md) | Historial largo; prefijos independientes | 30% | 26,6% | 34,8% | 130.816 / 256 | 1 / 4 / 1 | 0/1 | N/M | N/M | N/M | 95,1 | N/M | N/M | 99,6% | 0 | 0 | En curso / incompleta |
+| [P07](details/2026-10-14-short-c1-in1024.md) | Carga corta inicial (detalle individual no guardado) | 40% | N/M | N/M | 1.024 / 128 | 1 / 4 / — | 20/20 | 0,7 | 10,6 | 212,5 | 212,5 | N/M | 12,0 | N/M | — | — | OK |
+| [P08](details/2026-10-14-short-c2-in1024.md) | Carga corta inicial (detalle individual no guardado) | 40% | N/M | N/M | 1.024 / 128 | 2 / 4 / — | 20/20 | 1,0 | 11,6 | 232,8 | 116,5 | N/M | 22,0 | N/M | — | — | OK |
+| [P09](details/2026-10-14-short-c4-in1024.md) | Carga corta inicial (detalle individual no guardado) | 40% | N/M | N/M | 1.024 / 128 | 4 / 4 / — | 20/20 | 1,4 | 12,7 | 254,1 | 63,6 | N/M | 40,2 | N/M | — | — | OK |
+| [P10](details/2026-10-14-short-c8-in1024.md) | Carga corta inicial (detalle individual no guardado) | 40% | N/M | N/M | 1.024 / 128 | 8 / 4 / — | 20/20 | 11,2 | 22,6 | 451,3 | 62,6 | N/M | 40,9 | N/M | — | — | OK |
+| [P11](details/2026-10-14-short-c4-in8192.md) | Carga corta inicial (detalle individual no guardado) | 40% | N/M | N/M | 8.192 / 128 | 4 / 4 / — | 12/12 | 5,2 | 23,5 | 282,3 | 71,2 | N/M | 21,6 | N/M | — | — | OK |
+| [P12](details/2026-10-14-context-40-c4-in32768-out512.md) | Historial largo; prefijos independientes | 40% | N/M | N/M | 32.768 / 512 | 4 / 4 / 4 | 4/4 | 40,8 | 122,5 | 490,0 | 125,5 | 4,2 | 16,3 | 84,3% | 3 | 0 | OK |
+| [P13](details/2026-10-14-context-40-c4-in65536-out512.md) | Historial largo; prefijos independientes | 40% | N/M | N/M | 65.536 / 512 | 4 / 4 / 2 | 4/4 | 123,1 | 207,2 | 828,7 | 267,3 | 2,7 | 7,7 | 85,6% | 3 | 0 | Completa; cola |
+| [P14](details/2026-10-14-context-40-c4-in131072-out256.md) | Historial largo; prefijos independientes | 40% | N/M | N/M | 131.072 / 256 | 4 / 4 / 1 | 4/4 | 286,4 | 315,5 | 1261,8 | 504,5 | 1,1 | 2,0 | 86,0% | 3 | 0 | Completa; cola |
+| [P15](details/2026-10-14-context-40-c1-in262016-out128.md) | Contexto casi máximo; prefijos independientes | 40% | N/M | N/M | 262.016 / 128 | 1 / 4 / 1 | 1/1 | 539,1 | 557,9 | 557,9 | 558,0 | 0,2 | 0,2 | 99,6% | 1 | 4 | Completa; recálculos |
+| [P16](details/2026-10-14-context-40-limit-rejection.md) | Superar el contexto máximo: rechazo esperado | 40% | N/M | N/M | 262.145 / 1 | 1 / 4 / — | 0/1 | N/M | N/M | N/M | 0,0 | N/M | N/M | N/M | — | — | Rechazo esperado (HTTP 400) |
 
 ## Estado de la batería: after30
 

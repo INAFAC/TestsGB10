@@ -25,11 +25,7 @@ cmd=info['Config']['Cmd']
 assert cmd[cmd.index('--gpu-memory-utilization')+1] in ('0.40','0.4')
 assert cmd[cmd.index('--max-num-seqs')+1]=='4'
 probe=pathlib.Path(__file__).with_name('context_probe.py')
-cases=[]
-for i,c in enumerate([1,2,4,8]):
-    cases.append(('detailed-short-40',f'c{c}-in1024',c,8,1024,128,81000+i*100))
-cases.append(('detailed-short-40','c4-in8192',4,8,8192,128,82000))
-cases += [
+cases = [
     ('reuse-40','01-cold-65536',1,1,65536,128,90000),
     ('reuse-40','02-repeat-65536',1,1,65536,128,90000),
     ('reuse-40','03-extend-131072',1,1,131072,128,90000),
