@@ -8,11 +8,11 @@
 
 ## ¿Qué ocurrió?
 
-- **¿Terminaron todas las conversaciones?** 0/512 (en curso). Terminar significa recibir todos los tokens de respuesta solicitados.
+- **¿Terminaron todas las conversaciones?** 7/512 (en curso). Terminar significa recibir todos los tokens de respuesta solicitados.
 - **¿Llegaron al máximo del modelo (262.144 tokens)?** No se intentó.
 - **Límite configurado en esta prueba:** 262.144 tokens, sumando entrada y respuesta.
-- **¿Se atendieron al mismo tiempo?** 61 activas en el motor; cola máxima 507.
-- **Tiempo para completar la prueba:** 30,6 s.
+- **¿Se atendieron al mismo tiempo?** 309 activas en el motor; cola máxima 507.
+- **Tiempo para completar la prueba:** 488,9 s.
 
 Se enviaron **512 conversaciones**, hasta **512 a la vez**. Cada una pidió **1.024 tokens de entrada + 512 de respuesta = 1.536 tokens**.
 
@@ -23,13 +23,13 @@ Se enviaron **512 conversaciones**, hasta **512 a la vez**. Cada una pidió **1.
 
 | Conversación | Entrada | Respuesta pedida | Respuesta recibida | Total alcanzado | ¿Terminó? | ¿Llegó al máximo del modelo? |
 |---|---:|---:|---:|---:|---|---|
-| 1 | — | 512 | — | — | En curso | No acreditado |
-| 2 | — | 512 | — | — | En curso | No acreditado |
-| 3 | — | 512 | — | — | En curso | No acreditado |
-| 4 | — | 512 | — | — | En curso | No acreditado |
-| 5 | — | 512 | — | — | En curso | No acreditado |
-| 6 | — | 512 | — | — | En curso | No acreditado |
-| 7 | — | 512 | — | — | En curso | No acreditado |
+| 1 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 2 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 3 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 4 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 5 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 6 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 7 | 1.024 | 512 | 512 | 1.536 | Sí | No |
 | 8 | — | 512 | — | — | En curso | No acreditado |
 | 9 | — | 512 | — | — | En curso | No acreditado |
 | 10 | — | 512 | — | — | En curso | No acreditado |
@@ -546,6 +546,13 @@ Se enviaron **512 conversaciones**, hasta **512 a la vez**. Cada una pidió **1.
 
 | Conversación | Espera hasta primer texto (s) | Tiempo completo (s) | Tokens/s durante la respuesta | Tokens/s incluyendo la espera |
 |---|---:|---:|---:|---:|
+| 1 | 1,73 | 483,70 | 1,06 | 1,06 |
+| 2 | 1,73 | 483,70 | 1,06 | 1,06 |
+| 3 | 2,33 | 485,39 | 1,06 | 1,05 |
+| 4 | 2,96 | 487,22 | 1,06 | 1,05 |
+| 5 | 2,33 | 485,38 | 1,06 | 1,05 |
+| 6 | 3,57 | 488,85 | 1,05 | 1,05 |
+| 7 | 3,57 | 488,85 | 1,05 | 1,05 |
 
 </details>
 
@@ -560,23 +567,23 @@ Se enviaron **512 conversaciones**, hasta **512 a la vez**. Cada una pidió **1.
 | Conversaciones totales | 512 |
 | Máximo de peticiones enviadas a la vez | 512 |
 | Límite de solicitudes del servidor | 512 |
-| Máximo activo en el motor | 61 |
+| Máximo activo en el motor | 309 |
 | Máximo de respuestas solapadas | — |
-| Espera media hasta primer texto | Pendiente |
-| Tiempo medio de respuesta completa | Pendiente |
-| Mayor espera hasta primer texto, entre las completadas | Pendiente |
-| Mayor tiempo completo, entre las completadas | Pendiente |
-| Suma de los tiempos individuales | Pendiente |
-| Tiempo total de la prueba | 30,6 s |
-| Tokens/s medios por conversación, incluyendo espera | Pendiente |
-| Tokens/s totales del grupo | Pendiente |
-| Pico de caché ocupada | 20,2% |
+| Espera media hasta primer texto | 2,6 s |
+| Tiempo medio de respuesta completa | 486,2 s |
+| Mayor espera hasta primer texto, entre las completadas | 3,6 s |
+| Mayor tiempo completo, entre las completadas | 488,9 s |
+| Suma de los tiempos individuales | 3.403,1 s |
+| Tiempo total de la prueba | 488,9 s |
+| Tokens/s medios por conversación, incluyendo espera | 1,05 |
+| Tokens/s totales del grupo | 7,33 |
+| Pico de caché ocupada | 100,0% |
 | Máximo de solicitudes en cola | 507 |
 | Recálculos por falta de espacio en caché | 0 |
-| Tiempo observado con cola | 28,6 s |
-| Tiempo observado con caché al 95% o más | 0,0 s |
+| Tiempo observado con cola | 487,2 s |
+| Tiempo observado con caché al 95% o más | 238,4 s |
 | Tokens recuperados de caché de prefijos | 0 |
-| Temperatura GPU máxima | 75,0 °C |
+| Temperatura GPU máxima | 76,0 °C |
 | Límite de espera sin datos en cada conexión | 1.200 s |
 | Tiempo máximo permitido para el grupo | 1.500 s |
 
@@ -585,6 +592,23 @@ La caché guarda información del historial. Un recálculo significa que el moto
 Los tiempos individuales se solapan: su suma puede superar el tiempo total de la prueba. Las velocidades cuentan tokens de respuesta, no tokens de entrada.
 
 Las medias, los máximos de tiempo y las velocidades individuales corresponden solo a las conversaciones completadas correctamente. Las cifras de una prueba en curso son parciales; no describen todavía el rendimiento final del grupo.
+
+<details>
+<summary>Cronología: cuándo se envió, empezó y terminó cada respuesta</summary>
+
+Segundos desde el inicio de la prueba.
+
+| Conversación | Enviada | Primer texto | Final |
+|---|---:|---:|---:|
+| 1 | 0,05 | 1,78 | 483,75 |
+| 2 | 0,05 | 1,78 | 483,76 |
+| 3 | 0,05 | 2,38 | 485,44 |
+| 4 | 0,05 | 3,01 | 487,27 |
+| 5 | 0,05 | 2,38 | 485,43 |
+| 6 | 0,05 | 3,63 | 488,91 |
+| 7 | 0,06 | 3,63 | 488,91 |
+
+</details>
 
 <details>
 <summary>Mediciones originales y registros de esta prueba</summary>
