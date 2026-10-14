@@ -34,7 +34,7 @@ Pesos cargados: **19,95 GiB**, aproximadamente **16,4% del GB10**. Ese valor no 
 
 La capacidad depende del historial y de la longitud de la respuesta. **Aceptar cuatro peticiones no implica procesar cuatro historiales largos simultáneamente.** La repetición completa al 40% y los presupuestos adicionales siguen pendientes.
 
-- **30%:** no arranca con contexto máximo de 262.144 tokens. Sí arranca al limitarlo a 131.072. Con cuatro solicitudes de 8.192 tokens se observaron cuatro activas; con 32.768, dos; con 65.536, una. Estas tres pruebas terminaron sin errores ni preempciones.
+- **30%:** no arranca con contexto máximo de 262.144 tokens. Sí arranca al limitarlo a 131.072. Con cuatro solicitudes de 8.192 tokens se observaron cuatro activas; con 32.768, dos; con 65.536, una. Estas tres pruebas terminaron sin errores ni preempciones. Una solicitud de 130.816 tokens de entrada y 256 de salida terminó en 207 segundos, con la caché al 99,6% y cuatro preempciones.
 - **40%, primera serie:** se observaron cuatro activas con entradas de 32.768 tokens, dos con 65.536 y una con 131.072. Cerca del máximo de 262.144 tokens, una sola solicitud terminó, pero necesitó cuatro preempciones y unos 539 segundos hasta el primer token. Este caso requiere más margen aunque el servidor consiga arrancar.
 - **Las colas importan:** al 30%, cuatro entradas de 65.536 tokens con 512 de salida tardaron unos 348 segundos en completar el grupo. Que todas terminen no las convierte en cuatro conversaciones simultáneas.
 
@@ -47,7 +47,7 @@ Son máximos observados en estas cargas sintéticas y esta configuración de vLL
 | [P03](details/2026-10-14-memory-memory-30-c4-in8192-out128.md) | Carga corta; prefijos independientes | 30% | 26,6% | 35,0% | 8.192 / 128 | 4 / 4 / 4 | 4/4 | 9,2 | 24,9 | 99,5 | 25,6 | 5,1 | 20,0 | 45,0% | 3 | 0 | OK |
 | [P04](details/2026-10-14-memory-memory-30-c4-in32768-out512.md) | Historial largo; prefijos independientes | 30% | 26,6% | 34,9% | 32.768 / 512 | 4 / 4 / 2 | 4/4 | 65,0 | 126,3 | 505,4 | 164,8 | 4,5 | 12,4 | 90,9% | 3 | 0 | Completa; cola |
 | [P05](details/2026-10-14-memory-memory-30-c4-in65536-out512.md) | Historial largo; prefijos independientes | 30% | 26,6% | 34,8% | 65.536 / 512 | 4 / 4 / 1 | 4/4 | 167,8 | 217,6 | 870,4 | 348,4 | 3,1 | 5,9 | 91,3% | 3 | 0 | Completa; cola |
-| [P06](details/2026-10-14-memory-memory-30-c1-in130816-out256.md) | Historial largo; prefijos independientes | 30% | 26,6% | 34,8% | 130.816 / 256 | 1 / 4 / 1 | 0/1 | N/M | N/M | N/M | 95,1 | N/M | N/M | 99,6% | 0 | 0 | En curso / incompleta |
+| [P06](details/2026-10-14-memory-memory-30-c1-in130816-out256.md) | Historial largo; prefijos independientes | 30% | 26,6% | 34,8% | 130.816 / 256 | 1 / 4 / 1 | 1/1 | 178,1 | 207,4 | 207,4 | 207,5 | 1,2 | 1,2 | 99,6% | 1 | 4 | Completa; recálculos |
 | [P07](details/2026-10-14-short-c1-in1024.md) | Carga corta inicial (detalle individual no guardado) | 40% | N/M | N/M | 1.024 / 128 | 1 / 4 / — | 20/20 | 0,7 | 10,6 | 212,5 | 212,5 | N/M | 12,0 | N/M | — | — | OK |
 | [P08](details/2026-10-14-short-c2-in1024.md) | Carga corta inicial (detalle individual no guardado) | 40% | N/M | N/M | 1.024 / 128 | 2 / 4 / — | 20/20 | 1,0 | 11,6 | 232,8 | 116,5 | N/M | 22,0 | N/M | — | — | OK |
 | [P09](details/2026-10-14-short-c4-in1024.md) | Carga corta inicial (detalle individual no guardado) | 40% | N/M | N/M | 1.024 / 128 | 4 / 4 / — | 20/20 | 1,4 | 12,7 | 254,1 | 63,6 | N/M | 40,2 | N/M | — | — | OK |

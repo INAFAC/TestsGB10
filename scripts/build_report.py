@@ -274,6 +274,12 @@ def main():
                 lines.append(f"- **{profile['fraction']*100:.0f}%**, contexto máximo {integer(a['max_model_len'])}: "
                              f"{'arranque correcto' if a['ready'] else 'no arrancó'} en {num(a['startup_seconds'])} s.")
         lines += ['', 'Restauración registrada: **'+m.get('restore_status','pendiente')+'**.', '']
+        if m.get('coordination_incident'):
+            lines += ['**Incidencia de coordinación:** al cambiar el orden de las pruebas después del 30%, '
+                      'se interrumpió una recreación de Docker y el primer intento de restauración coincidió con ella. '
+                      'Se recuperó ejecutando el Compose original y restituyendo el nombre del contenedor. '
+                      'Las cuatro pruebas al 30% ya habían terminado; no se ejecutó ninguna inferencia al 50% antes de repetir el 40%. '
+                      'No se clasifica como fallo de capacidad del modelo.', '']
     overflow=DATA/'2026-10-14/context-40/limit-rejection.json'
     if overflow.exists():
         d=json.loads(overflow.read_text())
