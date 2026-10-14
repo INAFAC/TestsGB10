@@ -26,14 +26,19 @@
     "85% / limit4 full-context group completed 2/4; two connections timed out at1200s with0preemptions. Repeat same workload with2700s perconnection and3000s group to distinguish deadlines from ability to complete.",
     "Repeat the six prefix-reuse steps at70% / limit4 with seed90000, matching the40% history experiment, to compare ongoing conversation latency as its history reaches the model maximum.",
     "92% / limit4 full-context group completed3/4; one connection timedout at1200s,0preemptions. Repeat with2700s perconnection and3000s group, preserving the failed initial run.",
-    "Late40% limit4 control also sends8 simultaneous requests with8192+128 and32768+256, matching thelimit8 workloads without confounding client concurrency or group size."
+    "Late40% limit4 control also sends8 simultaneous requests with8192+128 and32768+256, matching thelimit8 workloads without confounding client concurrency or group size.",
+    "64 short requests at40% all overlapped and completed. Probe128 at40% and512 at85%, including longer512-token outputs, to observe admission/cache constraints beyond the artificial64 limit."
   ],
   "server_concurrency_limits": [
+    2,
+    3,
     4,
     8,
     16,
     32,
-    64
+    64,
+    128,
+    512
   ],
   "model_revision": "482ca0f3832238542f8f5295dde86b5f22711d80",
   "test_order": "finish 30%; repeat full 40%; lower and higher budgets; higher server concurrency; prefix reuse; restore 40% / 4",
@@ -163,6 +168,18 @@
       "server_limit": 4,
       "kind": "extended",
       "tests": 1
+    },
+    {
+      "memory_percent": 40,
+      "server_limit": 128,
+      "kind": "independent",
+      "tests": 1
+    },
+    {
+      "memory_percent": 85,
+      "server_limit": 512,
+      "kind": "independent",
+      "tests": 2
     }
   ]
 }

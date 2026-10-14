@@ -536,6 +536,11 @@
           "case": "c64-in1024-out128",
           "exit_code": 0,
           "elapsed_s": 55.00828076299513
+        },
+        {
+          "case": "c64-in8192-out128",
+          "exit_code": 0,
+          "elapsed_s": 315.09696092800004
         }
       ],
       "max_model_len": 262144,
