@@ -318,7 +318,13 @@
           "reused_running_server": false
         }
       ],
-      "tests": [],
+      "tests": [
+        {
+          "case": "c128-in1024-out128",
+          "exit_code": 0,
+          "elapsed_s": 115.02412360199378
+        }
+      ],
       "request_timeout_s": 1200,
       "test_timeout_s": 1500,
       "max_model_len": 262144,
