@@ -58,6 +58,8 @@ Al menos una conexión agotó su tiempo de espera sin completar la respuesta. Es
 | Máximo de respuestas solapadas | 1 |
 | Espera media hasta primer texto | 745,8 s |
 | Tiempo medio de respuesta completa | 948,1 s |
+| Mayor espera hasta primer texto, entre las completadas | 1.143,9 s |
+| Mayor tiempo completo, entre las completadas | 1.215,9 s |
 | Suma de los tiempos individuales | 2.844,4 s |
 | Tiempo total de la prueba | 1.216,2 s |
 | Tokens/s medios por conversación, incluyendo espera | 0,15 |
@@ -74,7 +76,7 @@ La caché guarda información del historial. Un recálculo significa que el moto
 
 Los tiempos individuales se solapan: su suma puede superar el tiempo total de la prueba. Las velocidades cuentan tokens de respuesta, no tokens de entrada.
 
-Las medias y velocidades individuales corresponden solo a las conversaciones completadas correctamente. Las cifras de una prueba en curso son parciales; no describen todavía el rendimiento final del grupo.
+Las medias, los máximos de tiempo y las velocidades individuales corresponden solo a las conversaciones completadas correctamente. Las cifras de una prueba en curso son parciales; no describen todavía el rendimiento final del grupo.
 
 <details>
 <summary>Cronología: cuándo se envió, empezó y terminó cada respuesta</summary>

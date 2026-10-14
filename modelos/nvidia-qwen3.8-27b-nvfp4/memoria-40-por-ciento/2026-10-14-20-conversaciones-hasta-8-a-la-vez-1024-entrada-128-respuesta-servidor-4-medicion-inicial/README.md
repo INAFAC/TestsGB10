@@ -16,6 +16,9 @@
 
 Se enviaron **20 conversaciones**, hasta **8 a la vez**. Cada una pidió **1.024 tokens de entrada + 128 de respuesta = 1.152 tokens**.
 
+<details>
+<summary>Ver tokens y finalización de las 20 conversaciones</summary>
+
 ## Cada conversación: tokens y finalización
 
 | Conversación | Entrada | Respuesta pedida | Respuesta recibida | Total alcanzado | ¿Terminó? | ¿Llegó al máximo del modelo? |
@@ -23,10 +26,19 @@ Se enviaron **20 conversaciones**, hasta **8 a la vez**. Cada una pidió **1.024
 
 En esta primera medición solo se guardaron cifras del grupo; no se inventan datos individuales.
 
+</details>
+
+<details>
+<summary>Ver tiempos y velocidad de las 20 conversaciones</summary>
+
+
 ## Cada conversación: tiempos y velocidad
 
 | Conversación | Espera hasta primer texto (s) | Tiempo completo (s) | Tokens/s durante la respuesta | Tokens/s incluyendo la espera |
 |---|---:|---:|---:|---:|
+
+</details>
+
 
 ## Todas las medidas del grupo
 
@@ -42,6 +54,8 @@ En esta primera medición solo se guardaron cifras del grupo; no se inventan dat
 | Máximo de respuestas solapadas | — |
 | Espera media hasta primer texto | 11,2 s |
 | Tiempo medio de respuesta completa | 22,6 s |
+| Mayor espera hasta primer texto, entre las completadas | No medido s |
+| Mayor tiempo completo, entre las completadas | No medido s |
 | Suma de los tiempos individuales | 451,3 s |
 | Tiempo total de la prueba | 62,6 s |
 | Tokens/s medios por conversación, incluyendo espera | No medido |

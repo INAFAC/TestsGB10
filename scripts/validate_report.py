@@ -37,5 +37,31 @@ for path in [ROOT/'README.md',ROOT/'GUIA-DE-LECTURA.md',*(ROOT/'modelos').rglob(
     for target in re.findall(r'\]\(([^)]+)\)',path.read_text()):
         if '://' in target or target.startswith('#'):continue
         if not (path.parent/target.split('#')[0]).exists():errors.append(f'{path}: broken link {target}')
+# Once the campaign is declared complete, every planned block must be resolved.
+# A failed startup resolves its block; unexecuted cases after a test failure do not.
+import build_report
+for model_dir in (ROOT/'modelos').iterdir():
+    if not model_dir.is_dir():continue
+    plans=list((model_dir/'configuracion-del-equipo').rglob('plan-y-estado-general.json'))
+    if not plans:continue
+    plan=json.loads(plans[0].read_text())
+    if plan.get('status')!='complete':continue
+    equipment=json.loads((model_dir/'configuracion-del-equipo/equipo.json').read_text())
+    tests=[build_report.load_test(p,equipment) for p in model_dir.glob('memoria-*/**/configuracion.json')]
+    for group in plan.get('planned_groups',[]):
+        def matches(t):
+            c=t['c'];kind=group['kind']
+            return (t['memory']==group['memory_percent'] and t['limit']==group['server_limit']
+                    and not c.get('medicion_inicial')
+                    and bool(c.get('repeticion_de_control'))==(kind=='control')
+                    and bool(c.get('espera_ampliada'))==(kind=='extended'))
+        subset=[t for t in tests if t['type']=='conversaciones' and matches(t)
+                and bool(t['c'].get('historial_reutilizado'))==(group['kind']=='reuse')]
+        starts=[t for t in tests if t['type']=='arranque' and matches(t)]
+        if not subset and starts and all(not t['raw']['ready'] for t in starts):continue
+        terminal=lambda t:t['finished'] or t.get('summary',{}).get('status')=='not_admitted_within_90s' or t.get('summary',{}).get('status','').startswith('timeout_')
+        if len(subset)!=group['tests'] or not all(terminal(t) for t in subset):
+            errors.append(f'{model_dir.name}: campaign marked complete with unresolved block {group}')
+
 if errors:raise SystemExit('\n'.join(errors))
 print(f'Validated {checked} measured tests, original-file hashes and report links.')

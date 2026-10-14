@@ -148,6 +148,7 @@ def write_test(t,model_dir,equipment):
             lines += [f"**{t['reached_configured']} conversación(es) alcanzaron exactamente el límite configurado y recibieron toda la respuesta solicitada.**",'']
         if t['reached_model']:
             lines += ['Esta prueba llega al máximo sumando historial y respuesta. No es una generación de todo ese máximo como respuesta nueva.','']
+        if t['count']>16:lines += ['<details>',f"<summary>Ver tokens y finalización de las {t['count']} conversaciones</summary>",'']
         lines += ['## Cada conversación: tokens y finalización','',
                   '| Conversación | Entrada | Respuesta pedida | Respuesta recibida | Total alcanzado | ¿Terminó? | ¿Llegó al máximo del modelo? |',
                   '|---|---:|---:|---:|---:|---|---|']
@@ -162,12 +163,14 @@ def write_test(t,model_dir,equipment):
                     lines.append(f"| {index+1} | — | {integer(t['output'])} | — | — | {state} | No acreditado |")
         elif not t['requests']:
             lines += ['', 'En esta primera medición solo se guardaron cifras del grupo; no se inventan datos individuales.']
+        if t['count']>16:lines += ['','</details>','']
         failures=[r for r in t['requests'] if r.get('error')]
         if failures:
             lines += ['', '**Errores recibidos:**','']
             lines += [f"- Conversación {r['index']+1}: {r['error']}" for r in failures]
             if t['timeout_errors']:
                 lines += ['', 'Al menos una conexión agotó su tiempo de espera sin completar la respuesta. Este error no demuestra por sí solo falta de memoria ni imposibilidad de terminar con un plazo mayor.']
+        if t['count']>16:lines += ['<details>',f"<summary>Ver tiempos y velocidad de las {t['count']} conversaciones</summary>",'']
         lines += ['', '## Cada conversación: tiempos y velocidad','',
                   '| Conversación | Espera hasta primer texto (s) | Tiempo completo (s) | Tokens/s durante la respuesta | Tokens/s incluyendo la espera |',
                   '|---|---:|---:|---:|---:|']
@@ -175,11 +178,14 @@ def write_test(t,model_dir,equipment):
             u=r.get('usage') or {};out=u.get('completion_tokens');elapsed=r.get('total_s');first=r.get('ttft_s')
             rate=(out-1)/(elapsed-first) if out and elapsed and first is not None and elapsed>first else None
             lines.append(f"| {r['index']+1} | {number(first,2)} | {number(elapsed,2)} | {number(rate,2)} | {number(out/elapsed if out and elapsed else None,2)} |")
+        if t['count']>16:lines += ['','</details>','']
         rows=[('Memoria asignada al motor',str(t['memory'])+'%'),('Pico medido del motor / memoria del GB10',percent(t['engine'])),
               ('Pico usado por todo el sistema / memoria del GB10',percent(t['system'])),('Conversaciones totales',integer(t['count'])),
               ('Máximo de peticiones enviadas a la vez',integer(t['concurrency'])),('Límite de solicitudes del servidor',integer(t['limit'])),
               ('Máximo activo en el motor',integer(t['active'])),('Máximo de respuestas solapadas',integer(t['overlap'])),
               ('Espera media hasta primer texto',number(t['ttft'])+' s'),('Tiempo medio de respuesta completa',number(t['response'])+' s'),
+              ('Mayor espera hasta primer texto, entre las completadas',number(max((r['ttft_s'] for r in t.get('good',[]) if r.get('ttft_s') is not None),default=None))+' s'),
+              ('Mayor tiempo completo, entre las completadas',number(max((r['total_s'] for r in t.get('good',[])),default=None))+' s'),
               ('Suma de los tiempos individuales',number(t['sum_response'])+' s'),('Tiempo total de la prueba',number(t['duration'])+' s'),
               ('Tokens/s medios por conversación, incluyendo espera',number(t['request_rate'],2)),('Tokens/s totales del grupo',number(t['throughput'],2)),
               ('Pico de caché ocupada',percent(t['cache'])),('Máximo de solicitudes en cola',integer(t['queue'])),
@@ -198,7 +204,7 @@ def write_test(t,model_dir,equipment):
         lines += ['', 'La caché guarda información del historial. Un recálculo significa que el motor tuvo que desalojar trabajo y repetirlo. Una cola breve durante la lectura inicial no prueba por sí sola falta de memoria.','',
                   'Los tiempos individuales se solapan: su suma puede superar el tiempo total de la prueba. Las velocidades cuentan tokens de respuesta, no tokens de entrada.']
         if not t['all_done']:
-            lines += ['', 'Las medias y velocidades individuales corresponden solo a las conversaciones completadas correctamente. Las cifras de una prueba en curso son parciales; no describen todavía el rendimiento final del grupo.']
+            lines += ['', 'Las medias, los máximos de tiempo y las velocidades individuales corresponden solo a las conversaciones completadas correctamente. Las cifras de una prueba en curso son parciales; no describen todavía el rendimiento final del grupo.']
         if any(r.get('started_at_s') is not None for r in t['requests']):
             lines += ['', '<details>','<summary>Cronología: cuándo se envió, empezó y terminó cada respuesta</summary>','',
                       'Segundos desde el inicio de la prueba.','','| Conversación | Enviada | Primer texto | Final |','|---|---:|---:|---:|']

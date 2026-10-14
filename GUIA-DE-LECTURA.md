@@ -61,7 +61,7 @@ El motor puede mantener memoria reservada aunque la caché esté casi vacía. La
 
 La velocidad durante la respuesta se calcula como `(tokens recibidos − 1) / (tiempo completo − espera al primer texto)`. Son medidas desde el cliente, no contadores internos de pasos de la GPU.
 
-Las medias individuales se calculan sobre las conversaciones que terminaron correctamente. Si una prueba sigue en curso o tiene fallos, hay que leerlas junto al número de conversaciones completadas. Los tokens/s del grupo cuentan los tokens de las respuestas completadas y todo el tiempo transcurrido del grupo; una cifra parcial no es su rendimiento final.
+Las medias individuales y los mayores tiempos de espera y respuesta del resumen se calculan sobre las conversaciones que terminaron correctamente. Los errores y sus tiempos registrados se muestran aparte, en las filas individuales. Si una prueba sigue en curso o tiene fallos, hay que leerlas junto al número de conversaciones completadas. Los tokens/s del grupo cuentan los tokens de las respuestas completadas y todo el tiempo transcurrido del grupo; una cifra parcial no es su rendimiento final.
 
 ## Cómo se hicieron
 

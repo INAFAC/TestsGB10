@@ -16,6 +16,9 @@
 
 Se enviaron **32 conversaciones**, hasta **32 a la vez**. Cada una pidió **1.024 tokens de entrada + 128 de respuesta = 1.152 tokens**.
 
+<details>
+<summary>Ver tokens y finalización de las 32 conversaciones</summary>
+
 ## Cada conversación: tokens y finalización
 
 | Conversación | Entrada | Respuesta pedida | Respuesta recibida | Total alcanzado | ¿Terminó? | ¿Llegó al máximo del modelo? |
@@ -52,6 +55,12 @@ Se enviaron **32 conversaciones**, hasta **32 a la vez**. Cada una pidió **1.02
 | 30 | 1.024 | 128 | 128 | 1.152 | Sí | No |
 | 31 | 1.024 | 128 | 128 | 1.152 | Sí | No |
 | 32 | 1.024 | 128 | 128 | 1.152 | Sí | No |
+
+</details>
+
+<details>
+<summary>Ver tiempos y velocidad de las 32 conversaciones</summary>
+
 
 ## Cada conversación: tiempos y velocidad
 
@@ -90,6 +99,9 @@ Se enviaron **32 conversaciones**, hasta **32 a la vez**. Cada una pidió **1.02
 | 31 | 15,90 | 34,41 | 6,86 | 3,72 |
 | 32 | 15,90 | 34,41 | 6,86 | 3,72 |
 
+</details>
+
+
 ## Todas las medidas del grupo
 
 | Medida | Resultado |
@@ -104,6 +116,8 @@ Se enviaron **32 conversaciones**, hasta **32 a la vez**. Cada una pidió **1.02
 | Máximo de respuestas solapadas | 32 |
 | Espera media hasta primer texto | 10,1 s |
 | Tiempo medio de respuesta completa | 33,7 s |
+| Mayor espera hasta primer texto, entre las completadas | 18,0 s |
+| Mayor tiempo completo, entre las completadas | 34,8 s |
 | Suma de los tiempos individuales | 1.078,6 s |
 | Tiempo total de la prueba | 34,9 s |
 | Tokens/s medios por conversación, incluyendo espera | 3,80 |

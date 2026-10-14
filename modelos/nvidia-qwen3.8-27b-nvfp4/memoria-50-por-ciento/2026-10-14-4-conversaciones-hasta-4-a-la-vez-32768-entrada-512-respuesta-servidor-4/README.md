@@ -48,6 +48,8 @@ Se enviaron **4 conversaciones**, hasta **4 a la vez**. Cada una pidió **32.768
 | Máximo de respuestas solapadas | 4 |
 | Espera media hasta primer texto | 41,1 s |
 | Tiempo medio de respuesta completa | 123,6 s |
+| Mayor espera hasta primer texto, entre las completadas | 66,1 s |
+| Mayor tiempo completo, entre las completadas | 126,6 s |
 | Suma de los tiempos individuales | 494,4 s |
 | Tiempo total de la prueba | 126,8 s |
 | Tokens/s medios por conversación, incluyendo espera | 4,14 |

@@ -46,6 +46,8 @@ Esta prueba llega al máximo sumando historial y respuesta. No es una generació
 | Máximo de respuestas solapadas | 1 |
 | Espera media hasta primer texto | 0,7 s |
 | Tiempo medio de respuesta completa | 19,9 s |
+| Mayor espera hasta primer texto, entre las completadas | 0,7 s |
+| Mayor tiempo completo, entre las completadas | 19,9 s |
 | Suma de los tiempos individuales | 19,9 s |
 | Tiempo total de la prueba | 20,0 s |
 | Tokens/s medios por conversación, incluyendo espera | 6,42 |

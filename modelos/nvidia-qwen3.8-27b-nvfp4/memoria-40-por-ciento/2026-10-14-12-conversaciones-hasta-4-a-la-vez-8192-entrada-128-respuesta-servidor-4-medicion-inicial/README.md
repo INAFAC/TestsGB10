@@ -42,6 +42,8 @@ En esta primera medición solo se guardaron cifras del grupo; no se inventan dat
 | Máximo de respuestas solapadas | — |
 | Espera media hasta primer texto | 5,2 s |
 | Tiempo medio de respuesta completa | 23,5 s |
+| Mayor espera hasta primer texto, entre las completadas | No medido s |
+| Mayor tiempo completo, entre las completadas | No medido s |
 | Suma de los tiempos individuales | 282,3 s |
 | Tiempo total de la prueba | 71,2 s |
 | Tokens/s medios por conversación, incluyendo espera | No medido |
