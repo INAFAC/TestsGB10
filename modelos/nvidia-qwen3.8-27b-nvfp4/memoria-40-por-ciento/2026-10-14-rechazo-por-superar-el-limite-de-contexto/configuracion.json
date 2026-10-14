@@ -1,0 +1,15 @@
+{
+  "tipo": "rechazo",
+  "modelo": "nvidia/Qwen3.8-27B-NVFP4",
+  "fecha": "2026-10-14",
+  "memoria_porcentaje": 40,
+  "limite_servidor": 4,
+  "limite_contexto_configurado": 262144,
+  "conversaciones_totales": 1,
+  "concurrencia_enviada": 1,
+  "tokens_entrada": 262145,
+  "tokens_respuesta_pedidos": 1,
+  "medicion_inicial": true,
+  "historial_reutilizado": false,
+  "paso_historial": null
+}
