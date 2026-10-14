@@ -574,7 +574,13 @@
           "reused_running_server": false
         }
       ],
-      "tests": [],
+      "tests": [
+        {
+          "case": "c16-in32768-out256",
+          "exit_code": 0,
+          "elapsed_s": 510.2376315769943
+        }
+      ],
       "max_model_len": 262144,
       "kv_gib": 60.12,
       "estimated_cache_tokens": 965550.0
