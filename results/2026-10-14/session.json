@@ -2,6 +2,8 @@
   "status": "running",
   "model": "nvidia/Qwen3.8-27B-NVFP4",
   "memory_percentages": [
+    20,
+    25,
     30,
     40,
     50,
@@ -16,5 +18,14 @@
     "Cold-prefix load tests followed by history-cache reuse tests.",
     "Short baseline results without per-request data are preserved as legacy measurements.",
     "No personal chat data is used."
-  ]
+  ],
+  "server_concurrency_limits": [
+    4,
+    8,
+    16,
+    32,
+    64
+  ],
+  "model_revision": "482ca0f3832238542f8f5295dde86b5f22711d80",
+  "test_order": "finish 30%; repeat full 40%; lower and higher budgets; higher server concurrency; prefix reuse; restore 40% / 4"
 }

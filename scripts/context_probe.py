@@ -6,6 +6,8 @@ Writes incremental measurements so an externally timed-out test is reviewable.
 """
 import argparse
 import concurrent.futures
+import datetime
+import hashlib
 import json
 import pathlib
 import random
@@ -30,9 +32,16 @@ def main():
     p.add_argument('--result', required=True)
     a = p.parse_args()
     count = a.requests or a.concurrency
+    started_utc = datetime.datetime.now(datetime.timezone.utc).isoformat()
+    script_sha256 = hashlib.sha256(pathlib.Path(__file__).read_bytes()).hexdigest()
     dest = pathlib.Path(a.result)
     dest.parent.mkdir(parents=True, exist_ok=True)
     samples, results = [], []
+    try:
+        models = json.load(urllib.request.urlopen(a.base_url+'/v1/models', timeout=10))['data']
+        model_info = next(m for m in models if m['id'] == a.model)
+    except Exception:
+        model_info = {}
     stop = threading.Event()
     start = time.monotonic()
     gpu_last = {'at': 0, 'gib': None, 'temperature_c': None, 'utilization_percent': None}
@@ -130,10 +139,11 @@ def main():
     def save(status):
         valid = [s for s in samples if 'error' not in s]
         good = [r for r in results if r['ok']]
-        summary = {'status': status, 'model': a.model, 'concurrency': a.concurrency, 'num_requests': count,
+        summary = {'status': status, 'started_utc': started_utc, 'script_sha256': script_sha256, 'model': a.model, 'concurrency': a.concurrency, 'num_requests': count,
                    'server_max_num_seqs': a.server_max_seqs, 'memory_fraction': a.memory_fraction,
                    'input_tokens': a.input_tokens, 'output_tokens': a.output_tokens,
-                   'seed': a.seed, 'completed': len(good),
+                   'seed': a.seed, 'max_model_len': model_info.get('max_model_len'),
+                   'completed': len(good),
                    'failed': len(results)-len(good), 'duration_s': time.monotonic()-start,
                    'mean_ttft_s': sum(r['ttft_s'] or 0 for r in good)/max(1, len(good)),
                    'mean_total_s': sum(r['total_s'] for r in good)/max(1, len(good)),
@@ -190,7 +200,10 @@ def main():
     stop.set()
     watcher.join(timeout=12)
     samples.append(metrics())
-    print('DONE '+json.dumps(save('complete')), flush=True)
+    final_summary = save('complete')
+    print('DONE '+json.dumps(final_summary), flush=True)
+    if final_summary['failed']:
+        raise SystemExit(1)
 
 
 if __name__ == '__main__':

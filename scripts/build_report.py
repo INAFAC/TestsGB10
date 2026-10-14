@@ -140,8 +140,8 @@ def write_detail(t):
              f"- Resultado: **{t['status']}**, {t['completed']}/{t['count']} completadas.",
              f'- [Datos originales]({source}).', '',
              '## Conversaciones individuales', '',
-             '| Conversación | Tokens entrada | Tokens salida | Inicio (s) | Respuesta completa (s) | Generación (tokens/s) | Con espera incluida (tokens/s) | Resultado |',
-             '|---|---:|---:|---:|---:|---:|---:|---|']
+             '| Conversación | Tokens entrada | Tokens salida | Inicio / TTFT (s) | Respuesta completa (s) | Generación (tokens/s) | Con espera incluida (tokens/s) | Enviada en (s) | Primer token en (s) | Final en (s) | Resultado |',
+             '|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|']
     for r in t['requests']:
         usage = r.get('usage') or {}
         output = usage.get('completion_tokens')
@@ -152,6 +152,7 @@ def write_detail(t):
         e2e = output/elapsed if output and elapsed else None
         lines.append(f"| C{r['index']+1} | {integer(usage.get('prompt_tokens'))} | {integer(output)} "
                      f"| {num(ttft,2)} | {num(elapsed,2)} | {num(generation,2)} | {num(e2e,2)} "
+                     f"| {num(r.get('started_at_s'),2)} | {num(r.get('first_token_at_s'),2)} | {num(r.get('finished_at_s'),2)} "
                      f"| {'OK' if r.get('ok') else 'Error'} |")
     if not t['requests']:
         lines += ['', '**No medido:** en esta primera serie se guardaron estadísticas agregadas, no los tiempos de cada solicitud. No se han reconstruido ni inventado valores individuales.']
@@ -171,6 +172,14 @@ def write_detail(t):
                   f"- Tokens recuperados de prefix cache: {integer(s.get('prefix_cache_hits'))}."]
         lines += [f"- Temperatura GPU máxima observada: {num(s.get('peak_gpu_temperature_c'))} °C.",
                   f"- Utilización GPU máxima observada: {num(s.get('peak_gpu_utilization_percent'))}%."]
+    if t.get('summary', {}).get('peak_overlapping_responses') is not None:
+        s = t['summary']
+        lines += [f"- Máximo de respuestas solapadas desde primer token hasta final: {integer(s['peak_overlapping_responses'])}.",
+                  f"- Tiempo observado con alguna solicitud en cola: {num(s.get('seconds_with_queue'))} s.",
+                  f"- Tiempo observado con caché al 95% o más: {num(s.get('seconds_cache_above_95_percent'))} s.",
+                  f"- Contexto máximo informado por la API: {integer(s.get('max_model_len'))} tokens.", '',
+                  'Enviada, primer token y final usan el mismo reloj relativo al comienzo de la prueba. '
+                  'El solapamiento indica respuestas abiertas simultáneamente, no garantiza que el motor genere un token para todas en cada paso.']
     lines += ['', 'N/M significa que esa métrica no se recogió durante esta prueba.', '']
     path.write_text('\n'.join(lines).replace('N/M%', 'N/M'))
 
