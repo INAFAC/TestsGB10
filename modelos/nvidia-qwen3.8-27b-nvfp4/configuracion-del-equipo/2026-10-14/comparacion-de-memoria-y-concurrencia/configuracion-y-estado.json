@@ -579,6 +579,11 @@
           "case": "c16-in32768-out256",
           "exit_code": 0,
           "elapsed_s": 510.2376315769943
+        },
+        {
+          "case": "c16-in65536-out128",
+          "exit_code": 0,
+          "elapsed_s": 965.5729192209983
         }
       ],
       "max_model_len": 262144,
