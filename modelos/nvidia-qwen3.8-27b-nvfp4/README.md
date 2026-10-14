@@ -14,6 +14,7 @@
 
 ## ¿Puede llegar al máximo y terminar?
 
+- **20% de memoria:** Todavía no hay una conversación terminada registrada con este presupuesto.
 - **25% de memoria:** Hasta ahora se ha completado una conversación de **65.536 tokens**. Aún no demuestra alcanzar 262.144.
 - **30% de memoria:** Hasta ahora se ha completado una conversación de **131.072 tokens**. Aún no demuestra alcanzar 262.144. **El arranque con el máximo del modelo falló.**
 - **40% de memoria:** **Sí:** 1/1 completadas con 262.144 tokens y toda la respuesta solicitada. 1 respuesta a la vez; cola máxima 1; 4 recálculos.
@@ -36,6 +37,7 @@ Las tablas principales muestran la batería con medición detallada. Cada fila e
 
 | Prueba | Memoria asignada | Límite impuesto al servidor | Tokens por conversación: entrada + respuesta | ¿Terminaron? | ¿Llegaron al máximo del modelo? | Tiempo total | Simultaneidad, colas y problemas |
 |---|---:|---:|---:|---|---|---:|---|
+| [Arrancar el modelo con límite de 8.192 tokens](memoria-20-por-ciento/2026-10-14-arranque-contexto-8192-servidor-4/README.md) | 20% | **4 activas** | Sin conversaciones | **NO ARRANCÓ** | No se enviaron conversaciones | 310,8 s | **NO ARRANCÓ** |
 | [Arrancar el modelo con límite de 65.536 tokens](memoria-25-por-ciento/2026-10-14-arranque-contexto-65536-servidor-4/README.md) | 25% | **4 activas** | Sin conversaciones | Arrancó | No se enviaron conversaciones | 365,9 s | Arrancó |
 | [4 conversaciones; hasta 4 a la vez](memoria-25-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-1024-entrada-128-respuesta-servidor-4/README.md) | 25% | **4 activas** | 1.024 + 128 | **Sí: 4/4** | No se intentó | 13,1 s | 4 respuestas solapadas; cola máxima 1 |
 | [4 conversaciones; hasta 4 a la vez](memoria-25-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-8192-entrada-128-respuesta-servidor-4/README.md) | 25% | **4 activas** | 8.192 + 128 | **Sí: 4/4** | No se intentó | 25,9 s | 4 respuestas solapadas; cola máxima 3 |
@@ -64,6 +66,7 @@ Las tablas principales muestran la batería con medición detallada. Cada fila e
 
 | Prueba | Memoria asignada | Motor / GB10 | Sistema / GB10 | Entrada + respuesta | Enviadas / límite servidor / activas / respuestas solapadas | Terminadas | Espera media (s) | Respuesta media (s) | Suma individual (s) | Tiempo prueba (s) | Tokens/s por conversación | Tokens/s totales | Pico caché | Cola máxima | Recálculos | Resultado |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|
+| [Arrancar el modelo con límite de 8.192 tokens](memoria-20-por-ciento/2026-10-14-arranque-contexto-8192-servidor-4/README.md) | 20% | No aplica | No aplica | Sin conversaciones | Límite 4 | **NO ARRANCÓ** | No aplica | No aplica | No aplica | 310,8 | No aplica | No aplica | No aplica | No aplica | No aplica | **NO ARRANCÓ** |
 | [Arrancar el modelo con límite de 65.536 tokens](memoria-25-por-ciento/2026-10-14-arranque-contexto-65536-servidor-4/README.md) | 25% | No aplica | No aplica | Sin conversaciones | Límite 4 | Arrancó | No aplica | No aplica | No aplica | 365,9 | No aplica | No aplica | No aplica | No aplica | No aplica | Arrancó |
 | [4 conversaciones; hasta 4 a la vez](memoria-25-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-1024-entrada-128-respuesta-servidor-4/README.md) | 25% | 21,7% | 29,9% | 1.024 + 128 | 4 / 4 / 4 / 4 | **Sí: 4/4** | 2,1 | 13,0 | 51,9 | 13,1 | 9,86 | 38,96 | 25,9% | 1 | 0 | Terminó |
 | [4 conversaciones; hasta 4 a la vez](memoria-25-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-8192-entrada-128-respuesta-servidor-4/README.md) | 25% | 21,7% | 29,9% | 8.192 + 128 | 4 / 4 / 4 / 4 | **Sí: 4/4** | 9,5 | 25,2 | 100,9 | 25,9 | 5,08 | 19,75 | 96,3% | 3 | 0 | Terminó |
@@ -131,7 +134,7 @@ Esta tabla distingue las pruebas terminadas de las que todavía faltan. No inclu
 | 30% | 4 activas | Conversaciones con historiales independientes | 4/4 | Terminada |
 | 40% | 4 activas | Conversaciones con historiales independientes | 10/10 | Terminada |
 | 25% | 4 activas | Conversaciones con historiales independientes | 4/4 | Terminada |
-| 20% | 4 activas | Conversaciones con historiales independientes | 0/1 | Pendiente |
+| 20% | 4 activas | Conversaciones con historiales independientes | 0/1 | No pudo arrancar; ver el fallo de arranque |
 | 50% | 4 activas | Conversaciones con historiales independientes | 0/4 | Pendiente |
 | 70% | 4 activas | Conversaciones con historiales independientes | 0/3 | Pendiente |
 | 85% | 4 activas | Conversaciones con historiales independientes | 0/2 | Pendiente |
@@ -145,6 +148,7 @@ Esta tabla distingue las pruebas terminadas de las que todavía faltan. No inclu
 
 ## Carpetas por memoria
 
+- [20% de memoria](memoria-20-por-ciento/README.md).
 - [25% de memoria](memoria-25-por-ciento/README.md).
 - [30% de memoria](memoria-30-por-ciento/README.md).
 - [40% de memoria](memoria-40-por-ciento/README.md).
