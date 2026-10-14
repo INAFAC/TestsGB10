@@ -20,7 +20,7 @@ for script in ['build_report.py','validate_report.py']:
     subprocess.run(['python3',str(root/'scripts'/script)],cwd=root,check=True)
 subprocess.run(['git','diff','--check'],cwd=root,check=True)
 if a.publish:
-    subprocess.run(['git','add','README.md','details','results','scripts','conclusions'],cwd=root,check=True)
+    subprocess.run(['git','add','README.md','METODOLOGIA.md','details','results','scripts','conclusions'],cwd=root,check=True)
     changed=subprocess.run(['git','diff','--cached','--quiet'],cwd=root).returncode
     if changed:
         subprocess.run(['git','commit','-m',a.message],cwd=root,check=True)

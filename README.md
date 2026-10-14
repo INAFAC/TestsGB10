@@ -6,6 +6,8 @@ Comparación de modelos locales en NVIDIA GB10: cuánta memoria necesitan, cuán
 
 Una tabla por modelo y una fila por prueba. El ID de cada fila abre los tiempos y velocidades de **cada conversación**, junto con los datos originales.
 
+[Cómo se hicieron las pruebas y qué límites tienen](METODOLOGIA.md).
+
 ## Cómo leer las tablas
 
 - **Asignado:** presupuesto configurado con `--gpu-memory-utilization`; se refiere a toda la memoria del GB10.
@@ -15,7 +17,7 @@ Una tabla por modelo y una fila por prueba. El ID de cada fila abre los tiempos 
 - **Inicio:** tiempo medio hasta el primer token. **Respuesta:** tiempo medio completo, incluida la espera. **Acumulado:** suma de los tiempos individuales; puede superar la duración real por el solapamiento.
 - **Duración:** tiempo de pared de la prueba, sin el arranque del modelo; las filas de arranque muestran el tiempo hasta disponibilidad o fallo. **t/s por conversación:** media de tokens de salida / tiempo completo individual, incluyendo espera. **t/s total:** toda la salida / duración de la prueba.
 - **Cola:** máximo observado de solicitudes esperando; una cola transitoria durante el prefill no demuestra por sí sola falta de memoria.
-- **Caché:** pico de uso de la reserva KV, no porcentaje de RAM del equipo. **Recálculos:** preempciones registradas por vLLM.
+- **Caché:** pico de uso de la reserva KV, no porcentaje de RAM del equipo; puede incluir prefijos conservados de solicitudes anteriores. **Recálculos:** preempciones registradas por vLLM.
 - **N/M:** no medido. No se sustituye por una estimación ni por cero.
 
 ## Entorno
@@ -53,10 +55,10 @@ Son máximos observados en estas cargas sintéticas y esta configuración de vLL
 | [P09](details/2026-10-14-short-c4-in1024.md) | Carga corta inicial (detalle individual no guardado) | 40% | N/M | N/M | 1.024 / 128 | 4 / 4 / — | 20/20 | 1,4 | 12,7 | 254,1 | 63,6 | N/M | 40,2 | N/M | — | — | OK |
 | [P10](details/2026-10-14-short-c8-in1024.md) | Carga corta inicial (detalle individual no guardado) | 40% | N/M | N/M | 1.024 / 128 | 8 / 4 / — | 20/20 | 11,2 | 22,6 | 451,3 | 62,6 | N/M | 40,9 | N/M | — | — | OK |
 | [P11](details/2026-10-14-short-c4-in8192.md) | Carga corta inicial (detalle individual no guardado) | 40% | N/M | N/M | 8.192 / 128 | 4 / 4 / — | 12/12 | 5,2 | 23,5 | 282,3 | 71,2 | N/M | 21,6 | N/M | — | — | OK |
-| [P12](details/2026-10-14-context-40-c4-in32768-out512.md) | Historial largo; prefijos independientes | 40% | N/M | N/M | 32.768 / 512 | 4 / 4 / 4 | 4/4 | 40,8 | 122,5 | 490,0 | 125,5 | 4,2 | 16,3 | 84,3% | 3 | 0 | OK |
-| [P13](details/2026-10-14-context-40-c4-in65536-out512.md) | Historial largo; prefijos independientes | 40% | N/M | N/M | 65.536 / 512 | 4 / 4 / 2 | 4/4 | 123,1 | 207,2 | 828,7 | 267,3 | 2,7 | 7,7 | 85,6% | 3 | 0 | Completa; cola |
-| [P14](details/2026-10-14-context-40-c4-in131072-out256.md) | Historial largo; prefijos independientes | 40% | N/M | N/M | 131.072 / 256 | 4 / 4 / 1 | 4/4 | 286,4 | 315,5 | 1261,8 | 504,5 | 1,1 | 2,0 | 86,0% | 3 | 0 | Completa; cola |
-| [P15](details/2026-10-14-context-40-c1-in262016-out128.md) | Contexto casi máximo; prefijos independientes | 40% | N/M | N/M | 262.016 / 128 | 1 / 4 / 1 | 1/1 | 539,1 | 557,9 | 557,9 | 558,0 | 0,2 | 0,2 | 99,6% | 1 | 4 | Completa; recálculos |
+| [P12](details/2026-10-14-context-40-c4-in32768-out512.md) | Historial largo; prefijos independientes (serie inicial) | 40% | N/M | N/M | 32.768 / 512 | 4 / 4 / 4 | 4/4 | 40,8 | 122,5 | 490,0 | 125,5 | 4,2 | 16,3 | 84,3% | 3 | 0 | OK |
+| [P13](details/2026-10-14-context-40-c4-in65536-out512.md) | Historial largo; prefijos independientes (serie inicial) | 40% | N/M | N/M | 65.536 / 512 | 4 / 4 / 2 | 4/4 | 123,1 | 207,2 | 828,7 | 267,3 | 2,7 | 7,7 | 85,6% | 3 | 0 | Completa; cola |
+| [P14](details/2026-10-14-context-40-c4-in131072-out256.md) | Historial largo; prefijos independientes (serie inicial) | 40% | N/M | N/M | 131.072 / 256 | 4 / 4 / 1 | 4/4 | 286,4 | 315,5 | 1261,8 | 504,5 | 1,1 | 2,0 | 86,0% | 3 | 0 | Completa; cola |
+| [P15](details/2026-10-14-context-40-c1-in262016-out128.md) | Contexto casi máximo; prefijos independientes (serie inicial) | 40% | N/M | N/M | 262.016 / 128 | 1 / 4 / 1 | 1/1 | 539,1 | 557,9 | 557,9 | 558,0 | 0,2 | 0,2 | 99,6% | 1 | 4 | Completa; recálculos |
 | [P16](details/2026-10-14-context-40-limit-rejection.md) | Superar el contexto máximo: rechazo esperado | 40% | N/M | N/M | 262.145 / 1 | 1 / 4 / — | 0/1 | N/M | N/M | N/M | 0,0 | N/M | N/M | N/M | — | — | Rechazo esperado (HTTP 400) |
 
 ## Estado de la batería: after30

@@ -7,6 +7,7 @@
 - Límite del servidor: 4 solicitudes.
 - Resultado: **FALLO DE ARRANQUE** en 310,8 s.
 - No se enviaron conversaciones en esta comprobación de arranque.
+- La duración mide la espera hasta disponibilidad o fallo tras recrear el servicio.
 - [Registro original](../results/2026-10-14/memory/memory-30/startup-262144.log).
 
 ```text

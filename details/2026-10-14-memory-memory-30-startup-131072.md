@@ -7,6 +7,7 @@
 - Límite del servidor: 4 solicitudes.
 - Resultado: Arranque correcto en 366,0 s.
 - No se enviaron conversaciones en esta comprobación de arranque.
+- La duración mide la espera hasta disponibilidad o fallo tras recrear el servicio.
 - [Registro original](../results/2026-10-14/memory/memory-30/startup-131072.log).
 
 ```text

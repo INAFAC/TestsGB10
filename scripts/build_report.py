@@ -85,6 +85,10 @@ def read_test(path):
         description = 'Reutilización de historial: '+path.stem
     elif 'detailed-short' in str(path):
         description = 'Carga corta con métricas individuales'
+    if 'context-40' in path.parts:
+        description += ' (serie inicial)'
+    elif 'after30' in path.parts and memory(path) == 40 and s.get('server_max_num_seqs', 4) == 4:
+        description += ' (repetición 40%)'
     return {'id': ident(path), 'path': path, 'model': s.get('model', DEFAULT_MODEL),
             'memory': round(s['memory_fraction']*100) if s.get('memory_fraction') is not None else memory(path), 'description': description, 'input': s['input_tokens'],
             'output': s['output_tokens'], 'concurrency': s['concurrency'], 'active': s.get('peak_running'),
@@ -117,7 +121,7 @@ def startup_tests():
                                   'throughput','mean_request_rate','cache','queue','preemptions','active'])
                 t.update(id=ident(log), path=log if log.exists() else path,
                          model=raw.get('model', DEFAULT_MODEL), memory=fraction,
-                         description='Arranque con contexto máximo '+integer(context),
+                         description=('Servidor ya preparado; contexto ' if attempt.get('reused_running_server') else 'Arranque con contexto máximo ')+integer(context),
                          input=0, output=0, concurrency=0, server_limit=seqs, count=0, completed=0,
                          duration=attempt['startup_seconds'], requests=[], kind='startup',
                          status='Arranque correcto' if attempt['ready'] else '**FALLO DE ARRANQUE**',
@@ -144,6 +148,7 @@ def write_detail(t):
                  f"- Límite del servidor: {t['server_limit']} solicitudes.",
                  f"- Resultado: {t['status']} en {num(t['duration'])} s.",
                  '- No se enviaron conversaciones en esta comprobación de arranque.',
+                 ('- Se reutilizó el servidor ya preparado: la duración es la comprobación de salud, no el tiempo de cargar el modelo.' if t['attempt'].get('reused_running_server') else '- La duración mide la espera hasta disponibilidad o fallo tras recrear el servicio.'),
                  f'- [Registro original]({source}).', '', '```text',
                  *errors[-3:], '```', '', 'Comando utilizado:', '', '```json',
                  json.dumps(t['attempt']['command'], ensure_ascii=False, indent=2), '```', '']
@@ -226,6 +231,7 @@ def main():
              'Comparación de modelos locales en NVIDIA GB10: cuánta memoria necesitan, cuántas solicitudes pueden atender y cuánto espera cada conversación.', '',
              '**Estado:** '+('pruebas terminadas y configuración original restaurada.' if session.get('status') == 'complete' else 'pruebas en curso; los resultados se van incorporando al terminar cada ensayo.'), '',
              'Una tabla por modelo y una fila por prueba. El ID de cada fila abre los tiempos y velocidades de **cada conversación**, junto con los datos originales.', '',
+             '[Cómo se hicieron las pruebas y qué límites tienen](METODOLOGIA.md).', '',
              '## Cómo leer las tablas', '',
              '- **Asignado:** presupuesto configurado con `--gpu-memory-utilization`; se refiere a toda la memoria del GB10.',
              '- **Motor / GB10:** pico medido con `nvidia-smi` del proceso `VLLM::EngineCore`, dividido entre la memoria total. Incluye sus reservas GPU; no incluye toda la RAM de la API ni del sistema.',
@@ -234,7 +240,7 @@ def main():
              '- **Inicio:** tiempo medio hasta el primer token. **Respuesta:** tiempo medio completo, incluida la espera. **Acumulado:** suma de los tiempos individuales; puede superar la duración real por el solapamiento.',
              '- **Duración:** tiempo de pared de la prueba, sin el arranque del modelo; las filas de arranque muestran el tiempo hasta disponibilidad o fallo. **t/s por conversación:** media de tokens de salida / tiempo completo individual, incluyendo espera. **t/s total:** toda la salida / duración de la prueba.',
              '- **Cola:** máximo observado de solicitudes esperando; una cola transitoria durante el prefill no demuestra por sí sola falta de memoria.',
-             '- **Caché:** pico de uso de la reserva KV, no porcentaje de RAM del equipo. **Recálculos:** preempciones registradas por vLLM.',
+             '- **Caché:** pico de uso de la reserva KV, no porcentaje de RAM del equipo; puede incluir prefijos conservados de solicitudes anteriores. **Recálculos:** preempciones registradas por vLLM.',
              '- **N/M:** no medido. No se sustituye por una estimación ni por cero.', '',
              '## Entorno', '',
              'GB10 con 121,63 GiB de memoria unificada visible. Pruebas del 14 de octubre de 2026. '

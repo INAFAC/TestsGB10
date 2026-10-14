@@ -1,20 +1,18 @@
 {
-  "date": "2026-10-14T14:16:56.137188",
+  "date": "2026-10-14T14:27:14.327749",
   "original_command": [
     "vllm",
     "serve",
     "nvidia/Qwen3.8-27B-NVFP4",
+    "--gpu-memory-utilization",
+    "0.40",
     "--max-num-seqs",
     "4",
     "--enable-auto-tool-choice",
     "--tool-call-parser",
     "qwen3_coder",
     "--reasoning-parser",
-    "qwen3",
-    "--gpu-memory-utilization",
-    "0.3",
-    "--max-model-len",
-    "131072"
+    "qwen3"
   ],
   "image": "nvcr.io/nvidia/vllm:26.09-py3",
   "image_id": "sha256:557747337846eecf34486866f3d992383c6f8af869fdb0e365b5093fcaee02c2",

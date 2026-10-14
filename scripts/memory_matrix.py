@@ -25,6 +25,7 @@ def main():
     p = argparse.ArgumentParser()
     p.add_argument('--compose', default='/home/canadas/ai/vllm/compose.yaml')
     p.add_argument('--results', required=True)
+    p.add_argument('--reuse-initial', action='store_true', help='Use the first profile if the restored running server already matches')
     p.add_argument('--wait-for', help='Baseline result file that must exist before changing settings')
     p.add_argument('--wait-metadata', help='Wait until another matrix metadata reports healthy restoration')
     p.add_argument('--mode', choices=['memory', 'concurrency', 'after30'], default='memory')
@@ -158,11 +159,18 @@ def main():
                                 else [262144,131072,65536] if fraction == .30 else [262144])
             for max_len in context_attempts:
                 print('PROFILE '+label+' max_context='+str(max_len), flush=True)
-                cmd = change(fraction, max_len, max_seqs)
+                reused = False
+                if a.reuse_initial and profile_index == 0 and healthy():
+                    current = json.loads(sh(['docker','inspect','vllm-qwen38'], check=True).stdout)[0]['Config']['Cmd']
+                    models = json.load(urllib.request.urlopen('http://127.0.0.1:8000/v1/models', timeout=5))['data']
+                    reused = (float(current[current.index('--gpu-memory-utilization')+1]) == fraction
+                              and int(current[current.index('--max-num-seqs')+1]) == max_seqs
+                              and models[0].get('max_model_len') == max_len)
+                cmd = current if reused else change(fraction, max_len, max_seqs)
                 ready, elapsed = wait_ready(label)
                 raw = startup_log(directory/('startup-'+str(max_len)+'.log'))
                 record['attempts'].append({'max_model_len': max_len, 'command': cmd,
-                                           'ready': ready, 'startup_seconds': elapsed})
+                                           'ready': ready, 'startup_seconds': elapsed, 'reused_running_server': reused})
                 persist()
                 if ready:
                     record['max_model_len'] = max_len
