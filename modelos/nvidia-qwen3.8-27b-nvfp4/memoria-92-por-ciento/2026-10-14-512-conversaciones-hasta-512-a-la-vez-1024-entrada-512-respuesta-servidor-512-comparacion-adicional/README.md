@@ -8,11 +8,11 @@
 
 ## ¿Qué ocurrió?
 
-- **¿Terminaron todas las conversaciones?** 61/512 (en curso). Terminar significa recibir todos los tokens de respuesta solicitados.
+- **¿Terminaron todas las conversaciones?** 105/512 (en curso). Terminar significa recibir todos los tokens de respuesta solicitados.
 - **¿Llegaron al máximo del modelo (262.144 tokens)?** No se intentó.
 - **Límite configurado en esta prueba:** 262.144 tokens, sumando entrada y respuesta.
 - **¿Se atendieron al mismo tiempo?** 347 activas en el motor; cola máxima 508.
-- **Tiempo para completar la prueba:** 598,2 s.
+- **Tiempo para completar la prueba:** 648,2 s.
 
 Se enviaron **512 conversaciones**, hasta **512 a la vez**. Cada una pidió **1.024 tokens de entrada + 512 de respuesta = 1.536 tokens**.
 
@@ -84,51 +84,51 @@ Se enviaron **512 conversaciones**, hasta **512 a la vez**. Cada una pidió **1.
 | 59 | 1.024 | 512 | 512 | 1.536 | Sí | No |
 | 60 | 1.024 | 512 | 512 | 1.536 | Sí | No |
 | 61 | 1.024 | 512 | 512 | 1.536 | Sí | No |
-| 62 | — | 512 | — | — | En curso | No acreditado |
-| 63 | — | 512 | — | — | En curso | No acreditado |
-| 64 | — | 512 | — | — | En curso | No acreditado |
-| 65 | — | 512 | — | — | En curso | No acreditado |
-| 66 | — | 512 | — | — | En curso | No acreditado |
-| 67 | — | 512 | — | — | En curso | No acreditado |
-| 68 | — | 512 | — | — | En curso | No acreditado |
-| 69 | — | 512 | — | — | En curso | No acreditado |
-| 70 | — | 512 | — | — | En curso | No acreditado |
-| 71 | — | 512 | — | — | En curso | No acreditado |
-| 72 | — | 512 | — | — | En curso | No acreditado |
-| 73 | — | 512 | — | — | En curso | No acreditado |
-| 74 | — | 512 | — | — | En curso | No acreditado |
-| 75 | — | 512 | — | — | En curso | No acreditado |
-| 76 | — | 512 | — | — | En curso | No acreditado |
-| 77 | — | 512 | — | — | En curso | No acreditado |
-| 78 | — | 512 | — | — | En curso | No acreditado |
-| 79 | — | 512 | — | — | En curso | No acreditado |
-| 80 | — | 512 | — | — | En curso | No acreditado |
-| 81 | — | 512 | — | — | En curso | No acreditado |
-| 82 | — | 512 | — | — | En curso | No acreditado |
-| 83 | — | 512 | — | — | En curso | No acreditado |
-| 84 | — | 512 | — | — | En curso | No acreditado |
-| 85 | — | 512 | — | — | En curso | No acreditado |
-| 86 | — | 512 | — | — | En curso | No acreditado |
-| 87 | — | 512 | — | — | En curso | No acreditado |
-| 88 | — | 512 | — | — | En curso | No acreditado |
-| 89 | — | 512 | — | — | En curso | No acreditado |
-| 90 | — | 512 | — | — | En curso | No acreditado |
-| 91 | — | 512 | — | — | En curso | No acreditado |
-| 92 | — | 512 | — | — | En curso | No acreditado |
-| 93 | — | 512 | — | — | En curso | No acreditado |
-| 94 | — | 512 | — | — | En curso | No acreditado |
-| 95 | — | 512 | — | — | En curso | No acreditado |
-| 96 | — | 512 | — | — | En curso | No acreditado |
-| 97 | — | 512 | — | — | En curso | No acreditado |
-| 98 | — | 512 | — | — | En curso | No acreditado |
-| 99 | — | 512 | — | — | En curso | No acreditado |
-| 100 | — | 512 | — | — | En curso | No acreditado |
-| 101 | — | 512 | — | — | En curso | No acreditado |
-| 102 | — | 512 | — | — | En curso | No acreditado |
-| 103 | — | 512 | — | — | En curso | No acreditado |
-| 104 | — | 512 | — | — | En curso | No acreditado |
+| 62 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 63 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 64 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 65 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 66 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 67 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 68 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 69 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 70 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 71 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 72 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 73 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 74 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 75 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 76 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 77 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 78 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 79 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 80 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 81 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 82 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 83 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 84 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 85 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 86 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 87 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 88 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 89 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 90 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 91 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 92 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 93 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 94 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 95 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 96 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 97 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 98 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 99 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 100 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 101 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 102 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 103 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 104 | 1.024 | 512 | 512 | 1.536 | Sí | No |
+| 106 | 1.024 | 512 | 512 | 1.536 | Sí | No |
 | 105 | — | 512 | — | — | En curso | No acreditado |
-| 106 | — | 512 | — | — | En curso | No acreditado |
 | 107 | — | 512 | — | — | En curso | No acreditado |
 | 108 | — | 512 | — | — | En curso | No acreditado |
 | 109 | — | 512 | — | — | En curso | No acreditado |
@@ -607,6 +607,50 @@ Se enviaron **512 conversaciones**, hasta **512 a la vez**. Cada una pidió **1.
 | 59 | 29,32 | 594,58 | 0,90 | 0,86 |
 | 60 | 30,98 | 598,08 | 0,90 | 0,86 |
 | 61 | 28,49 | 592,83 | 0,91 | 0,86 |
+| 62 | 35,39 | 606,78 | 0,89 | 0,84 |
+| 63 | 45,40 | 625,82 | 0,88 | 0,82 |
+| 64 | 42,63 | 620,65 | 0,88 | 0,82 |
+| 65 | 33,61 | 603,31 | 0,90 | 0,85 |
+| 66 | 32,66 | 601,57 | 0,90 | 0,85 |
+| 67 | 49,24 | 632,70 | 0,88 | 0,81 |
+| 68 | 44,45 | 624,06 | 0,88 | 0,82 |
+| 69 | 46,34 | 627,61 | 0,88 | 0,82 |
+| 70 | 40,75 | 617,21 | 0,89 | 0,83 |
+| 71 | 48,25 | 631,01 | 0,88 | 0,81 |
+| 72 | 38,97 | 613,67 | 0,89 | 0,83 |
+| 73 | 41,74 | 618,93 | 0,89 | 0,83 |
+| 74 | 39,88 | 615,39 | 0,89 | 0,83 |
+| 75 | 38,98 | 613,67 | 0,89 | 0,83 |
+| 76 | 46,34 | 627,60 | 0,88 | 0,82 |
+| 77 | 43,54 | 622,35 | 0,88 | 0,82 |
+| 78 | 40,75 | 617,20 | 0,89 | 0,83 |
+| 79 | 35,37 | 605,04 | 0,90 | 0,85 |
+| 80 | 38,09 | 611,95 | 0,89 | 0,84 |
+| 81 | 31,79 | 599,82 | 0,90 | 0,85 |
+| 82 | 33,59 | 603,30 | 0,90 | 0,85 |
+| 83 | 37,16 | 610,23 | 0,89 | 0,84 |
+| 84 | 37,16 | 610,23 | 0,89 | 0,84 |
+| 85 | 47,31 | 629,30 | 0,88 | 0,81 |
+| 86 | 42,61 | 620,63 | 0,88 | 0,82 |
+| 87 | 36,29 | 608,49 | 0,89 | 0,84 |
+| 88 | 35,37 | 606,76 | 0,89 | 0,84 |
+| 89 | 31,78 | 599,81 | 0,90 | 0,85 |
+| 90 | 44,43 | 624,05 | 0,88 | 0,82 |
+| 91 | 48,24 | 630,99 | 0,88 | 0,81 |
+| 92 | 50,16 | 634,36 | 0,87 | 0,81 |
+| 93 | 52,20 | 637,85 | 0,87 | 0,80 |
+| 94 | 50,16 | 634,36 | 0,87 | 0,81 |
+| 95 | 51,16 | 636,05 | 0,87 | 0,80 |
+| 96 | 52,20 | 637,85 | 0,87 | 0,80 |
+| 97 | 53,25 | 639,53 | 0,87 | 0,80 |
+| 98 | 54,19 | 641,21 | 0,87 | 0,80 |
+| 99 | 54,19 | 641,21 | 0,87 | 0,80 |
+| 100 | 56,13 | 644,57 | 0,87 | 0,79 |
+| 101 | 55,18 | 642,89 | 0,87 | 0,80 |
+| 102 | 56,14 | 644,57 | 0,87 | 0,79 |
+| 103 | 57,13 | 646,25 | 0,87 | 0,79 |
+| 104 | 58,10 | 648,04 | 0,87 | 0,79 |
+| 106 | 58,10 | 648,03 | 0,87 | 0,79 |
 
 </details>
 
@@ -623,18 +667,18 @@ Se enviaron **512 conversaciones**, hasta **512 a la vez**. Cada una pidió **1.
 | Límite de solicitudes del servidor | 512 |
 | Máximo activo en el motor | 347 |
 | Máximo de respuestas solapadas | — |
-| Espera media hasta primer texto | 15,2 s |
-| Tiempo medio de respuesta completa | 562,3 s |
-| Mayor espera hasta primer texto, entre las completadas | 31,0 s |
-| Mayor tiempo completo, entre las completadas | 598,1 s |
-| Suma de los tiempos individuales | 34.301,3 s |
-| Tiempo total de la prueba | 598,2 s |
-| Tokens/s medios por conversación, incluyendo espera | 0,91 |
-| Tokens/s totales del grupo | 52,21 |
+| Espera media hasta primer texto | 27,6 s |
+| Tiempo medio de respuesta completa | 588,2 s |
+| Mayor espera hasta primer texto, entre las completadas | 58,1 s |
+| Mayor tiempo completo, entre las completadas | 648,0 s |
+| Suma de los tiempos individuales | 61.758,2 s |
+| Tiempo total de la prueba | 648,2 s |
+| Tokens/s medios por conversación, incluyendo espera | 0,87 |
+| Tokens/s totales del grupo | 82,94 |
 | Pico de caché ocupada | 99,9% |
 | Máximo de solicitudes en cola | 508 |
 | Recálculos por falta de espacio en caché | 0 |
-| Tiempo observado con cola | 596,6 s |
+| Tiempo observado con cola | 647,0 s |
 | Tiempo observado con caché al 95% o más | 285,5 s |
 | Tokens recuperados de caché de prefijos | 0 |
 | Temperatura GPU máxima | 75,0 °C |
@@ -715,6 +759,50 @@ Segundos desde el inicio de la prueba.
 | 59 | 0,12 | 29,44 | 594,70 |
 | 60 | 0,12 | 31,10 | 598,20 |
 | 61 | 0,12 | 28,61 | 592,94 |
+| 62 | 0,12 | 35,51 | 606,90 |
+| 63 | 0,12 | 45,52 | 625,94 |
+| 64 | 0,12 | 42,75 | 620,77 |
+| 65 | 0,12 | 33,73 | 603,43 |
+| 66 | 0,12 | 32,78 | 601,69 |
+| 67 | 0,12 | 49,36 | 632,82 |
+| 68 | 0,12 | 44,57 | 624,18 |
+| 69 | 0,12 | 46,47 | 627,73 |
+| 70 | 0,12 | 40,87 | 617,33 |
+| 71 | 0,12 | 48,38 | 631,13 |
+| 72 | 0,13 | 39,10 | 613,80 |
+| 73 | 0,13 | 41,87 | 619,05 |
+| 74 | 0,13 | 40,01 | 615,52 |
+| 75 | 0,13 | 39,10 | 613,80 |
+| 76 | 0,13 | 46,47 | 627,73 |
+| 77 | 0,13 | 43,67 | 622,48 |
+| 78 | 0,13 | 40,88 | 617,33 |
+| 79 | 0,13 | 35,50 | 605,17 |
+| 80 | 0,13 | 38,22 | 612,08 |
+| 81 | 0,13 | 31,92 | 599,95 |
+| 82 | 0,13 | 33,72 | 603,43 |
+| 83 | 0,13 | 37,29 | 610,36 |
+| 84 | 0,13 | 37,29 | 610,36 |
+| 85 | 0,13 | 47,45 | 629,44 |
+| 86 | 0,13 | 42,75 | 620,77 |
+| 87 | 0,13 | 36,42 | 608,62 |
+| 88 | 0,13 | 35,51 | 606,90 |
+| 89 | 0,14 | 31,92 | 599,95 |
+| 90 | 0,14 | 44,56 | 624,19 |
+| 91 | 0,14 | 48,38 | 631,13 |
+| 92 | 0,14 | 50,30 | 634,50 |
+| 93 | 0,14 | 52,34 | 637,99 |
+| 94 | 0,14 | 50,31 | 634,51 |
+| 95 | 0,14 | 51,30 | 636,19 |
+| 96 | 0,14 | 52,35 | 637,99 |
+| 97 | 0,15 | 53,40 | 639,67 |
+| 98 | 0,15 | 54,34 | 641,36 |
+| 99 | 0,15 | 54,34 | 641,36 |
+| 100 | 0,15 | 56,28 | 644,72 |
+| 101 | 0,15 | 55,33 | 643,04 |
+| 102 | 0,15 | 56,29 | 644,72 |
+| 103 | 0,15 | 57,28 | 646,40 |
+| 104 | 0,15 | 58,25 | 648,19 |
+| 106 | 0,15 | 58,25 | 648,19 |
 
 </details>
 
