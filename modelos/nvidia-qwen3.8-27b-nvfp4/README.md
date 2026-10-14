@@ -22,6 +22,8 @@
 ## Qué configuración elegir
 
 <!-- interpretacion-inicio -->
+- **20%:** el servidor no arrancó ni con un límite reducido de 8.192 tokens: no quedaba presupuesto para la caché.
+- **25%:** las cuatro conversaciones cortas terminaron a la vez; las cuatro de 32.768 tokens se atendieron de una en una. Una conversación de 65.536 tokens terminó en 96 s con seis recálculos. Este es un límite reducido, no el máximo de 262.144 tokens del modelo.
 - **30%:** ha atendido cuatro historiales de 8.192 tokens a la vez. Con historiales de 32.768 mantiene dos activas, y con 65.536, una. Con este presupuesto no pudo arrancar con el máximo de 262.144 tokens.
 - **40%:** las pruebas repetidas de 32.768 tokens han terminado con cuatro respuestas solapadas; las de 65.536, con dos. Los grupos tardaron unos 126 y 269 segundos, respectivamente.
 - **Llegar al máximo puede ser lento:** en la repetición al 40%, una conversación llegó exactamente a 262.144 tokens y entregó los 128 de respuesta solicitados. Tardó unos **561 segundos**, con unos **542 segundos hasta el primer texto**, y necesitó **cuatro recálculos**. Puede terminar, pero este caso tiene una espera larga.

@@ -233,11 +233,11 @@
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparacion-de-memoria-y-concurrencia/configuracion-y-estado.json",
-    "sha256": "e3bb05ee2ebcc8290f52b209b388e0d10b1ad081d46ce32c1a0d511dbd657923"
+    "sha256": "e057b4f4e18a250d0c6df03227461fcf3a35ef476c2a699a2a141eaf4bde16f8"
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparacion-de-memoria-y-concurrencia/ultimo-cambio-temporal.json",
-    "sha256": "87adb42f709a9c27e856e346fd122aab53c2703c5c7f3e4c23d3cc1f8b2acf38"
+    "sha256": "667b6b1253a0d92ab6ceda25477735a7eaae38d452e253fe98f2a89904703035"
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparacion-de-memoria-y-concurrencia/script-de-medicion-ejecutado.py",

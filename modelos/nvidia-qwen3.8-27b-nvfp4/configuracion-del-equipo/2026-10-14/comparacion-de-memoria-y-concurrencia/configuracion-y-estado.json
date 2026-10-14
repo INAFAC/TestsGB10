@@ -180,7 +180,8 @@
           "reused_running_server": false
         }
       ],
-      "tests": []
+      "tests": [],
+      "status": "startup_failed"
     }
   ]
 }

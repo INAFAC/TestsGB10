@@ -11,9 +11,9 @@
         "--reasoning-parser",
         "qwen3",
         "--gpu-memory-utilization",
-        "0.2",
+        "0.5",
         "--max-model-len",
-        "8192",
+        "262144",
         "--max-num-seqs",
         "4"
       ]

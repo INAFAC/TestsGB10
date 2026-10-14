@@ -111,7 +111,7 @@ def write_test(t,model_dir,equipment):
            f"**Modelo:** `{t['c']['modelo']}`. **Memoria asignada:** {t['memory']}% del GB10.",'',
            f"**Límite impuesto al servidor: {t['limit']} solicitudes activas** (`--max-num-seqs {t['limit']}`). Aunque se envíen más, el motor no puede superar ese límite en esta prueba. Observar ese número no demuestra que sea el máximo del GB10.",'']
     if t['type']=='arranque':
-        lines += [f"**Resultado: {t['state']}.**",'',f"Se comprobó el arranque con un límite de **{integer(t['context'])} tokens por conversación** y hasta **{t['limit']} solicitudes activas**.",'',
+        lines += [f"**Resultado: {t['state'].replace('**','')}.**",'',f"Se comprobó el arranque con un límite de **{integer(t['context'])} tokens por conversación** y hasta **{t['limit']} solicitudes activas**.",'',
                   f"Tiempo de comprobación: **{number(t['duration'])} segundos**.",'']
         if t['raw'].get('reused_running_server'):lines += ['El servidor ya estaba preparado. Este tiempo es la comprobación de disponibilidad, no la carga del modelo.','']
         if not t['raw']['ready']:
@@ -122,6 +122,8 @@ def write_test(t,model_dir,equipment):
                 shortage=re.search(r'\(([\d.]+) GiB KV cache is needed.*?available KV cache memory \(([\d.]+) GiB',text)
                 if shortage:
                     lines += [f"**Motivo:** para admitir ese historial, el motor necesitaba {number(float(shortage[1]),2)} GiB de caché, pero solo disponía de {number(float(shortage[2]),2)} GiB dentro del presupuesto asignado. Es espacio para historiales; no es toda la memoria libre del equipo.", '']
+                elif 'No available memory for the cache blocks' in text:
+                    lines += ['**Motivo:** después de preparar el modelo, no quedaba memoria dentro del presupuesto asignado para reservar la caché de los historiales. Falló antes de atender conversaciones, incluso con este límite de contexto reducido.','']
                 errors=[line for line in text.splitlines() if any(x in line for x in ('ValueError:','RuntimeError:','OutOfMemoryError:'))]
                 if errors:lines += ['<details>','<summary>Mensaje exacto del error</summary>','','```text',*errors[:5],'```','','</details>','']
         lines += ['Arrancar solo demuestra que el servicio está disponible. Las pruebas de conversaciones comprueban si las respuestas llegan a terminar.']

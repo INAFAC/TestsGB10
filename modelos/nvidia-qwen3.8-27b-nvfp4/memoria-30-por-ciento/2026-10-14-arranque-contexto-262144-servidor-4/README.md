@@ -6,7 +6,7 @@
 
 **Límite impuesto al servidor: 4 solicitudes activas** (`--max-num-seqs 4`). Aunque se envíen más, el motor no puede superar ese límite en esta prueba. Observar ese número no demuestra que sea el máximo del GB10.
 
-**Resultado: **NO ARRANCÓ**.**
+**Resultado: NO ARRANCÓ.**
 
 Se comprobó el arranque con un límite de **262.144 tokens por conversación** y hasta **4 solicitudes activas**.
 
