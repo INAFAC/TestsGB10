@@ -23,6 +23,8 @@ Estas pruebas fuerzan una longitud de respuesta para poder comparar el rendimien
 
 “8 conversaciones, hasta 4 a la vez” significa que se envía un grupo de ocho y el cliente mantiene como máximo cuatro peticiones pendientes simultáneamente.
 
+Las conversaciones que todavía no se han enviado esperan fuera del servidor. Esa espera forma parte del tiempo total del grupo, pero su cronómetro individual empieza al enviarlas. Para comparar el efecto de cambiar el límite del servidor sobre la latencia, hay que mantener también el mismo número total de conversaciones y la misma concurrencia enviada.
+
 El servidor tiene además un **límite impuesto por nosotros** de solicitudes activas, configurado con `--max-num-seqs`. Las primeras baterías se ejecutaron con **cuatro**. Ver cuatro activas en ellas no demuestra que ese sea el máximo del GB10. Las pruebas posteriores con límites mayores se identifican en su propia fila. Enviar ocho a un servidor limitado a cuatro puede crear cola aunque sobre memoria.
 
 - **Activas en el motor:** solicitudes que se están leyendo o generando.

@@ -8,7 +8,7 @@
 
 **Máximo por conversación: 262.144 tokens, sumando historial y respuesta.** La memoria asignada puede obligar a configurar un límite menor.
 
-**Límites impuestos al servidor que se han probado:** 4, 8. Cada fila muestra el suyo. El máximo observado bajo un límite impuesto no demuestra por sí solo el máximo del GB10.
+**Límites impuestos al servidor que se han probado:** 4, 8, 16. Cada fila muestra el suyo. El máximo observado bajo un límite impuesto no demuestra por sí solo el máximo del GB10.
 
 “Terminó” significa que entregó todos los tokens de respuesta solicitados. “Llegó al máximo” exige además que la suma real de entrada y respuesta alcance ese máximo; arrancar el servidor no basta.
 
@@ -74,6 +74,8 @@ Las tablas principales muestran la batería con medición detallada. Cada fila e
 | [8 conversaciones; hasta 8 a la vez](memoria-40-por-ciento/2026-10-14-8-conversaciones-hasta-8-a-la-vez-1024-entrada-128-respuesta-servidor-8/README.md) | 40% | **8 activas** | 1.024 + 128 | **Sí: 8/8** | No se intentó | 15,4 s | 8 respuestas solapadas; cola máxima 5 |
 | [8 conversaciones; hasta 8 a la vez](memoria-40-por-ciento/2026-10-14-8-conversaciones-hasta-8-a-la-vez-8192-entrada-128-respuesta-servidor-8/README.md) | 40% | **8 activas** | 8.192 + 128 | **Sí: 8/8** | No se intentó | 52,5 s | 8 respuestas solapadas; cola máxima 7 |
 | [8 conversaciones; hasta 8 a la vez](memoria-40-por-ciento/2026-10-14-8-conversaciones-hasta-8-a-la-vez-32768-entrada-256-respuesta-servidor-8/README.md) | 40% | **8 activas** | 32.768 + 256 | **Sí: 8/8** | No se intentó | 261,9 s | 5 respuestas solapadas; cola máxima 7; 2 recálculos |
+| [Arrancar el modelo con límite de 262.144 tokens](memoria-40-por-ciento/2026-10-14-arranque-contexto-262144-servidor-16/README.md) | 40% | **16 activas** | Sin conversaciones | Arrancó | No se enviaron conversaciones | 370,9 s | Arrancó |
+| [16 conversaciones; hasta 16 a la vez](memoria-40-por-ciento/2026-10-14-16-conversaciones-hasta-16-a-la-vez-1024-entrada-128-respuesta-servidor-16/README.md) | 40% | **16 activas** | 1.024 + 128 | **Sí: 16/16** | No se intentó | 20,3 s | 16 respuestas solapadas; cola máxima 13 |
 | [Arrancar el modelo con límite de 262.144 tokens](memoria-50-por-ciento/2026-10-14-arranque-contexto-262144-servidor-4/README.md) | 50% | **4 activas** | Sin conversaciones | Arrancó | No se enviaron conversaciones | 365,9 s | Arrancó |
 | [4 conversaciones; hasta 4 a la vez](memoria-50-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-32768-entrada-512-respuesta-servidor-4/README.md) | 50% | **4 activas** | 32.768 + 512 | **Sí: 4/4** | No se intentó | 126,8 s | 4 respuestas solapadas; cola máxima 3 |
 | [4 conversaciones; hasta 4 a la vez](memoria-50-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-65536-entrada-512-respuesta-servidor-4/README.md) | 50% | **4 activas** | 65.536 + 512 | **Sí: 4/4** | No se intentó | 282,4 s | 4 respuestas solapadas; cola máxima 3; 4 recálculos |
@@ -122,6 +124,8 @@ Las tablas principales muestran la batería con medición detallada. Cada fila e
 | [8 conversaciones; hasta 8 a la vez](memoria-40-por-ciento/2026-10-14-8-conversaciones-hasta-8-a-la-vez-1024-entrada-128-respuesta-servidor-8/README.md) | 40% | 36,8% | 45,1% | 1.024 + 128 | 8 / 8 / 8 / 8 | **Sí: 8/8** | 2,6 | 15,1 | 120,9 | 15,4 | 8,47 | 66,28 | 8,8% | 5 | 0 | Terminó |
 | [8 conversaciones; hasta 8 a la vez](memoria-40-por-ciento/2026-10-14-8-conversaciones-hasta-8-a-la-vez-8192-entrada-128-respuesta-servidor-8/README.md) | 40% | 36,9% | 45,1% | 8.192 + 128 | 8 / 8 / 8 / 8 | **Sí: 8/8** | 22,7 | 50,8 | 406,5 | 52,5 | 2,52 | 19,51 | 43,2% | 7 | 0 | Terminó |
 | [8 conversaciones; hasta 8 a la vez](memoria-40-por-ciento/2026-10-14-8-conversaciones-hasta-8-a-la-vez-32768-entrada-256-respuesta-servidor-8/README.md) | 40% | 36,9% | 45,0% | 32.768 + 256 | 8 / 8 / 5 / 5 | **Sí: 8/8** | 124,7 | 224,6 | 1.796,7 | 261,9 | 1,17 | 7,82 | 99,0% | 7 | 2 | Terminó con 2 recálculos |
+| [Arrancar el modelo con límite de 262.144 tokens](memoria-40-por-ciento/2026-10-14-arranque-contexto-262144-servidor-16/README.md) | 40% | No aplica | No aplica | Sin conversaciones | Límite 16 | Arrancó | No aplica | No aplica | No aplica | 370,9 | No aplica | No aplica | No aplica | No aplica | No aplica | Arrancó |
+| [16 conversaciones; hasta 16 a la vez](memoria-40-por-ciento/2026-10-14-16-conversaciones-hasta-16-a-la-vez-1024-entrada-128-respuesta-servidor-16/README.md) | 40% | 36,4% | 44,9% | 1.024 + 128 | 16 / 16 / 16 / 16 | **Sí: 16/16** | 4,3 | 19,8 | 316,1 | 20,3 | 6,48 | 100,92 | 17,0% | 13 | 0 | Terminó |
 | [Arrancar el modelo con límite de 262.144 tokens](memoria-50-por-ciento/2026-10-14-arranque-contexto-262144-servidor-4/README.md) | 50% | No aplica | No aplica | Sin conversaciones | Límite 4 | Arrancó | No aplica | No aplica | No aplica | 365,9 | No aplica | No aplica | No aplica | No aplica | No aplica | Arrancó |
 | [4 conversaciones; hasta 4 a la vez](memoria-50-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-32768-entrada-512-respuesta-servidor-4/README.md) | 50% | 46,9% | 55,6% | 32.768 + 512 | 4 / 4 / 4 / 4 | **Sí: 4/4** | 41,1 | 123,6 | 494,4 | 126,8 | 4,14 | 16,15 | 55,0% | 3 | 0 | Terminó |
 | [4 conversaciones; hasta 4 a la vez](memoria-50-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-65536-entrada-512-respuesta-servidor-4/README.md) | 50% | 47,0% | 55,6% | 65.536 + 512 | 4 / 4 / 4 / 4 | **Sí: 4/4** | 112,2 | 272,2 | 1.088,9 | 282,4 | 1,88 | 7,25 | 99,9% | 3 | 4 | Terminó con 4 recálculos |
@@ -188,7 +192,7 @@ Esta tabla distingue las pruebas terminadas de las que todavía faltan. No inclu
 | 85% | 4 activas | Conversaciones con historiales independientes | 2/2 | Terminada |
 | 92% | 4 activas | Conversaciones con historiales independientes | 2/2 | Terminada |
 | 40% | 8 activas | Conversaciones con historiales independientes | 3/3 | Terminada |
-| 40% | 16 activas | Conversaciones con historiales independientes | 0/2 | Pendiente |
+| 40% | 16 activas | Conversaciones con historiales independientes | 1/2 | En curso |
 | 40% | 32 activas | Conversaciones con historiales independientes | 0/2 | Pendiente |
 | 40% | 64 activas | Conversaciones con historiales independientes | 0/2 | Pendiente |
 | 70% | 16 activas | Conversaciones con historiales independientes | 0/2 | Pendiente |
@@ -196,7 +200,7 @@ Esta tabla distingue las pruebas terminadas de las que todavía faltan. No inclu
 | 50% | 3 activas | Conversaciones con historiales independientes | 0/1 | Pendiente |
 | 35% | 4 activas | Conversaciones con historiales independientes | 0/2 | Pendiente |
 | 70% | 2 activas | Conversaciones con historiales independientes | 0/1 | Pendiente |
-| 40% | 4 activas | Repeticiones de control al final de la campaña | 0/2 | Pendiente |
+| 40% | 4 activas | Repeticiones de control al final de la campaña | 0/4 | Pendiente |
 | 85% | 4 activas | Comprobación con mayor tiempo de espera | 0/1 | Pendiente |
 | 70% | 4 activas | Repetir y ampliar el mismo historial | 0/6 | Pendiente |
 | 92% | 4 activas | Comprobación con mayor tiempo de espera | 0/1 | Pendiente |
