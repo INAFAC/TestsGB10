@@ -13,7 +13,7 @@
     "--reasoning-parser",
     "qwen3"
   ],
-  "status": "running",
+  "status": "complete",
   "tests": [
     {
       "case": "01-cold-65536",
@@ -34,6 +34,16 @@
       "case": "04-repeat-131072",
       "exit_code": 0,
       "seconds": 15.545686241006479
+    },
+    {
+      "case": "05-extend-262016",
+      "exit_code": 0,
+      "seconds": 344.11829696799396
+    },
+    {
+      "case": "06-repeat-262016",
+      "exit_code": 0,
+      "seconds": 20.374009627004853
     }
   ]
 }
