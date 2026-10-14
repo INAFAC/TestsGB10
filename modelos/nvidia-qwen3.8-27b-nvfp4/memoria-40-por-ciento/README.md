@@ -17,7 +17,7 @@ Esta tabla distingue las pruebas terminadas de las que todavía faltan. No inclu
 | 40% | 64 activas | Conversaciones con historiales independientes | 2/2 | Terminada |
 | 40% | 4 activas | Repetir y ampliar el mismo historial | 6/6 | Terminada |
 | 40% | 4 activas | Repeticiones de control al final de la campaña | 0/4 | Pendiente |
-| 40% | 128 activas | Conversaciones con historiales independientes | 0/1 | Pendiente |
+| 40% | 128 activas | Conversaciones con historiales independientes | 0/1 | En curso |
 | 40% | 4 activas | Comprobación con mayor tiempo de espera | 0/1 | Pendiente |
 
 Las tablas principales muestran la batería con medición detallada. Cada fila enlaza los datos de todas sus conversaciones. Los arranques y rechazos tienen medidas que no corresponden a una generación: se marcan como «No aplica».
@@ -54,6 +54,8 @@ Las tablas principales muestran la batería con medición detallada. Cada fila e
 | [Arrancar el modelo con límite de 262.144 tokens](2026-10-14-arranque-contexto-262144-servidor-64/README.md) | 40% | **64 activas** | Sin conversaciones | Arrancó | No se enviaron conversaciones | 391,0 s | Arrancó |
 | [64 conversaciones; hasta 64 a la vez](2026-10-14-64-conversaciones-hasta-64-a-la-vez-1024-entrada-128-respuesta-servidor-64/README.md) | 40% | **64 activas** | 1.024 + 128 | **Sí: 64/64** | No se intentó | 53,8 s | 64 respuestas solapadas; cola máxima 61 |
 | [64 conversaciones; hasta 64 a la vez](2026-10-14-64-conversaciones-hasta-64-a-la-vez-8192-entrada-128-respuesta-servidor-64/README.md) | 40% | **64 activas** | 8.192 + 128 | **Sí: 64/64** | No se intentó | 311,4 s | 18 respuestas solapadas; cola máxima 63 |
+| [Arrancar el modelo con límite de 262.144 tokens (comprobación adicional)](2026-10-14-arranque-contexto-262144-servidor-128-comparacion-adicional/README.md) | 40% | **128 activas** | Sin conversaciones | Arrancó | No se enviaron conversaciones | 456,3 s | Arrancó |
+| [128 conversaciones; hasta 128 a la vez](2026-10-14-128-conversaciones-hasta-128-a-la-vez-1024-entrada-128-respuesta-servidor-128-comparacion-adicional/README.md) | 40% | **128 activas** | 1.024 + 128 | 0/128 (en curso) | No se intentó | 20,2 s | 40 activas en el motor; cola máxima 125 |
 
 <details>
 <summary>Comparación completa de memoria, tiempos y tokens por segundo</summary>
@@ -90,6 +92,8 @@ Las tablas principales muestran la batería con medición detallada. Cada fila e
 | [Arrancar el modelo con límite de 262.144 tokens](2026-10-14-arranque-contexto-262144-servidor-64/README.md) | 40% | No aplica | No aplica | Sin conversaciones | Límite 64 | Arrancó | No aplica | No aplica | No aplica | 391,0 | No aplica | No aplica | No aplica | No aplica | No aplica | Arrancó |
 | [64 conversaciones; hasta 64 a la vez](2026-10-14-64-conversaciones-hasta-64-a-la-vez-1024-entrada-128-respuesta-servidor-64/README.md) | 40% | 36,6% | 45,4% | 1.024 + 128 | 64 / 64 / 64 / 64 | **Sí: 64/64** | 15,6 | 51,1 | 3.268,6 | 53,8 | 2,51 | 152,22 | 68,8% | 61 | 0 | Terminó |
 | [64 conversaciones; hasta 64 a la vez](2026-10-14-64-conversaciones-hasta-64-a-la-vez-8192-entrada-128-respuesta-servidor-64/README.md) | 40% | 36,6% | 45,2% | 8.192 + 128 | 64 / 64 / 18 / 18 | **Sí: 64/64** | 145,3 | 216,5 | 13.854,2 | 311,4 | 0,71 | 26,31 | 98,5% | 63 | 0 | Terminó atendiendo por turnos |
+| [Arrancar el modelo con límite de 262.144 tokens (comprobación adicional)](2026-10-14-arranque-contexto-262144-servidor-128-comparacion-adicional/README.md) | 40% | No aplica | No aplica | Sin conversaciones | Límite 128 | Arrancó | No aplica | No aplica | No aplica | 456,3 | No aplica | No aplica | No aplica | No aplica | No aplica | Arrancó |
+| [128 conversaciones; hasta 128 a la vez](2026-10-14-128-conversaciones-hasta-128-a-la-vez-1024-entrada-128-respuesta-servidor-128-comparacion-adicional/README.md) | 40% | 36,5% | 45,8% | 1.024 + 128 | 128 / 128 / 40 / — | 0/128 (en curso) | Pendiente | Pendiente | Pendiente | 20,2 | Pendiente | Pendiente | 45,1% | 125 | 0 | En curso |
 
 </details>
 
