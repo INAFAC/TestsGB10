@@ -65,7 +65,9 @@ Se mide la caché aproximadamente cada segundo y la memoria/temperatura GPU apro
 
 Los arranques fallidos, rechazos e interrupciones se conservan como resultados. Una solicitud sin entrar en ejecución puede detenerse a los 90 segundos; los ensayos de la matriz tienen un límite de 1.500 segundos. No completar dentro de ese criterio no demuestra imposibilidad absoluta.
 
-“No medido” significa que ese dato no se recogió. Las primeras pruebas tenían menos mediciones y se conservan como “primera medición”. No se rellenan huecos con estimaciones.
+“No medido” significa que ese dato no se recogió; no significa que falte subir un archivo. Las primeras pruebas tenían menos mediciones y se conservan en el desplegable **Histórico: primeras mediciones con menos datos**. Las tablas principales muestran las mediciones detalladas. No se rellenan huecos con estimaciones.
+
+“No aplica” significa que esa medida no corresponde al tipo de prueba: por ejemplo, un arranque no tiene tokens por segundo de respuesta. “No se intentó” en la columna del máximo significa que se eligió una conversación más corta, no que la prueba haya fallado.
 
 Los resultados describen las cargas y la configuración probadas. No evalúan la calidad del texto ni estabilidad durante días. El mínimo probado que funciona no tiene por qué ser el mínimo exacto posible.
 

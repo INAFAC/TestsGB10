@@ -192,9 +192,27 @@ def table(tests,base,full=False):
         title=f"[{label}]({link(t['path']/'README.md',base)})"
         tokens=integer(t['input'])+' + '+integer(t['output']) if t['type']!='arranque' else 'Sin conversaciones'
         if full:
+            if t['type']!='conversaciones':
+                cells=[title,str(t['memory'])+'%','No aplica','No aplica',tokens,
+                       'Límite '+str(t['limit']),completion(t),'No aplica','No aplica','No aplica',
+                       number(t['duration']),'No aplica','No aplica','No aplica','No aplica','No aplica',t['state']]
+                lines.append('| '+' | '.join(cells)+' |')
+                continue
             lines.append(f"| {title} | {t['memory']}% | {percent(t['engine'])} | {percent(t['system'])} | {tokens} | {t['concurrency']} / {t['limit']} / {integer(t['active'])} / {integer(t['overlap'])} | {completion(t)} | {number(t['ttft'])} | {number(t['response'])} | {number(t['sum_response'])} | {number(t['duration'])} | {number(t['request_rate'],2)} | {number(t['throughput'],2)} | {percent(t['cache'])} | {integer(t['queue'])} | {integer(t['preemptions'])} | {t['state']} |")
         else:
             lines.append(f"| {title} | {t['memory']}% | **{t['limit']} activas** | {tokens} | {completion(t)} | {maximum(t)} | {number(t['duration'])} s | {behavior(t)} |")
+    return lines
+
+def report_tables(tests,base):
+    current=[t for t in tests if not t['c'].get('medicion_inicial')]
+    historical=[t for t in tests if t['c'].get('medicion_inicial')]
+    lines=['Las tablas principales muestran la batería con medición detallada. Cada fila enlaza los datos de todas sus conversaciones. Los arranques y rechazos tienen medidas que no corresponden a una generación: se marcan como «No aplica».','']
+    lines+=table(current,base)
+    lines+=['','<details>','<summary>Comparación completa de memoria, tiempos y tokens por segundo</summary>','']+table(current,base,True)+['','</details>','']
+    if historical:
+        lines+=['<details>','<summary>Histórico: primeras mediciones con menos datos</summary>','',
+                'Estas pruebas anteriores sí se realizaron, pero no recogían todas las medidas. «No medido» aquí significa que el dato no se registró, no que falte subirlo. Las repeticiones con medición detallada están en las tablas principales; sus cargas y cantidades se indican en cada fila.','']
+        lines+=table(historical,base)+['']+table(historical,base,True)+['','</details>','']
     return lines
 
 def main():
@@ -239,14 +257,13 @@ def main():
         match=re.search(r'<!-- interpretacion-inicio -->\n(.*?)\n<!-- interpretacion-fin -->',previous,re.S)
         commentary=match.group(1) if match else 'Las recomendaciones se completarán al terminar las comparaciones de memoria, concurrencia e historiales reutilizados.'
         lines += ['', '## Qué configuración elegir','', '<!-- interpretacion-inicio -->',commentary,'<!-- interpretacion-fin -->','',
-                  '## Todas las pruebas','', 'Abre el nombre de una prueba para ver cada conversación, sus tiempos, los tokens recibidos y sus registros. Las primeras mediciones se conservan y están identificadas.','']
-        lines += table(tests,model_dir)
-        lines += ['', '<details>', '<summary>Comparación completa de memoria, tiempos y tokens por segundo</summary>', '']+table(tests,model_dir,True)+['','</details>','',
-                  '## Carpetas por memoria','']
+                  '## Todas las pruebas','', 'Abre el nombre de una prueba para ver cada conversación, sus tiempos, los tokens recibidos y sus registros.','']
+        lines += report_tables(tests,model_dir)
+        lines += ['## Carpetas por memoria','']
         for mem in sorted({t['memory'] for t in tests}):
             folder=model_dir/f'memoria-{mem}-por-ciento';subset=[t for t in tests if t['memory']==mem]
             (folder/'README.md').write_text('\n'.join([f'# Pruebas con {mem}% de memoria','',f'[Volver a todas las pruebas del modelo](../README.md)','',
-                f'En estas pruebas se reservó el **{mem}% de la memoria del GB10** para el motor. El uso medido y la caché ocupada se muestran dentro de cada prueba.','']+table(subset,folder)+['']))
+                f'En estas pruebas se reservó el **{mem}% de la memoria del GB10** para el motor. El uso medido y la caché ocupada se muestran dentro de cada prueba.','']+report_tables(subset,folder)))
             lines.append(f'- [{mem}% de memoria]({folder.name}/README.md).')
         lines += ['', '## Equipo y configuración','',f"GB10: {number(equipment.get('memoria_total_gib'),2)} GiB. Pesos del modelo: {number(equipment.get('pesos_del_modelo_gib'),2)} GiB.",
                   f"Imagen: `{equipment.get('imagen','No registrada')}`. vLLM: `{equipment.get('version_vllm','No registrada')}`.",'',
