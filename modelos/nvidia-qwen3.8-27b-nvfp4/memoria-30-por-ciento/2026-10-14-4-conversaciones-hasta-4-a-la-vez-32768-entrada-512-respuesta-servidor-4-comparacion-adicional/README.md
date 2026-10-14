@@ -8,11 +8,11 @@
 
 ## ¿Qué ocurrió?
 
-- **¿Terminaron todas las conversaciones?** 1/4 (en curso). Terminar significa recibir todos los tokens de respuesta solicitados.
+- **¿Terminaron todas las conversaciones?** 2/4 (en curso). Terminar significa recibir todos los tokens de respuesta solicitados.
 - **¿Llegaron al máximo del modelo (262.144 tokens)?** No se intentó.
 - **Límite configurado en esta prueba:** 131.072 tokens, sumando entrada y respuesta.
 - **¿Se atendieron al mismo tiempo?** 2 activas en el motor; cola máxima 3.
-- **Tiempo para completar la prueba:** 96,6 s.
+- **Tiempo para completar la prueba:** 142,3 s.
 
 Se enviaron **4 conversaciones**, hasta **4 a la vez**. Cada una pidió **32.768 tokens de entrada + 512 de respuesta = 33.280 tokens**.
 
@@ -20,15 +20,16 @@ Se enviaron **4 conversaciones**, hasta **4 a la vez**. Cada una pidió **32.768
 
 | Conversación | Entrada | Respuesta pedida | Respuesta recibida | Total alcanzado | ¿Terminó? | ¿Llegó al máximo del modelo? |
 |---|---:|---:|---:|---:|---|---|
+| 2 | 32.768 | 512 | 512 | 33.280 | Sí | No |
 | 3 | 32.768 | 512 | 512 | 33.280 | Sí | No |
 | 1 | — | 512 | — | — | En curso | No acreditado |
-| 2 | — | 512 | — | — | En curso | No acreditado |
 | 4 | — | 512 | — | — | En curso | No acreditado |
 
 ## Cada conversación: tiempos y velocidad
 
 | Conversación | Espera hasta primer texto (s) | Tiempo completo (s) | Tokens/s durante la respuesta | Tokens/s incluyendo la espera |
 |---|---:|---:|---:|---:|
+| 2 | 31,66 | 97,06 | 7,81 | 5,27 |
 | 3 | 16,44 | 81,48 | 7,86 | 6,28 |
 
 ## Todas las medidas del grupo
@@ -44,21 +45,21 @@ Se enviaron **4 conversaciones**, hasta **4 a la vez**. Cada una pidió **32.768
 | Límite de solicitudes del servidor | 4 |
 | Máximo activo en el motor | 2 |
 | Máximo de respuestas solapadas | — |
-| Espera media hasta primer texto | 16,4 s |
-| Tiempo medio de respuesta completa | 81,5 s |
-| Mayor espera hasta primer texto, entre las completadas | 16,4 s |
-| Mayor tiempo completo, entre las completadas | 81,5 s |
-| Suma de los tiempos individuales | 81,5 s |
-| Tiempo total de la prueba | 96,6 s |
-| Tokens/s medios por conversación, incluyendo espera | 6,28 |
-| Tokens/s totales del grupo | 5,30 |
+| Espera media hasta primer texto | 24,0 s |
+| Tiempo medio de respuesta completa | 89,3 s |
+| Mayor espera hasta primer texto, entre las completadas | 31,7 s |
+| Mayor tiempo completo, entre las completadas | 97,1 s |
+| Suma de los tiempos individuales | 178,5 s |
+| Tiempo total de la prueba | 142,3 s |
+| Tokens/s medios por conversación, incluyendo espera | 5,78 |
+| Tokens/s totales del grupo | 7,20 |
 | Pico de caché ocupada | 88,6% |
 | Máximo de solicitudes en cola | 3 |
 | Recálculos por falta de espacio en caché | 0 |
-| Tiempo observado con cola | 95,2 s |
+| Tiempo observado con cola | 97,3 s |
 | Tiempo observado con caché al 95% o más | 0,0 s |
 | Tokens recuperados de caché de prefijos | 0 |
-| Temperatura GPU máxima | 73,0 °C |
+| Temperatura GPU máxima | 77,0 °C |
 | Límite de espera sin datos en cada conexión | 1.200 s |
 | Tiempo máximo permitido para el grupo | 1.500 s |
 
@@ -75,6 +76,7 @@ Segundos desde el inicio de la prueba.
 
 | Conversación | Enviada | Primer texto | Final |
 |---|---:|---:|---:|
+| 2 | 0,08 | 31,74 | 97,15 |
 | 3 | 0,09 | 16,53 | 81,57 |
 
 </details>
