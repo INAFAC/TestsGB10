@@ -17,11 +17,11 @@
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-40-por-ciento/2026-10-14-128-conversaciones-hasta-128-a-la-vez-1024-entrada-128-respuesta-servidor-128-comparacion-adicional/mediciones.json",
-    "sha256": "d11ffd1a08d4ac36da654e45b5a1ecbed65fd9b0204574d77406d87dc06f935c"
+    "sha256": "244f2fc046bd527901b425bab938585f0e84c13ad24875688218a7a590025db4"
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-40-por-ciento/2026-10-14-128-conversaciones-hasta-128-a-la-vez-1024-entrada-128-respuesta-servidor-128-comparacion-adicional/registro-de-ejecucion.log",
-    "sha256": "dc6b8ecc54fa56529afdd3e0d9c82efb11cf70e2f96cfd11cb577118123fdeed"
+    "sha256": "68627154b60515e7e2192d2c1cc80c23ae2e0e113f8918f8a387dc0d60592814"
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-50-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-65536-entrada-512-respuesta-servidor-3-comparacion-adicional/mediciones.json",
