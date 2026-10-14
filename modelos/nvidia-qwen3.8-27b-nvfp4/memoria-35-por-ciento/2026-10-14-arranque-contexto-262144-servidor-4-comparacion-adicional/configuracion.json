@@ -1,0 +1,11 @@
+{
+  "tipo": "arranque",
+  "modelo": "nvidia/Qwen3.8-27B-NVFP4",
+  "fecha": "2026-10-14",
+  "memoria_porcentaje": 35,
+  "limite_servidor": 4,
+  "limite_contexto_configurado": 262144,
+  "repeticion_de_control": false,
+  "comprobacion_adicional": true,
+  "espera_ampliada": false
+}
