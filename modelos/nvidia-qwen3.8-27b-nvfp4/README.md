@@ -29,23 +29,56 @@
 ## Qué configuración elegir
 
 <!-- interpretacion-inicio -->
-- **Controles al final de la campaña:** las ocho solicitudes cortas con concurrencia enviada de cuatro tardaron 26,24 s frente a 26,21 s al principio. Las cuatro de 131.072 tokens más 256 de respuesta tardaron 503,8 frente a 505,2 s, sin recálculos en ambas. Estos dos controles no muestran una pérdida apreciable de rendimiento tras la campaña.
-- **Elegir el límite según el historial, al 40%:** con ocho solicitudes simultáneas de 32.768 tokens de entrada más 256 de respuesta, limitar a cuatro activas terminó el grupo en 187,7 s y sin recálculos; permitir ocho tardó 261,9 s y produjo dos recálculos. La media individual fue de 149,1 frente a 224,6 s. Con ocho historiales de 8.192 más 128 de respuesta, los tiempos de grupo fueron 50,2 y 52,5 s, respectivamente. Subir el límite no mejora todas las cargas.
-- **Carga masiva al 85% y 92%, límite impuesto de 512:** las 512 solicitudes de 1.024 tokens de entrada y 512 de respuesta terminaron en ambos casos, sin errores ni recálculos. Al 85% se solaparon 309 respuestas y el grupo tardó 992,6 s; al 92%, 347 respuestas y 998,4 s. El rendimiento total fue de 264,1 y 262,6 tokens/s: admitir más trabajo no aceleró el grupo. Al 92%, la memoria del equipo completo llegó al 98,8%, con solo 1,48 GiB disponibles en el mínimo observado. Con 85% y respuestas más cortas de 128 tokens, también terminaron las 512, con 192 respuestas solapadas y un pico de caché del 63,1%; la longitud de salida cambia la concurrencia observada.
-- **35%, menor presupuesto probado que alcanza el máximo:** una conversación de 262.016 tokens de entrada más 128 de respuesta terminó en 586,5 s, con diez recálculos y un pico de caché del 99,7%. Cuatro historiales de 32.768 más 512 de respuesta terminaron en 140,7 s con cinco recálculos; al 40% tardaron 126,4 s sin recálculos. El 30% no pudo arrancar con el contexto máximo: el mínimo exacto queda entre ambos presupuestos, no se ha medido punto por punto.
-- **Crecer y reutilizar una conversación, 40% frente a 70%:** las seis pruebas terminaron en ambos presupuestos. Ampliar de 131.072 a 262.016 tokens de entrada y pedir 128 de respuesta tardó 344,0 s y dos recálculos al 40%, frente a 236,8 s sin recálculos al 70%. Repetir ese historial máximo ya en caché tardó 20,3 y 20,0 s, respectivamente, con menos de un segundo hasta el primer texto. La memoria extra ayudó al crecimiento grande; apenas cambió la repetición que ya cabía en caché. La carga inicial y el crecimiento a 131.072 tampoco fueron más rápidos al 70% en estas ejecuciones.
-- **Concurrencia al 40%:** con 1.024 tokens de entrada y 128 de respuesta, las 64 conversaciones terminaron en 53,8 s, con las 64 respuestas solapadas, sin recálculos y 152,2 tokens/s totales. Al enviar 128, terminaron todas en 114,6 s, pero solo se solaparon 91, hubo un recálculo y la caché llegó al 99,8%; el rendimiento total bajó a 142,9 tokens/s y la respuesta media subió de 51,1 a 95,5 s. Con historiales de 8.192, el grupo de 64 terminó en 311,4 s y solo se solaparon 18 respuestas. El máximo depende de la carga y de la espera aceptable.
-- **85%, repetición con espera ampliada:** las cuatro conversaciones de 262.016 tokens de entrada más 128 de respuesta terminaron en 1.557,8 s (25 min 58 s), sin recálculos. Hubo hasta dos solicitudes activas en el motor, pero una sola respuesta a la vez. El primer intento, que completó dos y agotó la espera del cliente en otras dos, permanece en la tabla. Con un plazo mayor se ha demostrado la finalización, no una respuesta rápida ni cuatro respuestas simultáneas.
-- **92%, repetición con espera ampliada:** las cuatro conversaciones al máximo terminaron en 1.540,7 s (25 min 41 s), sin recálculos, con dos solicitudes activas como pico y una respuesta a la vez. Frente a los 1.557,8 s del 85%, esta ejecución no muestra una mejora importante por reservar más memoria. El fallo anterior de una conexión por tiempo de espera permanece en la tabla. Con cuatro historiales de 131.072, el 92% sí había permitido cuatro respuestas solapadas, sin recálculos.
-- **70%, comparación de límites:** cuatro historiales de 131.072 más 256 de respuesta tardaron 604,9 s con límite de cuatro y dos recálculos. Con límite de dos terminaron en 477,1 s, sin recálculos, con dos respuestas solapadas y un pico de caché del 66,9%. La media individual bajó de 555,2 a 376,3 s. Al 40% la misma carga terminó en 505,2 s, con una respuesta a la vez y una media individual menor, de 315,5 s: terminar antes el grupo y esperar menos por conversación son objetivos distintos.
-- **50%, comparación de límites:** cuatro historiales de 65.536 más 512 de respuesta tardaron 282,4 s con límite de cuatro activas y cuatro recálculos. Al limitar a tres, desaparecieron los recálculos y el pico de caché bajó al 84,1%, pero el grupo tardó 327,1 s. Al 40% con límite de cuatro, la misma carga había terminado en 268,7 s sin recálculos. Menos recálculos o más memoria no garantizan por sí solos una respuesta más rápida.
-- **20%:** el servidor no arrancó ni con un límite reducido de 8.192 tokens: no quedaba presupuesto para la caché.
-- **25%:** las cuatro conversaciones cortas terminaron a la vez; las cuatro de 32.768 tokens se atendieron de una en una. Una conversación de 65.536 tokens terminó en 96 s con seis recálculos. Este es un límite reducido, no el máximo de 262.144 tokens del modelo.
-- **30%:** ha atendido cuatro historiales de 8.192 tokens a la vez. Con historiales de 32.768 mantiene dos activas, y con 65.536, una. Con este presupuesto no pudo arrancar con el máximo de 262.144 tokens.
-- **40%:** las pruebas repetidas de 32.768 tokens han terminado con cuatro respuestas solapadas; las de 65.536, con dos. Los grupos tardaron unos 126 y 269 segundos, respectivamente.
-- **Llegar al máximo puede ser lento:** en la repetición al 40%, una conversación llegó exactamente a 262.144 tokens y entregó los 128 de respuesta solicitados. Tardó unos **561 segundos**, con unos **542 segundos hasta el primer texto**, y necesitó **cuatro recálculos**. Puede terminar, pero este caso tiene una espera larga.
+**El 40% con límite de cuatro es un punto de partida razonable para el uso probado.** Cuatro historiales de 32.768 tokens más 512 de respuesta terminaron con respuestas solapadas y sin recálculos. Con historiales mayores el servidor atiende parte del trabajo por turnos. Subir el presupuesto o el límite de solicitudes activas no mejora todas las cargas.
 
-Solo queda la verificación de cuatro conversaciones al máximo con el 40%, seguida de la restauración y revisión final.
+| Necesidad | Lo que muestran las pruebas |
+|---|---|
+| Reservar poca memoria | El 20% no arrancó. El 25% completó un contexto reducido de 65.536 tokens; el 30%, uno de 131.072. El arranque del 30% con 262.144 falló. |
+| Conservar el máximo de 262.144 tokens | El 35% fue el menor presupuesto probado que lo completó: 586,5 s y diez recálculos para una conversación. Al 40% fueron 560,8 s y cuatro recálculos. No se midió cada porcentaje intermedio. |
+| Cuatro conversaciones de tamaño moderado | Al 40%, cuatro de 32.768 + 512 terminaron en 126,4 s; cuatro de 65.536 + 512, en 268,7 s, con dos respuestas solapadas. |
+| Crecer hasta el contexto máximo reutilizando un historial | Pasar de 131.072 a 262.016 tokens de entrada y pedir 128 de salida tardó 344,0 s al 40% y 236,8 s al 70%. La memoria extra ayudó en este crecimiento. |
+| Muchas conversaciones cortas | Al 40%, el grupo de 64 solicitudes de 1.024 + 128 fue más eficiente que el de 128: 152,2 frente a 142,9 tokens/s totales. La espera y el historial importan tanto como el número de solicitudes. |
+
+### Cuatro conversaciones que llegan al máximo
+
+En cada conversación se enviaron **262.016 tokens de entrada y se pidieron 128 de respuesta**. Se mantuvo el límite de cuatro activas y se amplió la espera del cliente para comprobar si podían terminar.
+
+| Memoria | Terminadas | Tiempo de todo el grupo | Espera media al primer texto | Respuestas solapadas | Recálculos | Datos |
+|---|---:|---:|---:|---:|---:|---|
+| 40% | 4/4 | 2.243,3 s | 1.380,8 s | 1 | 16 | [Ver prueba](memoria-40-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-262016-entrada-128-respuesta-servidor-4-comparacion-adicional-espera-ampliada/README.md) |
+| 85% | 4/4 | 1.557,8 s | 940,5 s | 1 | 0 | [Ver prueba](memoria-85-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-262016-entrada-128-respuesta-servidor-4-comparacion-adicional-espera-ampliada/README.md) |
+| 92% | 4/4 | 1.540,7 s | 930,2 s | 1 | 0 | [Ver prueba](memoria-92-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-262016-entrada-128-respuesta-servidor-4-comparacion-adicional-espera-ampliada/README.md) |
+
+**El 40% pudo completar las cuatro, pero por turnos:** el grupo tardó 37,4 minutos y hubo 16 recálculos. Al 85% y al 92% terminó en unos 26 minutos, sin recálculos, pero también con una sola respuesta a la vez. Conservar el contexto máximo no equivale a responder rápido cuando se cargan cuatro historiales completos.
+
+Los primeros intentos al 85% y al 92% agotaron el tiempo de espera del cliente en dos y una conversaciones, respectivamente. Esos fallos permanecen en la tabla. Las repeticiones con más espera completaron las cuatro; eso demuestra finalización, no cuatro respuestas simultáneas.
+
+### Concurrencia observada según la carga
+
+| Memoria | Entrada + respuesta | Solicitudes enviadas / límite impuesto | Pico de respuestas solapadas | Tiempo del grupo | Caché máxima | Datos |
+|---|---:|---:|---:|---:|---:|---|
+| 40% | 1.024 + 128 | 64 / 64 | 64 | 53,8 s | 68,8% | [Ver prueba](memoria-40-por-ciento/2026-10-14-64-conversaciones-hasta-64-a-la-vez-1024-entrada-128-respuesta-servidor-64/README.md) |
+| 40% | 1.024 + 128 | 128 / 128 | 91 | 114,6 s | 99,8% | [Ver prueba](memoria-40-por-ciento/2026-10-14-128-conversaciones-hasta-128-a-la-vez-1024-entrada-128-respuesta-servidor-128-comparacion-adicional/README.md) |
+| 40% | 8.192 + 128 | 64 / 64 | 18 | 311,4 s | 98,5% | [Ver prueba](memoria-40-por-ciento/2026-10-14-64-conversaciones-hasta-64-a-la-vez-8192-entrada-128-respuesta-servidor-64/README.md) |
+| 70% | 32.768 + 256 | 16 / 16 | 12 | 508,1 s | 98,3% | [Ver prueba](memoria-70-por-ciento/2026-10-14-16-conversaciones-hasta-16-a-la-vez-32768-entrada-256-respuesta-servidor-16/README.md) |
+| 85% | 1.024 + 512 | 512 / 512 | 309 | 992,6 s | 100,0% | [Ver prueba](memoria-85-por-ciento/2026-10-14-512-conversaciones-hasta-512-a-la-vez-1024-entrada-512-respuesta-servidor-512-comparacion-adicional/README.md) |
+| 92% | 1.024 + 512 | 512 / 512 | 347 | 998,4 s | 99,9% | [Ver prueba](memoria-92-por-ciento/2026-10-14-512-conversaciones-hasta-512-a-la-vez-1024-entrada-512-respuesta-servidor-512-comparacion-adicional/README.md) |
+
+Con 512 solicitudes de 1.024 + 512, el rendimiento total fue de **264,1 tokens/s al 85% y 262,6 al 92%**. El pico de memoria del sistema completo al 92% fue del 98,8%. Esa reserva deja mucho menos margen para otros procesos; no se probaron dos modelos residentes a la vez.
+
+Estos son máximos **observados para esas cargas**, no un número universal de conversaciones del GB10. Las primeras pruebas tenían un límite de cuatro impuesto por configuración. Las de cientos de solicitudes levantan ese límite, pero incluyen colas y esperas largas. La longitud de entrada y de salida cambia cuántas pueden avanzar a la vez.
+
+### Qué cambia cuando el historial ya está en caché
+
+Repetir una sola conversación con 262.016 tokens de entrada ya guardados y 128 de respuesta tardó **20,3 s al 40% y 20,0 s al 70%**, con menos de un segundo hasta el primer texto. Al ampliar el historial hasta ese tamaño se tardó mucho más: 344,0 y 236,8 s. Otros historiales pueden desplazar esa caché, por lo que esos 20 segundos no están garantizados con varios usuarios.
+
+### Por qué no conviene subir todos los límites
+
+- **Al 40%, ocho solicitudes simultáneas de 32.768 + 256:** limitar el servidor a cuatro terminó el grupo en 187,7 s, sin recálculos. Permitir ocho tardó 261,9 s y produjo dos recálculos. La respuesta media individual pasó de 149,1 a 224,6 s.
+- **Al 70%, cuatro solicitudes de 131.072 + 256:** limitar a dos terminó el grupo en 477,1 s sin recálculos; permitir cuatro tardó 604,9 s con dos. Al 40% esa carga tardó 505,2 s, pero su media individual fue menor: 315,5 frente a 376,3 s con 70% y límite de dos. Terminar antes el grupo y reducir la espera individual son objetivos distintos.
+- **Al 50%, cuatro solicitudes de 65.536 + 512:** bajar el límite de cuatro a tres eliminó los recálculos, pero aumentó el tiempo total de 282,4 a 327,1 s. Evitar recálculos tampoco garantiza por sí solo más velocidad.
+
+Los controles al final de la campaña fueron muy cercanos a los iniciales: 26,24 frente a 26,21 s para ocho solicitudes cortas con concurrencia de cuatro, y 503,8 frente a 505,2 s para cuatro historiales de 131.072 + 256. No muestran una pérdida apreciable de rendimiento en esas dos cargas. Cada fila corresponde a una ejecución; diferencias pequeñas no son una garantía de mejora.
 <!-- interpretacion-fin -->
 
 ## Todas las pruebas
