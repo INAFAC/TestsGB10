@@ -71,6 +71,8 @@ Los arranques fallidos, rechazos e interrupciones se conservan como resultados. 
 
 “No aplica” significa que esa medida no corresponde al tipo de prueba: por ejemplo, un arranque no tiene tokens por segundo de respuesta. “No se intentó” en la columna del máximo significa que se eligió una conversación más corta, no que la prueba haya fallado.
 
+“Pendiente” significa que la prueba sigue en curso y todavía no existe esa medida; por ejemplo, aún no ha terminado ninguna respuesta para calcular su tiempo medio.
+
 Los resultados describen las cargas y la configuración probadas. No evalúan la calidad del texto ni estabilidad durante días. El mínimo probado que funciona no tiene por qué ser el mínimo exacto posible.
 
 ## Dónde están los datos

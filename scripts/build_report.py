@@ -179,6 +179,8 @@ def write_test(t,model_dir,equipment):
         rows += [('Tiempo observado con cola',number(s.get('seconds_with_queue'))+' s'),
                  ('Tiempo observado con caché al 95% o más',number(s.get('seconds_cache_above_95_percent'))+' s'),
                  ('Tokens recuperados de caché de prefijos',integer(s.get('prefix_cache_hits'))),('Temperatura GPU máxima',number(s.get('peak_gpu_temperature_c'))+' °C')]
+        if s.get('status')=='running':
+            rows=[(name,'Pendiente' if value.startswith('No medido') else value) for name,value in rows]
         lines += ['', '## Todas las medidas del grupo','', '| Medida | Resultado |','|---|---|']+[f'| {name} | {value} |' for name,value in rows]
         lines += ['', 'La caché guarda información del historial. Un recálculo significa que el motor tuvo que desalojar trabajo y repetirlo. Una cola breve durante la lectura inicial no prueba por sí sola falta de memoria.','',
                   'Los tiempos individuales se solapan: su suma puede superar el tiempo total de la prueba. Las velocidades cuentan tokens de respuesta, no tokens de entrada.']
@@ -216,6 +218,8 @@ def table(tests,base,full=False):
             lines.append(f"| {title} | {t['memory']}% | {percent(t['engine'])} | {percent(t['system'])} | {tokens} | {t['concurrency']} / {t['limit']} / {integer(t['active'])} / {integer(t['overlap'])} | {completion(t)} | {number(t['ttft'])} | {number(t['response'])} | {number(t['sum_response'])} | {number(t['duration'])} | {number(t['request_rate'],2)} | {number(t['throughput'],2)} | {percent(t['cache'])} | {integer(t['queue'])} | {integer(t['preemptions'])} | {t['state']} |")
         else:
             lines.append(f"| {title} | {t['memory']}% | **{t['limit']} activas** | {tokens} | {completion(t)} | {maximum(t)} | {number(t['duration'])} s | {behavior(t)} |")
+        if t.get('summary',{}).get('status')=='running':
+            lines[-1]=lines[-1].replace('No medido','Pendiente')
     return lines
 
 def report_tables(tests,base):
