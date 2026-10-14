@@ -12,13 +12,15 @@ Esta tabla distingue las pruebas terminadas de las que todavía faltan. No inclu
 |---:|---:|---|---:|---|
 | 70% | 4 activas | Conversaciones con historiales independientes | 3/3 | Terminada |
 | 70% | 16 activas | Conversaciones con historiales independientes | 2/2 | Terminada |
-| 70% | 2 activas | Conversaciones con historiales independientes | 0/1 | Pendiente |
+| 70% | 2 activas | Conversaciones con historiales independientes | 0/1 | En curso |
 | 70% | 4 activas | Repetir y ampliar el mismo historial | 0/6 | Pendiente |
 
 Las tablas principales muestran la batería con medición detallada. Cada fila enlaza los datos de todas sus conversaciones. Los arranques y rechazos tienen medidas que no corresponden a una generación: se marcan como «No aplica».
 
 | Prueba | Memoria asignada | Límite impuesto al servidor | Tokens por conversación: entrada + respuesta | ¿Terminaron? | ¿Llegaron al máximo del modelo? | Tiempo total | Simultaneidad, colas y problemas |
 |---|---:|---:|---:|---|---|---:|---|
+| [Arrancar el modelo con límite de 262.144 tokens (comprobación adicional)](2026-10-14-arranque-contexto-262144-servidor-2-comparacion-adicional/README.md) | 70% | **2 activas** | Sin conversaciones | Arrancó | No se enviaron conversaciones | 376,0 s | Arrancó |
+| [4 conversaciones; hasta 4 a la vez](2026-10-14-4-conversaciones-hasta-4-a-la-vez-131072-entrada-256-respuesta-servidor-2-comparacion-adicional/README.md) | 70% | **2 activas** | 131.072 + 256 | 0/4 (en curso) | No se intentó | 10,2 s | 1 activa en el motor; cola máxima 3 |
 | [Arrancar el modelo con límite de 262.144 tokens](2026-10-14-arranque-contexto-262144-servidor-4/README.md) | 70% | **4 activas** | Sin conversaciones | Arrancó | No se enviaron conversaciones | 375,9 s | Arrancó |
 | [4 conversaciones; hasta 4 a la vez](2026-10-14-4-conversaciones-hasta-4-a-la-vez-65536-entrada-512-respuesta-servidor-4/README.md) | 70% | **4 activas** | 65.536 + 512 | **Sí: 4/4** | No se intentó | 238,0 s | 4 respuestas solapadas; cola máxima 3 |
 | [4 conversaciones; hasta 4 a la vez](2026-10-14-4-conversaciones-hasta-4-a-la-vez-131072-entrada-256-respuesta-servidor-4/README.md) | 70% | **4 activas** | 131.072 + 256 | **Sí: 4/4** | No se intentó | 604,9 s | 3 respuestas solapadas; cola máxima 3; 2 recálculos |
@@ -32,6 +34,8 @@ Las tablas principales muestran la batería con medición detallada. Cada fila e
 
 | Prueba | Memoria asignada | Motor / GB10 | Sistema / GB10 | Entrada + respuesta | Enviadas / límite servidor / activas / respuestas solapadas | Terminadas | Espera media (s) | Respuesta media (s) | Suma individual (s) | Tiempo prueba (s) | Tokens/s por conversación | Tokens/s totales | Pico caché | Cola máxima | Recálculos | Resultado |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|
+| [Arrancar el modelo con límite de 262.144 tokens (comprobación adicional)](2026-10-14-arranque-contexto-262144-servidor-2-comparacion-adicional/README.md) | 70% | No aplica | No aplica | Sin conversaciones | Límite 2 | Arrancó | No aplica | No aplica | No aplica | 376,0 | No aplica | No aplica | No aplica | No aplica | No aplica | Arrancó |
+| [4 conversaciones; hasta 4 a la vez](2026-10-14-4-conversaciones-hasta-4-a-la-vez-131072-entrada-256-respuesta-servidor-2-comparacion-adicional/README.md) | 70% | 66,7% | 75,4% | 131.072 + 256 | 4 / 2 / 1 / — | 0/4 (en curso) | Pendiente | Pendiente | Pendiente | 10,2 | Pendiente | Pendiente | 5,2% | 3 | 0 | En curso |
 | [Arrancar el modelo con límite de 262.144 tokens](2026-10-14-arranque-contexto-262144-servidor-4/README.md) | 70% | No aplica | No aplica | Sin conversaciones | Límite 4 | Arrancó | No aplica | No aplica | No aplica | 375,9 | No aplica | No aplica | No aplica | No aplica | No aplica | Arrancó |
 | [4 conversaciones; hasta 4 a la vez](2026-10-14-4-conversaciones-hasta-4-a-la-vez-65536-entrada-512-respuesta-servidor-4/README.md) | 70% | 66,7% | 75,7% | 65.536 + 512 | 4 / 4 / 4 / 4 | **Sí: 4/4** | 98,8 | 231,0 | 924,1 | 238,0 | 2,22 | 8,60 | 67,1% | 3 | 0 | Terminó |
 | [4 conversaciones; hasta 4 a la vez](2026-10-14-4-conversaciones-hasta-4-a-la-vez-131072-entrada-256-respuesta-servidor-4/README.md) | 70% | 66,7% | 75,5% | 131.072 + 256 | 4 / 4 / 4 / 3 | **Sí: 4/4** | 329,3 | 555,2 | 2.220,9 | 604,9 | 0,47 | 1,69 | 99,7% | 3 | 2 | Terminó con 2 recálculos |

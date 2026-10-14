@@ -24,6 +24,14 @@
     "sha256": "3b8bd59f45dc9f5886618357dea34a3a54a518ce402c8427208efdcb3fc5b457"
   },
   {
+    "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-70-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-131072-entrada-256-respuesta-servidor-2-comparacion-adicional/mediciones.json",
+    "sha256": "0f486c58b8508d3d9bb3c800c43ff74bde462fea64082c078a2792e21f659b00"
+  },
+  {
+    "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-70-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-131072-entrada-256-respuesta-servidor-2-comparacion-adicional/registro-de-ejecucion.log",
+    "sha256": "53a745c713a6ec17c2f906ee5ab21f99e407499834e2984f34e2bffd31edbc29"
+  },
+  {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-25-por-ciento/2026-10-14-1-conversaciones-hasta-1-a-la-vez-65280-entrada-256-respuesta-servidor-4/mediciones.json",
     "sha256": "126cc70614e6ea796b57a96898cb80c719bc83a25adaddc4d586b6a6698e2429"
   },
@@ -460,6 +468,10 @@
     "sha256": "883f4a728b0edeaf661a88142807d59087a04c3146fb6436c8fc53fa56f2e36b"
   },
   {
+    "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-70-por-ciento/2026-10-14-arranque-contexto-262144-servidor-2-comparacion-adicional/registro-del-servidor.log",
+    "sha256": "e4ba57d094d72e475c20a2adbb55882b9a9d3d178a72c781c9fe2895feca3dc2"
+  },
+  {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-40-por-ciento/2026-10-14-arranque-contexto-262144-servidor-4/registro-del-servidor.log",
     "sha256": "42055d91e1028b53721da8842939a1d0a85d4ac342588dcfb87090baaaf4689f"
   },
@@ -525,7 +537,7 @@
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparaciones-adicionales/configuracion-y-estado.json",
-    "sha256": "33ed1396adf27c06f153034ebe92ec806deae7be35d774185701188a68c17153"
+    "sha256": "442aaa2be9b86467d2b6c5c80a638b37fb18d381aba5a8d58ce64d858b32a937"
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparaciones-adicionales/ultimo-cambio-temporal.json",
