@@ -365,11 +365,19 @@
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-40-por-ciento/2026-10-14-1-conversaciones-hasta-1-a-la-vez-131072-entrada-128-respuesta-servidor-4-4-historial-repetido/mediciones.json",
-    "sha256": "37f432b9382ad3b29b9c79db83ae8d8255915dca91368698f942ad549ce58937"
+    "sha256": "806ec4a4d7ef97dc358cc4373366c2953e717a6e2801323ef4647305254923fe"
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-40-por-ciento/2026-10-14-1-conversaciones-hasta-1-a-la-vez-131072-entrada-128-respuesta-servidor-4-4-historial-repetido/registro-de-ejecucion.log",
-    "sha256": "c855b01187a7cc55b00062b55191a36fc30fd614896640b15bfef8d44f078151"
+    "sha256": "a7415d4607157169b53b9946101ff5e493286fb9455bd449152cdc1acf7ca99d"
+  },
+  {
+    "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-40-por-ciento/2026-10-14-1-conversaciones-hasta-1-a-la-vez-262016-entrada-128-respuesta-servidor-4-5-historial-ampliado/mediciones.json",
+    "sha256": "d0ab8ebff3747938662ccff1f6fa674828d8c41fddf61f1c2afbe5586861dd7f"
+  },
+  {
+    "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-40-por-ciento/2026-10-14-1-conversaciones-hasta-1-a-la-vez-262016-entrada-128-respuesta-servidor-4-5-historial-ampliado/registro-de-ejecucion.log",
+    "sha256": "2c7db209ce8265f1edd675a37409d68dbae86cf1f3746368d7bbdb0de48464b5"
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-40-por-ciento/2026-10-14-20-conversaciones-hasta-1-a-la-vez-1024-entrada-128-respuesta-servidor-4-medicion-inicial/mediciones.json",
@@ -553,7 +561,7 @@
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/pruebas-de-historial-reutilizado/configuracion-y-estado.json",
-    "sha256": "c257571fb821073f2fba367ca0a8e5e66cde25b2d3073f1b314c372966572bb6"
+    "sha256": "f5028c8bdbbba0cc8cd9cdb779713a15c96cdf9e0bea39299af5492acd6c61db"
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/plan-de-las-pruebas/plan-y-estado-general.json",
