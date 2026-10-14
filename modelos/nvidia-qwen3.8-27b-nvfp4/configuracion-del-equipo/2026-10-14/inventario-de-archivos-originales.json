@@ -341,11 +341,19 @@
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-40-por-ciento/2026-10-14-1-conversaciones-hasta-1-a-la-vez-65536-entrada-128-respuesta-servidor-4-1-historial-nuevo/mediciones.json",
-    "sha256": "c7b34fbc1fa19dac11e11a31b206d50c7b3206922135d081a9beafd12b645dc4"
+    "sha256": "0d5bfba717fb0370045d4a0a1f75d0453ce40cbd117fdf439c83a284c8d11ec9"
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-40-por-ciento/2026-10-14-1-conversaciones-hasta-1-a-la-vez-65536-entrada-128-respuesta-servidor-4-1-historial-nuevo/registro-de-ejecucion.log",
-    "sha256": "29362c2d7f699972eb364711b96c6c37e75eda4e5dd37dad93a3d5fc93dbb4ed"
+    "sha256": "25238de279f4bb07b2b8aadb644068126ff1f960a520b403115f550267f8412c"
+  },
+  {
+    "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-40-por-ciento/2026-10-14-1-conversaciones-hasta-1-a-la-vez-65536-entrada-128-respuesta-servidor-4-2-historial-repetido/mediciones.json",
+    "sha256": "3d1103cdd0eda07529f306dff87e8ef46b6ce7d9164946e8d6ec81955407947b"
+  },
+  {
+    "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-40-por-ciento/2026-10-14-1-conversaciones-hasta-1-a-la-vez-65536-entrada-128-respuesta-servidor-4-2-historial-repetido/registro-de-ejecucion.log",
+    "sha256": "1ff72d7ab985064b6e8a9c9095b7cf3c4332bd677d983f4089913e95a5ee1145"
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-40-por-ciento/2026-10-14-20-conversaciones-hasta-1-a-la-vez-1024-entrada-128-respuesta-servidor-4-medicion-inicial/mediciones.json",
@@ -526,6 +534,10 @@
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/pruebas-con-30-por-ciento/registro-de-restauracion.log",
     "sha256": "062920029d76f7f18bf7a58945065df4c90b11822147fd707b5712adad59e27b"
+  },
+  {
+    "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/pruebas-de-historial-reutilizado/configuracion-y-estado.json",
+    "sha256": "d29c703e4a24e76ef8e11462af21b614f3e65c8dfababb1a3e0eff13e5f6baa1"
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/plan-de-las-pruebas/plan-y-estado-general.json",

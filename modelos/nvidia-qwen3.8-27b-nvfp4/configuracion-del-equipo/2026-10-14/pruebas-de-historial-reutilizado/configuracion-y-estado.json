@@ -1,0 +1,24 @@
+{
+  "original_command": [
+    "vllm",
+    "serve",
+    "nvidia/Qwen3.8-27B-NVFP4",
+    "--gpu-memory-utilization",
+    "0.40",
+    "--max-num-seqs",
+    "4",
+    "--enable-auto-tool-choice",
+    "--tool-call-parser",
+    "qwen3_coder",
+    "--reasoning-parser",
+    "qwen3"
+  ],
+  "status": "running",
+  "tests": [
+    {
+      "case": "01-cold-65536",
+      "exit_code": 0,
+      "seconds": 49.53673825200531
+    }
+  ]
+}
