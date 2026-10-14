@@ -32,14 +32,15 @@ Pesos cargados: **19,95 GiB**, aproximadamente **16,4% del GB10**. Ese valor no 
 
 | Prueba / detalle individual | Enunciado | Asignado | Motor / GB10 | Sistema / GB10 | Tokens entrada / salida | Concurrencia enviada / activa | OK / total | Inicio medio (s) | Respuesta media (s) | Acumulado (s) | Duración prueba (s) | t/s conversación | t/s total | Pico caché | Cola máx. | Recálculos | Resultado |
 |---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|
-| [P01](details/2026-10-14-short-c1-in1024.md) | Carga corta inicial (detalle individual no guardado) | 40% | N/M% | N/M% | 1.024 / 128 | 1 / — | 20/20 | 0,7 | 10,6 | 212,5 | 212,5 | N/M | 12,0 | N/M% | — | — | OK |
-| [P02](details/2026-10-14-short-c2-in1024.md) | Carga corta inicial (detalle individual no guardado) | 40% | N/M% | N/M% | 1.024 / 128 | 2 / — | 20/20 | 1,0 | 11,6 | 232,8 | 116,5 | N/M | 22,0 | N/M% | — | — | OK |
-| [P03](details/2026-10-14-short-c4-in1024.md) | Carga corta inicial (detalle individual no guardado) | 40% | N/M% | N/M% | 1.024 / 128 | 4 / — | 20/20 | 1,4 | 12,7 | 254,1 | 63,6 | N/M | 40,2 | N/M% | — | — | OK |
-| [P04](details/2026-10-14-short-c8-in1024.md) | Carga corta inicial (detalle individual no guardado) | 40% | N/M% | N/M% | 1.024 / 128 | 8 / — | 20/20 | 11,2 | 22,6 | 451,3 | 62,6 | N/M | 40,9 | N/M% | — | — | OK |
-| [P05](details/2026-10-14-short-c4-in8192.md) | Carga corta inicial (detalle individual no guardado) | 40% | N/M% | N/M% | 8.192 / 128 | 4 / — | 12/12 | 5,2 | 23,5 | 282,3 | 71,2 | N/M | 21,6 | N/M% | — | — | OK |
-| [P06](details/2026-10-14-context-40-c4-in32768-out512.md) | Historial nuevo; prefijos independientes | 40% | N/M% | N/M% | 32.768 / 512 | 4 / 4 | 4/4 | 40,8 | 122,5 | 490,0 | 125,5 | 4,2 | 16,3 | 84,3% | 3 | 0 | OK |
-| [P07](details/2026-10-14-context-40-c4-in65536-out512.md) | Historial nuevo; prefijos independientes | 40% | N/M% | N/M% | 65.536 / 512 | 4 / 2 | 4/4 | 123,1 | 207,2 | 828,7 | 267,3 | 2,7 | 7,7 | 85,6% | 3 | 0 | OK |
-| [P08](details/2026-10-14-context-40-c4-in131072-out256.md) | Historial nuevo; prefijos independientes | 40% | N/M% | N/M% | 131.072 / 256 | 4 / 1 | 4/4 | 286,4 | 315,5 | 1261,8 | 504,5 | 1,1 | 2,0 | 86,0% | 3 | 0 | OK |
+| [P01](details/2026-10-14-short-c1-in1024.md) | Carga corta inicial (detalle individual no guardado) | 40% | N/M | N/M | 1.024 / 128 | 1 / — | 20/20 | 0,7 | 10,6 | 212,5 | 212,5 | N/M | 12,0 | N/M | — | — | OK |
+| [P02](details/2026-10-14-short-c2-in1024.md) | Carga corta inicial (detalle individual no guardado) | 40% | N/M | N/M | 1.024 / 128 | 2 / — | 20/20 | 1,0 | 11,6 | 232,8 | 116,5 | N/M | 22,0 | N/M | — | — | OK |
+| [P03](details/2026-10-14-short-c4-in1024.md) | Carga corta inicial (detalle individual no guardado) | 40% | N/M | N/M | 1.024 / 128 | 4 / — | 20/20 | 1,4 | 12,7 | 254,1 | 63,6 | N/M | 40,2 | N/M | — | — | OK |
+| [P04](details/2026-10-14-short-c8-in1024.md) | Carga corta inicial (detalle individual no guardado) | 40% | N/M | N/M | 1.024 / 128 | 8 / — | 20/20 | 11,2 | 22,6 | 451,3 | 62,6 | N/M | 40,9 | N/M | — | — | OK |
+| [P05](details/2026-10-14-short-c4-in8192.md) | Carga corta inicial (detalle individual no guardado) | 40% | N/M | N/M | 8.192 / 128 | 4 / — | 12/12 | 5,2 | 23,5 | 282,3 | 71,2 | N/M | 21,6 | N/M | — | — | OK |
+| [P06](details/2026-10-14-context-40-c4-in32768-out512.md) | Historial nuevo; prefijos independientes | 40% | N/M | N/M | 32.768 / 512 | 4 / 4 | 4/4 | 40,8 | 122,5 | 490,0 | 125,5 | 4,2 | 16,3 | 84,3% | 3 | 0 | OK |
+| [P07](details/2026-10-14-context-40-c4-in65536-out512.md) | Historial nuevo; prefijos independientes | 40% | N/M | N/M | 65.536 / 512 | 4 / 2 | 4/4 | 123,1 | 207,2 | 828,7 | 267,3 | 2,7 | 7,7 | 85,6% | 3 | 0 | Completa; cola |
+| [P08](details/2026-10-14-context-40-c4-in131072-out256.md) | Historial nuevo; prefijos independientes | 40% | N/M | N/M | 131.072 / 256 | 4 / 1 | 4/4 | 286,4 | 315,5 | 1261,8 | 504,5 | 1,1 | 2,0 | 86,0% | 3 | 0 | Completa; cola |
+| [P09](details/2026-10-14-context-40-c1-in262016-out128.md) | Historial nuevo; prefijos independientes | 40% | N/M | N/M | 262.016 / 128 | 1 / 1 | 1/1 | 539,1 | 557,9 | 557,9 | 558,0 | 0,2 | 0,2 | 99,6% | 1 | 4 | Completa; recálculos |
 
 ## Validación del límite de contexto
 

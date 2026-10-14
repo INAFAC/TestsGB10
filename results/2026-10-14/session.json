@@ -1,0 +1,20 @@
+{
+  "status": "running",
+  "model": "nvidia/Qwen3.8-27B-NVFP4",
+  "memory_percentages": [
+    30,
+    40,
+    50,
+    70,
+    85,
+    92
+  ],
+  "restore_memory_percent": 40,
+  "restore_max_num_seqs": 4,
+  "restore_max_model_len": 262144,
+  "notes": [
+    "Cold-prefix load tests followed by history-cache reuse tests.",
+    "Short baseline results without per-request data are preserved as legacy measurements.",
+    "No personal chat data is used."
+  ]
+}

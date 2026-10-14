@@ -43,5 +43,20 @@
     "peak_running": 1.0,
     "peak_waiting": 3.0,
     "preemptions": 0.0
+  },
+  {
+    "case": "c1-in262016-out128",
+    "concurrency": 1,
+    "input_tokens": 262016,
+    "output_tokens": 128,
+    "completed": 1,
+    "failed": 0,
+    "duration_s": 557.9810677880014,
+    "mean_ttft_s": 539.1208572769974,
+    "mean_total_s": 557.9197793560015,
+    "peak_kv_fraction": 0.9959349593495935,
+    "peak_running": 1.0,
+    "peak_waiting": 1.0,
+    "preemptions": 4.0
   }
 ]

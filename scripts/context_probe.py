@@ -33,7 +33,7 @@ def main():
     samples, results = [], []
     stop = threading.Event()
     start = time.monotonic()
-    gpu_last = {'at': 0, 'gib': None}
+    gpu_last = {'at': 0, 'gib': None, 'temperature_c': None, 'utilization_percent': None}
 
     def metrics():
         raw = urllib.request.urlopen(a.base_url+'/metrics', timeout=10).read().decode()
@@ -59,9 +59,19 @@ def main():
                 gpu_last['gib'] = sum(values)/1024 if values else None
             except Exception:
                 gpu_last['gib'] = None
+            try:
+                values = subprocess.check_output(['nvidia-smi',
+                    '--query-gpu=temperature.gpu,utilization.gpu',
+                    '--format=csv,noheader,nounits'], text=True, timeout=5).strip().split(',')
+                gpu_last['temperature_c'] = float(values[0])
+                gpu_last['utilization_percent'] = float(values[1])
+            except Exception:
+                pass
             gpu_last['at'] = time.monotonic()
         d['gpu_engine_gib'] = gpu_last['gib']
         d['gpu_engine_percent'] = None if gpu_last['gib'] is None else 100*gpu_last['gib']/d['mem_total_gib']
+        d['gpu_temperature_c'] = gpu_last['temperature_c']
+        d['gpu_utilization_percent'] = gpu_last['utilization_percent']
         return d
 
     def monitor():
@@ -128,7 +138,8 @@ def main():
                    'prefix_cache_queries': valid[-1]['prefix_cache_queries_total']-valid[0]['prefix_cache_queries_total'] if valid else None,
                    'prefix_cache_hits': valid[-1]['prefix_cache_hits_total']-valid[0]['prefix_cache_hits_total'] if valid else None,
                    'min_available_gib': min((s['mem_available_gib'] for s in valid), default=None)}
-        for field in ['gpu_engine_gib', 'gpu_engine_percent', 'system_used_percent']:
+        for field in ['gpu_engine_gib', 'gpu_engine_percent', 'system_used_percent',
+                      'gpu_temperature_c', 'gpu_utilization_percent']:
             summary['peak_'+field] = max((s[field] for s in valid if s.get(field) is not None), default=None)
         dest.write_text(json.dumps({'summary': summary, 'requests': list(results),
                                    'metrics': list(samples)}, indent=2))

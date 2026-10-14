@@ -63,6 +63,10 @@ def read_test(path):
               'En curso / incompleta')
     if s.get('failed'):
         status = 'Errores'
+    elif status == 'OK' and s.get('preemptions', 0):
+        status = 'Completa; recálculos'
+    elif status == 'OK' and s.get('peak_running', s['concurrency']) < s['concurrency']:
+        status = 'Completa; cola'
     description = 'Historial nuevo; prefijos independientes'
     if 'reuse' in str(path):
         description = 'Reutilización de historial: '+path.stem
@@ -126,8 +130,10 @@ def write_detail(t):
         s = t['summary']
         lines += [f"- Tokens consultados en prefix cache: {integer(s.get('prefix_cache_queries'))}.",
                   f"- Tokens recuperados de prefix cache: {integer(s.get('prefix_cache_hits'))}."]
+        lines += [f"- Temperatura GPU máxima observada: {num(s.get('peak_gpu_temperature_c'))} °C.",
+                  f"- Utilización GPU máxima observada: {num(s.get('peak_gpu_utilization_percent'))}%."]
     lines += ['', 'N/M significa que esa métrica no se recogió durante esta prueba.', '']
-    path.write_text('\n'.join(lines))
+    path.write_text('\n'.join(lines).replace('N/M%', 'N/M'))
 
 
 def main():
@@ -223,7 +229,7 @@ def main():
               'Continuar un historial que siga en caché puede ser mucho más rápido. '
               'No se ha validado aquí la calidad con contextos largos ni estabilidad durante días.', '',
               'Todos los resultados y registros están en [results](results).', '']
-    (ROOT/'README.md').write_text('\n'.join(lines))
+    (ROOT/'README.md').write_text('\n'.join(lines).replace('N/M%', 'N/M'))
 
 
 if __name__ == '__main__':
