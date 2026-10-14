@@ -120,6 +120,14 @@
     "sha256": "27829ed30eebe1d94fc3aaffd8476f1570c2fe1d4b211c115da0ba5c8cddbd4c"
   },
   {
+    "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-40-por-ciento/2026-10-14-16-conversaciones-hasta-16-a-la-vez-8192-entrada-128-respuesta-servidor-16/mediciones.json",
+    "sha256": "784690b3f34e1b8bcf266716c05b1064f4d19d0143304ad55c399939de73f278"
+  },
+  {
+    "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-40-por-ciento/2026-10-14-16-conversaciones-hasta-16-a-la-vez-8192-entrada-128-respuesta-servidor-16/registro-de-ejecucion.log",
+    "sha256": "c2d2f1a42153d3e50fd9ea9e9fb1830b98532b5527ab15a54aeb74b69c028011"
+  },
+  {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-40-por-ciento/2026-10-14-8-conversaciones-hasta-8-a-la-vez-1024-entrada-128-respuesta-servidor-8/mediciones.json",
     "sha256": "a00416047720ec88f79431a0416b54d500ba21a5ebbffb482e09872bc069baf6"
   },
@@ -376,6 +384,10 @@
     "sha256": "48294200a00adf63d83e76cf4a56dac7816a62d8fc7e15e6c4782cff64e40290"
   },
   {
+    "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparacion-de-memoria-y-concurrencia/memoria-40-limite-servidor-16/registro-del-servidor.log",
+    "sha256": "8252ba054ec5d0c63496faa2c9aff35cc7b7fc7d2f0584128d5bb9ac27f4fbba"
+  },
+  {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparacion-de-memoria-y-concurrencia/memoria-40-limite-servidor-8/registro-del-servidor.log",
     "sha256": "99d0514d3a72710c4341e4c64f964da4dc22f2d003287edd70ac4dec5c351c44"
   },
@@ -397,11 +409,11 @@
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparacion-de-memoria-y-concurrencia/configuracion-y-estado.json",
-    "sha256": "25002aa58ca186beda6eb554ea01ab168c12e5277192010aafa97c48cc92e97d"
+    "sha256": "dcbdb9da4b601b7bf3b62def9e95ed0c7d8e15ea1dc1396c947e5d6e76934d18"
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparacion-de-memoria-y-concurrencia/ultimo-cambio-temporal.json",
-    "sha256": "8574c064293fe17457db995a59626bb4750329d13f738bdecce01ea32421b1fa"
+    "sha256": "bc040cc6db01f20c9ce2c869ef7e106d5a79a79702e45392cd5e0ef743a50e60"
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparacion-de-memoria-y-concurrencia/script-de-medicion-ejecutado.py",
