@@ -188,6 +188,11 @@
           "case": "historial-03-c1-in131072-out128",
           "exit_code": 0,
           "elapsed_s": 90.00503569199645
+        },
+        {
+          "case": "historial-04-c1-in131072-out128",
+          "exit_code": 0,
+          "elapsed_s": 20.00255524800741
         }
       ],
       "request_timeout_s": 1200,
