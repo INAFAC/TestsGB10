@@ -39,6 +39,7 @@ Esta prueba llega al máximo sumando historial y respuesta. No es una generació
 | Memoria asignada al motor | 35% |
 | Pico medido del motor / memoria del GB10 | 31,8% |
 | Pico usado por todo el sistema / memoria del GB10 | 40,0% |
+| Menor memoria disponible en el equipo | 72,95 GiB |
 | Conversaciones totales | 1 |
 | Máximo de peticiones enviadas a la vez | 1 |
 | Límite de solicitudes del servidor | 4 |

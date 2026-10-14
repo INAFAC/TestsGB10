@@ -10,7 +10,7 @@
 | `short_benchmark.sh` | Reproduce las primeras pruebas cortas con la herramienta oficial de vLLM. |
 | `import_measurements.py` | Organiza las mediciones de esta campaña por modelo, memoria y prueba. |
 | `build_report.py` | Genera los informes a partir de los datos guardados junto a cada prueba. No necesita conectarse al GB10. |
-| `validate_report.py` | Comprueba tokens, tiempos, enlaces y conservación de los archivos originales. Si la campaña se marca como terminada, verifica también que todos los bloques previstos estén resueltos. |
+| `validate_report.py` | Comprueba tokens, tiempos, enlaces y conservación de los archivos originales. Si la campaña se marca como terminada, verifica también que todos los bloques previstos estén resueltos y exista una comprobación final de restauración. |
 | `sync_results.py` | Descarga la campaña en curso, actualiza los informes y puede publicarlos en GitHub. |
 
 ## Medir una configuración ya desplegada

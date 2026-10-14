@@ -35,6 +35,7 @@ Se envió **1 conversación**, hasta **1 a la vez**. Cada una pidió **131.072 t
 | Memoria asignada al motor | 70% |
 | Pico medido del motor / memoria del GB10 | 66,8% |
 | Pico usado por todo el sistema / memoria del GB10 | 75,3% |
+| Menor memoria disponible en el equipo | 30,01 GiB |
 | Conversaciones totales | 1 |
 | Máximo de peticiones enviadas a la vez | 1 |
 | Límite de solicitudes del servidor | 4 |

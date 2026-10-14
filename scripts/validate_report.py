@@ -46,6 +46,13 @@ for model_dir in (ROOT/'modelos').iterdir():
     if not plans:continue
     plan=json.loads(plans[0].read_text())
     if plan.get('status')!='complete':continue
+    verification=plan.get('final_verification',{})
+    if not (verification.get('verified') is True
+            and verification.get('health_http_status')==200
+            and verification.get('container_status')=='running'
+            and verification.get('runner_restore_status')=='healthy'
+            and verification.get('requests')=={'num_requests_running':0,'num_requests_waiting':0}):
+        errors.append(f'{model_dir.name}: campaign marked complete without verified restoration')
     equipment=json.loads((model_dir/'configuracion-del-equipo/equipo.json').read_text())
     tests=[build_report.load_test(p,equipment) for p in model_dir.glob('memoria-*/**/configuracion.json')]
     for group in plan.get('planned_groups',[]):

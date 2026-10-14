@@ -191,6 +191,8 @@ def write_test(t,model_dir,equipment):
               ('Pico de caché ocupada',percent(t['cache'])),('Máximo de solicitudes en cola',integer(t['queue'])),
               ('Recálculos por falta de espacio en caché',integer(t['preemptions']))]
         s=t.get('summary',{})
+        if s.get('min_available_gib') is not None:
+            rows.insert(3,('Menor memoria disponible en el equipo',number(s['min_available_gib'],2)+' GiB'))
         rows += [('Tiempo observado con cola',number(s.get('seconds_with_queue'))+' s'),
                  ('Tiempo observado con caché al 95% o más',number(s.get('seconds_cache_above_95_percent'))+' s'),
                  ('Tokens recuperados de caché de prefijos',integer(s.get('prefix_cache_hits'))),('Temperatura GPU máxima',number(s.get('peak_gpu_temperature_c'))+' °C')]
