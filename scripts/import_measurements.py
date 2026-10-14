@@ -64,7 +64,7 @@ def main():
         # These two earliest 30% runs lack response timelines. Keep them in the
         # historical section; measured repetitions provide the main comparison.
         initial=initial or (path.relative_to(source).parts[0]=='memory' and mem==30 and s.get('peak_overlapping_responses') is None and 'input_tokens' in s)
-        control=path.relative_to(source).parts[0]=='additional' and mem==40 and seqs==4
+        control=path.relative_to(source).parts[0]=='additional' and mem==40 and seqs==4 and s.get('request_timeout_s',1200)<=1200
         additional=path.relative_to(source).parts[0]=='additional'
         repeated=s.get('history_step') is not None or 'reuse' in path.parts or 'reuse-40' in path.parts
         phase=s.get('history_step') if s.get('history_step') is not None else int(path.stem[:2]) if repeated else None
@@ -106,7 +106,7 @@ def main():
                 label+='-timeout-'+str(profile['request_timeout_s'])
             for attempt in profile.get('attempts',[]):
                 context=attempt['max_model_len'];model=meta.get('model',DEFAULT_MODEL)
-                control=path.relative_to(source).parts[0]=='additional' and mem==40 and seqs==4
+                control=path.relative_to(source).parts[0]=='additional' and mem==40 and seqs==4 and profile.get('request_timeout_s',1200)<=1200
                 additional=path.relative_to(source).parts[0]=='additional'
                 suffix='-repeticion-de-control' if control else '-comparacion-adicional' if additional else ''
                 if profile.get('request_timeout_s',1200)>1200:suffix+='-espera-ampliada'
@@ -125,7 +125,7 @@ def main():
         rel=path.relative_to(source)
         group=GROUPS.get(rel.parts[0], 'plan-de-las-pruebas')
         parts=list(rel.parts[1:]) if len(rel.parts)>1 else [rel.name]
-        renames={'metadata.json':'configuracion-y-estado.json','override.json':'ultimo-cambio-temporal.json',
+        renames={'verificacion-final-30':'verificacion-final','metadata.json':'configuracion-y-estado.json','override.json':'ultimo-cambio-temporal.json',
                  'restored-server.log':'registro-de-restauracion.log','session.json':'plan-y-estado-general.json',
                  'server.log':'registro-del-servidor.log','summary.json':'resumen-original.json',
                  'planned-profiles.json':'configuraciones-previstas.json',

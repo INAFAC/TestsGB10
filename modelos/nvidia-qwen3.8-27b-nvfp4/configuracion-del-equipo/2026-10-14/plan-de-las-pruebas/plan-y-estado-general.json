@@ -28,7 +28,8 @@
     "92% / limit4 full-context group completed3/4; one connection timedout at1200s,0preemptions. Repeat with2700s perconnection and3000s group, preserving the failed initial run.",
     "Late40% limit4 control also sends8 simultaneous requests with8192+128 and32768+256, matching thelimit8 workloads without confounding client concurrency or group size.",
     "64 short requests at40% all overlapped and completed. Probe128 at40% and512 at85%, including longer512-token outputs, to observe admission/cache constraints beyond the artificial64 limit.",
-    "Repeat the two earliest30% workloads (8192+128 and32768+512,c4) with complete response timelines after the main additional campaign. Preserve those original measurements in the historical section; the30% planned block remains four detailed workloads. Restore40%/4 after verification."
+    "Repeat the two earliest30% workloads (8192+128 and32768+512,c4) with complete response timelines after the main additional campaign. Preserve those original measurements in the historical section; the30% planned block remains four detailed workloads. Restore40%/4 after verification.",
+    "Final verification also tests four simultaneous full-context262016+128 conversations at40%/limit4 with2700s connection inactivity and3000s group deadlines. This closes the original four-user maximum-context scenario; preserve the earlier single-user maximum test. Restore40%/4 afterward."
   ],
   "server_concurrency_limits": [
     2,
@@ -181,6 +182,12 @@
       "server_limit": 512,
       "kind": "independent",
       "tests": 2
+    },
+    {
+      "memory_percent": 40,
+      "server_limit": 4,
+      "kind": "extended",
+      "tests": 1
     }
   ]
 }

@@ -89,11 +89,11 @@
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-92-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-262016-entrada-128-respuesta-servidor-4-comparacion-adicional-espera-ampliada/mediciones.json",
-    "sha256": "5ec3026cf21617d4bfa77b91e71a4912c30b4afd8a0494e4591e0de5c1a6fd73"
+    "sha256": "84abe32afb69c5a36c7db0bf3ccc93d1dc95cfd09b8ff143a84d079caa1e02c8"
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-92-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-262016-entrada-128-respuesta-servidor-4-comparacion-adicional-espera-ampliada/registro-de-ejecucion.log",
-    "sha256": "a02ba4f8721c7c1f0d2bd4c5731c4db47ef8fa29516e52162d9f60c5abba9b82"
+    "sha256": "eb4536f3e28ca89494aeb8d0a0706a08e1c018fac248a9d36f07454582248a6b"
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-25-por-ciento/2026-10-14-1-conversaciones-hasta-1-a-la-vez-65280-entrada-256-respuesta-servidor-4/mediciones.json",
@@ -733,6 +733,6 @@
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/plan-de-las-pruebas/plan-y-estado-general.json",
-    "sha256": "ecbe46dc4af70a5867d69b3f31fa7da8a8b86675b0f9f768f0ee0e8be980387d"
+    "sha256": "1b239574b4b06c91e51b0f77aa6b6fa49a7c916a2b7cba9e91757a1adf3a1203"
   }
 ]
