@@ -18,7 +18,7 @@
 - **25% de memoria:** Hasta ahora se ha completado una conversación de **65.536 tokens**. Aún no demuestra alcanzar 262.144.
 - **30% de memoria:** Hasta ahora se ha completado una conversación de **131.072 tokens**. Aún no demuestra alcanzar 262.144. **El arranque con el máximo del modelo falló.**
 - **40% de memoria:** **Sí:** 1/1 completadas con 262.144 tokens y toda la respuesta solicitada. 1 respuesta a la vez; cola máxima 1; 4 recálculos.
-- **50% de memoria:** Todavía no hay una conversación terminada registrada con este presupuesto.
+- **50% de memoria:** Hasta ahora se ha completado una conversación de **33.280 tokens**. Aún no demuestra alcanzar 262.144.
 
 ## Qué configuración elegir
 
@@ -64,7 +64,7 @@ Las tablas principales muestran la batería con medición detallada. Cada fila e
 | [4 conversaciones; hasta 4 a la vez](memoria-40-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-131072-entrada-256-respuesta-servidor-4/README.md) | 40% | **4 activas** | 131.072 + 256 | **Sí: 4/4** | No se intentó | 505,2 s | 1 respuesta a la vez; cola máxima 3 |
 | [1 conversación; hasta 1 a la vez](memoria-40-por-ciento/2026-10-14-1-conversaciones-hasta-1-a-la-vez-262016-entrada-128-respuesta-servidor-4/README.md) | 40% | **4 activas** | 262.016 + 128 | **Sí: 1/1** | **Sí: 1/1** | 560,8 s | 1 respuesta a la vez; cola máxima 1; 4 recálculos |
 | [Arrancar el modelo con límite de 262.144 tokens](memoria-50-por-ciento/2026-10-14-arranque-contexto-262144-servidor-4/README.md) | 50% | **4 activas** | Sin conversaciones | Arrancó | No se enviaron conversaciones | 365,9 s | Arrancó |
-| [4 conversaciones; hasta 4 a la vez](memoria-50-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-32768-entrada-512-respuesta-servidor-4/README.md) | 50% | **4 activas** | 32.768 + 512 | 0/4 (en curso) | No se intentó | 35,2 s | 3 activas en el motor; cola máxima 3 |
+| [4 conversaciones; hasta 4 a la vez](memoria-50-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-32768-entrada-512-respuesta-servidor-4/README.md) | 50% | **4 activas** | 32.768 + 512 | **Sí: 4/4** | No se intentó | 126,8 s | 4 respuestas solapadas; cola máxima 3 |
 
 <details>
 <summary>Comparación completa de memoria, tiempos y tokens por segundo</summary>
@@ -95,7 +95,7 @@ Las tablas principales muestran la batería con medición detallada. Cada fila e
 | [4 conversaciones; hasta 4 a la vez](memoria-40-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-131072-entrada-256-respuesta-servidor-4/README.md) | 40% | 36,9% | 45,3% | 131.072 + 256 | 4 / 4 / 1 / 1 | **Sí: 4/4** | 286,3 | 315,7 | 1.262,6 | 505,2 | 1,06 | 2,03 | 85,8% | 3 | 0 | Terminó atendiendo por turnos |
 | [1 conversación; hasta 1 a la vez](memoria-40-por-ciento/2026-10-14-1-conversaciones-hasta-1-a-la-vez-262016-entrada-128-respuesta-servidor-4/README.md) | 40% | 36,9% | 45,3% | 262.016 + 128 | 1 / 4 / 1 / 1 | **Sí: 1/1** | 541,6 | 560,6 | 560,6 | 560,8 | 0,23 | 0,23 | 99,4% | 1 | 4 | Terminó con 4 recálculos |
 | [Arrancar el modelo con límite de 262.144 tokens](memoria-50-por-ciento/2026-10-14-arranque-contexto-262144-servidor-4/README.md) | 50% | No aplica | No aplica | Sin conversaciones | Límite 4 | Arrancó | No aplica | No aplica | No aplica | 365,9 | No aplica | No aplica | No aplica | No aplica | No aplica | Arrancó |
-| [4 conversaciones; hasta 4 a la vez](memoria-50-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-32768-entrada-512-respuesta-servidor-4/README.md) | 50% | 46,9% | 55,6% | 32.768 + 512 | 4 / 4 / 3 / — | 0/4 (en curso) | No medido | No medido | No medido | 35,2 | No medido | No medido | 29,9% | 3 | 0 | En curso |
+| [4 conversaciones; hasta 4 a la vez](memoria-50-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-32768-entrada-512-respuesta-servidor-4/README.md) | 50% | 46,9% | 55,6% | 32.768 + 512 | 4 / 4 / 4 / 4 | **Sí: 4/4** | 41,1 | 123,6 | 494,4 | 126,8 | 4,14 | 16,15 | 55,0% | 3 | 0 | Terminó |
 
 </details>
 
@@ -142,7 +142,7 @@ Esta tabla distingue las pruebas terminadas de las que todavía faltan. No inclu
 | 40% | 4 activas | Conversaciones con historiales independientes | 10/10 | Terminada |
 | 25% | 4 activas | Conversaciones con historiales independientes | 4/4 | Terminada |
 | 20% | 4 activas | Conversaciones con historiales independientes | 0/1 | No pudo arrancar; ver el fallo de arranque |
-| 50% | 4 activas | Conversaciones con historiales independientes | 0/4 | En curso |
+| 50% | 4 activas | Conversaciones con historiales independientes | 1/4 | En curso |
 | 70% | 4 activas | Conversaciones con historiales independientes | 0/3 | Pendiente |
 | 85% | 4 activas | Conversaciones con historiales independientes | 0/2 | Pendiente |
 | 92% | 4 activas | Conversaciones con historiales independientes | 0/2 | Pendiente |
