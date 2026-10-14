@@ -214,7 +214,10 @@ def main():
             for case_index, case in enumerate(cases):
                 concurrency, input_len, output_len = case[:3]
                 requests = case[3] if len(case) > 3 else concurrency
+                case_options = case[4] if len(case)>4 else {}
                 name = f'c{concurrency}-in{input_len}-out{output_len}'
+                history_step=case_options.get('history_step')
+                if history_step is not None:name=f'historial-{history_step:02d}-'+name
                 if input_len+output_len > record['max_model_len']:
                     record['tests'].append({'case': name, 'status': 'skipped_context_limit'})
                     persist(); continue
@@ -224,8 +227,9 @@ def main():
                            '--input-tokens', str(input_len), '--output-tokens', str(output_len),
                            '--request-timeout', str(request_timeout),
                            '--test-timeout', str(test_timeout),
-                           '--seed', str(50000+profile_index*1000+case_index*100),
+                           '--seed', str(case_options.get('seed',50000+profile_index*1000+case_index*100)),
                            '--result', str(directory/(name+'.json'))]
+                if history_step is not None:command += ['--history-step',str(history_step)]
                 started = time.monotonic()
                 with (directory/(name+'.log')).open('w') as log:
                     active = subprocess.Popen(command, text=True, stdout=log, stderr=subprocess.STDOUT)

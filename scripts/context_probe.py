@@ -31,6 +31,7 @@ def main():
     p.add_argument('--seed', type=int, default=19000)
     p.add_argument('--request-timeout', type=float, default=1200, help='Maximum seconds without network data per request')
     p.add_argument('--test-timeout', type=float, help='Group timeout enforced by the external runner, for the measurement record')
+    p.add_argument('--history-step', type=int, help='Step in an explicitly ordered prefix-reuse comparison')
     p.add_argument('--result', required=True)
     a = p.parse_args()
     count = a.requests or a.concurrency
@@ -150,6 +151,7 @@ def main():
                    'seed': a.seed, 'max_model_len': model_info.get('max_model_len'),
                    'request_timeout_s': a.request_timeout,
                    'test_timeout_s': a.test_timeout,
+                   'history_step': a.history_step,
                    'completed': len(good),
                    'failed': len(results)-len(good), 'duration_s': time.monotonic()-start,
                    'mean_ttft_s': sum(r['ttft_s'] or 0 for r in good)/max(1, len(good)),

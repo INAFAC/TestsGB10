@@ -13,6 +13,7 @@ Esta tabla distingue las pruebas terminadas de las que todavía faltan. No inclu
 | 70% | 4 activas | Conversaciones con historiales independientes | 3/3 | Terminada |
 | 70% | 16 activas | Conversaciones con historiales independientes | 0/2 | Pendiente |
 | 70% | 2 activas | Conversaciones con historiales independientes | 0/1 | Pendiente |
+| 70% | 4 activas | Repetir y ampliar el mismo historial | 0/6 | Pendiente |
 
 Las tablas principales muestran la batería con medición detallada. Cada fila enlaza los datos de todas sus conversaciones. Los arranques y rechazos tienen medidas que no corresponden a una generación: se marcan como «No aplica».
 

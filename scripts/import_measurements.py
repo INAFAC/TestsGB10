@@ -63,8 +63,8 @@ def main():
         initial=path.relative_to(source).parts[0] in ('short','context-40')
         control=path.relative_to(source).parts[0]=='additional' and mem==40 and seqs==4
         additional=path.relative_to(source).parts[0]=='additional'
-        repeated='reuse' in path.parts or 'reuse-40' in path.parts
-        phase=int(path.stem[:2]) if repeated else None
+        repeated=s.get('history_step') is not None or 'reuse' in path.parts or 'reuse-40' in path.parts
+        phase=s.get('history_step') if s.get('history_step') is not None else int(path.stem[:2]) if repeated else None
         if legacy:
             count=raw['num_prompts'];concurrency=raw['max_concurrency']
             inp=raw['total_input_tokens']//count;out=raw['total_output_tokens']//count
