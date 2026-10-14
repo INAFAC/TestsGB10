@@ -11,6 +11,8 @@ Cada prueba responde dos preguntas distintas:
 
 Un token es una pequeña unidad de texto; no equivale necesariamente a una palabra. La **entrada** representa el historial que debe leer el modelo. La **respuesta** es lo que genera después.
 
+En una aplicación de chat, las instrucciones del sistema y el formato de los mensajes también forman parte de la entrada y consumen tokens de ese mismo límite.
+
 Para este Qwen, el máximo es **262.144 tokens por conversación, contando entrada y respuesta**. Una prueba con 262.016 de entrada y 128 de respuesta llega exactamente a ese máximo. No significa que haya generado una respuesta nueva de 262.144 tokens.
 
 Al reducir la memoria puede ser necesario reducir también el límite configurado. Llegar a 131.072 tokens con ese límite reducido no demuestra que se pueda llegar al máximo del modelo. El informe distingue ambos casos.

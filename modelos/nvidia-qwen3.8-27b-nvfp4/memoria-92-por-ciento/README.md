@@ -11,6 +11,7 @@ Esta tabla distingue las pruebas terminadas de las que todavía faltan. No inclu
 | Memoria | Límite impuesto | Tipo de prueba | Terminadas / previstas | Estado |
 |---:|---:|---|---:|---|
 | 92% | 4 activas | Conversaciones con historiales independientes | 2/2 | Terminada |
+| 92% | 4 activas | Comprobación con mayor tiempo de espera | 0/1 | Pendiente |
 
 Las tablas principales muestran la batería con medición detallada. Cada fila enlaza los datos de todas sus conversaciones. Los arranques y rechazos tienen medidas que no corresponden a una generación: se marcan como «No aplica».
 

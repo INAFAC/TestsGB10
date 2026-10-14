@@ -24,7 +24,8 @@
     "Additional 70% / max_num_seqs=2 comparison: four 131072+256 requests, after limit 4 produced two preemptions and 605 seconds total versus 505 seconds at 40%.",
     "Two late 40% / limit4 control repetitions: eight short requests at concurrency4 and four 131072+256 requests, to check performance drift after the long campaign.",
     "85% / limit4 full-context group completed 2/4; two connections timed out at1200s with0preemptions. Repeat same workload with2700s perconnection and3000s group to distinguish deadlines from ability to complete.",
-    "Repeat the six prefix-reuse steps at70% / limit4 with seed90000, matching the40% history experiment, to compare ongoing conversation latency as its history reaches the model maximum."
+    "Repeat the six prefix-reuse steps at70% / limit4 with seed90000, matching the40% history experiment, to compare ongoing conversation latency as its history reaches the model maximum.",
+    "92% / limit4 full-context group completed3/4; one connection timedout at1200s,0preemptions. Repeat with2700s perconnection and3000s group, preserving the failed initial run."
   ],
   "server_concurrency_limits": [
     4,
@@ -155,6 +156,12 @@
       "server_limit": 4,
       "kind": "reuse",
       "tests": 6
+    },
+    {
+      "memory_percent": 92,
+      "server_limit": 4,
+      "kind": "extended",
+      "tests": 1
     }
   ]
 }
