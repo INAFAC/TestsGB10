@@ -11,7 +11,7 @@ Esta tabla distingue las pruebas terminadas de las que todavía faltan. No inclu
 | Memoria | Límite impuesto | Tipo de prueba | Terminadas / previstas | Estado |
 |---:|---:|---|---:|---|
 | 40% | 4 activas | Conversaciones con historiales independientes | 10/10 | Terminada |
-| 40% | 8 activas | Conversaciones con historiales independientes | 2/3 | En curso |
+| 40% | 8 activas | Conversaciones con historiales independientes | 3/3 | Terminada |
 | 40% | 16 activas | Conversaciones con historiales independientes | 0/2 | Pendiente |
 | 40% | 32 activas | Conversaciones con historiales independientes | 0/2 | Pendiente |
 | 40% | 64 activas | Conversaciones con historiales independientes | 0/2 | Pendiente |
@@ -36,7 +36,7 @@ Las tablas principales muestran la batería con medición detallada. Cada fila e
 | [Arrancar el modelo con límite de 262.144 tokens](2026-10-14-arranque-contexto-262144-servidor-8/README.md) | 40% | **8 activas** | Sin conversaciones | Arrancó | No se enviaron conversaciones | 371,0 s | Arrancó |
 | [8 conversaciones; hasta 8 a la vez](2026-10-14-8-conversaciones-hasta-8-a-la-vez-1024-entrada-128-respuesta-servidor-8/README.md) | 40% | **8 activas** | 1.024 + 128 | **Sí: 8/8** | No se intentó | 15,4 s | 8 respuestas solapadas; cola máxima 5 |
 | [8 conversaciones; hasta 8 a la vez](2026-10-14-8-conversaciones-hasta-8-a-la-vez-8192-entrada-128-respuesta-servidor-8/README.md) | 40% | **8 activas** | 8.192 + 128 | **Sí: 8/8** | No se intentó | 52,5 s | 8 respuestas solapadas; cola máxima 7 |
-| [8 conversaciones; hasta 8 a la vez](2026-10-14-8-conversaciones-hasta-8-a-la-vez-32768-entrada-256-respuesta-servidor-8/README.md) | 40% | **8 activas** | 32.768 + 256 | 0/8 (en curso) | No se intentó | 15,1 s | 1 activa en el motor; cola máxima 7 |
+| [8 conversaciones; hasta 8 a la vez](2026-10-14-8-conversaciones-hasta-8-a-la-vez-32768-entrada-256-respuesta-servidor-8/README.md) | 40% | **8 activas** | 32.768 + 256 | **Sí: 8/8** | No se intentó | 261,9 s | 5 respuestas solapadas; cola máxima 7; 2 recálculos |
 
 <details>
 <summary>Comparación completa de memoria, tiempos y tokens por segundo</summary>
@@ -57,7 +57,7 @@ Las tablas principales muestran la batería con medición detallada. Cada fila e
 | [Arrancar el modelo con límite de 262.144 tokens](2026-10-14-arranque-contexto-262144-servidor-8/README.md) | 40% | No aplica | No aplica | Sin conversaciones | Límite 8 | Arrancó | No aplica | No aplica | No aplica | 371,0 | No aplica | No aplica | No aplica | No aplica | No aplica | Arrancó |
 | [8 conversaciones; hasta 8 a la vez](2026-10-14-8-conversaciones-hasta-8-a-la-vez-1024-entrada-128-respuesta-servidor-8/README.md) | 40% | 36,8% | 45,1% | 1.024 + 128 | 8 / 8 / 8 / 8 | **Sí: 8/8** | 2,6 | 15,1 | 120,9 | 15,4 | 8,47 | 66,28 | 8,8% | 5 | 0 | Terminó |
 | [8 conversaciones; hasta 8 a la vez](2026-10-14-8-conversaciones-hasta-8-a-la-vez-8192-entrada-128-respuesta-servidor-8/README.md) | 40% | 36,9% | 45,1% | 8.192 + 128 | 8 / 8 / 8 / 8 | **Sí: 8/8** | 22,7 | 50,8 | 406,5 | 52,5 | 2,52 | 19,51 | 43,2% | 7 | 0 | Terminó |
-| [8 conversaciones; hasta 8 a la vez](2026-10-14-8-conversaciones-hasta-8-a-la-vez-32768-entrada-256-respuesta-servidor-8/README.md) | 40% | 36,9% | 45,0% | 32.768 + 256 | 8 / 8 / 1 / — | 0/8 (en curso) | Pendiente | Pendiente | Pendiente | 15,1 | Pendiente | Pendiente | 14,3% | 7 | 0 | En curso |
+| [8 conversaciones; hasta 8 a la vez](2026-10-14-8-conversaciones-hasta-8-a-la-vez-32768-entrada-256-respuesta-servidor-8/README.md) | 40% | 36,9% | 45,0% | 32.768 + 256 | 8 / 8 / 5 / 5 | **Sí: 8/8** | 124,7 | 224,6 | 1.796,7 | 261,9 | 1,17 | 7,82 | 99,0% | 7 | 2 | Terminó con 2 recálculos |
 
 </details>
 
