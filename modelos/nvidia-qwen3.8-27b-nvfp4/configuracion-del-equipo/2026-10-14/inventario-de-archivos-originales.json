@@ -152,6 +152,14 @@
     "sha256": "142af624c88a4abc6946ecd4ccc31e6335978b6a8a77c7e63acbbc917b030ae9"
   },
   {
+    "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-92-por-ciento/2026-10-14-512-conversaciones-hasta-512-a-la-vez-1024-entrada-512-respuesta-servidor-512-comparacion-adicional/mediciones.json",
+    "sha256": "853daf55e5397d6ebd60c41c31f088f0a171bb6eaf648df96811160d23a99378"
+  },
+  {
+    "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-92-por-ciento/2026-10-14-512-conversaciones-hasta-512-a-la-vez-1024-entrada-512-respuesta-servidor-512-comparacion-adicional/registro-de-ejecucion.log",
+    "sha256": "4cda1a212a70bcccd36b8c610f0c001bfd4d5a188e7f18f43c218f09fea270d7"
+  },
+  {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-25-por-ciento/2026-10-14-1-conversaciones-hasta-1-a-la-vez-65280-entrada-256-respuesta-servidor-4/mediciones.json",
     "sha256": "126cc70614e6ea796b57a96898cb80c719bc83a25adaddc4d586b6a6698e2429"
   },
@@ -616,6 +624,10 @@
     "sha256": "3881f6cd96d82c4dde7a53a3613b89582dbb28957a69a69f8340fe0b61522d16"
   },
   {
+    "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-92-por-ciento/2026-10-14-arranque-contexto-262144-servidor-512-comparacion-adicional/registro-del-servidor.log",
+    "sha256": "c94fdeb85f342ad6099994f6a0c96cdd78fdbda78038254960f4155b323a34f7"
+  },
+  {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-40-por-ciento/2026-10-14-arranque-contexto-262144-servidor-4/registro-del-servidor.log",
     "sha256": "42055d91e1028b53721da8842939a1d0a85d4ac342588dcfb87090baaaf4689f"
   },
@@ -733,7 +745,7 @@
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparaciones-adicionales/verificacion-final/configuracion-y-estado.json",
-    "sha256": "0ed0a6713340ffc26a255d4cca36141add732c38862e6ec362458cc8ca91278c"
+    "sha256": "b7bbf8d72010ee5e35ad6f75d0ba1d4c390ce83a995a8aa2868df6a2ecc102af"
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparaciones-adicionales/verificacion-final/ultimo-cambio-temporal.json",

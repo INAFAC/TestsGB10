@@ -20,5 +20,40 @@
   "image_id": "sha256:557747337846eecf34486866f3d992383c6f8af869fdb0e365b5093fcaee02c2",
   "compose_sha256": "1caf0951ec1175b71b97d53ffcc557e9d9ea2e506dd046b2647603c8551fd696",
   "restore_status": "pending",
-  "profiles": []
+  "profiles": [
+    {
+      "fraction": 0.92,
+      "max_num_seqs": 512,
+      "attempts": [
+        {
+          "max_model_len": 262144,
+          "command": [
+            "vllm",
+            "serve",
+            "nvidia/Qwen3.8-27B-NVFP4",
+            "--enable-auto-tool-choice",
+            "--tool-call-parser",
+            "qwen3_coder",
+            "--reasoning-parser",
+            "qwen3",
+            "--gpu-memory-utilization",
+            "0.92",
+            "--max-model-len",
+            "262144",
+            "--max-num-seqs",
+            "512"
+          ],
+          "ready": true,
+          "startup_seconds": 436.3846524649998,
+          "reused_running_server": false
+        }
+      ],
+      "tests": [],
+      "request_timeout_s": 1200,
+      "test_timeout_s": 1500,
+      "max_model_len": 262144,
+      "kv_gib": 83.29,
+      "estimated_cache_tokens": 1337626.0
+    }
+  ]
 }
