@@ -363,6 +363,11 @@
           "case": "c512-in1024-out128",
           "exit_code": 0,
           "elapsed_s": 450.303215160995
+        },
+        {
+          "case": "c512-in1024-out512",
+          "exit_code": 0,
+          "elapsed_s": 996.2923829849897
         }
       ],
       "request_timeout_s": 1200,
