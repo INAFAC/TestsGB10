@@ -27,5 +27,91 @@
     64
   ],
   "model_revision": "482ca0f3832238542f8f5295dde86b5f22711d80",
-  "test_order": "finish 30%; repeat full 40%; lower and higher budgets; higher server concurrency; prefix reuse; restore 40% / 4"
+  "test_order": "finish 30%; repeat full 40%; lower and higher budgets; higher server concurrency; prefix reuse; restore 40% / 4",
+  "planned_groups": [
+    {
+      "memory_percent": 30,
+      "server_limit": 4,
+      "kind": "independent",
+      "tests": 4
+    },
+    {
+      "memory_percent": 40,
+      "server_limit": 4,
+      "kind": "independent",
+      "tests": 10
+    },
+    {
+      "memory_percent": 25,
+      "server_limit": 4,
+      "kind": "independent",
+      "tests": 4
+    },
+    {
+      "memory_percent": 20,
+      "server_limit": 4,
+      "kind": "independent",
+      "tests": 1
+    },
+    {
+      "memory_percent": 50,
+      "server_limit": 4,
+      "kind": "independent",
+      "tests": 4
+    },
+    {
+      "memory_percent": 70,
+      "server_limit": 4,
+      "kind": "independent",
+      "tests": 3
+    },
+    {
+      "memory_percent": 85,
+      "server_limit": 4,
+      "kind": "independent",
+      "tests": 2
+    },
+    {
+      "memory_percent": 92,
+      "server_limit": 4,
+      "kind": "independent",
+      "tests": 2
+    },
+    {
+      "memory_percent": 40,
+      "server_limit": 8,
+      "kind": "independent",
+      "tests": 3
+    },
+    {
+      "memory_percent": 40,
+      "server_limit": 16,
+      "kind": "independent",
+      "tests": 2
+    },
+    {
+      "memory_percent": 40,
+      "server_limit": 32,
+      "kind": "independent",
+      "tests": 2
+    },
+    {
+      "memory_percent": 40,
+      "server_limit": 64,
+      "kind": "independent",
+      "tests": 2
+    },
+    {
+      "memory_percent": 70,
+      "server_limit": 16,
+      "kind": "independent",
+      "tests": 2
+    },
+    {
+      "memory_percent": 40,
+      "server_limit": 4,
+      "kind": "reuse",
+      "tests": 6
+    }
+  ]
 }

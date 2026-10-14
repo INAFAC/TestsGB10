@@ -4,6 +4,14 @@
 
 En estas pruebas se reservó el **30% de la memoria del GB10** para el motor. El uso medido y la caché ocupada se muestran dentro de cada prueba.
 
+## Estado de la batería prevista
+
+Esta tabla distingue las pruebas terminadas de las que todavía faltan. No incluye las primeras mediciones del histórico. Una prueba terminada puede tener errores; el resultado de cada fila indica si las conversaciones se completaron.
+
+| Memoria | Límite impuesto | Tipo de prueba | Terminadas / previstas | Estado |
+|---:|---:|---|---:|---|
+| 30% | 4 activas | Conversaciones con historiales independientes | 4/4 | Terminada |
+
 Las tablas principales muestran la batería con medición detallada. Cada fila enlaza los datos de todas sus conversaciones. Los arranques y rechazos tienen medidas que no corresponden a una generación: se marcan como «No aplica».
 
 | Prueba | Memoria asignada | Límite impuesto al servidor | Tokens por conversación: entrada + respuesta | ¿Terminaron? | ¿Llegaron al máximo del modelo? | Tiempo total | Simultaneidad, colas y problemas |

@@ -215,6 +215,23 @@ def report_tables(tests,base):
         lines+=table(historical,base)+['']+table(historical,base,True)+['','</details>','']
     return lines
 
+def campaign_progress(plan,tests,memory=None):
+    groups=[g for g in plan.get('planned_groups',[]) if memory is None or g['memory_percent']==memory]
+    if not groups:return []
+    lines=['## Estado de la batería prevista','',
+           'Esta tabla distingue las pruebas terminadas de las que todavía faltan. No incluye las primeras mediciones del histórico. Una prueba terminada puede tener errores; el resultado de cada fila indica si las conversaciones se completaron.','',
+           '| Memoria | Límite impuesto | Tipo de prueba | Terminadas / previstas | Estado |',
+           '|---:|---:|---|---:|---|']
+    for g in groups:
+        mem=g['memory_percent'];limit=g['server_limit'];reuse=g['kind']=='reuse'
+        subset=[t for t in tests if t['type']=='conversaciones' and not t['c'].get('medicion_inicial') and t['memory']==mem and t['limit']==limit and bool(t['c'].get('historial_reutilizado'))==reuse]
+        done=sum(t['finished'] or t.get('summary',{}).get('status') in ('not_admitted_within_90s','timeout_1500s') for t in subset)
+        starts=[t for t in tests if t['type']=='arranque' and t['memory']==mem and t['limit']==limit]
+        state='Terminada' if done==g['tests'] else 'En curso' if subset else 'Pendiente'
+        if not subset and starts and all(not t['raw']['ready'] for t in starts):state='No pudo arrancar; ver el fallo de arranque'
+        lines.append(f"| {mem}% | {limit} activas | {'Repetir y ampliar el mismo historial' if reuse else 'Conversaciones con historiales independientes'} | {done}/{g['tests']} | {state} |")
+    return lines+['']
+
 def main():
     model_summaries=[]
     observed_limits=set()
@@ -231,6 +248,7 @@ def main():
         observed_limits.update(limits)
         concurrency_note=('**Hasta ahora, las pruebas de conversaciones publicadas tienen un límite impuesto de cuatro solicitudes activas** (`--max-num-seqs 4`). Que aparezcan cuatro como máximo no demuestra el techo del GB10. Enviar ocho peticiones no levanta ese límite: pueden quedar en cola.' if limits==[4] else '**Límites impuestos al servidor que se han probado:** '+', '.join(map(str,limits))+'. Cada fila muestra el suyo. El máximo observado bajo un límite impuesto no demuestra por sí solo el máximo del GB10.')
         statuses=list((model_dir/'configuracion-del-equipo').rglob('plan-y-estado-general.json'))
+        plan=read(statuses[0]) if statuses else {}
         complete=bool(statuses and read(statuses[0]).get('status')=='complete')
         lines=['# '+model.split('/')[-1],'','[Volver al inicio](../../README.md) · [Cómo leer las medidas](../../GUIA-DE-LECTURA.md)','',
                f'**Modelo exacto:** `{model}`.','',
@@ -259,11 +277,12 @@ def main():
         lines += ['', '## Qué configuración elegir','', '<!-- interpretacion-inicio -->',commentary,'<!-- interpretacion-fin -->','',
                   '## Todas las pruebas','', 'Abre el nombre de una prueba para ver cada conversación, sus tiempos, los tokens recibidos y sus registros.','']
         lines += report_tables(tests,model_dir)
+        lines += campaign_progress(plan,tests)
         lines += ['## Carpetas por memoria','']
         for mem in sorted({t['memory'] for t in tests}):
             folder=model_dir/f'memoria-{mem}-por-ciento';subset=[t for t in tests if t['memory']==mem]
             (folder/'README.md').write_text('\n'.join([f'# Pruebas con {mem}% de memoria','',f'[Volver a todas las pruebas del modelo](../README.md)','',
-                f'En estas pruebas se reservó el **{mem}% de la memoria del GB10** para el motor. El uso medido y la caché ocupada se muestran dentro de cada prueba.','']+report_tables(subset,folder)))
+                f'En estas pruebas se reservó el **{mem}% de la memoria del GB10** para el motor. El uso medido y la caché ocupada se muestran dentro de cada prueba.','']+campaign_progress(plan,tests,mem)+report_tables(subset,folder)))
             lines.append(f'- [{mem}% de memoria]({folder.name}/README.md).')
         lines += ['', '## Equipo y configuración','',f"GB10: {number(equipment.get('memoria_total_gib'),2)} GiB. Pesos del modelo: {number(equipment.get('pesos_del_modelo_gib'),2)} GiB.",
                   f"Imagen: `{equipment.get('imagen','No registrada')}`. vLLM: `{equipment.get('version_vllm','No registrada')}`.",'',
