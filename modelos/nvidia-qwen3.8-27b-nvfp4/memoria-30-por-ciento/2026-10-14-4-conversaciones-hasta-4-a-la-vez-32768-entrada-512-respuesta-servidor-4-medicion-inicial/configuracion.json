@@ -9,7 +9,7 @@
   "concurrencia_enviada": 4,
   "tokens_entrada": 32768,
   "tokens_respuesta_pedidos": 512,
-  "medicion_inicial": false,
+  "medicion_inicial": true,
   "repeticion_de_control": false,
   "comprobacion_adicional": false,
   "espera_ampliada": false,

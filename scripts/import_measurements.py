@@ -61,6 +61,9 @@ def main():
                 context=context or profile.get('max_model_len')
         context=context or (131072 if mem==30 else 262144)
         initial=path.relative_to(source).parts[0] in ('short','context-40')
+        # These two earliest 30% runs lack response timelines. Keep them in the
+        # historical section; measured repetitions provide the main comparison.
+        initial=initial or (path.relative_to(source).parts[0]=='memory' and mem==30 and s.get('peak_overlapping_responses') is None and 'input_tokens' in s)
         control=path.relative_to(source).parts[0]=='additional' and mem==40 and seqs==4
         additional=path.relative_to(source).parts[0]=='additional'
         repeated=s.get('history_step') is not None or 'reuse' in path.parts or 'reuse-40' in path.parts
