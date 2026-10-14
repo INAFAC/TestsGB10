@@ -1,11 +1,11 @@
 [
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-35-por-ciento/2026-10-14-1-conversaciones-hasta-1-a-la-vez-262016-entrada-128-respuesta-servidor-4-comparacion-adicional/mediciones.json",
-    "sha256": "f7daa7f4fb9b630823bb18d00dbf1f11f4dbaa52ad9fec4c70e2e2dfa1497758"
+    "sha256": "e7cd415d08e17d49a6aadd00bbc380af2e72eadd63c8734f7d2dd4babfa976bc"
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-35-por-ciento/2026-10-14-1-conversaciones-hasta-1-a-la-vez-262016-entrada-128-respuesta-servidor-4-comparacion-adicional/registro-de-ejecucion.log",
-    "sha256": "04090c4f4cb0cfa7ada86ddafe51584cc52f9ab79695fb2115d74d4deffe0737"
+    "sha256": "a319b4a723ec5d21074a889e9a32c8b1277f6dbbfa5b57d57afd1e7d9352cfe2"
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-35-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-32768-entrada-512-respuesta-servidor-4-comparacion-adicional/mediciones.json",
@@ -505,15 +505,15 @@
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparaciones-adicionales/memoria-35/registro-del-servidor.log",
-    "sha256": "ca3b519fc1113f7ec17564be8cb68687ba527a19d8a4f9f91f602b10936bd36c"
+    "sha256": "ec34445fc26db606a32febdf249953b99a030da86fbb8dec570efb476341f8d0"
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparaciones-adicionales/configuracion-y-estado.json",
-    "sha256": "920b605ed870e6e91a8d85aee5b1bc0b7b68c7174f5555431e6db6d046043d50"
+    "sha256": "ad3f4947c01ed8e7a93688005f4e9ef31a055fbe7641438701890355f9a7ca5d"
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparaciones-adicionales/ultimo-cambio-temporal.json",
-    "sha256": "6d5f3d9cb423e0c5e754933525cbd418f52aa0122316e66eb186e5f02f320ed5"
+    "sha256": "c32e4833efc551b1e342046b440e9241078467ae3e4d3ca82032fba3e23fd450"
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparaciones-adicionales/configuraciones-previstas.json",
