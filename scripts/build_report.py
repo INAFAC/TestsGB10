@@ -32,7 +32,7 @@ def ident(path):
 def memory(path):
     for part in path.parts:
         if part.startswith('memory-'):
-            return int(part.split('-')[-1])
+            return int(part.split('-')[1])
     return 40
 
 
@@ -43,7 +43,7 @@ def read_test(path):
         return {'id': ident(path), 'path': path, 'model': raw['model_id'], 'memory': memory(path),
                 'description': 'Carga corta inicial (detalle individual no guardado)',
                 'input': raw['total_input_tokens']//count, 'output': raw['total_output_tokens']//count,
-                'concurrency': raw['max_concurrency'], 'active': None, 'count': count,
+                'concurrency': raw['max_concurrency'], 'server_limit': 4, 'active': None, 'count': count,
                 'completed': raw['completed'], 'failed': raw['failed'],
                 'ttft': raw['mean_ttft_ms']/1000, 'response': raw['mean_e2el_ms']/1000,
                 'sum_response': raw['mean_e2el_ms']/1000*raw['completed'],
@@ -60,6 +60,7 @@ def read_test(path):
     total_output = sum(r.get('usage', {}).get('completion_tokens', 0) for r in good)
     status = ('OK' if s.get('completed') == count and not s.get('failed') else
               'No admitida en 90 s' if s.get('status') == 'not_admitted_within_90s' else
+              'Interrumpida a los 1.500 s' if s.get('status') == 'timeout_1500s' else
               'En curso / incompleta')
     if s.get('failed'):
         status = 'Errores'
@@ -73,8 +74,9 @@ def read_test(path):
     elif 'detailed-short' in str(path):
         description = 'Carga corta con métricas individuales'
     return {'id': ident(path), 'path': path, 'model': s.get('model', DEFAULT_MODEL),
-            'memory': memory(path), 'description': description, 'input': s['input_tokens'],
+            'memory': round(s['memory_fraction']*100) if s.get('memory_fraction') is not None else memory(path), 'description': description, 'input': s['input_tokens'],
             'output': s['output_tokens'], 'concurrency': s['concurrency'], 'active': s.get('peak_running'),
+            'server_limit': s.get('server_max_num_seqs', 4),
             'count': count, 'completed': s.get('completed', 0), 'failed': s.get('failed', 0),
             'ttft': mean([r.get('ttft_s') for r in good]),
             'response': mean([r.get('total_s') for r in good]),
@@ -88,15 +90,52 @@ def read_test(path):
             'requests': requests, 'status': status, 'summary': s}
 
 
+def startup_tests():
+    tests = []
+    for path in sorted(DATA.rglob('metadata.json')):
+        raw = json.loads(path.read_text())
+        for profile in raw.get('profiles', []):
+            fraction = round(profile['fraction']*100)
+            seqs = profile.get('max_num_seqs', 4)
+            label = 'memory-'+str(fraction)+(('-seqs-'+str(seqs)) if seqs != 4 else '')
+            for attempt in profile.get('attempts', []):
+                context = attempt['max_model_len']
+                log = path.parent/label/('startup-'+str(context)+'.log')
+                t = dict.fromkeys(['engine_pct','system_pct','ttft','response','sum_response',
+                                  'throughput','mean_request_rate','cache','queue','preemptions','active'])
+                t.update(id=ident(log), path=log if log.exists() else path,
+                         model=raw.get('model', DEFAULT_MODEL), memory=fraction,
+                         description='Arranque con contexto máximo '+integer(context),
+                         input=0, output=0, concurrency=0, server_limit=seqs, count=0, completed=0,
+                         duration=attempt['startup_seconds'], requests=[], kind='startup',
+                         status='Arranque correcto' if attempt['ready'] else '**FALLO DE ARRANQUE**',
+                         attempt=attempt)
+                tests.append(t)
+    return tests
+
+
 def write_detail(t):
     path = DETAILS/(t['id']+'.md')
     source = '../'+t['path'].relative_to(ROOT).as_posix()
+    if t.get('kind') == 'startup':
+        raw = t['path'].read_text()
+        errors = [line for line in raw.splitlines() if 'ValueError:' in line or 'Free memory on device' in line]
+        lines = ['# '+t['description'], '', '[Volver a la comparación](../README.md)', '',
+                 f"- Modelo: `{t['model']}`.", f"- Memoria asignada: {t['memory']}%.",
+                 f"- Límite del servidor: {t['server_limit']} solicitudes.",
+                 f"- Resultado: {t['status']} en {num(t['duration'])} s.",
+                 '- No se enviaron conversaciones en esta comprobación de arranque.',
+                 f'- [Registro original]({source}).', '', '```text',
+                 *errors[-3:], '```', '', 'Comando utilizado:', '', '```json',
+                 json.dumps(t['attempt']['command'], ensure_ascii=False, indent=2), '```', '']
+        path.write_text('\n'.join(lines))
+        return
     lines = ['# '+t['id'], '', '[Volver a la comparación](../README.md)', '',
              t['description']+'.', '',
              f"- Modelo: `{t['model']}`.",
              f"- Presupuesto vLLM: {t['memory']}% de la memoria del GB10.",
              f"- Entrada / salida por solicitud: {integer(t['input'])} / {integer(t['output'])} tokens.",
-             f"- Solicitudes: {t['count']}; concurrencia del cliente: {t['concurrency']}; límite del servidor: 4.",
+             f"- Solicitudes: {t['count']}; concurrencia del cliente: {t['concurrency']}; límite del servidor: {t['server_limit']}.",
              f"- Duración de la prueba: {num(t['duration'])} s.",
              f"- Resultado: **{t['status']}**, {t['completed']}/{t['count']} completadas.",
              f'- [Datos originales]({source}).', '',
@@ -148,6 +187,7 @@ def main():
             continue
         if test:
             tests.append(test)
+    tests.extend(startup_tests())
     models = collections.defaultdict(list)
     for t in tests:
         models[t['model']].append(t)
@@ -162,15 +202,15 @@ def main():
              '- **Asignado:** presupuesto configurado con `--gpu-memory-utilization`; se refiere a toda la memoria del GB10.',
              '- **Motor / GB10:** pico medido con `nvidia-smi` del proceso `VLLM::EngineCore`, dividido entre la memoria total. Incluye sus reservas GPU; no incluye toda la RAM de la API ni del sistema.',
              '- **Sistema / GB10:** pico de `(MemTotal − MemAvailable) / MemTotal`; incluye los demás procesos y el motor.',
-             '- **Concurrencia enviada / activa:** máximo de peticiones en vuelo del cliente y máximo observado dentro del motor. Activa incluye lectura del prompt y generación.',
+             '- **Concurrencia enviada / límite / activa:** máximo de peticiones en vuelo del cliente, límite configurado en el servidor y máximo observado dentro del motor. Activa incluye lectura del prompt y generación.',
              '- **Inicio:** tiempo medio hasta el primer token. **Respuesta:** tiempo medio completo, incluida la espera. **Acumulado:** suma de los tiempos individuales; puede superar la duración real por el solapamiento.',
-             '- **Duración:** tiempo de pared de la prueba, sin el arranque del modelo. **t/s por conversación:** media de tokens de salida / tiempo completo individual, incluyendo espera. **t/s total:** toda la salida / duración de la prueba.',
+             '- **Duración:** tiempo de pared de la prueba, sin el arranque del modelo; las filas de arranque muestran el tiempo hasta disponibilidad o fallo. **t/s por conversación:** media de tokens de salida / tiempo completo individual, incluyendo espera. **t/s total:** toda la salida / duración de la prueba.',
              '- **Cola:** máximo observado de solicitudes esperando; una cola transitoria durante el prefill no demuestra por sí sola falta de memoria.',
              '- **Caché:** pico de uso de la reserva KV, no porcentaje de RAM del equipo. **Recálculos:** preempciones registradas por vLLM.',
              '- **N/M:** no medido. No se sustituye por una estimación ni por cero.', '',
              '## Entorno', '',
              'GB10 con 121,63 GiB de memoria unificada visible. Pruebas del 14 de octubre de 2026. '
-             'Imagen `nvcr.io/nvidia/vllm:26.09-py3`, vLLM `0.29.0+5013de39.dev`. Un solo modelo activo, con límite del servidor de cuatro solicitudes.', '',
+             'Imagen `nvcr.io/nvidia/vllm:26.09-py3`, vLLM `0.29.0+5013de39.dev`. Un solo modelo activo. El límite del servidor se registra en cada fila.', '',
              'Los tiempos se miden contra la API de vLLM, sin Open WebUI. Las entradas son sintéticas y no contienen datos personales. '
              'Estas pruebas miden funcionamiento y rendimiento, no calidad de las respuestas.', '']
     for model in sorted(models):
@@ -183,23 +223,24 @@ def main():
         conclusions = ROOT/'conclusions'/f'{title}.md'
         if conclusions.exists():
             lines += [conclusions.read_text().strip(), '']
-        lines += ['| Prueba / detalle individual | Enunciado | Asignado | Motor / GB10 | Sistema / GB10 | Tokens entrada / salida | Concurrencia enviada / activa | OK / total | Inicio medio (s) | Respuesta media (s) | Acumulado (s) | Duración prueba (s) | t/s conversación | t/s total | Pico caché | Cola máx. | Recálculos | Resultado |',
+        lines += ['| Prueba / detalle individual | Enunciado | Asignado | Motor / GB10 | Sistema / GB10 | Tokens entrada / salida | Concurrencia enviada / límite / activa | OK / total | Inicio medio (s) | Respuesta media (s) | Acumulado (s) | Duración prueba (s) | t/s conversación | t/s total | Pico caché | Cola máx. | Recálculos | Resultado |',
                   '|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|']
-        ordered = sorted(models[model], key=lambda t: (t['memory'], t['input'], t['concurrency'], t['output'], t['id']))
+        ordered = sorted(models[model], key=lambda t: (t['memory'], t['server_limit'], t['input'], t['concurrency'], t['output'], t['id']))
         for i,t in enumerate(ordered,1):
             lines.append(f"| [P{i:02d}](details/{t['id']}.md) | {t['description']} | {t['memory']}% "
                          f"| {num(t['engine_pct'])}% | {num(t['system_pct'])}% | {integer(t['input'])} / {integer(t['output'])} "
-                         f"| {t['concurrency']} / {integer(t['active'])} | {t['completed']}/{t['count']} "
+                         f"| {t['concurrency']} / {t['server_limit']} / {integer(t['active'])} | {t['completed']}/{t['count']} "
                          f"| {num(t['ttft'])} | {num(t['response'])} | {num(t['sum_response'])} "
                          f"| {num(t['duration'])} | {num(t['mean_request_rate'])} | {num(t['throughput'])} "
                          f"| {num(t['cache'])}% | {integer(t['queue'])} | {integer(t['preemptions'])} | {t['status']} |")
         lines += ['']
-    matrix_file = DATA/'2026-10-14/memory/metadata.json'
-    if matrix_file.exists():
+    for matrix_file in sorted(DATA.rglob('metadata.json')):
         m=json.loads(matrix_file.read_text())
-        lines += ['## Arranque con distintos presupuestos', '',
+        if 'restore_status' not in m:
+            continue
+        lines += ['## Estado de la batería: '+matrix_file.parent.name, '',
                   'Se registra también si el modelo consigue arrancar con el contexto máximo solicitado. '
-                  'Arrancar no garantiza que varias conversaciones largas puedan ejecutarse a la vez.', '']
+                  'Cada intento figura también como fila en la tabla del modelo. Arrancar no garantiza que varias conversaciones largas puedan ejecutarse a la vez.', '']
         for profile in m.get('profiles',[]):
             for a in profile.get('attempts',[]):
                 lines.append(f"- **{profile['fraction']*100:.0f}%**, contexto máximo {integer(a['max_model_len'])}: "

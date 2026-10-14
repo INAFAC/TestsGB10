@@ -22,6 +22,8 @@ def main():
     p.add_argument('--model', default='nvidia/Qwen3.8-27B-NVFP4')
     p.add_argument('--concurrency', type=int, required=True)
     p.add_argument('--requests', type=int, help='Total requests; defaults to concurrency')
+    p.add_argument('--server-max-seqs', type=int, default=4)
+    p.add_argument('--memory-fraction', type=float)
     p.add_argument('--input-tokens', type=int, required=True)
     p.add_argument('--output-tokens', type=int, default=256)
     p.add_argument('--seed', type=int, default=19000)
@@ -115,17 +117,21 @@ def main():
             correct = bool(usage and usage['prompt_tokens'] == a.input_tokens
                            and usage['completion_tokens'] == a.output_tokens)
             return {'index': index, 'ok': correct,
+                    'started_at_s': started-start, 'finished_at_s': time.monotonic()-start,
+                    'first_token_at_s': None if first is None else first-start,
                     'ttft_s': None if first is None else first-started,
                     'total_s': time.monotonic()-started, 'usage': usage,
                     'finish_reason': finish, 'text_events': events}
         except Exception as e:
             return {'index': index, 'ok': False,
+                    'started_at_s': started-start, 'finished_at_s': time.monotonic()-start,
                     'total_s': time.monotonic()-started, 'error': str(e)}
 
     def save(status):
         valid = [s for s in samples if 'error' not in s]
         good = [r for r in results if r['ok']]
         summary = {'status': status, 'model': a.model, 'concurrency': a.concurrency, 'num_requests': count,
+                   'server_max_num_seqs': a.server_max_seqs, 'memory_fraction': a.memory_fraction,
                    'input_tokens': a.input_tokens, 'output_tokens': a.output_tokens,
                    'seed': a.seed, 'completed': len(good),
                    'failed': len(results)-len(good), 'duration_s': time.monotonic()-start,
@@ -141,8 +147,25 @@ def main():
         for field in ['gpu_engine_gib', 'gpu_engine_percent', 'system_used_percent',
                       'gpu_temperature_c', 'gpu_utilization_percent']:
             summary['peak_'+field] = max((s[field] for s in valid if s.get(field) is not None), default=None)
-        dest.write_text(json.dumps({'summary': summary, 'requests': list(results),
-                                   'metrics': list(samples)}, indent=2))
+        events = []
+        for r in good:
+            if r.get('first_token_at_s') is not None:
+                events.extend([(r['first_token_at_s'], 1), (r['finished_at_s'], -1)])
+        generating = peak_generating = 0
+        for _, change in sorted(events):
+            generating += change
+            peak_generating = max(peak_generating, generating)
+        summary['peak_overlapping_responses'] = peak_generating
+        summary['seconds_with_queue'] = sum(
+            max(0, b['timestamp']-v['timestamp']) for v,b in zip(valid,valid[1:])
+            if v.get('num_requests_waiting', 0)>0)
+        summary['seconds_cache_above_95_percent'] = sum(
+            max(0, b['timestamp']-v['timestamp']) for v,b in zip(valid,valid[1:])
+            if v.get('kv_cache_usage_perc', 0)>=.95)
+        temporary = dest.with_suffix('.json.tmp')
+        temporary.write_text(json.dumps({'summary': summary, 'requests': list(results),
+                                        'metrics': list(samples)}, indent=2))
+        temporary.replace(dest)
         return summary
 
     samples.append(metrics())

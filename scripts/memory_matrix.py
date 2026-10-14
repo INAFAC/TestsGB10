@@ -26,6 +26,8 @@ def main():
     p.add_argument('--compose', default='/home/canadas/ai/vllm/compose.yaml')
     p.add_argument('--results', required=True)
     p.add_argument('--wait-for', help='Baseline result file that must exist before changing settings')
+    p.add_argument('--wait-metadata', help='Wait until another matrix metadata reports healthy restoration')
+    p.add_argument('--mode', choices=['memory', 'concurrency', 'after30'], default='memory')
     a = p.parse_args()
     root = pathlib.Path(a.results)
     root.mkdir(parents=True, exist_ok=True)
@@ -72,15 +74,16 @@ def main():
             time.sleep(5)
         return False, time.monotonic()-started
 
-    def change(fraction, max_len):
+    def change(fraction, max_len, max_seqs=4):
         cmd = []
         i = 0
         while i < len(original_cmd):
-            if original_cmd[i] in ('--gpu-memory-utilization', '--max-model-len'):
+            if original_cmd[i] in ('--gpu-memory-utilization', '--max-model-len', '--max-num-seqs'):
                 i += 2
             else:
                 cmd.append(original_cmd[i]); i += 1
-        cmd += ['--gpu-memory-utilization', str(fraction), '--max-model-len', str(max_len)]
+        cmd += ['--gpu-memory-utilization', str(fraction), '--max-model-len', str(max_len),
+                '--max-num-seqs', str(max_seqs)]
         override.write_text(json.dumps({'services': {'vllm': {'command': cmd}}}, indent=2))
         sh(compose+['-f', str(override), 'config', '--quiet'], check=True)
         result = sh(compose+['-f', str(override), 'up', '-d', 'vllm'], check=True)
@@ -99,24 +102,59 @@ def main():
         (0.85, [(4,131072,256), (4,262016,128)]),
         (0.92, [(4,131072,256), (4,262016,128)]),
     ]
+    profiles = [(fraction, 4, cases) for fraction, cases in profiles]
+    if a.mode == 'concurrency':
+        profiles = [
+            (.40, 8, [(8,1024,128), (8,8192,128), (8,32768,256)]),
+            (.40, 16, [(16,1024,128), (16,8192,128)]),
+        ]
+    if a.mode == 'after30':
+        # Complete 40% repeat before changing to the larger budgets.
+        full40 = [(1,1024,128,8), (2,1024,128,8), (4,1024,128,8), (8,1024,128,8),
+                  (4,8192,128,8), (4,32768,512), (4,65536,512),
+                  (4,131072,256), (1,262016,128), (4,8192,2048)]
+        profiles = [(.40,4,full40)] + profiles[1:] + [
+            (.40,8,[(8,1024,128),(8,8192,128),(8,32768,256)]),
+            (.40,16,[(16,1024,128),(16,8192,128)]),
+            (.40,32,[(32,1024,128),(32,8192,128)]),
+            (.40,64,[(64,1024,128),(64,8192,128)]),
+            (.70,16,[(16,32768,256),(16,65536,128)]),
+        ]
     probe = pathlib.Path(__file__).with_name('context_probe.py')
     try:
+        if a.wait_metadata:
+            print('WAIT_RESTORE '+a.wait_metadata, flush=True)
+            while True:
+                try:
+                    state = json.loads(pathlib.Path(a.wait_metadata).read_text())
+                    if state.get('restore_status') == 'healthy':
+                        break
+                except (OSError, ValueError):
+                    pass
+                time.sleep(5)
+            # Capture the original configuration after the previous run restores it.
+            inspect = json.loads(sh(['docker', 'inspect', 'vllm-qwen38'], check=True).stdout)[0]
+            original_cmd = inspect['Config']['Cmd']
+            metadata['original_command'] = original_cmd
+            persist()
         if a.wait_for:
             print('WAIT_BASELINE '+a.wait_for, flush=True)
             while not pathlib.Path(a.wait_for).exists():
                 time.sleep(5)
             # The baseline writes only after all requests have completed.
             time.sleep(3)
-        for profile_index, (fraction, cases) in enumerate(profiles):
+        for profile_index, (fraction, max_seqs, cases) in enumerate(profiles):
             label = 'memory-'+str(round(fraction*100))
+            if max_seqs != 4:
+                label += '-seqs-'+str(max_seqs)
             directory = root/label
             directory.mkdir(exist_ok=True)
-            record = {'fraction': fraction, 'attempts': [], 'tests': []}
+            record = {'fraction': fraction, 'max_num_seqs': max_seqs, 'attempts': [], 'tests': []}
             metadata['profiles'].append(record)
             ready = False
             for max_len in ([262144, 131072, 65536] if fraction == .30 else [262144]):
                 print('PROFILE '+label+' max_context='+str(max_len), flush=True)
-                cmd = change(fraction, max_len)
+                cmd = change(fraction, max_len, max_seqs)
                 ready, elapsed = wait_ready(label)
                 raw = startup_log(directory/('startup-'+str(max_len)+'.log'))
                 record['attempts'].append({'max_model_len': max_len, 'command': cmd,
@@ -133,16 +171,21 @@ def main():
                     break
                 sh(compose+['-f', str(override), 'stop', 'vllm'], check=True)
             if not ready:
-                raise RuntimeError('Profile failed to start: '+label)
-            for case_index, (concurrency, input_len, output_len) in enumerate(cases):
+                record['status'] = 'startup_failed'
+                persist()
+                continue
+            for case_index, case in enumerate(cases):
+                concurrency, input_len, output_len = case[:3]
+                requests = case[3] if len(case) > 3 else concurrency
                 name = f'c{concurrency}-in{input_len}-out{output_len}'
                 if input_len+output_len > record['max_model_len']:
                     record['tests'].append({'case': name, 'status': 'skipped_context_limit'})
                     persist(); continue
                 print('TEST '+label+' '+name, flush=True)
                 command = [sys.executable, '-u', str(probe), '--concurrency', str(concurrency),
+                           '--requests', str(requests), '--server-max-seqs', str(max_seqs), '--memory-fraction', str(fraction),
                            '--input-tokens', str(input_len), '--output-tokens', str(output_len),
-                           '--seed', str(30000+profile_index*1000+case_index*100),
+                           '--seed', str(50000+profile_index*1000+case_index*100),
                            '--result', str(directory/(name+'.json'))]
                 started = time.monotonic()
                 with (directory/(name+'.log')).open('w') as log:
@@ -169,6 +212,10 @@ def main():
                         if elapsed > 1500:
                             active.terminate()
                             active.wait(timeout=20)
+                            if partial.exists():
+                                report = json.loads(partial.read_text())
+                                report['summary']['status'] = 'timeout_1500s'
+                                partial.write_text(json.dumps(report, indent=2))
                             break
                         if elapsed-last >= 30:
                             last = elapsed
