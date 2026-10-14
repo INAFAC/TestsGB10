@@ -13,7 +13,7 @@ Esta tabla distingue las pruebas terminadas de las que todavía faltan. No inclu
 | 40% | 4 activas | Conversaciones con historiales independientes | 10/10 | Terminada |
 | 40% | 8 activas | Conversaciones con historiales independientes | 3/3 | Terminada |
 | 40% | 16 activas | Conversaciones con historiales independientes | 2/2 | Terminada |
-| 40% | 32 activas | Conversaciones con historiales independientes | 1/2 | En curso |
+| 40% | 32 activas | Conversaciones con historiales independientes | 2/2 | Terminada |
 | 40% | 64 activas | Conversaciones con historiales independientes | 0/2 | Pendiente |
 | 40% | 4 activas | Repetir y ampliar el mismo historial | 0/6 | Pendiente |
 | 40% | 4 activas | Repeticiones de control al final de la campaña | 0/4 | Pendiente |
@@ -42,7 +42,7 @@ Las tablas principales muestran la batería con medición detallada. Cada fila e
 | [16 conversaciones; hasta 16 a la vez](2026-10-14-16-conversaciones-hasta-16-a-la-vez-8192-entrada-128-respuesta-servidor-16/README.md) | 40% | **16 activas** | 8.192 + 128 | **Sí: 16/16** | No se intentó | 76,0 s | 16 respuestas solapadas; cola máxima 15 |
 | [Arrancar el modelo con límite de 262.144 tokens](2026-10-14-arranque-contexto-262144-servidor-32/README.md) | 40% | **32 activas** | Sin conversaciones | Arrancó | No se enviaron conversaciones | 381,0 s | Arrancó |
 | [32 conversaciones; hasta 32 a la vez](2026-10-14-32-conversaciones-hasta-32-a-la-vez-1024-entrada-128-respuesta-servidor-32/README.md) | 40% | **32 activas** | 1.024 + 128 | **Sí: 32/32** | No se intentó | 34,9 s | 32 respuestas solapadas; cola máxima 29 |
-| [32 conversaciones; hasta 32 a la vez](2026-10-14-32-conversaciones-hasta-32-a-la-vez-8192-entrada-128-respuesta-servidor-32/README.md) | 40% | **32 activas** | 8.192 + 128 | 0/32 (en curso) | No se intentó | 5,2 s | 2 activas en el motor; cola máxima 31 |
+| [32 conversaciones; hasta 32 a la vez](2026-10-14-32-conversaciones-hasta-32-a-la-vez-8192-entrada-128-respuesta-servidor-32/README.md) | 40% | **32 activas** | 8.192 + 128 | **Sí: 32/32** | No se intentó | 158,3 s | 19 respuestas solapadas; cola máxima 31; 5 recálculos |
 
 <details>
 <summary>Comparación completa de memoria, tiempos y tokens por segundo</summary>
@@ -69,7 +69,7 @@ Las tablas principales muestran la batería con medición detallada. Cada fila e
 | [16 conversaciones; hasta 16 a la vez](2026-10-14-16-conversaciones-hasta-16-a-la-vez-8192-entrada-128-respuesta-servidor-16/README.md) | 40% | 36,5% | 44,8% | 8.192 + 128 | 16 / 16 / 16 / 16 | **Sí: 16/16** | 31,4 | 72,1 | 1.153,3 | 76,0 | 1,78 | 26,96 | 87,1% | 15 | 0 | Terminó |
 | [Arrancar el modelo con límite de 262.144 tokens](2026-10-14-arranque-contexto-262144-servidor-32/README.md) | 40% | No aplica | No aplica | Sin conversaciones | Límite 32 | Arrancó | No aplica | No aplica | No aplica | 381,0 | No aplica | No aplica | No aplica | No aplica | No aplica | Arrancó |
 | [32 conversaciones; hasta 32 a la vez](2026-10-14-32-conversaciones-hasta-32-a-la-vez-1024-entrada-128-respuesta-servidor-32/README.md) | 40% | 36,6% | 45,1% | 1.024 + 128 | 32 / 32 / 32 / 32 | **Sí: 32/32** | 10,1 | 33,7 | 1.078,6 | 34,9 | 3,80 | 117,51 | 34,6% | 29 | 0 | Terminó |
-| [32 conversaciones; hasta 32 a la vez](2026-10-14-32-conversaciones-hasta-32-a-la-vez-8192-entrada-128-respuesta-servidor-32/README.md) | 40% | 36,6% | 45,0% | 8.192 + 128 | 32 / 32 / 2 / — | 0/32 (en curso) | Pendiente | Pendiente | Pendiente | 5,2 | Pendiente | Pendiente | 7,0% | 31 | 0 | En curso |
+| [32 conversaciones; hasta 32 a la vez](2026-10-14-32-conversaciones-hasta-32-a-la-vez-8192-entrada-128-respuesta-servidor-32/README.md) | 40% | 36,7% | 45,0% | 8.192 + 128 | 32 / 32 / 19 / 19 | **Sí: 32/32** | 69,9 | 134,8 | 4.315,0 | 158,3 | 0,99 | 25,88 | 99,8% | 31 | 5 | Terminó con 5 recálculos |
 
 </details>
 

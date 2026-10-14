@@ -493,6 +493,11 @@
           "case": "c32-in1024-out128",
           "exit_code": 0,
           "elapsed_s": 35.00541594999959
+        },
+        {
+          "case": "c32-in8192-out128",
+          "exit_code": 0,
+          "elapsed_s": 160.03182282099442
         }
       ],
       "max_model_len": 262144,
