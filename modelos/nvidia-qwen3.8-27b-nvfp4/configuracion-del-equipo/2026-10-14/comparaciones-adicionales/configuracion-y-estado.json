@@ -193,6 +193,16 @@
           "case": "historial-04-c1-in131072-out128",
           "exit_code": 0,
           "elapsed_s": 20.00255524800741
+        },
+        {
+          "case": "historial-05-c1-in262016-out128",
+          "exit_code": 0,
+          "elapsed_s": 240.05453604900686
+        },
+        {
+          "case": "historial-06-c1-in262016-out128",
+          "exit_code": 0,
+          "elapsed_s": 25.003648087993497
         }
       ],
       "request_timeout_s": 1200,
