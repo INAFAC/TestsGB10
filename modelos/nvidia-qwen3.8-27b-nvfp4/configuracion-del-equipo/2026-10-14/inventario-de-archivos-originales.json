@@ -340,6 +340,14 @@
     "sha256": "7fcbc9017f500e49eead3481debe219dafe7ee4708c208cad798054a5b7eaaa3"
   },
   {
+    "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-40-por-ciento/2026-10-14-1-conversaciones-hasta-1-a-la-vez-65536-entrada-128-respuesta-servidor-4-1-historial-nuevo/mediciones.json",
+    "sha256": "c7b34fbc1fa19dac11e11a31b206d50c7b3206922135d081a9beafd12b645dc4"
+  },
+  {
+    "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-40-por-ciento/2026-10-14-1-conversaciones-hasta-1-a-la-vez-65536-entrada-128-respuesta-servidor-4-1-historial-nuevo/registro-de-ejecucion.log",
+    "sha256": "29362c2d7f699972eb364711b96c6c37e75eda4e5dd37dad93a3d5fc93dbb4ed"
+  },
+  {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-40-por-ciento/2026-10-14-20-conversaciones-hasta-1-a-la-vez-1024-entrada-128-respuesta-servidor-4-medicion-inicial/mediciones.json",
     "sha256": "fa887b34785cda33ac76fd77d9fe105b520bf33f4d61b6496ceab1341a66fda9"
   },
@@ -481,7 +489,7 @@
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparacion-de-memoria-y-concurrencia/configuracion-y-estado.json",
-    "sha256": "2ea8b8b620e55106509b86f35e8937b0c69a682d8080e946c4c5191ebbf66409"
+    "sha256": "eac3c6a3836e09f49cf067a2e87e6e2d36d1b45fb7229660b88eadfc207c5a20"
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparacion-de-memoria-y-concurrencia/ultimo-cambio-temporal.json",
@@ -490,6 +498,10 @@
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparacion-de-memoria-y-concurrencia/script-de-medicion-ejecutado.py",
     "sha256": "cb3d768b4baa20b655d1a1910f9c8c1a18c89d2c9e647dc4e45ffb8e47014eb2"
+  },
+  {
+    "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparacion-de-memoria-y-concurrencia/registro-de-restauracion.log",
+    "sha256": "0b1abd43830c690e7c3d9f296aec9a41af34b069c9bedea7d84d8e85f4c2dc8b"
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparacion-de-memoria-y-concurrencia/script-de-bateria-ejecutado.py",
