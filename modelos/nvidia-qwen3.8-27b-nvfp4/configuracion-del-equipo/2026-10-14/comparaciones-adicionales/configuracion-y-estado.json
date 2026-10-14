@@ -173,7 +173,18 @@
           "reused_running_server": false
         }
       ],
-      "tests": [],
+      "tests": [
+        {
+          "case": "historial-01-c1-in65536-out128",
+          "exit_code": 0,
+          "elapsed_s": 65.00631485698977
+        },
+        {
+          "case": "historial-02-c1-in65536-out128",
+          "exit_code": 0,
+          "elapsed_s": 15.001360671012662
+        }
+      ],
       "request_timeout_s": 1200,
       "test_timeout_s": 1500,
       "max_model_len": 262144,

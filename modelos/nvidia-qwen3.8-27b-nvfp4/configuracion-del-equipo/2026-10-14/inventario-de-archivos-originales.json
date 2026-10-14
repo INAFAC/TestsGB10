@@ -25,11 +25,27 @@
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-70-por-ciento/2026-10-14-1-conversaciones-hasta-1-a-la-vez-65536-entrada-128-respuesta-servidor-4-1-historial-nuevo/mediciones.json",
-    "sha256": "97b64dcfac694d587f8ca6c31712151ab40aabddf4d8e420134e192d635b97f6"
+    "sha256": "603e33597ff15c6b82c70d0ac2a383bf123a5334033d2071dfc1795b642f1319"
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-70-por-ciento/2026-10-14-1-conversaciones-hasta-1-a-la-vez-65536-entrada-128-respuesta-servidor-4-1-historial-nuevo/registro-de-ejecucion.log",
-    "sha256": "7bef1a806406715ce9445ee925a661f5ba42d3a172423ec855b9d45bb6c4e8f8"
+    "sha256": "a7da60fb927235be8bdb7db79169b6a0e7e205b6c48d2690c54193f02c94cd87"
+  },
+  {
+    "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-70-por-ciento/2026-10-14-1-conversaciones-hasta-1-a-la-vez-65536-entrada-128-respuesta-servidor-4-2-historial-repetido/mediciones.json",
+    "sha256": "d7fcc829915c62e76056048ee844ec8e47d019b6ab1ca4a8fb706cfc86ed660e"
+  },
+  {
+    "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-70-por-ciento/2026-10-14-1-conversaciones-hasta-1-a-la-vez-65536-entrada-128-respuesta-servidor-4-2-historial-repetido/registro-de-ejecucion.log",
+    "sha256": "65489df70d874f09eae7bdfadc84c056e741ad80c117c0403963d8bcfcc380a0"
+  },
+  {
+    "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-70-por-ciento/2026-10-14-1-conversaciones-hasta-1-a-la-vez-131072-entrada-128-respuesta-servidor-4-3-historial-ampliado/mediciones.json",
+    "sha256": "5fd3046c1f89a0badc1aaf33068b60f6279b00b16f78927a2326570a830938b1"
+  },
+  {
+    "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-70-por-ciento/2026-10-14-1-conversaciones-hasta-1-a-la-vez-131072-entrada-128-respuesta-servidor-4-3-historial-ampliado/registro-de-ejecucion.log",
+    "sha256": "a92cb569cda7e7347325e7590245433726769fdb0bd2989ab6f54a8788f3dd4b"
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-70-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-131072-entrada-256-respuesta-servidor-2-comparacion-adicional/mediciones.json",
@@ -548,12 +564,16 @@
     "sha256": "3ec104e438884297ae639be3b1f4b619a32f2fb2fb6b7089665e9415644b47be"
   },
   {
+    "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparaciones-adicionales/memoria-70/registro-del-servidor.log",
+    "sha256": "5df3ccc6810bdac934d9bc8ddfbf4e8dbfd2613410cb1bb3ca39595290e0fe3d"
+  },
+  {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparaciones-adicionales/memoria-70-limite-servidor-2/registro-del-servidor.log",
     "sha256": "7d7e67a9fb2f53748b259b00b04a148a12b3ba95f82b7f8fd8af2abe4aa126d7"
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparaciones-adicionales/configuracion-y-estado.json",
-    "sha256": "29b0b1393eb644ad5296979884f81dfc7312d26cb22138950a47a044f7c04e17"
+    "sha256": "f0e9e11fbdc12737ae82c098e410478fc278d54be84541eda0f17ea0c71645fb"
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparaciones-adicionales/ultimo-cambio-temporal.json",
