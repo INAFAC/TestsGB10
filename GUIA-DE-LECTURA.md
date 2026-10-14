@@ -71,7 +71,7 @@ Se ejecuta un modelo a la vez. Esta batería compara el presupuesto de memoria, 
 
 Cada fila corresponde a una ejecución de la prueba; las medias se calculan entre sus conversaciones, no entre muchas repeticiones del mismo ensayo. Las primeras mediciones conservadas permiten contrastar parte del 40%. Diferencias pequeñas de tiempo pueden variar entre ejecuciones.
 
-Las pruebas de historial nuevo usan entradas independientes. Las de reutilización repiten el mismo historial y después lo amplían. Un historial que permanezca en caché puede empezar a responder mucho antes.
+Las pruebas de historial nuevo usan entradas independientes. Las de reutilización repiten el mismo historial y después lo amplían. Un historial que permanezca en caché puede empezar a responder mucho antes. La reutilización se midió con una sola conversación a la vez. Sus tiempos no garantizan la misma espera si otros historiales compiten por la caché y desplazan información guardada.
 
 Se mide la caché aproximadamente cada segundo y la memoria/temperatura GPU aproximadamente cada cinco segundos. Un pico más breve puede pasar desapercibido. Los tiempos individuales empiezan al enviar cada petición; el tiempo del grupo también incluye preparación y medición.
 
