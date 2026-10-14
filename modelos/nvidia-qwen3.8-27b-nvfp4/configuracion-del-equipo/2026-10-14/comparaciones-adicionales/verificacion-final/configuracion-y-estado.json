@@ -93,6 +93,11 @@
           "case": "c4-in8192-out128",
           "exit_code": 0,
           "elapsed_s": 30.003382669005077
+        },
+        {
+          "case": "c4-in32768-out512",
+          "exit_code": 0,
+          "elapsed_s": 170.03172800299944
         }
       ],
       "request_timeout_s": 1200,
