@@ -709,7 +709,7 @@
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparaciones-adicionales/configuracion-y-estado.json",
-    "sha256": "9e6df0220b28c5f16ddd5557bbc721ca4fb807e8e4d8b3743ff071dd889d2739"
+    "sha256": "b22c48251e9a9aab2cc6092aecbe88cee55b18bcc993b8d71648c4e68ce2efb1"
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparaciones-adicionales/ultimo-cambio-temporal.json",
@@ -724,7 +724,31 @@
     "sha256": "ca838decc27282c43e06eb2b489ab61b103673adb4bdc9acb4b4e2dfad5bae80"
   },
   {
+    "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparaciones-adicionales/registro-de-restauracion.log",
+    "sha256": "12e978262ab97d30d188d9cc0a6939a87ed5e3a275ea96f0f4b2500dd905a283"
+  },
+  {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparaciones-adicionales/script-de-bateria-ejecutado.py",
+    "sha256": "ca8e021394694662b13f0e47454f09171b2792a95aa9ee73a65a64713d5295d3"
+  },
+  {
+    "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparaciones-adicionales/verificacion-final/configuracion-y-estado.json",
+    "sha256": "0ed0a6713340ffc26a255d4cca36141add732c38862e6ec362458cc8ca91278c"
+  },
+  {
+    "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparaciones-adicionales/verificacion-final/ultimo-cambio-temporal.json",
+    "sha256": "28a6f55f421003e62d4b9402ad6f2e1eb333662a721f3940a65e474079d03410"
+  },
+  {
+    "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparaciones-adicionales/verificacion-final/configuraciones-previstas.json",
+    "sha256": "15bf590b8372e4f850c1c2d20af6d87b2da9cc4277e816da6d67c0e8d631e1c6"
+  },
+  {
+    "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparaciones-adicionales/verificacion-final/script-de-medicion-ejecutado.py",
+    "sha256": "ca838decc27282c43e06eb2b489ab61b103673adb4bdc9acb4b4e2dfad5bae80"
+  },
+  {
+    "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparaciones-adicionales/verificacion-final/script-de-bateria-ejecutado.py",
     "sha256": "ca8e021394694662b13f0e47454f09171b2792a95aa9ee73a65a64713d5295d3"
   },
   {
