@@ -292,6 +292,7 @@ def main():
         plan=read(statuses[0]) if statuses else {}
         complete=bool(statuses and read(statuses[0]).get('status')=='complete')
         lines=['# '+model.split('/')[-1],'','[Volver al inicio](../../README.md) · [Cómo leer las medidas](../../GUIA-DE-LECTURA.md)','',
+               '[Elegir configuración](#qué-configuración-elegir) · [Todas las pruebas](#todas-las-pruebas) · [Cobertura de la batería](#estado-de-la-batería-prevista)','',
                f'**Modelo exacto:** `{model}`.','',
                '**Estado:** '+(f"pruebas terminadas. Configuración original restaurada: {plan['restore_memory_percent']}% de memoria, {plan['restore_max_num_seqs']} solicitudes activas como límite y {integer(plan['restore_max_model_len'])} tokens por conversación." if complete else 'pruebas en curso. Los resultados se actualizan a medida que terminan.'),'',
                f'**Máximo por conversación: {integer(maximum_model)} tokens, sumando historial y respuesta.** '
