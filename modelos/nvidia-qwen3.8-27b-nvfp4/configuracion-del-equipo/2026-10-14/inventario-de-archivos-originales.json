@@ -89,11 +89,11 @@
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-92-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-262016-entrada-128-respuesta-servidor-4-comparacion-adicional-espera-ampliada/mediciones.json",
-    "sha256": "84abe32afb69c5a36c7db0bf3ccc93d1dc95cfd09b8ff143a84d079caa1e02c8"
+    "sha256": "fa54cdb81fd1f52d95b0d0d42dab48231658d84b37d888d1a5ae6feff5ed7891"
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-92-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-262016-entrada-128-respuesta-servidor-4-comparacion-adicional-espera-ampliada/registro-de-ejecucion.log",
-    "sha256": "eb4536f3e28ca89494aeb8d0a0706a08e1c018fac248a9d36f07454582248a6b"
+    "sha256": "142af624c88a4abc6946ecd4ccc31e6335978b6a8a77c7e63acbbc917b030ae9"
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-25-por-ciento/2026-10-14-1-conversaciones-hasta-1-a-la-vez-65280-entrada-256-respuesta-servidor-4/mediciones.json",
@@ -624,12 +624,16 @@
     "sha256": "c57a25326fb1cbcede4aa4012f04fbf9e1a6f0b2a8ea34e354e105a4f6b626a4"
   },
   {
+    "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparaciones-adicionales/memoria-92-espera-2700/registro-del-servidor.log",
+    "sha256": "1d91335602276d131616a36e4cf75f365d1d656528bfad3eb0d099ff024c56b6"
+  },
+  {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparaciones-adicionales/configuracion-y-estado.json",
-    "sha256": "47c8518dc0ce54b013a886d33535888b55c1b4408ec55b07b68f8d3d0d421338"
+    "sha256": "8b2975180db2ead50f14159d391c36141b56032322f6bc508602e834cdc05bc0"
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparaciones-adicionales/ultimo-cambio-temporal.json",
-    "sha256": "ac325c8a2981470a81813c44d08d0b4dc6481b9072e98634ba88d2296a36c614"
+    "sha256": "a4260b575a64430d0a9054b4d38f53260f5d8bd8a7a45dda0402489856e0cf0d"
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparaciones-adicionales/configuraciones-previstas.json",
