@@ -30,6 +30,8 @@ cases = [
     ('reuse-40','02-repeat-65536',1,1,65536,128,90000),
     ('reuse-40','03-extend-131072',1,1,131072,128,90000),
     ('reuse-40','04-repeat-131072',1,1,131072,128,90000),
+    ('reuse-40','05-extend-262016',1,1,262016,128,90000),
+    ('reuse-40','06-repeat-262016',1,1,262016,128,90000),
 ]
 metadata={'original_command':cmd,'status':'running','tests':[]}
 for folder,name,c,n,inp,out,seed in cases:

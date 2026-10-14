@@ -33,11 +33,15 @@ def memory(path):
     for part in path.parts:
         if part.startswith('memory-'):
             return int(part.split('-')[1])
-    return 40
+    if any(part in ('short','context-40','detailed-short-40','reuse-40') for part in path.parts):
+        return 40
+    return None
 
 
 def read_test(path):
     raw = json.loads(path.read_text())
+    if not isinstance(raw, dict):
+        return None
     if isinstance(raw, dict) and 'http_status' in raw and 'output_requested' in raw:
         t = dict.fromkeys(['engine_pct','system_pct','ttft','response','sum_response',
                           'throughput','mean_request_rate','cache','queue','preemptions','active'])
@@ -142,22 +146,23 @@ def write_detail(t):
         return
     if t.get('kind') == 'startup':
         raw = t['path'].read_text()
-        errors = [line for line in raw.splitlines() if 'ValueError:' in line or 'Free memory on device' in line]
+        errors = [line for line in raw.splitlines() if any(term in line for term in
+                  ('ValueError:', 'RuntimeError:', 'OutOfMemoryError:', 'CUDA out of memory'))]
         lines = ['# '+t['description'], '', '[Volver a la comparación](../README.md)', '',
-                 f"- Modelo: `{t['model']}`.", f"- Memoria asignada: {t['memory']}%.",
+                 f"- Modelo: `{t['model']}`.", f"- Memoria asignada: {num(t['memory'],0)}%.",
                  f"- Límite del servidor: {t['server_limit']} solicitudes.",
                  f"- Resultado: {t['status']} en {num(t['duration'])} s.",
                  '- No se enviaron conversaciones en esta comprobación de arranque.',
                  ('- Se reutilizó el servidor ya preparado: la duración es la comprobación de salud, no el tiempo de cargar el modelo.' if t['attempt'].get('reused_running_server') else '- La duración mide la espera hasta disponibilidad o fallo tras recrear el servicio.'),
                  f'- [Registro original]({source}).', '', '```text',
-                 *errors[-3:], '```', '', 'Comando utilizado:', '', '```json',
+                 *errors[:6], '```', '', 'Comando utilizado:', '', '```json',
                  json.dumps(t['attempt']['command'], ensure_ascii=False, indent=2), '```', '']
         path.write_text('\n'.join(lines))
         return
     lines = ['# '+t['id'], '', '[Volver a la comparación](../README.md)', '',
              t['description']+'.', '',
              f"- Modelo: `{t['model']}`.",
-             f"- Presupuesto vLLM: {t['memory']}% de la memoria del GB10.",
+             f"- Presupuesto vLLM: {num(t['memory'],0)}% de la memoria del GB10.",
              f"- Entrada / salida por solicitud: {integer(t['input'])} / {integer(t['output'])} tokens.",
              f"- Solicitudes: {t['count']}; concurrencia del cliente: {t['concurrency']}; límite del servidor: {t['server_limit']}.",
              f"- Duración de la prueba: {num(t['duration'])} s.",
@@ -198,7 +203,7 @@ def write_detail(t):
                   f"- Utilización GPU máxima observada: {num(s.get('peak_gpu_utilization_percent'))}%."]
     if t.get('summary', {}).get('peak_overlapping_responses') is not None:
         s = t['summary']
-        lines += [f"- Máximo de respuestas solapadas desde primer token hasta final: {integer(s['peak_overlapping_responses'])}.",
+        lines += [f"- Máximo de respuestas solapadas desde primer token hasta final (entre las solicitudes ya terminadas): {integer(s['peak_overlapping_responses'])}.",
                   f"- Tiempo observado con alguna solicitud en cola: {num(s.get('seconds_with_queue'))} s.",
                   f"- Tiempo observado con caché al 95% o más: {num(s.get('seconds_cache_above_95_percent'))} s.",
                   f"- Contexto máximo informado por la API: {integer(s.get('max_model_len'))} tokens.", '',
@@ -236,7 +241,7 @@ def main():
              '- **Asignado:** presupuesto configurado con `--gpu-memory-utilization`; se refiere a toda la memoria del GB10.',
              '- **Motor / GB10:** pico medido con `nvidia-smi` del proceso `VLLM::EngineCore`, dividido entre la memoria total. Incluye sus reservas GPU; no incluye toda la RAM de la API ni del sistema.',
              '- **Sistema / GB10:** pico de `(MemTotal − MemAvailable) / MemTotal`; incluye los demás procesos y el motor.',
-             '- **Concurrencia enviada / límite / activa:** máximo de peticiones en vuelo del cliente, límite configurado en el servidor y máximo observado dentro del motor. Activa incluye lectura del prompt y generación.',
+             '- **Concurrencia enviada / límite / activa / respuestas:** máximo de peticiones en vuelo del cliente, límite configurado en el servidor y máximo observado dentro del motor. Activa incluye lectura del prompt y generación. Respuestas es el máximo de intervalos solapados desde primer token hasta final, calculado al terminar la prueba.',
              '- **Inicio:** tiempo medio hasta el primer token. **Respuesta:** tiempo medio completo, incluida la espera. **Acumulado:** suma de los tiempos individuales; puede superar la duración real por el solapamiento.',
              '- **Duración:** tiempo de pared de la prueba, sin el arranque del modelo; las filas de arranque muestran el tiempo hasta disponibilidad o fallo. **t/s por conversación:** media de tokens de salida / tiempo completo individual, incluyendo espera. **t/s total:** toda la salida / duración de la prueba.',
              '- **Cola:** máximo observado de solicitudes esperando; una cola transitoria durante el prefill no demuestra por sí sola falta de memoria.',
@@ -257,13 +262,13 @@ def main():
         conclusions = ROOT/'conclusions'/f'{title}.md'
         if conclusions.exists():
             lines += [conclusions.read_text().strip(), '']
-        lines += ['| Prueba / detalle individual | Enunciado | Asignado | Motor / GB10 | Sistema / GB10 | Tokens entrada / salida | Concurrencia enviada / límite / activa | OK / total | Inicio medio (s) | Respuesta media (s) | Acumulado (s) | Duración prueba (s) | t/s conversación | t/s total | Pico caché | Cola máx. | Recálculos | Resultado |',
+        lines += ['| Prueba / detalle individual | Enunciado | Asignado | Motor / GB10 | Sistema / GB10 | Tokens entrada / salida | Concurrencia enviada / límite / activa / respuestas | OK / total | Inicio medio (s) | Respuesta media (s) | Acumulado (s) | Duración prueba (s) | t/s conversación | t/s total | Pico caché | Cola máx. | Recálculos | Resultado |',
                   '|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|']
-        ordered = sorted(models[model], key=lambda t: (t['memory'], t['server_limit'], t['input'], t['concurrency'], t['output'], t['id']))
+        ordered = sorted(models[model], key=lambda t: (t['memory'] if t['memory'] is not None else float('inf'), t['server_limit'], t['input'], t['concurrency'], t['output'], t['id']))
         for i,t in enumerate(ordered,1):
-            lines.append(f"| [P{i:02d}](details/{t['id']}.md) | {t['description']} | {t['memory']}% "
+            lines.append(f"| [P{i:02d}](details/{t['id']}.md) | {t['description']} | {num(t['memory'],0)}% "
                          f"| {num(t['engine_pct'])}% | {num(t['system_pct'])}% | {integer(t['input'])} / {integer(t['output'])} "
-                         f"| {t['concurrency']} / {t['server_limit']} / {integer(t['active'])} | {t['completed']}/{t['count']} "
+                         f"| {t['concurrency']} / {t['server_limit']} / {integer(t['active'])} / {integer(t.get('summary', {}).get('peak_overlapping_responses') if t.get('summary', {}).get('status') == 'complete' else None)} | {t['completed']}/{t['count']} "
                          f"| {num(t['ttft'])} | {num(t['response'])} | {num(t['sum_response'])} "
                          f"| {num(t['duration'])} | {num(t['mean_request_rate'])} | {num(t['throughput'])} "
                          f"| {num(t['cache'])}% | {integer(t['queue'])} | {integer(t['preemptions'])} | {t['status']} |")
@@ -301,8 +306,13 @@ def main():
               '```bash',
               'python3 scripts/context_probe.py --model nvidia/Qwen3.8-27B-NVFP4 \\',
               '  --concurrency 4 --requests 4 --input-tokens 32768 --output-tokens 512 \\',
+              '  --memory-fraction 0.4 --server-max-seqs 4 \\',
               '  --result /tmp/contexto-32k.json',
               '```', '',
+              'Ejecuta el medidor en el GB10: la telemetría de hardware corresponde a la máquina que ejecuta el script. '
+              '`--memory-fraction` y `--server-max-seqs` registran la configuración existente; no la modifican. '
+              'Para añadir otro modelo, usa su identificador y sus valores reales, guarda el JSON bajo `results/` y ejecuta `build_report.py`. '
+              'Una memoria no registrada aparece como N/M, no se supone que sea el 40%.', '',
               'En las primeras pruebas se guardaron menos métricas; se conservan como historial y sus celdas ausentes están marcadas N/M. '
               'Las nuevas guardan tiempos individuales y muestrean la caché cada segundo y la memoria GPU aproximadamente cada cinco segundos. '
               'Las comparaciones de memoria deben mantener modelo, entrada, salida y concurrencia iguales.', '',

@@ -13,7 +13,7 @@ Una tabla por modelo y una fila por prueba. El ID de cada fila abre los tiempos 
 - **Asignado:** presupuesto configurado con `--gpu-memory-utilization`; se refiere a toda la memoria del GB10.
 - **Motor / GB10:** pico medido con `nvidia-smi` del proceso `VLLM::EngineCore`, dividido entre la memoria total. Incluye sus reservas GPU; no incluye toda la RAM de la API ni del sistema.
 - **Sistema / GB10:** pico de `(MemTotal − MemAvailable) / MemTotal`; incluye los demás procesos y el motor.
-- **Concurrencia enviada / límite / activa:** máximo de peticiones en vuelo del cliente, límite configurado en el servidor y máximo observado dentro del motor. Activa incluye lectura del prompt y generación.
+- **Concurrencia enviada / límite / activa / respuestas:** máximo de peticiones en vuelo del cliente, límite configurado en el servidor y máximo observado dentro del motor. Activa incluye lectura del prompt y generación. Respuestas es el máximo de intervalos solapados desde primer token hasta final, calculado al terminar la prueba.
 - **Inicio:** tiempo medio hasta el primer token. **Respuesta:** tiempo medio completo, incluida la espera. **Acumulado:** suma de los tiempos individuales; puede superar la duración real por el solapamiento.
 - **Duración:** tiempo de pared de la prueba, sin el arranque del modelo; las filas de arranque muestran el tiempo hasta disponibilidad o fallo. **t/s por conversación:** media de tokens de salida / tiempo completo individual, incluyendo espera. **t/s total:** toda la salida / duración de la prueba.
 - **Cola:** máximo observado de solicitudes esperando; una cola transitoria durante el prefill no demuestra por sí sola falta de memoria.
@@ -42,31 +42,33 @@ La capacidad depende del historial y de la longitud de la respuesta. **Aceptar c
 
 Son máximos observados en estas cargas sintéticas y esta configuración de vLLM. No representan un límite universal de cualquier modelo, precisión de caché o longitud de respuesta. Las recomendaciones finales se incorporarán al terminar la matriz.
 
-| Prueba / detalle individual | Enunciado | Asignado | Motor / GB10 | Sistema / GB10 | Tokens entrada / salida | Concurrencia enviada / límite / activa | OK / total | Inicio medio (s) | Respuesta media (s) | Acumulado (s) | Duración prueba (s) | t/s conversación | t/s total | Pico caché | Cola máx. | Recálculos | Resultado |
+| Prueba / detalle individual | Enunciado | Asignado | Motor / GB10 | Sistema / GB10 | Tokens entrada / salida | Concurrencia enviada / límite / activa / respuestas | OK / total | Inicio medio (s) | Respuesta media (s) | Acumulado (s) | Duración prueba (s) | t/s conversación | t/s total | Pico caché | Cola máx. | Recálculos | Resultado |
 |---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|
-| [P01](details/2026-10-14-memory-memory-30-startup-131072.md) | Arranque con contexto máximo 131.072 | 30% | N/M | N/M | 0 / 0 | 0 / 4 / — | 0/0 | N/M | N/M | N/M | 366,0 | N/M | N/M | N/M | — | — | Arranque correcto |
-| [P02](details/2026-10-14-memory-memory-30-startup-262144.md) | Arranque con contexto máximo 262.144 | 30% | N/M | N/M | 0 / 0 | 0 / 4 / — | 0/0 | N/M | N/M | N/M | 310,8 | N/M | N/M | N/M | — | — | **FALLO DE ARRANQUE** |
-| [P03](details/2026-10-14-memory-memory-30-c4-in8192-out128.md) | Carga corta; prefijos independientes | 30% | 26,6% | 35,0% | 8.192 / 128 | 4 / 4 / 4 | 4/4 | 9,2 | 24,9 | 99,5 | 25,6 | 5,1 | 20,0 | 45,0% | 3 | 0 | OK |
-| [P04](details/2026-10-14-memory-memory-30-c4-in32768-out512.md) | Historial largo; prefijos independientes | 30% | 26,6% | 34,9% | 32.768 / 512 | 4 / 4 / 2 | 4/4 | 65,0 | 126,3 | 505,4 | 164,8 | 4,5 | 12,4 | 90,9% | 3 | 0 | Completa; cola |
-| [P05](details/2026-10-14-memory-memory-30-c4-in65536-out512.md) | Historial largo; prefijos independientes | 30% | 26,6% | 34,8% | 65.536 / 512 | 4 / 4 / 1 | 4/4 | 167,8 | 217,6 | 870,4 | 348,4 | 3,1 | 5,9 | 91,3% | 3 | 0 | Completa; cola |
-| [P06](details/2026-10-14-memory-memory-30-c1-in130816-out256.md) | Historial largo; prefijos independientes | 30% | 26,6% | 34,8% | 130.816 / 256 | 1 / 4 / 1 | 1/1 | 178,1 | 207,4 | 207,4 | 207,5 | 1,2 | 1,2 | 99,6% | 1 | 4 | Completa; recálculos |
-| [P07](details/2026-10-14-after30-memory-40-startup-262144.md) | Servidor ya preparado; contexto 262.144 | 40% | N/M | N/M | 0 / 0 | 0 / 4 / — | 0/0 | N/M | N/M | N/M | 0,0 | N/M | N/M | N/M | — | — | Arranque correcto |
-| [P08](details/2026-10-14-after30-memory-40-c1-in1024-out128.md) | Carga corta; prefijos independientes (repetición 40%) | 40% | 36,7% | 45,3% | 1.024 / 128 | 1 / 4 / 1 | 8/8 | 0,5 | 10,7 | 85,2 | 85,3 | 12,0 | 12,0 | 1,6% | 0 | 0 | OK |
-| [P09](details/2026-10-14-short-c1-in1024.md) | Carga corta inicial (detalle individual no guardado) | 40% | N/M | N/M | 1.024 / 128 | 1 / 4 / — | 20/20 | 0,7 | 10,6 | 212,5 | 212,5 | N/M | 12,0 | N/M | — | — | OK |
-| [P10](details/2026-10-14-after30-memory-40-c2-in1024-out128.md) | Carga corta; prefijos independientes (repetición 40%) | 40% | 36,7% | 45,0% | 1.024 / 128 | 2 / 4 / 2 | 8/8 | 0,9 | 11,5 | 91,7 | 46,0 | 11,2 | 22,3 | 3,2% | 0 | 0 | OK |
-| [P11](details/2026-10-14-short-c2-in1024.md) | Carga corta inicial (detalle individual no guardado) | 40% | N/M | N/M | 1.024 / 128 | 2 / 4 / — | 20/20 | 1,0 | 11,6 | 232,8 | 116,5 | N/M | 22,0 | N/M | — | — | OK |
-| [P12](details/2026-10-14-after30-memory-40-c4-in1024-out128.md) | Carga corta; prefijos independientes (repetición 40%) | 40% | 36,8% | 45,1% | 1.024 / 128 | 4 / 4 / 4 | 8/8 | 2,0 | 13,0 | 104,3 | 26,2 | 9,8 | 39,1 | 5,9% | 1 | 0 | OK |
-| [P13](details/2026-10-14-short-c4-in1024.md) | Carga corta inicial (detalle individual no guardado) | 40% | N/M | N/M | 1.024 / 128 | 4 / 4 / — | 20/20 | 1,4 | 12,7 | 254,1 | 63,6 | N/M | 40,2 | N/M | — | — | OK |
-| [P14](details/2026-10-14-after30-memory-40-c8-in1024-out128.md) | Carga corta; prefijos independientes (repetición 40%) | 40% | 36,8% | 45,1% | 1.024 / 128 | 8 / 4 / 4 | 8/8 | 8,5 | 19,6 | 157,1 | 26,1 | 7,3 | 39,2 | 5,7% | 5 | 0 | Completa; cola |
-| [P15](details/2026-10-14-short-c8-in1024.md) | Carga corta inicial (detalle individual no guardado) | 40% | N/M | N/M | 1.024 / 128 | 8 / 4 / — | 20/20 | 11,2 | 22,6 | 451,3 | 62,6 | N/M | 40,9 | N/M | — | — | OK |
-| [P16](details/2026-10-14-after30-memory-40-c4-in8192-out128.md) | Carga corta; prefijos independientes (repetición 40%) | 40% | 36,9% | 45,2% | 8.192 / 128 | 4 / 4 / 4 | 8/8 | 7,3 | 24,9 | 199,4 | 50,6 | 5,4 | 20,3 | 21,1% | 3 | 0 | OK |
-| [P17](details/2026-10-14-short-c4-in8192.md) | Carga corta inicial (detalle individual no guardado) | 40% | N/M | N/M | 8.192 / 128 | 4 / 4 / — | 12/12 | 5,2 | 23,5 | 282,3 | 71,2 | N/M | 21,6 | N/M | — | — | OK |
-| [P18](details/2026-10-14-after30-memory-40-c4-in32768-out512.md) | Historial largo; prefijos independientes (repetición 40%) | 40% | 36,9% | 45,2% | 32.768 / 512 | 4 / 4 / 3 | 0/4 | N/M | N/M | N/M | 40,1 | N/M | N/M | 52,5% | 3 | 0 | En curso / incompleta |
-| [P19](details/2026-10-14-context-40-c4-in32768-out512.md) | Historial largo; prefijos independientes (serie inicial) | 40% | N/M | N/M | 32.768 / 512 | 4 / 4 / 4 | 4/4 | 40,8 | 122,5 | 490,0 | 125,5 | 4,2 | 16,3 | 84,3% | 3 | 0 | OK |
-| [P20](details/2026-10-14-context-40-c4-in65536-out512.md) | Historial largo; prefijos independientes (serie inicial) | 40% | N/M | N/M | 65.536 / 512 | 4 / 4 / 2 | 4/4 | 123,1 | 207,2 | 828,7 | 267,3 | 2,7 | 7,7 | 85,6% | 3 | 0 | Completa; cola |
-| [P21](details/2026-10-14-context-40-c4-in131072-out256.md) | Historial largo; prefijos independientes (serie inicial) | 40% | N/M | N/M | 131.072 / 256 | 4 / 4 / 1 | 4/4 | 286,4 | 315,5 | 1261,8 | 504,5 | 1,1 | 2,0 | 86,0% | 3 | 0 | Completa; cola |
-| [P22](details/2026-10-14-context-40-c1-in262016-out128.md) | Contexto casi máximo; prefijos independientes (serie inicial) | 40% | N/M | N/M | 262.016 / 128 | 1 / 4 / 1 | 1/1 | 539,1 | 557,9 | 557,9 | 558,0 | 0,2 | 0,2 | 99,6% | 1 | 4 | Completa; recálculos |
-| [P23](details/2026-10-14-context-40-limit-rejection.md) | Superar el contexto máximo: rechazo esperado | 40% | N/M | N/M | 262.145 / 1 | 1 / 4 / — | 0/1 | N/M | N/M | N/M | 0,0 | N/M | N/M | N/M | — | — | Rechazo esperado (HTTP 400) |
+| [P01](details/2026-10-14-memory-memory-30-startup-131072.md) | Arranque con contexto máximo 131.072 | 30% | N/M | N/M | 0 / 0 | 0 / 4 / — / — | 0/0 | N/M | N/M | N/M | 366,0 | N/M | N/M | N/M | — | — | Arranque correcto |
+| [P02](details/2026-10-14-memory-memory-30-startup-262144.md) | Arranque con contexto máximo 262.144 | 30% | N/M | N/M | 0 / 0 | 0 / 4 / — / — | 0/0 | N/M | N/M | N/M | 310,8 | N/M | N/M | N/M | — | — | **FALLO DE ARRANQUE** |
+| [P03](details/2026-10-14-memory-memory-30-c4-in8192-out128.md) | Carga corta; prefijos independientes | 30% | 26,6% | 35,0% | 8.192 / 128 | 4 / 4 / 4 / — | 4/4 | 9,2 | 24,9 | 99,5 | 25,6 | 5,1 | 20,0 | 45,0% | 3 | 0 | OK |
+| [P04](details/2026-10-14-memory-memory-30-c4-in32768-out512.md) | Historial largo; prefijos independientes | 30% | 26,6% | 34,9% | 32.768 / 512 | 4 / 4 / 2 / — | 4/4 | 65,0 | 126,3 | 505,4 | 164,8 | 4,5 | 12,4 | 90,9% | 3 | 0 | Completa; cola |
+| [P05](details/2026-10-14-memory-memory-30-c4-in65536-out512.md) | Historial largo; prefijos independientes | 30% | 26,6% | 34,8% | 65.536 / 512 | 4 / 4 / 1 / 1 | 4/4 | 167,8 | 217,6 | 870,4 | 348,4 | 3,1 | 5,9 | 91,3% | 3 | 0 | Completa; cola |
+| [P06](details/2026-10-14-memory-memory-30-c1-in130816-out256.md) | Historial largo; prefijos independientes | 30% | 26,6% | 34,8% | 130.816 / 256 | 1 / 4 / 1 / 1 | 1/1 | 178,1 | 207,4 | 207,4 | 207,5 | 1,2 | 1,2 | 99,6% | 1 | 4 | Completa; recálculos |
+| [P07](details/2026-10-14-after30-memory-40-startup-262144.md) | Servidor ya preparado; contexto 262.144 | 40% | N/M | N/M | 0 / 0 | 0 / 4 / — / — | 0/0 | N/M | N/M | N/M | 0,0 | N/M | N/M | N/M | — | — | Arranque correcto |
+| [P08](details/2026-10-14-after30-memory-40-c1-in1024-out128.md) | Carga corta; prefijos independientes (repetición 40%) | 40% | 36,7% | 45,3% | 1.024 / 128 | 1 / 4 / 1 / 1 | 8/8 | 0,5 | 10,7 | 85,2 | 85,3 | 12,0 | 12,0 | 1,6% | 0 | 0 | OK |
+| [P09](details/2026-10-14-short-c1-in1024.md) | Carga corta inicial (detalle individual no guardado) | 40% | N/M | N/M | 1.024 / 128 | 1 / 4 / — / — | 20/20 | 0,7 | 10,6 | 212,5 | 212,5 | N/M | 12,0 | N/M | — | — | OK |
+| [P10](details/2026-10-14-after30-memory-40-c2-in1024-out128.md) | Carga corta; prefijos independientes (repetición 40%) | 40% | 36,7% | 45,0% | 1.024 / 128 | 2 / 4 / 2 / 2 | 8/8 | 0,9 | 11,5 | 91,7 | 46,0 | 11,2 | 22,3 | 3,2% | 0 | 0 | OK |
+| [P11](details/2026-10-14-short-c2-in1024.md) | Carga corta inicial (detalle individual no guardado) | 40% | N/M | N/M | 1.024 / 128 | 2 / 4 / — / — | 20/20 | 1,0 | 11,6 | 232,8 | 116,5 | N/M | 22,0 | N/M | — | — | OK |
+| [P12](details/2026-10-14-after30-memory-40-c4-in1024-out128.md) | Carga corta; prefijos independientes (repetición 40%) | 40% | 36,8% | 45,1% | 1.024 / 128 | 4 / 4 / 4 / 4 | 8/8 | 2,0 | 13,0 | 104,3 | 26,2 | 9,8 | 39,1 | 5,9% | 1 | 0 | OK |
+| [P13](details/2026-10-14-short-c4-in1024.md) | Carga corta inicial (detalle individual no guardado) | 40% | N/M | N/M | 1.024 / 128 | 4 / 4 / — / — | 20/20 | 1,4 | 12,7 | 254,1 | 63,6 | N/M | 40,2 | N/M | — | — | OK |
+| [P14](details/2026-10-14-after30-memory-40-c8-in1024-out128.md) | Carga corta; prefijos independientes (repetición 40%) | 40% | 36,8% | 45,1% | 1.024 / 128 | 8 / 4 / 4 / 4 | 8/8 | 8,5 | 19,6 | 157,1 | 26,1 | 7,3 | 39,2 | 5,7% | 5 | 0 | Completa; cola |
+| [P15](details/2026-10-14-short-c8-in1024.md) | Carga corta inicial (detalle individual no guardado) | 40% | N/M | N/M | 1.024 / 128 | 8 / 4 / — / — | 20/20 | 11,2 | 22,6 | 451,3 | 62,6 | N/M | 40,9 | N/M | — | — | OK |
+| [P16](details/2026-10-14-after30-memory-40-c4-in8192-out128.md) | Carga corta; prefijos independientes (repetición 40%) | 40% | 36,9% | 45,2% | 8.192 / 128 | 4 / 4 / 4 / 4 | 8/8 | 7,3 | 24,9 | 199,4 | 50,6 | 5,4 | 20,3 | 21,1% | 3 | 0 | OK |
+| [P17](details/2026-10-14-short-c4-in8192.md) | Carga corta inicial (detalle individual no guardado) | 40% | N/M | N/M | 8.192 / 128 | 4 / 4 / — / — | 12/12 | 5,2 | 23,5 | 282,3 | 71,2 | N/M | 21,6 | N/M | — | — | OK |
+| [P18](details/2026-10-14-after30-memory-40-c4-in32768-out512.md) | Historial largo; prefijos independientes (repetición 40%) | 40% | 36,9% | 45,2% | 32.768 / 512 | 4 / 4 / 4 / 4 | 4/4 | 40,9 | 123,3 | 493,0 | 126,4 | 4,2 | 16,2 | 84,0% | 3 | 0 | OK |
+| [P19](details/2026-10-14-context-40-c4-in32768-out512.md) | Historial largo; prefijos independientes (serie inicial) | 40% | N/M | N/M | 32.768 / 512 | 4 / 4 / 4 / — | 4/4 | 40,8 | 122,5 | 490,0 | 125,5 | 4,2 | 16,3 | 84,3% | 3 | 0 | OK |
+| [P20](details/2026-10-14-after30-memory-40-c4-in65536-out512.md) | Historial largo; prefijos independientes (repetición 40%) | 40% | 36,9% | 45,3% | 65.536 / 512 | 4 / 4 / 2 / 2 | 4/4 | 123,4 | 208,1 | 832,5 | 268,7 | 2,7 | 7,6 | 85,6% | 3 | 0 | Completa; cola |
+| [P21](details/2026-10-14-context-40-c4-in65536-out512.md) | Historial largo; prefijos independientes (serie inicial) | 40% | N/M | N/M | 65.536 / 512 | 4 / 4 / 2 / — | 4/4 | 123,1 | 207,2 | 828,7 | 267,3 | 2,7 | 7,7 | 85,6% | 3 | 0 | Completa; cola |
+| [P22](details/2026-10-14-after30-memory-40-c4-in131072-out256.md) | Historial largo; prefijos independientes (repetición 40%) | 40% | 36,9% | 45,3% | 131.072 / 256 | 4 / 4 / 1 / — | 0/4 | N/M | N/M | N/M | 10,1 | N/M | N/M | 13,2% | 3 | 0 | En curso / incompleta |
+| [P23](details/2026-10-14-context-40-c4-in131072-out256.md) | Historial largo; prefijos independientes (serie inicial) | 40% | N/M | N/M | 131.072 / 256 | 4 / 4 / 1 / — | 4/4 | 286,4 | 315,5 | 1261,8 | 504,5 | 1,1 | 2,0 | 86,0% | 3 | 0 | Completa; cola |
+| [P24](details/2026-10-14-context-40-c1-in262016-out128.md) | Contexto casi máximo; prefijos independientes (serie inicial) | 40% | N/M | N/M | 262.016 / 128 | 1 / 4 / 1 / — | 1/1 | 539,1 | 557,9 | 557,9 | 558,0 | 0,2 | 0,2 | 99,6% | 1 | 4 | Completa; recálculos |
+| [P25](details/2026-10-14-context-40-limit-rejection.md) | Superar el contexto máximo: rechazo esperado | 40% | N/M | N/M | 262.145 / 1 | 1 / 4 / — / — | 0/1 | N/M | N/M | N/M | 0,0 | N/M | N/M | N/M | — | — | Rechazo esperado (HTTP 400) |
 
 ## Estado de la batería: after30
 
@@ -101,8 +103,11 @@ Una petición de 262.145 tokens de entrada más 1 de salida recibió **HTTP 400*
 ```bash
 python3 scripts/context_probe.py --model nvidia/Qwen3.8-27B-NVFP4 \
   --concurrency 4 --requests 4 --input-tokens 32768 --output-tokens 512 \
+  --memory-fraction 0.4 --server-max-seqs 4 \
   --result /tmp/contexto-32k.json
 ```
+
+Ejecuta el medidor en el GB10: la telemetría de hardware corresponde a la máquina que ejecuta el script. `--memory-fraction` y `--server-max-seqs` registran la configuración existente; no la modifican. Para añadir otro modelo, usa su identificador y sus valores reales, guarda el JSON bajo `results/` y ejecuta `build_report.py`. Una memoria no registrada aparece como N/M, no se supone que sea el 40%.
 
 En las primeras pruebas se guardaron menos métricas; se conservan como historial y sus celdas ausentes están marcadas N/M. Las nuevas guardan tiempos individuales y muestrean la caché cada segundo y la memoria GPU aproximadamente cada cinco segundos. Las comparaciones de memoria deben mantener modelo, entrada, salida y concurrencia iguales.
 
