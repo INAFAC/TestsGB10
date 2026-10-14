@@ -1,0 +1,32 @@
+[
+  {
+    "case": "c4-in32768-out512",
+    "concurrency": 4,
+    "input_tokens": 32768,
+    "output_tokens": 512,
+    "completed": 4,
+    "failed": 0,
+    "duration_s": 125.51195076901058,
+    "mean_ttft_s": 40.76064544575274,
+    "mean_total_s": 122.49001958274675,
+    "peak_kv_fraction": 0.8434959349593496,
+    "peak_running": 4.0,
+    "peak_waiting": 3.0,
+    "preemptions": 0.0
+  },
+  {
+    "case": "c4-in65536-out512",
+    "concurrency": 4,
+    "input_tokens": 65536,
+    "output_tokens": 512,
+    "completed": 4,
+    "failed": 0,
+    "duration_s": 267.3320917109959,
+    "mean_ttft_s": 123.13797736374909,
+    "mean_total_s": 207.18305047600006,
+    "peak_kv_fraction": 0.8556910569105691,
+    "peak_running": 2.0,
+    "peak_waiting": 3.0,
+    "preemptions": 0.0
+  }
+]
