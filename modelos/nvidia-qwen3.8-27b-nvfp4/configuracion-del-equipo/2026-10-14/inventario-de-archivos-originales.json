@@ -153,11 +153,11 @@
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-92-por-ciento/2026-10-14-512-conversaciones-hasta-512-a-la-vez-1024-entrada-512-respuesta-servidor-512-comparacion-adicional/mediciones.json",
-    "sha256": "d03ee4d30fc67e41cbebcfdd502f642ce62bfd1d24b6f83711bd4358d55c340d"
+    "sha256": "b6b4b5ac6b6868b1643ed7edd3558568250bea67ee395938af995fbe63426304"
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-92-por-ciento/2026-10-14-512-conversaciones-hasta-512-a-la-vez-1024-entrada-512-respuesta-servidor-512-comparacion-adicional/registro-de-ejecucion.log",
-    "sha256": "5e573df156d7f9016c60a0cf69ebf3fb949c878183890e286168b3e5eafc9588"
+    "sha256": "693b4c69777eb946098353fa49c470ca0a4e9cdde08c743be0114c80931e4a85"
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-25-por-ciento/2026-10-14-1-conversaciones-hasta-1-a-la-vez-65280-entrada-256-respuesta-servidor-4/mediciones.json",
@@ -744,12 +744,16 @@
     "sha256": "ca8e021394694662b13f0e47454f09171b2792a95aa9ee73a65a64713d5295d3"
   },
   {
+    "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparaciones-adicionales/verificacion-final/memoria-92-limite-servidor-512/registro-del-servidor.log",
+    "sha256": "d691826b6feb75706bf9272274786e160487fcd53bcc3d4792059f501b96d0c9"
+  },
+  {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparaciones-adicionales/verificacion-final/configuracion-y-estado.json",
-    "sha256": "b7bbf8d72010ee5e35ad6f75d0ba1d4c390ce83a995a8aa2868df6a2ecc102af"
+    "sha256": "64f55ad019b8a1158c52266fa23a32417b3c71761a7d71cc5675276ed15b0903"
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparaciones-adicionales/verificacion-final/ultimo-cambio-temporal.json",
-    "sha256": "28a6f55f421003e62d4b9402ad6f2e1eb333662a721f3940a65e474079d03410"
+    "sha256": "dac2f187f25684447d07aa5ea6e8f65fb75d7ccf99b3762bca2e1a80abf5c758"
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparaciones-adicionales/verificacion-final/configuraciones-previstas.json",

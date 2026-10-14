@@ -11,11 +11,11 @@
         "--reasoning-parser",
         "qwen3",
         "--gpu-memory-utilization",
-        "0.92",
+        "0.3",
         "--max-model-len",
-        "262144",
+        "131072",
         "--max-num-seqs",
-        "512"
+        "4"
       ]
     }
   }
