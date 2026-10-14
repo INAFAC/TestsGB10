@@ -12,7 +12,7 @@ Esta tabla distingue las pruebas terminadas de las que todavía faltan. No inclu
 |---:|---:|---|---:|---|
 | 85% | 4 activas | Conversaciones con historiales independientes | 2/2 | Terminada |
 | 85% | 4 activas | Comprobación con mayor tiempo de espera | 1/1 | Terminada |
-| 85% | 512 activas | Conversaciones con historiales independientes | 0/2 | Pendiente |
+| 85% | 512 activas | Conversaciones con historiales independientes | 0/2 | En curso |
 
 Las tablas principales muestran la batería con medición detallada. Cada fila enlaza los datos de todas sus conversaciones. Los arranques y rechazos tienen medidas que no corresponden a una generación: se marcan como «No aplica».
 
@@ -23,6 +23,8 @@ Las tablas principales muestran la batería con medición detallada. Cada fila e
 | [4 conversaciones; hasta 4 a la vez](2026-10-14-4-conversaciones-hasta-4-a-la-vez-131072-entrada-256-respuesta-servidor-4/README.md) | 85% | **4 activas** | 131.072 + 256 | **Sí: 4/4** | No se intentó | 813,6 s | 3 respuestas solapadas; cola máxima 3; 1 recálculo |
 | [4 conversaciones; hasta 4 a la vez](2026-10-14-4-conversaciones-hasta-4-a-la-vez-262016-entrada-128-respuesta-servidor-4/README.md) | 85% | **4 activas** | 262.016 + 128 | 2/4 (errores por tiempo de espera) | **Solo: 2/4** | 1.200,5 s | 1 respuesta a la vez; cola máxima 3; 2 errores de espera |
 | [4 conversaciones; hasta 4 a la vez · espera ampliada](2026-10-14-4-conversaciones-hasta-4-a-la-vez-262016-entrada-128-respuesta-servidor-4-comparacion-adicional-espera-ampliada/README.md) | 85% | **4 activas** | 262.016 + 128 | **Sí: 4/4** | **Sí: 4/4** | 1.557,8 s | 1 respuesta a la vez; cola máxima 3 |
+| [Arrancar el modelo con límite de 262.144 tokens (comprobación adicional)](2026-10-14-arranque-contexto-262144-servidor-512-comparacion-adicional/README.md) | 85% | **512 activas** | Sin conversaciones | Arrancó | No se enviaron conversaciones | 426,3 s | Arrancó |
+| [512 conversaciones; hasta 512 a la vez](2026-10-14-512-conversaciones-hasta-512-a-la-vez-1024-entrada-128-respuesta-servidor-512-comparacion-adicional/README.md) | 85% | **512 activas** | 1.024 + 128 | 0/512 (en curso) | No se intentó | 35,6 s | 70 activas en el motor; cola máxima 506 |
 
 <details>
 <summary>Comparación completa de memoria, tiempos y tokens por segundo</summary>
@@ -34,5 +36,7 @@ Las tablas principales muestran la batería con medición detallada. Cada fila e
 | [4 conversaciones; hasta 4 a la vez](2026-10-14-4-conversaciones-hasta-4-a-la-vez-131072-entrada-256-respuesta-servidor-4/README.md) | 85% | 81,6% | 88,7% | 131.072 + 256 | 4 / 4 / 4 / 3 | **Sí: 4/4** | 408,8 | 754,7 | 3.018,8 | 813,6 | 0,34 | 1,26 | 99,9% | 3 | 1 | Terminó con 1 recálculo |
 | [4 conversaciones; hasta 4 a la vez](2026-10-14-4-conversaciones-hasta-4-a-la-vez-262016-entrada-128-respuesta-servidor-4/README.md) | 85% | 81,6% | 88,7% | 262.016 + 128 | 4 / 4 / 2 / 1 | 2/4 (errores por tiempo de espera) | 633,2 | 943,3 | 1.886,6 | 1.200,5 | 0,14 | 0,21 | 90,6% | 3 | 0 | Errores por tiempo de espera |
 | [4 conversaciones; hasta 4 a la vez · espera ampliada](2026-10-14-4-conversaciones-hasta-4-a-la-vez-262016-entrada-128-respuesta-servidor-4-comparacion-adicional-espera-ampliada/README.md) | 85% | 81,8% | 89,3% | 262.016 + 128 | 4 / 4 / 2 / 1 | **Sí: 4/4** | 940,5 | 1.145,8 | 4.583,0 | 1.557,8 | 0,13 | 0,33 | 90,2% | 3 | 0 | Terminó atendiendo por turnos |
+| [Arrancar el modelo con límite de 262.144 tokens (comprobación adicional)](2026-10-14-arranque-contexto-262144-servidor-512-comparacion-adicional/README.md) | 85% | No aplica | No aplica | Sin conversaciones | Límite 512 | Arrancó | No aplica | No aplica | No aplica | 426,3 | No aplica | No aplica | No aplica | No aplica | No aplica | Arrancó |
+| [512 conversaciones; hasta 512 a la vez](2026-10-14-512-conversaciones-hasta-512-a-la-vez-1024-entrada-128-respuesta-servidor-512-comparacion-adicional/README.md) | 85% | 81,6% | 92,0% | 1.024 + 128 | 512 / 512 / 70 / — | 0/512 (en curso) | Pendiente | Pendiente | Pendiente | 35,6 | Pendiente | Pendiente | 23,1% | 506 | 0 | En curso |
 
 </details>

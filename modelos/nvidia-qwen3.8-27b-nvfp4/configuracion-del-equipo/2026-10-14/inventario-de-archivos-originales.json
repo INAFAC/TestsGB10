@@ -88,6 +88,14 @@
     "sha256": "e769109d1fbd1fe9dd42fb8c0d81458442b4bd6a6ce4a9c49ed2564fbc928121"
   },
   {
+    "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-85-por-ciento/2026-10-14-512-conversaciones-hasta-512-a-la-vez-1024-entrada-128-respuesta-servidor-512-comparacion-adicional/mediciones.json",
+    "sha256": "46800d026d8324ce9b237427c7fc571388186b6cf68833ee42dbf30215ae6d27"
+  },
+  {
+    "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-85-por-ciento/2026-10-14-512-conversaciones-hasta-512-a-la-vez-1024-entrada-128-respuesta-servidor-512-comparacion-adicional/registro-de-ejecucion.log",
+    "sha256": "f51f56d12077f37a28ddd76d990da26c4f820bdad34cc88c709118192456cabe"
+  },
+  {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-85-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-262016-entrada-128-respuesta-servidor-4-comparacion-adicional-espera-ampliada/mediciones.json",
     "sha256": "d1f19462ddea23d240b8b03da71a43f382a8a9764eac73bb20824117d0d8102e"
   },
@@ -560,6 +568,10 @@
     "sha256": "6df71a7dbeb88eb8d6cd93896df467cfa7f6d854511d164c0dea519bef450c11"
   },
   {
+    "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-85-por-ciento/2026-10-14-arranque-contexto-262144-servidor-512-comparacion-adicional/registro-del-servidor.log",
+    "sha256": "16bf57ee00caaab79836504919e762dbba60f5e2619dc58f08f55dbaff26696d"
+  },
+  {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-40-por-ciento/2026-10-14-arranque-contexto-262144-servidor-4/registro-del-servidor.log",
     "sha256": "42055d91e1028b53721da8842939a1d0a85d4ac342588dcfb87090baaaf4689f"
   },
@@ -645,7 +657,7 @@
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparaciones-adicionales/configuracion-y-estado.json",
-    "sha256": "16b5ea3445a8d9b9b1d6a3e04674ccb56ec6175104a3261c18828ef36ff9bf60"
+    "sha256": "a79053df18d1c21d18626a78a8dccd66b2a71f84bc381e68920918345cd08f7a"
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparaciones-adicionales/ultimo-cambio-temporal.json",
