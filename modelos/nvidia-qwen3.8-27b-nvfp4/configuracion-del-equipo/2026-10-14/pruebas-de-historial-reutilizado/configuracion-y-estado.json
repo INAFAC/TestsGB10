@@ -24,6 +24,11 @@
       "case": "02-repeat-65536",
       "exit_code": 0,
       "seconds": 13.213594086992089
+    },
+    {
+      "case": "03-extend-131072",
+      "exit_code": 0,
+      "seconds": 75.57949870899029
     }
   ]
 }
