@@ -117,7 +117,11 @@ def write_test(t,model_dir,equipment):
             lines += ['No se pudieron enviar conversaciones con esta configuración. Que otro contexto más pequeño arranque no convierte este intento en correcto.','']
             log=t['path']/'registro-del-servidor.log'
             if log.exists():
-                errors=[line for line in log.read_text().splitlines() if any(x in line for x in ('ValueError:','RuntimeError:','OutOfMemoryError:'))]
+                text=log.read_text()
+                shortage=re.search(r'\(([\d.]+) GiB KV cache is needed.*?available KV cache memory \(([\d.]+) GiB',text)
+                if shortage:
+                    lines += [f"**Motivo:** para admitir ese historial, el motor necesitaba {number(float(shortage[1]),2)} GiB de caché, pero solo disponía de {number(float(shortage[2]),2)} GiB dentro del presupuesto asignado. Es espacio para historiales; no es toda la memoria libre del equipo.", '']
+                errors=[line for line in text.splitlines() if any(x in line for x in ('ValueError:','RuntimeError:','OutOfMemoryError:'))]
                 if errors:lines += ['<details>','<summary>Mensaje exacto del error</summary>','','```text',*errors[:5],'```','','</details>','']
         lines += ['Arrancar solo demuestra que el servicio está disponible. Las pruebas de conversaciones comprueban si las respuestas llegan a terminar.']
     elif t['type']=='rechazo':

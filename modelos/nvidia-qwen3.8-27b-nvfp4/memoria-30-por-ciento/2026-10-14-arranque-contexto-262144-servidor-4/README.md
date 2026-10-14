@@ -12,6 +12,8 @@ Tiempo de comprobación: **310,8 segundos**.
 
 No se pudieron enviar conversaciones con esta configuración. Que otro contexto más pequeño arranque no convierte este intento en correcto.
 
+**Motivo:** para admitir ese historial, el motor necesitaba 16,32 GiB de caché, pero solo disponía de 11,10 GiB dentro del presupuesto asignado. Es espacio para historiales; no es toda la memoria libre del equipo.
+
 <details>
 <summary>Mensaje exacto del error</summary>
 
