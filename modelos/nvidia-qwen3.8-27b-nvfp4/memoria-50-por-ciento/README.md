@@ -11,12 +11,14 @@ Esta tabla distingue las pruebas terminadas de las que todavía faltan. No inclu
 | Memoria | Límite impuesto | Tipo de prueba | Terminadas / previstas | Estado |
 |---:|---:|---|---:|---|
 | 50% | 4 activas | Conversaciones con historiales independientes | 4/4 | Terminada |
-| 50% | 3 activas | Conversaciones con historiales independientes | 0/1 | Pendiente |
+| 50% | 3 activas | Conversaciones con historiales independientes | 0/1 | En curso |
 
 Las tablas principales muestran la batería con medición detallada. Cada fila enlaza los datos de todas sus conversaciones. Los arranques y rechazos tienen medidas que no corresponden a una generación: se marcan como «No aplica».
 
 | Prueba | Memoria asignada | Límite impuesto al servidor | Tokens por conversación: entrada + respuesta | ¿Terminaron? | ¿Llegaron al máximo del modelo? | Tiempo total | Simultaneidad, colas y problemas |
 |---|---:|---:|---:|---|---|---:|---|
+| [Arrancar el modelo con límite de 262.144 tokens (comprobación adicional)](2026-10-14-arranque-contexto-262144-servidor-3-comparacion-adicional/README.md) | 50% | **3 activas** | Sin conversaciones | Arrancó | No se enviaron conversaciones | 366,0 s | Arrancó |
+| [4 conversaciones; hasta 4 a la vez](2026-10-14-4-conversaciones-hasta-4-a-la-vez-65536-entrada-512-respuesta-servidor-3-comparacion-adicional/README.md) | 50% | **3 activas** | 65.536 + 512 | 0/4 (en curso) | No se intentó | 20,1 s | 1 activa en el motor; cola máxima 3 |
 | [Arrancar el modelo con límite de 262.144 tokens](2026-10-14-arranque-contexto-262144-servidor-4/README.md) | 50% | **4 activas** | Sin conversaciones | Arrancó | No se enviaron conversaciones | 365,9 s | Arrancó |
 | [4 conversaciones; hasta 4 a la vez](2026-10-14-4-conversaciones-hasta-4-a-la-vez-32768-entrada-512-respuesta-servidor-4/README.md) | 50% | **4 activas** | 32.768 + 512 | **Sí: 4/4** | No se intentó | 126,8 s | 4 respuestas solapadas; cola máxima 3 |
 | [4 conversaciones; hasta 4 a la vez](2026-10-14-4-conversaciones-hasta-4-a-la-vez-65536-entrada-512-respuesta-servidor-4/README.md) | 50% | **4 activas** | 65.536 + 512 | **Sí: 4/4** | No se intentó | 282,4 s | 4 respuestas solapadas; cola máxima 3; 4 recálculos |
@@ -28,6 +30,8 @@ Las tablas principales muestran la batería con medición detallada. Cada fila e
 
 | Prueba | Memoria asignada | Motor / GB10 | Sistema / GB10 | Entrada + respuesta | Enviadas / límite servidor / activas / respuestas solapadas | Terminadas | Espera media (s) | Respuesta media (s) | Suma individual (s) | Tiempo prueba (s) | Tokens/s por conversación | Tokens/s totales | Pico caché | Cola máxima | Recálculos | Resultado |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|
+| [Arrancar el modelo con límite de 262.144 tokens (comprobación adicional)](2026-10-14-arranque-contexto-262144-servidor-3-comparacion-adicional/README.md) | 50% | No aplica | No aplica | Sin conversaciones | Límite 3 | Arrancó | No aplica | No aplica | No aplica | 366,0 | No aplica | No aplica | No aplica | No aplica | No aplica | Arrancó |
+| [4 conversaciones; hasta 4 a la vez](2026-10-14-4-conversaciones-hasta-4-a-la-vez-65536-entrada-512-respuesta-servidor-3-comparacion-adicional/README.md) | 50% | 46,9% | 55,4% | 65.536 + 512 | 4 / 3 / 1 / — | 0/4 (en curso) | Pendiente | Pendiente | Pendiente | 20,1 | Pendiente | Pendiente | 12,0% | 3 | 0 | En curso |
 | [Arrancar el modelo con límite de 262.144 tokens](2026-10-14-arranque-contexto-262144-servidor-4/README.md) | 50% | No aplica | No aplica | Sin conversaciones | Límite 4 | Arrancó | No aplica | No aplica | No aplica | 365,9 | No aplica | No aplica | No aplica | No aplica | No aplica | Arrancó |
 | [4 conversaciones; hasta 4 a la vez](2026-10-14-4-conversaciones-hasta-4-a-la-vez-32768-entrada-512-respuesta-servidor-4/README.md) | 50% | 46,9% | 55,6% | 32.768 + 512 | 4 / 4 / 4 / 4 | **Sí: 4/4** | 41,1 | 123,6 | 494,4 | 126,8 | 4,14 | 16,15 | 55,0% | 3 | 0 | Terminó |
 | [4 conversaciones; hasta 4 a la vez](2026-10-14-4-conversaciones-hasta-4-a-la-vez-65536-entrada-512-respuesta-servidor-4/README.md) | 50% | 47,0% | 55,6% | 65.536 + 512 | 4 / 4 / 4 / 4 | **Sí: 4/4** | 112,2 | 272,2 | 1.088,9 | 282,4 | 1,88 | 7,25 | 99,9% | 3 | 4 | Terminó con 4 recálculos |

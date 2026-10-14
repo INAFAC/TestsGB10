@@ -16,6 +16,14 @@
     "sha256": "74cca3e4452cec85b5573a5a030bc086b0dae70a2900d0dde806429ce404890a"
   },
   {
+    "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-50-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-65536-entrada-512-respuesta-servidor-3-comparacion-adicional/mediciones.json",
+    "sha256": "6b836efbcf2fa272bdeb0b559bd4d089a2932132082b1d002ea289d5117a06d7"
+  },
+  {
+    "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-50-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-65536-entrada-512-respuesta-servidor-3-comparacion-adicional/registro-de-ejecucion.log",
+    "sha256": "019829d8b95da7591497aa14e66625ddc71c21b6d9bb71045c03b84375d62db2"
+  },
+  {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-25-por-ciento/2026-10-14-1-conversaciones-hasta-1-a-la-vez-65280-entrada-256-respuesta-servidor-4/mediciones.json",
     "sha256": "126cc70614e6ea796b57a96898cb80c719bc83a25adaddc4d586b6a6698e2429"
   },
@@ -448,6 +456,10 @@
     "sha256": "f492e284b4ccfea38a9dbc18e3a78aa91861c0ca95399d5a0ff2270fa801fead"
   },
   {
+    "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-50-por-ciento/2026-10-14-arranque-contexto-262144-servidor-3-comparacion-adicional/registro-del-servidor.log",
+    "sha256": "883f4a728b0edeaf661a88142807d59087a04c3146fb6436c8fc53fa56f2e36b"
+  },
+  {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-40-por-ciento/2026-10-14-arranque-contexto-262144-servidor-4/registro-del-servidor.log",
     "sha256": "42055d91e1028b53721da8842939a1d0a85d4ac342588dcfb87090baaaf4689f"
   },
@@ -509,7 +521,7 @@
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparaciones-adicionales/configuracion-y-estado.json",
-    "sha256": "ad3f4947c01ed8e7a93688005f4e9ef31a055fbe7641438701890355f9a7ca5d"
+    "sha256": "c8b690e92f90ccfc3a7a9ed1d987eef2d185a539ec4c60faad7d7e7a2b2f93d5"
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparaciones-adicionales/ultimo-cambio-temporal.json",

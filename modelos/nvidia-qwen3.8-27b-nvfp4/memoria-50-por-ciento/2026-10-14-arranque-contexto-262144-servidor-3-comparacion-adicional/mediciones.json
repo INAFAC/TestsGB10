@@ -1,0 +1,22 @@
+{
+  "max_model_len": 262144,
+  "command": [
+    "vllm",
+    "serve",
+    "nvidia/Qwen3.8-27B-NVFP4",
+    "--enable-auto-tool-choice",
+    "--tool-call-parser",
+    "qwen3_coder",
+    "--reasoning-parser",
+    "qwen3",
+    "--gpu-memory-utilization",
+    "0.5",
+    "--max-model-len",
+    "262144",
+    "--max-num-seqs",
+    "3"
+  ],
+  "ready": true,
+  "startup_seconds": 365.99645951899583,
+  "reused_running_server": false
+}
