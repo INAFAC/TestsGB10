@@ -293,7 +293,7 @@ def main():
         complete=bool(statuses and read(statuses[0]).get('status')=='complete')
         lines=['# '+model.split('/')[-1],'','[Volver al inicio](../../README.md) · [Cómo leer las medidas](../../GUIA-DE-LECTURA.md)','',
                f'**Modelo exacto:** `{model}`.','',
-               '**Estado:** '+('pruebas terminadas y configuración original restaurada.' if complete else 'pruebas en curso. Los resultados se actualizan a medida que terminan.'),'',
+               '**Estado:** '+(f"pruebas terminadas. Configuración original restaurada: {plan['restore_memory_percent']}% de memoria, {plan['restore_max_num_seqs']} solicitudes activas como límite y {integer(plan['restore_max_model_len'])} tokens por conversación." if complete else 'pruebas en curso. Los resultados se actualizan a medida que terminan.'),'',
                f'**Máximo por conversación: {integer(maximum_model)} tokens, sumando historial y respuesta.** '
                'La memoria asignada puede obligar a configurar un límite menor.','',
                concurrency_note,'',
