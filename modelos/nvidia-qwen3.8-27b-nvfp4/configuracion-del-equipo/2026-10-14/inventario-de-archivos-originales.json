@@ -193,11 +193,11 @@
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-92-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-262016-entrada-128-respuesta-servidor-4/mediciones.json",
-    "sha256": "7c0c0210827a6d51e21054e2e2aa6c54f8fa809e7fdf32c82917abc9d15407cc"
+    "sha256": "c80c3689cdfda2aed766472c4d01ee4f4148ff4d7af080d256483ec5ee2b4356"
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-92-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-262016-entrada-128-respuesta-servidor-4/registro-de-ejecucion.log",
-    "sha256": "41bbdba46f2ed19f1a3942d3ab2351a4f65532be8b74ce37f381fe117de38656"
+    "sha256": "66e1357a0a5870c798a112941c2f99308da055a8c789373393b0c82d9ebbbc41"
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-40-por-ciento/2026-10-14-1-conversaciones-hasta-1-a-la-vez-262016-entrada-128-respuesta-servidor-4-medicion-inicial/mediciones.json",
@@ -353,11 +353,11 @@
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparacion-de-memoria-y-concurrencia/configuracion-y-estado.json",
-    "sha256": "c116fb9d7b21a21d1270da1669c5c3b1b3fff7bd9edbf12cad857fc49bc24df5"
+    "sha256": "d26c5481e68b70129620d3c5b21aadddeb436f18969d321b0bc118e312e80c22"
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparacion-de-memoria-y-concurrencia/ultimo-cambio-temporal.json",
-    "sha256": "ac325c8a2981470a81813c44d08d0b4dc6481b9072e98634ba88d2296a36c614"
+    "sha256": "e0b9bbb1bcc1204eac76ec83930d1b8db83f1c278eba240f2e8c31dc3f24350e"
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparacion-de-memoria-y-concurrencia/script-de-medicion-ejecutado.py",
