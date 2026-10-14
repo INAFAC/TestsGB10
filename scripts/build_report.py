@@ -182,6 +182,8 @@ def write_test(t,model_dir,equipment):
         lines += ['', '## Todas las medidas del grupo','', '| Medida | Resultado |','|---|---|']+[f'| {name} | {value} |' for name,value in rows]
         lines += ['', 'La caché guarda información del historial. Un recálculo significa que el motor tuvo que desalojar trabajo y repetirlo. Una cola breve durante la lectura inicial no prueba por sí sola falta de memoria.','',
                   'Los tiempos individuales se solapan: su suma puede superar el tiempo total de la prueba. Las velocidades cuentan tokens de respuesta, no tokens de entrada.']
+        if not t['all_done']:
+            lines += ['', 'Las medias y velocidades individuales corresponden solo a las conversaciones completadas correctamente. Las cifras de una prueba en curso son parciales; no describen todavía el rendimiento final del grupo.']
         if any(r.get('started_at_s') is not None for r in t['requests']):
             lines += ['', '<details>','<summary>Cronología: cuándo se envió, empezó y terminó cada respuesta</summary>','',
                       'Segundos desde el inicio de la prueba.','','| Conversación | Enviada | Primer texto | Final |','|---|---:|---:|---:|']

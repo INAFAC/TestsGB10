@@ -113,11 +113,11 @@
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-50-por-ciento/2026-10-14-1-conversaciones-hasta-1-a-la-vez-262016-entrada-128-respuesta-servidor-4/mediciones.json",
-    "sha256": "b4afb7980a6e22e56dcde435c6bad333c02454a5a3e86c221b97d794093f13b6"
+    "sha256": "6447fe1ea774e866871e6596e16ba4742519136ebfb4a550015014c9417bfebf"
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-50-por-ciento/2026-10-14-1-conversaciones-hasta-1-a-la-vez-262016-entrada-128-respuesta-servidor-4/registro-de-ejecucion.log",
-    "sha256": "2dd29f63b9a7a6af8c75d504f5f2f52222677177b65f916953023cd2a1af9856"
+    "sha256": "56386489ca37147ec4188e88ae1b117b83fdcc851b620cf0ee0264a77c21039d"
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/memoria-50-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-131072-entrada-256-respuesta-servidor-4/mediciones.json",
@@ -269,15 +269,15 @@
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparacion-de-memoria-y-concurrencia/memoria-50/registro-del-servidor.log",
-    "sha256": "f12c836201cb78cb82ab8770d02ab8c53d20100be3a6462af344aa70a66400a3"
+    "sha256": "e1a8060b45ae0ce4a59cdabcdb35949069155dee973c7207229b1f73d335e4e5"
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparacion-de-memoria-y-concurrencia/configuracion-y-estado.json",
-    "sha256": "bb05cc1ce9e66918f01d815062b48cfaac38cb24c1d2bbfdbe91b29a66e8590f"
+    "sha256": "ed27aa2dfd9becc484fb14e1089320e11e90b52a32fa14d8be663a994cbf341d"
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparacion-de-memoria-y-concurrencia/ultimo-cambio-temporal.json",
-    "sha256": "667b6b1253a0d92ab6ceda25477735a7eaae38d452e253fe98f2a89904703035"
+    "sha256": "8744718a34314d80ebd7dbba3b5c4561b6b95b4aab21cea4fafb11421652782c"
   },
   {
     "archivo": "modelos/nvidia-qwen3.8-27b-nvfp4/configuracion-del-equipo/2026-10-14/comparacion-de-memoria-y-concurrencia/script-de-medicion-ejecutado.py",
