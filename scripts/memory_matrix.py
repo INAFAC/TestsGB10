@@ -93,10 +93,11 @@ def main():
         return raw
 
     profiles = [
-        (0.30, [(4,8192,128), (4,32768,512), (4,65536,512)]),
+        (0.30, [(4,8192,128), (4,32768,512), (4,65536,512), (1,130816,256)]),
         (0.50, [(4,32768,512), (4,65536,512), (4,131072,256)]),
         (0.70, [(4,65536,512), (4,131072,256), (2,262016,128)]),
         (0.85, [(4,131072,256), (4,262016,128)]),
+        (0.92, [(4,131072,256), (4,262016,128)]),
     ]
     probe = pathlib.Path(__file__).with_name('context_probe.py')
     try:
@@ -149,6 +150,22 @@ def main():
                     last = 0
                     while active.poll() is None:
                         elapsed = time.monotonic()-started
+                        # A request that never enters execution is not a useful
+                        # 25-minute load test. Preserve evidence and move on.
+                        partial = directory/(name+'.json')
+                        if elapsed > 90 and partial.exists():
+                            try:
+                                report = json.loads(partial.read_text())
+                                s = report['summary']
+                                if s.get('peak_running') == 0 and s.get('peak_waiting', 0) > 0:
+                                    active.terminate()
+                                    active.wait(timeout=20)
+                                    s['status'] = 'not_admitted_within_90s'
+                                    s['stop_reason'] = 'Waiting without any request entering execution for 90 seconds'
+                                    partial.write_text(json.dumps(report, indent=2))
+                                    break
+                            except (ValueError, KeyError):
+                                pass
                         if elapsed > 1500:
                             active.terminate()
                             active.wait(timeout=20)

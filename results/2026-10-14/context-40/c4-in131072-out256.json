@@ -1,0 +1,4081 @@
+{
+  "summary": {
+    "case": "c4-in131072-out256",
+    "concurrency": 4,
+    "input_tokens": 131072,
+    "output_tokens": 256,
+    "completed": 4,
+    "failed": 0,
+    "duration_s": 504.50938929300173,
+    "mean_ttft_s": 286.4193367599946,
+    "mean_total_s": 315.4528618992481,
+    "peak_kv_fraction": 0.8597560975609756,
+    "peak_running": 1.0,
+    "peak_waiting": 3.0,
+    "preemptions": 0.0
+  },
+  "requests": [
+    {
+      "index": 0,
+      "ok": true,
+      "input_requested": 131072,
+      "output_requested": 256,
+      "ttft_s": 97.30601386599301,
+      "total_s": 126.366901055997,
+      "usage": {
+        "prompt_tokens": 131072,
+        "total_tokens": 131328,
+        "completion_tokens": 256
+      },
+      "finish_reason": "length",
+      "text_events": 256
+    },
+    {
+      "index": 1,
+      "ok": true,
+      "input_requested": 131072,
+      "output_requested": 256,
+      "ttft_s": 223.4571856679977,
+      "total_s": 252.51139451599738,
+      "usage": {
+        "prompt_tokens": 131072,
+        "total_tokens": 131328,
+        "completion_tokens": 256
+      },
+      "finish_reason": "length",
+      "text_events": 256
+    },
+    {
+      "index": 2,
+      "ok": true,
+      "input_requested": 131072,
+      "output_requested": 256,
+      "ttft_s": 349.5100236559956,
+      "total_s": 378.55775623599766,
+      "usage": {
+        "prompt_tokens": 131072,
+        "total_tokens": 131328,
+        "completion_tokens": 256
+      },
+      "finish_reason": "length",
+      "text_events": 256
+    },
+    {
+      "index": 3,
+      "ok": true,
+      "input_requested": 131072,
+      "output_requested": 256,
+      "ttft_s": 475.4041238499922,
+      "total_s": 504.3753957890003,
+      "usage": {
+        "prompt_tokens": 131072,
+        "total_tokens": 131328,
+        "completion_tokens": 256
+      },
+      "finish_reason": "length",
+      "text_events": 256
+    }
+  ],
+  "metrics": [
+    {
+      "timestamp": 1791978170.85794,
+      "num_requests_running": 0.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.0,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.54728698730469
+    },
+    {
+      "timestamp": 1791978171.8687422,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.020325203252032575,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50555801391602
+    },
+    {
+      "timestamp": 1791978172.8793359,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.030487804878048808,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50466918945312
+    },
+    {
+      "timestamp": 1791978173.8905249,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.05081300813008127,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50333404541016
+    },
+    {
+      "timestamp": 1791978174.9006834,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.060975609756097615,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50444030761719
+    },
+    {
+      "timestamp": 1791978175.9099047,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.08130081300813008,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50732803344727
+    },
+    {
+      "timestamp": 1791978176.9191542,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.09146341463414631,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50912857055664
+    },
+    {
+      "timestamp": 1791978177.929096,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.11178861788617889,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51107025146484
+    },
+    {
+      "timestamp": 1791978178.938082,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.12195121951219512,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51628112792969
+    },
+    {
+      "timestamp": 1791978179.9465158,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.13211382113821135,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51652908325195
+    },
+    {
+      "timestamp": 1791978180.9579778,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.15243902439024393,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51756286621094
+    },
+    {
+      "timestamp": 1791978181.9661653,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.16260162601626016,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51780319213867
+    },
+    {
+      "timestamp": 1791978182.9750488,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.1727642276422764,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51684951782227
+    },
+    {
+      "timestamp": 1791978183.9846768,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.18292682926829273,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51710510253906
+    },
+    {
+      "timestamp": 1791978184.9954278,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.19308943089430897,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51562118530273
+    },
+    {
+      "timestamp": 1791978186.0057452,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.21341463414634143,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51698303222656
+    },
+    {
+      "timestamp": 1791978187.0155585,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.22357723577235777,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51726913452148
+    },
+    {
+      "timestamp": 1791978188.0245557,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.233739837398374,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51827239990234
+    },
+    {
+      "timestamp": 1791978189.0334811,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.24390243902439024,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51755905151367
+    },
+    {
+      "timestamp": 1791978190.043945,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.25406504065040647,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51896667480469
+    },
+    {
+      "timestamp": 1791978191.053728,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.2642276422764228,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51939392089844
+    },
+    {
+      "timestamp": 1791978192.0648873,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.27439024390243905,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.5191535949707
+    },
+    {
+      "timestamp": 1791978193.074266,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.2845528455284553,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.5191535949707
+    },
+    {
+      "timestamp": 1791978194.0838807,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.2947154471544715,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51760482788086
+    },
+    {
+      "timestamp": 1791978195.09242,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.30487804878048785,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51855850219727
+    },
+    {
+      "timestamp": 1791978196.1006258,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.3150406504065041,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.52013778686523
+    },
+    {
+      "timestamp": 1791978197.110004,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.3252032520325203,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.5196647644043
+    },
+    {
+      "timestamp": 1791978198.1204553,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.33536585365853655,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51788711547852
+    },
+    {
+      "timestamp": 1791978199.1298172,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.3455284552845529,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.5137825012207
+    },
+    {
+      "timestamp": 1791978200.1399179,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.3556910569105691,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51494979858398
+    },
+    {
+      "timestamp": 1791978201.1491497,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.36585365853658536,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51472854614258
+    },
+    {
+      "timestamp": 1791978202.1579678,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.3760162601626016,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.5150260925293
+    },
+    {
+      "timestamp": 1791978203.1685302,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.38617886178861793,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.5134162902832
+    },
+    {
+      "timestamp": 1791978204.1778238,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.39634146341463417,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.512939453125
+    },
+    {
+      "timestamp": 1791978205.1878119,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.4065040650406504,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51435470581055
+    },
+    {
+      "timestamp": 1791978206.1980608,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.41666666666666663,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51321029663086
+    },
+    {
+      "timestamp": 1791978207.2090194,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.426829268292683,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51512145996094
+    },
+    {
+      "timestamp": 1791978208.2195747,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.426829268292683,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51490783691406
+    },
+    {
+      "timestamp": 1791978209.2296677,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.4369918699186992,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51263046264648
+    },
+    {
+      "timestamp": 1791978210.2386153,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.44715447154471544,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51190567016602
+    },
+    {
+      "timestamp": 1791978211.248585,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.45731707317073167,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51164627075195
+    },
+    {
+      "timestamp": 1791978212.2572742,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.467479674796748,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51229095458984
+    },
+    {
+      "timestamp": 1791978213.266086,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.47764227642276424,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51288986206055
+    },
+    {
+      "timestamp": 1791978214.2751846,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.47764227642276424,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51248168945312
+    },
+    {
+      "timestamp": 1791978215.2839787,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.4878048780487805,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51388931274414
+    },
+    {
+      "timestamp": 1791978216.2926176,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.4979674796747967,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51269912719727
+    },
+    {
+      "timestamp": 1791978217.3009033,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.5081300813008129,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51327133178711
+    },
+    {
+      "timestamp": 1791978218.3105972,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.5182926829268293,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51232528686523
+    },
+    {
+      "timestamp": 1791978219.31856,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.5182926829268293,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.5120964050293
+    },
+    {
+      "timestamp": 1791978220.328113,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.5284552845528455,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.5112075805664
+    },
+    {
+      "timestamp": 1791978221.3364298,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.5386178861788617,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.5112075805664
+    },
+    {
+      "timestamp": 1791978222.3445313,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.5487804878048781,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.5108413696289
+    },
+    {
+      "timestamp": 1791978223.353961,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.5589430894308943,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51042175292969
+    },
+    {
+      "timestamp": 1791978224.363266,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.5589430894308943,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51029586791992
+    },
+    {
+      "timestamp": 1791978225.3726015,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.5691056910569106,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51174926757812
+    },
+    {
+      "timestamp": 1791978226.382988,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.5792682926829269,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51188659667969
+    },
+    {
+      "timestamp": 1791978227.3921127,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.589430894308943,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51237869262695
+    },
+    {
+      "timestamp": 1791978228.399261,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.589430894308943,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.48584365844727
+    },
+    {
+      "timestamp": 1791978229.4096165,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.5995934959349594,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49092864990234
+    },
+    {
+      "timestamp": 1791978230.4182515,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.6097560975609756,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49071884155273
+    },
+    {
+      "timestamp": 1791978231.4261277,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.6097560975609756,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49504470825195
+    },
+    {
+      "timestamp": 1791978232.433978,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.6199186991869918,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50117111206055
+    },
+    {
+      "timestamp": 1791978233.4437497,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.6300813008130082,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.5032844543457
+    },
+    {
+      "timestamp": 1791978234.4522443,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.6402439024390244,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50279998779297
+    },
+    {
+      "timestamp": 1791978235.4604626,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.6402439024390244,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50538635253906
+    },
+    {
+      "timestamp": 1791978236.4697647,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.6504065040650406,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50496673583984
+    },
+    {
+      "timestamp": 1791978237.479544,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.660569105691057,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50833892822266
+    },
+    {
+      "timestamp": 1791978238.4887884,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.660569105691057,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51162338256836
+    },
+    {
+      "timestamp": 1791978239.4978213,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.6707317073170731,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51237106323242
+    },
+    {
+      "timestamp": 1791978240.5066404,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.6808943089430894,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51187515258789
+    },
+    {
+      "timestamp": 1791978241.5149822,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.6808943089430894,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51480102539062
+    },
+    {
+      "timestamp": 1791978242.5238242,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.6910569105691057,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51460647583008
+    },
+    {
+      "timestamp": 1791978243.5334902,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.7012195121951219,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51538467407227
+    },
+    {
+      "timestamp": 1791978244.5420866,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.7012195121951219,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51537704467773
+    },
+    {
+      "timestamp": 1791978245.552128,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.7113821138211383,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51535415649414
+    },
+    {
+      "timestamp": 1791978246.5602217,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.7215447154471545,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51516723632812
+    },
+    {
+      "timestamp": 1791978247.5706608,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.7215447154471545,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.5016860961914
+    },
+    {
+      "timestamp": 1791978248.5795794,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.7317073170731707,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50250625610352
+    },
+    {
+      "timestamp": 1791978249.5877728,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.7418699186991871,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50334548950195
+    },
+    {
+      "timestamp": 1791978250.5967894,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.7418699186991871,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50429916381836
+    },
+    {
+      "timestamp": 1791978251.6053767,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.7520325203252033,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.5050277709961
+    },
+    {
+      "timestamp": 1791978252.6138477,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.7621951219512195,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50695037841797
+    },
+    {
+      "timestamp": 1791978253.6224651,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.7621951219512195,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50695037841797
+    },
+    {
+      "timestamp": 1791978254.6308367,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.7723577235772358,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50783157348633
+    },
+    {
+      "timestamp": 1791978255.6368606,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.7723577235772358,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50873947143555
+    },
+    {
+      "timestamp": 1791978256.6439676,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.782520325203252,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50996398925781
+    },
+    {
+      "timestamp": 1791978257.6507988,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.7926829268292683,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50902938842773
+    },
+    {
+      "timestamp": 1791978258.6575084,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.7926829268292683,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.5090446472168
+    },
+    {
+      "timestamp": 1791978259.666665,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.8028455284552846,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50368118286133
+    },
+    {
+      "timestamp": 1791978260.6736307,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.8130081300813008,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50423431396484
+    },
+    {
+      "timestamp": 1791978261.6805875,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.8130081300813008,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50423431396484
+    },
+    {
+      "timestamp": 1791978262.687929,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.8231707317073171,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50405502319336
+    },
+    {
+      "timestamp": 1791978263.6946118,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.8231707317073171,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50404739379883
+    },
+    {
+      "timestamp": 1791978264.7013936,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.8333333333333334,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50380325317383
+    },
+    {
+      "timestamp": 1791978265.7094703,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.8434959349593496,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50521850585938
+    },
+    {
+      "timestamp": 1791978266.7160182,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.8434959349593496,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50568771362305
+    },
+    {
+      "timestamp": 1791978267.7226958,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.8516260162601625,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50585556030273
+    },
+    {
+      "timestamp": 1791978268.7335358,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50564193725586
+    },
+    {
+      "timestamp": 1791978269.7440815,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50579071044922
+    },
+    {
+      "timestamp": 1791978270.7551508,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50677490234375
+    },
+    {
+      "timestamp": 1791978271.7658284,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50656127929688
+    },
+    {
+      "timestamp": 1791978272.776911,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50590896606445
+    },
+    {
+      "timestamp": 1791978273.7867248,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.5055046081543
+    },
+    {
+      "timestamp": 1791978274.7972848,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50481414794922
+    },
+    {
+      "timestamp": 1791978275.8084157,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50546646118164
+    },
+    {
+      "timestamp": 1791978276.8191683,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50623321533203
+    },
+    {
+      "timestamp": 1791978277.8301926,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50784683227539
+    },
+    {
+      "timestamp": 1791978278.8413055,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50764846801758
+    },
+    {
+      "timestamp": 1791978279.85145,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50683212280273
+    },
+    {
+      "timestamp": 1791978280.8624873,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50586700439453
+    },
+    {
+      "timestamp": 1791978281.8730183,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.5058708190918
+    },
+    {
+      "timestamp": 1791978282.8843088,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.5077018737793
+    },
+    {
+      "timestamp": 1791978283.8948522,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50701141357422
+    },
+    {
+      "timestamp": 1791978284.9050708,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50701522827148
+    },
+    {
+      "timestamp": 1791978285.9175801,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50800704956055
+    },
+    {
+      "timestamp": 1791978286.9307547,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50758361816406
+    },
+    {
+      "timestamp": 1791978287.9437718,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50639724731445
+    },
+    {
+      "timestamp": 1791978288.9557538,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50443649291992
+    },
+    {
+      "timestamp": 1791978289.9686878,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50446319580078
+    },
+    {
+      "timestamp": 1791978290.9813185,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50565719604492
+    },
+    {
+      "timestamp": 1791978291.9938297,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50639343261719
+    },
+    {
+      "timestamp": 1791978293.008173,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50567626953125
+    },
+    {
+      "timestamp": 1791978294.0218983,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.5052490234375
+    },
+    {
+      "timestamp": 1791978295.0349445,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50501251220703
+    },
+    {
+      "timestamp": 1791978296.0468795,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50341796875
+    },
+    {
+      "timestamp": 1791978297.0583117,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 3.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50288391113281
+    },
+    {
+      "timestamp": 1791978298.0695887,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.010162601626016232,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50411987304688
+    },
+    {
+      "timestamp": 1791978299.0803046,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.030487804878048808,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50352096557617
+    },
+    {
+      "timestamp": 1791978300.091191,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.05081300813008127,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.5026626586914
+    },
+    {
+      "timestamp": 1791978301.1022005,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.060975609756097615,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50242233276367
+    },
+    {
+      "timestamp": 1791978302.1121387,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.08130081300813008,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50169372558594
+    },
+    {
+      "timestamp": 1791978303.1216898,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.09146341463414631,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50369262695312
+    },
+    {
+      "timestamp": 1791978304.1297433,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.10162601626016265,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50362396240234
+    },
+    {
+      "timestamp": 1791978305.1368034,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.12195121951219512,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.5016860961914
+    },
+    {
+      "timestamp": 1791978306.144909,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.13211382113821135,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.5020637512207
+    },
+    {
+      "timestamp": 1791978307.1537046,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.1422764227642277,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50347900390625
+    },
+    {
+      "timestamp": 1791978308.1607068,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.16260162601626016,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.5023078918457
+    },
+    {
+      "timestamp": 1791978309.1671746,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.1727642276422764,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.5023078918457
+    },
+    {
+      "timestamp": 1791978310.1751337,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.18292682926829273,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49808883666992
+    },
+    {
+      "timestamp": 1791978311.1840944,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.19308943089430897,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49747848510742
+    },
+    {
+      "timestamp": 1791978312.193369,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.2032520325203252,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.4991455078125
+    },
+    {
+      "timestamp": 1791978313.2018373,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.22357723577235777,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49877548217773
+    },
+    {
+      "timestamp": 1791978314.2085729,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.233739837398374,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.4993782043457
+    },
+    {
+      "timestamp": 1791978315.2175412,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.24390243902439024,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.4983139038086
+    },
+    {
+      "timestamp": 1791978316.225929,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.25406504065040647,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49871826171875
+    },
+    {
+      "timestamp": 1791978317.2353075,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.2642276422764228,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49895858764648
+    },
+    {
+      "timestamp": 1791978318.2440095,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.27439024390243905,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49759292602539
+    },
+    {
+      "timestamp": 1791978319.2542274,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.2845528455284553,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49485397338867
+    },
+    {
+      "timestamp": 1791978320.2623012,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.2947154471544715,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49419784545898
+    },
+    {
+      "timestamp": 1791978321.269149,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.30487804878048785,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.46463012695312
+    },
+    {
+      "timestamp": 1791978322.276517,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.3150406504065041,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.46598815917969
+    },
+    {
+      "timestamp": 1791978323.283575,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.3252032520325203,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.46599578857422
+    },
+    {
+      "timestamp": 1791978324.2920444,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.33536585365853655,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.46691131591797
+    },
+    {
+      "timestamp": 1791978325.2991912,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.3455284552845529,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.46666717529297
+    },
+    {
+      "timestamp": 1791978326.30576,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.3556910569105691,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.47024917602539
+    },
+    {
+      "timestamp": 1791978327.3131251,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.36585365853658536,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.47187423706055
+    },
+    {
+      "timestamp": 1791978328.3203807,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.3760162601626016,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.47206115722656
+    },
+    {
+      "timestamp": 1791978329.3283684,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.38617886178861793,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.47545623779297
+    },
+    {
+      "timestamp": 1791978330.3373306,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.39634146341463417,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.47930145263672
+    },
+    {
+      "timestamp": 1791978331.3450553,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.4065040650406504,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.48149871826172
+    },
+    {
+      "timestamp": 1791978332.3516214,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.41666666666666663,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.48330688476562
+    },
+    {
+      "timestamp": 1791978333.3586164,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.41666666666666663,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.48321533203125
+    },
+    {
+      "timestamp": 1791978334.367017,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.426829268292683,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.48415756225586
+    },
+    {
+      "timestamp": 1791978335.3768053,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.4369918699186992,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.48367309570312
+    },
+    {
+      "timestamp": 1791978336.386446,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.44715447154471544,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.48701858520508
+    },
+    {
+      "timestamp": 1791978337.3945923,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.45731707317073167,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.48736572265625
+    },
+    {
+      "timestamp": 1791978338.404698,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.467479674796748,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.48770904541016
+    },
+    {
+      "timestamp": 1791978339.4155328,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.47764227642276424,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.4875373840332
+    },
+    {
+      "timestamp": 1791978340.4244173,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.47764227642276424,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.48935317993164
+    },
+    {
+      "timestamp": 1791978341.4335508,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.4878048780487805,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49092483520508
+    },
+    {
+      "timestamp": 1791978342.4425228,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.4979674796747967,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49037170410156
+    },
+    {
+      "timestamp": 1791978343.4519312,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.5081300813008129,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.48989486694336
+    },
+    {
+      "timestamp": 1791978344.4624474,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.5182926829268293,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49179077148438
+    },
+    {
+      "timestamp": 1791978345.4713416,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.5182926829268293,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49156188964844
+    },
+    {
+      "timestamp": 1791978346.4813156,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.5284552845528455,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49105453491211
+    },
+    {
+      "timestamp": 1791978347.4897087,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.5386178861788617,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.4905776977539
+    },
+    {
+      "timestamp": 1791978348.4989197,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.5487804878048781,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.4905776977539
+    },
+    {
+      "timestamp": 1791978349.508448,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.5487804878048781,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49766159057617
+    },
+    {
+      "timestamp": 1791978350.5170128,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.5589430894308943,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49734115600586
+    },
+    {
+      "timestamp": 1791978351.52479,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.5691056910569106,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49719619750977
+    },
+    {
+      "timestamp": 1791978352.5329177,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.5792682926829269,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.4976577758789
+    },
+    {
+      "timestamp": 1791978353.5409043,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.5792682926829269,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49766540527344
+    },
+    {
+      "timestamp": 1791978354.5501945,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.589430894308943,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49688339233398
+    },
+    {
+      "timestamp": 1791978355.5593574,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.5995934959349594,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.4960708618164
+    },
+    {
+      "timestamp": 1791978356.5673935,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.6097560975609756,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49760055541992
+    },
+    {
+      "timestamp": 1791978357.5760868,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.6097560975609756,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49760055541992
+    },
+    {
+      "timestamp": 1791978358.583928,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.6199186991869918,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49717712402344
+    },
+    {
+      "timestamp": 1791978359.5928323,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.6300813008130082,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49771499633789
+    },
+    {
+      "timestamp": 1791978360.600796,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.6402439024390244,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49736022949219
+    },
+    {
+      "timestamp": 1791978361.608279,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.6402439024390244,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49826431274414
+    },
+    {
+      "timestamp": 1791978362.6161942,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.6504065040650406,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49727630615234
+    },
+    {
+      "timestamp": 1791978363.623981,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.660569105691057,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49679183959961
+    },
+    {
+      "timestamp": 1791978364.6319036,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.660569105691057,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49679183959961
+    },
+    {
+      "timestamp": 1791978365.6406982,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.6707317073170731,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49820709228516
+    },
+    {
+      "timestamp": 1791978366.649551,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.6808943089430894,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49778366088867
+    },
+    {
+      "timestamp": 1791978367.65841,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.6808943089430894,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.48293685913086
+    },
+    {
+      "timestamp": 1791978368.6668146,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.6910569105691057,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.48206329345703
+    },
+    {
+      "timestamp": 1791978369.676487,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.7012195121951219,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.48299026489258
+    },
+    {
+      "timestamp": 1791978370.6849782,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.7012195121951219,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.48427200317383
+    },
+    {
+      "timestamp": 1791978371.6937447,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.7113821138211383,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.4864273071289
+    },
+    {
+      "timestamp": 1791978372.7014723,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.7215447154471545,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.48828125
+    },
+    {
+      "timestamp": 1791978373.7109988,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.7215447154471545,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49061965942383
+    },
+    {
+      "timestamp": 1791978374.71905,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.7317073170731707,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.48952865600586
+    },
+    {
+      "timestamp": 1791978375.728035,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.7418699186991871,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49084854125977
+    },
+    {
+      "timestamp": 1791978376.7374275,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.7418699186991871,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49272155761719
+    },
+    {
+      "timestamp": 1791978377.74574,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.7520325203252033,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49348068237305
+    },
+    {
+      "timestamp": 1791978378.7536256,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.7621951219512195,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49363327026367
+    },
+    {
+      "timestamp": 1791978379.7617168,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.7621951219512195,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.48958206176758
+    },
+    {
+      "timestamp": 1791978380.7698517,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.7723577235772358,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.4902458190918
+    },
+    {
+      "timestamp": 1791978381.7777748,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.7723577235772358,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49020004272461
+    },
+    {
+      "timestamp": 1791978382.786679,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.782520325203252,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.48977279663086
+    },
+    {
+      "timestamp": 1791978383.7953212,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.7926829268292683,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49150848388672
+    },
+    {
+      "timestamp": 1791978384.8029735,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.7926829268292683,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49089050292969
+    },
+    {
+      "timestamp": 1791978385.8112943,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.8028455284552846,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.4904670715332
+    },
+    {
+      "timestamp": 1791978386.8201065,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.8028455284552846,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49096298217773
+    },
+    {
+      "timestamp": 1791978387.828421,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.8130081300813008,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49006652832031
+    },
+    {
+      "timestamp": 1791978388.8362696,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.8231707317073171,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.48964309692383
+    },
+    {
+      "timestamp": 1791978389.8455195,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.8231707317073171,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.48894500732422
+    },
+    {
+      "timestamp": 1791978390.853545,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.8333333333333334,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.48888397216797
+    },
+    {
+      "timestamp": 1791978391.863571,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.8333333333333334,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49107360839844
+    },
+    {
+      "timestamp": 1791978392.8713691,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.8434959349593496,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49183654785156
+    },
+    {
+      "timestamp": 1791978393.8811164,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.8516260162601625,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49183654785156
+    },
+    {
+      "timestamp": 1791978394.893313,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49188995361328
+    },
+    {
+      "timestamp": 1791978395.9053044,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49188995361328
+    },
+    {
+      "timestamp": 1791978396.919462,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49065399169922
+    },
+    {
+      "timestamp": 1791978397.9332063,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49297714233398
+    },
+    {
+      "timestamp": 1791978398.9464924,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49335098266602
+    },
+    {
+      "timestamp": 1791978399.9583728,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49246215820312
+    },
+    {
+      "timestamp": 1791978400.9713185,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49240112304688
+    },
+    {
+      "timestamp": 1791978401.984518,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49382019042969
+    },
+    {
+      "timestamp": 1791978402.9966083,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.4944953918457
+    },
+    {
+      "timestamp": 1791978404.0104945,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49359893798828
+    },
+    {
+      "timestamp": 1791978405.0218837,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49292373657227
+    },
+    {
+      "timestamp": 1791978406.0353281,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49244689941406
+    },
+    {
+      "timestamp": 1791978407.0500154,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49244689941406
+    },
+    {
+      "timestamp": 1791978408.0620959,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49275970458984
+    },
+    {
+      "timestamp": 1791978409.0749278,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49464797973633
+    },
+    {
+      "timestamp": 1791978410.0871122,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.492919921875
+    },
+    {
+      "timestamp": 1791978411.100354,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49244689941406
+    },
+    {
+      "timestamp": 1791978412.1135123,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49279022216797
+    },
+    {
+      "timestamp": 1791978413.1263855,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49507522583008
+    },
+    {
+      "timestamp": 1791978414.1393504,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49451446533203
+    },
+    {
+      "timestamp": 1791978415.152109,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.4940299987793
+    },
+    {
+      "timestamp": 1791978416.1643393,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.4942626953125
+    },
+    {
+      "timestamp": 1791978417.1768773,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49502182006836
+    },
+    {
+      "timestamp": 1791978418.188952,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49413299560547
+    },
+    {
+      "timestamp": 1791978419.2018814,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.4946060180664
+    },
+    {
+      "timestamp": 1791978420.214502,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.494384765625
+    },
+    {
+      "timestamp": 1791978421.2271929,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49437713623047
+    },
+    {
+      "timestamp": 1791978422.2402365,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49639511108398
+    },
+    {
+      "timestamp": 1791978423.2534761,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 2.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.4809341430664
+    },
+    {
+      "timestamp": 1791978424.265414,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.010162601626016232,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.48114776611328
+    },
+    {
+      "timestamp": 1791978425.2776694,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.030487804878048808,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.48404693603516
+    },
+    {
+      "timestamp": 1791978426.289,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.04065040650406504,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.48761367797852
+    },
+    {
+      "timestamp": 1791978427.3010795,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.060975609756097615,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49005889892578
+    },
+    {
+      "timestamp": 1791978428.3124678,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.07113821138211385,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49158096313477
+    },
+    {
+      "timestamp": 1791978429.3242028,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.09146341463414631,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49325942993164
+    },
+    {
+      "timestamp": 1791978430.3363419,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.10162601626016265,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49621963500977
+    },
+    {
+      "timestamp": 1791978431.3457491,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.12195121951219512,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49800872802734
+    },
+    {
+      "timestamp": 1791978432.3563807,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.13211382113821135,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50048065185547
+    },
+    {
+      "timestamp": 1791978433.3668828,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.1422764227642277,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50064849853516
+    },
+    {
+      "timestamp": 1791978434.3760445,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.16260162601626016,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49990463256836
+    },
+    {
+      "timestamp": 1791978435.385159,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.1727642276422764,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49937057495117
+    },
+    {
+      "timestamp": 1791978436.3941913,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.18292682926829273,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49935531616211
+    },
+    {
+      "timestamp": 1791978437.4041848,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.19308943089430897,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50057983398438
+    },
+    {
+      "timestamp": 1791978438.4130569,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.2032520325203252,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.5005989074707
+    },
+    {
+      "timestamp": 1791978439.4226763,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.22357723577235777,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49656677246094
+    },
+    {
+      "timestamp": 1791978440.430031,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.233739837398374,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49666595458984
+    },
+    {
+      "timestamp": 1791978441.4376187,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.24390243902439024,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49770736694336
+    },
+    {
+      "timestamp": 1791978442.447084,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.25406504065040647,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49866485595703
+    },
+    {
+      "timestamp": 1791978443.4566634,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.2642276422764228,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49905014038086
+    },
+    {
+      "timestamp": 1791978444.4639907,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.27439024390243905,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49908828735352
+    },
+    {
+      "timestamp": 1791978445.4746375,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.2845528455284553,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49772262573242
+    },
+    {
+      "timestamp": 1791978446.483783,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.2947154471544715,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49913787841797
+    },
+    {
+      "timestamp": 1791978447.4930732,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.30487804878048785,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.4989242553711
+    },
+    {
+      "timestamp": 1791978448.502142,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.3150406504065041,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49694442749023
+    },
+    {
+      "timestamp": 1791978449.5119596,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.3252032520325203,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49694442749023
+    },
+    {
+      "timestamp": 1791978450.520457,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.33536585365853655,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49742126464844
+    },
+    {
+      "timestamp": 1791978451.5299783,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.3455284552845529,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49747848510742
+    },
+    {
+      "timestamp": 1791978452.5373623,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.3556910569105691,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49747848510742
+    },
+    {
+      "timestamp": 1791978453.5437005,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.36585365853658536,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49785614013672
+    },
+    {
+      "timestamp": 1791978454.5505996,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.3760162601626016,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49785614013672
+    },
+    {
+      "timestamp": 1791978455.5582705,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.38617886178861793,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49824523925781
+    },
+    {
+      "timestamp": 1791978456.5674593,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.39634146341463417,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49824523925781
+    },
+    {
+      "timestamp": 1791978457.5760894,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.4065040650406504,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49875259399414
+    },
+    {
+      "timestamp": 1791978458.5835152,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.41666666666666663,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49838638305664
+    },
+    {
+      "timestamp": 1791978459.5905802,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.41666666666666663,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49838256835938
+    },
+    {
+      "timestamp": 1791978460.596668,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.426829268292683,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49874496459961
+    },
+    {
+      "timestamp": 1791978461.6037405,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.4369918699186992,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49874496459961
+    },
+    {
+      "timestamp": 1791978462.6135745,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.44715447154471544,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49954605102539
+    },
+    {
+      "timestamp": 1791978463.6210501,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.45731707317073167,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.4985580444336
+    },
+    {
+      "timestamp": 1791978464.6292195,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.467479674796748,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49878311157227
+    },
+    {
+      "timestamp": 1791978465.637056,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.47764227642276424,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49809265136719
+    },
+    {
+      "timestamp": 1791978466.6430762,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.47764227642276424,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49950790405273
+    },
+    {
+      "timestamp": 1791978467.6503458,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.4878048780487805,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49950790405273
+    },
+    {
+      "timestamp": 1791978468.6572697,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.4979674796747967,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49897766113281
+    },
+    {
+      "timestamp": 1791978469.6643047,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.5081300813008129,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49747848510742
+    },
+    {
+      "timestamp": 1791978470.6736534,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.5182926829268293,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49985885620117
+    },
+    {
+      "timestamp": 1791978471.6818364,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.5182926829268293,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50095748901367
+    },
+    {
+      "timestamp": 1791978472.6897898,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.5284552845528455,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50137710571289
+    },
+    {
+      "timestamp": 1791978473.6985714,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.5386178861788617,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50137710571289
+    },
+    {
+      "timestamp": 1791978474.7074723,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.5487804878048781,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50164794921875
+    },
+    {
+      "timestamp": 1791978475.714322,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.5487804878048781,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50003814697266
+    },
+    {
+      "timestamp": 1791978476.7220347,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.5589430894308943,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49956130981445
+    },
+    {
+      "timestamp": 1791978477.729231,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.5691056910569106,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50073623657227
+    },
+    {
+      "timestamp": 1791978478.7365527,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.5792682926829269,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50075912475586
+    },
+    {
+      "timestamp": 1791978479.7437592,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.5792682926829269,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50057601928711
+    },
+    {
+      "timestamp": 1791978480.750406,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.589430894308943,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50025939941406
+    },
+    {
+      "timestamp": 1791978481.7598128,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.5995934959349594,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50025939941406
+    },
+    {
+      "timestamp": 1791978482.767549,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.6097560975609756,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49923324584961
+    },
+    {
+      "timestamp": 1791978483.7753553,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.6097560975609756,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49856185913086
+    },
+    {
+      "timestamp": 1791978484.7839992,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.6199186991869918,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.4985466003418
+    },
+    {
+      "timestamp": 1791978485.792649,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.6300813008130082,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49996185302734
+    },
+    {
+      "timestamp": 1791978486.7998815,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.6402439024390244,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49879837036133
+    },
+    {
+      "timestamp": 1791978487.8070576,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.6402439024390244,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49853134155273
+    },
+    {
+      "timestamp": 1791978488.8158572,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.6504065040650406,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49728393554688
+    },
+    {
+      "timestamp": 1791978489.8252323,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.660569105691057,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49845886230469
+    },
+    {
+      "timestamp": 1791978490.8353958,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.660569105691057,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.4977035522461
+    },
+    {
+      "timestamp": 1791978491.843359,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.6707317073170731,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49724578857422
+    },
+    {
+      "timestamp": 1791978492.8527575,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.6808943089430894,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49677276611328
+    },
+    {
+      "timestamp": 1791978493.8616574,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.6808943089430894,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49697494506836
+    },
+    {
+      "timestamp": 1791978494.8687627,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.6910569105691057,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49679183959961
+    },
+    {
+      "timestamp": 1791978495.875385,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.7012195121951219,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49560546875
+    },
+    {
+      "timestamp": 1791978496.8847969,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.7012195121951219,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49702072143555
+    },
+    {
+      "timestamp": 1791978497.8921304,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.7113821138211383,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49629974365234
+    },
+    {
+      "timestamp": 1791978498.899327,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.7215447154471545,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49518966674805
+    },
+    {
+      "timestamp": 1791978499.9063132,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.7215447154471545,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49881362915039
+    },
+    {
+      "timestamp": 1791978500.9150896,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.7317073170731707,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50032806396484
+    },
+    {
+      "timestamp": 1791978501.9223173,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.7418699186991871,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50032806396484
+    },
+    {
+      "timestamp": 1791978502.9301007,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.7418699186991871,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49879455566406
+    },
+    {
+      "timestamp": 1791978503.9395032,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.7520325203252033,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50015258789062
+    },
+    {
+      "timestamp": 1791978504.94685,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.7621951219512195,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.5008430480957
+    },
+    {
+      "timestamp": 1791978505.9541802,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.7621951219512195,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50037384033203
+    },
+    {
+      "timestamp": 1791978506.9614923,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.7723577235772358,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49966430664062
+    },
+    {
+      "timestamp": 1791978507.9682424,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.7723577235772358,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49894714355469
+    },
+    {
+      "timestamp": 1791978508.9753666,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.782520325203252,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49752807617188
+    },
+    {
+      "timestamp": 1791978509.9827774,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.7926829268292683,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49906539916992
+    },
+    {
+      "timestamp": 1791978510.989958,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.7926829268292683,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49697875976562
+    },
+    {
+      "timestamp": 1791978511.9992185,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.8028455284552846,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49697875976562
+    },
+    {
+      "timestamp": 1791978513.0086973,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.8130081300813008,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49608993530273
+    },
+    {
+      "timestamp": 1791978514.0164862,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.8130081300813008,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.4961051940918
+    },
+    {
+      "timestamp": 1791978515.0238845,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.8231707317073171,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.4959716796875
+    },
+    {
+      "timestamp": 1791978516.0336878,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.8231707317073171,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.48524856567383
+    },
+    {
+      "timestamp": 1791978517.041333,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.8333333333333334,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49265670776367
+    },
+    {
+      "timestamp": 1791978518.050618,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.8434959349593496,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49564361572266
+    },
+    {
+      "timestamp": 1791978519.0592697,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.8434959349593496,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49645233154297
+    },
+    {
+      "timestamp": 1791978520.0684197,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.8516260162601625,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49707794189453
+    },
+    {
+      "timestamp": 1791978521.0801938,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49993896484375
+    },
+    {
+      "timestamp": 1791978522.0920212,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50034713745117
+    },
+    {
+      "timestamp": 1791978523.1038876,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50086212158203
+    },
+    {
+      "timestamp": 1791978524.1143892,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.5006217956543
+    },
+    {
+      "timestamp": 1791978525.12525,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50020599365234
+    },
+    {
+      "timestamp": 1791978526.1363773,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50149917602539
+    },
+    {
+      "timestamp": 1791978527.1479023,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50101852416992
+    },
+    {
+      "timestamp": 1791978528.1575155,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50113296508789
+    },
+    {
+      "timestamp": 1791978529.1697013,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50114440917969
+    },
+    {
+      "timestamp": 1791978530.182129,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50429153442383
+    },
+    {
+      "timestamp": 1791978531.1932795,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50407791137695
+    },
+    {
+      "timestamp": 1791978532.2046754,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50251388549805
+    },
+    {
+      "timestamp": 1791978533.2152517,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50298309326172
+    },
+    {
+      "timestamp": 1791978534.225907,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50226211547852
+    },
+    {
+      "timestamp": 1791978535.237678,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50138092041016
+    },
+    {
+      "timestamp": 1791978536.2496707,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50066375732422
+    },
+    {
+      "timestamp": 1791978537.2597103,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50130081176758
+    },
+    {
+      "timestamp": 1791978538.2706504,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50110626220703
+    },
+    {
+      "timestamp": 1791978539.2822132,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.4992446899414
+    },
+    {
+      "timestamp": 1791978540.2950666,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49885940551758
+    },
+    {
+      "timestamp": 1791978541.3076296,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49799346923828
+    },
+    {
+      "timestamp": 1791978542.3180132,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.4987564086914
+    },
+    {
+      "timestamp": 1791978543.3283956,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49761962890625
+    },
+    {
+      "timestamp": 1791978544.338614,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49768829345703
+    },
+    {
+      "timestamp": 1791978545.349151,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49939727783203
+    },
+    {
+      "timestamp": 1791978546.3599887,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49847793579102
+    },
+    {
+      "timestamp": 1791978547.3706322,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49824142456055
+    },
+    {
+      "timestamp": 1791978548.3801172,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49737930297852
+    },
+    {
+      "timestamp": 1791978549.3911352,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 1.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49713516235352
+    },
+    {
+      "timestamp": 1791978550.4001203,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.010162601626016232,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49980545043945
+    },
+    {
+      "timestamp": 1791978551.4085171,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.030487804878048808,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50011825561523
+    },
+    {
+      "timestamp": 1791978552.4165108,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.05081300813008127,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49874114990234
+    },
+    {
+      "timestamp": 1791978553.4242182,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.060975609756097615,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49898147583008
+    },
+    {
+      "timestamp": 1791978554.4325793,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.08130081300813008,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49961471557617
+    },
+    {
+      "timestamp": 1791978555.4394805,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.09146341463414631,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49981689453125
+    },
+    {
+      "timestamp": 1791978556.4467576,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.10162601626016265,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50013732910156
+    },
+    {
+      "timestamp": 1791978557.4539995,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.12195121951219512,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50001907348633
+    },
+    {
+      "timestamp": 1791978558.4615214,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.13211382113821135,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49934387207031
+    },
+    {
+      "timestamp": 1791978559.469661,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.1422764227642277,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50017929077148
+    },
+    {
+      "timestamp": 1791978560.4778674,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.16260162601626016,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50598526000977
+    },
+    {
+      "timestamp": 1791978561.4857574,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.1727642276422764,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.5050163269043
+    },
+    {
+      "timestamp": 1791978562.4914782,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.18292682926829273,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50531005859375
+    },
+    {
+      "timestamp": 1791978563.4968972,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.19308943089430897,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50504302978516
+    },
+    {
+      "timestamp": 1791978564.5049582,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.2032520325203252,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50794982910156
+    },
+    {
+      "timestamp": 1791978565.5130806,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.22357723577235777,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.5086669921875
+    },
+    {
+      "timestamp": 1791978566.5207636,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.233739837398374,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50835037231445
+    },
+    {
+      "timestamp": 1791978567.5287852,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.24390243902439024,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50677871704102
+    },
+    {
+      "timestamp": 1791978568.5355422,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.25406504065040647,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50811386108398
+    },
+    {
+      "timestamp": 1791978569.54097,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.2642276422764228,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50809478759766
+    },
+    {
+      "timestamp": 1791978570.5464149,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.27439024390243905,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50717544555664
+    },
+    {
+      "timestamp": 1791978571.5539088,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.2845528455284553,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.5066909790039
+    },
+    {
+      "timestamp": 1791978572.5596135,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.2947154471544715,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50774002075195
+    },
+    {
+      "timestamp": 1791978573.5684764,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.30487804878048785,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50792694091797
+    },
+    {
+      "timestamp": 1791978574.5761015,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.3150406504065041,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50804138183594
+    },
+    {
+      "timestamp": 1791978575.5851805,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.3252032520325203,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50790786743164
+    },
+    {
+      "timestamp": 1791978576.5907507,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.33536585365853655,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50701904296875
+    },
+    {
+      "timestamp": 1791978577.5981207,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.3455284552845529,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50616073608398
+    },
+    {
+      "timestamp": 1791978578.6052501,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.3556910569105691,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50761795043945
+    },
+    {
+      "timestamp": 1791978579.6105928,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.36585365853658536,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50692749023438
+    },
+    {
+      "timestamp": 1791978580.61895,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.3760162601626016,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50644302368164
+    },
+    {
+      "timestamp": 1791978581.6278017,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.38617886178861793,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50555419921875
+    },
+    {
+      "timestamp": 1791978582.633393,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.39634146341463417,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.506103515625
+    },
+    {
+      "timestamp": 1791978583.6417933,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.4065040650406504,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50467681884766
+    },
+    {
+      "timestamp": 1791978584.6490333,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.41666666666666663,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50423812866211
+    },
+    {
+      "timestamp": 1791978585.6564767,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.41666666666666663,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50418090820312
+    },
+    {
+      "timestamp": 1791978586.6640031,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.426829268292683,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50518417358398
+    },
+    {
+      "timestamp": 1791978587.672646,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.4369918699186992,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50429153442383
+    },
+    {
+      "timestamp": 1791978588.6795433,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.44715447154471544,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50381469726562
+    },
+    {
+      "timestamp": 1791978589.6866505,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.45731707317073167,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50083541870117
+    },
+    {
+      "timestamp": 1791978590.6933808,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.467479674796748,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50057983398438
+    },
+    {
+      "timestamp": 1791978591.700974,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.47764227642276424,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.5014533996582
+    },
+    {
+      "timestamp": 1791978592.7100234,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.47764227642276424,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.5007438659668
+    },
+    {
+      "timestamp": 1791978593.7170997,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.4878048780487805,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.50046157836914
+    },
+    {
+      "timestamp": 1791978594.723896,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.4979674796747967,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.5006332397461
+    },
+    {
+      "timestamp": 1791978595.7323883,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.5081300813008129,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49951553344727
+    },
+    {
+      "timestamp": 1791978596.7400475,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.5182926829268293,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49874496459961
+    },
+    {
+      "timestamp": 1791978597.7464821,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.5182926829268293,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.4992561340332
+    },
+    {
+      "timestamp": 1791978598.7562335,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.5284552845528455,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49904251098633
+    },
+    {
+      "timestamp": 1791978599.7634475,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.5386178861788617,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49880599975586
+    },
+    {
+      "timestamp": 1791978600.7708337,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.5487804878048781,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.49818420410156
+    },
+    {
+      "timestamp": 1791978601.7800128,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.5487804878048781,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51160049438477
+    },
+    {
+      "timestamp": 1791978602.7897232,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.5589430894308943,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51078796386719
+    },
+    {
+      "timestamp": 1791978603.7966611,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.5691056910569106,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51078796386719
+    },
+    {
+      "timestamp": 1791978604.8037474,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.5792682926829269,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.5108528137207
+    },
+    {
+      "timestamp": 1791978605.8119283,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.589430894308943,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.5109748840332
+    },
+    {
+      "timestamp": 1791978606.8204248,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.589430894308943,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51239776611328
+    },
+    {
+      "timestamp": 1791978607.8294988,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.5995934959349594,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51260757446289
+    },
+    {
+      "timestamp": 1791978608.8365989,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.6097560975609756,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.5128059387207
+    },
+    {
+      "timestamp": 1791978609.8446522,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.6097560975609756,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.5128059387207
+    },
+    {
+      "timestamp": 1791978610.8517914,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.6199186991869918,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51213073730469
+    },
+    {
+      "timestamp": 1791978611.8599417,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.6300813008130082,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51178741455078
+    },
+    {
+      "timestamp": 1791978612.8667243,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.6402439024390244,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51177215576172
+    },
+    {
+      "timestamp": 1791978613.874824,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.6402439024390244,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51331329345703
+    },
+    {
+      "timestamp": 1791978614.8837788,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.6504065040650406,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51407623291016
+    },
+    {
+      "timestamp": 1791978615.8906465,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.660569105691057,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51407623291016
+    },
+    {
+      "timestamp": 1791978616.8977904,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.660569105691057,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51415252685547
+    },
+    {
+      "timestamp": 1791978617.904517,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.6707317073170731,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51415252685547
+    },
+    {
+      "timestamp": 1791978618.9112134,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.6808943089430894,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51325607299805
+    },
+    {
+      "timestamp": 1791978619.920265,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.6808943089430894,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51470565795898
+    },
+    {
+      "timestamp": 1791978620.9297824,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.6910569105691057,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51480865478516
+    },
+    {
+      "timestamp": 1791978621.9367456,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.7012195121951219,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51621627807617
+    },
+    {
+      "timestamp": 1791978622.9434347,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.7012195121951219,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51609802246094
+    },
+    {
+      "timestamp": 1791978623.9528053,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.7113821138211383,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51531219482422
+    },
+    {
+      "timestamp": 1791978624.9607306,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.7215447154471545,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51529693603516
+    },
+    {
+      "timestamp": 1791978625.9696302,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.7215447154471545,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51482009887695
+    },
+    {
+      "timestamp": 1791978626.9766192,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.7317073170731707,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51460647583008
+    },
+    {
+      "timestamp": 1791978627.9859254,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.7418699186991871,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51459884643555
+    },
+    {
+      "timestamp": 1791978628.9933207,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.7418699186991871,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51625061035156
+    },
+    {
+      "timestamp": 1791978630.0001168,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.7520325203252033,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51603698730469
+    },
+    {
+      "timestamp": 1791978631.0071394,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.7621951219512195,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51603698730469
+    },
+    {
+      "timestamp": 1791978632.0159748,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.7621951219512195,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51591873168945
+    },
+    {
+      "timestamp": 1791978633.02466,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.7723577235772358,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.5147590637207
+    },
+    {
+      "timestamp": 1791978634.0336916,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.782520325203252,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51452255249023
+    },
+    {
+      "timestamp": 1791978635.0430553,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.782520325203252,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.5140380859375
+    },
+    {
+      "timestamp": 1791978636.0522192,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.7926829268292683,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.5140380859375
+    },
+    {
+      "timestamp": 1791978637.0606573,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.7926829268292683,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51523971557617
+    },
+    {
+      "timestamp": 1791978638.0697088,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.8028455284552846,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.5152587890625
+    },
+    {
+      "timestamp": 1791978639.0770965,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.8130081300813008,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.5147819519043
+    },
+    {
+      "timestamp": 1791978640.084167,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.8130081300813008,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.5147819519043
+    },
+    {
+      "timestamp": 1791978641.0931575,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.8231707317073171,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51407623291016
+    },
+    {
+      "timestamp": 1791978642.1001246,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.8231707317073171,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51406860351562
+    },
+    {
+      "timestamp": 1791978643.10783,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.8333333333333334,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51357650756836
+    },
+    {
+      "timestamp": 1791978644.1169891,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.8434959349593496,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51512908935547
+    },
+    {
+      "timestamp": 1791978645.1257482,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.8434959349593496,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51512908935547
+    },
+    {
+      "timestamp": 1791978646.1346211,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.8597560975609756,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51424026489258
+    },
+    {
+      "timestamp": 1791978647.1444194,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51422500610352
+    },
+    {
+      "timestamp": 1791978648.1543174,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51376342773438
+    },
+    {
+      "timestamp": 1791978649.1658766,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51517868041992
+    },
+    {
+      "timestamp": 1791978650.1774733,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.5161018371582
+    },
+    {
+      "timestamp": 1791978651.187942,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51485443115234
+    },
+    {
+      "timestamp": 1791978652.1986914,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.5157241821289
+    },
+    {
+      "timestamp": 1791978653.2087631,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51713180541992
+    },
+    {
+      "timestamp": 1791978654.221148,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51701354980469
+    },
+    {
+      "timestamp": 1791978655.2330112,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51701354980469
+    },
+    {
+      "timestamp": 1791978656.2441857,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51563262939453
+    },
+    {
+      "timestamp": 1791978657.2555687,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51663589477539
+    },
+    {
+      "timestamp": 1791978658.2671568,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51663589477539
+    },
+    {
+      "timestamp": 1791978659.2779315,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51606369018555
+    },
+    {
+      "timestamp": 1791978660.2885785,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51606369018555
+    },
+    {
+      "timestamp": 1791978661.29903,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51724624633789
+    },
+    {
+      "timestamp": 1791978662.309808,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51724624633789
+    },
+    {
+      "timestamp": 1791978663.3209536,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51614379882812
+    },
+    {
+      "timestamp": 1791978664.3322568,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51614379882812
+    },
+    {
+      "timestamp": 1791978665.3421965,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51714706420898
+    },
+    {
+      "timestamp": 1791978666.3517869,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51714706420898
+    },
+    {
+      "timestamp": 1791978667.3610103,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.5162582397461
+    },
+    {
+      "timestamp": 1791978668.3699474,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.5162582397461
+    },
+    {
+      "timestamp": 1791978669.3794198,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.5172119140625
+    },
+    {
+      "timestamp": 1791978670.3899295,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.5172119140625
+    },
+    {
+      "timestamp": 1791978671.4001608,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51709365844727
+    },
+    {
+      "timestamp": 1791978672.4107924,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51744842529297
+    },
+    {
+      "timestamp": 1791978673.419532,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51744842529297
+    },
+    {
+      "timestamp": 1791978674.4293888,
+      "num_requests_running": 1.0,
+      "num_requests_waiting": 0.0,
+      "kv_cache_usage_perc": 0.8475609756097561,
+      "num_preemptions_total": 0.0,
+      "mem_available_gib": 66.51733016967773
+    }
+  ]
+}

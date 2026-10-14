@@ -10,6 +10,7 @@ import json
 import pathlib
 import random
 import re
+import subprocess
 import threading
 import time
 import urllib.request
@@ -20,27 +21,47 @@ def main():
     p.add_argument('--base-url', default='http://127.0.0.1:8000')
     p.add_argument('--model', default='nvidia/Qwen3.8-27B-NVFP4')
     p.add_argument('--concurrency', type=int, required=True)
+    p.add_argument('--requests', type=int, help='Total requests; defaults to concurrency')
     p.add_argument('--input-tokens', type=int, required=True)
     p.add_argument('--output-tokens', type=int, default=256)
     p.add_argument('--seed', type=int, default=19000)
     p.add_argument('--result', required=True)
     a = p.parse_args()
+    count = a.requests or a.concurrency
     dest = pathlib.Path(a.result)
     dest.parent.mkdir(parents=True, exist_ok=True)
     samples, results = [], []
     stop = threading.Event()
     start = time.monotonic()
+    gpu_last = {'at': 0, 'gib': None}
 
     def metrics():
         raw = urllib.request.urlopen(a.base_url+'/metrics', timeout=10).read().decode()
         d = {'timestamp': time.time()}
         for key in ['num_requests_running', 'num_requests_waiting',
-                    'kv_cache_usage_perc', 'num_preemptions_total']:
+                    'kv_cache_usage_perc', 'num_preemptions_total',
+                    'prefix_cache_queries_total', 'prefix_cache_hits_total']:
             values = re.findall(r'^vllm:'+key+r'(?:\{[^\n]*\})? ([^\n]+)', raw, re.M)
             d[key] = sum(float(v) for v in values)
-        for line in pathlib.Path('/proc/meminfo').read_text().splitlines():
-            if line.startswith('MemAvailable:'):
-                d['mem_available_gib'] = int(line.split()[1])/1048576
+        mem = {line.split(':')[0]: int(line.split()[1])
+               for line in pathlib.Path('/proc/meminfo').read_text().splitlines()
+               if line.startswith(('MemAvailable:', 'MemTotal:'))}
+        d['mem_available_gib'] = mem['MemAvailable']/1048576
+        d['mem_total_gib'] = mem['MemTotal']/1048576
+        d['system_used_percent'] = 100*(1-mem['MemAvailable']/mem['MemTotal'])
+        if time.monotonic()-gpu_last['at'] >= 5:
+            try:
+                raw_gpu = subprocess.check_output(['nvidia-smi',
+                    '--query-compute-apps=process_name,used_memory',
+                    '--format=csv,noheader,nounits'], text=True, timeout=5)
+                values = [float(line.rsplit(',', 1)[1].strip()) for line in raw_gpu.splitlines()
+                          if 'VLLM::EngineCore' in line and 'N/A' not in line]
+                gpu_last['gib'] = sum(values)/1024 if values else None
+            except Exception:
+                gpu_last['gib'] = None
+            gpu_last['at'] = time.monotonic()
+        d['gpu_engine_gib'] = gpu_last['gib']
+        d['gpu_engine_percent'] = None if gpu_last['gib'] is None else 100*gpu_last['gib']/d['mem_total_gib']
         return d
 
     def monitor():
@@ -94,7 +115,7 @@ def main():
     def save(status):
         valid = [s for s in samples if 'error' not in s]
         good = [r for r in results if r['ok']]
-        summary = {'status': status, 'model': a.model, 'concurrency': a.concurrency,
+        summary = {'status': status, 'model': a.model, 'concurrency': a.concurrency, 'num_requests': count,
                    'input_tokens': a.input_tokens, 'output_tokens': a.output_tokens,
                    'seed': a.seed, 'completed': len(good),
                    'failed': len(results)-len(good), 'duration_s': time.monotonic()-start,
@@ -104,16 +125,21 @@ def main():
                    'peak_running': max((s['num_requests_running'] for s in valid), default=None),
                    'peak_waiting': max((s['num_requests_waiting'] for s in valid), default=None),
                    'preemptions': valid[-1]['num_preemptions_total']-valid[0]['num_preemptions_total'] if valid else None,
+                   'prefix_cache_queries': valid[-1]['prefix_cache_queries_total']-valid[0]['prefix_cache_queries_total'] if valid else None,
+                   'prefix_cache_hits': valid[-1]['prefix_cache_hits_total']-valid[0]['prefix_cache_hits_total'] if valid else None,
                    'min_available_gib': min((s['mem_available_gib'] for s in valid), default=None)}
+        for field in ['gpu_engine_gib', 'gpu_engine_percent', 'system_used_percent']:
+            summary['peak_'+field] = max((s[field] for s in valid if s.get(field) is not None), default=None)
         dest.write_text(json.dumps({'summary': summary, 'requests': list(results),
                                    'metrics': list(samples)}, indent=2))
         return summary
 
+    samples.append(metrics())
     watcher = threading.Thread(target=monitor, daemon=True)
     watcher.start()
     print('START '+str(dest), flush=True)
     with concurrent.futures.ThreadPoolExecutor(max_workers=a.concurrency) as pool:
-        pending = {pool.submit(request_one, i) for i in range(a.concurrency)}
+        pending = {pool.submit(request_one, i) for i in range(count)}
         last = 0
         while pending:
             done, pending = concurrent.futures.wait(pending, timeout=5,
@@ -129,6 +155,7 @@ def main():
                 print('PROGRESS '+json.dumps(summary), flush=True)
     stop.set()
     watcher.join(timeout=12)
+    samples.append(metrics())
     print('DONE '+json.dumps(save('complete')), flush=True)
 
 

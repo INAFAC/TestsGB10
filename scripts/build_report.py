@@ -1,117 +1,228 @@
 #!/usr/bin/env python3
-"""Generate the human-readable report from recorded measurements."""
+"""One comparison table per model, plus per-conversation evidence."""
+import collections
 import json
 import pathlib
+import re
+import statistics
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-DATA = ROOT/'results/2026-10-14'
+DATA = ROOT/'results'
+DETAILS = ROOT/'details'
+DEFAULT_MODEL = 'nvidia/Qwen3.8-27B-NVFP4'
 
 
-def fmt(value, digits=1):
-    return '—' if value is None else f'{value:.{digits}f}'
+def num(x, digits=1):
+    return 'N/M' if x is None else f'{x:.{digits}f}'.replace('.', ',')
 
 
-def context_row(file, memory):
-    data = json.loads(file.read_text())
-    s = data['summary']
-    completed = s.get('completed', 0)
-    target = s['concurrency']
-    state = 'OK' if completed == target and not s.get('failed') else 'Incompleta / revisar'
-    if s.get('preemptions', 0):
-        state += f"; {int(s['preemptions'])} recálculos"
-    if completed == target and s.get('peak_running', target) < target:
-        state += '; con cola'
-    link = file.relative_to(ROOT).as_posix()
-    return (f"| Qwen3.8-27B NVFP4 | {memory}% | {s['input_tokens']:,} / {s['output_tokens']} "
-            f"| {target} / {fmt(s.get('peak_running'), 0)} | {completed}/{target} "
-            f"| {fmt(s.get('mean_ttft_s'))} | {fmt(s.get('mean_total_s'))} "
-            f"| {fmt(s['peak_kv_fraction']*100 if s.get('peak_kv_fraction') is not None else None)}% "
-            f"| [{state}]({link}) |")
+def integer(x):
+    return '—' if x is None else f'{int(x):,}'.replace(',', '.')
+
+
+def mean(values):
+    values = [x for x in values if x is not None]
+    return statistics.mean(values) if values else None
+
+
+def ident(path):
+    return re.sub(r'[^a-zA-Z0-9-]+', '-', str(path.relative_to(DATA).with_suffix(''))).strip('-')
+
+
+def memory(path):
+    for part in path.parts:
+        if part.startswith('memory-'):
+            return int(part.split('-')[-1])
+    return 40
+
+
+def read_test(path):
+    raw = json.loads(path.read_text())
+    if 'model_id' in raw and 'mean_ttft_ms' in raw:
+        count = raw['num_prompts']
+        return {'id': ident(path), 'path': path, 'model': raw['model_id'], 'memory': memory(path),
+                'description': 'Carga corta inicial (detalle individual no guardado)',
+                'input': raw['total_input_tokens']//count, 'output': raw['total_output_tokens']//count,
+                'concurrency': raw['max_concurrency'], 'active': None, 'count': count,
+                'completed': raw['completed'], 'failed': raw['failed'],
+                'ttft': raw['mean_ttft_ms']/1000, 'response': raw['mean_e2el_ms']/1000,
+                'sum_response': raw['mean_e2el_ms']/1000*raw['completed'],
+                'duration': raw['duration'], 'throughput': raw['output_throughput'],
+                'mean_request_rate': None, 'cache': None, 'queue': None,
+                'engine_pct': None, 'system_pct': None, 'preemptions': None,
+                'requests': [], 'status': 'OK' if not raw['failed'] else 'Errores'}
+    s = raw.get('summary', {})
+    if 'input_tokens' not in s:
+        return None
+    requests = sorted(raw.get('requests', []), key=lambda r: r['index'])
+    good = [r for r in requests if r.get('ok')]
+    count = s.get('num_requests', s['concurrency'])
+    total_output = sum(r.get('usage', {}).get('completion_tokens', 0) for r in good)
+    status = ('OK' if s.get('completed') == count and not s.get('failed') else
+              'No admitida en 90 s' if s.get('status') == 'not_admitted_within_90s' else
+              'En curso / incompleta')
+    if s.get('failed'):
+        status = 'Errores'
+    description = 'Historial nuevo; prefijos independientes'
+    if 'reuse' in str(path):
+        description = 'Reutilización de historial: '+path.stem
+    elif 'detailed-short' in str(path):
+        description = 'Carga corta con métricas individuales'
+    return {'id': ident(path), 'path': path, 'model': s.get('model', DEFAULT_MODEL),
+            'memory': memory(path), 'description': description, 'input': s['input_tokens'],
+            'output': s['output_tokens'], 'concurrency': s['concurrency'], 'active': s.get('peak_running'),
+            'count': count, 'completed': s.get('completed', 0), 'failed': s.get('failed', 0),
+            'ttft': mean([r.get('ttft_s') for r in good]),
+            'response': mean([r.get('total_s') for r in good]),
+            'sum_response': sum(r.get('total_s', 0) for r in good) if good else None,
+            'duration': s.get('duration_s'),
+            'throughput': total_output/s['duration_s'] if good and s.get('duration_s') else None,
+            'mean_request_rate': mean([r['usage']['completion_tokens']/r['total_s'] for r in good if r.get('usage')]),
+            'cache': 100*s['peak_kv_fraction'] if s.get('peak_kv_fraction') is not None else None,
+            'queue': s.get('peak_waiting'), 'engine_pct': s.get('peak_gpu_engine_percent'),
+            'system_pct': s.get('peak_system_used_percent'), 'preemptions': s.get('preemptions'),
+            'requests': requests, 'status': status, 'summary': s}
+
+
+def write_detail(t):
+    path = DETAILS/(t['id']+'.md')
+    source = '../'+t['path'].relative_to(ROOT).as_posix()
+    lines = ['# '+t['id'], '', '[Volver a la comparación](../README.md)', '',
+             t['description']+'.', '',
+             f"- Modelo: `{t['model']}`.",
+             f"- Presupuesto vLLM: {t['memory']}% de la memoria del GB10.",
+             f"- Entrada / salida por solicitud: {integer(t['input'])} / {integer(t['output'])} tokens.",
+             f"- Solicitudes: {t['count']}; concurrencia del cliente: {t['concurrency']}; límite del servidor: 4.",
+             f"- Duración de la prueba: {num(t['duration'])} s.",
+             f"- Resultado: **{t['status']}**, {t['completed']}/{t['count']} completadas.",
+             f'- [Datos originales]({source}).', '',
+             '## Conversaciones individuales', '',
+             '| Conversación | Tokens entrada | Tokens salida | Inicio (s) | Respuesta completa (s) | Generación (tokens/s) | Con espera incluida (tokens/s) | Resultado |',
+             '|---|---:|---:|---:|---:|---:|---:|---|']
+    for r in t['requests']:
+        usage = r.get('usage') or {}
+        output = usage.get('completion_tokens')
+        elapsed = r.get('total_s')
+        ttft = r.get('ttft_s')
+        generation = ((output-1)/(elapsed-ttft)
+                      if output and elapsed and ttft is not None and elapsed > ttft else None)
+        e2e = output/elapsed if output and elapsed else None
+        lines.append(f"| C{r['index']+1} | {integer(usage.get('prompt_tokens'))} | {integer(output)} "
+                     f"| {num(ttft,2)} | {num(elapsed,2)} | {num(generation,2)} | {num(e2e,2)} "
+                     f"| {'OK' if r.get('ok') else 'Error'} |")
+    if not t['requests']:
+        lines += ['', '**No medido:** en esta primera serie se guardaron estadísticas agregadas, no los tiempos de cada solicitud. No se han reconstruido ni inventado valores individuales.']
+    lines += ['', 'Generación = (tokens de salida − 1) / tiempo desde el primer token hasta el final. '
+              'Con espera incluida = tokens de salida / tiempo completo de esa solicitud. '
+              'Los tokens son los devueltos por la API, no el número de mensajes SSE.', '',
+              '## Memoria y planificación', '',
+              f"- Pico observado del motor GPU: {num(t['engine_pct'])}% del GB10.",
+              f"- Pico de memoria usada por el sistema: {num(t['system_pct'])}% del GB10.",
+              f"- Pico de caché ocupada: {num(t['cache'])}% de la reserva KV.",
+              f"- Máximo observado de solicitudes activas: {integer(t['active'])}.",
+              f"- Máximo observado en cola: {integer(t['queue'])}.",
+              f"- Preempciones por memoria: {integer(t['preemptions'])}."]
+    if t.get('summary', {}).get('prefix_cache_queries') is not None:
+        s = t['summary']
+        lines += [f"- Tokens consultados en prefix cache: {integer(s.get('prefix_cache_queries'))}.",
+                  f"- Tokens recuperados de prefix cache: {integer(s.get('prefix_cache_hits'))}."]
+    lines += ['', 'N/M significa que esa métrica no se recogió durante esta prueba.', '']
+    path.write_text('\n'.join(lines))
 
 
 def main():
-    matrix_path = DATA/'memory/metadata.json'
-    matrix = json.loads(matrix_path.read_text()) if matrix_path.exists() else {}
-    restored = matrix.get('restore_status') == 'healthy'
-    lines = [
-        '# Tests GB10', '',
-        'Pruebas de memoria, contexto y concurrencia realizadas el 14 de octubre de 2026.', '',
-        '**Estado:** '+('pruebas terminadas; configuración original del 40% restaurada y servidor sano.'
-                       if restored else 'pruebas en curso; esta tabla contiene únicamente las mediciones ya guardadas.'), '',
-        '## Equipo y configuración', '',
-        '- NVIDIA GB10, 121,63 GiB de memoria unificada visible para el sistema.',
-        '- Modelo: `nvidia/Qwen3.8-27B-NVFP4`.',
-        '- Imagen: `nvcr.io/nvidia/vllm:26.09-py3`; vLLM `0.29.0+5013de39.dev`.',
-        '- Configuración original: memoria `0.40`, `--max-num-seqs 4`, contexto máximo 262.144 tokens.',
-        '- Caché de contexto original: 23,6 GiB. Modelo cargado: 19,95 GiB.',
-        '- Prefix caching activado; caché KV automática (BF16), configuración híbrida Mamba `align`.',
-        '- No hay otros modelos activos durante estas pruebas.', '',
-        'El porcentaje es el presupuesto de vLLM sobre la memoria total; no es un límite estricto de toda la RAM del contenedor. '
-        'El contexto incluye entrada y salida. Una conversación guardada que no está generando no equivale a una solicitud activa.', '',
-        '## Pruebas cortas al 40%', '',
-        'Herramienta oficial `vllm bench serve`. Cada respuesta genera 128 tokens. '
-        'Hay una petición de comprobación y una de calentamiento adicionales por ensayo, excluidas de la tabla.', '',
-        '| Modelo | Memoria | Entrada | Concurrencia enviada | Completadas | Inicio medio (s) | Respuesta completa media (s) | Tokens/s totales |',
-        '|---|---:|---:|---:|---:|---:|---:|---:|',
-    ]
-    files = sorted((DATA/'short').glob('*.json'),
-                   key=lambda f: (json.loads(f.read_text()).get('total_input_tokens', 0)//max(1,json.loads(f.read_text()).get('num_prompts',1)),
-                                  json.loads(f.read_text()).get('max_concurrency',0)))
-    for file in files:
-        s = json.loads(file.read_text())
-        n = s['num_prompts']
-        link = file.relative_to(ROOT).as_posix()
-        lines.append(f"| Qwen3.8-27B NVFP4 | 40% | {s['total_input_tokens']//n:,} | {s['max_concurrency']} "
-                     f"| [{s['completed']}/{n}]({link}) | {s['mean_ttft_ms']/1000:.2f} "
-                     f"| {s['mean_e2el_ms']/1000:.1f} | {s['output_throughput']:.1f} |")
-    lines += ['', 'Con ocho solicitudes enviadas se observaron cuatro en ejecución y cuatro en cola. '
-              'La concurrencia enviada no cambia el límite del servidor.', '',
-              '## Contextos largos y distintos presupuestos', '',
-              'Solicitudes simultáneas con prefijos sintéticos distintos, sin reutilización intencionada de contexto. '
-              'Se fuerza la longitud de respuesta para que todos los ensayos tengan trabajo definido. '
-              'Métricas de caché y cola muestreadas cada segundo.', '',
-              '**Enviada / activa máxima** distingue clientes simultáneos del máximo de solicitudes que el motor llegó a mantener en ejecución. '
-              'La espera inicial incluye lectura del contexto y cola. El tiempo completo incluye esa espera.', '',
-              '| Modelo | Memoria | Tokens entrada / salida | Concurrencia enviada / activa máxima | Completadas | Inicio medio (s) | Completa media (s) | Pico caché | Resultado |',
-              '|---|---:|---:|---:|---:|---:|---:|---:|---|']
-    for file in sorted((DATA/'context-40').glob('c*.json'),
-                       key=lambda f: json.loads(f.read_text())['summary']['input_tokens']):
-        lines.append(context_row(file, 40))
-    for directory in sorted((DATA/'memory').glob('memory-*')):
-        memory = int(directory.name.split('-')[1])
-        for file in sorted(directory.glob('c*.json'),
-                           key=lambda f: json.loads(f.read_text())['summary']['input_tokens']):
-            lines.append(context_row(file, memory))
-    if matrix.get('profiles'):
-        lines += ['', '### Arranques y capacidad reservada', '',
-                  '| Memoria | Contexto máximo intentado | Arranque | Caché KV del perfil operativo |',
-                  '|---:|---:|---|---:|']
-        for p in matrix['profiles']:
-            for attempt in p['attempts']:
-                ok = attempt['ready']
-                lines.append(f"| {p['fraction']*100:.0f}% | {attempt['max_model_len']:,} "
-                             f"| {'OK' if ok else 'No arrancó'} | {fmt(p.get('kv_gib'))+' GiB' if ok else '—'} |")
-    lines += ['', '## Cómo interpretar los resultados', '',
-              '- **OK** significa que terminó la carga sintética y devolvió los tokens pedidos; no evalúa la calidad de las respuestas.',
-              '- **Con cola** significa que las solicitudes terminaron, pero el motor no llegó a ejecutar todas simultáneamente.',
-              '- Los tokens/s de las pruebas cortas son el rendimiento total, no la velocidad de cada usuario.',
-              '- El pico de caché es uso de la reserva de vLLM, no porcentaje de la memoria física del equipo.',
-              '- La cifra de capacidad de tokens que imprime vLLM al arrancar es una estimación. '
-              'En este modelo híbrido hay que verificar el comportamiento real del gestor de caché.',
-              '- Son ensayos puntuales, no una garantía de disponibilidad ni una prueba de estabilidad durante días. '
-              'Prompts reales, herramientas, imágenes, más salida o un segundo modelo pueden cambiar los resultados.', '',
-              '## Repetir las pruebas', '',
-              'Las pruebas cortas usan `vllm bench serve` dentro del contenedor. '
-              'Las largas usan [context_probe.py](scripts/context_probe.py), que solo envía peticiones y lee métricas.', '',
+    DETAILS.mkdir(exist_ok=True)
+    tests = []
+    for path in DATA.rglob('*.json'):
+        if path.name in ('summary.json', 'metadata.json', 'override.json', 'session.json', 'index.json'):
+            continue
+        try:
+            test = read_test(path)
+        except (ValueError, KeyError, TypeError):
+            continue
+        if test:
+            tests.append(test)
+    models = collections.defaultdict(list)
+    for t in tests:
+        models[t['model']].append(t)
+        write_detail(t)
+    session_file = DATA/'2026-10-14/session.json'
+    session = json.loads(session_file.read_text()) if session_file.exists() else {'status': 'running'}
+    lines = ['# Tests GB10', '',
+             'Comparación de modelos locales en NVIDIA GB10: cuánta memoria necesitan, cuántas solicitudes pueden atender y cuánto espera cada conversación.', '',
+             '**Estado:** '+('pruebas terminadas y configuración original restaurada.' if session.get('status') == 'complete' else 'pruebas en curso; los resultados se van incorporando al terminar cada ensayo.'), '',
+             'Una tabla por modelo y una fila por prueba. El ID de cada fila abre los tiempos y velocidades de **cada conversación**, junto con los datos originales.', '',
+             '## Cómo leer las tablas', '',
+             '- **Asignado:** presupuesto configurado con `--gpu-memory-utilization`; se refiere a toda la memoria del GB10.',
+             '- **Motor / GB10:** pico medido con `nvidia-smi` del proceso `VLLM::EngineCore`, dividido entre la memoria total. Incluye sus reservas GPU; no incluye toda la RAM de la API ni del sistema.',
+             '- **Sistema / GB10:** pico de `(MemTotal − MemAvailable) / MemTotal`; incluye los demás procesos y el motor.',
+             '- **Concurrencia enviada / activa:** máximo de peticiones en vuelo del cliente y máximo observado dentro del motor. Activa incluye lectura del prompt y generación.',
+             '- **Inicio:** tiempo medio hasta el primer token. **Respuesta:** tiempo medio completo, incluida la espera. **Acumulado:** suma de los tiempos individuales; puede superar la duración real por el solapamiento.',
+             '- **Duración:** tiempo de pared de la prueba, sin el arranque del modelo. **t/s por conversación:** media de tokens de salida / tiempo completo individual, incluyendo espera. **t/s total:** toda la salida / duración de la prueba.',
+             '- **Cola:** máximo observado de solicitudes esperando; una cola transitoria durante el prefill no demuestra por sí sola falta de memoria.',
+             '- **Caché:** pico de uso de la reserva KV, no porcentaje de RAM del equipo. **Recálculos:** preempciones registradas por vLLM.',
+             '- **N/M:** no medido. No se sustituye por una estimación ni por cero.', '',
+             '## Entorno', '',
+             'GB10 con 121,63 GiB de memoria unificada visible. Pruebas del 14 de octubre de 2026. '
+             'Imagen `nvcr.io/nvidia/vllm:26.09-py3`, vLLM `0.29.0+5013de39.dev`. Un solo modelo activo, con límite del servidor de cuatro solicitudes.', '',
+             'Los tiempos se miden contra la API de vLLM, sin Open WebUI. Las entradas son sintéticas y no contienen datos personales. '
+             'Estas pruebas miden funcionamiento y rendimiento, no calidad de las respuestas.', '']
+    for model in sorted(models):
+        title = model.split('/')[-1]
+        lines += ['## '+title, '', f'Modelo exacto: `{model}`.', '']
+        if model == DEFAULT_MODEL:
+            lines += ['Pesos cargados: **19,95 GiB**, aproximadamente **16,4% del GB10**. '
+                      'Ese valor no incluye caché ni buffers. Configuración original: **40%**, cuatro solicitudes y contexto máximo de 262.144 tokens. '
+                      'Prefix caching activado, caché KV automática BF16 y modo Mamba `align`.', '']
+        conclusions = ROOT/'conclusions'/f'{title}.md'
+        if conclusions.exists():
+            lines += [conclusions.read_text().strip(), '']
+        lines += ['| Prueba / detalle individual | Enunciado | Asignado | Motor / GB10 | Sistema / GB10 | Tokens entrada / salida | Concurrencia enviada / activa | OK / total | Inicio medio (s) | Respuesta media (s) | Acumulado (s) | Duración prueba (s) | t/s conversación | t/s total | Pico caché | Cola máx. | Recálculos | Resultado |',
+                  '|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|']
+        ordered = sorted(models[model], key=lambda t: (t['memory'], t['input'], t['concurrency'], t['output'], t['id']))
+        for i,t in enumerate(ordered,1):
+            lines.append(f"| [P{i:02d}](details/{t['id']}.md) | {t['description']} | {t['memory']}% "
+                         f"| {num(t['engine_pct'])}% | {num(t['system_pct'])}% | {integer(t['input'])} / {integer(t['output'])} "
+                         f"| {t['concurrency']} / {integer(t['active'])} | {t['completed']}/{t['count']} "
+                         f"| {num(t['ttft'])} | {num(t['response'])} | {num(t['sum_response'])} "
+                         f"| {num(t['duration'])} | {num(t['mean_request_rate'])} | {num(t['throughput'])} "
+                         f"| {num(t['cache'])}% | {integer(t['queue'])} | {integer(t['preemptions'])} | {t['status']} |")
+        lines += ['']
+    matrix_file = DATA/'2026-10-14/memory/metadata.json'
+    if matrix_file.exists():
+        m=json.loads(matrix_file.read_text())
+        lines += ['## Arranque con distintos presupuestos', '',
+                  'Se registra también si el modelo consigue arrancar con el contexto máximo solicitado. '
+                  'Arrancar no garantiza que varias conversaciones largas puedan ejecutarse a la vez.', '']
+        for profile in m.get('profiles',[]):
+            for a in profile.get('attempts',[]):
+                lines.append(f"- **{profile['fraction']*100:.0f}%**, contexto máximo {integer(a['max_model_len'])}: "
+                             f"{'arranque correcto' if a['ready'] else 'no arrancó'} en {num(a['startup_seconds'])} s.")
+        lines += ['', 'Restauración registrada: **'+m.get('restore_status','pendiente')+'**.', '']
+    overflow=DATA/'2026-10-14/context-40/limit-rejection.json'
+    if overflow.exists():
+        d=json.loads(overflow.read_text())
+        lines += ['## Validación del límite de contexto', '',
+                  f"Una petición de {integer(d['input_tokens'])} tokens de entrada más {d['output_requested']} de salida "
+                  f"recibió **HTTP {d['http_status']}** en {num(d['elapsed_s'],3)} s: rechazo esperado al superar 262.144 tokens. "
+                  '[Respuesta original](results/2026-10-14/context-40/limit-rejection.json).', '']
+    lines += ['## Reproducir y añadir modelos', '',
+              '- [context_probe.py](scripts/context_probe.py): mide cada solicitud, memoria y caché. Acepta `--model` y `--base-url` para probar otro modelo ya desplegado.',
+              '- [short_benchmark.sh](scripts/short_benchmark.sh): primera batería con la herramienta oficial de vLLM.',
+              '- [memory_matrix.py](scripts/memory_matrix.py): pruebas temporales sobre el servicio Qwen de este GB10. Recrea el contenedor, usa overrides sin editar el Compose original y restaura el comando original al terminar.',
+              '- [build_report.py](scripts/build_report.py): agrupa los JSON de `results/` por identificador de modelo y genera las tablas y los detalles individuales.', '',
               '```bash',
-              'python3 scripts/context_probe.py --concurrency 4 --input-tokens 32768 \\',
-              '  --output-tokens 512 --result /tmp/contexto-32k.json',
+              'python3 scripts/context_probe.py --model nvidia/Qwen3.8-27B-NVFP4 \\',
+              '  --concurrency 4 --requests 4 --input-tokens 32768 --output-tokens 512 \\',
+              '  --result /tmp/contexto-32k.json',
               '```', '',
-              '[memory_matrix.py](scripts/memory_matrix.py) cambia temporalmente el servicio mediante un archivo Compose adicional, '
-              'sin editar el Compose original. Recrea el contenedor y restaura el comando original al terminar. '
-              '**Este script interrumpe el servicio durante los cambios; no debe ejecutarse a la vez que otras pruebas.**', '',
-              'Resultados originales y registros: [results/2026-10-14](results/2026-10-14). '
-              'Los datos de prueba son sintéticos; no contienen conversaciones personales ni claves.', '']
+              'En las primeras pruebas se guardaron menos métricas; se conservan como historial y sus celdas ausentes están marcadas N/M. '
+              'Las nuevas guardan tiempos individuales y muestrean la caché cada segundo y la memoria GPU aproximadamente cada cinco segundos. '
+              'Las comparaciones de memoria deben mantener modelo, entrada, salida y concurrencia iguales.', '',
+              'Los ensayos largos con prefijos nuevos miden la lectura completa del historial. '
+              'Continuar un historial que siga en caché puede ser mucho más rápido. '
+              'No se ha validado aquí la calidad con contextos largos ni estabilidad durante días.', '',
+              'Todos los resultados y registros están en [results](results).', '']
     (ROOT/'README.md').write_text('\n'.join(lines))
 
 

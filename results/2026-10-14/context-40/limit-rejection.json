@@ -1,0 +1,9 @@
+{
+  "http_status": 400,
+  "body": "{\"error\":{\"message\":\"This model's maximum context length is 262144 tokens. However, you requested 1 output tokens and your prompt contains 262145 input tokens, for a total of 262146 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=262145)\",\"type\":\"BadRequestError\",\"param\":\"input_tokens\",\"code\":400}}",
+  "input_tokens": 262145,
+  "output_requested": 1,
+  "configured_max_context": 262144,
+  "memory_fraction": 0.4,
+  "elapsed_s": 0.04622957699757535
+}
