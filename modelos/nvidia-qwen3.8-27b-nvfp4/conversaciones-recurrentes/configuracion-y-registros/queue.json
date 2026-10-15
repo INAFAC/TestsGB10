@@ -270,6 +270,17 @@
           "request_timeout": 3600,
           "id": "chat-20-usuarios-historial-8192-salida-2048-sin-razonamiento",
           "output_tokens": 2048
+        },
+        {
+          "users": 20,
+          "input_tokens": 32768,
+          "turns": 3,
+          "seed": 20032768,
+          "think_seconds": 30,
+          "timeout": 7200,
+          "request_timeout": 3600,
+          "id": "chat-20-usuarios-historial-32768-salida-2048-sin-razonamiento",
+          "output_tokens": 2048
         }
       ]
     }

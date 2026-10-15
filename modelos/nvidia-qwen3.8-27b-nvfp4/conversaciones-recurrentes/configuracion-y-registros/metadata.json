@@ -263,6 +263,12 @@
           "exit_code": 0,
           "duration_seconds": 2215.231201632996,
           "timed_out": false
+        },
+        {
+          "id": "chat-20-usuarios-historial-8192-predeterminado",
+          "exit_code": 0,
+          "duration_seconds": 370.0372170310002,
+          "timed_out": false
         }
       ],
       "command": [
@@ -282,7 +288,32 @@
         "262144"
       ],
       "ready": true,
-      "startup_seconds": 376.06321933100116
+      "startup_seconds": 376.06321933100116,
+      "state": "complete"
+    },
+    {
+      "id": "crecimiento-memoria-70",
+      "fraction": 0.7,
+      "server_limit": 32,
+      "cases": [],
+      "command": [
+        "vllm",
+        "serve",
+        "nvidia/Qwen3.8-27B-NVFP4",
+        "--enable-auto-tool-choice",
+        "--tool-call-parser",
+        "qwen3_coder",
+        "--reasoning-parser",
+        "qwen3",
+        "--gpu-memory-utilization",
+        "0.7",
+        "--max-num-seqs",
+        "32",
+        "--max-model-len",
+        "262144"
+      ],
+      "ready": true,
+      "startup_seconds": 0.0011808389972429723
     }
   ]
 }

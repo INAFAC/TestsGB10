@@ -84,6 +84,7 @@ Controles al **70% de memoria**, con mensajes ficticios legibles, respuestas rea
 |---:|---:|---|---:|---:|---:|---:|---:|---:|
 | [8.192](memoria-70-chat-20-usuarios-historial-8192-sin-razonamiento/README.md) | 20 | Desactivado | 512 | 60/60 | 60/60 | 49/60 | 11/60 | 2,8 s |
 | [32.768](memoria-70-chat-20-usuarios-historial-32768-sin-razonamiento/README.md) | 20 | Desactivado | 512 | 60/60 | 60/60 | 54/60 | 6/60 | 362,2 s |
+| [8.192](memoria-70-chat-20-usuarios-historial-8192-predeterminado/README.md) | 20 | Predeterminado | 512 | 60/60 | 40/60 | 35/60 | 23/60 | 53,8 s |
 
 La espera visible empieza al enviar la petición y acaba cuando llega el primer texto de respuesta. Si el modelo solo produce razonamiento, no se cuenta como una respuesta visible. Los percentiles se calculan sobre las respuestas recibidas; el recuento permite ver si faltan otras.
 
@@ -97,6 +98,7 @@ La espera visible empieza al enviar la petición y acaba cuando llega el primer 
 | [Ajuste memoria 50](configuracion-y-registros/ajuste-memoria-50/arranque.log) | 50% | 32 | Sí | 386,2 s | 35,30 GiB |
 | [Ajuste memoria 60](configuracion-y-registros/ajuste-memoria-60/arranque.log) | 60% | 32 | Sí | 381,1 s | 47,47 GiB |
 | [Comparacion usuarios y chat memoria 70](configuracion-y-registros/comparacion-usuarios-y-chat-memoria-70/arranque.log) | 70% | 32 | Sí | 376,1 s | 59,68 GiB |
+| [Crecimiento memoria 70](configuracion-y-registros/crecimiento-memoria-70/arranque.log) | 70% | 32 | Sí | 0,0 s | 59,68 GiB |
 
 La reserva de caché procede del registro de arranque. No equivale a memoria ocupada por conversaciones ni permite deducir por sí sola cuántas personas tendrán una respuesta fluida. El pico de ocupación de esa reserva se mide durante cada prueba.
 
@@ -124,6 +126,7 @@ Se publica una prueba cuando termina. Los percentiles del primer turno y de las 
 | [Conversación de 3 turnos por persona](memoria-70-30-usuarios-historial-32768-tres-turnos/README.md) | 70% | 30 / 32 | 32.768 | 90/90 | 1.129,2 s | 965,4 s | 0,73 tokens/s | 100,0% | 70 | 4.289,5 s | No cumple la referencia |
 | [Chat: sin razonamiento](memoria-70-chat-20-usuarios-historial-8192-sin-razonamiento/README.md) | 70% | 20 / 32 | 8.192 | 60/60 | 103,2 s | 2,8 s | 6,12 tokens/s | 41,7% | 0 | 342,4 s | No cumple la referencia |
 | [Chat: sin razonamiento](memoria-70-chat-20-usuarios-historial-32768-sin-razonamiento/README.md) | 70% | 20 / 32 | 32.768 | 60/60 | 598,8 s | 362,2 s | 0,64 tokens/s | 100,0% | 8 | 2.213,4 s | No cumple la referencia |
+| [Chat: modo predeterminado](memoria-70-chat-20-usuarios-historial-8192-predeterminado/README.md) | 70% | 20 / 32 | 8.192 | 60/60 | 103,3 s | 2,5 s | 5,75 tokens/s | 41,7% | 0 | 367,8 s | No cumple la referencia |
 
 ## Comprobaciones del medidor de chat
 
