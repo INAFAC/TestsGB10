@@ -36,6 +36,10 @@ La referencia requiere todas las respuestas completas, espera p95 de hasta 5 s y
 | Tokens/s de todo el grupo, incluyendo pausas | 14,52 |
 | Suma de tiempos individuales | 36.176,7 s |
 | Tiempo total de la prueba, incluyendo pausas | 2.116,4 s |
+| Espera máxima sin datos en una conexión | 3.600 s |
+| Plazo máximo configurado para todo el grupo | 7.200 s |
+
+Si una prueba agota uno de estos plazos, se conserva como una interrupción por tiempo de espera. Ese resultado no demuestra por sí solo que falte memoria ni que sea imposible terminar con más espera.
 
 ## Resumen por persona
 

@@ -15,6 +15,7 @@ import subprocess
 import threading
 import time
 import urllib.request
+import urllib.error
 
 
 def main():
@@ -145,11 +146,13 @@ def main():
                             if reasoning_first is None:reasoning_first=now
                             reasoning+=thought
                         if choice.get('finish_reason'):finish=choice['finish_reason']
+        except urllib.error.HTTPError as exc:
+            error=f'HTTP {exc.code}: '+exc.read().decode(errors='replace')[:4000]
         except Exception as exc:error=type(exc).__name__+': '+str(exc)
         ended=time.monotonic()
         ok=bool(not error and usage and usage['prompt_tokens']==input_tokens and 0<usage['completion_tokens']<=a.output_tokens and finish in ('stop','length'))
         if not ok and error is None:
-            error=f'Unexpected response: expected prompt_tokens={input_tokens}, completion_tokens between1and{a.output_tokens}, and stop/length; received usage={usage}, finish_reason={finish}'
+            error=f'Unexpected response: expected prompt_tokens={input_tokens}, completion_tokens between 1 and {a.output_tokens}, and stop/length; received usage={usage}, finish_reason={finish}'
         assistant={'role':'assistant','content':content}
         if reasoning:assistant['reasoning']=reasoning
         return {'index':user*a.turns+turn,'user_id':user,'turn':turn+1,'input_tokens':input_tokens,

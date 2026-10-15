@@ -94,6 +94,7 @@ if plan['status']=='complete':
     def require(memory,users,tokens,turns,chat=False,mode=None):
         found=[(c,s) for c,s in entries if round(100*c['memory_fraction'])==memory and c['users']==users
                and c['input_tokens']==tokens and c.get('turns',3)==turns and c['id'].startswith('chat-')==chat
+               and s.get('status') in ('complete','finished_with_errors','group_timeout')
                and (mode is None or s.get('reasoning_mode')==mode)]
         if not found:errors.append(f'Missing required test: {memory}% / {users} users / {tokens} input / {turns} turns / chat={chat} / {mode}')
         return found

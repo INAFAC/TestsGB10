@@ -21,6 +21,15 @@ def quantile(values,p):
 def rate(r):
     return (r['usage']['completion_tokens']-1)/(r['total_s']-r['ttft_s']) if r.get('ok') and r.get('ttft_s') is not None and r['total_s']>r['ttft_s'] else None
 
+def case_title(c):
+    if c['id'].startswith('chat-comprobacion-medidor-'):
+        return 'Medidor: '+('sin razonamiento' if c['id'].endswith('-sin-razonamiento') else 'modo predeterminado')
+    if c['id'].startswith('chat-'):
+        return 'Chat: '+('sin razonamiento' if c['id'].endswith('-sin-razonamiento') else 'modo predeterminado')
+    if c['input_tokens']==260864:return 'Continuar hasta el máximo de contexto'
+    if c.get('parent_state'):return 'Continuar con un historial ampliado'
+    return f"Conversación de {c.get('turns',3)} turnos por persona"
+
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--cache',default=str(pathlib.Path.home()/'.cache/TestsGB10/conversaciones-recurrentes-2026-10-15'))
@@ -58,13 +67,14 @@ def main():
             names={'configuration.json':'configuracion.json','measurements.json':'mediciones.json','execution.log':'registro-de-ejecucion.log','server.log':'registro-del-servidor.log','executed-command.json':'comando-ejecutado.json','histories.json.gz':'historiales-reproducibles.json.gz'}
             for old,new in names.items():
                 if (source/old).exists():copy(source/old,folder/new)
-            data=read(source/'measurements.json') if (source/'measurements.json').exists() else {'summary':{},'requests':[]}
+            measurement_available=(source/'measurements.json').exists()
+            data=read(source/'measurements.json') if measurement_available else {'summary':{},'requests':[]}
             s=data['summary'];requests=sorted(data['requests'],key=lambda r:(r['user_id'],r['turn']));good=[r for r in requests if r['ok']];follow=[r for r in good if r['turn']>1]
             initial=[r for r in good if r['turn']==1];count=c['users']*c.get('turns',3)
             all_done=len(good)==count and case_record['exit_code']==0
             fluent=all_done and bool(s.get('followups_reference_fluent'))
-            label='Cumple la referencia' if fluent else 'No cumple la referencia' if all_done else 'No completó todo'
-            row={'folder':folder.name,'config':c,'summary':s,'record':case_record,'all_done':all_done,'fluent':fluent,'label':label,'count':count,'done':len(good),'cold95':quantile([r.get('ttft_s') for r in initial],.95),'follow95':quantile([r.get('ttft_s') for r in follow],.95),'decode05':quantile([rate(r) for r in follow],.05)};rows.append(row)
+            label='Sin mediciones; revisar registro' if not measurement_available else 'Cumple la referencia' if fluent else 'No cumple la referencia' if all_done else 'No completó todo'
+            row={'folder':folder.name,'measurement_available':measurement_available,'config':c,'summary':s,'record':case_record,'all_done':all_done,'fluent':fluent,'label':label,'count':count,'done':len(good),'cold95':quantile([r.get('ttft_s') for r in initial],.95),'follow95':quantile([r.get('ttft_s') for r in follow],.95),'decode05':quantile([rate(r) for r in follow],.05)};rows.append(row)
             lines=[f"# {c['users']} usuarios · {round(profile['fraction']*100)}% · historial inicial de {n(c['input_tokens'],0)} tokens",'', '[Volver a la comparación](../README.md)','',
                    f"**Continuaciones: {label.lower()}.** Respuestas completas: **{len(good)}/{count}**. Tiempo de la prueba: **{n(s.get('duration_s'))} s**.",'',
                    f"Límite impuesto al servidor: **{c['server_limit']} activas**. Cada usuario mantiene una sola petición pendiente y espera **{c.get('think_seconds',30)} s** después de su respuesta antes de añadir 256 tokens de mensaje. Se conservan los tokens reales de la respuesta anterior.",'',
@@ -96,7 +106,10 @@ def main():
                     f"| Tokens recuperados de caché | {n(s.get('prefix_cache_hits'),0)} |",
                     f"| Tokens/s de todo el grupo, incluyendo pausas | {n(sum(r['usage']['completion_tokens'] for r in good)/s['duration_s'] if s.get('duration_s') else None,2)} |",
                     f"| Suma de tiempos individuales | {n(sum(r['total_s'] for r in good))} s |",
-                    f"| Tiempo total de la prueba, incluyendo pausas | {n(s.get('duration_s'))} s |",'',
+                    f"| Tiempo total de la prueba, incluyendo pausas | {n(s.get('duration_s'))} s |",
+                    f"| Espera máxima sin datos en una conexión | {n(s.get('request_timeout_s'),0)} s |",
+                    f"| Plazo máximo configurado para todo el grupo | {n(s.get('test_timeout_s'),0)} s |",'',
+                    'Si una prueba agota uno de estos plazos, se conserva como una interrupción por tiempo de espera. Ese resultado no demuestra por sí solo que falte memoria ni que sea imposible terminar con más espera.','',
                     '## Cada persona y cada mensaje','',
                     '| Persona | Turno | Entrada + salida | Espera al primer texto | Respuesta completa | Tokens/s durante la respuesta | Resultado |',
                     '|---|---:|---:|---:|---:|---:|---|']
@@ -131,14 +144,19 @@ def main():
                 u=r.get('usage') or {};result=('Terminó naturalmente' if r.get('naturally_finished') else 'Alcanzó el límite de salida') if r['ok'] and s.get('kind')=='chat_recurrent' else 'Completa' if r['ok'] else 'Error: '+str(r.get('error','longitud inesperada')).replace('|','/')
                 visible_cell=f"{n(r.get('visible_ttft_s'))} s | " if s.get('kind')=='chat_recurrent' else ''
                 lines.append(f"| {r['user_id']+1} | {r['turn']} | {n(r['input_tokens'],0)} + {n(u.get('completion_tokens'),0)} | {n(r.get('ttft_s'))} s | {visible_cell}{n(r.get('total_s'))} s | {n(rate(r),2)} | {result} |")
-            if len(requests)<count:lines+=['',f"No se ejecutaron {count-len(requests)} turnos previstos. Se conserva el registro del fallo; no se cuentan como respuestas recibidas."]
+            if measurement_available and len(requests)<count:lines+=['',f"No hay un resultado final registrado para {count-len(requests)} turnos previstos. Pueden incluir peticiones pendientes al interrumpirse la prueba y turnos posteriores que no llegaron a enviarse. No se cuentan como respuestas recibidas."]
             maximum=sum(r['usage']['total_tokens']==262144 for r in good)
             if maximum:lines+=['',f'**Llegaron exactamente al máximo de 262.144 tokens y completaron la respuesta: {maximum} conversaciones.**']
-            lines+=['','## Datos y reproducción','', '[Mediciones originales](mediciones.json) · [Configuración](configuracion.json) · [Registro de ejecución](registro-de-ejecucion.log) · [Comando ejecutado](comando-ejecutado.json)','']
+            sources=[('Mediciones originales','mediciones.json'),('Configuración','configuracion.json'),('Registro de ejecución','registro-de-ejecucion.log'),('Comando ejecutado','comando-ejecutado.json')]
+            links=' · '.join(f'[{label}]({name})' for label,name in sources if (folder/name).exists())
+            lines+=['','## Datos y reproducción','',links,'']
+            if not measurement_available:
+                lines[4]=f"**No se generó un archivo de mediciones.** El cliente terminó con código {case_record['exit_code']}. Se conservan la configuración, el estado del controlador y los registros disponibles. Este fallo no permite determinar cuántas respuestas recibió el cliente ni atribuir el problema a la memoria del modelo."
+
             if (folder/'historiales-reproducibles.json.gz').exists():lines+=['[Historiales finales comprimidos](historiales-reproducibles.json.gz): permiten continuar las mismas conversaciones en la siguiente etapa.','']
             if s.get('kind')=='chat_recurrent':
                 lines=[line.replace('Tiempo medio de respuesta completa','Tiempo medio hasta fin de petición').replace('| Respuesta completa |','| Fin de petición |') for line in lines]
-            if c['id'].startswith('chat-comprobacion-medidor-'):
+            if measurement_available and c['id'].startswith('chat-comprobacion-medidor-'):
                 lines[4]=f"**Comprobación del medidor de chat.** Peticiones sin error: **{len(good)}/{count}**. Esta prueba pequeña verifica la recogida de tiempos y la continuidad de los mensajes; no se utiliza para elegir la memoria ni para calificar la fluidez del uso normal."
                 lines=[line.replace('| No cumple |','| No se evalúa |').replace('| Cumple |','| No se evalúa |') for line in lines]
             (folder/'README.md').write_text('\n'.join(lines))
@@ -154,7 +172,8 @@ def main():
         match=re.search(r'Available KV cache memory: ([0-9.]+) GiB',log.read_text()) if log.exists() else None
         reserve=float(match.group(1)) if match else None
         status='Sí' if profile.get('ready') else 'No' if profile.get('state')=='startup_failed' else 'En curso'
-        title=f"[{profile['id']}](configuracion-y-registros/{profile['id']}/arranque.log)" if log.exists() else profile['id']
+        profile_title=profile['id'].replace('-', ' ').capitalize()
+        title=f"[{profile_title}](configuracion-y-registros/{profile['id']}/arranque.log)" if log.exists() else profile_title
         lines.append(f"| {title} | {round(profile['fraction']*100)}% | {profile['server_limit']} | {status} | {n(profile.get('startup_seconds'))} s | {n(reserve,2)} GiB |")
     lines+=['','La reserva de caché procede del registro de arranque. No equivale a memoria ocupada por conversaciones ni permite deducir por sí sola cuántas personas tendrán una respuesta fluida. El pico de ocupación de esa reserva se mide durante cada prueba.','',
            '## Resultados publicados','',
@@ -164,7 +183,8 @@ def main():
     for r in rows:
         c=r['config'];s=r['summary']
         if c['id'].startswith('chat-comprobacion-medidor-'):continue
-        lines.append(f"| [{c['id']}]({r['folder']}/README.md) | {round(c['memory_fraction']*100)}% | {c['users']} / {c['server_limit']} | {n(c['input_tokens'],0)} | {r['done']}/{r['count']} | {n(r['cold95'])} s | {n(r['follow95'])} s | {n(r['decode05'],2)} tokens/s | {n(100*s['peak_kv_fraction'] if s.get('peak_kv_fraction') is not None else None)}% | {n(s.get('preemptions'),0)} | {n(s.get('duration_s'))} s | {r['label']} |")
+        count_text=f"{r['done']}/{r['count']}" if r['measurement_available'] else 'Sin mediciones'
+        lines.append(f"| [{case_title(c)}]({r['folder']}/README.md) | {round(c['memory_fraction']*100)}% | {c['users']} / {c['server_limit']} | {n(c['input_tokens'],0)} | {count_text} | {n(r['cold95'])} s | {n(r['follow95'])} s | {n(r['decode05'],2)} tokens/s | {n(100*s['peak_kv_fraction'] if s.get('peak_kv_fraction') is not None else None)}% | {n(s.get('preemptions'),0)} | {n(s.get('duration_s'))} s | {r['label']} |")
     checks=[r for r in rows if r['config']['id'].startswith('chat-comprobacion-medidor-')]
     if checks:
         lines+=['','## Comprobaciones del medidor de chat','',
@@ -173,7 +193,7 @@ def main():
                 '|---|---:|---:|---:|---:|---:|---:|---:|---:|']
         for r in checks:
             c=r['config'];s=r['summary']
-            lines.append(f"| [{c['id']}]({r['folder']}/README.md) | {round(c['memory_fraction']*100)}% | {c['users']} | {c['turns']} | {c.get('output_tokens',512)} | {r['done']}/{r['count']} | {s.get('visible_answers',0)}/{r['count']} | {s.get('natural_completions',0)}/{r['count']} | {n(s.get('duration_s'))} s |")
+            lines.append(f"| [{case_title(c)}]({r['folder']}/README.md) | {round(c['memory_fraction']*100)}% | {c['users']} | {c['turns']} | {c.get('output_tokens',512)} | {r['done']}/{r['count']} | {s.get('visible_answers',0)}/{r['count']} | {s.get('natural_completions',0)}/{r['count']} | {n(s.get('duration_s'))} s |")
     lines+=['','[Configuración y registros de esta campaña](configuracion-y-registros/metadata.json).','']
     (OUT/'README.md').write_text('\n'.join(lines))
     (OUT/'resumen.json').write_text(json.dumps(rows,ensure_ascii=False,indent=2)+'\n')

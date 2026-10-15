@@ -107,6 +107,12 @@
           "exit_code": 0,
           "duration_seconds": 445.0572316960024,
           "timed_out": false
+        },
+        {
+          "id": "20-usuarios-historial-32768-tres-turnos",
+          "exit_code": 0,
+          "duration_seconds": 3315.24066145299,
+          "timed_out": false
         }
       ],
       "command": [

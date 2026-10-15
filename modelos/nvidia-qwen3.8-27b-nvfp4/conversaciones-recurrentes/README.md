@@ -51,9 +51,9 @@ Se repetirán las dos cargas iniciales al 50% después de las comparaciones del 
 
 | Configuración | Presupuesto | Límite activo | Arrancó | Tiempo de arranque | Reserva de caché al arrancar |
 |---|---:|---:|---|---:|---:|
-| [seleccion-memoria-40](configuracion-y-registros/seleccion-memoria-40/arranque.log) | 40% | 32 | Sí | 376,0 s | 23,18 GiB |
-| [seleccion-memoria-70](configuracion-y-registros/seleccion-memoria-70/arranque.log) | 70% | 32 | Sí | 376,2 s | 59,85 GiB |
-| [seleccion-memoria-85](configuracion-y-registros/seleccion-memoria-85/arranque.log) | 85% | 32 | Sí | 401,3 s | 77,84 GiB |
+| [Seleccion memoria 40](configuracion-y-registros/seleccion-memoria-40/arranque.log) | 40% | 32 | Sí | 376,0 s | 23,18 GiB |
+| [Seleccion memoria 70](configuracion-y-registros/seleccion-memoria-70/arranque.log) | 70% | 32 | Sí | 376,2 s | 59,85 GiB |
+| [Seleccion memoria 85](configuracion-y-registros/seleccion-memoria-85/arranque.log) | 85% | 32 | Sí | 401,3 s | 77,84 GiB |
 
 La reserva de caché procede del registro de arranque. No equivale a memoria ocupada por conversaciones ni permite deducir por sí sola cuántas personas tendrán una respuesta fluida. El pico de ocupación de esa reserva se mide durante cada prueba.
 
@@ -63,10 +63,11 @@ Se publica una prueba cuando termina. Los percentiles del primer turno y de las 
 
 | Prueba | Memoria | Usuarios / límite | Historial inicial | Peticiones sin error | Espera p95 primer turno | Espera p95 continuaciones | Velocidad p05 continuaciones | Caché máxima | Recálculos | Tiempo total | Continuaciones |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|
-| [20-usuarios-historial-8192-tres-turnos](memoria-40-20-usuarios-historial-8192-tres-turnos/README.md) | 40% | 20 / 32 | 8.192 | 60/60 | 151,3 s | 93,9 s | 3,14 tokens/s | 100,0% | 20 | 596,5 s | No cumple la referencia |
-| [20-usuarios-historial-32768-tres-turnos](memoria-40-20-usuarios-historial-32768-tres-turnos/README.md) | 40% | 20 / 32 | 32.768 | 60/60 | 554,8 s | 595,6 s | 2,37 tokens/s | 100,0% | 88 | 2.116,4 s | No cumple la referencia |
-| [20-usuarios-historial-8192-tres-turnos](memoria-70-20-usuarios-historial-8192-tres-turnos/README.md) | 70% | 20 / 32 | 8.192 | 60/60 | 74,7 s | 7,6 s | 5,51 tokens/s | 42,9% | 0 | 391,2 s | No cumple la referencia |
-| [20-usuarios-historial-32768-tres-turnos](memoria-70-20-usuarios-historial-32768-tres-turnos/README.md) | 70% | 20 / 32 | 32.768 | 60/60 | 494,0 s | 374,2 s | 1,05 tokens/s | 100,0% | 24 | 2.102,8 s | No cumple la referencia |
-| [20-usuarios-historial-8192-tres-turnos](memoria-85-20-usuarios-historial-8192-tres-turnos/README.md) | 85% | 20 / 32 | 8.192 | 60/60 | 104,3 s | 12,7 s | 5,08 tokens/s | 33,1% | 0 | 440,8 s | No cumple la referencia |
+| [Conversación de 3 turnos por persona](memoria-40-20-usuarios-historial-8192-tres-turnos/README.md) | 40% | 20 / 32 | 8.192 | 60/60 | 151,3 s | 93,9 s | 3,14 tokens/s | 100,0% | 20 | 596,5 s | No cumple la referencia |
+| [Conversación de 3 turnos por persona](memoria-40-20-usuarios-historial-32768-tres-turnos/README.md) | 40% | 20 / 32 | 32.768 | 60/60 | 554,8 s | 595,6 s | 2,37 tokens/s | 100,0% | 88 | 2.116,4 s | No cumple la referencia |
+| [Conversación de 3 turnos por persona](memoria-70-20-usuarios-historial-8192-tres-turnos/README.md) | 70% | 20 / 32 | 8.192 | 60/60 | 74,7 s | 7,6 s | 5,51 tokens/s | 42,9% | 0 | 391,2 s | No cumple la referencia |
+| [Conversación de 3 turnos por persona](memoria-70-20-usuarios-historial-32768-tres-turnos/README.md) | 70% | 20 / 32 | 32.768 | 60/60 | 494,0 s | 374,2 s | 1,05 tokens/s | 100,0% | 24 | 2.102,8 s | No cumple la referencia |
+| [Conversación de 3 turnos por persona](memoria-85-20-usuarios-historial-8192-tres-turnos/README.md) | 85% | 20 / 32 | 8.192 | 60/60 | 104,3 s | 12,7 s | 5,08 tokens/s | 33,1% | 0 | 440,8 s | No cumple la referencia |
+| [Conversación de 3 turnos por persona](memoria-85-20-usuarios-historial-32768-tres-turnos/README.md) | 85% | 20 / 32 | 32.768 | 60/60 | 793,4 s | 480,1 s | 0,53 tokens/s | 100,0% | 9 | 3.312,5 s | No cumple la referencia |
 
 [Configuración y registros de esta campaña](configuracion-y-registros/metadata.json).
