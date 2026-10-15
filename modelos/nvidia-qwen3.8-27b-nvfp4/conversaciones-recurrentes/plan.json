@@ -134,7 +134,18 @@
       "memoria-85-20-usuarios-historial-8192-tres-turnos",
       "memoria-85-20-usuarios-historial-32768-tres-turnos"
     ],
-    "comparison_order": "Primero se comparan 10 y 30 usuarios con las dos cargas; después se ejecutan los tres controles de chat; las etapas de crecimiento conservarán los historiales de sus pruebas sintéticas anteriores."
+    "comparison_order": "Primero se comparan 10 y 30 usuarios con las dos cargas; después se ejecutan los tres controles de chat; las etapas de crecimiento conservarán los historiales de sus pruebas sintéticas anteriores.",
+    "chat_output_followups": {
+      "chat-20-usuarios-historial-8192-sin-razonamiento": {
+        "required": true,
+        "source": "memoria-70-chat-20-usuarios-historial-8192-sin-razonamiento",
+        "followup": "memoria-70-chat-20-usuarios-historial-8192-salida-2048-sin-razonamiento",
+        "api_completed": 60,
+        "visible_answers": 60,
+        "natural_completions": 49,
+        "reason": "Todas las peticiones terminaron sin error de API, pero hubo respuestas cortadas por el límite o sin texto visible. Se repite con hasta 2048 tokens conservando los demás parámetros."
+      }
+    }
   },
   "refinement_comparison": {
     "reference_memory_percent": 70,

@@ -257,6 +257,12 @@
           "exit_code": 0,
           "duration_seconds": 345.0371986409882,
           "timed_out": false
+        },
+        {
+          "id": "chat-20-usuarios-historial-32768-sin-razonamiento",
+          "exit_code": 0,
+          "duration_seconds": 2215.231201632996,
+          "timed_out": false
         }
       ],
       "command": [

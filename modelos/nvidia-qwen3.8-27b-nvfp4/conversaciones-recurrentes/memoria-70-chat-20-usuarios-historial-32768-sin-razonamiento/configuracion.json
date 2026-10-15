@@ -1,0 +1,14 @@
+{
+  "id": "chat-20-usuarios-historial-32768-sin-razonamiento",
+  "users": 20,
+  "input_tokens": 32768,
+  "turns": 3,
+  "seed": 20032768,
+  "output_tokens": 512,
+  "think_seconds": 30,
+  "timeout": 7200,
+  "request_timeout": 3600,
+  "memory_fraction": 0.7,
+  "server_limit": 32,
+  "profile_id": "comparacion-usuarios-y-chat-memoria-70"
+}
