@@ -110,6 +110,7 @@ Controles al **70% de memoria**, con mensajes ficticios legibles, respuestas rea
 | [8.192](memoria-70-chat-20-usuarios-historial-8192-sin-razonamiento/README.md) | 20 | Desactivado | 512 | 60/60 | 60/60 | 49/60 | 11/60 | 2,8 s |
 | [32.768](memoria-70-chat-20-usuarios-historial-32768-sin-razonamiento/README.md) | 20 | Desactivado | 512 | 60/60 | 60/60 | 54/60 | 6/60 | 362,2 s |
 | [8.192](memoria-70-chat-20-usuarios-historial-8192-predeterminado/README.md) | 20 | Predeterminado | 512 | 60/60 | 40/60 | 35/60 | 23/60 | 53,8 s |
+| [8.192](memoria-70-chat-20-usuarios-historial-8192-salida-2048-sin-razonamiento/README.md) | 20 | Desactivado | 2048 | 60/60 | 60/60 | 60/60 | 0/60 | 2,0 s |
 
 La espera visible empieza al enviar la petición y acaba cuando llega el primer texto de respuesta. Si el modelo solo produce razonamiento, no se cuenta como una respuesta visible. Los percentiles se calculan sobre las respuestas recibidas; el recuento permite ver si faltan otras.
 
@@ -156,6 +157,7 @@ Se publica una prueba cuando termina. Los percentiles del primer turno y de las 
 | [Continuar con un historial ampliado](memoria-70-10-usuarios-historial-65536-dos-turnos/README.md) | 70% | 10 / 32 | 65.536 | 20/20 | 828,1 s | 550,9 s | 0,74 tokens/s | 100,0% | 33 | 2.036,6 s | No cumple la referencia |
 | [Continuar con un historial ampliado](memoria-70-20-usuarios-historial-65536-dos-turnos/README.md) | 70% | 20 / 32 | 65.536 | 40/40 | 1.712,0 s | 1.688,8 s | 0,58 tokens/s | 100,0% | 70 | 4.289,5 s | No cumple la referencia |
 | [Continuar con un historial ampliado](memoria-70-30-usuarios-historial-65536-dos-turnos/README.md) | 70% | 30 / 32 | 65.536 | 60/60 | 2.861,7 s | 2.767,3 s | 0,69 tokens/s | 100,0% | 75 | 6.337,6 s | No cumple la referencia |
+| [Chat: sin razonamiento](memoria-70-chat-20-usuarios-historial-8192-salida-2048-sin-razonamiento/README.md) | 70% | 20 / 32 | 8.192 | 60/60 | 103,2 s | 2,0 s | 5,94 tokens/s | 41,7% | 0 | 504,5 s | No cumple la referencia |
 
 ## Comprobaciones del medidor de chat
 

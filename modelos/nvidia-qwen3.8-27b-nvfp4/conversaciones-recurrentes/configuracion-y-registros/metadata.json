@@ -339,7 +339,14 @@
       "id": "chat-salida-2048-memoria-70",
       "fraction": 0.7,
       "server_limit": 32,
-      "cases": [],
+      "cases": [
+        {
+          "id": "chat-20-usuarios-historial-8192-salida-2048-sin-razonamiento",
+          "exit_code": 0,
+          "duration_seconds": 505.05029539199313,
+          "timed_out": false
+        }
+      ],
       "command": [
         "vllm",
         "serve",
