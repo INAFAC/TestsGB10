@@ -91,6 +91,7 @@ Se publica una prueba cuando termina. Los percentiles del primer turno y de las 
 | [Conversación de 3 turnos por persona](memoria-60-20-usuarios-historial-8192-tres-turnos/README.md) | 60% | 20 / 32 | 8.192 | 60/60 | 75,8 s | 9,8 s | 5,42 tokens/s | 54,2% | 0 | 395,1 s | No cumple la referencia |
 | [Conversación de 3 turnos por persona](memoria-60-20-usuarios-historial-32768-tres-turnos/README.md) | 60% | 20 / 32 | 32.768 | 60/60 | 500,2 s | 399,5 s | 1,45 tokens/s | 100,0% | 39 | 2.120,5 s | No cumple la referencia |
 | [Conversación de 3 turnos por persona](memoria-70-10-usuarios-historial-8192-tres-turnos/README.md) | 70% | 10 / 32 | 8.192 | 30/30 | 50,4 s | 4,9 s | 7,57 tokens/s | 21,7% | 0 | 300,6 s | No cumple la referencia |
+| [Conversación de 3 turnos por persona](memoria-70-30-usuarios-historial-8192-tres-turnos/README.md) | 70% | 30 / 32 | 8.192 | 90/90 | 168,1 s | 15,0 s | 4,21 tokens/s | 63,9% | 0 | 551,5 s | No cumple la referencia |
 
 ## Comprobaciones del medidor de chat
 
