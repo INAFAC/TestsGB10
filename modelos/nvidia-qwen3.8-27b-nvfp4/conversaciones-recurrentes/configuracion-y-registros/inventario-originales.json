@@ -1,8 +1,8 @@
 [
   {
     "file": "modelos/nvidia-qwen3.8-27b-nvfp4/conversaciones-recurrentes/configuracion-y-registros/metadata.json",
-    "sha256": "e7ce55c5b1fad5335c9e8f7d984122f0ac0542b789c04c16d9f9fb844e3ee846",
-    "original_sha256": "e7ce55c5b1fad5335c9e8f7d984122f0ac0542b789c04c16d9f9fb844e3ee846",
+    "sha256": "a74a0e4aabc8852877cc2cef62c48366c128c3ac174bb7eeda978eee4f846936",
+    "original_sha256": "a74a0e4aabc8852877cc2cef62c48366c128c3ac174bb7eeda978eee4f846936",
     "sanitized": false
   },
   {
@@ -1000,5 +1000,47 @@
     "sha256": "cad4f2867c558c26d3f464ad51d3bf9787c8f930ae84acd94072039312d7d8b6",
     "original_sha256": "cad4f2867c558c26d3f464ad51d3bf9787c8f930ae84acd94072039312d7d8b6",
     "sanitized": false
+  },
+  {
+    "file": "modelos/nvidia-qwen3.8-27b-nvfp4/conversaciones-recurrentes/memoria-70-chat-20-usuarios-historial-8192-salida-2048-predeterminado/configuracion.json",
+    "sha256": "c857d876e4f9c44fa990ea3b743be86abd02df023671a1eacce9f747b1c4de31",
+    "original_sha256": "c857d876e4f9c44fa990ea3b743be86abd02df023671a1eacce9f747b1c4de31",
+    "sanitized": false
+  },
+  {
+    "file": "modelos/nvidia-qwen3.8-27b-nvfp4/conversaciones-recurrentes/memoria-70-chat-20-usuarios-historial-8192-salida-2048-predeterminado/mediciones.json",
+    "sha256": "96804be8859742436bdd52f1998c86dd346dc4a96aee5ea7370bf285b27b27d7",
+    "original_sha256": "96804be8859742436bdd52f1998c86dd346dc4a96aee5ea7370bf285b27b27d7",
+    "sanitized": false
+  },
+  {
+    "file": "modelos/nvidia-qwen3.8-27b-nvfp4/conversaciones-recurrentes/memoria-70-chat-20-usuarios-historial-8192-salida-2048-predeterminado/registro-de-ejecucion.log",
+    "sha256": "df72bfddbb62bc9d6179c68f10c51f4d8988d572de0b942b33faab9a9045833d",
+    "original_sha256": "df72bfddbb62bc9d6179c68f10c51f4d8988d572de0b942b33faab9a9045833d",
+    "sanitized": false
+  },
+  {
+    "file": "modelos/nvidia-qwen3.8-27b-nvfp4/conversaciones-recurrentes/memoria-70-chat-20-usuarios-historial-8192-salida-2048-predeterminado/registro-del-servidor.log",
+    "sha256": "1e986ef76bbccb95b87e4d8756db461d4fc9a02597b2fbdfb5fec8d8699845c4",
+    "original_sha256": "d4523dea93ce4461e273c0bd145a30317d9097b92c23f227e75ee24b7f772d13",
+    "sanitized": true
+  },
+  {
+    "file": "modelos/nvidia-qwen3.8-27b-nvfp4/conversaciones-recurrentes/memoria-70-chat-20-usuarios-historial-8192-salida-2048-predeterminado/comando-ejecutado.json",
+    "sha256": "23d06246fb121bc3eef130e509d75600a83e8d14795cfeec789063e7cec2a51c",
+    "original_sha256": "23d06246fb121bc3eef130e509d75600a83e8d14795cfeec789063e7cec2a51c",
+    "sanitized": false
+  },
+  {
+    "file": "modelos/nvidia-qwen3.8-27b-nvfp4/conversaciones-recurrentes/memoria-70-chat-20-usuarios-historial-8192-salida-2048-predeterminado/historiales-reproducibles.json.gz",
+    "sha256": "b78c99138decad0c5e681bb0ef10a06c76bcfc0eec995dee74b6e8717fa28cb5",
+    "original_sha256": "b78c99138decad0c5e681bb0ef10a06c76bcfc0eec995dee74b6e8717fa28cb5",
+    "sanitized": false
+  },
+  {
+    "file": "modelos/nvidia-qwen3.8-27b-nvfp4/conversaciones-recurrentes/configuracion-y-registros/historial-muy-largo-memoria-70/arranque.log",
+    "sha256": "90663cce0a756b563c68e8a56a644b7e0a280aca3eff39695c07bdcfaeb950f2",
+    "original_sha256": "e39fe836d9cd2e955d423627c3fc4d428d4399318394e1f7bd2de582d856571b",
+    "sanitized": true
   }
 ]

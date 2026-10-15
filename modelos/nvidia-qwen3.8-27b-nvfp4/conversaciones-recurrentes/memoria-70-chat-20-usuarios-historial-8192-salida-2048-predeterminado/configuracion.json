@@ -1,0 +1,14 @@
+{
+  "users": 20,
+  "input_tokens": 8192,
+  "turns": 3,
+  "seed": 20008192,
+  "think_seconds": 30,
+  "timeout": 7200,
+  "request_timeout": 3600,
+  "id": "chat-20-usuarios-historial-8192-salida-2048-predeterminado",
+  "output_tokens": 2048,
+  "memory_fraction": 0.7,
+  "server_limit": 32,
+  "profile_id": "chat-salida-2048-memoria-70"
+}
