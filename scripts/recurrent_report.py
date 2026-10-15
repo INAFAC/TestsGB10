@@ -30,6 +30,34 @@ def case_title(c):
     if c.get('parent_state'):return 'Continuar con un historial ampliado'
     return f"Conversación de {c.get('turns',3)} turnos por persona"
 
+def comparison_overview(rows,plan):
+    selected=plan.get('decisions',{}).get('selected_memory_percent')
+    chosen=[r for r in rows if r['measurement_available'] and round(100*r['config']['memory_fraction'])==selected]
+    synthetic=[r for r in chosen if not r['config']['id'].startswith('chat-')
+               and r['config']['users'] in (10,20,30) and r['config']['input_tokens'] in (8192,32768)
+               and r['config'].get('turns',3)==3]
+    lines=[]
+    if synthetic:
+        lines=['## Cómo cambia la conversación con más personas','',
+               f'Comparación directa de las pruebas terminadas al **{selected}% de memoria**. Cada persona envía tres mensajes, pide 512 tokens de respuesta por turno y espera 30 segundos antes de continuar. El {selected}% es el presupuesto de referencia elegido para estas pruebas, no un mínimo demostrado para cada número de personas.','',
+               '| Historial inicial | Personas | Respuestas sin error | Espera p95 inicial | Espera p95 al continuar | Respuesta completa p95 al continuar | Velocidad p05 al continuar |',
+               '|---:|---:|---:|---:|---:|---:|---:|']
+        for r in sorted(synthetic,key=lambda r:(r['config']['input_tokens'],r['config']['users'])):
+            c=r['config'];s=r['summary']
+            lines.append(f"| {n(c['input_tokens'],0)} | [{c['users']}]({r['folder']}/README.md) | {r['done']}/{r['count']} | {n(r['cold95'])} s | {n(r['follow95'])} s | {n(s.get('followups_total_p95_s'))} s | {n(r['decode05'],2)} tokens/s |")
+        lines+=['','Una prueba puede cumplir la referencia de espera y quedar por debajo de la referencia de velocidad. Las cifras de ambas columnas permiten valorar ese equilibrio; la etiqueta general de referencia no sustituye esos tiempos.','']
+    chat=[r for r in chosen if r['config']['id'].startswith('chat-') and not r['config']['id'].startswith('chat-comprobacion-medidor-')]
+    if chat:
+        lines+=['## Controles con conversaciones de chat','',
+                f'Controles al **{selected}% de memoria**, con mensajes ficticios legibles, respuestas reales conservadas y permiso para terminar antes del límite de salida. Una respuesta visible terminada debe contener texto para la persona y acabar por decisión del modelo, sin alcanzar el límite de tokens.','',
+                '| Historial inicial | Personas | Razonamiento | Límite de salida | Peticiones sin error | Con texto visible | Respuesta visible terminada | Cortadas por límite | Espera visible p95 al continuar |',
+                '|---:|---:|---|---:|---:|---:|---:|---:|---:|']
+        for r in chat:
+            c=r['config'];s=r['summary'];mode='Desactivado' if s.get('reasoning_mode')=='disabled' else 'Predeterminado'
+            lines.append(f"| [{n(c['input_tokens'],0)}]({r['folder']}/README.md) | {c['users']} | {mode} | {c.get('output_tokens',512)} | {r['done']}/{r['count']} | {s.get('visible_answers',0)}/{r['count']} | {r['chat_visible_natural_answers']}/{r['count']} | {r['chat_output_limit_reached']}/{r['count']} | {n(s.get('followups_visible_ttft_p95_s'))} s |")
+        lines+=['','La espera visible empieza al enviar la petición y acaba cuando llega el primer texto de respuesta. Si el modelo solo produce razonamiento, no se cuenta como una respuesta visible. Los percentiles se calculan sobre las respuestas recibidas; el recuento permite ver si faltan otras.','']
+    return lines
+
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--cache',default=str(pathlib.Path.home()/'.cache/TestsGB10/conversaciones-recurrentes-2026-10-15'))
@@ -75,6 +103,8 @@ def main():
             fluent=all_done and bool(s.get('followups_reference_fluent'))
             label='Sin mediciones; revisar registro' if not measurement_available else 'Cumple la referencia' if fluent else 'No cumple la referencia' if all_done else 'No completó todo'
             row={'folder':folder.name,'measurement_available':measurement_available,'config':c,'summary':s,'record':case_record,'all_done':all_done,'fluent':fluent,'label':label,'count':count,'done':len(good),'cold95':quantile([r.get('ttft_s') for r in initial],.95),'follow95':quantile([r.get('ttft_s') for r in follow],.95),'decode05':quantile([rate(r) for r in follow],.05)};rows.append(row)
+            row['chat_visible_natural_answers']=sum(bool(r.get('has_visible_answer') and r.get('naturally_finished')) for r in good) if s.get('kind')=='chat_recurrent' else None
+            row['chat_output_limit_reached']=sum(r.get('finish_reason')=='length' for r in good) if s.get('kind')=='chat_recurrent' else None
             lines=[f"# {c['users']} usuarios · {round(profile['fraction']*100)}% · historial inicial de {n(c['input_tokens'],0)} tokens",'', '[Volver a la comparación](../README.md)','',
                    f"**Continuaciones: {label.lower()}.** Respuestas completas: **{len(good)}/{count}**. Tiempo de la prueba: **{n(s.get('duration_s'))} s**.",'',
                    f"Límite impuesto al servidor: **{c['server_limit']} activas**. Cada usuario mantiene una sola petición pendiente y espera **{c.get('think_seconds',30)} s** después de su respuesta antes de añadir 256 tokens de mensaje. Se conservan los tokens reales de la respuesta anterior.",'',
@@ -199,6 +229,7 @@ def main():
             c=r['config'];s=r['summary']
             lines.append(f"| [{case_title(c)}]({r['folder']}/README.md) | {round(c['memory_fraction']*100)}% | {c['users']} | {c['turns']} | {c.get('output_tokens',512)} | {r['done']}/{r['count']} | {s.get('visible_answers',0)}/{r['count']} | {s.get('natural_completions',0)}/{r['count']} | {n(s.get('duration_s'))} s |")
     lines+=['','[Configuración y registros de esta campaña](configuracion-y-registros/metadata.json).','']
+    lines[3:3]=comparison_overview(rows,plan)
     (OUT/'README.md').write_text('\n'.join(lines))
     (OUT/'resumen.json').write_text(json.dumps(rows,ensure_ascii=False,indent=2)+'\n')
     subprocess.run([sys.executable,str(ROOT/'scripts/build_report.py')],check=True,cwd=ROOT)

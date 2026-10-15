@@ -59,6 +59,20 @@ Con el 70% se compararán 10 y 30 personas y se harán los controles de chat ant
 [Plan y parámetros](plan.json).
 
 <!-- resultados-inicio -->
+## Cómo cambia la conversación con más personas
+
+Comparación directa de las pruebas terminadas al **70% de memoria**. Cada persona envía tres mensajes, pide 512 tokens de respuesta por turno y espera 30 segundos antes de continuar. El 70% es el presupuesto de referencia elegido para estas pruebas, no un mínimo demostrado para cada número de personas.
+
+| Historial inicial | Personas | Respuestas sin error | Espera p95 inicial | Espera p95 al continuar | Respuesta completa p95 al continuar | Velocidad p05 al continuar |
+|---:|---:|---:|---:|---:|---:|---:|
+| 8.192 | [10](memoria-70-10-usuarios-historial-8192-tres-turnos/README.md) | 30/30 | 50,4 s | 4,9 s | 68,0 s | 7,57 tokens/s |
+| 8.192 | [20](memoria-70-20-usuarios-historial-8192-tres-turnos/README.md) | 60/60 | 74,7 s | 7,6 s | 93,3 s | 5,51 tokens/s |
+| 8.192 | [30](memoria-70-30-usuarios-historial-8192-tres-turnos/README.md) | 90/90 | 168,1 s | 15,0 s | 122,3 s | 4,21 tokens/s |
+| 32.768 | [10](memoria-70-10-usuarios-historial-32768-tres-turnos/README.md) | 30/30 | 265,1 s | 3,1 s | 99,6 s | 5,17 tokens/s |
+| 32.768 | [20](memoria-70-20-usuarios-historial-32768-tres-turnos/README.md) | 60/60 | 494,0 s | 374,2 s | 767,3 s | 1,05 tokens/s |
+
+Una prueba puede cumplir la referencia de espera y quedar por debajo de la referencia de velocidad. Las cifras de ambas columnas permiten valorar ese equilibrio; la etiqueta general de referencia no sustituye esos tiempos.
+
 ## Configuraciones utilizadas
 
 | Configuración | Presupuesto | Límite activo | Servicio listo | Espera hasta estar listo | Reserva de caché registrada |
@@ -92,6 +106,7 @@ Se publica una prueba cuando termina. Los percentiles del primer turno y de las 
 | [Conversación de 3 turnos por persona](memoria-60-20-usuarios-historial-32768-tres-turnos/README.md) | 60% | 20 / 32 | 32.768 | 60/60 | 500,2 s | 399,5 s | 1,45 tokens/s | 100,0% | 39 | 2.120,5 s | No cumple la referencia |
 | [Conversación de 3 turnos por persona](memoria-70-10-usuarios-historial-8192-tres-turnos/README.md) | 70% | 10 / 32 | 8.192 | 30/30 | 50,4 s | 4,9 s | 7,57 tokens/s | 21,7% | 0 | 300,6 s | No cumple la referencia |
 | [Conversación de 3 turnos por persona](memoria-70-30-usuarios-historial-8192-tres-turnos/README.md) | 70% | 30 / 32 | 8.192 | 90/90 | 168,1 s | 15,0 s | 4,21 tokens/s | 63,9% | 0 | 551,5 s | No cumple la referencia |
+| [Conversación de 3 turnos por persona](memoria-70-10-usuarios-historial-32768-tres-turnos/README.md) | 70% | 10 / 32 | 32.768 | 30/30 | 265,1 s | 3,1 s | 5,17 tokens/s | 82,9% | 0 | 599,0 s | No cumple la referencia |
 
 ## Comprobaciones del medidor de chat
 
