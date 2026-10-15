@@ -25,7 +25,7 @@ for path in (ROOT/'modelos').rglob('*.json'):
     if s.get('status')=='complete' and len(requests)!=count:errors.append(f'{path}: complete with missing requests')
     for r in good:
         u=r['usage']
-        if (u['prompt_tokens'],u['completion_tokens'])!=(s['input_tokens'],s['output_tokens']):errors.append(f'{path}: token count mismatch')
+        if (u['prompt_tokens'],u['completion_tokens'])!=(r.get('input_tokens',s['input_tokens']),s['output_tokens']):errors.append(f'{path}: token count mismatch')
         if not 0<=r['ttft_s']<=r['total_s']<=s['duration_s']:errors.append(f'{path}: inconsistent times')
         if r.get('first_token_at_s') is not None:
             if not 0<=r['started_at_s']<=r['first_token_at_s']<=r['finished_at_s']<=s['duration_s']:errors.append(f'{path}: inconsistent timeline')

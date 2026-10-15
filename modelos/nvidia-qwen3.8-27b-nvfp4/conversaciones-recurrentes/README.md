@@ -24,3 +24,14 @@ Como referencia orientativa de fluidez se usarán una espera al primer texto de 
 Las decisiones entre etapas se documentarán con sus mediciones. No se presentará una etapa no ejecutada como si estuviera medida. Una configuración que ya incumpla la referencia en un historial menor no garantiza fluidez hasta el máximo; se conservará de todas formas una comprobación de finalización al máximo con 20 usuarios.
 
 [Plan y parámetros](plan.json).
+
+<!-- resultados-inicio -->
+## Resultados publicados
+
+Se publica una prueba cuando termina. Los percentiles del primer turno y de las continuaciones se muestran separados. Las medidas parciales no se publican como resultados definitivos.
+
+| Prueba | Memoria | Usuarios / límite | Historial inicial | Respuestas | Espera p95 primer turno | Espera p95 continuaciones | Velocidad p05 continuaciones | Caché máxima | Recálculos | Tiempo total | Continuaciones |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|
+| [20-usuarios-historial-8192-tres-turnos](memoria-40-20-usuarios-historial-8192-tres-turnos/README.md) | 40% | 20 / 32 | 8.192 | 60/60 | 151,3 s | 93,9 s | 3,14 tokens/s | 100,0% | 20 | 596,5 s | No cumple la referencia |
+
+[Configuración y registros de esta campaña](configuracion-y-registros/metadata.json).

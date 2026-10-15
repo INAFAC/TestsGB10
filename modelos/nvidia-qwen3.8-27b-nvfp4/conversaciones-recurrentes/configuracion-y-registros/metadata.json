@@ -1,0 +1,56 @@
+{
+  "started_utc": "2026-10-15T07:58:38.741304+00:00",
+  "original_command": [
+    "vllm",
+    "serve",
+    "nvidia/Qwen3.8-27B-NVFP4",
+    "--gpu-memory-utilization",
+    "0.40",
+    "--max-num-seqs",
+    "4",
+    "--enable-auto-tool-choice",
+    "--tool-call-parser",
+    "qwen3_coder",
+    "--reasoning-parser",
+    "qwen3"
+  ],
+  "image": "nvcr.io/nvidia/vllm:26.09-py3",
+  "image_id": "sha256:557747337846eecf34486866f3d992383c6f8af869fdb0e365b5093fcaee02c2",
+  "compose_sha256": "1caf0951ec1175b71b97d53ffcc557e9d9ea2e506dd046b2647603c8551fd696",
+  "runner_sha256": "82b8b997afeef2a4217e745f2697712f0c63053e33afd5d5fe25507d9c932a04",
+  "restore_status": "pending",
+  "state": "running",
+  "profiles": [
+    {
+      "id": "seleccion-memoria-40",
+      "fraction": 0.4,
+      "server_limit": 32,
+      "cases": [
+        {
+          "id": "20-usuarios-historial-8192-tres-turnos",
+          "exit_code": 0,
+          "duration_seconds": 600.0551671930007,
+          "timed_out": false
+        }
+      ],
+      "command": [
+        "vllm",
+        "serve",
+        "nvidia/Qwen3.8-27B-NVFP4",
+        "--enable-auto-tool-choice",
+        "--tool-call-parser",
+        "qwen3_coder",
+        "--reasoning-parser",
+        "qwen3",
+        "--gpu-memory-utilization",
+        "0.4",
+        "--max-num-seqs",
+        "32",
+        "--max-model-len",
+        "262144"
+      ],
+      "ready": true,
+      "startup_seconds": 376.0006231319858
+    }
+  ]
+}

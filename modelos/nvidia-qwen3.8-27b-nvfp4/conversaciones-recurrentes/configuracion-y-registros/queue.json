@@ -1,0 +1,68 @@
+{
+  "finished": false,
+  "profiles": [
+    {
+      "id": "seleccion-memoria-40",
+      "fraction": 0.4,
+      "server_limit": 32,
+      "cases": [
+        {
+          "id": "20-usuarios-historial-8192-tres-turnos",
+          "users": 20,
+          "input_tokens": 8192,
+          "turns": 3,
+          "seed": 20008192
+        },
+        {
+          "id": "20-usuarios-historial-32768-tres-turnos",
+          "users": 20,
+          "input_tokens": 32768,
+          "turns": 3,
+          "seed": 20032768
+        }
+      ]
+    },
+    {
+      "id": "seleccion-memoria-70",
+      "fraction": 0.7,
+      "server_limit": 32,
+      "cases": [
+        {
+          "id": "20-usuarios-historial-8192-tres-turnos",
+          "users": 20,
+          "input_tokens": 8192,
+          "turns": 3,
+          "seed": 20008192
+        },
+        {
+          "id": "20-usuarios-historial-32768-tres-turnos",
+          "users": 20,
+          "input_tokens": 32768,
+          "turns": 3,
+          "seed": 20032768
+        }
+      ]
+    },
+    {
+      "id": "seleccion-memoria-85",
+      "fraction": 0.85,
+      "server_limit": 32,
+      "cases": [
+        {
+          "id": "20-usuarios-historial-8192-tres-turnos",
+          "users": 20,
+          "input_tokens": 8192,
+          "turns": 3,
+          "seed": 20008192
+        },
+        {
+          "id": "20-usuarios-historial-32768-tres-turnos",
+          "users": 20,
+          "input_tokens": 32768,
+          "turns": 3,
+          "seed": 20032768
+        }
+      ]
+    }
+  ]
+}
