@@ -40,6 +40,8 @@
 
 Con historiales iniciales de 8.192 tokens, las esperas p95 de continuación fueron de 4,93, 7,63 y 14,98 segundos para 10, 20 y 30 personas. La velocidad individual también disminuyó al aumentar la carga. [Comparar tiempos completos, velocidades y cada turno](conversaciones-recurrentes/README.md#cómo-cambia-la-conversación-con-más-personas).
 
+**En el control de chat con 20 personas y unos 8.192 tokens, las 60 respuestas fueron visibles y terminaron naturalmente.** Se usó el 70%, razonamiento desactivado y hasta 2.048 tokens de salida, con tres turnos por persona. La espera visible p95 al continuar fue de 2,0 segundos y el tiempo completo p95, de 88,4 segundos. El primer turno fue más lento: 103,2 segundos de espera visible p95 al cargar los historiales iniciales. El control original de 512 tokens había cortado 11 respuestas; al ampliar la salida no se cortó ninguna. [Ver el control de chat y cada respuesta](conversaciones-recurrentes/memoria-70-chat-20-usuarios-historial-8192-salida-2048-sin-razonamiento/README.md).
+
 **Al ampliar los historiales a 65.536 tokens, las tres cargas completaron ambos turnos, con esperas de varios minutos.** Estas pruebas mantienen el 70% y el límite de 32 solicitudes activas. Los tiempos de la tabla están en minutos.
 
 | Personas | Completaron ambos turnos | Tiempo del grupo | Espera p95 al continuar | Respuesta completa p95 al continuar | Recálculos |

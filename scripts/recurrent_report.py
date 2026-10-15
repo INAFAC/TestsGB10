@@ -25,7 +25,7 @@ def case_title(c):
     if c['id'].startswith('chat-comprobacion-medidor-'):
         return 'Medidor: '+('sin razonamiento' if c['id'].endswith('-sin-razonamiento') else 'modo predeterminado')
     if c['id'].startswith('chat-'):
-        return 'Chat: '+('sin razonamiento' if c['id'].endswith('-sin-razonamiento') else 'modo predeterminado')
+        return 'Chat: '+('sin razonamiento' if c['id'].endswith('-sin-razonamiento') else 'modo predeterminado')+f" · hasta {n(c.get('output_tokens',512),0)} tokens de salida"
     if c['input_tokens']==260864:return 'Continuar hasta el máximo de contexto'
     if c.get('parent_state'):return 'Continuar con un historial ampliado'
     return f"Conversación de {c.get('turns',3)} turnos por persona"
