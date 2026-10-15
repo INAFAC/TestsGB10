@@ -50,6 +50,12 @@ El ajuste de memoria repite las dos cargas iniciales al 50%, después de las com
 
 En la carga larga al **50%**, también terminaron las 60 respuestas, pero el grupo tardó 46,7 minutos frente a 35,0 al 70%. La espera p95 de las continuaciones fue de 11,0 minutos y su tiempo completo p95, de 17,2 minutos; hubo 85 recálculos frente a 24 al 70%. Esta carga incumplió además las tolerancias de espera y tiempo completo de la comparación. El 50% ahorra memoria y se acercó al 70% en la carga corta, pero no conservó su rendimiento con estos historiales largos.
 
+**Se selecciona el 70% como referencia para las siguientes etapas.** Tuvo la menor espera p95 de continuaciones en las dos cargas: 7,63 segundos con 8.192 tokens y 374,22 segundos con 32.768. En la carga larga registró 24 recálculos frente a 39 al 60%. La elección prioriza la espera antes de empezar a responder. No convierte el 70% en un mínimo necesario ni demuestra que sea mejor en todas las medidas.
+
+El **60% es una alternativa cercana que ahorra memoria**: las pruebas duraron 395,1 y 2.120,5 segundos, frente a 391,2 y 2.102,8 al 70%. En la carga larga su tiempo completo p95 fue incluso menor, 731,7 frente a 767,3 segundos, y su velocidad p05 mayor, 1,45 frente a 1,05 tokens/s; a cambio, la espera p95 fue 399,5 frente a 374,2 segundos. Estas ejecuciones no bastan para afirmar una ventaja estable en diferencias pequeñas. Ninguno de los presupuestos hizo fluida, según la referencia elegida, la carga de 20 usuarios con historiales largos.
+
+Con el 70% se compararán 10 y 30 personas y se harán los controles de chat antes de ampliar los historiales. Los resultados de esas etapas no se darán por medidos con otros presupuestos.
+
 [Plan y parámetros](plan.json).
 
 <!-- resultados-inicio -->
@@ -62,6 +68,7 @@ En la carga larga al **50%**, también terminaron las 60 respuestas, pero el gru
 | [Seleccion memoria 85](configuracion-y-registros/seleccion-memoria-85/arranque.log) | 85% | 32 | Sí | 401,3 s | 77,84 GiB |
 | [Ajuste memoria 50](configuracion-y-registros/ajuste-memoria-50/arranque.log) | 50% | 32 | Sí | 386,2 s | 35,30 GiB |
 | [Ajuste memoria 60](configuracion-y-registros/ajuste-memoria-60/arranque.log) | 60% | 32 | Sí | 381,1 s | 47,47 GiB |
+| [Comparacion usuarios y chat memoria 70](configuracion-y-registros/comparacion-usuarios-y-chat-memoria-70/arranque.log) | 70% | 32 | Sí | 376,1 s | 59,68 GiB |
 
 La reserva de caché procede del registro de arranque. No equivale a memoria ocupada por conversaciones ni permite deducir por sí sola cuántas personas tendrán una respuesta fluida. El pico de ocupación de esa reserva se mide durante cada prueba.
 
@@ -83,6 +90,7 @@ Se publica una prueba cuando termina. Los percentiles del primer turno y de las 
 | [Conversación de 3 turnos por persona](memoria-50-20-usuarios-historial-32768-tres-turnos/README.md) | 50% | 20 / 32 | 32.768 | 60/60 | 716,5 s | 657,2 s | 1,22 tokens/s | 100,0% | 85 | 2.805,0 s | No cumple la referencia |
 | [Conversación de 3 turnos por persona](memoria-60-20-usuarios-historial-8192-tres-turnos/README.md) | 60% | 20 / 32 | 8.192 | 60/60 | 75,8 s | 9,8 s | 5,42 tokens/s | 54,2% | 0 | 395,1 s | No cumple la referencia |
 | [Conversación de 3 turnos por persona](memoria-60-20-usuarios-historial-32768-tres-turnos/README.md) | 60% | 20 / 32 | 32.768 | 60/60 | 500,2 s | 399,5 s | 1,45 tokens/s | 100,0% | 39 | 2.120,5 s | No cumple la referencia |
+| [Conversación de 3 turnos por persona](memoria-70-10-usuarios-historial-8192-tres-turnos/README.md) | 70% | 10 / 32 | 8.192 | 30/30 | 50,4 s | 4,9 s | 7,57 tokens/s | 21,7% | 0 | 300,6 s | No cumple la referencia |
 
 ## Comprobaciones del medidor de chat
 

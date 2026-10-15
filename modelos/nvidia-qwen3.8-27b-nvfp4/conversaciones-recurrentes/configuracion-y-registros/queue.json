@@ -127,6 +127,90 @@
           "seed": 20032768
         }
       ]
+    },
+    {
+      "id": "comparacion-usuarios-y-chat-memoria-70",
+      "fraction": 0.7,
+      "server_limit": 32,
+      "cases": [
+        {
+          "id": "10-usuarios-historial-8192-tres-turnos",
+          "users": 10,
+          "input_tokens": 8192,
+          "turns": 3,
+          "seed": 10008192,
+          "output_tokens": 512,
+          "think_seconds": 30,
+          "timeout": 7200,
+          "request_timeout": 3600
+        },
+        {
+          "id": "30-usuarios-historial-8192-tres-turnos",
+          "users": 30,
+          "input_tokens": 8192,
+          "turns": 3,
+          "seed": 30008192,
+          "output_tokens": 512,
+          "think_seconds": 30,
+          "timeout": 7200,
+          "request_timeout": 3600
+        },
+        {
+          "id": "10-usuarios-historial-32768-tres-turnos",
+          "users": 10,
+          "input_tokens": 32768,
+          "turns": 3,
+          "seed": 10032768,
+          "output_tokens": 512,
+          "think_seconds": 30,
+          "timeout": 7200,
+          "request_timeout": 3600
+        },
+        {
+          "id": "30-usuarios-historial-32768-tres-turnos",
+          "users": 30,
+          "input_tokens": 32768,
+          "turns": 3,
+          "seed": 30032768,
+          "output_tokens": 512,
+          "think_seconds": 30,
+          "timeout": 7200,
+          "request_timeout": 3600
+        },
+        {
+          "id": "chat-20-usuarios-historial-8192-sin-razonamiento",
+          "users": 20,
+          "input_tokens": 8192,
+          "turns": 3,
+          "seed": 20008192,
+          "output_tokens": 512,
+          "think_seconds": 30,
+          "timeout": 7200,
+          "request_timeout": 3600
+        },
+        {
+          "id": "chat-20-usuarios-historial-32768-sin-razonamiento",
+          "users": 20,
+          "input_tokens": 32768,
+          "turns": 3,
+          "seed": 20032768,
+          "output_tokens": 512,
+          "think_seconds": 30,
+          "timeout": 7200,
+          "request_timeout": 3600
+        },
+        {
+          "id": "chat-20-usuarios-historial-8192-predeterminado",
+          "users": 20,
+          "input_tokens": 8192,
+          "turns": 3,
+          "seed": 20008192,
+          "output_tokens": 512,
+          "think_seconds": 30,
+          "timeout": 7200,
+          "request_timeout": 3600
+        }
+      ]
     }
   ]
 }

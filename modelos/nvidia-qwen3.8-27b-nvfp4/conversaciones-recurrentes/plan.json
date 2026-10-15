@@ -119,7 +119,22 @@
           }
         }
       ]
-    }
+    },
+    "selected_memory_percent": 70,
+    "selection_reason": "Se usa el 70% como referencia para comparar usuarios y ampliar historiales. Entre los presupuestos medidos tuvo la menor espera p95 de continuaciones en ambas cargas: 7,63 s con 8.192 tokens y 374,22 s con 32.768. Frente al 60%, redujo los recálculos largos de 39 a 24. El 60% fue una alternativa cercana: 395,14 frente a 391,19 s en la carga corta y 2.120,51 frente a 2.102,76 s en la larga, con menos memoria; además tuvo un tiempo completo p95 largo menor (731,75 frente a 767,26 s) y una velocidad p05 mayor (1,45 frente a 1,05 tokens/s). Por tanto, el 70% se elige para priorizar la espera inicial de las continuaciones, no porque domine todas las métricas ni sea el mínimo necesario. Ningún presupuesto cumplió la referencia de fluidez de 20 usuarios en la carga larga. Las diferencias pequeñas entre ejecuciones no prueban una ventaja estable.",
+    "selection_evidence": [
+      "memoria-40-20-usuarios-historial-8192-tres-turnos",
+      "memoria-40-20-usuarios-historial-32768-tres-turnos",
+      "memoria-50-20-usuarios-historial-8192-tres-turnos",
+      "memoria-50-20-usuarios-historial-32768-tres-turnos",
+      "memoria-60-20-usuarios-historial-8192-tres-turnos",
+      "memoria-60-20-usuarios-historial-32768-tres-turnos",
+      "memoria-70-20-usuarios-historial-8192-tres-turnos",
+      "memoria-70-20-usuarios-historial-32768-tres-turnos",
+      "memoria-85-20-usuarios-historial-8192-tres-turnos",
+      "memoria-85-20-usuarios-historial-32768-tres-turnos"
+    ],
+    "comparison_order": "Primero se comparan 10 y 30 usuarios con las dos cargas; después se ejecutan los tres controles de chat; las etapas de crecimiento conservarán los historiales de sus pruebas sintéticas anteriores."
   },
   "refinement_comparison": {
     "reference_memory_percent": 70,

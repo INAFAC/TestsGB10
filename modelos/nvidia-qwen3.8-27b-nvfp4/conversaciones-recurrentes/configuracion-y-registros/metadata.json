@@ -19,7 +19,7 @@
   "compose_sha256": "1caf0951ec1175b71b97d53ffcc557e9d9ea2e506dd046b2647603c8551fd696",
   "runner_sha256": "82b8b997afeef2a4217e745f2697712f0c63053e33afd5d5fe25507d9c932a04",
   "restore_status": "pending",
-  "state": "awaiting_next_stage",
+  "state": "running",
   "profiles": [
     {
       "id": "seleccion-memoria-40",
@@ -222,6 +222,37 @@
       "ready": true,
       "startup_seconds": 381.10729662000085,
       "state": "complete"
+    },
+    {
+      "id": "comparacion-usuarios-y-chat-memoria-70",
+      "fraction": 0.7,
+      "server_limit": 32,
+      "cases": [
+        {
+          "id": "10-usuarios-historial-8192-tres-turnos",
+          "exit_code": 0,
+          "duration_seconds": 305.02566877700156,
+          "timed_out": false
+        }
+      ],
+      "command": [
+        "vllm",
+        "serve",
+        "nvidia/Qwen3.8-27B-NVFP4",
+        "--enable-auto-tool-choice",
+        "--tool-call-parser",
+        "qwen3_coder",
+        "--reasoning-parser",
+        "qwen3",
+        "--gpu-memory-utilization",
+        "0.7",
+        "--max-num-seqs",
+        "32",
+        "--max-model-len",
+        "262144"
+      ],
+      "ready": true,
+      "startup_seconds": 376.06321933100116
     }
   ]
 }
