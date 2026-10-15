@@ -84,13 +84,15 @@ def main():
             for t in s.get('per_turn',[]):
                 lines.append(f"| {t['turn']} | {t['completed']}/{t['expected']} | {n(t['ttft_p50_s'])} s | {n(t['ttft_p95_s'])} s | {n(t['ttft_max_s'])} s | {n(t['total_p95_s'])} s | {n(t['decode_p05_tokens_s'],2)} tokens/s | {'Cumple' if t['reference_fluent'] else 'No cumple'} |")
             if s.get('kind')=='chat_recurrent':
-                lines[4]=f"**Continuaciones: {label.lower()}.** Peticiones sin error: **{len(good)}/{count}**. Respuestas con contenido visible: **{s.get('visible_answers',0)}/{count}**. Finalizadas naturalmente: **{s.get('natural_completions',0)}/{count}**. Tiempo de la prueba: **{n(s.get('duration_s'))} s**."
-                lines[12]=lines[12].replace('Respuesta completa del 95%','Fin de petición del 95%')
+                lines[4]=f"**Continuaciones: {label.lower()}.** Peticiones sin error: **{len(good)}/{count}**. Respuestas con contenido visible: **{s.get('visible_answers',0)}/{count}**. Peticiones terminadas por el modelo: **{s.get('natural_completions',0)}/{count}**. Tiempo de la prueba: **{n(s.get('duration_s'))} s**."
+                lines[12]=lines[12].replace('Respuesta completa del 95%','Fin de petición del 95%').replace('Completadas','Peticiones sin error')
                 lines[6]=f"Límite impuesto al servidor: **{c['server_limit']} activas**. Cada persona espera {c.get('think_seconds',30)} s tras su respuesta y conserva los mensajes reales anteriores. El historial inicial se aproxima al objetivo; la tabla muestra los tokens realmente enviados en cada turno."
-                lines[8]=f"Control mediante `/v1/chat/completions`, con conversaciones ficticias en español. Modo de razonamiento: **{s['reasoning_mode']}**. Cada respuesta puede terminar antes del límite de {c.get('output_tokens',512)} tokens. Se distinguen primer texto del modelo, respuesta visible y finalización natural. No es una evaluación de calidad semántica."
+                reasoning_label='desactivado' if s['reasoning_mode']=='disabled' else 'predeterminado del servidor'
+                lines[8]=f"Control mediante `/v1/chat/completions`, con conversaciones ficticias en español. Modo de razonamiento: **{reasoning_label}**. Cada respuesta puede terminar antes del límite de {c.get('output_tokens',512)} tokens. Se distinguen primer texto del modelo, respuesta visible y finalización natural. No es una evaluación de calidad semántica."
                 lines+=['','### Respuesta visible y finalización natural','','| Turno | Respuestas con contenido visible | Terminaron sin alcanzar el límite de salida | Espera p95 al contenido visible |','|---|---:|---:|---:|']
                 for t in s.get('per_turn',[]):lines.append(f"| {t['turn']} | {t['visible_answers']}/{t['expected']} | {t['natural_completions']}/{t['expected']} | {n(t['visible_ttft_p95_s'])} s |")
                 lines+=['','En este control, cumplir la referencia requiere además que todas las respuestas tengan contenido visible antes de 5 s (p95) y terminen naturalmente. Alcanzar el límite de salida conserva la medición, pero no se presenta como una respuesta terminada naturalmente.']
+                lines+=['','Que el modelo termine la petición por sí mismo (`stop`) no garantiza que haya entregado una respuesta visible: puede haber generado solo razonamiento. Por eso se muestran ambos recuentos. La velocidad incluye todos los tokens de salida, también los de razonamiento; no equivale necesariamente a la velocidad del texto que lee la persona.']
             lines+=['','La referencia requiere todas las respuestas completas, espera p95 de hasta 5 s y velocidad p05 de al menos 10 tokens/s. Es orientativa; las cifras permiten aplicar otro criterio. En filas con fallos, los percentiles describen solo las respuestas completadas y no garantizan el comportamiento del grupo entero.','',
                     '## Memoria y comportamiento del grupo','', '| Medida | Resultado |','|---|---|',
                     f"| Espera media al primer texto | {n(s.get('mean_ttft_s'))} s |",
@@ -142,6 +144,7 @@ def main():
                 lines[heading+1]='|---|---:|---:|---:|---:|---:|---:|---|'
             for r in requests:
                 u=r.get('usage') or {};result=('Terminó naturalmente' if r.get('naturally_finished') else 'Alcanzó el límite de salida') if r['ok'] and s.get('kind')=='chat_recurrent' else 'Completa' if r['ok'] else 'Error: '+str(r.get('error','longitud inesperada')).replace('|','/')
+                if r['ok'] and s.get('kind')=='chat_recurrent' and not r.get('has_visible_answer'):result+='; sin respuesta visible'
                 visible_cell=f"{n(r.get('visible_ttft_s'))} s | " if s.get('kind')=='chat_recurrent' else ''
                 lines.append(f"| {r['user_id']+1} | {r['turn']} | {n(r['input_tokens'],0)} + {n(u.get('completion_tokens'),0)} | {n(r.get('ttft_s'))} s | {visible_cell}{n(r.get('total_s'))} s | {n(rate(r),2)} | {result} |")
             if measurement_available and len(requests)<count:lines+=['',f"No hay un resultado final registrado para {count-len(requests)} turnos previstos. Pueden incluir peticiones pendientes al interrumpirse la prueba y turnos posteriores que no llegaron a enviarse. No se cuentan como respuestas recibidas."]
@@ -189,7 +192,7 @@ def main():
     if checks:
         lines+=['','## Comprobaciones del medidor de chat','',
                 'Estas pruebas pequeñas comprueban la captura de tiempos y la conservación de los mensajes. Sus respuestas tienen un límite de salida reducido; no se utilizan para decidir la memoria necesaria ni la fluidez del uso normal. Se conservan también sus errores y los casos que agotan ese límite.','',
-                '| Comprobación | Memoria | Usuarios | Turnos | Límite de salida | Peticiones sin error | Con texto visible | Finalizadas naturalmente | Tiempo |',
+                '| Comprobación | Memoria | Usuarios | Turnos | Límite de salida | Peticiones sin error | Con texto visible | Terminadas por el modelo | Tiempo |',
                 '|---|---:|---:|---:|---:|---:|---:|---:|---:|']
         for r in checks:
             c=r['config'];s=r['summary']

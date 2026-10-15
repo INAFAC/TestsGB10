@@ -6,11 +6,11 @@
 
 Límite impuesto al servidor: **32 activas**. Cada persona espera 1 s tras su respuesta y conserva los mensajes reales anteriores. El historial inicial se aproxima al objetivo; la tabla muestra los tokens realmente enviados en cada turno.
 
-Control mediante `/v1/chat/completions`, con conversaciones ficticias en español. Modo de razonamiento: **disabled**. Cada respuesta puede terminar antes del límite de 128 tokens. Se distinguen primer texto del modelo, respuesta visible y finalización natural. No es una evaluación de calidad semántica.
+Control mediante `/v1/chat/completions`, con conversaciones ficticias en español. Modo de razonamiento: **desactivado**. Cada respuesta puede terminar antes del límite de 128 tokens. Se distinguen primer texto del modelo, respuesta visible y finalización natural. No es una evaluación de calidad semántica.
 
 ## Resultado por turno
 
-| Turno | Completadas | Espera mediana | Espera del 95% | Peor espera | Fin de petición del 95% | Velocidad del 95% al menos | Referencia |
+| Turno | Peticiones sin error | Espera mediana | Espera del 95% | Peor espera | Fin de petición del 95% | Velocidad del 95% al menos | Referencia |
 |---|---:|---:|---:|---:|---:|---:|---|
 | 1 | 2/2 | 0,3 s | 0,3 s | 0,3 s | 11,0 s | 11,84 tokens/s | No se evalúa |
 | 2 | 2/2 | 0,5 s | 0,5 s | 0,5 s | 11,3 s | 11,82 tokens/s | No se evalúa |
@@ -23,6 +23,8 @@ Control mediante `/v1/chat/completions`, con conversaciones ficticias en españo
 | 2 | 2/2 | 0/2 | 0,5 s |
 
 En este control, cumplir la referencia requiere además que todas las respuestas tengan contenido visible antes de 5 s (p95) y terminen naturalmente. Alcanzar el límite de salida conserva la medición, pero no se presenta como una respuesta terminada naturalmente.
+
+Que el modelo termine la petición por sí mismo (`stop`) no garantiza que haya entregado una respuesta visible: puede haber generado solo razonamiento. Por eso se muestran ambos recuentos. La velocidad incluye todos los tokens de salida, también los de razonamiento; no equivale necesariamente a la velocidad del texto que lee la persona.
 
 La referencia requiere todas las respuestas completas, espera p95 de hasta 5 s y velocidad p05 de al menos 10 tokens/s. Es orientativa; las cifras permiten aplicar otro criterio. En filas con fallos, los percentiles describen solo las respuestas completadas y no garantizan el comportamiento del grupo entero.
 

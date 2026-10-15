@@ -42,6 +42,8 @@ El control de chat usa mensajes ficticios en español y conserva las respuestas 
 
 Con **32.768 tokens iniciales**, el cambio del 40% al 70% redujo la espera p95 de las continuaciones de 595,6 a 374,2 segundos, pero el tiempo del grupo apenas cambió: 35,3 frente a 35,0 minutos. La velocidad p05 durante las continuaciones bajó de 2,37 a 1,05 tokens/s. La respuesta empezó antes en parte de los casos, pero siguió tardando varios minutos en completarse. Esta carga de 20 usuarios no cumple la referencia con ninguno de esos dos presupuestos.
 
+Con **85% de memoria**, también terminaron las 60 respuestas de cada carga, pero no mejoró el rendimiento frente al 70% en estas ejecuciones. Con 8.192 tokens, el grupo pasó de 391,2 a 440,8 segundos; con 32.768, de 35,0 a 55,2 minutos. En la carga larga bajaron los recálculos de 24 a 9, mientras la espera p95 de continuaciones subió de 374,2 a 480,1 segundos y su tiempo completo p95 de 767,3 a 1.267,0 segundos. Reservar más memoria permitió reducir recálculos, pero no hizo esta conversación más rápida. Estos resultados no establecen la causa de la ralentización ni prueban qué ocurrirá con otros tamaños de historial.
+
 Se repetirán las dos cargas iniciales al 50% después de las comparaciones del 70% y el 85% y de comprobar el medidor de chat. Esto permitirá comprobar si parte de la memoria adicional se puede ahorrar. La decisión sobre probar el 60% se tomará con los resultados del 50%. Para considerar que conserva el rendimiento del 70%, ambas cargas deben completar todas las respuestas y mantener, en las continuaciones, la espera y el tiempo completo p95 dentro de un 15% de la referencia y la velocidad p05 por encima del 85% de la referencia. En la espera se admite al menos un segundo de diferencia. Es una tolerancia práctica para decidir la siguiente prueba, no una afirmación de equivalencia estadística.
 
 [Plan y parámetros](plan.json).
@@ -54,7 +56,7 @@ Se repetirán las dos cargas iniciales al 50% después de las comparaciones del 
 | [Seleccion memoria 40](configuracion-y-registros/seleccion-memoria-40/arranque.log) | 40% | 32 | Sí | 376,0 s | 23,18 GiB |
 | [Seleccion memoria 70](configuracion-y-registros/seleccion-memoria-70/arranque.log) | 70% | 32 | Sí | 376,2 s | 59,85 GiB |
 | [Seleccion memoria 85](configuracion-y-registros/seleccion-memoria-85/arranque.log) | 85% | 32 | Sí | 401,3 s | 77,84 GiB |
-| Ajuste memoria 50 | 50% | 32 | En curso | — s | — GiB |
+| [Ajuste memoria 50](configuracion-y-registros/ajuste-memoria-50/arranque.log) | 50% | 32 | Sí | 386,2 s | 35,30 GiB |
 
 La reserva de caché procede del registro de arranque. No equivale a memoria ocupada por conversaciones ni permite deducir por sí sola cuántas personas tendrán una respuesta fluida. El pico de ocupación de esa reserva se mide durante cada prueba.
 
@@ -70,12 +72,13 @@ Se publica una prueba cuando termina. Los percentiles del primer turno y de las 
 | [Conversación de 3 turnos por persona](memoria-70-20-usuarios-historial-32768-tres-turnos/README.md) | 70% | 20 / 32 | 32.768 | 60/60 | 494,0 s | 374,2 s | 1,05 tokens/s | 100,0% | 24 | 2.102,8 s | No cumple la referencia |
 | [Conversación de 3 turnos por persona](memoria-85-20-usuarios-historial-8192-tres-turnos/README.md) | 85% | 20 / 32 | 8.192 | 60/60 | 104,3 s | 12,7 s | 5,08 tokens/s | 33,1% | 0 | 440,8 s | No cumple la referencia |
 | [Conversación de 3 turnos por persona](memoria-85-20-usuarios-historial-32768-tres-turnos/README.md) | 85% | 20 / 32 | 32.768 | 60/60 | 793,4 s | 480,1 s | 0,53 tokens/s | 100,0% | 9 | 3.312,5 s | No cumple la referencia |
+| [Conversación de 3 turnos por persona](memoria-50-20-usuarios-historial-8192-tres-turnos/README.md) | 50% | 20 / 32 | 8.192 | 60/60 | 102,1 s | 9,6 s | 5,44 tokens/s | 73,2% | 0 | 421,7 s | No cumple la referencia |
 
 ## Comprobaciones del medidor de chat
 
 Estas pruebas pequeñas comprueban la captura de tiempos y la conservación de los mensajes. Sus respuestas tienen un límite de salida reducido; no se utilizan para decidir la memoria necesaria ni la fluidez del uso normal. Se conservan también sus errores y los casos que agotan ese límite.
 
-| Comprobación | Memoria | Usuarios | Turnos | Límite de salida | Peticiones sin error | Con texto visible | Finalizadas naturalmente | Tiempo |
+| Comprobación | Memoria | Usuarios | Turnos | Límite de salida | Peticiones sin error | Con texto visible | Terminadas por el modelo | Tiempo |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
 | [Medidor: sin razonamiento](memoria-85-chat-comprobacion-medidor-sin-razonamiento/README.md) | 85% | 2 | 2 | 128 | 4/4 | 4/4 | 0/4 | 23,5 s |
 | [Medidor: modo predeterminado](memoria-85-chat-comprobacion-medidor-predeterminado/README.md) | 85% | 2 | 2 | 128 | 4/4 | 0/4 | 1/4 | 23,1 s |
