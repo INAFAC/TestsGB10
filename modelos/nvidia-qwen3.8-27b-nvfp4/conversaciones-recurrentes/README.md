@@ -6,6 +6,8 @@
 
 El objetivo es saber cuánto espera cada persona al continuar su conversación, cómo cambia esa espera al crecer el historial y qué presupuesto de memoria conviene. La concurrencia del servidor **depende de cada prueba**; esta campaña comienza con un límite de 32 solicitudes activas para permitir hasta 30 usuarios sin imponer el antiguo límite de cuatro.
 
+Los tiempos de esta batería corresponden al límite de 32 solicitudes activas. La elección permite enviar hasta treinta conversaciones sin el antiguo límite de cuatro; no demuestra que 32 sea el ajuste más rápido para cada historial. En las [pruebas iniciales](../README.md#por-qué-no-conviene-subir-todos-los-límites), un límite menor mejoró algunas cargas. Aplicar esa mejora a conversaciones recurrentes requeriría medirla también con sus mismos historiales y turnos.
+
 ## Cómo interpretar los resultados
 
 **Completar todas las respuestas y poder conversar con comodidad son dos cosas diferentes.** En cada prueba se indican ambas. Una espera de 90 segundos puede acabar en una respuesta correcta en longitud, pero esa espera sigue siendo parte de la experiencia de cada persona.
@@ -13,6 +15,9 @@ El objetivo es saber cuánto espera cada persona al continuar su conversación, 
 El porcentaje de memoria configurado es el presupuesto del servidor. El porcentaje de caché indica cuánto se ha ocupado del espacio disponible para los historiales: llegar al 100% de caché no significa que todo el GB10 esté al 100%. Las tablas detalladas muestran también la memoria del motor, la del sistema, las colas y los recálculos de historiales.
 
 “Espera p95” significa que el 95% de las respuestas medidas empezó antes de ese tiempo; algunas tardaron más. “Velocidad p05” muestra la velocidad que alcanzó o superó el 95% de las respuestas. Las tablas por persona permiten comprobar los casos más lentos. Los tiempos incluyen la competencia con los demás usuarios de la prueba; no se extrapolan multiplicando una prueba individual.
+
+<details>
+<summary>Método, plan de pruebas y decisiones de memoria</summary>
 
 ## Recorrido de las pruebas
 
@@ -60,6 +65,8 @@ Con el 70% se compararán 10 y 30 personas y se harán los controles de chat ant
 
 [Plan y parámetros](plan.json).
 
+</details>
+
 <!-- resultados-inicio -->
 ## Cómo cambia la conversación con más personas
 
@@ -84,8 +91,15 @@ Pruebas al **70%**, conservando el historial y las respuestas de la etapa anteri
 |---:|---:|---:|---|---:|---:|---:|---:|
 | [65.536](memoria-70-10-usuarios-historial-65536-dos-turnos/README.md) | 10 | 10/10 | No se intentó | 828,1 s | 550,9 s | 1.120,8 s | 2.036,6 s |
 | [65.536](memoria-70-20-usuarios-historial-65536-dos-turnos/README.md) | 20 | 20/20 | No se intentó | 1.712,0 s | 1.688,8 s | 2.344,9 s | 4.289,5 s |
+| [65.536](memoria-70-30-usuarios-historial-65536-dos-turnos/README.md) | 30 | 30/30 | No se intentó | 2.861,7 s | 2.767,3 s | 3.423,3 s | 6.337,6 s |
 
 Llegar al máximo exige una respuesta recibida cuya suma real de entrada y salida sea 262.144 tokens. El número de personas que completó ambos turnos se muestra aparte: alcanzar el máximo no demuestra rapidez ni calidad de conversación.
+
+**Etapa de 131.072 tokens, 10 personas:** No se continúa a 131.072 porque la prueba de 65.536 tokens no conservó la referencia de fluidez fijada en el plan. Esto no demuestra que esas conversaciones no pudieran terminar con más espera. [Medición anterior](memoria-70-10-usuarios-historial-65536-dos-turnos/README.md).
+
+**Etapa de 131.072 tokens, 20 personas:** Se mide siempre con 20 usuarios para caracterizar la degradación. [Medición anterior](memoria-70-20-usuarios-historial-65536-dos-turnos/README.md).
+
+**Etapa de 131.072 tokens, 30 personas:** No se continúa a 131.072 porque la prueba de 65.536 tokens no conservó la referencia de fluidez fijada en el plan. Esto no demuestra que esas conversaciones no pudieran terminar con más espera. [Medición anterior](memoria-70-30-usuarios-historial-65536-dos-turnos/README.md).
 
 ## Controles con conversaciones de chat
 
@@ -103,13 +117,14 @@ La espera visible empieza al enviar la petición y acaba cuando llega el primer 
 
 | Configuración | Presupuesto | Límite activo | Servicio listo | Espera hasta estar listo | Reserva de caché registrada |
 |---|---:|---:|---|---:|---:|
-| [Seleccion memoria 40](configuracion-y-registros/seleccion-memoria-40/arranque.log) | 40% | 32 | Sí | 376,0 s | 23,18 GiB |
-| [Seleccion memoria 70](configuracion-y-registros/seleccion-memoria-70/arranque.log) | 70% | 32 | Sí | 376,2 s | 59,85 GiB |
-| [Seleccion memoria 85](configuracion-y-registros/seleccion-memoria-85/arranque.log) | 85% | 32 | Sí | 401,3 s | 77,84 GiB |
-| [Ajuste memoria 50](configuracion-y-registros/ajuste-memoria-50/arranque.log) | 50% | 32 | Sí | 386,2 s | 35,30 GiB |
-| [Ajuste memoria 60](configuracion-y-registros/ajuste-memoria-60/arranque.log) | 60% | 32 | Sí | 381,1 s | 47,47 GiB |
-| [Comparacion usuarios y chat memoria 70](configuracion-y-registros/comparacion-usuarios-y-chat-memoria-70/arranque.log) | 70% | 32 | Sí | 376,1 s | 59,68 GiB |
-| [Crecimiento memoria 70](configuracion-y-registros/crecimiento-memoria-70/arranque.log) | 70% | 32 | Sí | 0,0 s | 59,68 GiB |
+| [Comparación inicial de memoria](configuracion-y-registros/seleccion-memoria-40/arranque.log) | 40% | 32 | Sí | 376,0 s | 23,18 GiB |
+| [Comparación inicial de memoria](configuracion-y-registros/seleccion-memoria-70/arranque.log) | 70% | 32 | Sí | 376,2 s | 59,85 GiB |
+| [Comparación inicial de memoria](configuracion-y-registros/seleccion-memoria-85/arranque.log) | 85% | 32 | Sí | 401,3 s | 77,84 GiB |
+| [Ajuste del presupuesto](configuracion-y-registros/ajuste-memoria-50/arranque.log) | 50% | 32 | Sí | 386,2 s | 35,30 GiB |
+| [Ajuste del presupuesto](configuracion-y-registros/ajuste-memoria-60/arranque.log) | 60% | 32 | Sí | 381,1 s | 47,47 GiB |
+| [Comparación de usuarios y controles de chat](configuracion-y-registros/comparacion-usuarios-y-chat-memoria-70/arranque.log) | 70% | 32 | Sí | 376,1 s | 59,68 GiB |
+| [Ampliación del historial](configuracion-y-registros/crecimiento-memoria-70/arranque.log) | 70% | 32 | Sí | 0,0 s | 59,68 GiB |
+| [Chat con hasta 2.048 tokens de salida](configuracion-y-registros/chat-salida-2048-memoria-70/arranque.log) | 70% | 32 | Sí | 0,0 s | 59,68 GiB |
 
 La reserva de caché procede del registro de arranque. No equivale a memoria ocupada por conversaciones ni permite deducir por sí sola cuántas personas tendrán una respuesta fluida. El pico de ocupación de esa reserva se mide durante cada prueba.
 
@@ -140,6 +155,7 @@ Se publica una prueba cuando termina. Los percentiles del primer turno y de las 
 | [Chat: modo predeterminado](memoria-70-chat-20-usuarios-historial-8192-predeterminado/README.md) | 70% | 20 / 32 | 8.192 | 60/60 | 103,3 s | 2,5 s | 5,75 tokens/s | 41,7% | 0 | 367,8 s | No cumple la referencia |
 | [Continuar con un historial ampliado](memoria-70-10-usuarios-historial-65536-dos-turnos/README.md) | 70% | 10 / 32 | 65.536 | 20/20 | 828,1 s | 550,9 s | 0,74 tokens/s | 100,0% | 33 | 2.036,6 s | No cumple la referencia |
 | [Continuar con un historial ampliado](memoria-70-20-usuarios-historial-65536-dos-turnos/README.md) | 70% | 20 / 32 | 65.536 | 40/40 | 1.712,0 s | 1.688,8 s | 0,58 tokens/s | 100,0% | 70 | 4.289,5 s | No cumple la referencia |
+| [Continuar con un historial ampliado](memoria-70-30-usuarios-historial-65536-dos-turnos/README.md) | 70% | 30 / 32 | 65.536 | 60/60 | 2.861,7 s | 2.767,3 s | 0,69 tokens/s | 100,0% | 75 | 6.337,6 s | No cumple la referencia |
 
 ## Comprobaciones del medidor de chat
 

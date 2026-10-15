@@ -307,6 +307,12 @@
           "exit_code": 0,
           "duration_seconds": 4290.366733089992,
           "timed_out": false
+        },
+        {
+          "id": "30-usuarios-historial-65536-dos-turnos",
+          "exit_code": 0,
+          "duration_seconds": 6340.508879180008,
+          "timed_out": false
         }
       ],
       "command": [
@@ -326,7 +332,32 @@
         "262144"
       ],
       "ready": true,
-      "startup_seconds": 0.0011808389972429723
+      "startup_seconds": 0.0011808389972429723,
+      "state": "complete"
+    },
+    {
+      "id": "chat-salida-2048-memoria-70",
+      "fraction": 0.7,
+      "server_limit": 32,
+      "cases": [],
+      "command": [
+        "vllm",
+        "serve",
+        "nvidia/Qwen3.8-27B-NVFP4",
+        "--enable-auto-tool-choice",
+        "--tool-call-parser",
+        "qwen3_coder",
+        "--reasoning-parser",
+        "qwen3",
+        "--gpu-memory-utilization",
+        "0.7",
+        "--max-num-seqs",
+        "32",
+        "--max-model-len",
+        "262144"
+      ],
+      "ready": true,
+      "startup_seconds": 0.0012360470136627555
     }
   ]
 }

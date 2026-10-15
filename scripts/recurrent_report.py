@@ -221,7 +221,14 @@ def main():
         match=re.search(r'Available KV cache memory: ([0-9.]+) GiB',log.read_text()) if log.exists() else None
         reserve=float(match.group(1)) if match else None
         status='Sí' if profile.get('ready') else 'No' if profile.get('state')=='startup_failed' else 'En curso'
-        profile_title=profile['id'].replace('-', ' ').capitalize()
+        profile_labels={'seleccion-memoria-':'Comparación inicial de memoria',
+                        'ajuste-memoria-':'Ajuste del presupuesto',
+                        'comparacion-usuarios-y-chat-':'Comparación de usuarios y controles de chat',
+                        'crecimiento-memoria-':'Ampliación del historial',
+                        'chat-salida-2048-':'Chat con hasta 2.048 tokens de salida',
+                        'historial-muy-largo-':'Historiales muy largos',
+                        'contexto-maximo-':'Comprobación del contexto máximo'}
+        profile_title=next((label for prefix,label in profile_labels.items() if profile['id'].startswith(prefix)),profile['id'].replace('-', ' ').capitalize())
         title=f"[{profile_title}](configuracion-y-registros/{profile['id']}/arranque.log)" if log.exists() else profile_title
         lines.append(f"| {title} | {round(profile['fraction']*100)}% | {profile['server_limit']} | {status} | {n(profile.get('startup_seconds'))} s | {n(reserve,2)} GiB |")
     lines+=['','La reserva de caché procede del registro de arranque. No equivale a memoria ocupada por conversaciones ni permite deducir por sí sola cuántas personas tendrán una respuesta fluida. El pico de ocupación de esa reserva se mide durante cada prueba.',

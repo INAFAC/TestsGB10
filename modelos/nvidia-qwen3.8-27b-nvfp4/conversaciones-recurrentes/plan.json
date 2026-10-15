@@ -163,6 +163,35 @@
         "natural_completions": 37,
         "reason": "Todas las peticiones terminaron sin error de API, pero hubo respuestas cortadas por el límite o sin texto visible. Se repite con hasta 2048 tokens conservando los demás parámetros."
       }
+    },
+    "growth_131072": {
+      "10": {
+        "required": false,
+        "evidence": "memoria-70-10-usuarios-historial-65536-dos-turnos",
+        "followups_reference_fluent": false,
+        "all_turns_completed": true,
+        "followups_ttft_p95_s": 550.8796277580259,
+        "followups_total_p95_s": 1120.8148594240192,
+        "reason": "No se continúa a 131.072 porque la prueba de 65.536 tokens no conservó la referencia de fluidez fijada en el plan. Esto no demuestra que esas conversaciones no pudieran terminar con más espera."
+      },
+      "20": {
+        "required": true,
+        "evidence": "memoria-70-20-usuarios-historial-65536-dos-turnos",
+        "followups_reference_fluent": false,
+        "all_turns_completed": true,
+        "followups_ttft_p95_s": 1688.7795785240014,
+        "followups_total_p95_s": 2344.940474439005,
+        "reason": "Se mide siempre con 20 usuarios para caracterizar la degradación."
+      },
+      "30": {
+        "required": false,
+        "evidence": "memoria-70-30-usuarios-historial-65536-dos-turnos",
+        "followups_reference_fluent": false,
+        "all_turns_completed": true,
+        "followups_ttft_p95_s": 2767.272395131993,
+        "followups_total_p95_s": 3423.2960738340043,
+        "reason": "No se continúa a 131.072 porque la prueba de 65.536 tokens no conservó la referencia de fluidez fijada en el plan. Esto no demuestra que esas conversaciones no pudieran terminar con más espera."
+      }
     }
   },
   "refinement_comparison": {
