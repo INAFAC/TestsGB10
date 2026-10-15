@@ -48,6 +48,8 @@ El ajuste de memoria repite las dos cargas iniciales al 50%, después de las com
 
 **Se añade el 60% después de terminar las dos pruebas al 50%.** En la carga de 8.192 tokens, el 50% completó las 60 respuestas en 421,7 segundos, sin recálculos y con un pico de caché del 73,2%. La velocidad p05 de las continuaciones fue 5,44 tokens/s y su tiempo completo p95, 94,8 segundos: ambos cumplen la tolerancia frente al 70%. La espera p95 fue 9,60 segundos, por encima del límite de 8,77 segundos establecido por la regla. Esto activa la prueba del 60%; no significa que el 50% sea incapaz de atender estas conversaciones ni que una diferencia de unos dos segundos sea estable entre ejecuciones.
 
+En la carga larga al **50%**, también terminaron las 60 respuestas, pero el grupo tardó 46,7 minutos frente a 35,0 al 70%. La espera p95 de las continuaciones fue de 11,0 minutos y su tiempo completo p95, de 17,2 minutos; hubo 85 recálculos frente a 24 al 70%. Esta carga incumplió además las tolerancias de espera y tiempo completo de la comparación. El 50% ahorra memoria y se acercó al 70% en la carga corta, pero no conservó su rendimiento con estos historiales largos.
+
 [Plan y parámetros](plan.json).
 
 <!-- resultados-inicio -->
@@ -59,7 +61,7 @@ El ajuste de memoria repite las dos cargas iniciales al 50%, después de las com
 | [Seleccion memoria 70](configuracion-y-registros/seleccion-memoria-70/arranque.log) | 70% | 32 | Sí | 376,2 s | 59,85 GiB |
 | [Seleccion memoria 85](configuracion-y-registros/seleccion-memoria-85/arranque.log) | 85% | 32 | Sí | 401,3 s | 77,84 GiB |
 | [Ajuste memoria 50](configuracion-y-registros/ajuste-memoria-50/arranque.log) | 50% | 32 | Sí | 386,2 s | 35,30 GiB |
-| Ajuste memoria 60 | 60% | 32 | En curso | — s | — GiB |
+| [Ajuste memoria 60](configuracion-y-registros/ajuste-memoria-60/arranque.log) | 60% | 32 | Sí | 381,1 s | 47,47 GiB |
 
 La reserva de caché procede del registro de arranque. No equivale a memoria ocupada por conversaciones ni permite deducir por sí sola cuántas personas tendrán una respuesta fluida. El pico de ocupación de esa reserva se mide durante cada prueba.
 
@@ -79,6 +81,7 @@ Se publica una prueba cuando termina. Los percentiles del primer turno y de las 
 | [Conversación de 3 turnos por persona](memoria-85-20-usuarios-historial-32768-tres-turnos/README.md) | 85% | 20 / 32 | 32.768 | 60/60 | 793,4 s | 480,1 s | 0,53 tokens/s | 100,0% | 9 | 3.312,5 s | No cumple la referencia |
 | [Conversación de 3 turnos por persona](memoria-50-20-usuarios-historial-8192-tres-turnos/README.md) | 50% | 20 / 32 | 8.192 | 60/60 | 102,1 s | 9,6 s | 5,44 tokens/s | 73,2% | 0 | 421,7 s | No cumple la referencia |
 | [Conversación de 3 turnos por persona](memoria-50-20-usuarios-historial-32768-tres-turnos/README.md) | 50% | 20 / 32 | 32.768 | 60/60 | 716,5 s | 657,2 s | 1,22 tokens/s | 100,0% | 85 | 2.805,0 s | No cumple la referencia |
+| [Conversación de 3 turnos por persona](memoria-60-20-usuarios-historial-8192-tres-turnos/README.md) | 60% | 20 / 32 | 8.192 | 60/60 | 75,8 s | 9,8 s | 5,42 tokens/s | 54,2% | 0 | 395,1 s | No cumple la referencia |
 
 ## Comprobaciones del medidor de chat
 

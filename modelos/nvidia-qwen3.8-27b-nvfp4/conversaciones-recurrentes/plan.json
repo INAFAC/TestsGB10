@@ -70,10 +70,54 @@
     },
     "refinement_60": {
       "required": true,
-      "reason": "La carga de 8.192 tokens al 50% completó las 60 respuestas, pero su espera p95 de continuaciones fue 9,60 s, por encima del máximo de 8,77 s calculado con la regla fijada antes de la prueba. El tiempo completo p95 (94,80 s) y la velocidad p05 (5,44 tokens/s) sí conservaron la referencia del 70%. Como ambas cargas deben cumplir todos los criterios, este resultado ya activa la comparación al 60%; la prueba larga al 50% se completa igualmente. La diferencia de espera es pequeña en términos absolutos y no demuestra por sí sola una diferencia estable entre presupuestos.",
+      "reason": "La carga de 8.192 tokens al 50% completó las 60 respuestas, pero su espera p95 de continuaciones fue 9,60 s, por encima del máximo de 8,77 s calculado con la regla fijada antes de la prueba. El tiempo completo p95 (94,80 s) y la velocidad p05 (5,44 tokens/s) sí conservaron la referencia del 70%. Este resultado activó la comparación al 60%. Después, la carga de 32.768 tokens al 50% completó también las 60 respuestas, pero incumplió la tolerancia de espera (657,23 s frente a un máximo de 430,35 s) y tiempo completo (1.034,18 s frente a un máximo de 882,35 s). La velocidad p05 de 1,22 tokens/s sí superó el mínimo de 0,89. La comparación al 60% queda justificada por ambas cargas; las diferencias pequeñas no se consideran por sí solas una prueba de estabilidad entre ejecuciones.",
       "evidence": [
         "memoria-50-20-usuarios-historial-8192-tres-turnos",
-        "memoria-70-20-usuarios-historial-8192-tres-turnos"
+        "memoria-70-20-usuarios-historial-8192-tres-turnos",
+        "memoria-50-20-usuarios-historial-32768-tres-turnos",
+        "memoria-70-20-usuarios-historial-32768-tres-turnos"
+      ],
+      "measured_comparison": [
+        {
+          "input_tokens": 8192,
+          "retained": false,
+          "checks": {
+            "all_completed": true,
+            "followups_ttft_p95_s": false,
+            "followups_total_p95_s": true,
+            "decode_p05": true
+          },
+          "thresholds": {
+            "followups_ttft_p95_s": 8.76950654129323,
+            "followups_total_p95_s": 107.29695711715321,
+            "decode_p05_min": 4.6840815760410885
+          },
+          "candidate": {
+            "followups_ttft_p95_s": 9.59911399500561,
+            "followups_total_p95_s": 94.80063101000269,
+            "decode_p05": 5.441647534873719
+          }
+        },
+        {
+          "input_tokens": 32768,
+          "retained": false,
+          "checks": {
+            "all_completed": true,
+            "followups_ttft_p95_s": false,
+            "followups_total_p95_s": false,
+            "decode_p05": true
+          },
+          "thresholds": {
+            "followups_ttft_p95_s": 430.3520244630359,
+            "followups_total_p95_s": 882.3527405566812,
+            "decode_p05_min": 0.8904871827233249
+          },
+          "candidate": {
+            "followups_ttft_p95_s": 657.2284005669935,
+            "followups_total_p95_s": 1034.176145356003,
+            "decode_p05": 1.224744672681438
+          }
+        }
       ]
     }
   },
