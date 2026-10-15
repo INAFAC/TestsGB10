@@ -46,6 +46,20 @@ def comparison_overview(rows,plan):
             c=r['config'];s=r['summary']
             lines.append(f"| {n(c['input_tokens'],0)} | [{c['users']}]({r['folder']}/README.md) | {r['done']}/{r['count']} | {n(r['cold95'])} s | {n(r['follow95'])} s | {n(s.get('followups_total_p95_s'))} s | {n(r['decode05'],2)} tokens/s |")
         lines+=['','Una prueba puede cumplir la referencia de espera y quedar por debajo de la referencia de velocidad. Las cifras de ambas columnas permiten valorar ese equilibrio; la etiqueta general de referencia no sustituye esos tiempos.','']
+    growth=[r for r in chosen if not r['config']['id'].startswith('chat-') and r['config'].get('parent_state')]
+    if growth:
+        lines+=['## Qué ocurre al ampliar el historial','',
+                f'Pruebas al **{selected}%**, conservando el historial y las respuestas de la etapa anterior. Cada persona realiza dos turnos nuevos. El primer turno incluye el coste de ampliar el historial; el segundo mide volver a continuar.','',
+                '| Historial del primer turno | Personas | Completaron ambos turnos | Llegaron a 262.144 tokens | Espera p95 al ampliar | Espera p95 al continuar | Respuesta completa p95 al continuar | Tiempo del grupo |',
+                '|---:|---:|---:|---|---:|---:|---:|---:|']
+        for r in sorted(growth,key=lambda r:(r['config']['input_tokens'],r['config']['users'])):
+            c=r['config'];s=r['summary'];maximum=f"{r['users_at_maximum_context']}/{c['users']}" if c['input_tokens']==260864 else 'No se intentó'
+            lines.append(f"| [{n(c['input_tokens'],0)}]({r['folder']}/README.md) | {c['users']} | {r['users_completed_all_turns']}/{c['users']} | {maximum} | {n(r['cold95'])} s | {n(r['follow95'])} s | {n(s.get('followups_total_p95_s'))} s | {n(s.get('duration_s'))} s |")
+        lines+=['','Llegar al máximo exige una respuesta recibida cuya suma real de entrada y salida sea 262.144 tokens. El número de personas que completó ambos turnos se muestra aparte: alcanzar el máximo no demuestra rapidez ni calidad de conversación.','']
+        decisions=plan.get('decisions',{}).get('growth_131072',{})
+        for users,decision in sorted(decisions.items(),key=lambda item:int(item[0])):
+            lines.append(f"**Etapa de 131.072 tokens, {users} personas:** {decision['reason']} [Medición anterior]({decision['evidence']}/README.md).")
+            lines.append('')
     chat=[r for r in chosen if r['config']['id'].startswith('chat-') and not r['config']['id'].startswith('chat-comprobacion-medidor-')]
     if chat:
         lines+=['## Controles con conversaciones de chat','',
@@ -103,6 +117,8 @@ def main():
             fluent=all_done and bool(s.get('followups_reference_fluent'))
             label='Sin mediciones; revisar registro' if not measurement_available else 'Cumple la referencia' if fluent else 'No cumple la referencia' if all_done else 'No completó todo'
             row={'folder':folder.name,'measurement_available':measurement_available,'config':c,'summary':s,'record':case_record,'all_done':all_done,'fluent':fluent,'label':label,'count':count,'done':len(good),'cold95':quantile([r.get('ttft_s') for r in initial],.95),'follow95':quantile([r.get('ttft_s') for r in follow],.95),'decode05':quantile([rate(r) for r in follow],.05)};rows.append(row)
+            row['users_completed_all_turns']=sum(sum(r['user_id']==user for r in good)==c.get('turns',3) for user in range(c['users']))
+            row['users_at_maximum_context']=len({r['user_id'] for r in good if (r.get('usage') or {}).get('total_tokens')==s.get('max_model_len',262144)})
             row['chat_visible_natural_answers']=sum(bool(r.get('has_visible_answer') and r.get('naturally_finished')) for r in good) if s.get('kind')=='chat_recurrent' else None
             row['chat_output_limit_reached']=sum(r.get('finish_reason')=='length' for r in good) if s.get('kind')=='chat_recurrent' else None
             lines=[f"# {c['users']} usuarios · {round(profile['fraction']*100)}% · historial inicial de {n(c['input_tokens'],0)} tokens",'', '[Volver a la comparación](../README.md)','',

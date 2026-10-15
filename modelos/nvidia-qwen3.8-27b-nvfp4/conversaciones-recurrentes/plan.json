@@ -153,6 +153,15 @@
         "visible_answers": 60,
         "natural_completions": 54,
         "reason": "Todas las peticiones terminaron sin error de API, pero hubo respuestas cortadas por el límite o sin texto visible. Se repite con hasta 2048 tokens conservando los demás parámetros."
+      },
+      "chat-20-usuarios-historial-8192-predeterminado": {
+        "required": true,
+        "source": "memoria-70-chat-20-usuarios-historial-8192-predeterminado",
+        "followup": "memoria-70-chat-20-usuarios-historial-8192-salida-2048-predeterminado",
+        "api_completed": 60,
+        "visible_answers": 40,
+        "natural_completions": 37,
+        "reason": "Todas las peticiones terminaron sin error de API, pero hubo respuestas cortadas por el límite o sin texto visible. Se repite con hasta 2048 tokens conservando los demás parámetros."
       }
     }
   },

@@ -76,6 +76,16 @@ Comparación directa de las pruebas terminadas al **70% de memoria**. Cada perso
 
 Una prueba puede cumplir la referencia de espera y quedar por debajo de la referencia de velocidad. Las cifras de ambas columnas permiten valorar ese equilibrio; la etiqueta general de referencia no sustituye esos tiempos.
 
+## Qué ocurre al ampliar el historial
+
+Pruebas al **70%**, conservando el historial y las respuestas de la etapa anterior. Cada persona realiza dos turnos nuevos. El primer turno incluye el coste de ampliar el historial; el segundo mide volver a continuar.
+
+| Historial del primer turno | Personas | Completaron ambos turnos | Llegaron a 262.144 tokens | Espera p95 al ampliar | Espera p95 al continuar | Respuesta completa p95 al continuar | Tiempo del grupo |
+|---:|---:|---:|---|---:|---:|---:|---:|
+| [65.536](memoria-70-10-usuarios-historial-65536-dos-turnos/README.md) | 10 | 10/10 | No se intentó | 828,1 s | 550,9 s | 1.120,8 s | 2.036,6 s |
+
+Llegar al máximo exige una respuesta recibida cuya suma real de entrada y salida sea 262.144 tokens. El número de personas que completó ambos turnos se muestra aparte: alcanzar el máximo no demuestra rapidez ni calidad de conversación.
+
 ## Controles con conversaciones de chat
 
 Controles al **70% de memoria**, con mensajes ficticios legibles, respuestas reales conservadas y permiso para terminar antes del límite de salida. Una respuesta visible terminada debe contener texto para la persona y acabar por decisión del modelo, sin alcanzar el límite de tokens.
@@ -127,6 +137,7 @@ Se publica una prueba cuando termina. Los percentiles del primer turno y de las 
 | [Chat: sin razonamiento](memoria-70-chat-20-usuarios-historial-8192-sin-razonamiento/README.md) | 70% | 20 / 32 | 8.192 | 60/60 | 103,2 s | 2,8 s | 6,12 tokens/s | 41,7% | 0 | 342,4 s | No cumple la referencia |
 | [Chat: sin razonamiento](memoria-70-chat-20-usuarios-historial-32768-sin-razonamiento/README.md) | 70% | 20 / 32 | 32.768 | 60/60 | 598,8 s | 362,2 s | 0,64 tokens/s | 100,0% | 8 | 2.213,4 s | No cumple la referencia |
 | [Chat: modo predeterminado](memoria-70-chat-20-usuarios-historial-8192-predeterminado/README.md) | 70% | 20 / 32 | 8.192 | 60/60 | 103,3 s | 2,5 s | 5,75 tokens/s | 41,7% | 0 | 367,8 s | No cumple la referencia |
+| [Continuar con un historial ampliado](memoria-70-10-usuarios-historial-65536-dos-turnos/README.md) | 70% | 10 / 32 | 65.536 | 20/20 | 828,1 s | 550,9 s | 0,74 tokens/s | 100,0% | 33 | 2.036,6 s | No cumple la referencia |
 
 ## Comprobaciones del medidor de chat
 

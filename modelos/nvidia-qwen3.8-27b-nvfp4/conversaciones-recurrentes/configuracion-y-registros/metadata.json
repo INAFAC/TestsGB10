@@ -295,7 +295,14 @@
       "id": "crecimiento-memoria-70",
       "fraction": 0.7,
       "server_limit": 32,
-      "cases": [],
+      "cases": [
+        {
+          "id": "10-usuarios-historial-65536-dos-turnos",
+          "exit_code": 0,
+          "duration_seconds": 2040.1558027179854,
+          "timed_out": false
+        }
+      ],
       "command": [
         "vllm",
         "serve",

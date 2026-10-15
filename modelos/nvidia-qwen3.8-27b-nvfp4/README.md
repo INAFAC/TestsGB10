@@ -34,7 +34,17 @@
 ## Qué configuración elegir
 
 <!-- interpretacion-inicio -->
-**El 40% con límite de cuatro es un punto de partida razonable para el uso probado.** Cuatro historiales de 32.768 tokens más 512 de respuesta terminaron con respuestas solapadas y sin recálculos. Con historiales mayores el servidor atiende parte del trabajo por turnos. Subir el presupuesto o el límite de solicitudes activas no mejora todas las cargas.
+### Conversaciones recurrentes con 10, 20 y 30 personas
+
+**El tamaño del historial cambia mucho la espera de cada persona.** Con el 70% y un límite de 32 solicitudes activas, las continuaciones de 10 personas con historiales iniciales de 32.768 tokens tuvieron una espera p95 de 3,08 segundos; con 20 personas fue de 374,22 segundos, y con 30, de 965,40 segundos. Todas esas peticiones terminaron, pero completar el trabajo no garantiza una conversación ágil. No se ha medido el punto exacto entre 10 y 20 personas donde se produce esa degradación.
+
+Con historiales iniciales de 8.192 tokens, las esperas p95 de continuación fueron de 4,93, 7,63 y 14,98 segundos para 10, 20 y 30 personas. La velocidad individual también disminuyó al aumentar la carga. [Comparar tiempos completos, velocidades y cada turno](conversaciones-recurrentes/README.md#cómo-cambia-la-conversación-con-más-personas).
+
+Se eligió el **70% para las comparaciones posteriores por su menor espera p95 en ambas cargas iniciales**. El 60% obtuvo tiempos totales cercanos con menos memoria y mejores resultados en algunas medidas de la carga larga; el 70% no es un mínimo necesario ni la mejor opción en todas las métricas. [Comparación de presupuestos y criterio de selección](conversaciones-recurrentes/README.md).
+
+### Configuraciones de la batería inicial
+
+**En la batería inicial, el 40% con límite de cuatro fue un punto de partida razonable para las cargas probadas.** Cuatro historiales de 32.768 tokens más 512 de respuesta terminaron con respuestas solapadas y sin recálculos. Con historiales mayores el servidor atiende parte del trabajo por turnos. Subir el presupuesto o el límite de solicitudes activas no mejora todas las cargas. Estos resultados iniciales no garantizan el mismo comportamiento con 10, 20 o 30 personas manteniendo una conversación.
 
 | Necesidad | Lo que muestran las pruebas |
 |---|---|
