@@ -27,3 +27,7 @@ Entra en **modelos → nombre del modelo → porcentaje de memoria → prueba**.
 
 - [Guía de lectura](GUIA-DE-LECTURA.md): significado de las medidas y cómo se hicieron las pruebas.
 - [Herramientas de prueba](scripts): scripts para medir y actualizar los informes.
+
+## Licencia
+
+El contenido de este repositorio se publica bajo [CC BY 4.0](LICENSE): puedes reutilizarlo y adaptarlo citando la fuente.

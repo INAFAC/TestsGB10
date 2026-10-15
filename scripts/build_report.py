@@ -361,7 +361,9 @@ def main():
               '## Dónde está cada cosa','',
               'Entra en **modelos → nombre del modelo → porcentaje de memoria → prueba**. Cada prueba tiene su explicación en `README.md`, las mediciones originales y sus registros en la misma carpeta.','',
               '- [Guía de lectura](GUIA-DE-LECTURA.md): significado de las medidas y cómo se hicieron las pruebas.',
-              '- [Herramientas de prueba](scripts): scripts para medir y actualizar los informes.','']
+              '- [Herramientas de prueba](scripts): scripts para medir y actualizar los informes.','',
+              '## Licencia','',
+              'El contenido de este repositorio se publica bajo [CC BY 4.0](LICENSE): puedes reutilizarlo y adaptarlo citando la fuente.','']
     (ROOT/'README.md').write_text('\n'.join(lines))
     print(f'Generated readable reports for {len(model_summaries)} model(s).')
 
