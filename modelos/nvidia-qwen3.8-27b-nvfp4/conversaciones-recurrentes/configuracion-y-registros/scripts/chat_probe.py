@@ -148,6 +148,8 @@ def main():
         except Exception as exc:error=type(exc).__name__+': '+str(exc)
         ended=time.monotonic()
         ok=bool(not error and usage and usage['prompt_tokens']==input_tokens and 0<usage['completion_tokens']<=a.output_tokens and finish in ('stop','length'))
+        if not ok and error is None:
+            error=f'Unexpected response: expected prompt_tokens={input_tokens}, completion_tokens between1and{a.output_tokens}, and stop/length; received usage={usage}, finish_reason={finish}'
         assistant={'role':'assistant','content':content}
         if reasoning:assistant['reasoning']=reasoning
         return {'index':user*a.turns+turn,'user_id':user,'turn':turn+1,'input_tokens':input_tokens,

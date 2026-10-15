@@ -15,6 +15,7 @@
 | `chat_probe.py` | Control con mensajes de chat ficticios: conserva las respuestas y distingue razonamiento, texto visible y finalización natural. |
 | `recurrent_campaign.py` | Ejecuta la cola de configuraciones temporales de conversaciones recurrentes y restaura el servicio capturado al comenzar. |
 | `recurrent_report.py` | Publica únicamente las pruebas recurrentes terminadas, con sus tablas, registros sanitizados y huellas de procedencia. |
+| `verify_recurrent_restore.py` | Comprueba al finalizar la configuración restaurada, la salud del servicio, una generación breve y la ausencia de solicitudes pendientes. |
 | `validate_recurrent.py` | Verifica la continuidad real de las conversaciones y, al cerrar la campaña, su cobertura y restauración. |
 | `validate_new_public_files.py` | Revisa los archivos nuevos o modificados antes de publicar para detectar posibles datos sensibles; complementa la revisión manual. |
 | `sync_results.py` | Descarga la campaña en curso, actualiza los informes y puede publicarlos en GitHub. |

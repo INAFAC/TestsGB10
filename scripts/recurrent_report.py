@@ -165,7 +165,7 @@ def main():
     subprocess.run(['git','diff','--check'],check=True,cwd=ROOT)
     if a.publish:
         subprocess.run([sys.executable,str(ROOT/'scripts/validate_new_public_files.py')],check=True,cwd=ROOT)
-        subprocess.run(['git','add','--','README.md','GUIA-DE-LECTURA.md',str(MODEL/'README.md'),str(OUT),'scripts/README.md','scripts/recurrent_campaign.py','scripts/recurrent_probe.py','scripts/chat_probe.py','scripts/recurrent_report.py','scripts/validate_report.py','scripts/validate_recurrent.py','scripts/validate_new_public_files.py'],check=True,cwd=ROOT)
+        subprocess.run(['git','add','--','README.md','GUIA-DE-LECTURA.md',str(MODEL/'README.md'),str(OUT),'scripts/README.md','scripts/recurrent_campaign.py','scripts/recurrent_probe.py','scripts/chat_probe.py','scripts/recurrent_report.py','scripts/validate_report.py','scripts/validate_recurrent.py','scripts/validate_new_public_files.py','scripts/verify_recurrent_restore.py'],check=True,cwd=ROOT)
         if subprocess.run(['git','diff','--cached','--quiet'],cwd=ROOT).returncode:
             subprocess.run(['git','commit','-m',a.message],check=True,cwd=ROOT)
         subprocess.run(['git','push'],check=True,cwd=ROOT)

@@ -120,11 +120,15 @@ if plan['status']=='complete':
     if not proof.exists():errors.append('Independent final runtime verification missing')
     else:
         verification=read(proof)
-        if not (verification.get('health_http_status')==200 and verification.get('command')==meta['original_command']
+        if not (verification.get('verified') is True and verification.get('container_status')=='running'
+                and verification.get('health_http_status')==200 and verification.get('command')==meta['original_command']
                 and verification.get('image_id')==meta['image_id'] and verification.get('compose_sha256')==meta['compose_sha256']
                 and verification.get('max_model_len')==262144 and verification.get('generation_ok') is True
                 and verification.get('requests')=={'num_requests_running':0,'num_requests_waiting':0}):
             errors.append('Independent final runtime verification failed')
+        source=BASE/'configuracion-y-registros/scripts/versions'/(verification.get('verification_script_sha256','missing')+'.py')
+        if not source.exists() or hashlib.sha256(source.read_bytes()).hexdigest()!=verification.get('verification_script_sha256'):
+            errors.append('Final verification source missing')
     for p in [ROOT/'README.md',BASE.parent/'README.md',BASE/'README.md']:
         if 'Se están realizando nuevas pruebas' in p.read_text():errors.append('Temporary notice remains: '+str(p))
 if errors:raise SystemExit('\n'.join(errors))
