@@ -1,8 +1,8 @@
 [
   {
     "file": "modelos/nvidia-qwen3.8-27b-nvfp4/conversaciones-recurrentes/configuracion-y-registros/metadata.json",
-    "sha256": "05957545af14d3359186616e009d1fb75ec346da8acd061a637f0d2809a44c94",
-    "original_sha256": "05957545af14d3359186616e009d1fb75ec346da8acd061a637f0d2809a44c94",
+    "sha256": "9564cbb81c72e92241dbddee145c2eb3a4f1f51c17172fcf3a307f3e94a761e8",
+    "original_sha256": "9564cbb81c72e92241dbddee145c2eb3a4f1f51c17172fcf3a307f3e94a761e8",
     "sanitized": false
   },
   {
@@ -321,6 +321,78 @@
     "file": "modelos/nvidia-qwen3.8-27b-nvfp4/conversaciones-recurrentes/memoria-85-20-usuarios-historial-32768-tres-turnos/historiales-reproducibles.json.gz",
     "sha256": "45af5ef55ed5b6d14c709027edc155004c9dd1a814ad19280863d28b175c3084",
     "original_sha256": "45af5ef55ed5b6d14c709027edc155004c9dd1a814ad19280863d28b175c3084",
+    "sanitized": false
+  },
+  {
+    "file": "modelos/nvidia-qwen3.8-27b-nvfp4/conversaciones-recurrentes/memoria-85-chat-comprobacion-medidor-sin-razonamiento/configuracion.json",
+    "sha256": "1ce02919f83dc414a4bc9d2de00984ea7360e14b037ae507eaeb8144bfc6546f",
+    "original_sha256": "1ce02919f83dc414a4bc9d2de00984ea7360e14b037ae507eaeb8144bfc6546f",
+    "sanitized": false
+  },
+  {
+    "file": "modelos/nvidia-qwen3.8-27b-nvfp4/conversaciones-recurrentes/memoria-85-chat-comprobacion-medidor-sin-razonamiento/mediciones.json",
+    "sha256": "d6ebf5eb8bb1e606df8fe1f8b963857cb6bc0d006a6fc2155de79953c92d2344",
+    "original_sha256": "d6ebf5eb8bb1e606df8fe1f8b963857cb6bc0d006a6fc2155de79953c92d2344",
+    "sanitized": false
+  },
+  {
+    "file": "modelos/nvidia-qwen3.8-27b-nvfp4/conversaciones-recurrentes/memoria-85-chat-comprobacion-medidor-sin-razonamiento/registro-de-ejecucion.log",
+    "sha256": "2963a3e71e764e2cf208677419703af35ba69853f26e0e50f160bca42d6637a6",
+    "original_sha256": "2963a3e71e764e2cf208677419703af35ba69853f26e0e50f160bca42d6637a6",
+    "sanitized": false
+  },
+  {
+    "file": "modelos/nvidia-qwen3.8-27b-nvfp4/conversaciones-recurrentes/memoria-85-chat-comprobacion-medidor-sin-razonamiento/registro-del-servidor.log",
+    "sha256": "eae93075bb513a3125cbd270a3ed72f32ab5168aaceb6552a9c769b284bcd8c3",
+    "original_sha256": "737edaa3737f3e8764d9c54f004efb7175d74b2331167181800e8cd61a85d218",
+    "sanitized": true
+  },
+  {
+    "file": "modelos/nvidia-qwen3.8-27b-nvfp4/conversaciones-recurrentes/memoria-85-chat-comprobacion-medidor-sin-razonamiento/comando-ejecutado.json",
+    "sha256": "f7656044a8fa65afe6b680fecf8a2a1575c1f5ca83cfd31f3b6089131e5dc865",
+    "original_sha256": "f7656044a8fa65afe6b680fecf8a2a1575c1f5ca83cfd31f3b6089131e5dc865",
+    "sanitized": false
+  },
+  {
+    "file": "modelos/nvidia-qwen3.8-27b-nvfp4/conversaciones-recurrentes/memoria-85-chat-comprobacion-medidor-sin-razonamiento/historiales-reproducibles.json.gz",
+    "sha256": "2be8ff11f77f520d199a06019c7442233edc4e7e4fcbc56aad247b30d3f03292",
+    "original_sha256": "2be8ff11f77f520d199a06019c7442233edc4e7e4fcbc56aad247b30d3f03292",
+    "sanitized": false
+  },
+  {
+    "file": "modelos/nvidia-qwen3.8-27b-nvfp4/conversaciones-recurrentes/memoria-85-chat-comprobacion-medidor-predeterminado/configuracion.json",
+    "sha256": "a2b993daaa3a9eac1bcd1847deb642d4be072272e6a46edb221657e865debdae",
+    "original_sha256": "a2b993daaa3a9eac1bcd1847deb642d4be072272e6a46edb221657e865debdae",
+    "sanitized": false
+  },
+  {
+    "file": "modelos/nvidia-qwen3.8-27b-nvfp4/conversaciones-recurrentes/memoria-85-chat-comprobacion-medidor-predeterminado/mediciones.json",
+    "sha256": "64b38fc2eec9b360fe1cf3ef92fc911debb067c9bdffdab723c062d4a0f616df",
+    "original_sha256": "64b38fc2eec9b360fe1cf3ef92fc911debb067c9bdffdab723c062d4a0f616df",
+    "sanitized": false
+  },
+  {
+    "file": "modelos/nvidia-qwen3.8-27b-nvfp4/conversaciones-recurrentes/memoria-85-chat-comprobacion-medidor-predeterminado/registro-de-ejecucion.log",
+    "sha256": "63bbadf07cffc0bd23bca0cd99eecbb3d64dedb7ecd0f6d5dac9f9ffe5652739",
+    "original_sha256": "63bbadf07cffc0bd23bca0cd99eecbb3d64dedb7ecd0f6d5dac9f9ffe5652739",
+    "sanitized": false
+  },
+  {
+    "file": "modelos/nvidia-qwen3.8-27b-nvfp4/conversaciones-recurrentes/memoria-85-chat-comprobacion-medidor-predeterminado/registro-del-servidor.log",
+    "sha256": "d95e00473268e7d892d9a761954611c5e38dac417e862b49f2e1a468ffec7c03",
+    "original_sha256": "5b2721d9ae0a925e734e2df4ca7d197b209d89e1c45ad5b9dd3a8ada9eae5bef",
+    "sanitized": true
+  },
+  {
+    "file": "modelos/nvidia-qwen3.8-27b-nvfp4/conversaciones-recurrentes/memoria-85-chat-comprobacion-medidor-predeterminado/comando-ejecutado.json",
+    "sha256": "9dbfd50d24f9ee8d860f1e87ddce118c286eaa07a05e81866044bdcfe65632fb",
+    "original_sha256": "9dbfd50d24f9ee8d860f1e87ddce118c286eaa07a05e81866044bdcfe65632fb",
+    "sanitized": false
+  },
+  {
+    "file": "modelos/nvidia-qwen3.8-27b-nvfp4/conversaciones-recurrentes/memoria-85-chat-comprobacion-medidor-predeterminado/historiales-reproducibles.json.gz",
+    "sha256": "e82929df2f1c927302673513f6a36b043738161e7477da13630cac032bd8024c",
+    "original_sha256": "e82929df2f1c927302673513f6a36b043738161e7477da13630cac032bd8024c",
     "sanitized": false
   }
 ]

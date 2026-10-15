@@ -1,0 +1,14 @@
+{
+  "id": "chat-comprobacion-medidor-sin-razonamiento",
+  "users": 2,
+  "input_tokens": 256,
+  "output_tokens": 128,
+  "turns": 2,
+  "think_seconds": 1,
+  "seed": 99200256,
+  "timeout": 900,
+  "request_timeout": 300,
+  "memory_fraction": 0.85,
+  "server_limit": 32,
+  "profile_id": "seleccion-memoria-85"
+}

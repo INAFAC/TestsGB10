@@ -54,6 +54,7 @@ Se repetirán las dos cargas iniciales al 50% después de las comparaciones del 
 | [Seleccion memoria 40](configuracion-y-registros/seleccion-memoria-40/arranque.log) | 40% | 32 | Sí | 376,0 s | 23,18 GiB |
 | [Seleccion memoria 70](configuracion-y-registros/seleccion-memoria-70/arranque.log) | 70% | 32 | Sí | 376,2 s | 59,85 GiB |
 | [Seleccion memoria 85](configuracion-y-registros/seleccion-memoria-85/arranque.log) | 85% | 32 | Sí | 401,3 s | 77,84 GiB |
+| Ajuste memoria 50 | 50% | 32 | En curso | — s | — GiB |
 
 La reserva de caché procede del registro de arranque. No equivale a memoria ocupada por conversaciones ni permite deducir por sí sola cuántas personas tendrán una respuesta fluida. El pico de ocupación de esa reserva se mide durante cada prueba.
 
@@ -69,5 +70,14 @@ Se publica una prueba cuando termina. Los percentiles del primer turno y de las 
 | [Conversación de 3 turnos por persona](memoria-70-20-usuarios-historial-32768-tres-turnos/README.md) | 70% | 20 / 32 | 32.768 | 60/60 | 494,0 s | 374,2 s | 1,05 tokens/s | 100,0% | 24 | 2.102,8 s | No cumple la referencia |
 | [Conversación de 3 turnos por persona](memoria-85-20-usuarios-historial-8192-tres-turnos/README.md) | 85% | 20 / 32 | 8.192 | 60/60 | 104,3 s | 12,7 s | 5,08 tokens/s | 33,1% | 0 | 440,8 s | No cumple la referencia |
 | [Conversación de 3 turnos por persona](memoria-85-20-usuarios-historial-32768-tres-turnos/README.md) | 85% | 20 / 32 | 32.768 | 60/60 | 793,4 s | 480,1 s | 0,53 tokens/s | 100,0% | 9 | 3.312,5 s | No cumple la referencia |
+
+## Comprobaciones del medidor de chat
+
+Estas pruebas pequeñas comprueban la captura de tiempos y la conservación de los mensajes. Sus respuestas tienen un límite de salida reducido; no se utilizan para decidir la memoria necesaria ni la fluidez del uso normal. Se conservan también sus errores y los casos que agotan ese límite.
+
+| Comprobación | Memoria | Usuarios | Turnos | Límite de salida | Peticiones sin error | Con texto visible | Finalizadas naturalmente | Tiempo |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| [Medidor: sin razonamiento](memoria-85-chat-comprobacion-medidor-sin-razonamiento/README.md) | 85% | 2 | 2 | 128 | 4/4 | 4/4 | 0/4 | 23,5 s |
+| [Medidor: modo predeterminado](memoria-85-chat-comprobacion-medidor-predeterminado/README.md) | 85% | 2 | 2 | 128 | 4/4 | 0/4 | 1/4 | 23,1 s |
 
 [Configuración y registros de esta campaña](configuracion-y-registros/metadata.json).
