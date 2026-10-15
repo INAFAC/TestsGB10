@@ -91,12 +91,13 @@ if plan['status']=='complete':
     for config in folders:
         c=read(config);measurement=config.with_name('mediciones.json')
         entries.append((c,read(measurement)['summary'] if measurement.exists() else {}))
-    def require(memory,users,tokens,turns,chat=False,mode=None):
+    def require(memory,users,tokens,turns,chat=False,mode=None,output_tokens=None):
         found=[(c,s) for c,s in entries if round(100*c['memory_fraction'])==memory and c['users']==users
                and c['input_tokens']==tokens and c.get('turns',3)==turns and c['id'].startswith('chat-')==chat
                and s.get('status') in ('complete','finished_with_errors','group_timeout')
-               and (mode is None or s.get('reasoning_mode')==mode)]
-        if not found:errors.append(f'Missing required test: {memory}% / {users} users / {tokens} input / {turns} turns / chat={chat} / {mode}')
+               and (mode is None or s.get('reasoning_mode')==mode)
+               and (output_tokens is None or c.get('output_tokens',512)==output_tokens)]
+        if not found:errors.append(f'Missing required test: {memory}% / {users} users / {tokens} input / {turns} turns / chat={chat} / {mode} / output={output_tokens}')
         return found
     for memory in (40,70,85):
         for tokens in (8192,32768):require(memory,20,tokens,3)
@@ -144,8 +145,19 @@ if plan['status']=='complete':
                 and candidate_rate>=base_rate*rule['followup_decode_p05_min_ratio'])
         if len(retained)==len(rule['loads_input_tokens']) and decisions.get('refinement_60',{}).get('required')!=(not all(retained)):
             errors.append('Decision about 60% disagrees with the predeclared performance rule')
-    for tokens in (8192,32768):require(selected,20,tokens,3,True,'disabled')
-    require(selected,20,8192,3,True,'server_default')
+    for tokens in (8192,32768):require(selected,20,tokens,3,True,'disabled',512)
+    require(selected,20,8192,3,True,'server_default',512)
+    output_followup=plan.get('chat_output_followup')
+    if output_followup:
+        for c,s in entries:
+            if (round(100*c['memory_fraction'])==selected and c['users']==20
+                    and s.get('kind')=='chat_recurrent' and c.get('output_tokens',512)==output_followup['initial_max_output_tokens']
+                    and s.get('all_turns_completed') and (s.get('visible_answers',0)<s['completed']
+                    or s.get('natural_completions',0)<s['completed'])):
+                repeated=require(selected,20,c['input_tokens'],c.get('turns',3),True,s['reasoning_mode'],output_followup['followup_max_output_tokens'])
+                if repeated and not any(other.get('seed')==c.get('seed') and other.get('think_seconds',30)==c.get('think_seconds',30)
+                                        and other['server_limit']==c['server_limit'] for other,summary in repeated):
+                    errors.append('Chat output-budget comparison changed other parameters: '+c['id'])
     proof=BASE/'configuracion-y-registros/verificacion-final.json'
     if not proof.exists():errors.append('Independent final runtime verification missing')
     else:

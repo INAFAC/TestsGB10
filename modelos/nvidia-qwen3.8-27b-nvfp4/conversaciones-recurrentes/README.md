@@ -36,6 +36,8 @@ Las decisiones entre etapas se documentarán con sus mediciones. No se presentar
 
 El control de chat usa mensajes ficticios en español y conserva las respuestas reales. Solicita hasta 512 tokens, permite terminar antes y distingue la primera salida del modelo de la primera respuesta visible. Se mide con razonamiento desactivado en ambos tamaños y con el modo predeterminado en 8.192 tokens. El tratamiento del razonamiento sigue la [documentación de vLLM](https://docs.vllm.ai/en/v0.22.0/features/reasoning_outputs/); se comprobará además el comportamiento de la versión instalada.
 
+Si un control principal de chat completa todas las peticiones sin errores de API, pero alguna respuesta llega al límite de 512 tokens o termina sin texto visible, se conservará esa prueba y se repetirá con hasta 2.048 tokens de salida. El resto de parámetros se mantendrá. Esto permite distinguir un límite de salida impuesto por la prueba de un problema de memoria; si tampoco termina con 2.048, se documentará esa limitación.
+
 ## Decisiones entre etapas
 
 **Se añade el 50% a la comparación de memoria.** Con 20 usuarios y 8.192 tokens iniciales, el 70% redujo la espera p95 de las continuaciones de 93,9 a 7,6 segundos, y los recálculos de 20 a cero. La velocidad p05 pasó de 3,14 a 5,51 tokens/s. Es una mejora importante, aunque todavía no cumple la referencia elegida de espera y velocidad.
@@ -70,6 +72,7 @@ Comparación directa de las pruebas terminadas al **70% de memoria**. Cada perso
 | 8.192 | [30](memoria-70-30-usuarios-historial-8192-tres-turnos/README.md) | 90/90 | 168,1 s | 15,0 s | 122,3 s | 4,21 tokens/s |
 | 32.768 | [10](memoria-70-10-usuarios-historial-32768-tres-turnos/README.md) | 30/30 | 265,1 s | 3,1 s | 99,6 s | 5,17 tokens/s |
 | 32.768 | [20](memoria-70-20-usuarios-historial-32768-tres-turnos/README.md) | 60/60 | 494,0 s | 374,2 s | 767,3 s | 1,05 tokens/s |
+| 32.768 | [30](memoria-70-30-usuarios-historial-32768-tres-turnos/README.md) | 90/90 | 1.129,2 s | 965,4 s | 1.613,1 s | 0,73 tokens/s |
 
 Una prueba puede cumplir la referencia de espera y quedar por debajo de la referencia de velocidad. Las cifras de ambas columnas permiten valorar ese equilibrio; la etiqueta general de referencia no sustituye esos tiempos.
 
@@ -107,6 +110,7 @@ Se publica una prueba cuando termina. Los percentiles del primer turno y de las 
 | [Conversación de 3 turnos por persona](memoria-70-10-usuarios-historial-8192-tres-turnos/README.md) | 70% | 10 / 32 | 8.192 | 30/30 | 50,4 s | 4,9 s | 7,57 tokens/s | 21,7% | 0 | 300,6 s | No cumple la referencia |
 | [Conversación de 3 turnos por persona](memoria-70-30-usuarios-historial-8192-tres-turnos/README.md) | 70% | 30 / 32 | 8.192 | 90/90 | 168,1 s | 15,0 s | 4,21 tokens/s | 63,9% | 0 | 551,5 s | No cumple la referencia |
 | [Conversación de 3 turnos por persona](memoria-70-10-usuarios-historial-32768-tres-turnos/README.md) | 70% | 10 / 32 | 32.768 | 30/30 | 265,1 s | 3,1 s | 5,17 tokens/s | 82,9% | 0 | 599,0 s | No cumple la referencia |
+| [Conversación de 3 turnos por persona](memoria-70-30-usuarios-historial-32768-tres-turnos/README.md) | 70% | 30 / 32 | 32.768 | 90/90 | 1.129,2 s | 965,4 s | 0,73 tokens/s | 100,0% | 70 | 4.289,5 s | No cumple la referencia |
 
 ## Comprobaciones del medidor de chat
 

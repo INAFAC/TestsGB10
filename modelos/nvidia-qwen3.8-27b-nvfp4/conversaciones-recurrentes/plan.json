@@ -148,5 +148,11 @@
     "followup_total_p95_max_ratio": 1.15,
     "followup_decode_p05_min_ratio": 0.85,
     "note": "Para conservar el rendimiento, ambas cargas deben completar todas las respuestas. En continuaciones, la espera p95 puede ser como máximo el mayor de 1,15 veces la referencia y la referencia más un segundo; el tiempo completo p95 no puede superar 1,15 veces la referencia; la velocidad p05 debe alcanzar al menos el 85% de la referencia. Es una tolerancia práctica elegida para decidir la siguiente prueba, no una prueba de significación estadística."
+  },
+  "chat_output_followup": {
+    "initial_max_output_tokens": 512,
+    "followup_max_output_tokens": 2048,
+    "condition": "Repetir un control principal de chat si todas sus peticiones terminaron sin error de API, pero alguna alcanzó el límite de salida o terminó sin texto visible. Mantener usuarios, historial inicial, turnos, pausas, semilla, memoria y modo de razonamiento; conservar también el resultado original de 512 tokens.",
+    "purpose": "Distinguir una respuesta cortada por el presupuesto de salida de un fallo de memoria o incapacidad del modelo para terminar. No aumentar indefinidamente el presupuesto si 2048 tampoco produce una respuesta visible terminada."
   }
 }
