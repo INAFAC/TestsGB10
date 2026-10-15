@@ -138,6 +138,9 @@ def main():
             if (folder/'historiales-reproducibles.json.gz').exists():lines+=['[Historiales finales comprimidos](historiales-reproducibles.json.gz): permiten continuar las mismas conversaciones en la siguiente etapa.','']
             if s.get('kind')=='chat_recurrent':
                 lines=[line.replace('Tiempo medio de respuesta completa','Tiempo medio hasta fin de petición').replace('| Respuesta completa |','| Fin de petición |') for line in lines]
+            if c['id'].startswith('chat-comprobacion-medidor-'):
+                lines[4]=f"**Comprobación del medidor de chat.** Peticiones sin error: **{len(good)}/{count}**. Esta prueba pequeña verifica la recogida de tiempos y la continuidad de los mensajes; no se utiliza para elegir la memoria ni para calificar la fluidez del uso normal."
+                lines=[line.replace('| No cumple |','| No se evalúa |').replace('| Cumple |','| No se evalúa |') for line in lines]
             (folder/'README.md').write_text('\n'.join(lines))
     (equipment/'inventario-originales.json').write_text(json.dumps(inventory,ensure_ascii=False,indent=2)+'\n')
     existing=(OUT/'README.md').read_text();existing=existing.split('<!-- resultados-inicio -->')[0].rstrip()
@@ -160,7 +163,17 @@ def main():
            '|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|']
     for r in rows:
         c=r['config'];s=r['summary']
+        if c['id'].startswith('chat-comprobacion-medidor-'):continue
         lines.append(f"| [{c['id']}]({r['folder']}/README.md) | {round(c['memory_fraction']*100)}% | {c['users']} / {c['server_limit']} | {n(c['input_tokens'],0)} | {r['done']}/{r['count']} | {n(r['cold95'])} s | {n(r['follow95'])} s | {n(r['decode05'],2)} tokens/s | {n(100*s['peak_kv_fraction'] if s.get('peak_kv_fraction') is not None else None)}% | {n(s.get('preemptions'),0)} | {n(s.get('duration_s'))} s | {r['label']} |")
+    checks=[r for r in rows if r['config']['id'].startswith('chat-comprobacion-medidor-')]
+    if checks:
+        lines+=['','## Comprobaciones del medidor de chat','',
+                'Estas pruebas pequeñas comprueban la captura de tiempos y la conservación de los mensajes. Sus respuestas tienen un límite de salida reducido; no se utilizan para decidir la memoria necesaria ni la fluidez del uso normal. Se conservan también sus errores y los casos que agotan ese límite.','',
+                '| Comprobación | Memoria | Usuarios | Turnos | Límite de salida | Peticiones sin error | Con texto visible | Finalizadas naturalmente | Tiempo |',
+                '|---|---:|---:|---:|---:|---:|---:|---:|---:|']
+        for r in checks:
+            c=r['config'];s=r['summary']
+            lines.append(f"| [{c['id']}]({r['folder']}/README.md) | {round(c['memory_fraction']*100)}% | {c['users']} | {c['turns']} | {c.get('output_tokens',512)} | {r['done']}/{r['count']} | {s.get('visible_answers',0)}/{r['count']} | {s.get('natural_completions',0)}/{r['count']} | {n(s.get('duration_s'))} s |")
     lines+=['','[Configuración y registros de esta campaña](configuracion-y-registros/metadata.json).','']
     (OUT/'README.md').write_text('\n'.join(lines))
     (OUT/'resumen.json').write_text(json.dumps(rows,ensure_ascii=False,indent=2)+'\n')

@@ -101,7 +101,32 @@
       "id": "seleccion-memoria-85",
       "fraction": 0.85,
       "server_limit": 32,
-      "cases": []
+      "cases": [
+        {
+          "id": "20-usuarios-historial-8192-tres-turnos",
+          "exit_code": 0,
+          "duration_seconds": 445.0572316960024,
+          "timed_out": false
+        }
+      ],
+      "command": [
+        "vllm",
+        "serve",
+        "nvidia/Qwen3.8-27B-NVFP4",
+        "--enable-auto-tool-choice",
+        "--tool-call-parser",
+        "qwen3_coder",
+        "--reasoning-parser",
+        "qwen3",
+        "--gpu-memory-utilization",
+        "0.85",
+        "--max-num-seqs",
+        "32",
+        "--max-model-len",
+        "262144"
+      ],
+      "ready": true,
+      "startup_seconds": 401.343170668988
     }
   ]
 }
