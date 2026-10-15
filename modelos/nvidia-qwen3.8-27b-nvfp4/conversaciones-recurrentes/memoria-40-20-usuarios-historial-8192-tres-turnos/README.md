@@ -22,6 +22,8 @@ La referencia requiere todas las respuestas completas, espera p95 de hasta 5 s y
 
 | Medida | Resultado |
 |---|---|
+| Espera media al primer texto | 38,8 s |
+| Tiempo medio de respuesta completa | 165,3 s |
 | Presupuesto configurado | 40% |
 | Pico del motor / GB10 | 36,6% |
 | Pico del sistema / GB10 | 45,1% |
@@ -34,6 +36,33 @@ La referencia requiere todas las respuestas completas, espera p95 de hasta 5 s y
 | Tokens/s de todo el grupo, incluyendo pausas | 51,50 |
 | Suma de tiempos individuales | 9.918,1 s |
 | Tiempo total de la prueba, incluyendo pausas | 596,5 s |
+
+## Resumen por persona
+
+| Persona | Turnos sin error | Espera media al primer texto | Tiempo medio de petición | Tiempo de sesión, incluidas pausas | Tokens/s de sesión |
+|---|---:|---:|---:|---:|---:|
+| 1 | 3/3 | 68,7 s | 178,7 s | 596,2 s | 2,58 |
+| 2 | 3/3 | 14,5 s | 161,4 s | 544,2 s | 2,82 |
+| 3 | 3/3 | 45,8 s | 163,6 s | 550,7 s | 2,79 |
+| 4 | 3/3 | 72,7 s | 172,6 s | 577,8 s | 2,66 |
+| 5 | 3/3 | 18,4 s | 161,7 s | 545,1 s | 2,82 |
+| 6 | 3/3 | 7,9 s | 159,2 s | 537,7 s | 2,86 |
+| 7 | 3/3 | 60,8 s | 172,9 s | 578,7 s | 2,65 |
+| 8 | 3/3 | 35,4 s | 162,8 s | 548,3 s | 2,80 |
+| 9 | 3/3 | 5,6 s | 154,2 s | 522,7 s | 2,94 |
+| 10 | 3/3 | 4,4 s | 151,3 s | 513,9 s | 2,99 |
+| 11 | 3/3 | 71,7 s | 176,4 s | 589,1 s | 2,61 |
+| 12 | 3/3 | 52,4 s | 164,8 s | 554,5 s | 2,77 |
+| 13 | 3/3 | 63,9 s | 177,1 s | 591,4 s | 2,60 |
+| 14 | 3/3 | 22,6 s | 162,0 s | 545,9 s | 2,81 |
+| 15 | 3/3 | 10,5 s | 160,9 s | 542,8 s | 2,83 |
+| 16 | 3/3 | 26,7 s | 162,2 s | 546,7 s | 2,81 |
+| 17 | 3/3 | 64,5 s | 173,3 s | 579,9 s | 2,65 |
+| 18 | 3/3 | 58,1 s | 165,3 s | 555,9 s | 2,76 |
+| 19 | 3/3 | 31,1 s | 162,5 s | 547,5 s | 2,81 |
+| 20 | 3/3 | 40,6 s | 163,0 s | 549,0 s | 2,80 |
+
+Las medias incluyen las peticiones sin error. El tiempo de sesión va desde el primer envío de esa persona hasta su última petición registrada, incluyendo las pausas. Sus tokens/s cuentan solo las salidas completadas y ese tiempo completo. En caso de fallo, no representan los turnos que no llegaron a ejecutarse.
 
 ## Cada persona y cada mensaje
 

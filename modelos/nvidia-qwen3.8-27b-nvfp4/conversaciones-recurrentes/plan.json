@@ -51,6 +51,10 @@
     {
       "id": "ajuste-memoria",
       "description": "Probar50% si70% mejora de forma material la continuación respecto al40%; probar60% si50% no conserva el rendimiento del70%. Repetir las dos cargas iniciales con20usuarios y tres turnos."
+    },
+    {
+      "id": "control-chat",
+      "description": "Control con la API de chat, mensajes ficticios legibles y respuestas reales conservadas. Comparar 20 usuarios con aproximadamente8192 y32768 tokens iniciales, tres turnos y razonamiento desactivado; añadir20usuarios con8192 tokens en modo de razonamiento predeterminado. Separar primer texto del modelo de primera respuesta visible y finalización natural."
     }
   ],
   "publication_policy": "Un commit por prueba completa o conjunto de cambios de documentación. Sin publicar snapshots parciales de cada respuesta.",

@@ -17,7 +17,7 @@ Para este Qwen, el máximo es **262.144 tokens por conversación, contando entra
 
 Al reducir la memoria puede ser necesario reducir también el límite configurado. Llegar a 131.072 tokens con ese límite reducido no demuestra que se pueda llegar al máximo del modelo. El informe distingue ambos casos.
 
-Estas pruebas fuerzan una longitud de respuesta para poder comparar el rendimiento. “Terminó” comprueba que se entregó esa longitud; no evalúa si el contenido de una respuesta real quedaría bien concluido.
+Las pruebas de carga fuerzan una longitud de respuesta para poder comparar el rendimiento. “Terminó” comprueba que se entregó esa longitud; no evalúa si el contenido de una respuesta real quedaría bien concluido.
 
 ## Conversaciones enviadas y conversaciones a la vez
 
@@ -65,13 +65,13 @@ Las medias individuales y los mayores tiempos de espera y respuesta del resumen 
 
 ## Cómo se hicieron
 
-Las pruebas se ejecutan directamente contra la API del modelo, sin Open WebUI. Usan entradas sintéticas de tamaño conocido, sin conversaciones personales. Se pide una salida fija con `ignore_eos=true` y temperatura cero para comparar longitudes iguales.
+Las pruebas se ejecutan directamente contra la API del modelo, sin Open WebUI. Las pruebas de carga usan entradas sintéticas de tamaño conocido, sin conversaciones personales. Se pide una salida fija con `ignore_eos=true` y temperatura cero para comparar longitudes iguales.
 
 Se ejecuta un modelo a la vez. Esta batería compara el presupuesto de memoria, el límite de solicitudes activas y el contexto configurado, manteniendo la cuantización de los pesos y el resto de opciones del servidor. Compartir la GPU con otros modelos es un escenario distinto que no se ha medido aquí.
 
 Cada fila corresponde a una ejecución de la prueba; las medias se calculan entre sus conversaciones, no entre muchas repeticiones del mismo ensayo. Las primeras mediciones conservadas permiten contrastar parte del 40%. Diferencias pequeñas de tiempo pueden variar entre ejecuciones.
 
-Las pruebas de historial nuevo usan entradas independientes. Las de reutilización repiten el mismo historial y después lo amplían. Un historial que permanezca en caché puede empezar a responder mucho antes. La reutilización se midió con una sola conversación a la vez. Sus tiempos no garantizan la misma espera si otros historiales compiten por la caché y desplazan información guardada.
+Las pruebas de historial nuevo usan entradas independientes. Las de reutilización repiten el mismo historial y después lo amplían. Un historial que permanezca en caché puede empezar a responder mucho antes. En la batería inicial, la reutilización se midió con una sola conversación a la vez. Sus tiempos no garantizan la misma espera si otros historiales compiten por la caché y desplazan información guardada.
 
 Se mide la caché aproximadamente cada segundo y la memoria/temperatura GPU aproximadamente cada cinco segundos. Un pico más breve puede pasar desapercibido. Los tiempos individuales empiezan al enviar cada petición; el tiempo del grupo también incluye preparación y medición.
 
@@ -84,6 +84,14 @@ Los arranques fallidos, rechazos e interrupciones se conservan como resultados. 
 “Pendiente” significa que la prueba sigue en curso y todavía no existe esa medida; por ejemplo, aún no ha terminado ninguna respuesta para calcular su tiempo medio.
 
 Los resultados describen las cargas y la configuración probadas. No evalúan la calidad del texto ni estabilidad durante días. El mínimo probado que funciona no tiene por qué ser el mínimo exacto posible.
+
+## Conversaciones recurrentes y controles de chat
+
+La campaña de [conversaciones recurrentes](modelos/nvidia-qwen3.8-27b-nvfp4/conversaciones-recurrentes/README.md) conserva la respuesta real de cada turno y la incorpora al siguiente. Cada persona espera 30 segundos después de recibir su respuesta antes de enviar otro mensaje. Los usuarios comienzan juntos, pero después siguen su propio ritmo. Se separa el primer turno de las continuaciones, porque reutilizar historiales cambia el trabajo que debe hacer el motor.
+
+En las pruebas de carga se siguen pidiendo exactamente 512 tokens por respuesta. Los controles identificados como **chat** utilizan mensajes ficticios en español, permiten que la respuesta termine antes del límite y muestran si terminó naturalmente o agotó los tokens de salida. Recibir una petición sin error no demuestra que su respuesta haya quedado terminada; por eso se muestran ambas medidas.
+
+En modelos con razonamiento, el primer texto del modelo puede corresponder al razonamiento previo a la respuesta visible. Los controles de chat distinguen esas dos esperas y registran si se desactivó el razonamiento o se utilizó la configuración predeterminada. Los resultados no califican la calidad del contenido.
 
 ## Dónde están los datos
 

@@ -61,6 +61,28 @@
           "input_tokens": 32768,
           "turns": 3,
           "seed": 20032768
+        },
+        {
+          "id": "chat-comprobacion-medidor-sin-razonamiento",
+          "users": 2,
+          "input_tokens": 256,
+          "output_tokens": 128,
+          "turns": 2,
+          "think_seconds": 1,
+          "seed": 99200256,
+          "timeout": 900,
+          "request_timeout": 300
+        },
+        {
+          "id": "chat-comprobacion-medidor-predeterminado",
+          "users": 2,
+          "input_tokens": 256,
+          "output_tokens": 128,
+          "turns": 2,
+          "think_seconds": 1,
+          "seed": 99200256,
+          "timeout": 900,
+          "request_timeout": 300
         }
       ]
     }

@@ -24,9 +24,26 @@ for config in folders:
     c=read(config);path=config.with_name('mediciones.json')
     if not path.exists():continue
     d=read(path);s=d['summary'];checked+=1
-    if s.get('kind')!='recurrent':continue
     source=BASE/'configuracion-y-registros/scripts/versions'/(s['script_sha256']+'.py')
     if not source.exists() or hashlib.sha256(source.read_bytes()).hexdigest()!=s['script_sha256']:errors.append('Executed probe missing: '+str(path))
+    if s.get('kind')=='chat_recurrent':
+        checkpoint=config.with_name('historiales-reproducibles.json.gz')
+        state=json.loads(gzip.decompress(checkpoint.read_bytes())) if checkpoint.exists() else None
+        if state is None:errors.append('Chat transcript missing: '+str(path));continue
+        for user,conversation in state['histories'].items():
+            messages=list(conversation['initial_messages']);previous=None
+            rs=sorted([r for r in d['requests'] if r['user_id']==int(user)],key=lambda r:r['turn'])
+            for r,exchange in zip(rs,conversation['exchanges']):
+                if r['turn']>1:messages.append(exchange['user_message'])
+                digest=hashlib.sha256(json.dumps(messages,ensure_ascii=False,separators=(',',':')).encode()).hexdigest()
+                if digest!=r['prompt_sha256']:errors.append('Chat history mismatch: '+str(path))
+                if exchange['assistant_message']!=r['assistant_message']:errors.append('Chat reply mismatch: '+str(path))
+                if previous and r['started_at_s']<previous['finished_at_s']+s['think_seconds']-.02:errors.append('Chat pause mismatch: '+str(path))
+                if r['ok']:messages.append(r['assistant_message'])
+                if r.get('visible_ttft_s') is not None and not 0<=r['visible_ttft_s']<=r['total_s']:errors.append('Chat visible latency mismatch: '+str(path))
+                previous=r
+            if len(rs)!=len(conversation['exchanges']) or messages!=conversation['final_messages']:errors.append('Chat transcript incomplete: '+str(path))
+        continue
     parent=None
     if s.get('parent_state'):
         target=state_paths.get(s['parent_state'])
@@ -59,6 +76,56 @@ for config in folders:
 plan=read(BASE/'plan.json')
 if plan['status']=='complete':
     if meta.get('restore_status')!='healthy' or meta.get('state')!='stopped':errors.append('Restoration not verified')
-    if not read(BASE/'configuracion-y-registros/queue.json').get('finished'):errors.append('Queue still open')
+    queue=read(BASE/'configuracion-y-registros/queue.json')
+    if not queue.get('finished'):errors.append('Queue still open')
+    recorded={p['id']:p for p in meta['profiles']}
+    for profile in queue['profiles']:
+        rec=recorded.get(profile['id'])
+        if rec is None:errors.append('Queued profile never attempted: '+profile['id']);continue
+        if not rec.get('ready'):
+            if rec.get('state')!='startup_failed':errors.append('Unresolved startup: '+profile['id'])
+            continue
+        if {c['id'] for c in profile['cases']}!={c['id'] for c in rec['cases']}:errors.append('Queued tests missing: '+profile['id'])
+    entries=[]
+    for config in folders:
+        c=read(config);measurement=config.with_name('mediciones.json')
+        entries.append((c,read(measurement)['summary'] if measurement.exists() else {}))
+    def require(memory,users,tokens,turns,chat=False,mode=None):
+        found=[(c,s) for c,s in entries if round(100*c['memory_fraction'])==memory and c['users']==users
+               and c['input_tokens']==tokens and c.get('turns',3)==turns and c['id'].startswith('chat-')==chat
+               and (mode is None or s.get('reasoning_mode')==mode)]
+        if not found:errors.append(f'Missing required test: {memory}% / {users} users / {tokens} input / {turns} turns / chat={chat} / {mode}')
+        return found
+    for memory in (40,70,85):
+        for tokens in (8192,32768):require(memory,20,tokens,3)
+    decisions=plan.get('decisions',{})
+    selected=decisions.get('selected_memory_percent')
+    if selected not in (40,50,60,70,85):errors.append('Selected memory not documented')
+    if not decisions.get('selection_evidence'):errors.append('Selection evidence missing')
+    for users in (10,30):
+        for tokens in (8192,32768):require(selected,users,tokens,3)
+    for users in (10,20,30):
+        growth=require(selected,users,65536,2)
+        if users==20 or any(s.get('followups_reference_fluent') for c,s in growth):require(selected,users,131072,2)
+    require(selected,20,260864,2)
+    for memory in (50,60):
+        decision=decisions.get('refinement_'+str(memory),{})
+        if decision.get('required') is True:
+            for tokens in (8192,32768):require(memory,20,tokens,3)
+        elif decision.get('required') is not False or not decision.get('reason'):
+            errors.append('Memory refinement not resolved: '+str(memory))
+    for tokens in (8192,32768):require(selected,20,tokens,3,True,'disabled')
+    require(selected,20,8192,3,True,'server_default')
+    proof=BASE/'configuracion-y-registros/verificacion-final.json'
+    if not proof.exists():errors.append('Independent final runtime verification missing')
+    else:
+        verification=read(proof)
+        if not (verification.get('health_http_status')==200 and verification.get('command')==meta['original_command']
+                and verification.get('image_id')==meta['image_id'] and verification.get('compose_sha256')==meta['compose_sha256']
+                and verification.get('max_model_len')==262144 and verification.get('generation_ok') is True
+                and verification.get('requests')=={'num_requests_running':0,'num_requests_waiting':0}):
+            errors.append('Independent final runtime verification failed')
+    for p in [ROOT/'README.md',BASE.parent/'README.md',BASE/'README.md']:
+        if 'Se están realizando nuevas pruebas' in p.read_text():errors.append('Temporary notice remains: '+str(p))
 if errors:raise SystemExit('\n'.join(errors))
 print(f'Validated {checked} recurrent cases, actual output reuse, pause intervals, checkpoints and source hashes.')

@@ -277,4 +277,9 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    import sys
+    if '--case-id' in sys.argv and sys.argv[sys.argv.index('--case-id')+1].startswith('chat-'):
+        import runpy
+        runpy.run_path(str(pathlib.Path(__file__).with_name('chat_probe.py')),run_name='__main__')
+    else:
+        main()

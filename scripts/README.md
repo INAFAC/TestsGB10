@@ -11,6 +11,12 @@
 | `import_measurements.py` | Organiza las mediciones de esta campaña por modelo, memoria y prueba. |
 | `build_report.py` | Genera los informes a partir de los datos guardados junto a cada prueba. No necesita conectarse al GB10. |
 | `validate_report.py` | Comprueba tokens, tiempos, enlaces y conservación de los archivos originales. Si la campaña se marca como terminada, verifica también que todos los bloques previstos estén resueltos y exista una comprobación final de restauración. |
+| `recurrent_probe.py` | Mantiene varios usuarios durante varios turnos y reutiliza los tokens realmente generados en sus respuestas. |
+| `chat_probe.py` | Control con mensajes de chat ficticios: conserva las respuestas y distingue razonamiento, texto visible y finalización natural. |
+| `recurrent_campaign.py` | Ejecuta la cola de configuraciones temporales de conversaciones recurrentes y restaura el servicio capturado al comenzar. |
+| `recurrent_report.py` | Publica únicamente las pruebas recurrentes terminadas, con sus tablas, registros sanitizados y huellas de procedencia. |
+| `validate_recurrent.py` | Verifica la continuidad real de las conversaciones y, al cerrar la campaña, su cobertura y restauración. |
+| `validate_new_public_files.py` | Revisa los archivos nuevos o modificados antes de publicar para detectar posibles datos sensibles; complementa la revisión manual. |
 | `sync_results.py` | Descarga la campaña en curso, actualiza los informes y puede publicarlos en GitHub. |
 
 ## Medir una configuración ya desplegada
@@ -36,3 +42,29 @@ python3 scripts/validate_report.py
 ```
 
 El generador lee las carpetas de `modelos/`. Cada prueba contiene la configuración que describe qué se pidió y las mediciones originales que muestran qué ocurrió. Para otro modelo, se utiliza otra carpeta de modelo; no se mezclan sus resultados con los de Qwen.
+
+## Medir varias rondas de conversación
+
+Ejemplo para ejecutar en el GB10 contra un servidor **ya configurado** al 70% y con límite de 32 solicitudes activas:
+
+```bash
+python3 recurrent_probe.py --model nvidia/Qwen3.8-27B-NVFP4 \
+  --concurrency 20 --server-max-seqs 32 --memory-fraction 0.7 \
+  --input-tokens 8192 --output-tokens 512 --turns 3 \
+  --think-seconds 30 --new-message-tokens 256 \
+  --seed 20008192 --case-id 20-usuarios-historial-8192-tres-turnos \
+  --result /tmp/prueba-recurrente/mediciones.json \
+  --state-output /tmp/prueba-recurrente/historiales.json.gz
+```
+
+Cada persona conserva su propia conversación. La prueba guarda mediciones parciales mientras se ejecuta, pero el publicador solo incorpora un resultado cuando el controlador registra su finalización. El archivo comprimido permite ampliar esos mismos historiales mediante `--parent-state` en otra prueba.
+
+Para el control con mensajes legibles se utiliza `chat_probe.py` con los mismos argumentos. Un identificador que termine en `-sin-razonamiento` desactiva el razonamiento; en otro caso se mantiene el modo predeterminado del servidor. El tamaño inicial es aproximado, los turnos siguientes incluyen los mensajes reales y cada respuesta puede terminar antes del límite de salida. Los tokens enviados y recibidos se registran en cada petición.
+
+## Publicación de las conversaciones recurrentes
+
+La [cola publicada](../modelos/nvidia-qwen3.8-27b-nvfp4/conversaciones-recurrentes/configuracion-y-registros/queue.json) y el [plan](../modelos/nvidia-qwen3.8-27b-nvfp4/conversaciones-recurrentes/plan.json) describen los parámetros utilizados. El controlador conserva el comando del servicio al comenzar y lo restaura al cerrar la cola. Mientras la cola permanece abierta, espera las decisiones de la siguiente etapa.
+
+`recurrent_report.py` lee los originales de una caché local privada. La opción `--sync --host ALIAS_SSH` los descarga del GB10; `--publish` añade el commit y lo sube después de generar y validar los informes. El alias SSH se configura localmente y no se guarda en el repositorio. Los originales completos permanecen fuera de GitHub; los registros publicados sustituyen rutas personales y direcciones privadas y conservan sus huellas en el inventario.
+
+Las versiones archivadas bajo `configuracion-y-registros/scripts/versions/` permiten identificar el código ejecutado por cada prueba. Una corrección posterior de las herramientas no cambia el código ni los resultados de las pruebas anteriores.

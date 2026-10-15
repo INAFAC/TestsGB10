@@ -1,0 +1,10 @@
+{
+  "id": "20-usuarios-historial-32768-tres-turnos",
+  "users": 20,
+  "input_tokens": 32768,
+  "turns": 3,
+  "seed": 20032768,
+  "memory_fraction": 0.4,
+  "server_limit": 32,
+  "profile_id": "seleccion-memoria-40"
+}

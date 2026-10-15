@@ -201,7 +201,7 @@ def main():
         valid = [s for s in samples if 'error' not in s]
         good = [r for r in captured_results if r['ok']]
         if status=='complete' and len(captured_results)<count:status='finished_with_errors'
-        summary = {'kind': 'chat_recurrent', 'api': '/v1/chat/completions', 'reasoning_mode': 'server_default' if thinking else 'disabled', 'forced_output_length': False, 'case_id': a.case_id, 'turns': a.turns, 'think_seconds': a.think_seconds, 'new_message_tokens': a.new_message_tokens, 'parent_state': a.parent_state, 'status': status, 'started_utc': started_utc, 'script_sha256': script_sha256, 'model': a.model, 'concurrency': a.concurrency, 'num_requests': count,
+        summary = {'kind': 'chat_recurrent', 'api': '/v1/chat/completions', 'reasoning_mode': 'server_default' if thinking else 'disabled', 'forced_output_length': False, 'case_id': a.case_id, 'turns': a.turns, 'think_seconds': a.think_seconds, 'new_message_tokens': None, 'parent_state': a.parent_state, 'status': status, 'started_utc': started_utc, 'script_sha256': script_sha256, 'model': a.model, 'concurrency': a.concurrency, 'num_requests': count,
                    'server_max_num_seqs': a.server_max_seqs, 'memory_fraction': a.memory_fraction,
                    'input_tokens': a.input_tokens, 'output_tokens': a.output_tokens,
                    'seed': a.seed, 'max_model_len': model_info.get('max_model_len'),
@@ -251,7 +251,7 @@ def main():
             row['visible_ttft_p95_s']=quantile([r.get('visible_ttft_s') for r in rs],.95)
             row['visible_answers']=sum(r['has_visible_answer'] for r in rs)
             row['natural_completions']=sum(r['naturally_finished'] for r in rs)
-            row['reference_fluent']=len(rs)==a.concurrency and row['visible_answers']==a.concurrency and row['visible_ttft_p95_s'] is not None and row['visible_ttft_p95_s']<=5 and row['ttft_p95_s'] is not None and row['ttft_p95_s']<=5 and row['decode_p05_tokens_s'] is not None and row['decode_p05_tokens_s']>=10
+            row['reference_fluent']=len(rs)==a.concurrency and row['visible_answers']==a.concurrency and row['natural_completions']==a.concurrency and row['visible_ttft_p95_s'] is not None and row['visible_ttft_p95_s']<=5 and row['ttft_p95_s'] is not None and row['ttft_p95_s']<=5 and row['decode_p05_tokens_s'] is not None and row['decode_p05_tokens_s']>=10
             per_turn.append(row)
         summary['visible_answers']=sum(r.get('has_visible_answer',False) for r in good)
         summary['natural_completions']=sum(r.get('naturally_finished',False) for r in good)

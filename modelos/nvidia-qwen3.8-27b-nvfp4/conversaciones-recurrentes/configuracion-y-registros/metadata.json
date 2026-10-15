@@ -31,6 +31,12 @@
           "exit_code": 0,
           "duration_seconds": 600.0551671930007,
           "timed_out": false
+        },
+        {
+          "id": "20-usuarios-historial-32768-tres-turnos",
+          "exit_code": 0,
+          "duration_seconds": 2120.1926944389998,
+          "timed_out": false
         }
       ],
       "command": [
@@ -50,7 +56,14 @@
         "262144"
       ],
       "ready": true,
-      "startup_seconds": 376.0006231319858
+      "startup_seconds": 376.0006231319858,
+      "state": "complete"
+    },
+    {
+      "id": "seleccion-memoria-70",
+      "fraction": 0.7,
+      "server_limit": 32,
+      "cases": []
     }
   ]
 }
