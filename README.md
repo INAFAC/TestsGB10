@@ -2,7 +2,7 @@
 
 Resultados para decidir cuánta memoria reservar y cuántas conversaciones puede atender cada modelo, incluyendo historiales cercanos a su límite.
 
-**Estado:** pruebas terminadas y configuración original restaurada.
+**Se están realizando nuevas pruebas de conversaciones recurrentes con 10, 20 y 30 usuarios.**
 
 **Cada prueba indica el límite de solicitudes activas impuesto al servidor.** Ese límite debe distinguirse de la capacidad del GB10.
 

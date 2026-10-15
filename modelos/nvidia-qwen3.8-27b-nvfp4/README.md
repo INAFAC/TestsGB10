@@ -6,7 +6,7 @@
 
 **Modelo exacto:** `nvidia/Qwen3.8-27B-NVFP4`.
 
-**Estado:** pruebas terminadas. Configuración original restaurada: 40% de memoria, 4 solicitudes activas como límite y 262.144 tokens por conversación.
+**Se están realizando nuevas pruebas de conversaciones recurrentes con 10, 20 y 30 usuarios.**
 
 **Máximo por conversación: 262.144 tokens, sumando historial y respuesta.** La memoria asignada puede obligar a configurar un límite menor.
 
@@ -25,6 +25,9 @@
 - **70% de memoria:** **Sí:** 2/2 completadas con 262.144 tokens y toda la respuesta solicitada. Tiempo del grupo: 722,3 s. 1 respuesta a la vez; cola máxima 1; 1 recálculo. [Ver esta prueba](memoria-70-por-ciento/2026-10-14-2-conversaciones-hasta-2-a-la-vez-262016-entrada-128-respuesta-servidor-4/README.md).
 - **85% de memoria:** **Sí:** 4/4 completadas con 262.144 tokens y toda la respuesta solicitada. Tiempo del grupo: 1.557,8 s. 1 respuesta a la vez; cola máxima 3. [Ver esta prueba](memoria-85-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-262016-entrada-128-respuesta-servidor-4-comparacion-adicional-espera-ampliada/README.md).
 - **92% de memoria:** **Sí:** 4/4 completadas con 262.144 tokens y toda la respuesta solicitada. Tiempo del grupo: 1.540,7 s. 1 respuesta a la vez; cola máxima 3. [Ver esta prueba](memoria-92-por-ciento/2026-10-14-4-conversaciones-hasta-4-a-la-vez-262016-entrada-128-respuesta-servidor-4-comparacion-adicional-espera-ampliada/README.md).
+
+[Pruebas de conversaciones recurrentes con varios usuarios](conversaciones-recurrentes/README.md).
+
 
 ## Qué configuración elegir
 

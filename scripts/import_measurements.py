@@ -136,7 +136,9 @@ def main():
         'modelo':DEFAULT_MODEL,'contexto_maximo_del_modelo':262144,'memoria_total_gib':121.63,
         'pesos_del_modelo_gib':19.95,'imagen':'nvcr.io/nvidia/vllm:26.09-py3',
         'version_vllm':'0.29.0+5013de39.dev','revision_modelo':'482ca0f3832238542f8f5295dde86b5f22711d80',
-        'configuracion_a_restaurar':{'memoria_porcentaje':40,'limite_servidor':4,'contexto_maximo':262144}})
+        'concurrencia':'Depende de cada prueba; consultar limite_servidor en la configuración de cada ejecución.',
+        'memoria_asignada':'Depende de cada prueba.',
+        'restauracion':'Cada campaña registra y restaura la configuración encontrada al empezar; no es una característica fija del equipo.'})
     # A running test can produce its log before its first JSON snapshot. Once
     # both exist, keep that log beside the test and remove its earlier archive
     # copy only if it is still exactly the file we previously generated.

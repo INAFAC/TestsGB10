@@ -1,0 +1,58 @@
+{
+  "status": "running",
+  "started_date": "2026-10-15",
+  "model": "nvidia/Qwen3.8-27B-NVFP4",
+  "server_limit": 32,
+  "output_tokens": 512,
+  "think_time_seconds": 30,
+  "initial_users": 20,
+  "initial_histories": [
+    8192,
+    32768
+  ],
+  "initial_memory_percentages": [
+    40,
+    70,
+    85
+  ],
+  "initial_turns": 3,
+  "comparison_users": [
+    10,
+    30
+  ],
+  "growth_histories": [
+    65536,
+    131072
+  ],
+  "growth_turns": 2,
+  "maximum_context_verification_users": 20,
+  "maximum_context_first_input": 260864,
+  "maximum_context_turns": 2,
+  "new_message_tokens": 256,
+  "reference_ttft_p95_seconds": 5,
+  "reference_decode_p05_tokens_per_second": 10,
+  "stages": [
+    {
+      "id": "seleccion-memoria",
+      "description": "20 usuarios, historiales de 8192 y 32768 tokens, tres turnos por usuario; 40%,70%,85%."
+    },
+    {
+      "id": "comparacion-usuarios",
+      "description": "10 y 30 usuarios con los dos historiales y tres turnos, en el presupuesto seleccionado con los resultados anteriores."
+    },
+    {
+      "id": "crecimiento",
+      "description": "10,20,30 usuarios: 65536 tokens y dos turnos. Continuar a131072 donde se mantenga la referencia de fluidez; medir131072 con20 usuarios en cualquier caso para caracterizar la degradación."
+    },
+    {
+      "id": "contexto-maximo",
+      "description": "20 usuarios, dos turnos:260864+512 y261632+512. Verificar todas las respuestas hasta262144; conservar los fallos si los hay."
+    },
+    {
+      "id": "ajuste-memoria",
+      "description": "Probar50% si70% mejora de forma material la continuación respecto al40%; probar60% si50% no conserva el rendimiento del70%. Repetir las dos cargas iniciales con20usuarios y tres turnos."
+    }
+  ],
+  "publication_policy": "Un commit por prueba completa o conjunto de cambios de documentación. Sin publicar snapshots parciales de cada respuesta.",
+  "limits_note": "La concurrencia depende de cada prueba. Se comprueba y restaura la configuración encontrada antes de esta campaña."
+}

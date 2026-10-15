@@ -8,6 +8,10 @@ import statistics
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 MODELS=ROOT/'modelos'
 
+def recurrent_notice():
+    active=any(read(p).get('status')=='running' for p in MODELS.glob('*/conversaciones-recurrentes/plan.json'))
+    return '**Se están realizando nuevas pruebas de conversaciones recurrentes con 10, 20 y 30 usuarios.**' if active else ''
+
 def number(value,digits=1):
     return 'No medido' if value is None else f'{value:,.{digits}f}'.replace(',','@').replace('.',',').replace('@','.')
 def integer(value):return '—' if value is None else number(value,0)
@@ -296,7 +300,7 @@ def main():
         lines=['# '+model.split('/')[-1],'','[Volver al inicio](../../README.md) · [Cómo leer las medidas](../../GUIA-DE-LECTURA.md)','',
                '[Elegir configuración](#qué-configuración-elegir) · [Todas las pruebas](#todas-las-pruebas) · [Cobertura de la batería](#estado-de-la-batería-prevista)','',
                f'**Modelo exacto:** `{model}`.','',
-               '**Estado:** '+(f"pruebas terminadas. Configuración original restaurada: {plan['restore_memory_percent']}% de memoria, {plan['restore_max_num_seqs']} solicitudes activas como límite y {integer(plan['restore_max_model_len'])} tokens por conversación." if complete else 'pruebas en curso. Los resultados se actualizan a medida que terminan.'),'',
+               recurrent_notice(),'',
                f'**Máximo por conversación: {integer(maximum_model)} tokens, sumando historial y respuesta.** '
                'La memoria asignada puede obligar a configurar un límite menor.','',
                concurrency_note,'',
@@ -324,6 +328,7 @@ def main():
         previous=(model_dir/'README.md').read_text() if (model_dir/'README.md').exists() else ''
         match=re.search(r'<!-- interpretacion-inicio -->\n(.*?)\n<!-- interpretacion-fin -->',previous,re.S)
         commentary=match.group(1) if match else 'Las recomendaciones se completarán al terminar las comparaciones de memoria, concurrencia e historiales reutilizados.'
+        lines += (['', '[Pruebas de conversaciones recurrentes con varios usuarios](conversaciones-recurrentes/README.md).', ''] if (model_dir/'conversaciones-recurrentes/README.md').exists() else [])
         lines += ['', '## Qué configuración elegir','', '<!-- interpretacion-inicio -->',commentary,'<!-- interpretacion-fin -->','',
                   '## Todas las pruebas','', 'Abre el nombre de una prueba para ver cada conversación, sus tiempos, los tokens recibidos y sus registros.','']
         lines += report_tables(tests,model_dir)
@@ -342,7 +347,7 @@ def main():
         model_summaries.append((model,model_dir,maximum_model,successful,len(tests),complete))
     lines=['# Pruebas de modelos en el GB10','',
            'Resultados para decidir cuánta memoria reservar y cuántas conversaciones puede atender cada modelo, incluyendo historiales cercanos a su límite.','',
-           '**Estado:** '+('pruebas terminadas y configuración original restaurada.' if model_summaries and all(m[-1] for m in model_summaries) else 'pruebas en curso; se publican tanto los éxitos como los fallos.'),'',
+           recurrent_notice(),'',
            ('**Límite actual de las pruebas publicadas: cuatro solicitudes activas, impuesto por configuración.** Observar un máximo de cuatro no demuestra que el GB10 no pueda con más.' if observed_limits=={4} else '**Cada prueba indica el límite de solicitudes activas impuesto al servidor.** Ese límite debe distinguirse de la capacidad del GB10.'),'',
            '## Resultados por modelo','', '| Modelo | Máximo por conversación | Informe |','|---|---:|---|']
     for model,folder,limit,good,total,complete in model_summaries:

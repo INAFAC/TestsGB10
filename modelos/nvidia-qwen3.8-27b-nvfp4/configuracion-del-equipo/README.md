@@ -2,6 +2,8 @@
 
 [Volver a los resultados del modelo](../README.md)
 
+**La concurrencia y el presupuesto de memoria dependen de cada prueba.** El GB10 no tiene un límite fijo de cuatro conversaciones. Cada resultado indica el límite configurado del servidor y el número de solicitudes enviadas.
+
 Estos archivos permiten verificar con qué equipo y parámetros se hizo cada prueba. Los resultados y las explicaciones de cada conversación están en las carpetas de memoria del modelo.
 
 - [Equipo y modelo](equipo.json): memoria total, tamaño de los pesos, imagen de vLLM y límite del modelo.
@@ -14,9 +16,9 @@ Estos archivos permiten verificar con qué equipo y parámetros se hizo cada pru
 
 Durante el cambio de orden de las pruebas, después del 30%, se interrumpió una recreación de Docker. El primer intento de restauración coincidió con ella. Se recuperó ejecutando el Compose original y restituyendo el nombre del contenedor, y después se verificaron la configuración del 40% y su disponibilidad. Las cuatro pruebas al 30% ya habían terminado. Esta incidencia de coordinación se conserva en los registros; no se cuenta como un límite de capacidad del modelo.
 
-## Comprobación final del servicio restaurado
+## Registro histórico de restauración del 14 de octubre de 2026
 
-Verificación realizada el **14 de octubre de 2026 a las 21:45 UTC** (23:45 en Madrid), después de terminar todas las pruebas.
+Verificación realizada el **14 de octubre de 2026 a las 21:45 UTC** (23:45 en Madrid), al finalizar la campaña de ese día. Es un registro histórico, no una descripción de la configuración actual.
 
 | Comprobación | Resultado |
 |---|---|
