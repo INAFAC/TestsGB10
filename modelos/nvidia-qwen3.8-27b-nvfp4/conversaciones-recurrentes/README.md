@@ -76,6 +76,16 @@ Comparación directa de las pruebas terminadas al **70% de memoria**. Cada perso
 
 Una prueba puede cumplir la referencia de espera y quedar por debajo de la referencia de velocidad. Las cifras de ambas columnas permiten valorar ese equilibrio; la etiqueta general de referencia no sustituye esos tiempos.
 
+## Controles con conversaciones de chat
+
+Controles al **70% de memoria**, con mensajes ficticios legibles, respuestas reales conservadas y permiso para terminar antes del límite de salida. Una respuesta visible terminada debe contener texto para la persona y acabar por decisión del modelo, sin alcanzar el límite de tokens.
+
+| Historial inicial | Personas | Razonamiento | Límite de salida | Peticiones sin error | Con texto visible | Respuesta visible terminada | Cortadas por límite | Espera visible p95 al continuar |
+|---:|---:|---|---:|---:|---:|---:|---:|---:|
+| [8.192](memoria-70-chat-20-usuarios-historial-8192-sin-razonamiento/README.md) | 20 | Desactivado | 512 | 60/60 | 60/60 | 49/60 | 11/60 | 2,8 s |
+
+La espera visible empieza al enviar la petición y acaba cuando llega el primer texto de respuesta. Si el modelo solo produce razonamiento, no se cuenta como una respuesta visible. Los percentiles se calculan sobre las respuestas recibidas; el recuento permite ver si faltan otras.
+
 ## Configuraciones utilizadas
 
 | Configuración | Presupuesto | Límite activo | Servicio listo | Espera hasta estar listo | Reserva de caché registrada |
@@ -111,6 +121,7 @@ Se publica una prueba cuando termina. Los percentiles del primer turno y de las 
 | [Conversación de 3 turnos por persona](memoria-70-30-usuarios-historial-8192-tres-turnos/README.md) | 70% | 30 / 32 | 8.192 | 90/90 | 168,1 s | 15,0 s | 4,21 tokens/s | 63,9% | 0 | 551,5 s | No cumple la referencia |
 | [Conversación de 3 turnos por persona](memoria-70-10-usuarios-historial-32768-tres-turnos/README.md) | 70% | 10 / 32 | 32.768 | 30/30 | 265,1 s | 3,1 s | 5,17 tokens/s | 82,9% | 0 | 599,0 s | No cumple la referencia |
 | [Conversación de 3 turnos por persona](memoria-70-30-usuarios-historial-32768-tres-turnos/README.md) | 70% | 30 / 32 | 32.768 | 90/90 | 1.129,2 s | 965,4 s | 0,73 tokens/s | 100,0% | 70 | 4.289,5 s | No cumple la referencia |
+| [Chat: sin razonamiento](memoria-70-chat-20-usuarios-historial-8192-sin-razonamiento/README.md) | 70% | 20 / 32 | 8.192 | 60/60 | 103,2 s | 2,8 s | 6,12 tokens/s | 41,7% | 0 | 342,4 s | No cumple la referencia |
 
 ## Comprobaciones del medidor de chat
 
