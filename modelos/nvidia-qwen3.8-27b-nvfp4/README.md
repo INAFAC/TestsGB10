@@ -2,7 +2,9 @@
 
 [Volver al inicio](../../README.md) · [Cómo leer las medidas](../../GUIA-DE-LECTURA.md)
 
-[Elegir configuración](#qué-configuración-elegir) · [Todas las pruebas](#todas-las-pruebas) · [Cobertura de la batería](#estado-de-la-batería-prevista)
+[Elegir configuración](#qué-configuración-elegir) · [Pruebas iniciales](#pruebas-iniciales-de-memoria-y-concurrencia) · [Cobertura inicial](#estado-de-la-batería-prevista)
+
+**[Conversaciones recurrentes con 10, 20 y 30 usuarios](conversaciones-recurrentes/README.md)**: tiempos de cada turno, crecimiento del historial y comparación de memoria.
 
 **Modelo exacto:** `nvidia/Qwen3.8-27B-NVFP4`.
 
@@ -14,7 +16,7 @@
 
 “Terminó” significa que entregó todos los tokens de respuesta solicitados. “Llegó al máximo” exige además que la suma real de entrada y respuesta alcance ese máximo; arrancar el servidor no basta.
 
-## ¿Puede llegar al máximo y terminar?
+## ¿Puede llegar al máximo en las pruebas iniciales?
 
 - **20% de memoria:** **No arrancó con la configuración probada.** No se pudieron enviar conversaciones.
 - **25% de memoria:** Máximo completado en estas pruebas: **65.536 tokens**. No se ha demostrado alcanzar 262.144.
@@ -84,7 +86,7 @@ Repetir una sola conversación con 262.016 tokens de entrada ya guardados y 128 
 Los controles al final de la campaña fueron muy cercanos a los iniciales: 26,24 frente a 26,21 s para ocho solicitudes cortas con concurrencia de cuatro, y 503,8 frente a 505,2 s para cuatro historiales de 131.072 + 256. No muestran una pérdida apreciable de rendimiento en esas dos cargas. Cada fila corresponde a una ejecución; diferencias pequeñas no son una garantía de mejora.
 <!-- interpretacion-fin -->
 
-## Todas las pruebas
+## Pruebas iniciales de memoria y concurrencia
 
 Abre el nombre de una prueba para ver cada conversación, sus tiempos, los tokens recibidos y sus registros.
 
@@ -323,6 +325,9 @@ Estas pruebas anteriores sí se realizaron, pero no recogían todas las medidas.
 | [Enviar más tokens que el límite permitido](memoria-40-por-ciento/2026-10-14-rechazo-por-superar-el-limite-de-contexto/README.md) | 40% | No aplica | No aplica | 262.145 + 1 | Límite 4 | Rechazada, como se esperaba | No aplica | No aplica | No aplica | 0,0 | No aplica | No aplica | No aplica | No aplica | No aplica | Rechazo esperado: HTTP 400 |
 
 </details>
+
+
+La cobertura siguiente corresponde a la batería inicial. Las conversaciones recurrentes tienen [su propio plan y tabla de resultados](conversaciones-recurrentes/README.md).
 
 ## Estado de la batería prevista
 

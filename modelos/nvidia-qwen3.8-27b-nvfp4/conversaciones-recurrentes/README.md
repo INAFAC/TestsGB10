@@ -36,6 +36,12 @@ Las decisiones entre etapas se documentarán con sus mediciones. No se presentar
 
 El control de chat usa mensajes ficticios en español y conserva las respuestas reales. Solicita hasta 512 tokens, permite terminar antes y distingue la primera salida del modelo de la primera respuesta visible. Se mide con razonamiento desactivado en ambos tamaños y con el modo predeterminado en 8.192 tokens. El tratamiento del razonamiento sigue la [documentación de vLLM](https://docs.vllm.ai/en/v0.22.0/features/reasoning_outputs/); se comprobará además el comportamiento de la versión instalada.
 
+## Decisiones entre etapas
+
+**Se añade el 50% a la comparación de memoria.** Con 20 usuarios y 8.192 tokens iniciales, el 70% redujo la espera p95 de las continuaciones de 93,9 a 7,6 segundos, y los recálculos de 20 a cero. La velocidad p05 pasó de 3,14 a 5,51 tokens/s. Es una mejora importante, aunque todavía no cumple la referencia elegida de espera y velocidad.
+
+Se repetirán las dos cargas iniciales al 50% después de las comparaciones del 70% y el 85% y de comprobar el medidor de chat. Esto permitirá comprobar si parte de la memoria adicional se puede ahorrar. La decisión sobre probar el 60% se tomará con los resultados del 50%. Para considerar que conserva el rendimiento del 70%, ambas cargas deben completar todas las respuestas y mantener, en las continuaciones, la espera y el tiempo completo p95 dentro de un 15% de la referencia y la velocidad p05 por encima del 85% de la referencia. En la espera se admite al menos un segundo de diferencia. Es una tolerancia práctica para decidir la siguiente prueba, no una afirmación de equivalencia estadística.
+
 [Plan y parámetros](plan.json).
 
 <!-- resultados-inicio -->
@@ -45,6 +51,7 @@ El control de chat usa mensajes ficticios en español y conserva las respuestas 
 |---|---:|---:|---|---:|---:|
 | [seleccion-memoria-40](configuracion-y-registros/seleccion-memoria-40/arranque.log) | 40% | 32 | Sí | 376,0 s | 23,18 GiB |
 | [seleccion-memoria-70](configuracion-y-registros/seleccion-memoria-70/arranque.log) | 70% | 32 | Sí | 376,2 s | 59,85 GiB |
+| seleccion-memoria-85 | 85% | 32 | En curso | — s | — GiB |
 
 La reserva de caché procede del registro de arranque. No equivale a memoria ocupada por conversaciones ni permite deducir por sí sola cuántas personas tendrán una respuesta fluida. El pico de ocupación de esa reserva se mide durante cada prueba.
 
@@ -57,5 +64,6 @@ Se publica una prueba cuando termina. Los percentiles del primer turno y de las 
 | [20-usuarios-historial-8192-tres-turnos](memoria-40-20-usuarios-historial-8192-tres-turnos/README.md) | 40% | 20 / 32 | 8.192 | 60/60 | 151,3 s | 93,9 s | 3,14 tokens/s | 100,0% | 20 | 596,5 s | No cumple la referencia |
 | [20-usuarios-historial-32768-tres-turnos](memoria-40-20-usuarios-historial-32768-tres-turnos/README.md) | 40% | 20 / 32 | 32.768 | 60/60 | 554,8 s | 595,6 s | 2,37 tokens/s | 100,0% | 88 | 2.116,4 s | No cumple la referencia |
 | [20-usuarios-historial-8192-tres-turnos](memoria-70-20-usuarios-historial-8192-tres-turnos/README.md) | 70% | 20 / 32 | 8.192 | 60/60 | 74,7 s | 7,6 s | 5,51 tokens/s | 42,9% | 0 | 391,2 s | No cumple la referencia |
+| [20-usuarios-historial-32768-tres-turnos](memoria-70-20-usuarios-historial-32768-tres-turnos/README.md) | 70% | 20 / 32 | 32.768 | 60/60 | 494,0 s | 374,2 s | 1,05 tokens/s | 100,0% | 24 | 2.102,8 s | No cumple la referencia |
 
 [Configuración y registros de esta campaña](configuracion-y-registros/metadata.json).

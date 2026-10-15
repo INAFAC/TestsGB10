@@ -34,7 +34,7 @@
   "stages": [
     {
       "id": "seleccion-memoria",
-      "description": "20 usuarios, historiales de 8192 y 32768 tokens, tres turnos por usuario; 40%,70%,85%."
+      "description": "20 usuarios, historiales de 8.192 y 32.768 tokens, tres turnos por usuario; 40%, 70% y 85% de memoria."
     },
     {
       "id": "comparacion-usuarios",
@@ -42,21 +42,44 @@
     },
     {
       "id": "crecimiento",
-      "description": "10,20,30 usuarios: 65536 tokens y dos turnos. Continuar a131072 donde se mantenga la referencia de fluidez; medir131072 con20 usuarios en cualquier caso para caracterizar la degradación."
+      "description": "10, 20 y 30 usuarios: 65.536 tokens y dos turnos. Continuar a 131.072 donde se mantenga la referencia de fluidez; medir 131.072 con 20 usuarios en cualquier caso para caracterizar la degradación."
     },
     {
       "id": "contexto-maximo",
-      "description": "20 usuarios, dos turnos:260864+512 y261632+512. Verificar todas las respuestas hasta262144; conservar los fallos si los hay."
+      "description": "20 usuarios, dos turnos: 260.864 + 512 y 261.632 + 512 tokens. Verificar todas las respuestas hasta 262.144; conservar los fallos si los hay."
     },
     {
       "id": "ajuste-memoria",
-      "description": "Probar50% si70% mejora de forma material la continuación respecto al40%; probar60% si50% no conserva el rendimiento del70%. Repetir las dos cargas iniciales con20usuarios y tres turnos."
+      "description": "Probar el 50% si el 70% mejora de forma material la continuación respecto al 40%; probar el 60% si el 50% no conserva el rendimiento del 70%. Repetir las dos cargas iniciales con 20 usuarios y tres turnos."
     },
     {
       "id": "control-chat",
-      "description": "Control con la API de chat, mensajes ficticios legibles y respuestas reales conservadas. Comparar 20 usuarios con aproximadamente8192 y32768 tokens iniciales, tres turnos y razonamiento desactivado; añadir20usuarios con8192 tokens en modo de razonamiento predeterminado. Separar primer texto del modelo de primera respuesta visible y finalización natural."
+      "description": "Control con la API de chat, mensajes ficticios legibles y respuestas reales conservadas. Comparar 20 usuarios con aproximadamente 8.192 y 32.768 tokens iniciales, tres turnos y razonamiento desactivado; añadir 20 usuarios con 8.192 tokens en modo de razonamiento predeterminado. Separar primer texto del modelo de primera respuesta visible y finalización natural."
     }
   ],
   "publication_policy": "Un commit por prueba completa o conjunto de cambios de documentación. Sin publicar snapshots parciales de cada respuesta.",
-  "limits_note": "La concurrencia depende de cada prueba. Se comprueba y restaura la configuración encontrada antes de esta campaña."
+  "limits_note": "La concurrencia depende de cada prueba. Se comprueba y restaura la configuración encontrada antes de esta campaña.",
+  "decisions": {
+    "refinement_50": {
+      "required": true,
+      "reason": "Con 20 usuarios y 8.192 tokens, subir del 40% al 70% redujo la espera p95 de continuaciones de 93,87 a 7,63 segundos, el tiempo total de 596,47 a 391,19 segundos y los recálculos de 20 a cero. Se probará el 50% con ambas cargas iniciales para comprobar qué parte de esa mejora se conserva con menos memoria.",
+      "evidence": [
+        "memoria-40-20-usuarios-historial-8192-tres-turnos",
+        "memoria-70-20-usuarios-historial-8192-tres-turnos"
+      ]
+    }
+  },
+  "refinement_comparison": {
+    "reference_memory_percent": 70,
+    "loads_input_tokens": [
+      8192,
+      32768
+    ],
+    "all_requests_must_complete": true,
+    "followup_ttft_p95_max_ratio": 1.15,
+    "followup_ttft_p95_absolute_tolerance_seconds": 1,
+    "followup_total_p95_max_ratio": 1.15,
+    "followup_decode_p05_min_ratio": 0.85,
+    "note": "Para conservar el rendimiento, ambas cargas deben completar todas las respuestas. En continuaciones, la espera p95 puede ser como máximo el mayor de 1,15 veces la referencia y la referencia más un segundo; el tiempo completo p95 no puede superar 1,15 veces la referencia; la velocidad p05 debe alcanzar al menos el 85% de la referencia. Es una tolerancia práctica elegida para decidir la siguiente prueba, no una prueba de significación estadística."
+  }
 }

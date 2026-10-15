@@ -85,6 +85,27 @@
           "request_timeout": 300
         }
       ]
+    },
+    {
+      "id": "ajuste-memoria-50",
+      "fraction": 0.5,
+      "server_limit": 32,
+      "cases": [
+        {
+          "id": "20-usuarios-historial-8192-tres-turnos",
+          "users": 20,
+          "input_tokens": 8192,
+          "turns": 3,
+          "seed": 20008192
+        },
+        {
+          "id": "20-usuarios-historial-32768-tres-turnos",
+          "users": 20,
+          "input_tokens": 32768,
+          "turns": 3,
+          "seed": 20032768
+        }
+      ]
     }
   ]
 }

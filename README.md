@@ -10,7 +10,7 @@ Resultados para decidir cuánta memoria reservar y cuántas conversaciones puede
 
 | Modelo | Máximo por conversación | Informe |
 |---|---:|---|
-| Qwen3.8-27B-NVFP4 | 262.144 tokens | [Ver resultados y qué configuración elegir](modelos/nvidia-qwen3.8-27b-nvfp4/README.md) |
+| Qwen3.8-27B-NVFP4 | 262.144 tokens | [Resultados y configuración](modelos/nvidia-qwen3.8-27b-nvfp4/README.md) · [Conversaciones con varios usuarios](modelos/nvidia-qwen3.8-27b-nvfp4/conversaciones-recurrentes/README.md) |
 
 ## Qué puedes comprobar
 
@@ -23,7 +23,7 @@ Un ejemplo: **262.016 tokens de historial + 128 de respuesta = 262.144 tokens en
 
 ## Dónde está cada cosa
 
-Entra en **modelos → nombre del modelo → porcentaje de memoria → prueba**. Cada prueba tiene su explicación en `README.md`, las mediciones originales y sus registros en la misma carpeta.
+Entra en **modelos → nombre del modelo** y elige la comparación de memoria o las conversaciones recurrentes. Cada prueba reúne su explicación en `README.md`, sus mediciones y sus registros en la misma carpeta.
 
 - [Guía de lectura](GUIA-DE-LECTURA.md): significado de las medidas y cómo se hicieron las pruebas.
 - [Herramientas de prueba](scripts): scripts para medir y actualizar los informes.

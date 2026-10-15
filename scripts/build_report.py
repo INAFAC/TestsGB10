@@ -298,7 +298,8 @@ def main():
         plan=read(statuses[0]) if statuses else {}
         complete=bool(statuses and read(statuses[0]).get('status')=='complete')
         lines=['# '+model.split('/')[-1],'','[Volver al inicio](../../README.md) · [Cómo leer las medidas](../../GUIA-DE-LECTURA.md)','',
-               '[Elegir configuración](#qué-configuración-elegir) · [Todas las pruebas](#todas-las-pruebas) · [Cobertura de la batería](#estado-de-la-batería-prevista)','',
+               '[Elegir configuración](#qué-configuración-elegir) · [Pruebas iniciales](#pruebas-iniciales-de-memoria-y-concurrencia) · [Cobertura inicial](#estado-de-la-batería-prevista)','',
+               ('**[Conversaciones recurrentes con 10, 20 y 30 usuarios](conversaciones-recurrentes/README.md)**: tiempos de cada turno, crecimiento del historial y comparación de memoria.' if (model_dir/'conversaciones-recurrentes/README.md').exists() else ''),'',
                f'**Modelo exacto:** `{model}`.','',
                recurrent_notice(),'',
                f'**Máximo por conversación: {integer(maximum_model)} tokens, sumando historial y respuesta.** '
@@ -306,7 +307,7 @@ def main():
                concurrency_note,'',
                '“Terminó” significa que entregó todos los tokens de respuesta solicitados. '
                '“Llegó al máximo” exige además que la suma real de entrada y respuesta alcance ese máximo; arrancar el servidor no basta.','',
-               '## ¿Puede llegar al máximo y terminar?','']
+               '## ¿Puede llegar al máximo en las pruebas iniciales?','']
         for mem in sorted({t['memory'] for t in tests}):
             subset=[t for t in tests if t['memory']==mem and t['type']=='conversaciones']
             reaching=[t for t in subset if t['reached_model']]
@@ -330,8 +331,10 @@ def main():
         commentary=match.group(1) if match else 'Las recomendaciones se completarán al terminar las comparaciones de memoria, concurrencia e historiales reutilizados.'
         lines += (['', '[Pruebas de conversaciones recurrentes con varios usuarios](conversaciones-recurrentes/README.md).', ''] if (model_dir/'conversaciones-recurrentes/README.md').exists() else [])
         lines += ['', '## Qué configuración elegir','', '<!-- interpretacion-inicio -->',commentary,'<!-- interpretacion-fin -->','',
-                  '## Todas las pruebas','', 'Abre el nombre de una prueba para ver cada conversación, sus tiempos, los tokens recibidos y sus registros.','']
+                  '## Pruebas iniciales de memoria y concurrencia','', 'Abre el nombre de una prueba para ver cada conversación, sus tiempos, los tokens recibidos y sus registros.','']
         lines += report_tables(tests,model_dir)
+        if (model_dir/'conversaciones-recurrentes/README.md').exists():
+            lines += ['','La cobertura siguiente corresponde a la batería inicial. Las conversaciones recurrentes tienen [su propio plan y tabla de resultados](conversaciones-recurrentes/README.md).','']
         lines += campaign_progress(plan,tests)
         lines += ['## Carpetas por memoria','']
         for mem in sorted({t['memory'] for t in tests}):
@@ -351,7 +354,8 @@ def main():
            ('**Límite actual de las pruebas publicadas: cuatro solicitudes activas, impuesto por configuración.** Observar un máximo de cuatro no demuestra que el GB10 no pueda con más.' if observed_limits=={4} else '**Cada prueba indica el límite de solicitudes activas impuesto al servidor.** Ese límite debe distinguirse de la capacidad del GB10.'),'',
            '## Resultados por modelo','', '| Modelo | Máximo por conversación | Informe |','|---|---:|---|']
     for model,folder,limit,good,total,complete in model_summaries:
-        lines.append(f'| {model.split("/")[-1]} | {integer(limit)} tokens | [Ver resultados y qué configuración elegir]({link(folder/"README.md",ROOT)}) |')
+        recurrent_link=(f' · [Conversaciones con varios usuarios]({link(folder/"conversaciones-recurrentes/README.md",ROOT)})' if (folder/'conversaciones-recurrentes/README.md').exists() else '')
+        lines.append(f'| {model.split("/")[-1]} | {integer(limit)} tokens | [Resultados y configuración]({link(folder/"README.md",ROOT)}){recurrent_link} |')
     lines += ['', '## Qué puedes comprobar','',
               '- **Si todas las conversaciones terminaron:** cuántas recibieron la respuesta completa solicitada.',
               '- **Si llegaron al máximo de tokens:** se comprueba la suma real de historial y respuesta. También se distingue un límite reducido por falta de memoria.',
@@ -359,7 +363,7 @@ def main():
               '- **Cuánto tardaron y cuánta memoria usaron:** cada prueba incluye los tiempos y velocidades de cada conversación.','',
               'Un ejemplo: **262.016 tokens de historial + 128 de respuesta = 262.144 tokens en la conversación**. Llegar a ese límite no significa generar 262.144 tokens de respuesta nueva.','',
               '## Dónde está cada cosa','',
-              'Entra en **modelos → nombre del modelo → porcentaje de memoria → prueba**. Cada prueba tiene su explicación en `README.md`, las mediciones originales y sus registros en la misma carpeta.','',
+              'Entra en **modelos → nombre del modelo** y elige la comparación de memoria o las conversaciones recurrentes. Cada prueba reúne su explicación en `README.md`, sus mediciones y sus registros en la misma carpeta.','',
               '- [Guía de lectura](GUIA-DE-LECTURA.md): significado de las medidas y cómo se hicieron las pruebas.',
               '- [Herramientas de prueba](scripts): scripts para medir y actualizar los informes.','',
               '## Licencia','',

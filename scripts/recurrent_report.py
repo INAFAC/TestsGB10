@@ -123,9 +123,14 @@ def main():
                 person_lines.append(f"| {user+1} | {len(completed)}/{c.get('turns',3)} | {n(mean_latency)} s | {n(mean_total)} s | {n(elapsed)} s | {n(throughput,2)} |")
             person_lines+=['','Las medias incluyen las peticiones sin error. El tiempo de sesión va desde el primer envío de esa persona hasta su última petición registrada, incluyendo las pausas. Sus tokens/s cuentan solo las salidas completadas y ese tiempo completo. En caso de fallo, no representan los turnos que no llegaron a ejecutarse.','']
             lines[position:position]=person_lines
+            if s.get('kind')=='chat_recurrent':
+                heading=next(i for i,line in enumerate(lines) if line.startswith('| Persona | Turno |'))
+                lines[heading]=lines[heading].replace('| Respuesta completa |','| Espera a respuesta visible | Fin de petición |')
+                lines[heading+1]='|---|---:|---:|---:|---:|---:|---:|---|'
             for r in requests:
                 u=r.get('usage') or {};result=('Terminó naturalmente' if r.get('naturally_finished') else 'Alcanzó el límite de salida') if r['ok'] and s.get('kind')=='chat_recurrent' else 'Completa' if r['ok'] else 'Error: '+str(r.get('error','longitud inesperada')).replace('|','/')
-                lines.append(f"| {r['user_id']+1} | {r['turn']} | {n(r['input_tokens'],0)} + {n(u.get('completion_tokens'),0)} | {n(r.get('ttft_s'))} s | {n(r.get('total_s'))} s | {n(rate(r),2)} | {result} |")
+                visible_cell=f"{n(r.get('visible_ttft_s'))} s | " if s.get('kind')=='chat_recurrent' else ''
+                lines.append(f"| {r['user_id']+1} | {r['turn']} | {n(r['input_tokens'],0)} + {n(u.get('completion_tokens'),0)} | {n(r.get('ttft_s'))} s | {visible_cell}{n(r.get('total_s'))} s | {n(rate(r),2)} | {result} |")
             if len(requests)<count:lines+=['',f"No se ejecutaron {count-len(requests)} turnos previstos. Se conserva el registro del fallo; no se cuentan como respuestas recibidas."]
             maximum=sum(r['usage']['total_tokens']==262144 for r in good)
             if maximum:lines+=['',f'**Llegaron exactamente al máximo de 262.144 tokens y completaron la respuesta: {maximum} conversaciones.**']
@@ -165,7 +170,7 @@ def main():
     subprocess.run(['git','diff','--check'],check=True,cwd=ROOT)
     if a.publish:
         subprocess.run([sys.executable,str(ROOT/'scripts/validate_new_public_files.py')],check=True,cwd=ROOT)
-        subprocess.run(['git','add','--','README.md','GUIA-DE-LECTURA.md',str(MODEL/'README.md'),str(OUT),'scripts/README.md','scripts/recurrent_campaign.py','scripts/recurrent_probe.py','scripts/chat_probe.py','scripts/recurrent_report.py','scripts/validate_report.py','scripts/validate_recurrent.py','scripts/validate_new_public_files.py','scripts/verify_recurrent_restore.py'],check=True,cwd=ROOT)
+        subprocess.run(['git','add','--','README.md','GUIA-DE-LECTURA.md',str(MODEL/'README.md'),str(OUT),'scripts/README.md','scripts/build_report.py','scripts/recurrent_campaign.py','scripts/recurrent_probe.py','scripts/chat_probe.py','scripts/recurrent_report.py','scripts/validate_report.py','scripts/validate_recurrent.py','scripts/validate_new_public_files.py','scripts/verify_recurrent_restore.py'],check=True,cwd=ROOT)
         if subprocess.run(['git','diff','--cached','--quiet'],cwd=ROOT).returncode:
             subprocess.run(['git','commit','-m',a.message],check=True,cwd=ROOT)
         subprocess.run(['git','push'],check=True,cwd=ROOT)

@@ -3,6 +3,7 @@
 import gzip
 import hashlib
 import json
+import math
 import pathlib
 import random
 
@@ -114,6 +115,34 @@ if plan['status']=='complete':
             for tokens in (8192,32768):require(memory,20,tokens,3)
         elif decision.get('required') is not False or not decision.get('reason'):
             errors.append('Memory refinement not resolved: '+str(memory))
+    rule=plan.get('refinement_comparison')
+    if rule and decisions.get('refinement_50',{}).get('required'):
+        measurements={}
+        for config in folders:
+            c=read(config);path=config.with_name('mediciones.json')
+            if c['users']==20 and c.get('turns',3)==3 and not c['id'].startswith('chat-') and path.exists():
+                measurements[round(100*c['memory_fraction']),c['input_tokens']]=read(path)
+        retained=[]
+        def decode_p05(data):
+            rates=sorted((r['usage']['completion_tokens']-1)/(r['total_s']-r['ttft_s'])
+                         for r in data['requests'] if r['ok'] and r['turn']>1
+                         and r.get('ttft_s') is not None and r['total_s']>r['ttft_s'])
+            return rates[max(0,math.ceil(.05*len(rates))-1)] if rates else None
+        for size in rule['loads_input_tokens']:
+            reference=measurements.get((rule['reference_memory_percent'],size))
+            candidate=measurements.get((50,size))
+            if not reference or not reference['summary'].get('all_turns_completed'):
+                errors.append('Refinement reference incomplete: '+str(size));continue
+            if not candidate or not candidate['summary'].get('all_turns_completed'):
+                retained.append(False);continue
+            a=reference['summary'];b=candidate['summary'];base_rate=decode_p05(reference);candidate_rate=decode_p05(candidate)
+            retained.append(b['followups_ttft_p95_s'] is not None and b['followups_total_p95_s'] is not None
+                and candidate_rate is not None and base_rate is not None
+                and b['followups_ttft_p95_s']<=max(a['followups_ttft_p95_s']*rule['followup_ttft_p95_max_ratio'],a['followups_ttft_p95_s']+rule['followup_ttft_p95_absolute_tolerance_seconds'])
+                and b['followups_total_p95_s']<=a['followups_total_p95_s']*rule['followup_total_p95_max_ratio']
+                and candidate_rate>=base_rate*rule['followup_decode_p05_min_ratio'])
+        if len(retained)==len(rule['loads_input_tokens']) and decisions.get('refinement_60',{}).get('required')!=(not all(retained)):
+            errors.append('Decision about 60% disagrees with the predeclared performance rule')
     for tokens in (8192,32768):require(selected,20,tokens,3,True,'disabled')
     require(selected,20,8192,3,True,'server_default')
     proof=BASE/'configuracion-y-registros/verificacion-final.json'
