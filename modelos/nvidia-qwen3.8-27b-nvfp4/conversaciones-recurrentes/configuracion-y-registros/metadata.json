@@ -19,7 +19,7 @@
   "compose_sha256": "1caf0951ec1175b71b97d53ffcc557e9d9ea2e506dd046b2647603c8551fd696",
   "runner_sha256": "82b8b997afeef2a4217e745f2697712f0c63053e33afd5d5fe25507d9c932a04",
   "restore_status": "pending",
-  "state": "running",
+  "state": "awaiting_next_stage",
   "profiles": [
     {
       "id": "seleccion-memoria-40",
@@ -195,6 +195,12 @@
           "exit_code": 0,
           "duration_seconds": 400.04412759598927,
           "timed_out": false
+        },
+        {
+          "id": "20-usuarios-historial-32768-tres-turnos",
+          "exit_code": 0,
+          "duration_seconds": 2125.162714816979,
+          "timed_out": false
         }
       ],
       "command": [
@@ -214,7 +220,8 @@
         "262144"
       ],
       "ready": true,
-      "startup_seconds": 381.10729662000085
+      "startup_seconds": 381.10729662000085,
+      "state": "complete"
     }
   ]
 }
