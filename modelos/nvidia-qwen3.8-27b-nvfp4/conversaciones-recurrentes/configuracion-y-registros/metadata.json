@@ -301,6 +301,12 @@
           "exit_code": 0,
           "duration_seconds": 2040.1558027179854,
           "timed_out": false
+        },
+        {
+          "id": "20-usuarios-historial-65536-dos-turnos",
+          "exit_code": 0,
+          "duration_seconds": 4290.366733089992,
+          "timed_out": false
         }
       ],
       "command": [

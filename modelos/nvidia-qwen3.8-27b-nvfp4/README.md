@@ -40,6 +40,8 @@
 
 Con historiales iniciales de 8.192 tokens, las esperas p95 de continuación fueron de 4,93, 7,63 y 14,98 segundos para 10, 20 y 30 personas. La velocidad individual también disminuyó al aumentar la carga. [Comparar tiempos completos, velocidades y cada turno](conversaciones-recurrentes/README.md#cómo-cambia-la-conversación-con-más-personas).
 
+**Con 10 personas, ampliar el historial a 65.536 tokens también produjo esperas largas.** Todas completaron los dos turnos, pero el grupo tardó 33,9 minutos. En el segundo turno, la espera p95 antes del primer texto fue de 9,2 minutos y el tiempo p95 hasta completar la respuesta, de 18,7 minutos; la caché alcanzó el 100% y hubo 33 recálculos. Los buenos tiempos de espera con 32.768 tokens no garantizan el mismo comportamiento al seguir creciendo. [Ver la prueba de crecimiento](conversaciones-recurrentes/memoria-70-10-usuarios-historial-65536-dos-turnos/README.md).
+
 Se eligió el **70% para las comparaciones posteriores por su menor espera p95 en ambas cargas iniciales**. El 60% obtuvo tiempos totales cercanos con menos memoria y mejores resultados en algunas medidas de la carga larga; el 70% no es un mínimo necesario ni la mejor opción en todas las métricas. [Comparación de presupuestos y criterio de selección](conversaciones-recurrentes/README.md).
 
 ### Configuraciones de la batería inicial
