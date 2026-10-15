@@ -45,6 +45,9 @@ Si un control principal de chat completa todas las peticiones sin errores de API
 
 ## Decisiones entre etapas
 
+Las tres repeticiones con hasta 2.048 tokens de salida están medidas. Los dos controles con razonamiento desactivado completaron las 60 respuestas con texto visible y finalización natural. En el modo predeterminado fueron 57 de 60: tres primeros turnos consumieron los 2.048 tokens íntegramente en razonamiento y no entregaron texto visible. No hubo errores de API ni recálculos en ese control y su pico de caché fue del 42,4%. Se conserva esta limitación del presupuesto de salida y los resultados originales de 512 tokens.
+
+
 **Se añade el 50% a la comparación de memoria.** Con 20 usuarios y 8.192 tokens iniciales, el 70% redujo la espera p95 de las continuaciones de 93,9 a 7,6 segundos, y los recálculos de 20 a cero. La velocidad p05 pasó de 3,14 a 5,51 tokens/s. Es una mejora importante, aunque todavía no cumple la referencia elegida de espera y velocidad.
 
 Con **32.768 tokens iniciales**, el cambio del 40% al 70% redujo la espera p95 de las continuaciones de 595,6 a 374,2 segundos, pero el tiempo del grupo apenas cambió: 35,3 frente a 35,0 minutos. La velocidad p05 durante las continuaciones bajó de 2,37 a 1,05 tokens/s. La respuesta empezó antes en parte de los casos, pero siguió tardando varios minutos en completarse. Esta carga de 20 usuarios no cumple la referencia con ninguno de esos dos presupuestos.
@@ -92,6 +95,7 @@ Pruebas al **70%**, conservando el historial y las respuestas de la etapa anteri
 | [65.536](memoria-70-10-usuarios-historial-65536-dos-turnos/README.md) | 10 | 10/10 | No se intentó | 828,1 s | 550,9 s | 1.120,8 s | 2.036,6 s |
 | [65.536](memoria-70-20-usuarios-historial-65536-dos-turnos/README.md) | 20 | 20/20 | No se intentó | 1.712,0 s | 1.688,8 s | 2.344,9 s | 4.289,5 s |
 | [65.536](memoria-70-30-usuarios-historial-65536-dos-turnos/README.md) | 30 | 30/30 | No se intentó | 2.861,7 s | 2.767,3 s | 3.423,3 s | 6.337,6 s |
+| [131.072 · interrumpida](memoria-70-20-usuarios-historial-131072-dos-turnos/README.md) | 20 | 10/20 | No se intentó | 4.761,8 s | 4.558,3 s | 5.309,0 s | 8.335,3 s |
 
 Llegar al máximo exige una respuesta recibida cuya suma real de entrada y salida sea 262.144 tokens. El número de personas que completó ambos turnos se muestra aparte: alcanzar el máximo no demuestra rapidez ni calidad de conversación.
 
@@ -129,6 +133,7 @@ La espera visible empieza al enviar la petición y acaba cuando llega el primer 
 | [Ampliación del historial](configuracion-y-registros/crecimiento-memoria-70/arranque.log) | 70% | 32 | Sí | 0,0 s | 59,68 GiB |
 | [Chat con hasta 2.048 tokens de salida](configuracion-y-registros/chat-salida-2048-memoria-70/arranque.log) | 70% | 32 | Sí | 0,0 s | 59,68 GiB |
 | [Historiales muy largos](configuracion-y-registros/historial-muy-largo-memoria-70/arranque.log) | 70% | 32 | Sí | 0,0 s | 59,68 GiB |
+| [Historiales muy largos: repetición tras interrupción](configuracion-y-registros/historial-muy-largo-repeticion-memoria-70/arranque.log) | 70% | 32 | Sí | 376,0 s | 59,72 GiB |
 
 La reserva de caché procede del registro de arranque. No equivale a memoria ocupada por conversaciones ni permite deducir por sí sola cuántas personas tendrán una respuesta fluida. El pico de ocupación de esa reserva se mide durante cada prueba.
 
@@ -163,6 +168,7 @@ Se publica una prueba cuando termina. Los percentiles del primer turno y de las 
 | [Chat: sin razonamiento · hasta 2.048 tokens de salida](memoria-70-chat-20-usuarios-historial-8192-salida-2048-sin-razonamiento/README.md) | 70% | 20 / 32 | 8.192 | 60/60 | 103,2 s | 2,0 s | 5,94 tokens/s | 41,7% | 0 | 504,5 s | No cumple la referencia |
 | [Chat: sin razonamiento · hasta 2.048 tokens de salida](memoria-70-chat-20-usuarios-historial-32768-salida-2048-sin-razonamiento/README.md) | 70% | 20 / 32 | 32.768 | 60/60 | 591,4 s | 445,0 s | 0,65 tokens/s | 100,0% | 18 | 2.328,1 s | No cumple la referencia |
 | [Chat: modo predeterminado · hasta 2.048 tokens de salida](memoria-70-chat-20-usuarios-historial-8192-salida-2048-predeterminado/README.md) | 70% | 20 / 32 | 8.192 | 60/60 | 103,3 s | 1,8 s | 6,17 tokens/s | 42,4% | 0 | 578,6 s | No cumple la referencia |
+| [Continuar con un historial ampliado](memoria-70-20-usuarios-historial-131072-dos-turnos/README.md) | 70% | 20 / 32 | 131.072 | 30/40 | 4.761,8 s | 4.558,3 s | 0,61 tokens/s | 100,0% | 81 | 8.335,3 s | Interrumpida por el controlador |
 
 ## Comprobaciones del medidor de chat
 

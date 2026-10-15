@@ -1,0 +1,318 @@
+{
+  "finished": false,
+  "profiles": [
+    {
+      "id": "seleccion-memoria-40",
+      "fraction": 0.4,
+      "server_limit": 32,
+      "cases": [
+        {
+          "id": "20-usuarios-historial-8192-tres-turnos",
+          "users": 20,
+          "input_tokens": 8192,
+          "turns": 3,
+          "seed": 20008192
+        },
+        {
+          "id": "20-usuarios-historial-32768-tres-turnos",
+          "users": 20,
+          "input_tokens": 32768,
+          "turns": 3,
+          "seed": 20032768
+        }
+      ]
+    },
+    {
+      "id": "seleccion-memoria-70",
+      "fraction": 0.7,
+      "server_limit": 32,
+      "cases": [
+        {
+          "id": "20-usuarios-historial-8192-tres-turnos",
+          "users": 20,
+          "input_tokens": 8192,
+          "turns": 3,
+          "seed": 20008192
+        },
+        {
+          "id": "20-usuarios-historial-32768-tres-turnos",
+          "users": 20,
+          "input_tokens": 32768,
+          "turns": 3,
+          "seed": 20032768
+        }
+      ]
+    },
+    {
+      "id": "seleccion-memoria-85",
+      "fraction": 0.85,
+      "server_limit": 32,
+      "cases": [
+        {
+          "id": "20-usuarios-historial-8192-tres-turnos",
+          "users": 20,
+          "input_tokens": 8192,
+          "turns": 3,
+          "seed": 20008192
+        },
+        {
+          "id": "20-usuarios-historial-32768-tres-turnos",
+          "users": 20,
+          "input_tokens": 32768,
+          "turns": 3,
+          "seed": 20032768
+        },
+        {
+          "id": "chat-comprobacion-medidor-sin-razonamiento",
+          "users": 2,
+          "input_tokens": 256,
+          "output_tokens": 128,
+          "turns": 2,
+          "think_seconds": 1,
+          "seed": 99200256,
+          "timeout": 900,
+          "request_timeout": 300
+        },
+        {
+          "id": "chat-comprobacion-medidor-predeterminado",
+          "users": 2,
+          "input_tokens": 256,
+          "output_tokens": 128,
+          "turns": 2,
+          "think_seconds": 1,
+          "seed": 99200256,
+          "timeout": 900,
+          "request_timeout": 300
+        }
+      ]
+    },
+    {
+      "id": "ajuste-memoria-50",
+      "fraction": 0.5,
+      "server_limit": 32,
+      "cases": [
+        {
+          "id": "20-usuarios-historial-8192-tres-turnos",
+          "users": 20,
+          "input_tokens": 8192,
+          "turns": 3,
+          "seed": 20008192
+        },
+        {
+          "id": "20-usuarios-historial-32768-tres-turnos",
+          "users": 20,
+          "input_tokens": 32768,
+          "turns": 3,
+          "seed": 20032768
+        }
+      ]
+    },
+    {
+      "id": "ajuste-memoria-60",
+      "fraction": 0.6,
+      "server_limit": 32,
+      "cases": [
+        {
+          "id": "20-usuarios-historial-8192-tres-turnos",
+          "users": 20,
+          "input_tokens": 8192,
+          "turns": 3,
+          "seed": 20008192
+        },
+        {
+          "id": "20-usuarios-historial-32768-tres-turnos",
+          "users": 20,
+          "input_tokens": 32768,
+          "turns": 3,
+          "seed": 20032768
+        }
+      ]
+    },
+    {
+      "id": "comparacion-usuarios-y-chat-memoria-70",
+      "fraction": 0.7,
+      "server_limit": 32,
+      "cases": [
+        {
+          "id": "10-usuarios-historial-8192-tres-turnos",
+          "users": 10,
+          "input_tokens": 8192,
+          "turns": 3,
+          "seed": 10008192,
+          "output_tokens": 512,
+          "think_seconds": 30,
+          "timeout": 7200,
+          "request_timeout": 3600
+        },
+        {
+          "id": "30-usuarios-historial-8192-tres-turnos",
+          "users": 30,
+          "input_tokens": 8192,
+          "turns": 3,
+          "seed": 30008192,
+          "output_tokens": 512,
+          "think_seconds": 30,
+          "timeout": 7200,
+          "request_timeout": 3600
+        },
+        {
+          "id": "10-usuarios-historial-32768-tres-turnos",
+          "users": 10,
+          "input_tokens": 32768,
+          "turns": 3,
+          "seed": 10032768,
+          "output_tokens": 512,
+          "think_seconds": 30,
+          "timeout": 7200,
+          "request_timeout": 3600
+        },
+        {
+          "id": "30-usuarios-historial-32768-tres-turnos",
+          "users": 30,
+          "input_tokens": 32768,
+          "turns": 3,
+          "seed": 30032768,
+          "output_tokens": 512,
+          "think_seconds": 30,
+          "timeout": 7200,
+          "request_timeout": 3600
+        },
+        {
+          "id": "chat-20-usuarios-historial-8192-sin-razonamiento",
+          "users": 20,
+          "input_tokens": 8192,
+          "turns": 3,
+          "seed": 20008192,
+          "output_tokens": 512,
+          "think_seconds": 30,
+          "timeout": 7200,
+          "request_timeout": 3600
+        },
+        {
+          "id": "chat-20-usuarios-historial-32768-sin-razonamiento",
+          "users": 20,
+          "input_tokens": 32768,
+          "turns": 3,
+          "seed": 20032768,
+          "output_tokens": 512,
+          "think_seconds": 30,
+          "timeout": 7200,
+          "request_timeout": 3600
+        },
+        {
+          "id": "chat-20-usuarios-historial-8192-predeterminado",
+          "users": 20,
+          "input_tokens": 8192,
+          "turns": 3,
+          "seed": 20008192,
+          "output_tokens": 512,
+          "think_seconds": 30,
+          "timeout": 7200,
+          "request_timeout": 3600
+        }
+      ]
+    },
+    {
+      "id": "crecimiento-memoria-70",
+      "fraction": 0.7,
+      "server_limit": 32,
+      "cases": [
+        {
+          "id": "10-usuarios-historial-65536-dos-turnos",
+          "users": 10,
+          "input_tokens": 65536,
+          "turns": 2,
+          "seed": 10065536,
+          "output_tokens": 512,
+          "think_seconds": 30,
+          "timeout": 10800,
+          "request_timeout": 7200,
+          "parent_state": "/tmp/gb10-recurrent-20261015/profiles/comparacion-usuarios-y-chat-memoria-70/10-usuarios-historial-32768-tres-turnos/histories.json.gz"
+        },
+        {
+          "id": "20-usuarios-historial-65536-dos-turnos",
+          "users": 20,
+          "input_tokens": 65536,
+          "turns": 2,
+          "seed": 20065536,
+          "output_tokens": 512,
+          "think_seconds": 30,
+          "timeout": 10800,
+          "request_timeout": 7200,
+          "parent_state": "/tmp/gb10-recurrent-20261015/profiles/seleccion-memoria-70/20-usuarios-historial-32768-tres-turnos/histories.json.gz"
+        },
+        {
+          "id": "30-usuarios-historial-65536-dos-turnos",
+          "users": 30,
+          "input_tokens": 65536,
+          "turns": 2,
+          "seed": 30065536,
+          "output_tokens": 512,
+          "think_seconds": 30,
+          "timeout": 10800,
+          "request_timeout": 7200,
+          "parent_state": "/tmp/gb10-recurrent-20261015/profiles/comparacion-usuarios-y-chat-memoria-70/30-usuarios-historial-32768-tres-turnos/histories.json.gz"
+        }
+      ]
+    },
+    {
+      "id": "chat-salida-2048-memoria-70",
+      "fraction": 0.7,
+      "server_limit": 32,
+      "cases": [
+        {
+          "users": 20,
+          "input_tokens": 8192,
+          "turns": 3,
+          "seed": 20008192,
+          "think_seconds": 30,
+          "timeout": 7200,
+          "request_timeout": 3600,
+          "id": "chat-20-usuarios-historial-8192-salida-2048-sin-razonamiento",
+          "output_tokens": 2048
+        },
+        {
+          "users": 20,
+          "input_tokens": 32768,
+          "turns": 3,
+          "seed": 20032768,
+          "think_seconds": 30,
+          "timeout": 7200,
+          "request_timeout": 3600,
+          "id": "chat-20-usuarios-historial-32768-salida-2048-sin-razonamiento",
+          "output_tokens": 2048
+        },
+        {
+          "users": 20,
+          "input_tokens": 8192,
+          "turns": 3,
+          "seed": 20008192,
+          "think_seconds": 30,
+          "timeout": 7200,
+          "request_timeout": 3600,
+          "id": "chat-20-usuarios-historial-8192-salida-2048-predeterminado",
+          "output_tokens": 2048
+        }
+      ]
+    },
+    {
+      "id": "historial-muy-largo-memoria-70",
+      "fraction": 0.7,
+      "server_limit": 32,
+      "cases": [
+        {
+          "id": "20-usuarios-historial-131072-dos-turnos",
+          "users": 20,
+          "input_tokens": 131072,
+          "turns": 2,
+          "seed": 20131072,
+          "output_tokens": 512,
+          "think_seconds": 30,
+          "timeout": 14400,
+          "request_timeout": 10800,
+          "parent_state": "/tmp/gb10-recurrent-20261015/profiles/crecimiento-memoria-70/20-usuarios-historial-65536-dos-turnos/histories.json.gz"
+        }
+      ]
+    }
+  ]
+}

@@ -143,7 +143,15 @@
         "api_completed": 60,
         "visible_answers": 60,
         "natural_completions": 49,
-        "reason": "Todas las peticiones terminaron sin error de API, pero hubo respuestas cortadas por el límite o sin texto visible. Se repite con hasta 2048 tokens conservando los demás parámetros."
+        "reason": "Todas las peticiones terminaron sin error de API, pero hubo respuestas cortadas por el límite o sin texto visible. Se repite con hasta 2048 tokens conservando los demás parámetros.",
+        "status": "measured",
+        "result": {
+          "api_completed": 60,
+          "visible_answers": 60,
+          "visible_naturally_finished": 60,
+          "output_limit_reached": 0,
+          "remaining_limitation": null
+        }
       },
       "chat-20-usuarios-historial-32768-sin-razonamiento": {
         "required": true,
@@ -152,7 +160,15 @@
         "api_completed": 60,
         "visible_answers": 60,
         "natural_completions": 54,
-        "reason": "Todas las peticiones terminaron sin error de API, pero hubo respuestas cortadas por el límite o sin texto visible. Se repite con hasta 2048 tokens conservando los demás parámetros."
+        "reason": "Todas las peticiones terminaron sin error de API, pero hubo respuestas cortadas por el límite o sin texto visible. Se repite con hasta 2048 tokens conservando los demás parámetros.",
+        "status": "measured",
+        "result": {
+          "api_completed": 60,
+          "visible_answers": 60,
+          "visible_naturally_finished": 60,
+          "output_limit_reached": 0,
+          "remaining_limitation": null
+        }
       },
       "chat-20-usuarios-historial-8192-predeterminado": {
         "required": true,
@@ -161,7 +177,15 @@
         "api_completed": 60,
         "visible_answers": 40,
         "natural_completions": 37,
-        "reason": "Todas las peticiones terminaron sin error de API, pero hubo respuestas cortadas por el límite o sin texto visible. Se repite con hasta 2048 tokens conservando los demás parámetros."
+        "reason": "Todas las peticiones terminaron sin error de API, pero hubo respuestas cortadas por el límite o sin texto visible. Se repite con hasta 2048 tokens conservando los demás parámetros.",
+        "status": "measured",
+        "result": {
+          "api_completed": 60,
+          "visible_answers": 57,
+          "visible_naturally_finished": 57,
+          "output_limit_reached": 3,
+          "remaining_limitation": "Tres primeros turnos consumieron los 2048 tokens en razonamiento sin respuesta visible; se conserva este límite medido sin ampliar indefinidamente el presupuesto."
+        }
       }
     },
     "growth_131072": {

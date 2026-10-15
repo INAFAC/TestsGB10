@@ -69,3 +69,11 @@ La [cola publicada](../modelos/nvidia-qwen3.8-27b-nvfp4/conversaciones-recurrent
 `recurrent_report.py` lee los originales de una caché local privada. La opción `--sync --host ALIAS_SSH` los descarga del GB10; `--publish` añade el commit y lo sube después de generar y validar los informes. El alias SSH se configura localmente y no se guarda en el repositorio. Los originales completos permanecen fuera de GitHub; los registros publicados sustituyen rutas personales y direcciones privadas y conservan sus huellas en el inventario.
 
 Las versiones archivadas bajo `configuracion-y-registros/scripts/versions/` permiten identificar el código ejecutado por cada prueba. Una corrección posterior de las herramientas no cambia el código ni los resultados de las pruebas anteriores.
+
+## Reanudar una campaña sin perder sus resultados
+
+`recurrent_campaign.py --root RUTA --resume --check` comprueba la configuración capturada y enumera las etapas ya registradas y las pendientes. Con `--resume` se conserva la configuración original para la restauración y se omiten los intentos registrados. Un intento interrumpido se conserva y su repetición recibe un nombre diferente. El primer arranque de la reanudación recrea el servicio para retirar peticiones antiguas.
+
+El controlador debe ejecutarse en el GB10 con entrada desconectada y salida a un archivo, independiente de la sesión SSH. La pérdida del canal de salida ya no aborta su registro de progreso. Un bloqueo de archivo evita dos controladores sobre la misma campaña.
+
+`advance_recurrent_maximum.py --root RUTA` espera a que exista una prueba completa de veinte usuarios con 131.072 tokens. Comprueba los historiales y las respuestas conservadas antes de añadir la prueba de contexto máximo. Mantiene la cola abierta para la revisión y restauración finales.

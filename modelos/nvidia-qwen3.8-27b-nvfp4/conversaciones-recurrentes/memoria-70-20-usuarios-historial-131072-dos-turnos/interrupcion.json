@@ -1,0 +1,32 @@
+{
+  "observed_utc": "2026-10-15T22:02:30.542276+00:00",
+  "kind": "controller_output_pipe_closed",
+  "controller_error": "BrokenPipeError(32, 'Broken pipe')",
+  "profile_id": "historial-muy-largo-memoria-70",
+  "case_id": "20-usuarios-historial-131072-dos-turnos",
+  "measurement_sha256": "c62e60ffcfe6aa2aeb590fe3c2e2bc329dadea5502f5b87a4892f8d2fdb985eb",
+  "original_metadata_sha256": "95b5eadbaa97fa1708b68fdbf1942de2da8eb751b72ed38e630a16eaaa2a5cde",
+  "snapshot_status": "running",
+  "completed_requests": 30,
+  "expected_requests": 40,
+  "benchmark_processes_alive_at_review": false,
+  "container_running_at_review": true,
+  "container_oom_killed": false,
+  "container_command_at_review": [
+    "vllm",
+    "serve",
+    "nvidia/Qwen3.8-27B-NVFP4",
+    "--enable-auto-tool-choice",
+    "--tool-call-parser",
+    "qwen3_coder",
+    "--reasoning-parser",
+    "qwen3",
+    "--gpu-memory-utilization",
+    "0.7",
+    "--max-num-seqs",
+    "32",
+    "--max-model-len",
+    "262144"
+  ],
+  "explanation": "El controlador terminó con BrokenPipeError al perder su canal de salida y detuvo el cliente. La última medición se conserva sin cambios. Las diez peticiones sin resultado no se atribuyen a un fallo de memoria ni se marcan como completadas."
+}

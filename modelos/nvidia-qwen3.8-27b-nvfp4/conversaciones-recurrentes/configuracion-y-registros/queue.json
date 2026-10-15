@@ -313,6 +313,25 @@
           "parent_state": "/tmp/gb10-recurrent-20261015/profiles/crecimiento-memoria-70/20-usuarios-historial-65536-dos-turnos/histories.json.gz"
         }
       ]
+    },
+    {
+      "id": "historial-muy-largo-repeticion-memoria-70",
+      "fraction": 0.7,
+      "server_limit": 32,
+      "cases": [
+        {
+          "id": "20-usuarios-historial-131072-dos-turnos-repeticion-por-interrupcion",
+          "users": 20,
+          "input_tokens": 131072,
+          "turns": 2,
+          "seed": 20131072,
+          "output_tokens": 512,
+          "think_seconds": 30,
+          "timeout": 14400,
+          "request_timeout": 10800,
+          "parent_state": "/tmp/gb10-recurrent-20261015/profiles/crecimiento-memoria-70/20-usuarios-historial-65536-dos-turnos/histories.json.gz"
+        }
+      ]
     }
   ]
 }

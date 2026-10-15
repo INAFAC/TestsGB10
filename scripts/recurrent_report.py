@@ -27,7 +27,7 @@ def case_title(c):
     if c['id'].startswith('chat-'):
         return 'Chat: '+('sin razonamiento' if c['id'].endswith('-sin-razonamiento') else 'modo predeterminado')+f" · hasta {n(c.get('output_tokens',512),0)} tokens de salida"
     if c['input_tokens']==260864:return 'Continuar hasta el máximo de contexto'
-    if c.get('parent_state'):return 'Continuar con un historial ampliado'
+    if c.get('parent_state'):return 'Continuar con un historial ampliado'+(' · repetición tras interrupción' if c['id'].endswith('-repeticion-por-interrupcion') else '')
     return f"Conversación de {c.get('turns',3)} turnos por persona"
 
 def comparison_overview(rows,plan):
@@ -54,7 +54,8 @@ def comparison_overview(rows,plan):
                 '|---:|---:|---:|---|---:|---:|---:|---:|']
         for r in sorted(growth,key=lambda r:(r['config']['input_tokens'],r['config']['users'])):
             c=r['config'];s=r['summary'];maximum=f"{r['users_at_maximum_context']}/{c['users']}" if c['input_tokens']==260864 else 'No se intentó'
-            lines.append(f"| [{n(c['input_tokens'],0)}]({r['folder']}/README.md) | {c['users']} | {r['users_completed_all_turns']}/{c['users']} | {maximum} | {n(r['cold95'])} s | {n(r['follow95'])} s | {n(s.get('followups_total_p95_s'))} s | {n(s.get('duration_s'))} s |")
+            workload=n(c['input_tokens'],0)+(' · interrumpida' if r['record'].get('interrupted') else ' · repetición' if c['id'].endswith('-repeticion-por-interrupcion') else '')
+            lines.append(f"| [{workload}]({r['folder']}/README.md) | {c['users']} | {r['users_completed_all_turns']}/{c['users']} | {maximum} | {n(r['cold95'])} s | {n(r['follow95'])} s | {n(s.get('followups_total_p95_s'))} s | {n(s.get('duration_s'))} s |")
         lines+=['','Llegar al máximo exige una respuesta recibida cuya suma real de entrada y salida sea 262.144 tokens. El número de personas que completó ambos turnos se muestra aparte: alcanzar el máximo no demuestra rapidez ni calidad de conversación.','']
         decisions=plan.get('decisions',{}).get('growth_131072',{})
         for users,decision in sorted(decisions.items(),key=lambda item:int(item[0])):
@@ -106,16 +107,16 @@ def main():
         for case_record in profile['cases']:
             source=src_profile/case_record['id'];c=read(source/'configuration.json')
             folder=OUT/(f"memoria-{round(profile['fraction']*100)}-"+case_record['id'])
-            names={'configuration.json':'configuracion.json','measurements.json':'mediciones.json','execution.log':'registro-de-ejecucion.log','server.log':'registro-del-servidor.log','executed-command.json':'comando-ejecutado.json','histories.json.gz':'historiales-reproducibles.json.gz'}
+            names={'configuration.json':'configuracion.json','measurements.json':'mediciones.json','execution.log':'registro-de-ejecucion.log','server.log':'registro-del-servidor.log','executed-command.json':'comando-ejecutado.json','histories.json.gz':'historiales-reproducibles.json.gz','interruption.json':'interrupcion.json','controller-metadata-at-interruption.json':'controlador-al-interrumpirse.json','queue-at-interruption.json':'cola-al-interrumpirse.json'}
             for old,new in names.items():
                 if (source/old).exists():copy(source/old,folder/new)
             measurement_available=(source/'measurements.json').exists()
             data=read(source/'measurements.json') if measurement_available else {'summary':{},'requests':[]}
             s=data['summary'];requests=sorted(data['requests'],key=lambda r:(r['user_id'],r['turn']));good=[r for r in requests if r['ok']];follow=[r for r in good if r['turn']>1]
             initial=[r for r in good if r['turn']==1];count=c['users']*c.get('turns',3)
-            all_done=len(good)==count and case_record['exit_code']==0
+            all_done=len(good)==count and case_record['exit_code']==0 and not case_record.get('interrupted')
             fluent=all_done and bool(s.get('followups_reference_fluent'))
-            label='Sin mediciones; revisar registro' if not measurement_available else 'Cumple la referencia' if fluent else 'No cumple la referencia' if all_done else 'No completó todo'
+            label='Interrumpida por el controlador' if case_record.get('interrupted') else 'Sin mediciones; revisar registro' if not measurement_available else 'Cumple la referencia' if fluent else 'No cumple la referencia' if all_done else 'No completó todo'
             row={'folder':folder.name,'measurement_available':measurement_available,'config':c,'summary':s,'record':case_record,'all_done':all_done,'fluent':fluent,'label':label,'count':count,'done':len(good),'cold95':quantile([r.get('ttft_s') for r in initial],.95),'follow95':quantile([r.get('ttft_s') for r in follow],.95),'decode05':quantile([rate(r) for r in follow],.05)};rows.append(row)
             row['users_completed_all_turns']=sum(sum(r['user_id']==user for r in good)==c.get('turns',3) for user in range(c['users']))
             row['users_at_maximum_context']=len({r['user_id'] for r in good if (r.get('usage') or {}).get('total_tokens')==s.get('max_model_len',262144)})
@@ -208,6 +209,9 @@ def main():
             if measurement_available and c['id'].startswith('chat-comprobacion-medidor-'):
                 lines[4]=f"**Comprobación del medidor de chat.** Peticiones sin error: **{len(good)}/{count}**. Esta prueba pequeña verifica la recogida de tiempos y la continuidad de los mensajes; no se utiliza para elegir la memoria ni para calificar la fluidez del uso normal."
                 lines=[line.replace('| No cumple |','| No se evalúa |').replace('| Cumple |','| No se evalúa |') for line in lines]
+            if case_record.get('interrupted'):
+                lines[4]=f"**Prueba interrumpida por el controlador.** Se conservan **{len(good)}/{count}** respuestas recibidas y la última medición, tomada a los **{n(s.get('duration_s'))} s**. No se completó el grupo."
+                lines[5:5]=['','El lanzador perdió su canal de salida (`BrokenPipeError`) y detuvo el cliente. Este es un fallo de ejecución de la prueba; no demuestra falta de memoria del modelo. Las mediciones originales se conservan sin cambios y su estado interno puede seguir indicando «running», porque son el último registro anterior a la interrupción. El tiempo mostrado corresponde a ese registro, no a una finalización normal. Se repite el ensayo completo como una prueba separada. [Evidencia de la interrupción](interrupcion.json).','']
             (folder/'README.md').write_text('\n'.join(lines))
     (equipment/'inventario-originales.json').write_text(json.dumps(inventory,ensure_ascii=False,indent=2)+'\n')
     existing=(OUT/'README.md').read_text();existing=existing.split('<!-- resultados-inicio -->')[0].rstrip()
@@ -226,6 +230,7 @@ def main():
                         'comparacion-usuarios-y-chat-':'Comparación de usuarios y controles de chat',
                         'crecimiento-memoria-':'Ampliación del historial',
                         'chat-salida-2048-':'Chat con hasta 2.048 tokens de salida',
+                        'historial-muy-largo-repeticion-':'Historiales muy largos: repetición tras interrupción',
                         'historial-muy-largo-':'Historiales muy largos',
                         'contexto-maximo-':'Comprobación del contexto máximo'}
         profile_title=next((label for prefix,label in profile_labels.items() if profile['id'].startswith(prefix)),profile['id'].replace('-', ' ').capitalize())
@@ -261,7 +266,7 @@ def main():
     subprocess.run(['git','diff','--check'],check=True,cwd=ROOT)
     if a.publish:
         subprocess.run([sys.executable,str(ROOT/'scripts/validate_new_public_files.py')],check=True,cwd=ROOT)
-        subprocess.run(['git','add','--','README.md','GUIA-DE-LECTURA.md',str(MODEL/'README.md'),str(OUT),'scripts/README.md','scripts/build_report.py','scripts/recurrent_campaign.py','scripts/recurrent_probe.py','scripts/chat_probe.py','scripts/recurrent_report.py','scripts/validate_report.py','scripts/validate_recurrent.py','scripts/validate_new_public_files.py','scripts/verify_recurrent_restore.py'],check=True,cwd=ROOT)
+        subprocess.run(['git','add','--','README.md','GUIA-DE-LECTURA.md',str(MODEL/'README.md'),str(OUT),'scripts/README.md','scripts/build_report.py','scripts/recurrent_campaign.py','scripts/advance_recurrent_maximum.py','scripts/recurrent_probe.py','scripts/chat_probe.py','scripts/recurrent_report.py','scripts/validate_report.py','scripts/validate_recurrent.py','scripts/validate_new_public_files.py','scripts/verify_recurrent_restore.py'],check=True,cwd=ROOT)
         if subprocess.run(['git','diff','--cached','--quiet'],cwd=ROOT).returncode:
             subprocess.run(['git','commit','-m',a.message],check=True,cwd=ROOT)
         subprocess.run(['git','push'],check=True,cwd=ROOT)
