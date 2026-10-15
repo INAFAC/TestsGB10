@@ -168,7 +168,7 @@ def main():
     notice='**Se están realizando nuevas pruebas de conversaciones recurrentes con 10, 20 y 30 usuarios.**'
     if plan['status']!='running':existing=existing.replace(notice+'\n','')
     lines=[existing,'','<!-- resultados-inicio -->','## Configuraciones utilizadas','',
-           '| Configuración | Presupuesto | Límite activo | Arrancó | Tiempo de arranque | Reserva de caché al arrancar |',
+           '| Configuración | Presupuesto | Límite activo | Servicio listo | Espera hasta estar listo | Reserva de caché registrada |',
            '|---|---:|---:|---|---:|---:|']
     for profile in meta['profiles']:
         log=cache/'profiles'/profile['id']/'startup.log'
@@ -178,7 +178,8 @@ def main():
         profile_title=profile['id'].replace('-', ' ').capitalize()
         title=f"[{profile_title}](configuracion-y-registros/{profile['id']}/arranque.log)" if log.exists() else profile_title
         lines.append(f"| {title} | {round(profile['fraction']*100)}% | {profile['server_limit']} | {status} | {n(profile.get('startup_seconds'))} s | {n(reserve,2)} GiB |")
-    lines+=['','La reserva de caché procede del registro de arranque. No equivale a memoria ocupada por conversaciones ni permite deducir por sí sola cuántas personas tendrán una respuesta fluida. El pico de ocupación de esa reserva se mide durante cada prueba.','',
+    lines+=['','La reserva de caché procede del registro de arranque. No equivale a memoria ocupada por conversaciones ni permite deducir por sí sola cuántas personas tendrán una respuesta fluida. El pico de ocupación de esa reserva se mide durante cada prueba.',
+           '', 'La espera hasta estar listo se mide después de aplicar la configuración. Si la siguiente etapa conserva los mismos parámetros, Docker puede reutilizar el contenedor y esa espera será casi cero; no significa que el modelo se haya cargado desde cero en ese tiempo. La espera al primer texto de cada conversación se mide por separado.','',
            '## Resultados publicados','',
            'Se publica una prueba cuando termina. Los percentiles del primer turno y de las continuaciones se muestran separados. Las medidas parciales no se publican como resultados definitivos.','',
            '| Prueba | Memoria | Usuarios / límite | Historial inicial | Peticiones sin error | Espera p95 primer turno | Espera p95 continuaciones | Velocidad p05 continuaciones | Caché máxima | Recálculos | Tiempo total | Continuaciones |',

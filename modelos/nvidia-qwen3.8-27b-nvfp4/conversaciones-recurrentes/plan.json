@@ -67,6 +67,14 @@
         "memoria-40-20-usuarios-historial-8192-tres-turnos",
         "memoria-70-20-usuarios-historial-8192-tres-turnos"
       ]
+    },
+    "refinement_60": {
+      "required": true,
+      "reason": "La carga de 8.192 tokens al 50% completó las 60 respuestas, pero su espera p95 de continuaciones fue 9,60 s, por encima del máximo de 8,77 s calculado con la regla fijada antes de la prueba. El tiempo completo p95 (94,80 s) y la velocidad p05 (5,44 tokens/s) sí conservaron la referencia del 70%. Como ambas cargas deben cumplir todos los criterios, este resultado ya activa la comparación al 60%; la prueba larga al 50% se completa igualmente. La diferencia de espera es pequeña en términos absolutos y no demuestra por sí sola una diferencia estable entre presupuestos.",
+      "evidence": [
+        "memoria-50-20-usuarios-historial-8192-tres-turnos",
+        "memoria-70-20-usuarios-historial-8192-tres-turnos"
+      ]
     }
   },
   "refinement_comparison": {

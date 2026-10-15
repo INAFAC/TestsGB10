@@ -157,6 +157,12 @@
           "exit_code": 0,
           "duration_seconds": 425.03352646701387,
           "timed_out": false
+        },
+        {
+          "id": "20-usuarios-historial-32768-tres-turnos",
+          "exit_code": 0,
+          "duration_seconds": 2805.1998922610073,
+          "timed_out": false
         }
       ],
       "command": [
@@ -176,7 +182,14 @@
         "262144"
       ],
       "ready": true,
-      "startup_seconds": 386.2402154900192
+      "startup_seconds": 386.2402154900192,
+      "state": "complete"
+    },
+    {
+      "id": "ajuste-memoria-60",
+      "fraction": 0.6,
+      "server_limit": 32,
+      "cases": []
     }
   ]
 }
