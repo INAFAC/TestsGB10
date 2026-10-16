@@ -92,13 +92,14 @@ Pruebas al **70%**, conservando el historial y las respuestas de la etapa anteri
 
 | Historial del primer turno | Personas | Completaron ambos turnos | Llegaron a 262.144 tokens | Espera p95 al ampliar | Espera p95 al continuar | Respuesta completa p95 al continuar | Tiempo del grupo |
 |---:|---:|---:|---|---:|---:|---:|---:|
-| [65.536](memoria-70-10-usuarios-historial-65536-dos-turnos/README.md) | 10 | 10/10 | No se intentó | 828,1 s | 550,9 s | 1.120,8 s | 2.036,6 s |
-| [65.536](memoria-70-20-usuarios-historial-65536-dos-turnos/README.md) | 20 | 20/20 | No se intentó | 1.712,0 s | 1.688,8 s | 2.344,9 s | 4.289,5 s |
-| [65.536](memoria-70-30-usuarios-historial-65536-dos-turnos/README.md) | 30 | 30/30 | No se intentó | 2.861,7 s | 2.767,3 s | 3.423,3 s | 6.337,6 s |
-| [131.072 · interrumpida](memoria-70-20-usuarios-historial-131072-dos-turnos/README.md) | 20 | 10/20 | No se intentó | 4.761,8 s | 4.558,3 s | 5.309,0 s | 8.335,3 s |
-| [131.072 · repetición](memoria-70-20-usuarios-historial-131072-dos-turnos-repeticion-por-interrupcion/README.md) | 20 | 20/20 | No se intentó | 3.930,5 s | 3.747,5 s | 4.357,9 s | 8.496,0 s |
+| [65.536](memoria-70-10-usuarios-historial-65536-dos-turnos/README.md) | 10 | 10/10 | No se intentó | 13,8 min | 9,2 min | 18,7 min | 33,9 min |
+| [65.536](memoria-70-20-usuarios-historial-65536-dos-turnos/README.md) | 20 | 20/20 | No se intentó | 28,5 min | 28,1 min | 39,1 min | 71,5 min |
+| [65.536](memoria-70-30-usuarios-historial-65536-dos-turnos/README.md) | 30 | 30/30 | No se intentó | 47,7 min | 46,1 min | 57,1 min | 105,6 min |
+| [131.072 · interrumpida](memoria-70-20-usuarios-historial-131072-dos-turnos/README.md) | 20 | 10/20 | No se intentó | 79,4 min | 76,0 min | 88,5 min | 138,9 min |
+| [131.072 · repetición](memoria-70-20-usuarios-historial-131072-dos-turnos-repeticion-por-interrupcion/README.md) | 20 | 20/20 | No se intentó | 65,5 min | 62,5 min | 72,6 min | 141,6 min |
+| [260.864](memoria-70-20-usuarios-historial-260864-dos-turnos/README.md) | 20 | 20/20 | 20/20 | 160,3 min | 172,9 min | 179,6 min | 346,5 min |
 
-Llegar al máximo exige una respuesta recibida cuya suma real de entrada y salida sea 262.144 tokens. El número de personas que completó ambos turnos se muestra aparte: alcanzar el máximo no demuestra rapidez ni calidad de conversación.
+Los tiempos de esta tabla están en minutos; el detalle de cada prueba conserva los segundos. En el intento interrumpido son mediciones parciales. Llegar al máximo exige una respuesta recibida cuya suma real de entrada y salida sea 262.144 tokens. El número de personas que completó ambos turnos se muestra aparte: alcanzar el máximo no demuestra rapidez ni calidad de conversación.
 
 **Etapa de 131.072 tokens, 10 personas:** No se continúa a 131.072 porque la prueba de 65.536 tokens no conservó la referencia de fluidez fijada en el plan. Esto no demuestra que esas conversaciones no pudieran terminar con más espera. [Medición anterior](memoria-70-10-usuarios-historial-65536-dos-turnos/README.md).
 
@@ -172,6 +173,7 @@ Cada fila corresponde a un intento cerrado, incluidos los interrumpidos, que se 
 | [Chat: modo predeterminado · hasta 2.048 tokens de salida](memoria-70-chat-20-usuarios-historial-8192-salida-2048-predeterminado/README.md) | 70% | 20 / 32 | 8.192 | 60/60 | 103,3 s | 1,8 s | 6,17 tokens/s | 42,4% | 0 | 578,6 s | No cumple la referencia |
 | [Continuar con un historial ampliado](memoria-70-20-usuarios-historial-131072-dos-turnos/README.md) | 70% | 20 / 32 | 131.072 | 30/40 | 4.761,8 s | 4.558,3 s | 0,61 tokens/s | 100,0% | 81 | 8.335,3 s | Interrumpida por el controlador |
 | [Continuar con un historial ampliado · repetición tras interrupción](memoria-70-20-usuarios-historial-131072-dos-turnos-repeticion-por-interrupcion/README.md) | 70% | 20 / 32 | 131.072 | 40/40 | 3.930,5 s | 3.747,5 s | 0,74 tokens/s | 100,0% | 95 | 8.496,0 s | No cumple la referencia |
+| [Continuar hasta el máximo de contexto](memoria-70-20-usuarios-historial-260864-dos-turnos/README.md) | 70% | 20 / 32 | 260.864 | 40/40 | 9.615,8 s | 10.375,8 s | 0,77 tokens/s | 100,0% | 97 | 20.787,1 s | No cumple la referencia |
 
 ## Comprobaciones del medidor de chat
 

@@ -356,6 +356,10 @@ def main():
     for model,folder,limit,good,total,complete in model_summaries:
         recurrent_link=(f' · [Conversaciones con varios usuarios]({link(folder/"conversaciones-recurrentes/README.md",ROOT)})' if (folder/'conversaciones-recurrentes/README.md').exists() else '')
         lines.append(f'| {model.split("/")[-1]} | {integer(limit)} tokens | [Resultados y configuración]({link(folder/"README.md",ROOT)}){recurrent_link} |')
+    previous_root=(ROOT/'README.md').read_text() if (ROOT/'README.md').exists() else ''
+    conclusions=re.search(r'<!-- conclusiones-inicio -->\n(.*?)\n<!-- conclusiones-fin -->',previous_root,re.S)
+    if conclusions:
+        lines += ['', '<!-- conclusiones-inicio -->', conclusions.group(1), '<!-- conclusiones-fin -->']
     lines += ['', '## Qué puedes comprobar','',
               '- **Si todas las conversaciones terminaron:** cuántas recibieron la respuesta completa solicitada.',
               '- **Si llegaron al máximo de tokens:** se comprueba la suma real de historial y respuesta. También se distingue un límite reducido por falta de memoria.',

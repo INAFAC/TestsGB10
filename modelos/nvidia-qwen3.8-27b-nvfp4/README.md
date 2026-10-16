@@ -56,6 +56,8 @@ Con historiales iniciales de 8.192 tokens, las esperas p95 de continuación fuer
 
 Las tres cargas alcanzaron el 100% de la caché disponible para historiales. Completar las conversaciones no ofrece por sí solo una experiencia ágil; las esperas bajas de diez personas con 32.768 tokens no se mantuvieron al ampliar a 65.536.
 
+**Con veinte personas y 131.072 tokens iniciales, también terminaron los dos turnos de todas las conversaciones, pero el grupo tardó 141,6 minutos.** La espera p95 al continuar fue de 62,5 minutos y el tiempo completo p95, de 72,6 minutos. Hubo 95 recálculos, la caché llegó al 100% y se observaron como máximo cuatro respuestas solapadas, aunque el límite impuesto era 32. Son respuestas sintéticas de 512 tokens por turno: completarlas demuestra capacidad de finalización, con una espera incompatible con un chat ágil. [Ver la repetición completa](conversaciones-recurrentes/memoria-70-20-usuarios-historial-131072-dos-turnos-repeticion-por-interrupcion/README.md). El [intento anterior interrumpido por el lanzador](conversaciones-recurrentes/memoria-70-20-usuarios-historial-131072-dos-turnos/README.md) se conserva por separado.
+
 Se eligió el **70% para las comparaciones posteriores por su menor espera p95 en ambas cargas iniciales**. El 60% obtuvo tiempos totales cercanos con menos memoria y mejores resultados en algunas medidas de la carga larga; el 70% no es un mínimo necesario ni la mejor opción en todas las métricas. [Comparación de presupuestos y criterio de selección](conversaciones-recurrentes/README.md).
 
 ### Configuraciones de la batería inicial

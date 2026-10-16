@@ -1,14 +1,20 @@
 [
   {
     "file": "modelos/nvidia-qwen3.8-27b-nvfp4/conversaciones-recurrentes/configuracion-y-registros/metadata.json",
-    "sha256": "3bba9b10dfd93ef28d67e219dd2494bf95c388f0973010b2cafb74541680664d",
-    "original_sha256": "3bba9b10dfd93ef28d67e219dd2494bf95c388f0973010b2cafb74541680664d",
+    "sha256": "fac741286437bef802e2d0ac454e9fe50e02b0ab8ba98f0f85e68e54a8c6de80",
+    "original_sha256": "fac741286437bef802e2d0ac454e9fe50e02b0ab8ba98f0f85e68e54a8c6de80",
     "sanitized": false
   },
   {
     "file": "modelos/nvidia-qwen3.8-27b-nvfp4/conversaciones-recurrentes/configuracion-y-registros/queue.json",
-    "sha256": "a6dd22b98e7b9555c58632e5763d146a3fe027a93fab291b413a0ae0f029654f",
-    "original_sha256": "a6dd22b98e7b9555c58632e5763d146a3fe027a93fab291b413a0ae0f029654f",
+    "sha256": "d4a68e67d1eee59d77474caa0200c9109432d0729a9a294d1da792838ab562e6",
+    "original_sha256": "d4a68e67d1eee59d77474caa0200c9109432d0729a9a294d1da792838ab562e6",
+    "sanitized": false
+  },
+  {
+    "file": "modelos/nvidia-qwen3.8-27b-nvfp4/conversaciones-recurrentes/configuracion-y-registros/restore-override.json",
+    "sha256": "7ab9eb9b05be9de20ca6c81b9d1cbfb6425603e12f4bf3eb5bbaf919566aad4c",
+    "original_sha256": "7ab9eb9b05be9de20ca6c81b9d1cbfb6425603e12f4bf3eb5bbaf919566aad4c",
     "sanitized": false
   },
   {
@@ -1180,5 +1186,41 @@
     "sha256": "0913289d255b62c604d7eac4d126b577ce9c635c751a3abcaa7ac25bc4cdec23",
     "original_sha256": "db8b1d2d1e379ee7b145fb93c41bc6a0ab91822c683032e046f5cb06a448c576",
     "sanitized": true
+  },
+  {
+    "file": "modelos/nvidia-qwen3.8-27b-nvfp4/conversaciones-recurrentes/memoria-70-20-usuarios-historial-260864-dos-turnos/configuracion.json",
+    "sha256": "ef10d34677bb99e54b213c9864ee98c9308a89684f69fde1dece8646093b00fe",
+    "original_sha256": "ef10d34677bb99e54b213c9864ee98c9308a89684f69fde1dece8646093b00fe",
+    "sanitized": false
+  },
+  {
+    "file": "modelos/nvidia-qwen3.8-27b-nvfp4/conversaciones-recurrentes/memoria-70-20-usuarios-historial-260864-dos-turnos/mediciones.json",
+    "sha256": "b858d56b2558917dab32e0d18ffb2fc5c8755b4ff0f296e5e337f9c1dabee7ec",
+    "original_sha256": "b858d56b2558917dab32e0d18ffb2fc5c8755b4ff0f296e5e337f9c1dabee7ec",
+    "sanitized": false
+  },
+  {
+    "file": "modelos/nvidia-qwen3.8-27b-nvfp4/conversaciones-recurrentes/memoria-70-20-usuarios-historial-260864-dos-turnos/registro-de-ejecucion.log",
+    "sha256": "59d2cd8b13c642e290cbb8fe4d42fcade4d3c71ceda14ec0ca1aabb11cc98009",
+    "original_sha256": "59d2cd8b13c642e290cbb8fe4d42fcade4d3c71ceda14ec0ca1aabb11cc98009",
+    "sanitized": false
+  },
+  {
+    "file": "modelos/nvidia-qwen3.8-27b-nvfp4/conversaciones-recurrentes/memoria-70-20-usuarios-historial-260864-dos-turnos/registro-del-servidor.log",
+    "sha256": "96d41df55de3d3b40c12eb63bc34bea78de2e26c68e6b405c3377acc764bc845",
+    "original_sha256": "f878f65c8b13abe3081455c08d120b80e2c3137bcabeee32e2e59bc9cffc76df",
+    "sanitized": true
+  },
+  {
+    "file": "modelos/nvidia-qwen3.8-27b-nvfp4/conversaciones-recurrentes/memoria-70-20-usuarios-historial-260864-dos-turnos/comando-ejecutado.json",
+    "sha256": "ab075ce82db4aea389c5045864f9271ada908a92714b3cc122280f145d081eb9",
+    "original_sha256": "ab075ce82db4aea389c5045864f9271ada908a92714b3cc122280f145d081eb9",
+    "sanitized": false
+  },
+  {
+    "file": "modelos/nvidia-qwen3.8-27b-nvfp4/conversaciones-recurrentes/memoria-70-20-usuarios-historial-260864-dos-turnos/historiales-reproducibles.json.gz",
+    "sha256": "9f1ffc4e83b941608bc4f1a6eec63fa7f5b4932bfa2ebec6b583b9893136635d",
+    "original_sha256": "9f1ffc4e83b941608bc4f1a6eec63fa7f5b4932bfa2ebec6b583b9893136635d",
+    "sanitized": false
   }
 ]

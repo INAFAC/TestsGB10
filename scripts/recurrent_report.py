@@ -55,8 +55,9 @@ def comparison_overview(rows,plan):
         for r in sorted(growth,key=lambda r:(r['config']['input_tokens'],r['config']['users'])):
             c=r['config'];s=r['summary'];maximum=f"{r['users_at_maximum_context']}/{c['users']}" if c['input_tokens']==260864 else 'No se intentó'
             workload=n(c['input_tokens'],0)+(' · interrumpida' if r['record'].get('interrupted') else ' · repetición' if c['id'].endswith('-repeticion-por-interrupcion') else '')
-            lines.append(f"| [{workload}]({r['folder']}/README.md) | {c['users']} | {r['users_completed_all_turns']}/{c['users']} | {maximum} | {n(r['cold95'])} s | {n(r['follow95'])} s | {n(s.get('followups_total_p95_s'))} s | {n(s.get('duration_s'))} s |")
-        lines+=['','Llegar al máximo exige una respuesta recibida cuya suma real de entrada y salida sea 262.144 tokens. El número de personas que completó ambos turnos se muestra aparte: alcanzar el máximo no demuestra rapidez ni calidad de conversación.','']
+            minutes=lambda value:n(value/60 if value is not None else None)+' min'
+            lines.append(f"| [{workload}]({r['folder']}/README.md) | {c['users']} | {r['users_completed_all_turns']}/{c['users']} | {maximum} | {minutes(r['cold95'])} | {minutes(r['follow95'])} | {minutes(s.get('followups_total_p95_s'))} | {minutes(s.get('duration_s'))} |")
+        lines+=['','Los tiempos de esta tabla están en minutos; el detalle de cada prueba conserva los segundos. En el intento interrumpido son mediciones parciales. Llegar al máximo exige una respuesta recibida cuya suma real de entrada y salida sea 262.144 tokens. El número de personas que completó ambos turnos se muestra aparte: alcanzar el máximo no demuestra rapidez ni calidad de conversación.','']
         decisions=plan.get('decisions',{}).get('growth_131072',{})
         for users,decision in sorted(decisions.items(),key=lambda item:int(item[0])):
             lines.append(f"**Etapa de 131.072 tokens, {users} personas:** {decision['reason']} [Medición anterior]({decision['evidence']}/README.md).")
