@@ -15,6 +15,7 @@
 | `chat_probe.py` | Control con mensajes de chat ficticios: conserva las respuestas y distingue razonamiento, texto visible y finalización natural. |
 | `recurrent_campaign.py` | Ejecuta la cola de configuraciones temporales de conversaciones recurrentes y restaura el servicio capturado al comenzar. |
 | `recurrent_report.py` | Publica únicamente las pruebas recurrentes terminadas, con sus tablas, registros sanitizados y huellas de procedencia. |
+| `finalize_recurrent_campaign.py` | Espera al último ensayo, comprueba que estén registrados todos los intentos previstos, cierra la cola y verifica la restauración. |
 | `verify_recurrent_restore.py` | Comprueba al finalizar la configuración restaurada, la salud del servicio, una generación breve y la ausencia de solicitudes pendientes. |
 | `validate_recurrent.py` | Verifica la continuidad real de las conversaciones y, al cerrar la campaña, su cobertura y restauración. |
 | `validate_new_public_files.py` | Revisa los archivos nuevos o modificados antes de publicar para detectar posibles datos sensibles; complementa la revisión manual. |
@@ -77,3 +78,5 @@ Las versiones archivadas bajo `configuracion-y-registros/scripts/versions/` perm
 El controlador debe ejecutarse en el GB10 con entrada desconectada y salida a un archivo, independiente de la sesión SSH. La pérdida del canal de salida ya no aborta su registro de progreso. Un bloqueo de archivo evita dos controladores sobre la misma campaña.
 
 `advance_recurrent_maximum.py --root RUTA` espera a que exista una prueba completa de veinte usuarios con 131.072 tokens. Comprueba los historiales y las respuestas conservadas antes de añadir la prueba de contexto máximo. Mantiene la cola abierta para la revisión y restauración finales.
+
+`finalize_recurrent_campaign.py --root RUTA --check` informa sin cerrar la cola. Sin `--check`, espera también de forma independiente de SSH: solo cierra cuando existe el intento de contexto máximo y están registradas todas las cargas requeridas. Tras la restauración del controlador ejecuta la comprobación independiente. Los intentos interrumpidos no sustituyen las pruebas requeridas. El cierre automático no publica conclusiones ni sustituye la revisión final del informe.

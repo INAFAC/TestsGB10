@@ -418,6 +418,38 @@
       "id": "historial-muy-largo-repeticion-memoria-70",
       "fraction": 0.7,
       "server_limit": 32,
+      "cases": [
+        {
+          "id": "20-usuarios-historial-131072-dos-turnos-repeticion-por-interrupcion",
+          "exit_code": 0,
+          "duration_seconds": 8500.713145163027,
+          "timed_out": false
+        }
+      ],
+      "command": [
+        "vllm",
+        "serve",
+        "nvidia/Qwen3.8-27B-NVFP4",
+        "--enable-auto-tool-choice",
+        "--tool-call-parser",
+        "qwen3_coder",
+        "--reasoning-parser",
+        "qwen3",
+        "--gpu-memory-utilization",
+        "0.7",
+        "--max-num-seqs",
+        "32",
+        "--max-model-len",
+        "262144"
+      ],
+      "ready": true,
+      "startup_seconds": 376.0400057649822,
+      "state": "complete"
+    },
+    {
+      "id": "contexto-maximo-memoria-70",
+      "fraction": 0.7,
+      "server_limit": 32,
       "cases": [],
       "command": [
         "vllm",
@@ -436,7 +468,7 @@
         "262144"
       ],
       "ready": true,
-      "startup_seconds": 376.0400057649822
+      "startup_seconds": 0.0009706300043035299
     }
   ],
   "interruptions": [

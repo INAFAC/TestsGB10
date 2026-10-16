@@ -212,6 +212,10 @@ def main():
             if case_record.get('interrupted'):
                 lines[4]=f"**Prueba interrumpida por el controlador.** Se conservan **{len(good)}/{count}** respuestas recibidas y la última medición, tomada a los **{n(s.get('duration_s'))} s**. No se completó el grupo."
                 lines[5:5]=['','El lanzador perdió su canal de salida (`BrokenPipeError`) y detuvo el cliente. Este es un fallo de ejecución de la prueba; no demuestra falta de memoria del modelo. Las mediciones originales se conservan sin cambios y su estado interno puede seguir indicando «running», porque son el último registro anterior a la interrupción. El tiempo mostrado corresponde a ese registro, no a una finalización normal. Se repite el ensayo completo como una prueba separada. [Evidencia de la interrupción](interrupcion.json).','']
+            elif c['id'].endswith('-repeticion-por-interrupcion'):
+                original_folder=folder.name.removesuffix('-repeticion-por-interrupcion')
+                lines[0]+=' · repetición tras interrupción'
+                lines[5:5]=['',f'Se repite la carga del [intento interrumpido](../{original_folder}/README.md), después de recrear el contenedor. Ambos intentos se conservan por separado. Las cifras de este informe corresponden exclusivamente a esta repetición; no se suman respuestas del intento anterior.','']
             (folder/'README.md').write_text('\n'.join(lines))
     (equipment/'inventario-originales.json').write_text(json.dumps(inventory,ensure_ascii=False,indent=2)+'\n')
     existing=(OUT/'README.md').read_text();existing=existing.split('<!-- resultados-inicio -->')[0].rstrip()
@@ -239,7 +243,7 @@ def main():
     lines+=['','La reserva de caché procede del registro de arranque. No equivale a memoria ocupada por conversaciones ni permite deducir por sí sola cuántas personas tendrán una respuesta fluida. El pico de ocupación de esa reserva se mide durante cada prueba.',
            '', 'La espera hasta estar listo se mide después de aplicar la configuración. Si la siguiente etapa conserva los mismos parámetros, Docker puede reutilizar el contenedor y esa espera será casi cero; no significa que el modelo se haya cargado desde cero en ese tiempo. La espera al primer texto de cada conversación se mide por separado.','',
            '## Resultados publicados','',
-           'Se publica una prueba cuando termina. Los percentiles del primer turno y de las continuaciones se muestran separados. Las medidas parciales no se publican como resultados definitivos.','',
+           'Cada fila corresponde a un intento cerrado, incluidos los interrumpidos, que se identifican expresamente. En una interrupción se conserva la última medición disponible; su duración y percentiles son parciales. Los percentiles del primer turno y de las continuaciones se muestran separados.','',
            '| Prueba | Memoria | Usuarios / límite | Historial inicial | Peticiones sin error | Espera p95 primer turno | Espera p95 continuaciones | Velocidad p05 continuaciones | Caché máxima | Recálculos | Tiempo total | Continuaciones |',
            '|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|']
     for r in rows:
@@ -266,7 +270,7 @@ def main():
     subprocess.run(['git','diff','--check'],check=True,cwd=ROOT)
     if a.publish:
         subprocess.run([sys.executable,str(ROOT/'scripts/validate_new_public_files.py')],check=True,cwd=ROOT)
-        subprocess.run(['git','add','--','README.md','GUIA-DE-LECTURA.md',str(MODEL/'README.md'),str(OUT),'scripts/README.md','scripts/build_report.py','scripts/recurrent_campaign.py','scripts/advance_recurrent_maximum.py','scripts/recurrent_probe.py','scripts/chat_probe.py','scripts/recurrent_report.py','scripts/validate_report.py','scripts/validate_recurrent.py','scripts/validate_new_public_files.py','scripts/verify_recurrent_restore.py'],check=True,cwd=ROOT)
+        subprocess.run(['git','add','--','README.md','GUIA-DE-LECTURA.md',str(MODEL/'README.md'),str(OUT),'scripts/README.md','scripts/build_report.py','scripts/recurrent_campaign.py','scripts/advance_recurrent_maximum.py','scripts/finalize_recurrent_campaign.py','scripts/recurrent_probe.py','scripts/chat_probe.py','scripts/recurrent_report.py','scripts/validate_report.py','scripts/validate_recurrent.py','scripts/validate_new_public_files.py','scripts/verify_recurrent_restore.py'],check=True,cwd=ROOT)
         if subprocess.run(['git','diff','--cached','--quiet'],cwd=ROOT).returncode:
             subprocess.run(['git','commit','-m',a.message],check=True,cwd=ROOT)
         subprocess.run(['git','push'],check=True,cwd=ROOT)

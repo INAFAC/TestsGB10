@@ -96,6 +96,7 @@ Pruebas al **70%**, conservando el historial y las respuestas de la etapa anteri
 | [65.536](memoria-70-20-usuarios-historial-65536-dos-turnos/README.md) | 20 | 20/20 | No se intentó | 1.712,0 s | 1.688,8 s | 2.344,9 s | 4.289,5 s |
 | [65.536](memoria-70-30-usuarios-historial-65536-dos-turnos/README.md) | 30 | 30/30 | No se intentó | 2.861,7 s | 2.767,3 s | 3.423,3 s | 6.337,6 s |
 | [131.072 · interrumpida](memoria-70-20-usuarios-historial-131072-dos-turnos/README.md) | 20 | 10/20 | No se intentó | 4.761,8 s | 4.558,3 s | 5.309,0 s | 8.335,3 s |
+| [131.072 · repetición](memoria-70-20-usuarios-historial-131072-dos-turnos-repeticion-por-interrupcion/README.md) | 20 | 20/20 | No se intentó | 3.930,5 s | 3.747,5 s | 4.357,9 s | 8.496,0 s |
 
 Llegar al máximo exige una respuesta recibida cuya suma real de entrada y salida sea 262.144 tokens. El número de personas que completó ambos turnos se muestra aparte: alcanzar el máximo no demuestra rapidez ni calidad de conversación.
 
@@ -134,6 +135,7 @@ La espera visible empieza al enviar la petición y acaba cuando llega el primer 
 | [Chat con hasta 2.048 tokens de salida](configuracion-y-registros/chat-salida-2048-memoria-70/arranque.log) | 70% | 32 | Sí | 0,0 s | 59,68 GiB |
 | [Historiales muy largos](configuracion-y-registros/historial-muy-largo-memoria-70/arranque.log) | 70% | 32 | Sí | 0,0 s | 59,68 GiB |
 | [Historiales muy largos: repetición tras interrupción](configuracion-y-registros/historial-muy-largo-repeticion-memoria-70/arranque.log) | 70% | 32 | Sí | 376,0 s | 59,72 GiB |
+| [Comprobación del contexto máximo](configuracion-y-registros/contexto-maximo-memoria-70/arranque.log) | 70% | 32 | Sí | 0,0 s | 59,72 GiB |
 
 La reserva de caché procede del registro de arranque. No equivale a memoria ocupada por conversaciones ni permite deducir por sí sola cuántas personas tendrán una respuesta fluida. El pico de ocupación de esa reserva se mide durante cada prueba.
 
@@ -141,7 +143,7 @@ La espera hasta estar listo se mide después de aplicar la configuración. Si la
 
 ## Resultados publicados
 
-Se publica una prueba cuando termina. Los percentiles del primer turno y de las continuaciones se muestran separados. Las medidas parciales no se publican como resultados definitivos.
+Cada fila corresponde a un intento cerrado, incluidos los interrumpidos, que se identifican expresamente. En una interrupción se conserva la última medición disponible; su duración y percentiles son parciales. Los percentiles del primer turno y de las continuaciones se muestran separados.
 
 | Prueba | Memoria | Usuarios / límite | Historial inicial | Peticiones sin error | Espera p95 primer turno | Espera p95 continuaciones | Velocidad p05 continuaciones | Caché máxima | Recálculos | Tiempo total | Continuaciones |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|
@@ -169,6 +171,7 @@ Se publica una prueba cuando termina. Los percentiles del primer turno y de las 
 | [Chat: sin razonamiento · hasta 2.048 tokens de salida](memoria-70-chat-20-usuarios-historial-32768-salida-2048-sin-razonamiento/README.md) | 70% | 20 / 32 | 32.768 | 60/60 | 591,4 s | 445,0 s | 0,65 tokens/s | 100,0% | 18 | 2.328,1 s | No cumple la referencia |
 | [Chat: modo predeterminado · hasta 2.048 tokens de salida](memoria-70-chat-20-usuarios-historial-8192-salida-2048-predeterminado/README.md) | 70% | 20 / 32 | 8.192 | 60/60 | 103,3 s | 1,8 s | 6,17 tokens/s | 42,4% | 0 | 578,6 s | No cumple la referencia |
 | [Continuar con un historial ampliado](memoria-70-20-usuarios-historial-131072-dos-turnos/README.md) | 70% | 20 / 32 | 131.072 | 30/40 | 4.761,8 s | 4.558,3 s | 0,61 tokens/s | 100,0% | 81 | 8.335,3 s | Interrumpida por el controlador |
+| [Continuar con un historial ampliado · repetición tras interrupción](memoria-70-20-usuarios-historial-131072-dos-turnos-repeticion-por-interrupcion/README.md) | 70% | 20 / 32 | 131.072 | 40/40 | 3.930,5 s | 3.747,5 s | 0,74 tokens/s | 100,0% | 95 | 8.496,0 s | No cumple la referencia |
 
 ## Comprobaciones del medidor de chat
 
