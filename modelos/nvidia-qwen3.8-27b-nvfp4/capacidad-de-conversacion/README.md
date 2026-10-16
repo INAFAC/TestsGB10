@@ -16,7 +16,7 @@ Las respuestas deben tener texto visible y terminar naturalmente. En cada bloque
 |---:|---:|---:|---|
 | 70% | 1 | 2 | Frontera local medida |
 | 40% | 1 | 2 | Frontera local medida |
-| 50% | Pendiente de completar el recorrido | — | Pendiente |
+| 50% | Pendiente de completar el recorrido | 1 (en curso) | En curso |
 | 60% | Pendiente de completar el recorrido | — | Pendiente |
 | 85% | Pendiente de completar el recorrido | — | Pendiente |
 | 35% | Pendiente de completar el recorrido | — | Pendiente |
@@ -34,6 +34,7 @@ El presupuesto de memoria no es un límite estricto de toda la RAM del GB10. El 
 | [Recorrido desde el principio](memoria-40-personas-1-recorrido-completo-intento-1/README.md) | 40% | 1 | 257 | 262.026 | 3,3 s | 6,70 tokens/s | 223,2 min | Cumple |
 | [Recorrido desde el principio](memoria-40-personas-2-recorrido-completo-intento-1/README.md) | 40% | 2 | 183 | 187.084 | 4,6 s | 5,59 tokens/s | 172,7 min | Error de API o plazo de espera del cliente |
 | [Control con razonamiento](memoria-40-personas-1-control-con-razonamiento-intento-3/README.md) | 40% | 1 | 5 | 11.587 | 74,3 s | 11,86 tokens/s | 6,7 min | No cumple |
+| Recorrido desde el principio | 50% | 1 | 1 | 685 | — s | — tokens/s | 0,6 min | En curso; no es un resultado final |
 
 ## Cómo avanza cada conversación
 
