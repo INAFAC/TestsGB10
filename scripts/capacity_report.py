@@ -81,12 +81,14 @@ def main():
             '[Volver a la capacidad por memoria](../README.md)','',f'**{label}.**','',
             f"Modelo: `{s['model']}`. Razonamiento: **{'desactivado' if c['reasoning']=='disabled' else 'predeterminado'}**. Límite impuesto al servidor: **{c['server_limit']} solicitudes activas**. Presupuesto de salida: **hasta {number(c['output_tokens'],0)} tokens por respuesta**, con petición de hasta 100 palabras.",'',
             f"Respuestas recibidas sin error: **{s['completed']}/{s['num_requests']} previstas**. Duración: **{number(s['duration_s']/60)} min**, incluidas las pausas. {'Se conservan todos los mensajes y las respuestas reales desde el comienzo; no se salta ni recorta el historial.' if trajectory else 'Este control no recorre todo el contexto.'}",'',
+            f"Peticiones con error: **{s['failed']}**. Peticiones previstas que no llegaron a enviarse: **{s['not_attempted']}**. No se cuentan como errores las peticiones omitidas después de detener el ensayo.",'',
             'Los plazos de espera del cliente no demuestran un error de memoria. Un corte por límite de salida tampoco. Los percentiles de una prueba incompleta describen únicamente las respuestas recibidas.','',
             '## Resultado durante el crecimiento','',
             '| Turnos | Historial enviado | Respuestas medidas / previstas | Espera visible p95 | Peor espera | Velocidad p05 | Respuesta completa p95 | Referencia |',
             '|---|---:|---:|---:|---:|---:|---:|---|']
         for w in s.get('windows',[]):
-            lines.append(f"| {w['first_turn']}-{w['last_turn']} | {number(w['min_input_tokens'],0)}–{number(w['max_input_tokens'],0)} | {w['measured']}/{w['expected']} | {number(w['visible_ttft_p95_s'])} s | {number(w['visible_ttft_max_s'])} s | {number(w['decode_p05_tokens_s'],2)} tokens/s | {number(w['total_p95_s'])} s | {'Cumple' if w['acceptable_reference'] else 'No cumple / incompleto'} |")
+            window_label='Cumple' if w['acceptable_reference'] else 'No cumple' if w['measured']==w['expected'] else 'Incompleto'
+            lines.append(f"| {w['first_turn']}-{w['last_turn']} | {number(w['min_input_tokens'],0)}–{number(w['max_input_tokens'],0)} | {w['measured']}/{w['expected']} | {number(w['visible_ttft_p95_s'])} s | {number(w['visible_ttft_max_s'])} s | {number(w['decode_p05_tokens_s'],2)} tokens/s | {number(w['total_p95_s'])} s | {window_label} |")
         if not trajectory:
             lines=lines[:lines.index('## Resultado durante el crecimiento')]
             lines+=['## Resultado por turno','','| Turno | Sin error | Visibles y naturales | Espera visible p95 | Respuesta completa p95 | Velocidad p05 |','|---:|---:|---:|---:|---:|---:|']

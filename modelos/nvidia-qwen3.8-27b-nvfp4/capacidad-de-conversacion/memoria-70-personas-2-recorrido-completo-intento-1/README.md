@@ -8,6 +8,8 @@ Modelo: `nvidia/Qwen3.8-27B-NVFP4`. Razonamiento: **desactivado**. Límite impue
 
 Respuestas recibidas sin error: **420/514 previstas**. Duración: **213,2 min**, incluidas las pausas. Se conservan todos los mensajes y las respuestas reales desde el comienzo; no se salta ni recorta el historial.
 
+Peticiones con error: **0**. Peticiones previstas que no llegaron a enviarse: **94**. No se cuentan como errores las peticiones omitidas después de detener el ensayo.
+
 Los plazos de espera del cliente no demuestran un error de memoria. Un corte por límite de salida tampoco. Los percentiles de una prueba incompleta describen únicamente las respuestas recibidas.
 
 ## Resultado durante el crecimiento
@@ -23,11 +25,11 @@ Los plazos de espera del cliente no demuestran un error de memoria. Un corte por
 | 98-113 | 99.837–115.197 | 32/32 | 4,1 s | 4,1 s | 6,80 tokens/s | 31,0 s | Cumple |
 | 114-129 | 116.221–131.581 | 32/32 | 4,5 s | 4,6 s | 6,42 tokens/s | 34,3 s | Cumple |
 | 130-145 | 132.605–147.965 | 32/32 | 4,9 s | 4,9 s | 6,02 tokens/s | 37,2 s | Cumple |
-| 146-161 | 148.989–164.349 | 32/32 | 5,1 s | 5,3 s | 5,78 tokens/s | 40,5 s | No cumple / incompleto |
-| 162-177 | 165.372–180.732 | 32/32 | 5,6 s | 5,8 s | 5,45 tokens/s | 43,4 s | No cumple / incompleto |
-| 178-193 | 181.757–197.117 | 32/32 | 5,9 s | 6,1 s | 5,23 tokens/s | 46,1 s | No cumple / incompleto |
-| 194-209 | 198.141–213.501 | 32/32 | 6,1 s | 6,3 s | 4,99 tokens/s | 48,5 s | No cumple / incompleto |
-| 210-225 | 214.525–214.525 | 2/32 | 4,6 s | 4,6 s | 4,97 tokens/s | 50,5 s | No cumple / incompleto |
+| 146-161 | 148.989–164.349 | 32/32 | 5,1 s | 5,3 s | 5,78 tokens/s | 40,5 s | No cumple |
+| 162-177 | 165.372–180.732 | 32/32 | 5,6 s | 5,8 s | 5,45 tokens/s | 43,4 s | No cumple |
+| 178-193 | 181.757–197.117 | 32/32 | 5,9 s | 6,1 s | 5,23 tokens/s | 46,1 s | No cumple |
+| 194-209 | 198.141–213.501 | 32/32 | 6,1 s | 6,3 s | 4,99 tokens/s | 48,5 s | No cumple |
+| 210-225 | 214.525–214.525 | 2/32 | 4,6 s | 4,6 s | 4,97 tokens/s | 50,5 s | Incompleto |
 
 ## Contexto alcanzado por persona
 
