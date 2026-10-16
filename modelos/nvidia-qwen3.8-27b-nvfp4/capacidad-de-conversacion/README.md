@@ -29,7 +29,7 @@ El presupuesto de memoria no es un límite estricto de toda la RAM del GB10. El 
 | Prueba | Memoria | Personas | Rondas medidas | Mayor contexto alcanzado | Espera visible p95 al continuar | Velocidad p05 | Tiempo del grupo | Resultado |
 |---|---:|---:|---:|---:|---:|---:|---:|---|
 | [Recorrido desde el principio](memoria-70-personas-1-recorrido-completo-intento-1/README.md) | 70% | 1 | 257 | 262.029 | 3,4 s | 6,69 tokens/s | 248,1 min | Cumple |
-| Recorrido desde el principio | 70% | 2 | 112 | 114.360 | 3,8 s | 7,06 tokens/s | 99,1 min | En curso; no es un resultado final |
+| Recorrido desde el principio | 70% | 2 | 128 | 130.750 | 4,0 s | 6,65 tokens/s | 115,8 min | En curso; no es un resultado final |
 
 ## Cómo avanza cada conversación
 
