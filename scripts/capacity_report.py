@@ -167,7 +167,17 @@ def main():
         contexts=s.get('final_total_tokens_by_user',{})
         tokens=max(contexts.values(),default=None)
         state='En curso; no es un resultado final' if case['state']=='running' else 'Cumple' if case.get('acceptable_reference') else reasons.get(s.get('growth_stop_reason'),'No cumple')
+        if case['state']=='running':
+            failed_windows=[w for w in s.get('windows',[]) if w['measured']==w['expected'] and not w['acceptable_reference']]
+            if failed_windows:
+                state=f"En curso; {len(failed_windows)} {'bloque completo fuera' if len(failed_windows)==1 else 'bloques completos fuera'} de referencia"
         lines.append(f"| {link} | {round(c['memory_fraction']*100)}% | {c['users']} | {s.get('actual_rounds',len([t for t in s.get('per_turn',[]) if t['completed']]))} | {number(tokens,0)} | {number(s.get('followups_visible_ttft_p95_s'))} s | {number(s.get('followups_decode_p05_tokens_s'),2)} tokens/s | {number(s['duration_s']/60 if s.get('duration_s') is not None else None)} min | {state} |")
+    for case,c,s,_ in rows:
+        if case['state']!='running':continue
+        failed_windows=[w for w in s.get('windows',[]) if w['measured']==w['expected'] and not w['acceptable_reference']]
+        if failed_windows:
+            w=failed_windows[-1]
+            lines+=['',f"En la prueba en curso al **{round(c['memory_fraction']*100)}% con {c['users']} {'persona' if c['users']==1 else 'personas'}**, el último bloque completo fuera de referencia es **{w['first_turn']}–{w['last_turn']}**: espera p95 de **{number(w['visible_ttft_p95_s'],2)} s**, peor espera de **{number(w['visible_ttft_max_s'],2)} s**, velocidad p05 de **{number(w['decode_p05_tokens_s'],2)} tokens/s** y respuesta completa p95 de **{number(w['total_p95_s'])} s**. Los valores del conjunto del recorrido pueden ocultar esta ralentización; se exige cumplir también en cada bloque."]
     lines+=['','## Cómo avanza cada conversación','']
     lines += [f'{i}. {step}' for i,step in enumerate(plan['method'],1)]
     lines+=['','## Alcance de la respuesta','']+[f'- {line}' for line in plan['limitations']]
