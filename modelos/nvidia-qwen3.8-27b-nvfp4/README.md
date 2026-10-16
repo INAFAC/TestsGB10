@@ -8,7 +8,7 @@
 
 **Modelo exacto:** `nvidia/Qwen3.8-27B-NVFP4`.
 
-**Se están realizando nuevas pruebas de conversaciones recurrentes con 10, 20 y 30 usuarios.**
+
 
 **Máximo por conversación: 262.144 tokens, sumando historial y respuesta.** La memoria asignada puede obligar a configurar un límite menor.
 
@@ -57,6 +57,8 @@ Con historiales iniciales de 8.192 tokens, las esperas p95 de continuación fuer
 Las tres cargas alcanzaron el 100% de la caché disponible para historiales. Completar las conversaciones no ofrece por sí solo una experiencia ágil; las esperas bajas de diez personas con 32.768 tokens no se mantuvieron al ampliar a 65.536.
 
 **Con veinte personas y 131.072 tokens iniciales, también terminaron los dos turnos de todas las conversaciones, pero el grupo tardó 141,6 minutos.** La espera p95 al continuar fue de 62,5 minutos y el tiempo completo p95, de 72,6 minutos. Hubo 95 recálculos, la caché llegó al 100% y se observaron como máximo cuatro respuestas solapadas, aunque el límite impuesto era 32. Son respuestas sintéticas de 512 tokens por turno: completarlas demuestra capacidad de finalización, con una espera incompatible con un chat ágil. [Ver la repetición completa](conversaciones-recurrentes/memoria-70-20-usuarios-historial-131072-dos-turnos-repeticion-por-interrupcion/README.md). El [intento anterior interrumpido por el lanzador](conversaciones-recurrentes/memoria-70-20-usuarios-historial-131072-dos-turnos/README.md) se conserva por separado.
+
+**Las veinte personas alcanzaron el máximo de 262.144 tokens y completaron ambos turnos: 40/40 respuestas sin error.** Al 70% y con límite de 32 activas, el grupo tardó **346,5 minutos**. La espera p95 al continuar fue de **172,9 minutos**, y el tiempo completo p95, de **179,6 minutos**. Se observaron hasta dos respuestas solapadas, 97 recálculos y el 100% de caché. El máximo se comprobó en cada segundo turno: 261.632 tokens de entrada más 512 de salida. Esta carga sintética demuestra finalización con esperas de horas; no demuestra que veinte personas puedan usar todo ese contexto con la agilidad de una conversación normal. [Ver las veinte conversaciones y sus dos turnos](conversaciones-recurrentes/memoria-70-20-usuarios-historial-260864-dos-turnos/README.md).
 
 Se eligió el **70% para las comparaciones posteriores por su menor espera p95 en ambas cargas iniciales**. El 60% obtuvo tiempos totales cercanos con menos memoria y mejores resultados en algunas medidas de la carga larga; el 70% no es un mínimo necesario ni la mejor opción en todas las métricas. [Comparación de presupuestos y criterio de selección](conversaciones-recurrentes/README.md).
 

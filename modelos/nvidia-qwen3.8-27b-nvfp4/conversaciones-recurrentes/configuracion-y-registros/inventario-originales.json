@@ -1,8 +1,8 @@
 [
   {
     "file": "modelos/nvidia-qwen3.8-27b-nvfp4/conversaciones-recurrentes/configuracion-y-registros/metadata.json",
-    "sha256": "fac741286437bef802e2d0ac454e9fe50e02b0ab8ba98f0f85e68e54a8c6de80",
-    "original_sha256": "fac741286437bef802e2d0ac454e9fe50e02b0ab8ba98f0f85e68e54a8c6de80",
+    "sha256": "636fd98af767e644bec66da75cc95211df75063c3a996fafa1c2034d5751a58a",
+    "original_sha256": "636fd98af767e644bec66da75cc95211df75063c3a996fafa1c2034d5751a58a",
     "sanitized": false
   },
   {
@@ -15,6 +15,18 @@
     "file": "modelos/nvidia-qwen3.8-27b-nvfp4/conversaciones-recurrentes/configuracion-y-registros/restore-override.json",
     "sha256": "7ab9eb9b05be9de20ca6c81b9d1cbfb6425603e12f4bf3eb5bbaf919566aad4c",
     "original_sha256": "7ab9eb9b05be9de20ca6c81b9d1cbfb6425603e12f4bf3eb5bbaf919566aad4c",
+    "sanitized": false
+  },
+  {
+    "file": "modelos/nvidia-qwen3.8-27b-nvfp4/conversaciones-recurrentes/configuracion-y-registros/restored-server.log",
+    "sha256": "764a5f2db992856e743353299fe3158690cd4115fc3d7e35fc3bf6728a95e672",
+    "original_sha256": "86a43b075a16d8a6af21c999504085ee19b49fc835a1b8d77ed39bc0b542abcd",
+    "sanitized": true
+  },
+  {
+    "file": "modelos/nvidia-qwen3.8-27b-nvfp4/conversaciones-recurrentes/configuracion-y-registros/verificacion-final.json",
+    "sha256": "dff889a97239448446d45b1e3d5a83bf4d2270dcba1fa16f1430801fb4db94b3",
+    "original_sha256": "dff889a97239448446d45b1e3d5a83bf4d2270dcba1fa16f1430801fb4db94b3",
     "sanitized": false
   },
   {

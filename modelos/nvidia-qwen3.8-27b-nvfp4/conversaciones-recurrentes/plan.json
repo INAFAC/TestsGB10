@@ -1,5 +1,5 @@
 {
-  "status": "running",
+  "status": "complete",
   "started_date": "2026-10-15",
   "model": "nvidia/Qwen3.8-27B-NVFP4",
   "server_limit": 32,
@@ -62,7 +62,7 @@
   "decisions": {
     "refinement_50": {
       "required": true,
-      "reason": "Con 20 usuarios y 8.192 tokens, subir del 40% al 70% redujo la espera p95 de continuaciones de 93,87 a 7,63 segundos, el tiempo total de 596,47 a 391,19 segundos y los recálculos de 20 a cero. Se probará el 50% con ambas cargas iniciales para comprobar qué parte de esa mejora se conserva con menos memoria.",
+      "reason": "Con 20 usuarios y 8.192 tokens, subir del 40% al 70% redujo la espera p95 de continuaciones de 93,87 a 7,63 segundos, el tiempo total de 596,47 a 391,19 segundos y los recálculos de 20 a cero. Se probó el 50% con ambas cargas iniciales para comprobar qué parte de esa mejora se conserva con menos memoria.",
       "evidence": [
         "memoria-40-20-usuarios-historial-8192-tres-turnos",
         "memoria-70-20-usuarios-historial-8192-tres-turnos"
@@ -216,6 +216,14 @@
         "followups_total_p95_s": 3423.2960738340043,
         "reason": "No se continúa a 131.072 porque la prueba de 65.536 tokens no conservó la referencia de fluidez fijada en el plan. Esto no demuestra que esas conversaciones no pudieran terminar con más espera."
       }
+    },
+    "execution_interruption": {
+      "cause": "BrokenPipeError in controller output",
+      "preserved_attempt": "memoria-70-20-usuarios-historial-131072-dos-turnos",
+      "preserved_responses": 30,
+      "expected_responses": 40,
+      "completed_repeat": "memoria-70-20-usuarios-historial-131072-dos-turnos-repeticion-por-interrupcion",
+      "note": "Se conservaron los datos originales y se repitió la carga completa con un controlador independiente de la conexión. El fallo del lanzador no se atribuye a la memoria del modelo."
     }
   },
   "refinement_comparison": {
@@ -236,5 +244,19 @@
     "followup_max_output_tokens": 2048,
     "condition": "Repetir un control principal de chat si todas sus peticiones terminaron sin error de API, pero alguna alcanzó el límite de salida o terminó sin texto visible. Mantener usuarios, historial inicial, turnos, pausas, semilla, memoria y modo de razonamiento; conservar también el resultado original de 512 tokens.",
     "purpose": "Distinguir una respuesta cortada por el presupuesto de salida de un fallo de memoria o incapacidad del modelo para terminar. No aumentar indefinidamente el presupuesto si 2048 tampoco produce una respuesta visible terminada."
+  },
+  "completed_utc": "2026-10-16T06:24:42.446137+00:00",
+  "completion_summary": {
+    "completed_main_tests": 25,
+    "main_api_responses": 1400,
+    "main_api_errors": 0,
+    "meter_pilot_tests": 2,
+    "meter_pilot_responses": 8,
+    "interrupted_attempts": 1,
+    "responses_preserved_from_interrupted_attempt": 30,
+    "maximum_context_users_completed": 20,
+    "maximum_context_tokens": 262144,
+    "restoration_verified": true,
+    "restoration_evidence": "configuracion-y-registros/verificacion-final.json"
   }
 }

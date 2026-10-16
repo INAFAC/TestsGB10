@@ -2,11 +2,17 @@
 
 [Volver al modelo](../README.md)
 
-**Se están realizando nuevas pruebas de conversaciones recurrentes con 10, 20 y 30 usuarios.**
-
-El objetivo es saber cuánto espera cada persona al continuar su conversación, cómo cambia esa espera al crecer el historial y qué presupuesto de memoria conviene. La concurrencia del servidor **depende de cada prueba**; esta campaña comienza con un límite de 32 solicitudes activas para permitir hasta 30 usuarios sin imponer el antiguo límite de cuatro.
+El objetivo es saber cuánto espera cada persona al continuar su conversación, cómo cambia esa espera al crecer el historial y qué presupuesto de memoria conviene. La concurrencia del servidor **depende de cada prueba**; esta campaña usó un límite de 32 solicitudes activas para permitir hasta 30 usuarios sin imponer el antiguo límite de cuatro.
 
 Los tiempos de esta batería corresponden al límite de 32 solicitudes activas. La elección permite enviar hasta treinta conversaciones sin el antiguo límite de cuatro; no demuestra que 32 sea el ajuste más rápido para cada historial. En las [pruebas iniciales](../README.md#por-qué-no-conviene-subir-todos-los-límites), un límite menor mejoró algunas cargas. Aplicar esa mejora a conversaciones recurrentes requeriría medirla también con sus mismos historiales y turnos.
+
+## Qué permiten concluir
+
+**Veinte personas pudieron mantener los tres turnos del control de chat corto y terminar las 60 respuestas naturalmente**, al 70%, con razonamiento desactivado y hasta 2.048 tokens de salida. La espera visible p95 al continuar fue de 2,0 s; al cargar el historial inicial, de 103,2 s. Con unos 32.768 tokens también terminaron las 60, pero la espera al continuar subió a 7,4 minutos. El modo de razonamiento predeterminado se mide aparte y no garantizó texto visible en todas las respuestas con ese presupuesto de salida.
+
+**Las veinte conversaciones sintéticas llegaron al máximo exacto de 262.144 tokens**, completando los dos turnos de todas las personas. El grupo tardó 346,5 minutos; la espera p95 al continuar fue de 172,9 minutos y el tiempo completo p95, de 179,6. Hubo 97 recálculos, hasta dos respuestas solapadas y un pico del 100% de caché. [Ver cada conversación al máximo](memoria-70-20-usuarios-historial-260864-dos-turnos/README.md).
+
+Los resultados permiten distinguir una carga que termina de una conversación ágil. Las comparaciones de 10 y 30 personas y el crecimiento de historiales son pruebas sintéticas; los controles con mensajes de chat se hicieron con 20 personas. No se midieron todas las combinaciones posibles de memoria, usuarios y límite activo, ni se evaluó la calidad semántica. Cada fila corresponde a una ejecución: las diferencias pequeñas no demuestran una mejora estable.
 
 ## Cómo interpretar los resultados
 
@@ -35,20 +41,20 @@ Cada respuesta solicita 512 tokens. Después de recibirla, cada usuario espera 3
 
 Para las etapas de crecimiento se conserva el historial medido en la etapa anterior, incluidas sus respuestas reales, y se añaden tokens sintéticos hasta el tamaño objetivo. Después se miden los nuevos turnos. Esto comprueba la carga de continuar con ese historial, pero no simula todos los turnos intermedios desde una conversación vacía ni una jornada completa de uso. El primer turno de cada etapa puede necesitar reconstruir información que ya no siga en la caché del servidor.
 
-Como referencia orientativa de fluidez se usarán una espera al primer texto de hasta cinco segundos para el 95% de las solicitudes y una velocidad de al menos diez tokens/s para el 95%. Se mostrarán por separado el primer turno y las continuaciones, los valores de cada persona y todos los errores. Estos umbrales son una referencia elegida para comparar, no una definición universal de usabilidad.
+Como referencia orientativa de fluidez se usaron una espera al primer texto de hasta cinco segundos para el 95% de las solicitudes y una velocidad de al menos diez tokens/s para el 95%. Se muestran por separado el primer turno y las continuaciones, los valores de cada persona y todos los errores. Estos umbrales son una referencia elegida para comparar, no una definición universal de usabilidad.
 
-Las decisiones entre etapas se documentarán con sus mediciones. No se presentará una etapa no ejecutada como si estuviera medida. Una configuración que ya incumpla la referencia en un historial menor no garantiza fluidez hasta el máximo; se conservará de todas formas una comprobación de finalización al máximo con 20 usuarios.
+Las decisiones entre etapas se documentan con sus mediciones. Las etapas no ejecutadas se identifican como tales. Una configuración que ya incumpla la referencia en un historial menor no garantiza fluidez hasta el máximo; se realizó de todas formas una comprobación de finalización al máximo con 20 usuarios.
 
-El control de chat usa mensajes ficticios en español y conserva las respuestas reales. Solicita hasta 512 tokens, permite terminar antes y distingue la primera salida del modelo de la primera respuesta visible. Se mide con razonamiento desactivado en ambos tamaños y con el modo predeterminado en 8.192 tokens. El tratamiento del razonamiento sigue la [documentación de vLLM](https://docs.vllm.ai/en/v0.22.0/features/reasoning_outputs/); se comprobará además el comportamiento de la versión instalada.
+El control de chat usa mensajes ficticios en español y conserva las respuestas reales. Solicita hasta 512 tokens, permite terminar antes y distingue la primera salida del modelo de la primera respuesta visible. Se mide con razonamiento desactivado en ambos tamaños y con el modo predeterminado en 8.192 tokens. El tratamiento del razonamiento sigue la [documentación de vLLM](https://docs.vllm.ai/en/v0.22.0/features/reasoning_outputs/); se comprobó además el comportamiento de la versión instalada.
 
-Si un control principal de chat completa todas las peticiones sin errores de API, pero alguna respuesta llega al límite de 512 tokens o termina sin texto visible, se conservará esa prueba y se repetirá con hasta 2.048 tokens de salida. El resto de parámetros se mantendrá. Esto permite distinguir un límite de salida impuesto por la prueba de un problema de memoria; si tampoco termina con 2.048, se documentará esa limitación.
+La regla fijada antes de medir el chat fue repetir con hasta 2.048 tokens cualquier control principal que completase todas las peticiones sin errores de API, pero tuviese alguna respuesta cortada por el límite de 512 tokens o sin texto visible. Se conservaron los controles originales y los demás parámetros. La regla activó las tres repeticiones; sus resultados distinguen el límite de salida de un problema de memoria y conservan las limitaciones que persistieron con 2.048 tokens.
 
 ## Decisiones entre etapas
 
 Las tres repeticiones con hasta 2.048 tokens de salida están medidas. Los dos controles con razonamiento desactivado completaron las 60 respuestas con texto visible y finalización natural. En el modo predeterminado fueron 57 de 60: tres primeros turnos consumieron los 2.048 tokens íntegramente en razonamiento y no entregaron texto visible. No hubo errores de API ni recálculos en ese control y su pico de caché fue del 42,4%. Se conserva esta limitación del presupuesto de salida y los resultados originales de 512 tokens.
 
 
-**Se añade el 50% a la comparación de memoria.** Con 20 usuarios y 8.192 tokens iniciales, el 70% redujo la espera p95 de las continuaciones de 93,9 a 7,6 segundos, y los recálculos de 20 a cero. La velocidad p05 pasó de 3,14 a 5,51 tokens/s. Es una mejora importante, aunque todavía no cumple la referencia elegida de espera y velocidad.
+**Se añadió el 50% a la comparación de memoria.** Con 20 usuarios y 8.192 tokens iniciales, el 70% redujo la espera p95 de las continuaciones de 93,9 a 7,6 segundos, y los recálculos de 20 a cero. La velocidad p05 pasó de 3,14 a 5,51 tokens/s. Es una mejora importante, aunque todavía no cumple la referencia elegida de espera y velocidad.
 
 Con **32.768 tokens iniciales**, el cambio del 40% al 70% redujo la espera p95 de las continuaciones de 595,6 a 374,2 segundos, pero el tiempo del grupo apenas cambió: 35,3 frente a 35,0 minutos. La velocidad p05 durante las continuaciones bajó de 2,37 a 1,05 tokens/s. La respuesta empezó antes en parte de los casos, pero siguió tardando varios minutos en completarse. Esta carga de 20 usuarios no cumple la referencia con ninguno de esos dos presupuestos.
 
@@ -56,17 +62,21 @@ Con **85% de memoria**, también terminaron las 60 respuestas de cada carga, per
 
 El ajuste de memoria repite las dos cargas iniciales al 50%, después de las comparaciones del 70% y el 85% y de comprobar el medidor de chat. Sirve para comprobar si parte de la memoria adicional se puede ahorrar. La regla para decidir si hace falta probar el 60% se fijó antes de medir el 50%. Para considerar que conserva el rendimiento del 70%, ambas cargas deben completar todas las respuestas y mantener, en las continuaciones, la espera y el tiempo completo p95 dentro de un 15% de la referencia y la velocidad p05 por encima del 85% de la referencia. En la espera se admite al menos un segundo de diferencia. Es una tolerancia práctica para decidir la siguiente prueba, no una afirmación de equivalencia estadística.
 
-**Se añade el 60% después de terminar las dos pruebas al 50%.** En la carga de 8.192 tokens, el 50% completó las 60 respuestas en 421,7 segundos, sin recálculos y con un pico de caché del 73,2%. La velocidad p05 de las continuaciones fue 5,44 tokens/s y su tiempo completo p95, 94,8 segundos: ambos cumplen la tolerancia frente al 70%. La espera p95 fue 9,60 segundos, por encima del límite de 8,77 segundos establecido por la regla. Esto activa la prueba del 60%; no significa que el 50% sea incapaz de atender estas conversaciones ni que una diferencia de unos dos segundos sea estable entre ejecuciones.
+**Se añadió el 60% después de terminar las dos pruebas al 50%.** En la carga de 8.192 tokens, el 50% completó las 60 respuestas en 421,7 segundos, sin recálculos y con un pico de caché del 73,2%. La velocidad p05 de las continuaciones fue 5,44 tokens/s y su tiempo completo p95, 94,8 segundos: ambos cumplen la tolerancia frente al 70%. La espera p95 fue 9,60 segundos, por encima del límite de 8,77 segundos establecido por la regla. Esto activa la prueba del 60%; no significa que el 50% sea incapaz de atender estas conversaciones ni que una diferencia de unos dos segundos sea estable entre ejecuciones.
 
 En la carga larga al **50%**, también terminaron las 60 respuestas, pero el grupo tardó 46,7 minutos frente a 35,0 al 70%. La espera p95 de las continuaciones fue de 11,0 minutos y su tiempo completo p95, de 17,2 minutos; hubo 85 recálculos frente a 24 al 70%. Esta carga incumplió además las tolerancias de espera y tiempo completo de la comparación. El 50% ahorra memoria y se acercó al 70% en la carga corta, pero no conservó su rendimiento con estos historiales largos.
 
-**Se selecciona el 70% como referencia para las siguientes etapas.** Tuvo la menor espera p95 de continuaciones en las dos cargas: 7,63 segundos con 8.192 tokens y 374,22 segundos con 32.768. En la carga larga registró 24 recálculos frente a 39 al 60%. La elección prioriza la espera antes de empezar a responder. No convierte el 70% en un mínimo necesario ni demuestra que sea mejor en todas las medidas.
+**Se seleccionó el 70% como referencia para las siguientes etapas.** Tuvo la menor espera p95 de continuaciones en las dos cargas: 7,63 segundos con 8.192 tokens y 374,22 segundos con 32.768. En la carga larga registró 24 recálculos frente a 39 al 60%. La elección prioriza la espera antes de empezar a responder. No convierte el 70% en un mínimo necesario ni demuestra que sea mejor en todas las medidas.
 
 El **60% es una alternativa cercana que ahorra memoria**: las pruebas duraron 395,1 y 2.120,5 segundos, frente a 391,2 y 2.102,8 al 70%. En la carga larga su tiempo completo p95 fue incluso menor, 731,7 frente a 767,3 segundos, y su velocidad p05 mayor, 1,45 frente a 1,05 tokens/s; a cambio, la espera p95 fue 399,5 frente a 374,2 segundos. Estas ejecuciones no bastan para afirmar una ventaja estable en diferencias pequeñas. Ninguno de los presupuestos hizo fluida, según la referencia elegida, la carga de 20 usuarios con historiales largos.
 
 Con el 70% se compararán 10 y 30 personas y se harán los controles de chat antes de ampliar los historiales. Los resultados de esas etapas no se darán por medidos con otros presupuestos.
 
 [Plan y parámetros](plan.json).
+
+## Configuración restaurada
+
+Después de las mediciones se restauró la configuración capturada al comienzo: **40% de memoria y cuatro solicitudes activas**, con máximo de 262.144 tokens. Una comprobación independiente confirmó el comando, la misma imagen y el mismo archivo de configuración, el servicio sano, una generación de 16 tokens y ninguna petición activa ni en cola. [Ver la comprobación](configuracion-y-registros/verificacion-final.json). Este límite restaurado no cambia los límites que se usaron en cada prueba.
 
 </details>
 

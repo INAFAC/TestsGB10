@@ -2,7 +2,7 @@
 
 Resultados para decidir cuánta memoria reservar y cuántas conversaciones puede atender cada modelo, incluyendo historiales cercanos a su límite.
 
-**Se están realizando nuevas pruebas de conversaciones recurrentes con 10, 20 y 30 usuarios.**
+
 
 **Cada prueba indica el límite de solicitudes activas impuesto al servidor.** Ese límite debe distinguirse de la capacidad del GB10.
 
@@ -11,6 +11,22 @@ Resultados para decidir cuánta memoria reservar y cuántas conversaciones puede
 | Modelo | Máximo por conversación | Informe |
 |---|---:|---|
 | Qwen3.8-27B-NVFP4 | 262.144 tokens | [Resultados y configuración](modelos/nvidia-qwen3.8-27b-nvfp4/README.md) · [Conversaciones con varios usuarios](modelos/nvidia-qwen3.8-27b-nvfp4/conversaciones-recurrentes/README.md) |
+
+<!-- conclusiones-inicio -->
+## Resultado práctico de Qwen3.8
+
+Estos controles usaron **70% de memoria y un límite de 32 solicitudes activas**. Cada persona conservó su historial entre mensajes.
+
+| Carga de 20 personas | ¿Terminaron? | Espera al continuar, p95 |
+|---|---|---:|
+| Chat con unos 8.192 tokens, razonamiento desactivado y hasta 2.048 de salida | 60/60 respuestas visibles y terminadas naturalmente | 2,0 s |
+| El mismo control con unos 32.768 tokens | 60/60 respuestas visibles y terminadas naturalmente | 7,4 min |
+| Crecimiento sintético hasta 262.144 tokens | Las 20 personas llegaron al máximo; 40/40 respuestas completas | 172,9 min |
+
+En el chat corto, el primer turno fue más lento: 103,2 s de espera visible p95. La prueba del contexto máximo pidió 512 tokens de salida por turno y tardó 346,5 minutos en total. **Poder terminar no significa poder conversar con rapidez.**
+
+El 70% es una referencia medida, no un mínimo demostrado. El 60% obtuvo resultados cercanos en algunas cargas sintéticas, y subir al 85% no mejoró las dos comparaciones iniciales frente al 70% en estas ejecuciones. [Ver la elección de memoria, los resultados de 10 y 30 personas y sus límites](modelos/nvidia-qwen3.8-27b-nvfp4/README.md#qué-configuración-elegir).
+<!-- conclusiones-fin -->
 
 ## Qué puedes comprobar
 
