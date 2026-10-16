@@ -66,6 +66,8 @@ def main():
             rows.append((case,c,{'growth_stop_reason':'missing_measurements','duration_s':case.get('duration_seconds')},out.name))
             continue
         d=read(folder/'mediciones.json');s=d['summary'];c=read(folder/'configuracion.json')
+        if 'final_total_tokens_by_user' not in s:
+            s=dict(s,final_total_tokens_by_user={str(user):max((r['usage']['total_tokens'] for r in d['requests'] if r['user_id']==user and r['ok']),default=0) for user in range(c['users'])})
         if case['state']=='running':
             rows.append((case,c,s,None));continue
         for src in folder.iterdir():
@@ -77,7 +79,7 @@ def main():
         label='Cumplió durante todo el recorrido' if passed and trajectory else 'Cumplió el control' if passed else reason or 'No cumple la referencia completa'
         lines=[f"# {c['users']} personas · {round(c['memory_fraction']*100)}% de memoria",'',
             '[Volver a la capacidad por memoria](../README.md)','',f'**{label}.**','',
-            f"Modelo: `{s['model']}`. Razonamiento: **{'desactivado' if c['reasoning']=='disabled' else 'predeterminado'}**. Límite impuesto al servidor: **{c['server_limit']} solicitudes activas**.",'',
+            f"Modelo: `{s['model']}`. Razonamiento: **{'desactivado' if c['reasoning']=='disabled' else 'predeterminado'}**. Límite impuesto al servidor: **{c['server_limit']} solicitudes activas**. Presupuesto de salida: **hasta {number(c['output_tokens'],0)} tokens por respuesta**, con petición de hasta 100 palabras.",'',
             f"Respuestas recibidas sin error: **{s['completed']}/{s['num_requests']} previstas**. Duración: **{number(s['duration_s']/60)} min**, incluidas las pausas. {'Se conservan todos los mensajes y las respuestas reales desde el comienzo; no se salta ni recorta el historial.' if trajectory else 'Este control no recorre todo el contexto.'}",'',
             'Los plazos de espera del cliente no demuestran un error de memoria. Un corte por límite de salida tampoco. Los percentiles de una prueba incompleta describen únicamente las respuestas recibidas.','',
             '## Resultado durante el crecimiento','',
@@ -85,12 +87,20 @@ def main():
             '|---|---:|---:|---:|---:|---:|---:|---|']
         for w in s.get('windows',[]):
             lines.append(f"| {w['first_turn']}-{w['last_turn']} | {number(w['min_input_tokens'],0)}–{number(w['max_input_tokens'],0)} | {w['measured']}/{w['expected']} | {number(w['visible_ttft_p95_s'])} s | {number(w['visible_ttft_max_s'])} s | {number(w['decode_p05_tokens_s'],2)} tokens/s | {number(w['total_p95_s'])} s | {'Cumple' if w['acceptable_reference'] else 'No cumple / incompleto'} |")
+        if not trajectory:
+            lines=lines[:lines.index('## Resultado durante el crecimiento')]
+            lines+=['## Resultado por turno','','| Turno | Sin error | Visibles y naturales | Espera visible p95 | Respuesta completa p95 | Velocidad p05 |','|---:|---:|---:|---:|---:|---:|']
+            for t in s.get('per_turn',[]):
+                natural=sum(r['ok'] and r['has_visible_answer'] and r['naturally_finished'] for r in d['requests'] if r['turn']==t['turn'])
+                lines.append(f"| {t['turn']} | {t['completed']}/{t['expected']} | {natural}/{t['expected']} | {number(t['visible_ttft_p95_s'])} s | {number(t['total_p95_s'])} s | {number(t['decode_p05_tokens_s'],2)} tokens/s |")
         lines+=['','## Contexto alcanzado por persona','','| Persona | Último turno sin error | Tokens totales alcanzados | Contexto utilizado | Espacio restante |','|---:|---:|---:|---:|---:|']
         for user in range(c['users']):
             good=[r for r in d['requests'] if r['user_id']==user and r['ok']]
             total=max((r['usage']['total_tokens'] for r in good),default=0)
             lines.append(f"| {user+1} | {max((r['turn'] for r in good),default=0)} | {number(total,0)} | {number(total/262144*100,3)}% | {number(262144-total,0)} |")
-        lines+=['','El último mensaje reserva hasta 128 tokens y pide cerrar en diez palabras. No se fuerza al modelo a rellenar el espacio restante ni se finge haber llegado exactamente a 262.144. La conversación termina naturalmente junto al límite disponible.','',
+        if trajectory:
+            lines+=['','El cierre previsto reserva hasta 128 tokens y pide terminar en diez palabras. No se fuerza al modelo a rellenar el espacio restante ni se afirma haber llegado exactamente a 262.144. '+('Este intento llegó al cierre.' if s.get('reached_final_target') else 'Este intento no llegó a ese cierre.')]
+        lines+=['',
             '## Memoria, colas y rendimiento del grupo','','| Medida | Resultado |','|---|---:|',
             f"| Presupuesto configurado | {number(c['memory_fraction']*100,0)}% |",
             f"| Pico de memoria del motor / GB10 | {number(s.get('peak_gpu_engine_percent'))}% |",
