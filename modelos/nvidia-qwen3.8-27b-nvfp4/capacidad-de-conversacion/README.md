@@ -29,9 +29,9 @@ El presupuesto de memoria no es un límite estricto de toda la RAM del GB10. El 
 | Prueba | Memoria | Personas | Rondas medidas | Mayor contexto alcanzado | Espera visible p95 al continuar | Velocidad p05 | Tiempo del grupo | Resultado |
 |---|---:|---:|---:|---:|---:|---:|---:|---|
 | [Recorrido desde el principio](memoria-70-personas-1-recorrido-completo-intento-1/README.md) | 70% | 1 | 257 | 262.029 | 3,4 s | 6,69 tokens/s | 248,1 min | Cumple |
-| Recorrido desde el principio | 70% | 2 | 176 | 179.911 | 4,9 s | 5,71 tokens/s | 170,9 min | En curso; 1 bloque completo fuera de referencia |
+| Recorrido desde el principio | 70% | 2 | 192 | 196.299 | 5,1 s | 5,43 tokens/s | 190,7 min | En curso; 2 bloques completos fuera de referencia |
 
-En la prueba en curso al **70% con 2 personas**, el último bloque completo fuera de referencia es **146–161**: espera p95 de **5,12 s**, peor espera de **5,25 s**, velocidad p05 de **5,78 tokens/s** y respuesta completa p95 de **40,5 s**. Los valores del conjunto del recorrido pueden ocultar esta ralentización; se exige cumplir también en cada bloque.
+En la prueba en curso al **70% con 2 personas**, el último bloque completo fuera de referencia es **162–177**: espera p95 de **5,56 s**, peor espera de **5,76 s**, velocidad p05 de **5,45 tokens/s** y respuesta completa p95 de **43,4 s**. Los valores del conjunto del recorrido pueden ocultar esta ralentización; se exige cumplir también en cada bloque.
 
 ## Cómo avanza cada conversación
 
