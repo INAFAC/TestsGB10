@@ -167,7 +167,7 @@ def main():
                             if first is None:first=now
                             events+=1
                         if text:
-                            if visible is None:visible=now
+                            if visible is None and text.strip():visible=now
                             content+=text
                         if thought:
                             if reasoning_first is None:reasoning_first=now
@@ -191,7 +191,7 @@ def main():
                 'visible_ttft_s':None if visible is None else visible-started,
                 'reasoning_ttft_s':None if reasoning_first is None else reasoning_first-started,
                 'total_s':ended-started,'usage':usage,'finish_reason':finish,'text_events':events,
-                'has_visible_answer':bool(content),'naturally_finished':finish=='stop','error':error}
+                'has_visible_answer':bool(content.strip()),'naturally_finished':finish=='stop','error':error}
 
     barrier=threading.Barrier(a.concurrency)
     def add_small_message(messages, question, target, rng, turn):

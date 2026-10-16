@@ -89,10 +89,20 @@ def main():
             f"| Pico de caché | {number(100*s['peak_kv_fraction'] if s.get('peak_kv_fraction') is not None else None)}% |",
             f"| Solicitudes activas / respuestas solapadas, máximo | {number(s.get('peak_running'),0)} / {number(s.get('peak_overlapping_responses'),0)} |",
             f"| Cola máxima / segundos con cola | {number(s.get('peak_waiting'),0)} / {number(s.get('seconds_with_queue'))} s |",
+            f"| Espera media al primer texto del modelo | {number(s.get('mean_ttft_s'))} s |",
+            f"| Tiempo medio de petición completa | {number(s.get('mean_total_s'))} s |",
             f"| Recálculos por falta de espacio de caché | {number(s.get('preemptions'),0)} |",
             f"| Velocidad global, incluidas pausas | {number(sum((r.get('usage') or {}).get('completion_tokens',0) for r in d['requests'])/s['duration_s'],2)} tokens/s |",
             f"| Suma de tiempos individuales de petición | {number(sum(r['total_s'] for r in d['requests']))} s |",'',
-            '<details>','<summary>Cada persona y cada respuesta</summary>','',
+            '## Resumen por persona','','| Persona | Respuestas sin error | Espera visible media | Respuesta completa media | Tiempo de sesión, con pausas | Tokens/s de sesión |',
+            '|---:|---:|---:|---:|---:|---:|']
+        for user in range(c['users']):
+            own=[r for r in d['requests'] if r['user_id']==user]
+            good=[r for r in own if r['ok']]
+            waits=[r['visible_ttft_s'] for r in good if r.get('visible_ttft_s') is not None]
+            session=max((r['finished_at_s'] for r in own),default=0)-min((r['started_at_s'] for r in own),default=0)
+            lines.append(f"| {user+1} | {len(good)}/{len(own)} | {number(sum(waits)/len(waits) if waits else None)} s | {number(sum(r['total_s'] for r in good)/len(good) if good else None)} s | {number(session)} s | {number(sum(r['usage']['completion_tokens'] for r in good)/session if session>0 else None,2)} |")
+        lines+=['','<details>','<summary>Cada persona y cada respuesta</summary>','',
             '| Persona | Turno | Entrada | Salida | Espera visible | Respuesta completa | Tokens/s | Finalización |','|---:|---:|---:|---:|---:|---:|---:|---|']
         for r in sorted(d['requests'],key=lambda r:(r['turn'],r['user_id'])):
             usage=r.get('usage') or {}

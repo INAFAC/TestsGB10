@@ -67,6 +67,19 @@ def main():
             targets=s['growth_targets']
             for r in rs:
                 assert targets[r['turn']-1]-32<=r['input_tokens']<=targets[r['turn']-1]
+            for w in s['windows']:
+                block=[r for r in rs if w['first_turn']<=r['turn']<=w['last_turn']]
+                done=[r for r in block if r['ok']]
+                waits=[r['visible_ttft_s'] for r in done if r['has_visible_answer']]
+                speeds=[(r['usage']['completion_tokens']-1)/(r['total_s']-r['ttft_s']) for r in done if r.get('ttft_s') is not None and r['total_s']>r['ttft_s']]
+                assert len(block)==w['measured']
+                assert quantile(waits,.95)==w['visible_ttft_p95_s']
+                assert quantile(speeds,.05)==w['decode_p05_tokens_s']
+                assert quantile([r['total_s'] for r in done],.95)==w['total_p95_s']
+                expected_ok=bool(len(done)==w['expected'] and all(r['has_visible_answer'] and r['naturally_finished'] for r in done)
+                    and waits and quantile(waits,.95)<=5 and max(waits)<=10
+                    and speeds and quantile(speeds,.05)>=5 and w['total_p95_s']<=120)
+                assert expected_ok==w['acceptable_reference']
             if record.get('acceptable_reference'):
                 assert s['reached_final_target'] and not s['growth_stop_reason']
                 assert len(good)==c['users']*len(targets)
