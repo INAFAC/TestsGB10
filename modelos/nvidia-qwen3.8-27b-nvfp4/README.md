@@ -34,6 +34,10 @@
 ## Qué configuración elegir
 
 <!-- interpretacion-inicio -->
+### Capacidad durante una conversación completa
+
+La [batería de conversaciones completas](capacidad-de-conversacion/README.md) responde a la pregunta de cuántas personas pueden conversar de forma útil según la memoria, avanzando poco a poco hasta el límite. Incluye **35%, 40%, 50%, 60%, 70%, 85% y 92%**, conserva las respuestas reales y mide cada tramo del historial. Sus resultados pendientes no deben deducirse de las cargas aisladas de las tablas anteriores.
+
 ### Conversaciones recurrentes con 10, 20 y 30 personas
 
 **El tamaño del historial cambia mucho la espera de cada persona.** Con el 70% y un límite de 32 solicitudes activas, las continuaciones de 10 personas con historiales iniciales de 32.768 tokens tuvieron una espera p95 de 3,08 segundos; con 20 personas fue de 374,22 segundos, y con 30, de 965,40 segundos. Todas esas peticiones terminaron, pero completar el trabajo no garantiza una conversación ágil. No se ha medido el punto exacto entre 10 y 20 personas donde se produce esa degradación.

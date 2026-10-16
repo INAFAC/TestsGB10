@@ -1,0 +1,62 @@
+[
+  {
+    "file": "reproduccion/scripts/capacity_campaign.py",
+    "sha256": "630ec2bac8e44151d6fbe0189d1d16b9617ce5cf58d3cb7715c147cdeac185ef",
+    "original_sha256": "630ec2bac8e44151d6fbe0189d1d16b9617ce5cf58d3cb7715c147cdeac185ef",
+    "sanitized": false
+  },
+  {
+    "file": "reproduccion/scripts/capacity_probe.py",
+    "sha256": "8ffc11f9fee8f22b1b178f383d355f430638e405dced682b78e840d7b0e11b35",
+    "original_sha256": "8ffc11f9fee8f22b1b178f383d355f430638e405dced682b78e840d7b0e11b35",
+    "sanitized": false
+  },
+  {
+    "file": "reproduccion/scripts/recurrent_campaign.py",
+    "sha256": "2d3d59152e2158220b80d694dafc14c9bf522073874a287637ca520fe5d9b253",
+    "original_sha256": "2d3d59152e2158220b80d694dafc14c9bf522073874a287637ca520fe5d9b253",
+    "sanitized": false
+  },
+  {
+    "file": "reproduccion/scripts/verify_recurrent_restore.py",
+    "sha256": "e1b1ab7d0d91a855d63b574a014f72abb6ca96df47e51c3b63602f61ea88587c",
+    "original_sha256": "e1b1ab7d0d91a855d63b574a014f72abb6ca96df47e51c3b63602f61ea88587c",
+    "sanitized": false
+  },
+  {
+    "file": "reproduccion/scripts/versions/capacity_probe-piloto.py",
+    "sha256": "2da6ef0ec077f2cf047ba3f8394f1f607ed30fdb2630a9d933ce0a72da726a6b",
+    "original_sha256": "2da6ef0ec077f2cf047ba3f8394f1f607ed30fdb2630a9d933ce0a72da726a6b",
+    "sanitized": false
+  },
+  {
+    "file": "reproduccion/metadata.json",
+    "sha256": "ed2f511c7c7db9884d3672c35526437c3a4e9daec0bb7928db4691b0fb589b39",
+    "original_sha256": "ed2f511c7c7db9884d3672c35526437c3a4e9daec0bb7928db4691b0fb589b39",
+    "sanitized": false
+  },
+  {
+    "file": "reproduccion/plan.json",
+    "sha256": "713f05c958475a7447e9db3f03ed4197775a6b7f7aa56e451d8efc28050adbd2",
+    "original_sha256": "713f05c958475a7447e9db3f03ed4197775a6b7f7aa56e451d8efc28050adbd2",
+    "sanitized": false
+  },
+  {
+    "file": "reproduccion/comprobacion-del-medidor/ejecucion.log",
+    "sha256": "1a00a6704c306645fb32793ea5a592b08a1e0a3239aebf7654342a858d6cde00",
+    "original_sha256": "1a00a6704c306645fb32793ea5a592b08a1e0a3239aebf7654342a858d6cde00",
+    "sanitized": false
+  },
+  {
+    "file": "reproduccion/comprobacion-del-medidor/historiales.json.gz",
+    "sha256": "e3a16fe9f7966b63c2e5eb8a2dec6b52e135cd26ee2820afc4e7402487fc0cc4",
+    "original_sha256": "e3a16fe9f7966b63c2e5eb8a2dec6b52e135cd26ee2820afc4e7402487fc0cc4",
+    "sanitized": false
+  },
+  {
+    "file": "reproduccion/comprobacion-del-medidor/mediciones.json",
+    "sha256": "9eae5030129d3bec6f03171df9fc40a21930cf60520fb906eae8b491baff69cd",
+    "original_sha256": "9eae5030129d3bec6f03171df9fc40a21930cf60520fb906eae8b491baff69cd",
+    "sanitized": false
+  }
+]

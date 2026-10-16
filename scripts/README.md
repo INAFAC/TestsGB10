@@ -19,6 +19,10 @@
 | `verify_recurrent_restore.py` | Comprueba al finalizar la configuración restaurada, la salud del servicio, una generación breve y la ausencia de solicitudes pendientes. |
 | `validate_recurrent.py` | Verifica la continuidad real de las conversaciones y, al cerrar la campaña, su cobertura y restauración. |
 | `validate_new_public_files.py` | Revisa los archivos nuevos o modificados antes de publicar para detectar posibles datos sensibles; complementa la revisión manual. |
+| `capacity_probe.py` | Sigue conversaciones desde unos 512 tokens hasta el límite utilizable, conservando todos los mensajes y las respuestas reales. |
+| `capacity_campaign.py` | Busca por presupuesto de memoria el mayor grupo medido con tiempos aceptables durante todo el recorrido y restaura la configuración capturada. |
+| `capacity_report.py` | Publica el avance, las trayectorias y la frontera medida de usuarios por memoria; no presenta un recorrido en curso como capacidad demostrada. |
+| `validate_capacity.py` | Comprueba la continuidad de cada mensaje, los tokens, los tiempos, los scripts ejecutados y las afirmaciones de capacidad. |
 | `sync_results.py` | Descarga la campaña en curso, actualiza los informes y puede publicarlos en GitHub. |
 
 ## Medir una configuración ya desplegada

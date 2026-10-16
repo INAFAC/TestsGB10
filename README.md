@@ -13,6 +13,10 @@ Resultados para decidir cuánta memoria reservar y cuántas conversaciones puede
 | Qwen3.8-27B-NVFP4 | 262.144 tokens | [Resultados y configuración](modelos/nvidia-qwen3.8-27b-nvfp4/README.md) · [Conversaciones con varios usuarios](modelos/nvidia-qwen3.8-27b-nvfp4/conversaciones-recurrentes/README.md) |
 
 <!-- conclusiones-inicio -->
+## Personas que pueden conversar hasta llenar el contexto
+
+La [comprobación por presupuesto de memoria](modelos/nvidia-qwen3.8-27b-nvfp4/capacidad-de-conversacion/README.md) sigue conversaciones desde el principio, conserva sus mensajes y respuestas y aumenta los usuarios para encontrar dónde deja de mantenerse una experiencia útil. Compara **35%, 40%, 50%, 60%, 70%, 85% y 92%**. Las filas pendientes todavía no demuestran capacidad hasta el final del contexto.
+
 ## Resultado práctico de Qwen3.8
 
 Estos controles usaron **70% de memoria y un límite de 32 solicitudes activas**. Cada persona conservó su historial entre mensajes.
