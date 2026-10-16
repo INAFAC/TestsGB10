@@ -14,7 +14,7 @@ Las respuestas deben tener texto visible y terminar naturalmente. En cada bloque
 
 | Presupuesto del modelo | Personas con recorrido completo y útil | Siguiente grupo ensayado | Estado de la comprobación |
 |---:|---:|---:|---|
-| 70% | Al menos 1 | 2 (en curso) | Buscando el máximo; mínimo ya comprobado |
+| 70% | 1 | 2 | Frontera local medida |
 | 40% | Pendiente de completar el recorrido | — | Pendiente |
 | 50% | Pendiente de completar el recorrido | — | Pendiente |
 | 60% | Pendiente de completar el recorrido | — | Pendiente |
@@ -29,9 +29,8 @@ El presupuesto de memoria no es un límite estricto de toda la RAM del GB10. El 
 | Prueba | Memoria | Personas | Rondas medidas | Mayor contexto alcanzado | Espera visible p95 al continuar | Velocidad p05 | Tiempo del grupo | Resultado |
 |---|---:|---:|---:|---:|---:|---:|---:|---|
 | [Recorrido desde el principio](memoria-70-personas-1-recorrido-completo-intento-1/README.md) | 70% | 1 | 257 | 262.029 | 3,4 s | 6,69 tokens/s | 248,1 min | Cumple |
-| Recorrido desde el principio | 70% | 2 | 208 | 212.688 | 5,4 s | 5,20 tokens/s | 210,6 min | En curso; 3 bloques completos fuera de referencia |
-
-En la prueba en curso al **70% con 2 personas**, el último bloque completo fuera de referencia es **178–193**: espera p95 de **5,91 s**, peor espera de **6,05 s**, velocidad p05 de **5,23 tokens/s** y respuesta completa p95 de **46,1 s**. Los valores del conjunto del recorrido pueden ocultar esta ralentización; se exige cumplir también en cada bloque.
+| [Recorrido desde el principio](memoria-70-personas-2-recorrido-completo-intento-1/README.md) | 70% | 2 | 210 | 214.768 | 5,4 s | 5,17 tokens/s | 213,2 min | Tres rondas seguidas con tiempos fuera de referencia |
+| Control con razonamiento | 70% | 1 | 0 | 0 | — s | — tokens/s | 0,5 min | En curso; no es un resultado final |
 
 ## Cómo avanza cada conversación
 
