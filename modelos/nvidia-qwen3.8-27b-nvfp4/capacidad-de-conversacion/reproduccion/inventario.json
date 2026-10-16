@@ -49,8 +49,8 @@
   },
   {
     "file": "reproduccion/metadata.json",
-    "sha256": "0adc8c51288dc2beb0a859339cd0ac4eb8a82bb9b5be9825653120a2b7132f58",
-    "original_sha256": "0adc8c51288dc2beb0a859339cd0ac4eb8a82bb9b5be9825653120a2b7132f58",
+    "sha256": "55e7d5930c1b1db4bd12ac4f8d86fb0e52e35abba11bcaede3fa77fcd6cf8bb9",
+    "original_sha256": "55e7d5930c1b1db4bd12ac4f8d86fb0e52e35abba11bcaede3fa77fcd6cf8bb9",
     "sanitized": false
   },
   {
@@ -165,6 +165,36 @@
     "file": "memoria-70-personas-1-control-con-razonamiento-intento-3/servidor.log",
     "sha256": "4a45dcd4efdf7fbcad985a9b5d7cf8c070c3e97abba34ddb8e18970e544d3653",
     "original_sha256": "bbf63159571de705c3fc0db3dd4b72f4cd5aeea8a24659b721fe467e2a754e46",
+    "sanitized": true
+  },
+  {
+    "file": "memoria-40-personas-1-recorrido-completo-intento-1/configuracion.json",
+    "sha256": "01e7d2e3ffc72f78dc6264df6345c16a3f817f21d00b0d995b2d2a4f1d7d2d7d",
+    "original_sha256": "01e7d2e3ffc72f78dc6264df6345c16a3f817f21d00b0d995b2d2a4f1d7d2d7d",
+    "sanitized": false
+  },
+  {
+    "file": "memoria-40-personas-1-recorrido-completo-intento-1/ejecucion.log",
+    "sha256": "1754ea40446b2f8ae0b60d996be211d623d287e57620776a5ea8cd0e86a9224c",
+    "original_sha256": "1754ea40446b2f8ae0b60d996be211d623d287e57620776a5ea8cd0e86a9224c",
+    "sanitized": false
+  },
+  {
+    "file": "memoria-40-personas-1-recorrido-completo-intento-1/historiales.json.gz",
+    "sha256": "029db1f70931d6f43021ae3ca49d6894527e4f755edc5b1816cd0c1238538b2d",
+    "original_sha256": "029db1f70931d6f43021ae3ca49d6894527e4f755edc5b1816cd0c1238538b2d",
+    "sanitized": false
+  },
+  {
+    "file": "memoria-40-personas-1-recorrido-completo-intento-1/mediciones.json",
+    "sha256": "320c885144310b075469097da90de95cc9387c6c99e6a7426f05e20395324ccf",
+    "original_sha256": "320c885144310b075469097da90de95cc9387c6c99e6a7426f05e20395324ccf",
+    "sanitized": false
+  },
+  {
+    "file": "memoria-40-personas-1-recorrido-completo-intento-1/servidor.log",
+    "sha256": "59f84e56dd6f4ddac018259afb14e8589ca14429fbecf4e44ba2358a49b4fcb0",
+    "original_sha256": "90a46b7bece3932c9df4c38cecfea6f053637d944d7367c1a900aca343c34c8f",
     "sanitized": true
   }
 ]
