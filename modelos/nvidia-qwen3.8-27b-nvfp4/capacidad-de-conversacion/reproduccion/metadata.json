@@ -41,6 +41,28 @@
       ],
       "ready": true,
       "startup_seconds": 370.9610699120094
+    },
+    {
+      "fraction": 0.4,
+      "server_limit": 4,
+      "command": [
+        "vllm",
+        "serve",
+        "nvidia/Qwen3.8-27B-NVFP4",
+        "--enable-auto-tool-choice",
+        "--tool-call-parser",
+        "qwen3_coder",
+        "--reasoning-parser",
+        "qwen3",
+        "--gpu-memory-utilization",
+        "0.4",
+        "--max-num-seqs",
+        "4",
+        "--max-model-len",
+        "262144"
+      ],
+      "ready": true,
+      "startup_seconds": 366.0301156400237
     }
   ],
   "boundaries": [
@@ -68,6 +90,14 @@
       "default_reasoning_controls": [
         "memoria-70-personas-1-control-con-razonamiento-intento-3"
       ]
+    },
+    {
+      "memory_fraction": 0.4,
+      "input_tokens": 512,
+      "state": "running",
+      "attempts": [],
+      "largest_confirmed_acceptable": 0,
+      "first_confirmed_unacceptable": null
     }
   ],
   "script_sha256": "630ec2bac8e44151d6fbe0189d1d16b9617ce5cf58d3cb7715c147cdeac185ef",
@@ -98,6 +128,11 @@
       "timed_out": false,
       "duration_seconds": 375.039328437997,
       "acceptable_reference": false
+    },
+    {
+      "id": "memoria-40-personas-1-recorrido-completo-intento-1",
+      "state": "running",
+      "started_utc": "2026-10-16T16:00:24.740317+00:00"
     }
   ]
 }
