@@ -28,7 +28,7 @@ El presupuesto de memoria no es un límite estricto de toda la RAM del GB10. El 
 
 | Prueba | Memoria | Personas | Rondas medidas | Mayor contexto alcanzado | Espera visible p95 al continuar | Velocidad p05 | Tiempo del grupo | Resultado |
 |---|---:|---:|---:|---:|---:|---:|---:|---|
-| Recorrido desde el principio | 70% | 1 | 3 | 2.686 | 0,8 s | 12,31 tokens/s | 1,8 min | En curso; no es un resultado final |
+| Recorrido desde el principio | 70% | 1 | 16 | 16.017 | 1,2 s | 11,79 tokens/s | 11,6 min | En curso; no es un resultado final |
 
 ## Cómo avanza cada conversación
 
@@ -50,7 +50,7 @@ El presupuesto de memoria no es un límite estricto de toda la RAM del GB10. El 
 - La búsqueda comprueba una frontera local y los grupos ensayados; no garantiza monotonicidad de todos los grupos posibles.
 - La conversación mantiene datos ficticios y respuestas reales; no se evalúa la calidad semántica ni la recuperación perfecta de toda la información.
 - No se fuerza una respuesta a ocupar los últimos tokens: se reserva espacio para terminar naturalmente y se publica cuánto queda libre.
-- Los porcentajes menores del 35% ya fallaron con el contexto completo; sus límites reducidos no equivalen a 262144 tokens.
+- En las pruebas previas, el 30% falló al arrancar con el contexto completo; el 25% se probó con un máximo reducido de 65536 tokens y el 20% falló incluso con 8192. Esos resultados no equivalen a completar una conversación útil de 262144 tokens.
 - El porcentaje configurado es el presupuesto del motor, no un límite estricto de toda la RAM del sistema.
 
 La prueba mide tiempos y finalización. No garantiza que todas las respuestas sean correctas ni que el modelo recuerde perfectamente todos los detalles del historial.

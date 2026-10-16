@@ -50,7 +50,7 @@
     "La búsqueda comprueba una frontera local y los grupos ensayados; no garantiza monotonicidad de todos los grupos posibles.",
     "La conversación mantiene datos ficticios y respuestas reales; no se evalúa la calidad semántica ni la recuperación perfecta de toda la información.",
     "No se fuerza una respuesta a ocupar los últimos tokens: se reserva espacio para terminar naturalmente y se publica cuánto queda libre.",
-    "Los porcentajes menores del 35% ya fallaron con el contexto completo; sus límites reducidos no equivalen a 262144 tokens.",
+    "En las pruebas previas, el 30% falló al arrancar con el contexto completo; el 25% se probó con un máximo reducido de 65536 tokens y el 20% falló incluso con 8192. Esos resultados no equivalen a completar una conversación útil de 262144 tokens.",
     "El porcentaje configurado es el presupuesto del motor, no un límite estricto de toda la RAM del sistema."
   ],
   "server_limit_rule": "max(4, personas de la prueba)",
@@ -60,5 +60,6 @@
     "budget_percent": 92,
     "reference_previous_system_peak_percent": 98.8,
     "purpose": "Comparar también el 92%, aceptado expresamente como presupuesto máximo de esta batería. No se afirma que sea un máximo absoluto del hardware."
-  }
+  },
+  "expected_model_revision": "482ca0f3832238542f8f5295dde86b5f22711d80"
 }
