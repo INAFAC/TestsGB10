@@ -43,8 +43,8 @@
   },
   {
     "file": "reproduccion/metadata.json",
-    "sha256": "999d08c5f5ae7127ffaf7f3e39550138877bf8e7261649951e228a0c8409212c",
-    "original_sha256": "999d08c5f5ae7127ffaf7f3e39550138877bf8e7261649951e228a0c8409212c",
+    "sha256": "b6b71c3c476fb734c88777e1ee779b8cb4376e6cc9db080169d4dd68fbf9c008",
+    "original_sha256": "b6b71c3c476fb734c88777e1ee779b8cb4376e6cc9db080169d4dd68fbf9c008",
     "sanitized": false
   },
   {
@@ -70,5 +70,35 @@
     "sha256": "9eae5030129d3bec6f03171df9fc40a21930cf60520fb906eae8b491baff69cd",
     "original_sha256": "9eae5030129d3bec6f03171df9fc40a21930cf60520fb906eae8b491baff69cd",
     "sanitized": false
+  },
+  {
+    "file": "memoria-70-personas-1-recorrido-completo-intento-1/configuracion.json",
+    "sha256": "f30bbaf1e1b4bd2435950eed152664e79ff26bf5a2f7a589c70c443a983aa269",
+    "original_sha256": "f30bbaf1e1b4bd2435950eed152664e79ff26bf5a2f7a589c70c443a983aa269",
+    "sanitized": false
+  },
+  {
+    "file": "memoria-70-personas-1-recorrido-completo-intento-1/ejecucion.log",
+    "sha256": "50457a0c8707e973e4f13e300bb9b27e6196aa9143d5df58e6e358cab010bfd9",
+    "original_sha256": "50457a0c8707e973e4f13e300bb9b27e6196aa9143d5df58e6e358cab010bfd9",
+    "sanitized": false
+  },
+  {
+    "file": "memoria-70-personas-1-recorrido-completo-intento-1/historiales.json.gz",
+    "sha256": "fa6e57844021aeb831c08f58663d0d864338c4706c0149c8903e7bab16ad56ab",
+    "original_sha256": "fa6e57844021aeb831c08f58663d0d864338c4706c0149c8903e7bab16ad56ab",
+    "sanitized": false
+  },
+  {
+    "file": "memoria-70-personas-1-recorrido-completo-intento-1/mediciones.json",
+    "sha256": "58ac8a258c0124c61715da3d430e30013c36c0636d3c2ce89ddcf4a7fd2b3fb7",
+    "original_sha256": "58ac8a258c0124c61715da3d430e30013c36c0636d3c2ce89ddcf4a7fd2b3fb7",
+    "sanitized": false
+  },
+  {
+    "file": "memoria-70-personas-1-recorrido-completo-intento-1/servidor.log",
+    "sha256": "4eb83008e0bac65febe80ca25d3bec9518233e3eecf629efda72437d85141910",
+    "original_sha256": "63de372846e90ca488d191730aa907445bb4d66f097b52038c51aeb747d1359d",
+    "sanitized": true
   }
 ]
