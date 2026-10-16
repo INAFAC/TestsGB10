@@ -14,7 +14,7 @@ Las respuestas deben tener texto visible y terminar naturalmente. En cada bloque
 
 | Presupuesto del modelo | Personas con recorrido completo y útil | Siguiente grupo ensayado | Estado de la comprobación |
 |---:|---:|---:|---|
-| 70% | Pendiente de completar el recorrido | — | Pendiente |
+| 70% | Pendiente de completar el recorrido | — | En curso |
 | 40% | Pendiente de completar el recorrido | — | Pendiente |
 | 50% | Pendiente de completar el recorrido | — | Pendiente |
 | 60% | Pendiente de completar el recorrido | — | Pendiente |
@@ -28,6 +28,7 @@ El presupuesto de memoria no es un límite estricto de toda la RAM del GB10. El 
 
 | Prueba | Memoria | Personas | Rondas medidas | Mayor contexto alcanzado | Espera visible p95 al continuar | Velocidad p05 | Tiempo del grupo | Resultado |
 |---|---:|---:|---:|---:|---:|---:|---:|---|
+| Recorrido desde el principio | 70% | 1 | 3 | 2.686 | 0,8 s | 12,31 tokens/s | 1,8 min | En curso; no es un resultado final |
 
 ## Cómo avanza cada conversación
 

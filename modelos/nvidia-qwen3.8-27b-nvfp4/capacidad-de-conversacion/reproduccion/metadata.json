@@ -19,7 +19,46 @@
   "compose_sha256": "1caf0951ec1175b71b97d53ffcc557e9d9ea2e506dd046b2647603c8551fd696",
   "state": "running",
   "restore_status": "pending",
-  "profiles": [],
-  "boundaries": [],
-  "script_sha256": "630ec2bac8e44151d6fbe0189d1d16b9617ce5cf58d3cb7715c147cdeac185ef"
+  "profiles": [
+    {
+      "fraction": 0.7,
+      "server_limit": 4,
+      "command": [
+        "vllm",
+        "serve",
+        "nvidia/Qwen3.8-27B-NVFP4",
+        "--enable-auto-tool-choice",
+        "--tool-call-parser",
+        "qwen3_coder",
+        "--reasoning-parser",
+        "qwen3",
+        "--gpu-memory-utilization",
+        "0.7",
+        "--max-num-seqs",
+        "4",
+        "--max-model-len",
+        "262144"
+      ],
+      "ready": true,
+      "startup_seconds": 370.9610699120094
+    }
+  ],
+  "boundaries": [
+    {
+      "memory_fraction": 0.7,
+      "input_tokens": 512,
+      "state": "running",
+      "attempts": [],
+      "largest_confirmed_acceptable": 0,
+      "first_confirmed_unacceptable": null
+    }
+  ],
+  "script_sha256": "630ec2bac8e44151d6fbe0189d1d16b9617ce5cf58d3cb7715c147cdeac185ef",
+  "cases": [
+    {
+      "id": "memoria-70-personas-1-recorrido-completo-intento-1",
+      "state": "running",
+      "started_utc": "2026-10-16T08:06:42.678072+00:00"
+    }
+  ]
 }

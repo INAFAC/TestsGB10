@@ -52,10 +52,19 @@ def main():
     rows=[]
     reasons={'three_consecutive_rounds_outside_reference':'Tres rondas seguidas con tiempos fuera de referencia',
         'answer_cut_or_not_visible':'Respuesta cortada o sin texto visible',
-        'api_or_network_error':'Error de API o plazo de espera del cliente'}
+        'api_or_network_error':'Error de API o plazo de espera del cliente',
+        'missing_measurements':'No se obtuvieron mediciones; revisar el registro'}
     for case in meta.get('cases',[]):
         folder=cache/'pruebas'/case['id'];out=OUT/case['id']
-        if not (folder/'mediciones.json').exists():continue
+        if not (folder/'mediciones.json').exists():
+            if case['state']=='running':continue
+            c=read(folder/'configuracion.json')
+            for src in folder.iterdir():
+                if src.is_file() and not src.name.endswith('.tmp'):copy(src,out/src.name)
+            reason='El servidor no pudo arrancar con esta configuración.' if case['state']=='startup_failed' else 'El intento terminó sin un archivo de mediciones. No se atribuye a falta de memoria sin evidencia del registro.'
+            (out/'README.md').write_text(f"# Intento sin mediciones\n\n[Volver a la comparación](../README.md)\n\n{reason}\n\nPresupuesto: {round(c['memory_fraction']*100)}%. Personas: {c['users']}. Límite activo: {c['server_limit']}.\n\n[Configuración solicitada](configuracion.json) · [Registros del controlador](../reproduccion/metadata.json)\n")
+            rows.append((case,c,{'growth_stop_reason':'missing_measurements','duration_s':case.get('duration_seconds')},out.name))
+            continue
         d=read(folder/'mediciones.json');s=d['summary'];c=read(folder/'configuracion.json')
         if case['state']=='running':
             rows.append((case,c,s,None));continue
@@ -108,7 +117,9 @@ def main():
             usage=r.get('usage') or {}
             ending='Natural' if r['ok'] and r['finish_reason']=='stop' and r['has_visible_answer'] else 'Cortada' if r.get('finish_reason')=='length' else 'Sin respuesta visible / error'
             lines.append(f"| {r['user_id']+1} | {r['turn']} | {number(r['input_tokens'],0)} | {number(usage.get('completion_tokens'),0)} | {number(r.get('visible_ttft_s'))} s | {number(r['total_s'])} s | {number(rate(r),2)} | {ending} |")
-        lines+=['','</details>','','[Mediciones](mediciones.json) · [Configuración](configuracion.json) · [Historial completo reproducible](historiales.json.gz)','','La velocidad cuenta todos los tokens de salida. Con razonamiento activado no equivale exclusivamente a la velocidad del texto visible.']
+        links='[Mediciones](mediciones.json) · [Configuración](configuracion.json)'
+        if (out/'historiales.json.gz').exists():links+=' · [Historial reproducible](historiales.json.gz)'
+        lines+=['','</details>','',links,'','La velocidad cuenta todos los tokens de salida. Con razonamiento activado no equivale exclusivamente a la velocidad del texto visible.']
         (out/'README.md').write_text('\n'.join(lines)+'\n')
     lines=['# Cuántas personas pueden conversar hasta llenar el contexto','',
         '[Volver al modelo](../README.md)','',
@@ -139,7 +150,7 @@ def main():
         contexts=s.get('final_total_tokens_by_user',{})
         tokens=max(contexts.values(),default=None)
         state='En curso; no es un resultado final' if case['state']=='running' else 'Cumple' if case.get('acceptable_reference') else reasons.get(s.get('growth_stop_reason'),'No cumple')
-        lines.append(f"| {link} | {round(c['memory_fraction']*100)}% | {c['users']} | {s.get('actual_rounds',len([t for t in s.get('per_turn',[]) if t['completed']]))} | {number(tokens,0)} | {number(s.get('followups_visible_ttft_p95_s'))} s | {number(s.get('followups_decode_p05_tokens_s'),2)} tokens/s | {number(s['duration_s']/60)} min | {state} |")
+        lines.append(f"| {link} | {round(c['memory_fraction']*100)}% | {c['users']} | {s.get('actual_rounds',len([t for t in s.get('per_turn',[]) if t['completed']]))} | {number(tokens,0)} | {number(s.get('followups_visible_ttft_p95_s'))} s | {number(s.get('followups_decode_p05_tokens_s'),2)} tokens/s | {number(s['duration_s']/60 if s.get('duration_s') is not None else None)} min | {state} |")
     lines+=['','## Cómo avanza cada conversación','']
     lines += [f'{i}. {step}' for i,step in enumerate(plan['method'],1)]
     lines+=['','## Alcance de la respuesta','']+[f'- {line}' for line in plan['limitations']]
