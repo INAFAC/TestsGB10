@@ -2,7 +2,7 @@
 
 [Volver a la capacidad por memoria](../README.md)
 
-**No cumple la referencia completa.**
+**No cumple la referencia de tiempos del control.**
 
 Modelo: `nvidia/Qwen3.8-27B-NVFP4`. Razonamiento: **predeterminado**. Límite impuesto al servidor: **4 solicitudes activas**. Presupuesto de salida: **hasta 4.096 tokens por respuesta**, con petición de hasta 100 palabras.
 
@@ -38,7 +38,8 @@ Los plazos de espera del cliente no demuestran un error de memoria. Un corte por
 | Pico de caché | 2,2% |
 | Solicitudes activas / respuestas solapadas, máximo | 1 / 1 |
 | Cola máxima / segundos con cola | 0 / 0,0 s |
-| Espera media al primer texto del modelo | 1,4 s |
+| Espera media al primer texto visible | 41,0 s |
+| Espera media al primer token, incluido razonamiento | 1,4 s |
 | Tiempo medio de petición completa | 50,4 s |
 | Recálculos por falta de espacio de caché | 0 |
 | Velocidad global, incluidas pausas | 7,88 tokens/s |

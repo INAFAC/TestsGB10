@@ -50,7 +50,8 @@ El cierre previsto reserva hasta 128 tokens y pide terminar en diez palabras. No
 | Pico de caché | 44,8% |
 | Solicitudes activas / respuestas solapadas, máximo | 2 / 2 |
 | Cola máxima / segundos con cola | 0 / 0,0 s |
-| Espera media al primer texto del modelo | 3,1 s |
+| Espera media al primer texto visible | 3,1 s |
+| Espera media al primer token, incluido razonamiento | 3,1 s |
 | Tiempo medio de petición completa | 28,6 s |
 | Recálculos por falta de espacio de caché | 0 |
 | Velocidad global, incluidas pausas | 5,90 tokens/s |

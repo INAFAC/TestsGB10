@@ -76,7 +76,7 @@ def main():
         trajectory=c.get('grows_from_short_to_full',False)
         passed=case.get('acceptable_reference',False)
         reason=reasons.get(s.get('growth_stop_reason'),s.get('growth_stop_reason'))
-        label='Cumplió durante todo el recorrido' if passed and trajectory else 'Cumplió el control' if passed else reason or 'No cumple la referencia completa'
+        label='Cumplió durante todo el recorrido' if passed and trajectory else 'Cumplió el control' if passed else reason or ('No cumple la referencia del recorrido' if trajectory else 'No cumple la referencia de tiempos del control')
         lines=[f"# {c['users']} {'persona' if c['users']==1 else 'personas'} · {round(c['memory_fraction']*100)}% de memoria",'',
             '[Volver a la capacidad por memoria](../README.md)','',f'**{label}.**','',
             f"Modelo: `{s['model']}`. Razonamiento: **{'desactivado' if c['reasoning']=='disabled' else 'predeterminado'}**. Límite impuesto al servidor: **{c['server_limit']} solicitudes activas**. Presupuesto de salida: **hasta {number(c['output_tokens'],0)} tokens por respuesta**, con petición de hasta 100 palabras.",'',
@@ -102,6 +102,7 @@ def main():
             lines.append(f"| {user+1} | {max((r['turn'] for r in good),default=0)} | {number(total,0)} | {number(total/262144*100,3)}% | {number(262144-total,0)} |")
         if trajectory:
             lines+=['','El cierre previsto reserva hasta 128 tokens y pide terminar en diez palabras. No se fuerza al modelo a rellenar el espacio restante ni se afirma haber llegado exactamente a 262.144. '+('Este intento llegó al cierre.' if s.get('reached_final_target') else 'Este intento no llegó a ese cierre.')]
+        visible_waits=[r['visible_ttft_s'] for r in d['requests'] if r.get('ok') and r.get('visible_ttft_s') is not None]
         lines+=['',
             '## Memoria, colas y rendimiento del grupo','','| Medida | Resultado |','|---|---:|',
             f"| Presupuesto configurado | {number(c['memory_fraction']*100,0)}% |",
@@ -110,7 +111,8 @@ def main():
             f"| Pico de caché | {number(100*s['peak_kv_fraction'] if s.get('peak_kv_fraction') is not None else None)}% |",
             f"| Solicitudes activas / respuestas solapadas, máximo | {number(s.get('peak_running'),0)} / {number(s.get('peak_overlapping_responses'),0)} |",
             f"| Cola máxima / segundos con cola | {number(s.get('peak_waiting'),0)} / {number(s.get('seconds_with_queue'))} s |",
-            f"| Espera media al primer texto del modelo | {number(s.get('mean_ttft_s'))} s |",
+            f"| Espera media al primer texto visible | {number(sum(visible_waits)/len(visible_waits) if visible_waits else None)} s |",
+            f"| Espera media al primer token, incluido razonamiento | {number(s.get('mean_ttft_s'))} s |",
             f"| Tiempo medio de petición completa | {number(s.get('mean_total_s'))} s |",
             f"| Recálculos por falta de espacio de caché | {number(s.get('preemptions'),0)} |",
             f"| Velocidad global, incluidas pausas | {number(sum((r.get('usage') or {}).get('completion_tokens',0) for r in d['requests'])/s['duration_s'],2)} tokens/s |",
