@@ -14,7 +14,7 @@ Las respuestas deben tener texto visible y terminar naturalmente. En cada bloque
 
 | Presupuesto del modelo | Personas con recorrido completo y útil | Siguiente grupo ensayado | Estado de la comprobación |
 |---:|---:|---:|---|
-| 70% | Pendiente de completar el recorrido | — | En curso |
+| 70% | Al menos 1 | 2 (en curso) | Buscando el máximo; mínimo ya comprobado |
 | 40% | Pendiente de completar el recorrido | — | Pendiente |
 | 50% | Pendiente de completar el recorrido | — | Pendiente |
 | 60% | Pendiente de completar el recorrido | — | Pendiente |

@@ -77,7 +77,7 @@ def main():
         passed=case.get('acceptable_reference',False)
         reason=reasons.get(s.get('growth_stop_reason'),s.get('growth_stop_reason'))
         label='Cumplió durante todo el recorrido' if passed and trajectory else 'Cumplió el control' if passed else reason or 'No cumple la referencia completa'
-        lines=[f"# {c['users']} personas · {round(c['memory_fraction']*100)}% de memoria",'',
+        lines=[f"# {c['users']} {'persona' if c['users']==1 else 'personas'} · {round(c['memory_fraction']*100)}% de memoria",'',
             '[Volver a la capacidad por memoria](../README.md)','',f'**{label}.**','',
             f"Modelo: `{s['model']}`. Razonamiento: **{'desactivado' if c['reasoning']=='disabled' else 'predeterminado'}**. Límite impuesto al servidor: **{c['server_limit']} solicitudes activas**. Presupuesto de salida: **hasta {number(c['output_tokens'],0)} tokens por respuesta**, con petición de hasta 100 palabras.",'',
             f"Respuestas recibidas sin error: **{s['completed']}/{s['num_requests']} previstas**. Duración: **{number(s['duration_s']/60)} min**, incluidas las pausas. {'Se conservan todos los mensajes y las respuestas reales desde el comienzo; no se salta ni recorta el historial.' if trajectory else 'Este control no recorre todo el contexto.'}",'',
@@ -149,7 +149,14 @@ def main():
             if b.get('nonmonotonic'):status+='; resultados no monótonos'
             lines.append(f"| {round(fraction*100)}% | {label} | {bad if bad is not None else '—'} | {status} |")
         elif b and b['state']=='startup_failed':lines.append(f"| {round(fraction*100)}% | No medible con este arranque | — | Arranque fallido; ver registros |")
-        else:lines.append(f"| {round(fraction*100)}% | Pendiente de completar el recorrido | — | {'En curso' if b else 'Pendiente'} |")
+        else:
+            trajectories=[(case,c,s) for case,c,s,_ in rows if c['memory_fraction']==fraction and c.get('grows_from_short_to_full')]
+            confirmed=max((c['users'] for case,c,s in trajectories if case['state']=='finished' and case.get('acceptable_reference') and s.get('acceptable_reference')),default=0)
+            running=[c['users'] for case,c,s in trajectories if case['state']=='running']
+            label=f'Al menos {confirmed}' if confirmed else 'Pendiente de completar el recorrido'
+            next_group=f'{running[-1]} (en curso)' if running else '—'
+            state='Buscando el máximo; mínimo ya comprobado' if confirmed else 'En curso' if b else 'Pendiente'
+            lines.append(f"| {round(fraction*100)}% | {label} | {next_group} | {state} |")
     lines+=['','El presupuesto de memoria no es un límite estricto de toda la RAM del GB10. El límite activo del servidor es el mayor entre cuatro y las personas de la prueba; nunca es inferior al grupo enviado. La búsqueda llega hasta 32 personas: si se alcanza ese techo se informa como un mínimo demostrado, nunca como el máximo del equipo. La búsqueda acota los grupos ensayados; no demuestra todas las configuraciones posibles.','',
         '## Recorridos y controles individuales','',
         '| Prueba | Memoria | Personas | Rondas medidas | Mayor contexto alcanzado | Espera visible p95 al continuar | Velocidad p05 | Tiempo del grupo | Resultado |',

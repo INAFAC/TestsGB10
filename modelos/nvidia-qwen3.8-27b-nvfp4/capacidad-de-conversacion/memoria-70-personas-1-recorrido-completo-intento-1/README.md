@@ -1,4 +1,4 @@
-# 1 personas · 70% de memoria
+# 1 persona · 70% de memoria
 
 [Volver a la capacidad por memoria](../README.md)
 
