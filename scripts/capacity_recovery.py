@@ -64,6 +64,8 @@ def main():
     version.mkdir(parents=True)
     atomic(version/'metadata-antes-de-repetir.json',meta)
     atomic(version/'verificacion-anterior.json',proof)
+    # A previous successful restoration must not masquerade as the next one.
+    (root/'verificacion-final.json').unlink()
     recovery={'started_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),
               'script_sha256':hashlib.sha256(pathlib.Path(__file__).read_bytes()).hexdigest(),
               'pending':[c['id'] for c in pending],'state':'running'}

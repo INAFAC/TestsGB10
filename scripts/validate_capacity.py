@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Check recorded prompts, real response continuity, times, hashes and capacity claims."""
 import gzip
+import datetime
 import hashlib
 import json
 import math
@@ -127,6 +128,9 @@ def main():
         assert meta['restore_status']=='healthy'
         proof=read(OUT/'reproduccion/verificacion-final.json')
         assert proof['verified'] and proof['command']==meta['original_command']
+        if meta.get('recoveries'):
+            latest=meta['recoveries'][-1]
+            assert datetime.datetime.fromisoformat(proof['checked_utc'])>=datetime.datetime.fromisoformat(latest['ended_utc']),'Restoration proof predates recovery completion'
         assert not any(proof['requests'].values())
     print(f'Validated {verified} finished trials, real message continuity, token growth, timestamps, source hashes and published capacity claims.')
 

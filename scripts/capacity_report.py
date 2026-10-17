@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Publish chat trajectories and their measured local capacity boundary."""
 import argparse
+import datetime
 import gzip
 import hashlib
 import json
@@ -53,8 +54,16 @@ def main():
     for src in (cache/'revisiones').rglob('*'):
         if src.is_file():copy(src,records/'revisiones'/src.relative_to(cache/'revisiones'))
     for src in cache.glob('arranque-*.log'):copy(src,records/src.name)
-    for name in ['metadata.json','plan.json','verificacion-final.json']:
+    for name in ['metadata.json','plan.json']:
         if (cache/name).exists():copy(cache/name,records/name)
+    proof_path=cache/'verificacion-final.json'
+    fresh_proof=proof_path.exists()
+    if fresh_proof and meta.get('recoveries'):
+        latest=meta['recoveries'][-1]
+        cutoff=latest.get('ended_utc',latest['started_utc'])
+        fresh_proof=datetime.datetime.fromisoformat(read(proof_path)['checked_utc'])>=datetime.datetime.fromisoformat(cutoff)
+    if fresh_proof:copy(proof_path,records/proof_path.name)
+    elif meta.get('recoveries'):(records/'verificacion-final.json').unlink(missing_ok=True)
     for src in (cache/'piloto').glob('*'):
         if src.is_file():copy(src,records/'comprobacion-del-medidor'/src.name)
     rows=[]
