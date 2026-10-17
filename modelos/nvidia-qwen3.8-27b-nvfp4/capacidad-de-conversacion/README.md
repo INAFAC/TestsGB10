@@ -38,7 +38,7 @@ El presupuesto de memoria no es un límite estricto de toda la RAM del GB10. El 
 | [Recorrido desde el principio](memoria-50-personas-2-recorrido-completo-intento-1/README.md) | 50% | 2 | 210 | 214.876 | 5,5 s | 5,25 tokens/s | 221,3 min | Tres rondas seguidas con tiempos fuera de referencia |
 | [Control con razonamiento](memoria-50-personas-1-control-con-razonamiento-intento-3/README.md) | 50% | 1 | 5 | 11.538 | 46,2 s | 11,90 tokens/s | 6,6 min | No cumple |
 | [Recorrido desde el principio](memoria-60-personas-1-recorrido-completo-intento-1/README.md) | 60% | 1 | 257 | 262.026 | 3,3 s | 6,68 tokens/s | 273,6 min | Cumple |
-| Recorrido desde el principio | 60% | 2 | 32 | 32.431 | 2,0 s | 10,02 tokens/s | 29,1 min | En curso; no es un resultado final |
+| Recorrido desde el principio | 60% | 2 | 48 | 49.076 | 2,3 s | 9,25 tokens/s | 48,2 min | En curso; no es un resultado final |
 
 ## Cómo avanza cada conversación
 
