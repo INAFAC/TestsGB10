@@ -58,6 +58,8 @@ El intento de **60% con 2 personas** fue interrumpido por el medidor. [Causa y r
 9. Se hacen controles separados del razonamiento predeterminado con 8192 tokens iniciales, cinco turnos y hasta 4096 tokens de salida. Estos controles no establecen su límite completo.
 10. El límite activo del servidor es el mayor entre cuatro y el número de personas de la prueba; nunca se impone un límite inferior al grupo enviado. Cada cambio se registra.
 
+Los objetivos de entrada admiten hasta 32 tokens de diferencia al construir el mensaje. Por eso los 128 tokens reservados para el cierre son aproximados: su presupuesto efectivo se calcula con la entrada real. Cada respuesta registra tanto ese presupuesto como los tokens que finalmente utilizó.
+
 ## Alcance de la respuesta
 
 - El resultado depende del ritmo, longitud de mensajes, respuestas y modo de razonamiento aquí descritos.

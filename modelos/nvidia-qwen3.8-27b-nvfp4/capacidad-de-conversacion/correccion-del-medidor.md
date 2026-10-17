@@ -10,7 +10,7 @@ Las 260 respuestas recibidas se conservan. El bloque de rondas 114–129 ya hab�
 
 La [segunda versión del medidor](../../../scripts/capacity_probe_v2.py) conserva íntegramente el historial. Si una respuesta larga hace imposible el siguiente incremento nominal, aumenta lo mínimo necesario el objetivo de entrada y registra el objetivo nominal, el efectivo y el tamaño mínimo del nuevo mensaje. No sustituye respuestas ni recorta mensajes anteriores.
 
-Además, las respuestas anteriores al cierre reservan 256 tokens para la pregunta final y su respuesta. En el cierre se mantienen hasta 128 tokens de salida. Esto solo reduce el presupuesto de salida cuando queda poco espacio de contexto; cada petición publica su límite efectivo. Es una diferencia explícita respecto a la primera versión, por lo que la repetición se identifica por separado.
+Además, las respuestas anteriores al cierre reservan 256 tokens para la pregunta final y su respuesta. En el cierre se reservan aproximadamente 128 tokens de salida, según el tamaño exacto de la entrada. Esto solo reduce el presupuesto de salida cuando queda poco espacio de contexto; cada petición publica su límite efectivo. Es una diferencia explícita respecto a la primera versión, por lo que la repetición se identifica por separado.
 
 Si el propio medidor vuelve a fallar, guarda un estado de error del medidor en vez de dejar una última instantánea marcada como «en curso».
 

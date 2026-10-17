@@ -222,6 +222,7 @@ def main():
             lines+=['',f"En la prueba en curso al **{round(c['memory_fraction']*100)}% con {c['users']} {'persona' if c['users']==1 else 'personas'}**, el último bloque completo fuera de referencia es **{w['first_turn']}–{w['last_turn']}**: espera p95 de **{number(w['visible_ttft_p95_s'],2)} s**, peor espera de **{number(w['visible_ttft_max_s'],2)} s**, velocidad p05 de **{number(w['decode_p05_tokens_s'],2)} tokens/s** y respuesta completa p95 de **{number(w['total_p95_s'])} s**. Los valores del conjunto del recorrido pueden ocultar esta ralentización; se exige cumplir también en cada bloque."]
     lines+=['','## Cómo avanza cada conversación','']
     lines += [f'{i}. {step}' for i,step in enumerate(plan['method'],1)]
+    lines+=['','Los objetivos de entrada admiten hasta 32 tokens de diferencia al construir el mensaje. Por eso los 128 tokens reservados para el cierre son aproximados: su presupuesto efectivo se calcula con la entrada real. Cada respuesta registra tanto ese presupuesto como los tokens que finalmente utilizó.']
     lines+=['','## Alcance de la respuesta','']+[f'- {line}' for line in plan['limitations']]
     lines+=['','La prueba mide tiempos y finalización. No garantiza que todas las respuestas sean correctas ni que el modelo recuerde perfectamente todos los detalles del historial.','',
         '[Plan exacto](plan.json) · [Datos de ejecución y scripts reproducibles](reproduccion/README.md)','']
