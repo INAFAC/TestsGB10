@@ -39,7 +39,7 @@ El presupuesto de memoria no es un límite estricto de toda la RAM del GB10. El 
 | [Control con razonamiento](memoria-50-personas-1-control-con-razonamiento-intento-3/README.md) | 50% | 1 | 5 | 11.538 | 46,2 s | 11,90 tokens/s | 6,6 min | No cumple |
 | [Recorrido desde el principio](memoria-60-personas-1-recorrido-completo-intento-1/README.md) | 60% | 1 | 257 | 262.026 | 3,3 s | 6,68 tokens/s | 273,6 min | Cumple |
 | [Recorrido desde el principio](memoria-60-personas-2-recorrido-completo-intento-1/README.md) | 60% | 2 | 130 | 133.608 | 3,7 s | 6,65 tokens/s | 202,1 min | No cumple |
-| Control con razonamiento | 60% | 1 | 0 | 0 | — s | — tokens/s | 0,5 min | En curso; no es un resultado final |
+| [Control con razonamiento](memoria-60-personas-1-control-con-razonamiento-intento-3/README.md) | 60% | 1 | 5 | 10.807 | 38,3 s | 11,87 tokens/s | 5,6 min | No cumple |
 
 ## Cómo avanza cada conversación
 
