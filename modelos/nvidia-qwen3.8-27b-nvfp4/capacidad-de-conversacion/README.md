@@ -19,7 +19,7 @@ Las respuestas deben tener texto visible y terminar naturalmente. En cada bloque
 | 50% | 1 | 2 | Comprobado: el siguiente grupo no cumple |
 | 60% | Al menos 1 | 2 | Repetición pendiente por error del medidor; frontera sin cerrar |
 | 85% | 1 | 2 | Comprobado: el siguiente grupo no cumple |
-| 35% | Pendiente de completar el recorrido | — | Pendiente |
+| 35% | Pendiente de completar el recorrido | 1 (en curso) | En curso |
 | 92% | Pendiente de completar el recorrido | — | Pendiente |
 
 El presupuesto de memoria no es un límite estricto de toda la RAM del GB10. El límite activo del servidor es el mayor entre cuatro y las personas de la prueba; nunca es inferior al grupo enviado. La búsqueda llega hasta 32 personas: si se alcanza ese techo se informa como un mínimo demostrado, nunca como el máximo del equipo. La búsqueda acota los grupos ensayados; no demuestra todas las configuraciones posibles.
@@ -43,6 +43,7 @@ El presupuesto de memoria no es un límite estricto de toda la RAM del GB10. El 
 | [Recorrido desde el principio](memoria-85-personas-1-recorrido-completo-intento-1/README.md) | 85% | 1 | 257 | 262.029 | 4,2 s | 6,16 tokens/s | 293,2 min | Cumple |
 | [Recorrido desde el principio](memoria-85-personas-2-recorrido-completo-intento-1/README.md) | 85% | 2 | 186 | 190.125 | 6,4 s | 5,45 tokens/s | 164,4 min | Tres rondas seguidas con tiempos fuera de referencia |
 | [Control con razonamiento](memoria-85-personas-1-control-con-razonamiento-intento-3/README.md) | 85% | 1 | 5 | 10.942 | 50,7 s | 11,86 tokens/s | 5,8 min | No cumple |
+| Recorrido desde el principio | 35% | 1 | 0 | 0 | — s | — tokens/s | 0,1 min | En curso; no es un resultado final |
 
 El intento de **60% con 2 personas** fue interrumpido por el medidor. [Causa y repetición pendiente](correccion-del-medidor.md). No se usa ese error para atribuir un límite al GB10.
 
