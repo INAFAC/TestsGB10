@@ -17,7 +17,7 @@ Si el propio medidor vuelve a fallar, guarda un estado de error del medidor en v
 ## Estado
 
 - La [comprobación local de regresión](../../../scripts/check_capacity_probe_v2.py) reproduce el caso de una respuesta larga, comprueba la continuidad del historial y verifica la reserva para el cierre.
-- Falta validar esta versión contra el servidor y ejecutar la repetición completa.
+- Falta validar esta versión contra el servidor y ejecutar la repetición completa. La [comprobación con el tokenizador real](../../../scripts/check_capacity_probe_v2_server.py) está preparada para reconstruir la siguiente pregunta a partir del historial que provocó el fallo. Exige que la batería original haya terminado y el servicio esté restaurado; no genera respuestas ni mide capacidad.
 - El [controlador de repetición](../../../scripts/capacity_recovery.py) está preparado: exige que termine la batería original y que el servicio esté restaurado, archiva el estado anterior, conserva los intentos y restaura de nuevo al terminar. Su modo `--check-only` identifica los casos pendientes sin ejecutar pruebas ni cambiar el servicio.
 - La batería original continúa con su versión original. Se conservarán sus fuentes y todos sus intentos.
 - El caso del 60% se repetirá después de la batería original; cualquier otro intento interrumpido por el medidor también requerirá revisión antes de cerrar las conclusiones.
