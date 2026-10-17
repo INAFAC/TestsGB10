@@ -4,10 +4,14 @@
 
 ## Lo primero: ¿terminó y llegó al máximo?
 
-Cada prueba responde dos preguntas distintas:
+Hay dos tipos de pruebas y su finalización se comprueba de forma distinta:
 
-- **¿Terminó?** Recibió todos los tokens de respuesta que se habían pedido. Por ejemplo, si se pidieron 512, debe entregar 512.
-- **¿Llegó al máximo del modelo?** La suma real de entrada y respuesta alcanzó el máximo de tokens permitido por el modelo, y la respuesta se entregó completa.
+| Tipo de prueba | Qué significa que terminó | Cómo se comprueba el contexto |
+|---|---|---|
+| Carga sintética con salida fija | Entregó todos los tokens pedidos; por ejemplo, exactamente 512. | Entrada y respuesta suman el máximo configurado cuando la prueba busca llenarlo exactamente. |
+| Chat con respuesta natural | Entregó texto visible y el modelo terminó por sí mismo, sin agotar el límite de salida. | Se conserva el historial y se publica el total real alcanzado; no se obliga al modelo a ocupar los últimos tokens. |
+
+Para responder cuántas personas pueden conversar hasta el límite, consulta la [batería de conversaciones completas por memoria](modelos/nvidia-qwen3.8-27b-nvfp4/capacidad-de-conversacion/README.md). Además de terminar, exige mantener los tiempos de referencia durante todo el recorrido.
 
 Un token es una pequeña unidad de texto; no equivale necesariamente a una palabra. La **entrada** representa el historial que debe leer el modelo. La **respuesta** es lo que genera después.
 
@@ -17,7 +21,7 @@ Para este Qwen, el máximo es **262.144 tokens por conversación, contando entra
 
 Al reducir la memoria puede ser necesario reducir también el límite configurado. Llegar a 131.072 tokens con ese límite reducido no demuestra que se pueda llegar al máximo del modelo. El informe distingue ambos casos.
 
-Las pruebas de carga fuerzan una longitud de respuesta para poder comparar el rendimiento. “Terminó” comprueba que se entregó esa longitud; no evalúa si el contenido de una respuesta real quedaría bien concluido.
+Las pruebas de carga fuerzan una longitud de respuesta para poder comparar el rendimiento. En ellas, “terminó” no evalúa si el contenido quedaría bien concluido. En los controles de chat y las conversaciones completas sí se distingue el cierre natural de una respuesta cortada por el límite de salida.
 
 ## Conversaciones enviadas y conversaciones a la vez
 
@@ -55,11 +59,15 @@ El motor puede mantener memoria reservada aunque la caché esté casi vacía. La
 | Tiempo de respuesta completo | Cuánto tarda esa conversación en recibir toda la respuesta pedida. |
 | Tiempo total de la prueba | Cuánto tarda el grupo completo. No incluye cargar el modelo, salvo en las pruebas de arranque. |
 | Suma de tiempos individuales | Suma de los tiempos de todas las conversaciones. Puede superar el tiempo total porque se solapan. |
-| Tokens/s durante la respuesta | Velocidad desde el primer texto recibido hasta el final. |
+| Tokens/s durante la respuesta | Velocidad desde el primer token recibido hasta el final; puede incluir razonamiento. |
 | Tokens/s incluyendo espera | Tokens de respuesta divididos entre todo el tiempo individual, incluida la espera. |
 | Tokens/s totales | Todos los tokens de respuesta completados, divididos entre la duración del grupo. No se obtiene sumando velocidades individuales. |
 
-La velocidad durante la respuesta se calcula como `(tokens recibidos − 1) / (tiempo completo − espera al primer texto)`. Son medidas desde el cliente, no contadores internos de pasos de la GPU.
+La velocidad durante la respuesta se calcula como `(tokens recibidos − 1) / (tiempo completo − espera al primer token)`. Son medidas desde el cliente, no contadores internos de pasos de la GPU. Con razonamiento activado, ese primer token y parte de la velocidad pueden corresponder al razonamiento; la espera hasta el texto visible se mide aparte.
+
+**p95 de espera** es el tiempo que no supera al menos el 95% de las respuestas medidas. **p05 de velocidad** describe el extremo lento: aproximadamente el 95% de las respuestas alcanza esa velocidad o más. No son medias. Se usan percentiles por rango; en un bloque de 16 respuestas, el p95 es la peor espera y el p05 es la menor velocidad. Por eso se publican tanto el conjunto como los bloques del recorrido: un buen promedio puede ocultar una ralentización al final.
+
+En conversaciones con varios turnos, el tiempo total del grupo incluye las pausas de las personas y la preparación de los mensajes. Los tokens/s de todo ese recorrido no equivalen a la velocidad de escritura que ve cada persona durante una respuesta.
 
 Las medias individuales y los mayores tiempos de espera y respuesta del resumen se calculan sobre las conversaciones que terminaron correctamente. Los errores y sus tiempos registrados se muestran aparte, en las filas individuales. Si una prueba sigue en curso o tiene fallos, hay que leerlas junto al número de conversaciones completadas. Los tokens/s del grupo cuentan los tokens de las respuestas completadas y todo el tiempo transcurrido del grupo; una cifra parcial no es su rendimiento final.
 
@@ -92,6 +100,16 @@ La campaña de [conversaciones recurrentes](modelos/nvidia-qwen3.8-27b-nvfp4/con
 En las pruebas de carga se siguen pidiendo exactamente 512 tokens por respuesta. Los controles identificados como **chat** utilizan mensajes ficticios en español, permiten que la respuesta termine antes del límite y muestran si terminó naturalmente o agotó los tokens de salida. Recibir una petición sin error no demuestra que su respuesta haya quedado terminada; por eso se muestran ambas medidas.
 
 En modelos con razonamiento, el primer texto del modelo puede corresponder al razonamiento previo a la respuesta visible. Los controles de chat distinguen esas dos esperas y registran si se desactivó el razonamiento o se utilizó la configuración predeterminada. Los resultados no califican la calidad del contenido.
+
+## Conversaciones que crecen desde el principio hasta el límite
+
+La [comparación de capacidad por memoria](modelos/nvidia-qwen3.8-27b-nvfp4/capacidad-de-conversacion/README.md) empieza con unos 512 tokens y conserva cada pregunta y cada respuesta real. Los historiales crecen poco a poco durante 257 rondas previstas, hasta un último mensaje próximo a los 262.144 tokens. Se pide un cierre breve y se publica el espacio que realmente queda libre.
+
+Cada persona espera al menos 30 segundos entre turnos. En esta batería las rondas se sincronizan: la siguiente empieza cuando todas las personas están listas. Así se comprueba qué ocurre cuando envían mensajes a la vez durante todo el recorrido. Es un patrón concreto de uso, no una simulación de cualquier ritmo posible.
+
+El resultado principal usa razonamiento desactivado. Para cumplir, todas las respuestas deben terminar naturalmente y deben mantenerse los tiempos de referencia tanto en el conjunto como en cada bloque de hasta 16 rondas. Los controles breves con razonamiento predeterminado se muestran aparte y no demuestran capacidad hasta el contexto máximo.
+
+Si un grupo deja de cumplir los tiempos, se conserva el punto y la causa. Si falla el propio programa de pruebas, el intento se identifica como error del medidor y queda pendiente de repetir: no se considera un límite del GB10. Los límites de espera y las condiciones de parada de esta batería están en su [plan](modelos/nvidia-qwen3.8-27b-nvfp4/capacidad-de-conversacion/plan.json).
 
 ## Dónde están los datos
 

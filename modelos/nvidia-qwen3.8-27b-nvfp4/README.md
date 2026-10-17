@@ -8,13 +8,14 @@
 
 **Modelo exacto:** `nvidia/Qwen3.8-27B-NVFP4`.
 
+**[Personas que pueden conversar hasta el límite, según la memoria](capacidad-de-conversacion/README.md):** recorridos desde el principio, tiempos de cada tramo y estado de las pruebas pendientes.
 
 
 **Máximo por conversación: 262.144 tokens, sumando historial y respuesta.** La memoria asignada puede obligar a configurar un límite menor.
 
 **Límites impuestos al servidor que se han probado:** 2, 3, 4, 8, 16, 32, 64, 128, 512. Cada fila muestra el suyo. El máximo observado bajo un límite impuesto no demuestra por sí solo el máximo del GB10.
 
-“Terminó” significa que entregó todos los tokens de respuesta solicitados. “Llegó al máximo” exige además que la suma real de entrada y respuesta alcance ese máximo; arrancar el servidor no basta.
+En las pruebas iniciales de salida fija, “terminó” significa que entregó todos los tokens solicitados. “Llegó al máximo” exige además que entrada y respuesta sumen ese máximo. Las conversaciones completas comprueban el cierre natural y publican cuánto contexto utilizaron realmente; arrancar el servidor no basta en ninguno de los casos.
 
 ## ¿Puede llegar al máximo en las pruebas iniciales?
 

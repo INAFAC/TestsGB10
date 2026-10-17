@@ -17,7 +17,7 @@ Resultados para decidir cuánta memoria reservar y cuántas conversaciones puede
 
 La [comprobación por presupuesto de memoria](modelos/nvidia-qwen3.8-27b-nvfp4/capacidad-de-conversacion/README.md) sigue conversaciones desde el principio, conserva sus mensajes y respuestas y aumenta los usuarios para encontrar dónde deja de mantenerse una experiencia útil. Compara **35%, 40%, 50%, 60%, 70%, 85% y 92%**. Las filas pendientes todavía no demuestran capacidad hasta el final del contexto.
 
-## Resultado práctico de Qwen3.8
+## Controles anteriores con 20 personas
 
 Estos controles usaron **70% de memoria y un límite de 32 solicitudes activas**. Cada persona conservó su historial entre mensajes.
 
@@ -43,7 +43,7 @@ Un ejemplo: **262.016 tokens de historial + 128 de respuesta = 262.144 tokens en
 
 ## Dónde está cada cosa
 
-Entra en **modelos → nombre del modelo** y elige la comparación de memoria o las conversaciones recurrentes. Cada prueba reúne su explicación en `README.md`, sus mediciones y sus registros en la misma carpeta.
+Entra en **modelos → nombre del modelo**. Para saber cuántas personas pueden conversar hasta el límite, elige **capacidad de conversación**. Las comparaciones iniciales y las conversaciones recurrentes conservan las otras cargas ensayadas. Cada prueba reúne su explicación en `README.md`, sus mediciones y sus registros en la misma carpeta.
 
 - [Guía de lectura](GUIA-DE-LECTURA.md): significado de las medidas y cómo se hicieron las pruebas.
 - [Herramientas de prueba](scripts): scripts para medir y actualizar los informes.
