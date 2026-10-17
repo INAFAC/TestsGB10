@@ -18,7 +18,7 @@ Las respuestas deben tener texto visible y terminar naturalmente. En cada bloque
 | 40% | 1 | 2 | Comprobado: el siguiente grupo no cumple |
 | 50% | 1 | 2 | Comprobado: el siguiente grupo no cumple |
 | 60% | Al menos 1 | 2 | Repetición pendiente por error del medidor; frontera sin cerrar |
-| 85% | Pendiente de completar el recorrido | 1 (en curso) | En curso |
+| 85% | Al menos 1 | — | Buscando el máximo; mínimo ya comprobado |
 | 35% | Pendiente de completar el recorrido | — | Pendiente |
 | 92% | Pendiente de completar el recorrido | — | Pendiente |
 
@@ -40,7 +40,7 @@ El presupuesto de memoria no es un límite estricto de toda la RAM del GB10. El 
 | [Recorrido desde el principio](memoria-60-personas-1-recorrido-completo-intento-1/README.md) | 60% | 1 | 257 | 262.026 | 3,3 s | 6,68 tokens/s | 273,6 min | Cumple |
 | [Recorrido desde el principio](memoria-60-personas-2-recorrido-completo-intento-1/README.md) | 60% | 2 | 130 | 133.608 | 3,7 s | 6,65 tokens/s | 202,1 min | Medidor interrumpido; repetición pendiente |
 | [Control con razonamiento](memoria-60-personas-1-control-con-razonamiento-intento-3/README.md) | 60% | 1 | 5 | 10.807 | 38,3 s | 11,87 tokens/s | 5,6 min | No cumple |
-| Recorrido desde el principio | 85% | 1 | 240 | 245.582 | 3,9 s | 6,37 tokens/s | 268,8 min | En curso; no es un resultado final |
+| [Recorrido desde el principio](memoria-85-personas-1-recorrido-completo-intento-1/README.md) | 85% | 1 | 257 | 262.029 | 4,2 s | 6,16 tokens/s | 293,2 min | Cumple |
 
 El intento de **60% con 2 personas** fue interrumpido por el medidor. [Causa y repetición pendiente](correccion-del-medidor.md). No se usa ese error para atribuir un límite al GB10.
 
