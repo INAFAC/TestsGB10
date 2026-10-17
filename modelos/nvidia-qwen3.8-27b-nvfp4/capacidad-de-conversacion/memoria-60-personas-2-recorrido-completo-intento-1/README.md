@@ -2,7 +2,9 @@
 
 [Volver a la capacidad por memoria](../README.md)
 
-**No cumple la referencia del recorrido.**
+**Medidor interrumpido; repetición pendiente.**
+
+El proceso terminó antes de guardar un cierre válido de las mediciones. Se conservan las respuestas ya registradas, pero este intento no establece una frontera de capacidad del equipo. Una respuesta real y su siguiente mensaje no cabían en el incremento fijo de 1.024 tokens del generador. Es un error del medidor, no un error de memoria del GB10. Se repetirá con el generador corregido, sin borrar este intento. Los bloques anteriores que excedieron los tiempos siguen siendo observaciones válidas de ese tramo.
 
 Modelo: `nvidia/Qwen3.8-27B-NVFP4`. Razonamiento: **desactivado**. Límite impuesto al servidor: **4 solicitudes activas**. Presupuesto de salida: **hasta 1.024 tokens por respuesta**, con petición de hasta 100 palabras.
 
