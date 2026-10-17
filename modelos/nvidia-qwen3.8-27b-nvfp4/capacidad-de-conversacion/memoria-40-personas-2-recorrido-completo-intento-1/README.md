@@ -36,7 +36,7 @@ Los plazos de espera del cliente no demuestran un error de memoria. Un corte por
 | 1 | 182 | 186.025 | 70,963% | 76.119 |
 | 2 | 183 | 187.084 | 71,367% | 75.060 |
 
-El cierre previsto reserva hasta 128 tokens y pide terminar en diez palabras. No se fuerza al modelo a rellenar el espacio restante ni se afirma haber llegado exactamente a 262.144. Este intento no llegó a ese cierre.
+El objetivo del cierre deja aproximadamente 128 tokens para la respuesta y pide terminar en diez palabras. El presupuesto efectivo se calcula con la entrada real. No se fuerza al modelo a rellenar el espacio restante ni se afirma haber llegado exactamente a 262.144. Este intento no llegó a ese cierre.
 
 ## Memoria, colas y rendimiento del grupo
 

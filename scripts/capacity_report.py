@@ -134,7 +134,7 @@ def main():
             total=max((r['usage']['total_tokens'] for r in good),default=0)
             lines.append(f"| {user+1} | {max((r['turn'] for r in good),default=0)} | {number(total,0)} | {number(total/262144*100,3)}% | {number(262144-total,0)} |")
         if trajectory:
-            lines+=['','El cierre previsto reserva hasta 128 tokens y pide terminar en diez palabras. No se fuerza al modelo a rellenar el espacio restante ni se afirma haber llegado exactamente a 262.144. '+('Este intento llegó al cierre.' if s.get('reached_final_target') else 'Este intento no llegó a ese cierre.')]
+            lines+=['','El objetivo del cierre deja aproximadamente 128 tokens para la respuesta y pide terminar en diez palabras. El presupuesto efectivo se calcula con la entrada real. No se fuerza al modelo a rellenar el espacio restante ni se afirma haber llegado exactamente a 262.144. '+('Este intento llegó al cierre.' if s.get('reached_final_target') else 'Este intento no llegó a ese cierre.')]
         visible_waits=[r['visible_ttft_s'] for r in d['requests'] if r.get('ok') and r.get('visible_ttft_s') is not None]
         lines+=['',
             '## Memoria, colas y rendimiento del grupo','','| Medida | Resultado |','|---|---:|',
