@@ -1,0 +1,16 @@
+{
+  "id": "memoria-60-personas-2-recorrido-completo-intento-1",
+  "memory_fraction": 0.6,
+  "input_tokens": 512,
+  "users": 2,
+  "repetition": 1,
+  "purpose": "boundary",
+  "reasoning": "disabled",
+  "server_limit": 4,
+  "turns": 257,
+  "think_seconds": 30,
+  "output_tokens": 1024,
+  "seed": 21281528,
+  "schedule": "simultaneous",
+  "grows_from_short_to_full": true
+}

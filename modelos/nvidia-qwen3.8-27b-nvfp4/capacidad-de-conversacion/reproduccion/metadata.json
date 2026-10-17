@@ -188,17 +188,24 @@
     {
       "memory_fraction": 0.6,
       "input_tokens": 512,
-      "state": "running",
+      "state": "complete",
       "attempts": [
-        "memoria-60-personas-1-recorrido-completo-intento-1"
+        "memoria-60-personas-1-recorrido-completo-intento-1",
+        "memoria-60-personas-2-recorrido-completo-intento-1"
       ],
-      "largest_confirmed_acceptable": 0,
-      "first_confirmed_unacceptable": null,
+      "largest_confirmed_acceptable": 1,
+      "first_confirmed_unacceptable": 2,
       "observations": {
         "1": [
           true
+        ],
+        "2": [
+          false
         ]
-      }
+      },
+      "first_not_confirmed_acceptable": 2,
+      "reached_search_ceiling": false,
+      "nonmonotonic": false
     }
   ],
   "script_sha256": "630ec2bac8e44151d6fbe0189d1d16b9617ce5cf58d3cb7715c147cdeac185ef",
@@ -295,8 +302,17 @@
     },
     {
       "id": "memoria-60-personas-2-recorrido-completo-intento-1",
+      "state": "finished",
+      "started_utc": "2026-10-17T11:15:48.779449+00:00",
+      "exit_code": 1,
+      "timed_out": false,
+      "duration_seconds": 12131.543941252981,
+      "acceptable_reference": false
+    },
+    {
+      "id": "memoria-60-personas-1-control-con-razonamiento-intento-3",
       "state": "running",
-      "started_utc": "2026-10-17T11:15:48.779449+00:00"
+      "started_utc": "2026-10-17T14:38:00.541364+00:00"
     }
   ]
 }
