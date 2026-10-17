@@ -41,9 +41,11 @@ El presupuesto de memoria no es un límite estricto de toda la RAM del GB10. El 
 | [Recorrido desde el principio](memoria-60-personas-2-recorrido-completo-intento-1/README.md) | 60% | 2 | 130 | 133.608 | 3,7 s | 6,65 tokens/s | 202,1 min | Medidor interrumpido; repetición pendiente |
 | [Control con razonamiento](memoria-60-personas-1-control-con-razonamiento-intento-3/README.md) | 60% | 1 | 5 | 10.807 | 38,3 s | 11,87 tokens/s | 5,6 min | No cumple |
 | [Recorrido desde el principio](memoria-85-personas-1-recorrido-completo-intento-1/README.md) | 85% | 1 | 257 | 262.029 | 4,2 s | 6,16 tokens/s | 293,2 min | Cumple |
-| Recorrido desde el principio | 85% | 2 | 128 | 130.692 | 4,8 s | 6,57 tokens/s | 106,4 min | En curso; no es un resultado final |
+| Recorrido desde el principio | 85% | 2 | 129 | 131.706 | 4,8 s | 6,55 tokens/s | 107,4 min | En curso; 1 bloque completo fuera de referencia |
 
 El intento de **60% con 2 personas** fue interrumpido por el medidor. [Causa y repetición pendiente](correccion-del-medidor.md). No se usa ese error para atribuir un límite al GB10.
+
+En la prueba en curso al **85% con 2 personas**, el último bloque completo fuera de referencia es **114–129**: espera p95 de **5,53 s**, peor espera de **5,80 s**, velocidad p05 de **6,26 tokens/s** y respuesta completa p95 de **29,0 s**. Los valores del conjunto del recorrido pueden ocultar esta ralentización; se exige cumplir también en cada bloque.
 
 ## Cómo avanza cada conversación
 
