@@ -64,8 +64,11 @@ def main():
         fresh_proof=datetime.datetime.fromisoformat(read(proof_path)['checked_utc'])>=datetime.datetime.fromisoformat(cutoff)
     if fresh_proof:copy(proof_path,records/proof_path.name)
     elif meta.get('recoveries'):(records/'verificacion-final.json').unlink(missing_ok=True)
-    for src in (cache/'piloto').glob('*'):
-        if src.is_file():copy(src,records/'comprobacion-del-medidor'/src.name)
+    for source_folder,public_folder in [('piloto','comprobacion-del-medidor'),
+                                        ('piloto-v2','comprobacion-del-medidor-corregido')]:
+        for src in (cache/source_folder).glob('*'):
+            if src.is_file() and not src.name.endswith('.tmp'):
+                copy(src,records/public_folder/src.name)
     rows=[]
     reasons={'three_consecutive_rounds_outside_reference':'Tres rondas seguidas con tiempos fuera de referencia',
         'answer_cut_or_not_visible':'Respuesta cortada o sin texto visible',
