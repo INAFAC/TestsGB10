@@ -55,8 +55,8 @@
   },
   {
     "file": "reproduccion/metadata.json",
-    "sha256": "ef0aa422203d5c2fa777b3a6ca526ed9f3a3443e0846b42ab6fee5849889e197",
-    "original_sha256": "ef0aa422203d5c2fa777b3a6ca526ed9f3a3443e0846b42ab6fee5849889e197",
+    "sha256": "54b4aa2de058f8ad2d6bf36fda2eb5c193196b34172fad9d405d0915a3448b16",
+    "original_sha256": "54b4aa2de058f8ad2d6bf36fda2eb5c193196b34172fad9d405d0915a3448b16",
     "sanitized": false
   },
   {
@@ -291,6 +291,36 @@
     "file": "memoria-50-personas-1-recorrido-completo-intento-1/servidor.log",
     "sha256": "3137fcb2781b818ccd400d360185844c358b7b8e7b326181309c2f2f90fc1711",
     "original_sha256": "788185ff7fa20eafffde6b47dbd27756fac255a6c50acd40fc5bab7c32fb46ae",
+    "sanitized": true
+  },
+  {
+    "file": "memoria-50-personas-2-recorrido-completo-intento-1/configuracion.json",
+    "sha256": "c6973a71477d564cdadb2dc76be013dd2163c3d4d37d647b81fde33ce33904a3",
+    "original_sha256": "c6973a71477d564cdadb2dc76be013dd2163c3d4d37d647b81fde33ce33904a3",
+    "sanitized": false
+  },
+  {
+    "file": "memoria-50-personas-2-recorrido-completo-intento-1/ejecucion.log",
+    "sha256": "6848cea2a3f129f6a31147f556a9b9fe9f668b5b6f3ee0fdb819789351085ee7",
+    "original_sha256": "6848cea2a3f129f6a31147f556a9b9fe9f668b5b6f3ee0fdb819789351085ee7",
+    "sanitized": false
+  },
+  {
+    "file": "memoria-50-personas-2-recorrido-completo-intento-1/historiales.json.gz",
+    "sha256": "d5d752ed236d11608c8271215e71d38968483721d3b57d605d8394f53fb65cca",
+    "original_sha256": "d5d752ed236d11608c8271215e71d38968483721d3b57d605d8394f53fb65cca",
+    "sanitized": false
+  },
+  {
+    "file": "memoria-50-personas-2-recorrido-completo-intento-1/mediciones.json",
+    "sha256": "66cb1a91277d6d97cf4d164e64f741ee835612fe0ef63cd7fefe69b03a8e7fe9",
+    "original_sha256": "66cb1a91277d6d97cf4d164e64f741ee835612fe0ef63cd7fefe69b03a8e7fe9",
+    "sanitized": false
+  },
+  {
+    "file": "memoria-50-personas-2-recorrido-completo-intento-1/servidor.log",
+    "sha256": "1539c551768249ff71693677e1fc40e8e1b0b087fdd53b5c83e91ee271391b48",
+    "original_sha256": "219554f20574f0ba898312eaf0e0af4a44786e8556533243b0d3a2118e1af29a",
     "sanitized": true
   }
 ]
