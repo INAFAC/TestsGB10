@@ -35,9 +35,9 @@ El presupuesto de memoria no es un límite estricto de toda la RAM del GB10. El 
 | [Recorrido desde el principio](memoria-40-personas-2-recorrido-completo-intento-1/README.md) | 40% | 2 | 183 | 187.084 | 4,6 s | 5,59 tokens/s | 172,7 min | Error de API o plazo de espera del cliente |
 | [Control con razonamiento](memoria-40-personas-1-control-con-razonamiento-intento-3/README.md) | 40% | 1 | 5 | 11.587 | 74,3 s | 11,86 tokens/s | 6,7 min | No cumple |
 | [Recorrido desde el principio](memoria-50-personas-1-recorrido-completo-intento-1/README.md) | 50% | 1 | 257 | 262.029 | 3,3 s | 6,71 tokens/s | 238,7 min | Cumple |
-| Recorrido desde el principio | 50% | 2 | 192 | 196.410 | 5,1 s | 5,49 tokens/s | 196,9 min | En curso; 2 bloques completos fuera de referencia |
+| Recorrido desde el principio | 50% | 2 | 208 | 212.805 | 5,5 s | 5,29 tokens/s | 218,5 min | En curso; 3 bloques completos fuera de referencia |
 
-En la prueba en curso al **50% con 2 personas**, el último bloque completo fuera de referencia es **162–177**: espera p95 de **5,60 s**, peor espera de **5,75 s**, velocidad p05 de **5,44 tokens/s** y respuesta completa p95 de **56,9 s**. Los valores del conjunto del recorrido pueden ocultar esta ralentización; se exige cumplir también en cada bloque.
+En la prueba en curso al **50% con 2 personas**, el último bloque completo fuera de referencia es **178–193**: espera p95 de **5,89 s**, peor espera de **6,05 s**, velocidad p05 de **5,18 tokens/s** y respuesta completa p95 de **61,1 s**. Los valores del conjunto del recorrido pueden ocultar esta ralentización; se exige cumplir también en cada bloque.
 
 ## Cómo avanza cada conversación
 
