@@ -14,9 +14,9 @@ Las respuestas deben tener texto visible y terminar naturalmente. En cada bloque
 
 | Presupuesto del modelo | Personas con recorrido completo y útil | Siguiente grupo ensayado | Estado de la comprobación |
 |---:|---:|---:|---|
-| 70% | 1 | 2 | Frontera local medida |
-| 40% | 1 | 2 | Frontera local medida |
-| 50% | 1 | 2 | Frontera local medida |
+| 70% | 1 | 2 | Comprobado: el siguiente grupo no cumple |
+| 40% | 1 | 2 | Comprobado: el siguiente grupo no cumple |
+| 50% | 1 | 2 | Comprobado: el siguiente grupo no cumple |
 | 60% | Al menos 1 | 2 | Repetición pendiente por error del medidor; frontera sin cerrar |
 | 85% | Pendiente de completar el recorrido | 1 (en curso) | En curso |
 | 35% | Pendiente de completar el recorrido | — | Pendiente |

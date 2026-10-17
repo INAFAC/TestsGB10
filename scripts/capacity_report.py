@@ -179,7 +179,7 @@ def main():
         if b and b['state']=='complete':
             good=b['largest_confirmed_acceptable'];bad=b.get('first_not_confirmed_acceptable')
             label=('Al menos '+str(good)) if b.get('reached_search_ceiling') else str(good) if good else 'Ninguno de los ensayados'
-            status='Frontera local medida' if good and bad is not None else 'Techo de búsqueda alcanzado' if good else 'Revisar la causa; no implica que el modelo no funcione'
+            status='Comprobado: el siguiente grupo no cumple' if good and bad is not None else 'Comprobado hasta el límite de esta batería' if good else 'Revisar la causa; no implica que el modelo no funcione'
             if any(unresolved_measurement(case,s) for case,c,s,_ in rows if c['memory_fraction']==fraction):
                 label=f'Al menos {good}' if good else 'Sin recorrido completo confirmado'
                 status='Repetición pendiente por error del medidor; frontera sin cerrar'
