@@ -32,9 +32,17 @@ def main():
         if s.get('status') in ('running','measurement_error'):
             assert not record.get('acceptable_reference'),'An interrupted measuring process cannot establish capacity'
             assert 'Medidor interrumpido' in path.with_name('README.md').read_text()
-            table=(OUT/'README.md').read_text()
-            capacity_row=next(line for line in table.splitlines() if line.startswith(f"| {round(c['memory_fraction']*100)}% |"))
-            assert 'frontera sin cerrar' in capacity_row,'A measuring error must leave the boundary explicitly pending'
+            if record.get('resolved_by'):
+                replacement=cases[record['resolved_by']]
+                replacement_path=OUT/replacement['id']
+                replacement_config=read(replacement_path/'configuracion.json')
+                assert replacement['state']=='finished'
+                assert read(replacement_path/'mediciones.json')['summary']['status'] in ('complete','stopped_early')
+                assert replacement_config['memory_fraction']==c['memory_fraction'] and replacement_config['users']==c['users']
+            else:
+                table=(OUT/'README.md').read_text()
+                capacity_row=next(line for line in table.splitlines() if line.startswith(f"| {round(c['memory_fraction']*100)}% |"))
+                assert 'frontera sin cerrar' in capacity_row,'A measuring error must leave the boundary explicitly pending'
         assert s['script_sha256'] in script_hashes,'Executed source script missing'
         assert s['concurrency']==c['users'] and s['memory_fraction']==c['memory_fraction']
         assert s['server_max_num_seqs']==c['server_limit'] and c['server_limit']>=c['users']
@@ -72,7 +80,15 @@ def main():
         if s.get('kind')=='growing_chat':
             targets=s['growth_targets']
             for r in rs:
-                assert targets[r['turn']-1]-32<=r['input_tokens']<=targets[r['turn']-1]
+                target=targets[r['turn']-1]
+                if s.get('growth_protocol_version')==2:
+                    if r['turn']>1:
+                        assert r['nominal_input_target']==target
+                        assert r['effective_input_target']==max(target,r['minimum_input_with_new_message'])
+                        target=r['effective_input_target']
+                    reserve=0 if r['turn']==len(targets) else 256
+                    assert r['effective_output_budget']==min(c['output_tokens'],262144-r['input_tokens']-reserve)
+                assert target-32<=r['input_tokens']<=target
             for w in s['windows']:
                 block=[r for r in rs if w['first_turn']<=r['turn']<=w['last_turn']]
                 done=[r for r in block if r['ok']]

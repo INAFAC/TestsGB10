@@ -21,6 +21,9 @@ def rate(r):
 def unfinished_measurement(case, summary):
     return case['state'] != 'running' and summary.get('status') in ('running','measurement_error')
 
+def unresolved_measurement(case, summary):
+    return unfinished_measurement(case,summary) and not case.get('resolved_by')
+
 
 def main():
     p=argparse.ArgumentParser()
@@ -47,6 +50,8 @@ def main():
         inventory.append(dict(file=str(dest.relative_to(OUT)),sha256=hashlib.sha256(public).hexdigest(),original_sha256=hashlib.sha256(original).hexdigest(),sanitized=public!=original))
     for src in cache.glob('*.py'):copy(src,records/'scripts'/src.name)
     for src in (cache/'versions').glob('*.py'):copy(src,records/'scripts/versions'/src.name)
+    for src in (cache/'revisiones').rglob('*'):
+        if src.is_file():copy(src,records/'revisiones'/src.relative_to(cache/'revisiones'))
     for src in cache.glob('arranque-*.log'):copy(src,records/src.name)
     for name in ['metadata.json','plan.json','verificacion-final.json']:
         if (cache/name).exists():copy(cache/name,records/name)
@@ -80,7 +85,7 @@ def main():
         passed=case.get('acceptable_reference',False)
         reason=reasons.get(s.get('growth_stop_reason'),s.get('growth_stop_reason'))
         if unfinished_measurement(case,s):
-            reason='Medidor interrumpido; repetición pendiente'
+            reason='Medidor interrumpido; intento repetido' if case.get('resolved_by') else 'Medidor interrumpido; repetición pendiente'
         label='Cumplió durante todo el recorrido' if passed and trajectory else 'Cumplió el control' if passed else reason or ('No cumple la referencia del recorrido' if trajectory else 'No cumple la referencia de tiempos del control')
         lines=[f"# {c['users']} {'persona' if c['users']==1 else 'personas'} · {round(c['memory_fraction']*100)}% de memoria",'',
             '[Volver a la capacidad por memoria](../README.md)','',f'**{label}.**','',
@@ -96,7 +101,12 @@ def main():
             log=(folder/'ejecucion.log').read_text() if (folder/'ejecucion.log').exists() else ''
             if 'The real answer exceeded the reserved growth step' in log:
                 detail+=' Una respuesta real y su siguiente mensaje no cabían en el incremento fijo de 1.024 tokens del generador. Es un error del medidor, no un error de memoria del GB10. Se repetirá con el generador corregido, sin borrar este intento. Los bloques anteriores que excedieron los tiempos siguen siendo observaciones válidas de ese tramo.'
+            if case.get('resolved_by'):
+                detail=detail.replace('Se repetirá con el generador corregido, sin borrar este intento.','Se ha repetido con el generador corregido, conservando este intento.')
+                detail+=f" [Ver la repetición](../{case['resolved_by']}/README.md)."
             lines[6:6]=[detail,'']
+        if s.get('growth_protocol_version')==2:
+            lines[6:6]=['Este intento utiliza la segunda versión del medidor: permite que el siguiente incremento crezca si la respuesta anterior lo necesita y reserva espacio para la pregunta de cierre. [Diferencias del protocolo](../correccion-del-medidor.md).','']
         for w in s.get('windows',[]):
             window_label='Cumple' if w['acceptable_reference'] else 'No cumple' if w['measured']==w['expected'] else 'Incompleto'
             lines.append(f"| {w['first_turn']}-{w['last_turn']} | {number(w['min_input_tokens'],0)}–{number(w['max_input_tokens'],0)} | {w['measured']}/{w['expected']} | {number(w['visible_ttft_p95_s'])} s | {number(w['visible_ttft_max_s'])} s | {number(w['decode_p05_tokens_s'],2)} tokens/s | {number(w['total_p95_s'])} s | {window_label} |")
@@ -161,7 +171,7 @@ def main():
             good=b['largest_confirmed_acceptable'];bad=b.get('first_not_confirmed_acceptable')
             label=('Al menos '+str(good)) if b.get('reached_search_ceiling') else str(good) if good else 'Ninguno de los ensayados'
             status='Frontera local medida' if good and bad is not None else 'Techo de búsqueda alcanzado' if good else 'Revisar la causa; no implica que el modelo no funcione'
-            if any(unfinished_measurement(case,s) for case,c,s,_ in rows if case['id'] in b.get('attempts',[])):
+            if any(unresolved_measurement(case,s) for case,c,s,_ in rows if c['memory_fraction']==fraction):
                 label=f'Al menos {good}' if good else 'Sin recorrido completo confirmado'
                 status='Repetición pendiente por error del medidor; frontera sin cerrar'
             if b.get('nonmonotonic'):status+='; resultados no monótonos'
@@ -174,6 +184,8 @@ def main():
             label=f'Al menos {confirmed}' if confirmed else 'Pendiente de completar el recorrido'
             next_group=f'{running[-1]} (en curso)' if running else '—'
             state='Buscando el máximo; mínimo ya comprobado' if confirmed else 'En curso' if b else 'Pendiente'
+            if any(unresolved_measurement(case,s) for case,c,s,_ in rows if c['memory_fraction']==fraction):
+                state+='; repetición del medidor pendiente; frontera sin cerrar'
             lines.append(f"| {round(fraction*100)}% | {label} | {next_group} | {state} |")
     lines+=['','El presupuesto de memoria no es un límite estricto de toda la RAM del GB10. El límite activo del servidor es el mayor entre cuatro y las personas de la prueba; nunca es inferior al grupo enviado. La búsqueda llega hasta 32 personas: si se alcanza ese techo se informa como un mínimo demostrado, nunca como el máximo del equipo. La búsqueda acota los grupos ensayados; no demuestra todas las configuraciones posibles.','',
         '## Recorridos y controles individuales','',
@@ -185,14 +197,14 @@ def main():
         contexts=s.get('final_total_tokens_by_user',{})
         tokens=max(contexts.values(),default=None)
         state='En curso; no es un resultado final' if case['state']=='running' else 'Cumple' if case.get('acceptable_reference') else reasons.get(s.get('growth_stop_reason'),'No cumple')
-        if unfinished_measurement(case,s):state='Medidor interrumpido; repetición pendiente'
+        if unfinished_measurement(case,s):state='Medidor interrumpido; intento repetido' if case.get('resolved_by') else 'Medidor interrumpido; repetición pendiente'
         if case['state']=='running':
             failed_windows=[w for w in s.get('windows',[]) if w['measured']==w['expected'] and not w['acceptable_reference']]
             if failed_windows:
                 state=f"En curso; {len(failed_windows)} {'bloque completo fuera' if len(failed_windows)==1 else 'bloques completos fuera'} de referencia"
         lines.append(f"| {link} | {round(c['memory_fraction']*100)}% | {c['users']} | {s.get('actual_rounds',len([t for t in s.get('per_turn',[]) if t['completed']]))} | {number(tokens,0)} | {number(s.get('followups_visible_ttft_p95_s'))} s | {number(s.get('followups_decode_p05_tokens_s'),2)} tokens/s | {number(s['duration_s']/60 if s.get('duration_s') is not None else None)} min | {state} |")
     for case,c,s,_ in rows:
-        if unfinished_measurement(case,s):
+        if unresolved_measurement(case,s):
             lines+=['',f"El intento de **{round(c['memory_fraction']*100)}% con {c['users']} personas** fue interrumpido por el medidor. [Causa y repetición pendiente](correccion-del-medidor.md). No se usa ese error para atribuir un límite al GB10."]
         if case['state']!='running':continue
         failed_windows=[w for w in s.get('windows',[]) if w['measured']==w['expected'] and not w['acceptable_reference']]
