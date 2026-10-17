@@ -42,6 +42,8 @@ El presupuesto de memoria no es un límite estricto de toda la RAM del GB10. El 
 | [Control con razonamiento](memoria-60-personas-1-control-con-razonamiento-intento-3/README.md) | 60% | 1 | 5 | 10.807 | 38,3 s | 11,87 tokens/s | 5,6 min | No cumple |
 | Recorrido desde el principio | 85% | 1 | 96 | 98.026 | 1,8 s | 9,16 tokens/s | 83,3 min | En curso; no es un resultado final |
 
+El intento de **60% con 2 personas** fue interrumpido por el medidor. [Causa y repetición pendiente](correccion-del-medidor.md). No se usa ese error para atribuir un límite al GB10.
+
 ## Cómo avanza cada conversación
 
 1. Cada conversación empieza con aproximadamente 512 tokens.

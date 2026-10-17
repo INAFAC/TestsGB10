@@ -19,7 +19,7 @@ def rate(r):
     return (r['usage']['completion_tokens']-1)/(r['total_s']-r['ttft_s'])
 
 def unfinished_measurement(case, summary):
-    return case['state'] != 'running' and summary.get('status') == 'running'
+    return case['state'] != 'running' and summary.get('status') in ('running','measurement_error')
 
 
 def main():
@@ -192,6 +192,8 @@ def main():
                 state=f"En curso; {len(failed_windows)} {'bloque completo fuera' if len(failed_windows)==1 else 'bloques completos fuera'} de referencia"
         lines.append(f"| {link} | {round(c['memory_fraction']*100)}% | {c['users']} | {s.get('actual_rounds',len([t for t in s.get('per_turn',[]) if t['completed']]))} | {number(tokens,0)} | {number(s.get('followups_visible_ttft_p95_s'))} s | {number(s.get('followups_decode_p05_tokens_s'),2)} tokens/s | {number(s['duration_s']/60 if s.get('duration_s') is not None else None)} min | {state} |")
     for case,c,s,_ in rows:
+        if unfinished_measurement(case,s):
+            lines+=['',f"El intento de **{round(c['memory_fraction']*100)}% con {c['users']} personas** fue interrumpido por el medidor. [Causa y repetición pendiente](correccion-del-medidor.md). No se usa ese error para atribuir un límite al GB10."]
         if case['state']!='running':continue
         failed_windows=[w for w in s.get('windows',[]) if w['measured']==w['expected'] and not w['acceptable_reference']]
         if failed_windows:

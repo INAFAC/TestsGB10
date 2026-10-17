@@ -29,6 +29,12 @@ def main():
         data=read(path);s=data['summary'];c=read(path.with_name('configuracion.json'))
         record=cases[c['id']]
         assert record['state']!='running','Partial data must not be published as a completed trial'
+        if s.get('status') in ('running','measurement_error'):
+            assert not record.get('acceptable_reference'),'An interrupted measuring process cannot establish capacity'
+            assert 'Medidor interrumpido' in path.with_name('README.md').read_text()
+            table=(OUT/'README.md').read_text()
+            capacity_row=next(line for line in table.splitlines() if line.startswith(f"| {round(c['memory_fraction']*100)}% |"))
+            assert 'frontera sin cerrar' in capacity_row,'A measuring error must leave the boundary explicitly pending'
         assert s['script_sha256'] in script_hashes,'Executed source script missing'
         assert s['concurrency']==c['users'] and s['memory_fraction']==c['memory_fraction']
         assert s['server_max_num_seqs']==c['server_limit'] and c['server_limit']>=c['users']
