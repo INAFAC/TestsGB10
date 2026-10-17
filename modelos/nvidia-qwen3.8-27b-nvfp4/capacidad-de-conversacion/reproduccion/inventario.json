@@ -67,8 +67,8 @@
   },
   {
     "file": "reproduccion/metadata.json",
-    "sha256": "12538c4216135c90a6d898d59486b5368facdf11b4cac7c79ea0b98d1cd65b72",
-    "original_sha256": "12538c4216135c90a6d898d59486b5368facdf11b4cac7c79ea0b98d1cd65b72",
+    "sha256": "2026eafec78024efb13fc8f34f8dff639b1ff693e7c1f1238b580e5116d588a2",
+    "original_sha256": "2026eafec78024efb13fc8f34f8dff639b1ff693e7c1f1238b580e5116d588a2",
     "sanitized": false
   },
   {
@@ -513,6 +513,36 @@
     "file": "memoria-85-personas-2-recorrido-completo-intento-1/servidor.log",
     "sha256": "0e2f47b59e7046e983d079970354873a72590f9164515427fdf189b9eb0fc6fe",
     "original_sha256": "f886db409c9831b4c01ce31a9657522feab4fb3c44bdbcc954c8598c0913c147",
+    "sanitized": true
+  },
+  {
+    "file": "memoria-85-personas-1-control-con-razonamiento-intento-3/configuracion.json",
+    "sha256": "cbedc0f7f11db3efb198e6f4cc185a3b568303df843fe61f1fc9470d139f080b",
+    "original_sha256": "cbedc0f7f11db3efb198e6f4cc185a3b568303df843fe61f1fc9470d139f080b",
+    "sanitized": false
+  },
+  {
+    "file": "memoria-85-personas-1-control-con-razonamiento-intento-3/ejecucion.log",
+    "sha256": "d2eb2cad3851562e984b40af22da9bf9dafac320f06b5ca2b52358ad5f9a1a01",
+    "original_sha256": "d2eb2cad3851562e984b40af22da9bf9dafac320f06b5ca2b52358ad5f9a1a01",
+    "sanitized": false
+  },
+  {
+    "file": "memoria-85-personas-1-control-con-razonamiento-intento-3/historiales.json.gz",
+    "sha256": "b1d57c2d12770115d986c532c64879724e81edd60d24dea38be7e48afd22b892",
+    "original_sha256": "b1d57c2d12770115d986c532c64879724e81edd60d24dea38be7e48afd22b892",
+    "sanitized": false
+  },
+  {
+    "file": "memoria-85-personas-1-control-con-razonamiento-intento-3/mediciones.json",
+    "sha256": "4125e918d292c284b0b413ad4f3a089d804412aa2767c32d198fe46ad8ad8b9d",
+    "original_sha256": "4125e918d292c284b0b413ad4f3a089d804412aa2767c32d198fe46ad8ad8b9d",
+    "sanitized": false
+  },
+  {
+    "file": "memoria-85-personas-1-control-con-razonamiento-intento-3/servidor.log",
+    "sha256": "a37bd2c5999f0196b783e542f2df305d94c9a6815583075e35865d5104309bcc",
+    "original_sha256": "4feabd6dec4a78e7701c791878da994f0479e95765636353a7233a57c8a09ff8",
     "sanitized": true
   }
 ]
