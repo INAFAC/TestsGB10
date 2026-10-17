@@ -45,6 +45,9 @@ def main():
     fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
     if meta['state']!='stopped' or meta.get('restore_status')!='healthy':
         raise RuntimeError('The original campaign must finish and restore service first')
+    completed_profiles={b['memory_fraction'] for b in meta.get('boundaries',[]) if b['state'] in ('complete','startup_failed')}
+    if set(plan['memory_fractions'])-completed_profiles:
+        raise RuntimeError('Finish every planned memory profile before repairing interrupted measurements')
     proof=read(root/'verificacion-final.json')
     if not proof['verified'] or proof['command']!=meta['original_command']:
         raise RuntimeError('Independent original-service verification is required')
