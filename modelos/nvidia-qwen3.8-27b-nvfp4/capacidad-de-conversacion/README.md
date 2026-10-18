@@ -67,6 +67,8 @@ El intento de **60% con 2 personas** fue interrumpido por el medidor. [Causa y r
 
 Los objetivos de entrada admiten hasta 32 tokens de diferencia al construir el mensaje. Por eso los 128 tokens reservados para el cierre son aproximados: su presupuesto efectivo se calcula con la entrada real. Cada respuesta registra tanto ese presupuesto como los tokens que finalmente utilizó.
 
+**La repetición usa la versión 2 del medidor.** Conserva todo el historial y aumenta el siguiente objetivo lo mínimo necesario si una respuesta larga rebasa el incremento nominal. Antes del cierre reserva 256 tokens para poder añadir la pregunta final y terminar; esto reduce la salida disponible cerca del límite. Cada petición registra sus objetivos y su presupuesto efectivo. El intento original y la repetición se conservan por separado. [Corrección y comprobaciones](correccion-del-medidor.md).
+
 ## Alcance de la respuesta
 
 - El resultado depende del ritmo, longitud de mensajes, respuestas y modo de razonamiento aquí descritos.
@@ -81,4 +83,3 @@ La prueba mide tiempos y finalización. No garantiza que todas las respuestas se
 
 [Plan exacto](plan.json) · [Datos de ejecución y scripts reproducibles](reproduccion/README.md)
 
-Restauración del servicio: **healthy**. [Comprobación independiente](reproduccion/verificacion-final.json).

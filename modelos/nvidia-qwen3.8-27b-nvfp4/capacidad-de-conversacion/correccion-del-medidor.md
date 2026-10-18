@@ -17,10 +17,9 @@ Si el propio medidor vuelve a fallar, guarda un estado de error del medidor en v
 ## Estado
 
 - La [comprobación local de regresión](../../../scripts/check_capacity_probe_v2.py) reproduce el caso de una respuesta larga, comprueba la continuidad del historial y verifica la reserva para el cierre.
-- Falta validar esta versión contra el servidor y ejecutar la repetición completa. La [comprobación con el tokenizador real](../../../scripts/check_capacity_probe_v2_server.py) está preparada para reconstruir la siguiente pregunta a partir del historial que provocó el fallo. Exige que la batería original haya terminado y el servicio esté restaurado; no genera respuestas ni mide capacidad.
-- Después se hará un piloto de dos personas y nueve rondas. Un [verificador independiente](../../../scripts/verify_capacity_pilot.py) comprobará las 18 respuestas naturales, los historiales conservados, los recuentos de tokens y los tiempos antes de iniciar la repetición. Este piloto tampoco demuestra capacidad hasta el contexto completo.
-- El [controlador de repetición](../../../scripts/capacity_recovery.py) está preparado: exige que termine la batería original y que el servicio esté restaurado, archiva el estado anterior, conserva los intentos y restaura de nuevo al terminar. Su modo `--check-only` identifica los casos pendientes sin ejecutar pruebas ni cambiar el servicio.
-- La batería original continúa con su versión original. Se conservarán sus fuentes y todos sus intentos.
-- El caso del 60% se repetirá después de la batería original; cualquier otro intento interrumpido por el medidor también requerirá revisión antes de cerrar las conclusiones.
+- **Comprobación con el tokenizador real superada.** Reconstruyó la ronda 131 conservando los 261 mensajes anteriores. La entrada necesitaba 133.652 tokens, veinte más que el objetivo nominal de 133.632. No generó otra respuesta ni midió capacidad.
+- **Piloto real superado y verificado:** dos personas, nueve rondas y 18 respuestas visibles terminadas naturalmente, sin errores. Un [verificador independiente](../../../scripts/verify_capacity_pilot.py) comprobó los historiales, los recuentos de tokens y los tiempos. El piloto solo llegó a unos 8.192 tokens: no demuestra capacidad hasta el contexto completo. [Resultados y comprobaciones del medidor](reproduccion/comprobacion-del-medidor-corregido/README.md).
+- La batería original ha terminado y su restauración al 40% con límite de cuatro solicitudes ha sido verificada.
+- **Repetición del 60% con dos personas iniciada.** El [controlador](../../../scripts/capacity_recovery.py) archiva el estado anterior y conserva los intentos. Al terminar volverá a restaurar el servicio y comprobará la restauración de forma independiente.
 
-Esta comprobación local valida el programa, no mide rendimiento del modelo.
+La comprobación del programa está completada; la nueva medición de capacidad sigue pendiente de terminar.

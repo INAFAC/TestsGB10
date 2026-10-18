@@ -17,8 +17,8 @@
   "image": "nvcr.io/nvidia/vllm:26.09-py3",
   "image_id": "sha256:557747337846eecf34486866f3d992383c6f8af869fdb0e365b5093fcaee02c2",
   "compose_sha256": "1caf0951ec1175b71b97d53ffcc557e9d9ea2e506dd046b2647603c8551fd696",
-  "state": "stopped",
-  "restore_status": "healthy",
+  "state": "running",
+  "restore_status": "pending",
   "profiles": [
     {
       "fraction": 0.7,
@@ -544,6 +544,17 @@
       "acceptable_reference": false
     }
   ],
-  "measurements_complete": true,
-  "restore_seconds": 381.09490308800014
+  "measurements_complete": false,
+  "restore_seconds": 381.09490308800014,
+  "recoveries": [
+    {
+      "started_utc": "2026-10-18T12:55:07.020489+00:00",
+      "script_sha256": "06ad70ff1ce2a921377774152821b947736866ff9c7c52901965b84e78aa9b8a",
+      "pending": [
+        "memoria-60-personas-2-recorrido-completo-intento-1"
+      ],
+      "state": "running"
+    }
+  ],
+  "error": null
 }

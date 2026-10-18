@@ -60,6 +60,18 @@
     "sanitized": false
   },
   {
+    "file": "reproduccion/revisiones/20261018T125507Z/metadata-antes-de-repetir.json",
+    "sha256": "e184d8986dd0e58d9d00fc2d5e181e2f046329fd2eb3228a2313da70813d316d",
+    "original_sha256": "e184d8986dd0e58d9d00fc2d5e181e2f046329fd2eb3228a2313da70813d316d",
+    "sanitized": false
+  },
+  {
+    "file": "reproduccion/revisiones/20261018T125507Z/verificacion-anterior.json",
+    "sha256": "4f755c3ce8681533b00398f31abfa220ef20a7f74c235dc9ec8447be2f3cde14",
+    "original_sha256": "4f755c3ce8681533b00398f31abfa220ef20a7f74c235dc9ec8447be2f3cde14",
+    "sanitized": false
+  },
+  {
     "file": "reproduccion/arranque-01.log",
     "sha256": "14832f7cba868a85455fbc96a0959ac974b6034da667d4d49683a4665966a6bc",
     "original_sha256": "f03430bae660ba7e70e4d6069bfb90dfedcb80c481ef3aca9f9881bc2da2778f",
@@ -103,20 +115,14 @@
   },
   {
     "file": "reproduccion/metadata.json",
-    "sha256": "e184d8986dd0e58d9d00fc2d5e181e2f046329fd2eb3228a2313da70813d316d",
-    "original_sha256": "e184d8986dd0e58d9d00fc2d5e181e2f046329fd2eb3228a2313da70813d316d",
+    "sha256": "2198e16610b0d397925c268700ef12478b0cfdcf23deffcdc49992eeb34977d2",
+    "original_sha256": "2198e16610b0d397925c268700ef12478b0cfdcf23deffcdc49992eeb34977d2",
     "sanitized": false
   },
   {
     "file": "reproduccion/plan.json",
     "sha256": "6db1f439cf421aa689e15fe713845224b5ad800db6d9ee075e31fa9fddae45b2",
     "original_sha256": "6db1f439cf421aa689e15fe713845224b5ad800db6d9ee075e31fa9fddae45b2",
-    "sanitized": false
-  },
-  {
-    "file": "reproduccion/verificacion-final.json",
-    "sha256": "4f755c3ce8681533b00398f31abfa220ef20a7f74c235dc9ec8447be2f3cde14",
-    "original_sha256": "4f755c3ce8681533b00398f31abfa220ef20a7f74c235dc9ec8447be2f3cde14",
     "sanitized": false
   },
   {
@@ -141,6 +147,48 @@
     "file": "reproduccion/comprobacion-del-medidor-corregido/regresion-tokenizador.json",
     "sha256": "20d96f174bff474cf3fb9ac25e8b2dba86047e0be0eb74efe38579d59f012563",
     "original_sha256": "20d96f174bff474cf3fb9ac25e8b2dba86047e0be0eb74efe38579d59f012563",
+    "sanitized": false
+  },
+  {
+    "file": "reproduccion/comprobacion-del-medidor-corregido/README.md",
+    "sha256": "5c52938abd58975cc889c3e3da21b445c3dfa8da5bee1bec1976ea065dc16b51",
+    "original_sha256": "5c52938abd58975cc889c3e3da21b445c3dfa8da5bee1bec1976ea065dc16b51",
+    "sanitized": false
+  },
+  {
+    "file": "reproduccion/comprobacion-del-medidor-corregido/comando.json",
+    "sha256": "24bf49aa4d058e2f68bdb8cf3d9b3ae0ce5596c62e8c50327713284514ff8a42",
+    "original_sha256": "24bf49aa4d058e2f68bdb8cf3d9b3ae0ce5596c62e8c50327713284514ff8a42",
+    "sanitized": false
+  },
+  {
+    "file": "reproduccion/comprobacion-del-medidor-corregido/ejecucion.log",
+    "sha256": "17239a9d86d4cde7a590dddac81373d4fb88b8bd1b0fe303e63fe963c56eeda3",
+    "original_sha256": "17239a9d86d4cde7a590dddac81373d4fb88b8bd1b0fe303e63fe963c56eeda3",
+    "sanitized": false
+  },
+  {
+    "file": "reproduccion/comprobacion-del-medidor-corregido/historiales.json.gz",
+    "sha256": "fb518679a320bbb36133d8e1d93f137fe646e4bd048d2d04c01c9ea3e5e3cb44",
+    "original_sha256": "fb518679a320bbb36133d8e1d93f137fe646e4bd048d2d04c01c9ea3e5e3cb44",
+    "sanitized": false
+  },
+  {
+    "file": "reproduccion/comprobacion-del-medidor-corregido/mediciones.json",
+    "sha256": "05b9cc24a452b1fe0c857bc4e649892ba4e757b8ad6dab819d0d47c3cba8579d",
+    "original_sha256": "05b9cc24a452b1fe0c857bc4e649892ba4e757b8ad6dab819d0d47c3cba8579d",
+    "sanitized": false
+  },
+  {
+    "file": "reproduccion/comprobacion-del-medidor-corregido/proceso.json",
+    "sha256": "5a4d269eac3521dcaf4add881d770cc99ef9e88a2055653763b2a6576157bf79",
+    "original_sha256": "5a4d269eac3521dcaf4add881d770cc99ef9e88a2055653763b2a6576157bf79",
+    "sanitized": false
+  },
+  {
+    "file": "reproduccion/comprobacion-del-medidor-corregido/verificacion.json",
+    "sha256": "82508611f5cee59d6dbb8fcfab37625c05d993abc766784e3bda7740f1b7af1d",
+    "original_sha256": "82508611f5cee59d6dbb8fcfab37625c05d993abc766784e3bda7740f1b7af1d",
     "sanitized": false
   },
   {

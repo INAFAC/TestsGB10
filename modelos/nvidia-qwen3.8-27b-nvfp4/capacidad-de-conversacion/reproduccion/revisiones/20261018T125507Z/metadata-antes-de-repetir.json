@@ -1,0 +1,549 @@
+{
+  "started_utc": "2026-10-16T08:00:29.781168+00:00",
+  "original_command": [
+    "vllm",
+    "serve",
+    "nvidia/Qwen3.8-27B-NVFP4",
+    "--gpu-memory-utilization",
+    "0.40",
+    "--max-num-seqs",
+    "4",
+    "--enable-auto-tool-choice",
+    "--tool-call-parser",
+    "qwen3_coder",
+    "--reasoning-parser",
+    "qwen3"
+  ],
+  "image": "nvcr.io/nvidia/vllm:26.09-py3",
+  "image_id": "sha256:557747337846eecf34486866f3d992383c6f8af869fdb0e365b5093fcaee02c2",
+  "compose_sha256": "1caf0951ec1175b71b97d53ffcc557e9d9ea2e506dd046b2647603c8551fd696",
+  "state": "stopped",
+  "restore_status": "healthy",
+  "profiles": [
+    {
+      "fraction": 0.7,
+      "server_limit": 4,
+      "command": [
+        "vllm",
+        "serve",
+        "nvidia/Qwen3.8-27B-NVFP4",
+        "--enable-auto-tool-choice",
+        "--tool-call-parser",
+        "qwen3_coder",
+        "--reasoning-parser",
+        "qwen3",
+        "--gpu-memory-utilization",
+        "0.7",
+        "--max-num-seqs",
+        "4",
+        "--max-model-len",
+        "262144"
+      ],
+      "ready": true,
+      "startup_seconds": 370.9610699120094
+    },
+    {
+      "fraction": 0.4,
+      "server_limit": 4,
+      "command": [
+        "vllm",
+        "serve",
+        "nvidia/Qwen3.8-27B-NVFP4",
+        "--enable-auto-tool-choice",
+        "--tool-call-parser",
+        "qwen3_coder",
+        "--reasoning-parser",
+        "qwen3",
+        "--gpu-memory-utilization",
+        "0.4",
+        "--max-num-seqs",
+        "4",
+        "--max-model-len",
+        "262144"
+      ],
+      "ready": true,
+      "startup_seconds": 366.0301156400237
+    },
+    {
+      "fraction": 0.5,
+      "server_limit": 4,
+      "command": [
+        "vllm",
+        "serve",
+        "nvidia/Qwen3.8-27B-NVFP4",
+        "--enable-auto-tool-choice",
+        "--tool-call-parser",
+        "qwen3_coder",
+        "--reasoning-parser",
+        "qwen3",
+        "--gpu-memory-utilization",
+        "0.5",
+        "--max-num-seqs",
+        "4",
+        "--max-model-len",
+        "262144"
+      ],
+      "ready": true,
+      "startup_seconds": 365.9773819979746
+    },
+    {
+      "fraction": 0.6,
+      "server_limit": 4,
+      "command": [
+        "vllm",
+        "serve",
+        "nvidia/Qwen3.8-27B-NVFP4",
+        "--enable-auto-tool-choice",
+        "--tool-call-parser",
+        "qwen3_coder",
+        "--reasoning-parser",
+        "qwen3",
+        "--gpu-memory-utilization",
+        "0.6",
+        "--max-num-seqs",
+        "4",
+        "--max-model-len",
+        "262144"
+      ],
+      "ready": true,
+      "startup_seconds": 370.95081385097
+    },
+    {
+      "fraction": 0.85,
+      "server_limit": 4,
+      "command": [
+        "vllm",
+        "serve",
+        "nvidia/Qwen3.8-27B-NVFP4",
+        "--enable-auto-tool-choice",
+        "--tool-call-parser",
+        "qwen3_coder",
+        "--reasoning-parser",
+        "qwen3",
+        "--gpu-memory-utilization",
+        "0.85",
+        "--max-num-seqs",
+        "4",
+        "--max-model-len",
+        "262144"
+      ],
+      "ready": true,
+      "startup_seconds": 381.0420516959857
+    },
+    {
+      "fraction": 0.35,
+      "server_limit": 4,
+      "command": [
+        "vllm",
+        "serve",
+        "nvidia/Qwen3.8-27B-NVFP4",
+        "--enable-auto-tool-choice",
+        "--tool-call-parser",
+        "qwen3_coder",
+        "--reasoning-parser",
+        "qwen3",
+        "--gpu-memory-utilization",
+        "0.35",
+        "--max-num-seqs",
+        "4",
+        "--max-model-len",
+        "262144"
+      ],
+      "ready": true,
+      "startup_seconds": 380.9847849300131
+    },
+    {
+      "fraction": 0.92,
+      "server_limit": 4,
+      "command": [
+        "vllm",
+        "serve",
+        "nvidia/Qwen3.8-27B-NVFP4",
+        "--enable-auto-tool-choice",
+        "--tool-call-parser",
+        "qwen3_coder",
+        "--reasoning-parser",
+        "qwen3",
+        "--gpu-memory-utilization",
+        "0.92",
+        "--max-num-seqs",
+        "4",
+        "--max-model-len",
+        "262144"
+      ],
+      "ready": true,
+      "startup_seconds": 396.2397241379949
+    }
+  ],
+  "boundaries": [
+    {
+      "memory_fraction": 0.7,
+      "input_tokens": 512,
+      "state": "complete",
+      "attempts": [
+        "memoria-70-personas-1-recorrido-completo-intento-1",
+        "memoria-70-personas-2-recorrido-completo-intento-1"
+      ],
+      "largest_confirmed_acceptable": 1,
+      "first_confirmed_unacceptable": 2,
+      "observations": {
+        "1": [
+          true
+        ],
+        "2": [
+          false
+        ]
+      },
+      "first_not_confirmed_acceptable": 2,
+      "reached_search_ceiling": false,
+      "nonmonotonic": false,
+      "default_reasoning_controls": [
+        "memoria-70-personas-1-control-con-razonamiento-intento-3"
+      ]
+    },
+    {
+      "memory_fraction": 0.4,
+      "input_tokens": 512,
+      "state": "complete",
+      "attempts": [
+        "memoria-40-personas-1-recorrido-completo-intento-1",
+        "memoria-40-personas-2-recorrido-completo-intento-1"
+      ],
+      "largest_confirmed_acceptable": 1,
+      "first_confirmed_unacceptable": 2,
+      "observations": {
+        "1": [
+          true
+        ],
+        "2": [
+          false
+        ]
+      },
+      "first_not_confirmed_acceptable": 2,
+      "reached_search_ceiling": false,
+      "nonmonotonic": false,
+      "default_reasoning_controls": [
+        "memoria-40-personas-1-control-con-razonamiento-intento-3"
+      ]
+    },
+    {
+      "memory_fraction": 0.5,
+      "input_tokens": 512,
+      "state": "complete",
+      "attempts": [
+        "memoria-50-personas-1-recorrido-completo-intento-1",
+        "memoria-50-personas-2-recorrido-completo-intento-1"
+      ],
+      "largest_confirmed_acceptable": 1,
+      "first_confirmed_unacceptable": 2,
+      "observations": {
+        "1": [
+          true
+        ],
+        "2": [
+          false
+        ]
+      },
+      "first_not_confirmed_acceptable": 2,
+      "reached_search_ceiling": false,
+      "nonmonotonic": false,
+      "default_reasoning_controls": [
+        "memoria-50-personas-1-control-con-razonamiento-intento-3"
+      ]
+    },
+    {
+      "memory_fraction": 0.6,
+      "input_tokens": 512,
+      "state": "complete",
+      "attempts": [
+        "memoria-60-personas-1-recorrido-completo-intento-1",
+        "memoria-60-personas-2-recorrido-completo-intento-1"
+      ],
+      "largest_confirmed_acceptable": 1,
+      "first_confirmed_unacceptable": 2,
+      "observations": {
+        "1": [
+          true
+        ],
+        "2": [
+          false
+        ]
+      },
+      "first_not_confirmed_acceptable": 2,
+      "reached_search_ceiling": false,
+      "nonmonotonic": false,
+      "default_reasoning_controls": [
+        "memoria-60-personas-1-control-con-razonamiento-intento-3"
+      ]
+    },
+    {
+      "memory_fraction": 0.85,
+      "input_tokens": 512,
+      "state": "complete",
+      "attempts": [
+        "memoria-85-personas-1-recorrido-completo-intento-1",
+        "memoria-85-personas-2-recorrido-completo-intento-1"
+      ],
+      "largest_confirmed_acceptable": 1,
+      "first_confirmed_unacceptable": 2,
+      "observations": {
+        "1": [
+          true
+        ],
+        "2": [
+          false
+        ]
+      },
+      "first_not_confirmed_acceptable": 2,
+      "reached_search_ceiling": false,
+      "nonmonotonic": false,
+      "default_reasoning_controls": [
+        "memoria-85-personas-1-control-con-razonamiento-intento-3"
+      ]
+    },
+    {
+      "memory_fraction": 0.35,
+      "input_tokens": 512,
+      "state": "complete",
+      "attempts": [
+        "memoria-35-personas-1-recorrido-completo-intento-1",
+        "memoria-35-personas-2-recorrido-completo-intento-1"
+      ],
+      "largest_confirmed_acceptable": 1,
+      "first_confirmed_unacceptable": 2,
+      "observations": {
+        "1": [
+          true
+        ],
+        "2": [
+          false
+        ]
+      },
+      "first_not_confirmed_acceptable": 2,
+      "reached_search_ceiling": false,
+      "nonmonotonic": false,
+      "default_reasoning_controls": [
+        "memoria-35-personas-1-control-con-razonamiento-intento-3"
+      ]
+    },
+    {
+      "memory_fraction": 0.92,
+      "input_tokens": 512,
+      "state": "complete",
+      "attempts": [
+        "memoria-92-personas-1-recorrido-completo-intento-1",
+        "memoria-92-personas-2-recorrido-completo-intento-1"
+      ],
+      "largest_confirmed_acceptable": 1,
+      "first_confirmed_unacceptable": 2,
+      "observations": {
+        "1": [
+          true
+        ],
+        "2": [
+          false
+        ]
+      },
+      "first_not_confirmed_acceptable": 2,
+      "reached_search_ceiling": false,
+      "nonmonotonic": false,
+      "default_reasoning_controls": [
+        "memoria-92-personas-1-control-con-razonamiento-intento-3"
+      ]
+    }
+  ],
+  "script_sha256": "630ec2bac8e44151d6fbe0189d1d16b9617ce5cf58d3cb7715c147cdeac185ef",
+  "cases": [
+    {
+      "id": "memoria-70-personas-1-recorrido-completo-intento-1",
+      "state": "finished",
+      "started_utc": "2026-10-16T08:06:42.678072+00:00",
+      "exit_code": 0,
+      "timed_out": false,
+      "duration_seconds": 14886.739572307008,
+      "acceptable_reference": true
+    },
+    {
+      "id": "memoria-70-personas-2-recorrido-completo-intento-1",
+      "state": "finished",
+      "started_utc": "2026-10-16T12:14:49.551162+00:00",
+      "exit_code": 1,
+      "timed_out": false,
+      "duration_seconds": 12791.44052341301,
+      "acceptable_reference": false
+    },
+    {
+      "id": "memoria-70-personas-1-control-con-razonamiento-intento-3",
+      "state": "finished",
+      "started_utc": "2026-10-16T15:48:01.163499+00:00",
+      "exit_code": 0,
+      "timed_out": false,
+      "duration_seconds": 375.039328437997,
+      "acceptable_reference": false
+    },
+    {
+      "id": "memoria-40-personas-1-recorrido-completo-intento-1",
+      "state": "finished",
+      "started_utc": "2026-10-16T16:00:24.740317+00:00",
+      "exit_code": 0,
+      "timed_out": false,
+      "duration_seconds": 13391.514354615996,
+      "acceptable_reference": true
+    },
+    {
+      "id": "memoria-40-personas-2-recorrido-completo-intento-1",
+      "state": "finished",
+      "started_utc": "2026-10-16T19:43:36.347359+00:00",
+      "exit_code": 1,
+      "timed_out": false,
+      "duration_seconds": 10365.97527260799,
+      "acceptable_reference": false
+    },
+    {
+      "id": "memoria-40-personas-1-control-con-razonamiento-intento-3",
+      "state": "finished",
+      "started_utc": "2026-10-16T22:36:22.446605+00:00",
+      "exit_code": 0,
+      "timed_out": false,
+      "duration_seconds": 405.04981084994506,
+      "acceptable_reference": false
+    },
+    {
+      "id": "memoria-50-personas-1-recorrido-completo-intento-1",
+      "state": "finished",
+      "started_utc": "2026-10-16T22:49:15.568207+00:00",
+      "exit_code": 0,
+      "timed_out": false,
+      "duration_seconds": 14321.37658098503,
+      "acceptable_reference": true
+    },
+    {
+      "id": "memoria-50-personas-2-recorrido-completo-intento-1",
+      "state": "finished",
+      "started_utc": "2026-10-17T02:47:57.075993+00:00",
+      "exit_code": 1,
+      "timed_out": false,
+      "duration_seconds": 13281.425100943015,
+      "acceptable_reference": false
+    },
+    {
+      "id": "memoria-50-personas-1-control-con-razonamiento-intento-3",
+      "state": "finished",
+      "started_utc": "2026-10-17T06:29:18.690619+00:00",
+      "exit_code": 0,
+      "timed_out": false,
+      "duration_seconds": 400.04514906398254,
+      "acceptable_reference": false
+    },
+    {
+      "id": "memoria-60-personas-1-recorrido-completo-intento-1",
+      "state": "finished",
+      "started_utc": "2026-10-17T06:42:11.895517+00:00",
+      "exit_code": 0,
+      "timed_out": false,
+      "duration_seconds": 16416.738063608995,
+      "acceptable_reference": true
+    },
+    {
+      "id": "memoria-60-personas-2-recorrido-completo-intento-1",
+      "state": "finished",
+      "started_utc": "2026-10-17T11:15:48.779449+00:00",
+      "exit_code": 1,
+      "timed_out": false,
+      "duration_seconds": 12131.543941252981,
+      "acceptable_reference": false
+    },
+    {
+      "id": "memoria-60-personas-1-control-con-razonamiento-intento-3",
+      "state": "finished",
+      "started_utc": "2026-10-17T14:38:00.541364+00:00",
+      "exit_code": 0,
+      "timed_out": false,
+      "duration_seconds": 340.048588990001,
+      "acceptable_reference": false
+    },
+    {
+      "id": "memoria-85-personas-1-recorrido-completo-intento-1",
+      "state": "finished",
+      "started_utc": "2026-10-17T14:50:03.969586+00:00",
+      "exit_code": 0,
+      "timed_out": false,
+      "duration_seconds": 17597.165760600008,
+      "acceptable_reference": true
+    },
+    {
+      "id": "memoria-85-personas-2-recorrido-completo-intento-1",
+      "state": "finished",
+      "started_utc": "2026-10-17T19:43:21.345876+00:00",
+      "exit_code": 1,
+      "timed_out": false,
+      "duration_seconds": 9866.078022108995,
+      "acceptable_reference": false
+    },
+    {
+      "id": "memoria-85-personas-1-control-con-razonamiento-intento-3",
+      "state": "finished",
+      "started_utc": "2026-10-17T22:27:47.628936+00:00",
+      "exit_code": 0,
+      "timed_out": false,
+      "duration_seconds": 350.0445427270024,
+      "acceptable_reference": false
+    },
+    {
+      "id": "memoria-35-personas-1-recorrido-completo-intento-1",
+      "state": "finished",
+      "started_utc": "2026-10-17T22:40:03.569781+00:00",
+      "exit_code": 0,
+      "timed_out": false,
+      "duration_seconds": 15756.76279362198,
+      "acceptable_reference": true
+    },
+    {
+      "id": "memoria-35-personas-2-recorrido-completo-intento-1",
+      "state": "finished",
+      "started_utc": "2026-10-18T03:02:40.445452+00:00",
+      "exit_code": 1,
+      "timed_out": false,
+      "duration_seconds": 7225.719986949989,
+      "acceptable_reference": false
+    },
+    {
+      "id": "memoria-35-personas-1-control-con-razonamiento-intento-3",
+      "state": "finished",
+      "started_utc": "2026-10-18T05:03:06.290295+00:00",
+      "exit_code": 0,
+      "timed_out": false,
+      "duration_seconds": 345.04521277401363,
+      "acceptable_reference": false
+    },
+    {
+      "id": "memoria-92-personas-1-recorrido-completo-intento-1",
+      "state": "finished",
+      "started_utc": "2026-10-18T05:15:29.598847+00:00",
+      "exit_code": 0,
+      "timed_out": false,
+      "duration_seconds": 16541.640926590015,
+      "acceptable_reference": true
+    },
+    {
+      "id": "memoria-92-personas-2-recorrido-completo-intento-1",
+      "state": "finished",
+      "started_utc": "2026-10-18T09:51:11.465515+00:00",
+      "exit_code": 1,
+      "timed_out": false,
+      "duration_seconds": 10051.158273697016,
+      "acceptable_reference": false
+    },
+    {
+      "id": "memoria-92-personas-1-control-con-razonamiento-intento-3",
+      "state": "finished",
+      "started_utc": "2026-10-18T12:38:42.828053+00:00",
+      "exit_code": 0,
+      "timed_out": false,
+      "duration_seconds": 385.04698453698074,
+      "acceptable_reference": false
+    }
+  ],
+  "measurements_complete": true,
+  "restore_seconds": 381.09490308800014
+}

@@ -237,6 +237,8 @@ def main():
     lines+=['','## Cómo avanza cada conversación','']
     lines += [f'{i}. {step}' for i,step in enumerate(plan['method'],1)]
     lines+=['','Los objetivos de entrada admiten hasta 32 tokens de diferencia al construir el mensaje. Por eso los 128 tokens reservados para el cierre son aproximados: su presupuesto efectivo se calcula con la entrada real. Cada respuesta registra tanto ese presupuesto como los tokens que finalmente utilizó.']
+    if meta.get('recoveries'):
+        lines+=['','**La repetición usa la versión 2 del medidor.** Conserva todo el historial y aumenta el siguiente objetivo lo mínimo necesario si una respuesta larga rebasa el incremento nominal. Antes del cierre reserva 256 tokens para poder añadir la pregunta final y terminar; esto reduce la salida disponible cerca del límite. Cada petición registra sus objetivos y su presupuesto efectivo. El intento original y la repetición se conservan por separado. [Corrección y comprobaciones](correccion-del-medidor.md).']
     lines+=['','## Alcance de la respuesta','']+[f'- {line}' for line in plan['limitations']]
     lines+=['','La prueba mide tiempos y finalización. No garantiza que todas las respuestas sean correctas ni que el modelo recuerde perfectamente todos los detalles del historial.','',
         '[Plan exacto](plan.json) · [Datos de ejecución y scripts reproducibles](reproduccion/README.md)','']

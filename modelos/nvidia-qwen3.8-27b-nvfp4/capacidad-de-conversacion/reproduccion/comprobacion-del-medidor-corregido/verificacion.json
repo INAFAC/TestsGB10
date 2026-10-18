@@ -1,0 +1,15 @@
+{
+  "kind": "instrument_generation_pilot_verification",
+  "verified": true,
+  "checked_utc": "2026-10-18T12:54:57.517606+00:00",
+  "users": 2,
+  "rounds_per_user": 9,
+  "natural_visible_responses": 18,
+  "history_continuity_verified": true,
+  "timing_and_token_counts_verified": true,
+  "full_context_capacity_measured": false,
+  "probe_sha256": "8b749c529f023fc668e0c1138abb3ca881f9594a8ac5615a9e75711b528670f4",
+  "measurement_sha256": "05b9cc24a452b1fe0c857bc4e649892ba4e757b8ad6dab819d0d47c3cba8579d",
+  "histories_sha256": "fb518679a320bbb36133d8e1d93f137fe646e4bd048d2d04c01c9ea3e5e3cb44",
+  "verifier_sha256": "dc55a9c6547259ae8fd2ea525650944242fa0cc91152a537a67db7b2a67cb4b2"
+}
