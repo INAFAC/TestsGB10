@@ -22,7 +22,7 @@ La [comprobación por presupuesto de memoria](modelos/nvidia-qwen3.8-27b-nvfp4/c
 | 35% | 1 | Caché llena y plazos de espera agotados |
 | 40% | 1 | Caché llena y un plazo de espera agotado |
 | 50% | 1 | Dejó de cumplir los tiempos establecidos |
-| 60% | Al menos 1 | Repetición en curso por un error del medidor anterior |
+| 60% | 1 | Dejó de cumplir los tiempos establecidos; repetición completada |
 | 70% | 1 | Dejó de cumplir los tiempos establecidos |
 | 85% | 1 | Dejó de cumplir los tiempos establecidos |
 | 92% | 1 | Dejó de cumplir los tiempos establecidos |

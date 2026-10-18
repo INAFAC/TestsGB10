@@ -250,6 +250,7 @@ def main():
     if meta.get('recoveries'):
         lines+=['','**La repetición usa la versión 2 del medidor.** Conserva todo el historial y aumenta el siguiente objetivo lo mínimo necesario si una respuesta larga rebasa el incremento nominal. Antes del cierre reserva 256 tokens para poder añadir la pregunta final y terminar; esto reduce la salida disponible cerca del límite. Cada petición registra sus objetivos y su presupuesto efectivo. El intento original y la repetición se conservan por separado. [Corrección y comprobaciones](correccion-del-medidor.md).']
     lines+=['','## Alcance de la respuesta','']+[f'- {line}' for line in plan['limitations']]
+    lines+=['','El modelo genera respuestas nuevas en cada ejecución; sus textos y longitudes pueden variar. No se ha repetido cada perfil varias veces. Las diferencias de tiempo no deben atribuirse únicamente al porcentaje de memoria.']
     lines+=['','La prueba mide tiempos y finalización. No garantiza que todas las respuestas sean correctas ni que el modelo recuerde perfectamente todos los detalles del historial.','',
         '[Plan exacto](plan.json) · [Datos de ejecución y scripts reproducibles](reproduccion/README.md)','']
     if meta.get('state')=='stopped':

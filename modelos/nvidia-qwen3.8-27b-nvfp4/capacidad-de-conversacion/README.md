@@ -92,6 +92,8 @@ Los objetivos de entrada admiten hasta 32 tokens de diferencia al construir el m
 - En las pruebas previas, el 30% falló al arrancar con el contexto completo; el 25% se probó con un máximo reducido de 65536 tokens y el 20% falló incluso con 8192. Esos resultados no equivalen a completar una conversación útil de 262144 tokens.
 - El porcentaje configurado es el presupuesto del motor, no un límite estricto de toda la RAM del sistema.
 
+El modelo genera respuestas nuevas en cada ejecución; sus textos y longitudes pueden variar. No se ha repetido cada perfil varias veces. Las diferencias de tiempo no deben atribuirse únicamente al porcentaje de memoria.
+
 La prueba mide tiempos y finalización. No garantiza que todas las respuestas sean correctas ni que el modelo recuerde perfectamente todos los detalles del historial.
 
 [Plan exacto](plan.json) · [Datos de ejecución y scripts reproducibles](reproduccion/README.md)

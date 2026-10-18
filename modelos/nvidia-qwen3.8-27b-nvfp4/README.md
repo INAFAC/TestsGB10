@@ -8,7 +8,7 @@
 
 **Modelo exacto:** `nvidia/Qwen3.8-27B-NVFP4`.
 
-**[Personas que pueden conversar hasta el límite, según la memoria](capacidad-de-conversacion/README.md):** recorridos desde el principio, tiempos de cada tramo y estado de la repetición pendiente del 60%.
+**[Personas que pueden conversar hasta el límite, según la memoria](capacidad-de-conversacion/README.md):** recorridos desde el principio, tiempos de cada tramo y resultados por presupuesto.
 
 
 **Máximo por conversación: 262.144 tokens, sumando historial y respuesta.** La memoria asignada puede obligar a configurar un límite menor.
@@ -39,7 +39,7 @@ En las pruebas iniciales de salida fija, “terminó” significa que entregó t
 
 En la [batería de conversaciones completas](capacidad-de-conversacion/README.md), **una persona completó las 257 rondas hasta casi 262.144 tokens con cada presupuesto: 35%, 40%, 50%, 60%, 70%, 85% y 92%**. Conservó todos sus mensajes y las respuestas reales, sin cortes de salida, y cumplió los tiempos en todos los tramos.
 
-Con dos personas, el 35% y el 40% llegaron a llenar la caché y tuvieron plazos de espera agotados. El 50%, 70%, 85% y 92% se detuvieron por tiempos fuera de la referencia antes de completar el recorrido. **El 60% con dos personas se está repitiendo por un error del programa de pruebas; su frontera sigue pendiente.** Todos estos recorridos permitían cuatro solicitudes activas, suficientes para las dos personas medidas.
+Con dos personas, el 35% y el 40% llegaron a llenar la caché y tuvieron plazos de espera agotados. El 50%, 60%, 70%, 85% y 92% se detuvieron por tiempos fuera de la referencia antes de completar el recorrido. **La repetición del 60% terminó en la ronda 209: 418 respuestas naturales, sin errores ni recálculos, pero tres rondas seguidas por debajo de la velocidad mínima.** El intento anterior interrumpido por el medidor se conserva junto a su [corrección y repetición](capacidad-de-conversacion/correccion-del-medidor.md). Todos estos recorridos permitían cuatro solicitudes activas, suficientes para las dos personas medidas.
 
 La referencia usa **razonamiento desactivado**, respuestas solicitadas de hasta 100 palabras, al menos 30 segundos entre rondas y un primer texto visible en 5 segundos para el 95% de las peticiones. También exige velocidad mínima, tiempo de respuesta completa y cumplimiento por tramos; [consultar todos los criterios y resultados](capacidad-de-conversacion/README.md). Cambiar solo el porcentaje de memoria no reproduce el modo de razonamiento de estas pruebas. Se desactiva en cada petición mediante `chat_template_kwargs: {"enable_thinking": false}`.
 
