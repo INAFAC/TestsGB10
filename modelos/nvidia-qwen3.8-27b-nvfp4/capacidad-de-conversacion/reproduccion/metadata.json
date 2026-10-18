@@ -329,17 +329,24 @@
     {
       "memory_fraction": 0.92,
       "input_tokens": 512,
-      "state": "running",
+      "state": "complete",
       "attempts": [
-        "memoria-92-personas-1-recorrido-completo-intento-1"
+        "memoria-92-personas-1-recorrido-completo-intento-1",
+        "memoria-92-personas-2-recorrido-completo-intento-1"
       ],
-      "largest_confirmed_acceptable": 0,
-      "first_confirmed_unacceptable": null,
+      "largest_confirmed_acceptable": 1,
+      "first_confirmed_unacceptable": 2,
       "observations": {
         "1": [
           true
+        ],
+        "2": [
+          false
         ]
-      }
+      },
+      "first_not_confirmed_acceptable": 2,
+      "reached_search_ceiling": false,
+      "nonmonotonic": false
     }
   ],
   "script_sha256": "630ec2bac8e44151d6fbe0189d1d16b9617ce5cf58d3cb7715c147cdeac185ef",
@@ -517,8 +524,17 @@
     },
     {
       "id": "memoria-92-personas-2-recorrido-completo-intento-1",
+      "state": "finished",
+      "started_utc": "2026-10-18T09:51:11.465515+00:00",
+      "exit_code": 1,
+      "timed_out": false,
+      "duration_seconds": 10051.158273697016,
+      "acceptable_reference": false
+    },
+    {
+      "id": "memoria-92-personas-1-control-con-razonamiento-intento-3",
       "state": "running",
-      "started_utc": "2026-10-18T09:51:11.465515+00:00"
+      "started_utc": "2026-10-18T12:38:42.828053+00:00"
     }
   ]
 }
