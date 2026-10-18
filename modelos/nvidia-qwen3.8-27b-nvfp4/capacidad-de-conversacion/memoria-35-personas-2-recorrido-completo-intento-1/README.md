@@ -2,7 +2,7 @@
 
 [Volver a la capacidad por memoria](../README.md)
 
-**Error de API o plazo de espera del cliente.**
+**Plazo de espera agotado: 2 peticiones, turno 135.**
 
 Modelo: `nvidia/Qwen3.8-27B-NVFP4`. Razonamiento: **desactivado**. Límite impuesto al servidor: **4 solicitudes activas**. Presupuesto de salida: **hasta 1.024 tokens por respuesta**, con petición de hasta 100 palabras.
 

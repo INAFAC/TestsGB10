@@ -25,6 +25,17 @@ def unfinished_measurement(case, summary):
 def unresolved_measurement(case, summary):
     return unfinished_measurement(case,summary) and not case.get('resolved_by')
 
+def timeout_label(data):
+    failures=[r for r in data['requests'] if not r['ok']]
+    if data['summary'].get('growth_stop_reason')!='api_or_network_error' or not failures:
+        return None
+    if not all((r.get('error') or '').startswith('TimeoutError:') for r in failures):
+        return None
+    turns=sorted({r['turn'] for r in failures})
+    where=f"turno {turns[0]}" if len(turns)==1 else 'turnos '+', '.join(map(str,turns))
+    count=f"{len(failures)} {'petición' if len(failures)==1 else 'peticiones'}"
+    return f'Plazo de espera agotado: {count}, {where}'
+
 
 def main():
     p=argparse.ArgumentParser()
@@ -85,7 +96,7 @@ def main():
             (out/'README.md').write_text(f"# Intento sin mediciones\n\n[Volver a la comparación](../README.md)\n\n{reason}\n\nPresupuesto: {round(c['memory_fraction']*100)}%. Personas: {c['users']}. Límite activo: {c['server_limit']}.\n\n[Configuración solicitada](configuracion.json) · [Registros del controlador](../reproduccion/metadata.json)\n")
             rows.append((case,c,{'growth_stop_reason':'missing_measurements','duration_s':case.get('duration_seconds')},out.name))
             continue
-        d=read(folder/'mediciones.json');s=d['summary'];c=read(folder/'configuracion.json')
+        d=read(folder/'mediciones.json');s=dict(d['summary'],_timeout_label=timeout_label(d));c=read(folder/'configuracion.json')
         if 'final_total_tokens_by_user' not in s:
             s=dict(s,final_total_tokens_by_user={str(user):max((r['usage']['total_tokens'] for r in d['requests'] if r['user_id']==user and r['ok']),default=0) for user in range(c['users'])})
         if case['state']=='running':
@@ -95,7 +106,7 @@ def main():
         rows.append((case,c,s,out.name))
         trajectory=c.get('grows_from_short_to_full',False)
         passed=case.get('acceptable_reference',False)
-        reason=reasons.get(s.get('growth_stop_reason'),s.get('growth_stop_reason'))
+        reason=s.get('_timeout_label') or reasons.get(s.get('growth_stop_reason'),s.get('growth_stop_reason'))
         if unfinished_measurement(case,s):
             reason='Medidor interrumpido; intento repetido' if case.get('resolved_by') else 'Medidor interrumpido; repetición pendiente'
         label='Cumplió durante todo el recorrido' if passed and trajectory else 'Cumplió el control' if passed else reason or ('No cumple la referencia del recorrido' if trajectory else 'No cumple la referencia de tiempos del control')
@@ -208,7 +219,7 @@ def main():
         link=f'[{kind}]({folder}/README.md)' if folder else kind
         contexts=s.get('final_total_tokens_by_user',{})
         tokens=max(contexts.values(),default=None)
-        state='En curso; no es un resultado final' if case['state']=='running' else 'Cumple' if case.get('acceptable_reference') else reasons.get(s.get('growth_stop_reason'),'No cumple')
+        state='En curso; no es un resultado final' if case['state']=='running' else 'Cumple' if case.get('acceptable_reference') else s.get('_timeout_label') or reasons.get(s.get('growth_stop_reason'),'No cumple')
         if unfinished_measurement(case,s):state='Medidor interrumpido; intento repetido' if case.get('resolved_by') else 'Medidor interrumpido; repetición pendiente'
         if case['state']=='running':
             failed_windows=[w for w in s.get('windows',[]) if w['measured']==w['expected'] and not w['acceptable_reference']]
