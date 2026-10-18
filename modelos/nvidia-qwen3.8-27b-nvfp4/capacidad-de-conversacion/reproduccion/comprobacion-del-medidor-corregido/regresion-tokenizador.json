@@ -1,0 +1,20 @@
+{
+  "kind": "instrument_tokenizer_regression",
+  "verified": true,
+  "checked_utc": "2026-10-18T12:52:00.182082+00:00",
+  "original_case": "memoria-60-personas-2-recorrido-completo-intento-1",
+  "user_id": 0,
+  "preceding_turn": 130,
+  "prepared_turn": 131,
+  "preceding_answer_tokens": 1003,
+  "actual_input_tokens": 133652,
+  "preserved_messages": 261,
+  "history_unchanged": true,
+  "history_sha256": "9242d40b1b89dfcc8bde04856b0749d4bbe1fcdfe589d36ea674d0864f3f6630",
+  "probe_sha256": "8b749c529f023fc668e0c1138abb3ca881f9594a8ac5615a9e75711b528670f4",
+  "check_script_sha256": "c4732386416f1c18f3fe87a9425a7896ceefdaabe10ae69ed72db8b7fbd2eecb",
+  "generation_requests": 0,
+  "nominal_input_target": 133632,
+  "effective_input_target": 133652,
+  "minimum_input_with_new_message": 133652
+}

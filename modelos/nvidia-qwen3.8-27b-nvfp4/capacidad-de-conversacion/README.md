@@ -81,3 +81,4 @@ La prueba mide tiempos y finalización. No garantiza que todas las respuestas se
 
 [Plan exacto](plan.json) · [Datos de ejecución y scripts reproducibles](reproduccion/README.md)
 
+Restauración del servicio: **healthy**. [Comprobación independiente](reproduccion/verificacion-final.json).

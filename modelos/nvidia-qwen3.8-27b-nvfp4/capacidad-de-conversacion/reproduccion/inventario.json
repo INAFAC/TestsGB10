@@ -24,6 +24,30 @@
     "sanitized": false
   },
   {
+    "file": "reproduccion/scripts/capacity_probe_v2.py",
+    "sha256": "8b749c529f023fc668e0c1138abb3ca881f9594a8ac5615a9e75711b528670f4",
+    "original_sha256": "8b749c529f023fc668e0c1138abb3ca881f9594a8ac5615a9e75711b528670f4",
+    "sanitized": false
+  },
+  {
+    "file": "reproduccion/scripts/capacity_recovery.py",
+    "sha256": "06ad70ff1ce2a921377774152821b947736866ff9c7c52901965b84e78aa9b8a",
+    "original_sha256": "06ad70ff1ce2a921377774152821b947736866ff9c7c52901965b84e78aa9b8a",
+    "sanitized": false
+  },
+  {
+    "file": "reproduccion/scripts/check_capacity_probe_v2_server.py",
+    "sha256": "c4732386416f1c18f3fe87a9425a7896ceefdaabe10ae69ed72db8b7fbd2eecb",
+    "original_sha256": "c4732386416f1c18f3fe87a9425a7896ceefdaabe10ae69ed72db8b7fbd2eecb",
+    "sanitized": false
+  },
+  {
+    "file": "reproduccion/scripts/verify_capacity_pilot.py",
+    "sha256": "dc55a9c6547259ae8fd2ea525650944242fa0cc91152a537a67db7b2a67cb4b2",
+    "original_sha256": "dc55a9c6547259ae8fd2ea525650944242fa0cc91152a537a67db7b2a67cb4b2",
+    "sanitized": false
+  },
+  {
     "file": "reproduccion/scripts/versions/capacity_probe-piloto.py",
     "sha256": "2da6ef0ec077f2cf047ba3f8394f1f607ed30fdb2630a9d933ce0a72da726a6b",
     "original_sha256": "2da6ef0ec077f2cf047ba3f8394f1f607ed30fdb2630a9d933ce0a72da726a6b",
@@ -79,14 +103,20 @@
   },
   {
     "file": "reproduccion/metadata.json",
-    "sha256": "89ef8ccbe80e7f265c52b44c1f7b5d769a040f21b98d7844534cf16a0904fc17",
-    "original_sha256": "89ef8ccbe80e7f265c52b44c1f7b5d769a040f21b98d7844534cf16a0904fc17",
+    "sha256": "e184d8986dd0e58d9d00fc2d5e181e2f046329fd2eb3228a2313da70813d316d",
+    "original_sha256": "e184d8986dd0e58d9d00fc2d5e181e2f046329fd2eb3228a2313da70813d316d",
     "sanitized": false
   },
   {
     "file": "reproduccion/plan.json",
     "sha256": "6db1f439cf421aa689e15fe713845224b5ad800db6d9ee075e31fa9fddae45b2",
     "original_sha256": "6db1f439cf421aa689e15fe713845224b5ad800db6d9ee075e31fa9fddae45b2",
+    "sanitized": false
+  },
+  {
+    "file": "reproduccion/verificacion-final.json",
+    "sha256": "4f755c3ce8681533b00398f31abfa220ef20a7f74c235dc9ec8447be2f3cde14",
+    "original_sha256": "4f755c3ce8681533b00398f31abfa220ef20a7f74c235dc9ec8447be2f3cde14",
     "sanitized": false
   },
   {
@@ -105,6 +135,12 @@
     "file": "reproduccion/comprobacion-del-medidor/mediciones.json",
     "sha256": "9eae5030129d3bec6f03171df9fc40a21930cf60520fb906eae8b491baff69cd",
     "original_sha256": "9eae5030129d3bec6f03171df9fc40a21930cf60520fb906eae8b491baff69cd",
+    "sanitized": false
+  },
+  {
+    "file": "reproduccion/comprobacion-del-medidor-corregido/regresion-tokenizador.json",
+    "sha256": "20d96f174bff474cf3fb9ac25e8b2dba86047e0be0eb74efe38579d59f012563",
+    "original_sha256": "20d96f174bff474cf3fb9ac25e8b2dba86047e0be0eb74efe38579d59f012563",
     "sanitized": false
   },
   {
