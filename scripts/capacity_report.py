@@ -187,7 +187,7 @@ def main():
         '**La tabla principal usa razonamiento desactivado**, respuestas solicitadas de hasta 100 palabras y un límite de 1.024 tokens de salida. No se debe aplicar ese número de personas al modo de razonamiento predeterminado: sus controles se muestran aparte.','',
         '## Capacidad comprobada por memoria','',
         '| Presupuesto del modelo | Personas con recorrido completo y útil | Siguiente grupo ensayado | Estado de la comprobación |','|---:|---:|---:|---|']
-    for fraction in plan['memory_fractions']:
+    for fraction in sorted(plan['memory_fractions']):
         cells=[b for b in meta.get('boundaries',[]) if b['memory_fraction']==fraction]
         b=cells[-1] if cells else None
         if b and b['state']=='complete':
@@ -210,7 +210,17 @@ def main():
             if any(unresolved_measurement(case,s) for case,c,s,_ in rows if c['memory_fraction']==fraction):
                 state+='; repetición del medidor pendiente; frontera sin cerrar'
             lines.append(f"| {round(fraction*100)}% | {label} | {next_group} | {state} |")
-    lines+=['','El presupuesto de memoria no es un límite estricto de toda la RAM del GB10. El límite activo del servidor es el mayor entre cuatro y las personas de la prueba; nunca es inferior al grupo enviado. La búsqueda llega hasta 32 personas: si se alcanza ese techo se informa como un mínimo demostrado, nunca como el máximo del equipo. La búsqueda acota los grupos ensayados; no demuestra todas las configuraciones posibles.','',
+    lines+=['','El presupuesto de memoria no es un límite estricto de toda la RAM del GB10. El límite activo del servidor es el mayor entre cuatro y las personas de la prueba; nunca es inferior al grupo enviado. La búsqueda llega hasta 32 personas: si se alcanza ese techo se informa como un mínimo demostrado, nunca como el máximo del equipo. La búsqueda acota los grupos ensayados; no demuestra todas las configuraciones posibles.']
+    singles=[(case,c,s,folder) for case,c,s,folder in rows if c.get('grows_from_short_to_full') and c['users']==1 and case.get('acceptable_reference') and folder]
+    if singles:
+        lines+=['','## Cómo responde una persona cerca del límite','',
+            'Estos son los últimos 16 turnos de los recorridos completos, aproximadamente de 247.000 a 262.000 tokens de entrada. La memoria y la caché muestran el pico de todo el recorrido. Cada porcentaje corresponde a una ejecución; las diferencias pequeñas no prueban por sí solas que un porcentaje sea más rápido.','',
+            '| Presupuesto | Primer texto p95, tramo final | Velocidad p05, tramo final | Respuesta completa p95, tramo final | Pico del motor / GB10 | Pico de caché |',
+            '|---:|---:|---:|---:|---:|---:|']
+        for case,c,s,folder in sorted(singles,key=lambda row:row[1]['memory_fraction']):
+            w=s['windows'][-1]
+            lines.append(f"| [{round(c['memory_fraction']*100)}%]({folder}/README.md) | {number(w['visible_ttft_p95_s'],2)} s | {number(w['decode_p05_tokens_s'],2)} tokens/s | {number(w['total_p95_s'])} s | {number(s.get('peak_gpu_engine_percent'))}% | {number(100*s['peak_kv_fraction'])}% |")
+    lines+=['',
         '## Recorridos y controles individuales','',
         '| Prueba | Memoria | Personas | Rondas medidas | Mayor contexto alcanzado | Espera visible p95 al continuar | Velocidad p05 | Tiempo del grupo | Resultado |',
         '|---|---:|---:|---:|---:|---:|---:|---:|---|']

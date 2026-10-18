@@ -14,15 +14,29 @@ Las respuestas deben tener texto visible y terminar naturalmente. En cada bloque
 
 | Presupuesto del modelo | Personas con recorrido completo y útil | Siguiente grupo ensayado | Estado de la comprobación |
 |---:|---:|---:|---|
-| 70% | 1 | 2 | Comprobado: el siguiente grupo no cumple |
+| 35% | 1 | 2 | Comprobado: el siguiente grupo no cumple |
 | 40% | 1 | 2 | Comprobado: el siguiente grupo no cumple |
 | 50% | 1 | 2 | Comprobado: el siguiente grupo no cumple |
 | 60% | Al menos 1 | 2 | Repetición pendiente por error del medidor; frontera sin cerrar |
+| 70% | 1 | 2 | Comprobado: el siguiente grupo no cumple |
 | 85% | 1 | 2 | Comprobado: el siguiente grupo no cumple |
-| 35% | 1 | 2 | Comprobado: el siguiente grupo no cumple |
 | 92% | 1 | 2 | Comprobado: el siguiente grupo no cumple |
 
 El presupuesto de memoria no es un límite estricto de toda la RAM del GB10. El límite activo del servidor es el mayor entre cuatro y las personas de la prueba; nunca es inferior al grupo enviado. La búsqueda llega hasta 32 personas: si se alcanza ese techo se informa como un mínimo demostrado, nunca como el máximo del equipo. La búsqueda acota los grupos ensayados; no demuestra todas las configuraciones posibles.
+
+## Cómo responde una persona cerca del límite
+
+Estos son los últimos 16 turnos de los recorridos completos, aproximadamente de 247.000 a 262.000 tokens de entrada. La memoria y la caché muestran el pico de todo el recorrido. Cada porcentaje corresponde a una ejecución; las diferencias pequeñas no prueban por sí solas que un porcentaje sea más rápido.
+
+| Presupuesto | Primer texto p95, tramo final | Velocidad p05, tramo final | Respuesta completa p95, tramo final | Pico del motor / GB10 | Pico de caché |
+|---:|---:|---:|---:|---:|---:|
+| [35%](memoria-35-personas-1-recorrido-completo-intento-1/README.md) | 3,84 s | 6,56 tokens/s | 60,1 s | 31,7% | 94,5% |
+| [40%](memoria-40-personas-1-recorrido-completo-intento-1/README.md) | 3,88 s | 6,56 tokens/s | 46,1 s | 36,7% | 70,5% |
+| [50%](memoria-50-personas-1-recorrido-completo-intento-1/README.md) | 3,88 s | 6,57 tokens/s | 40,0 s | 46,6% | 46,3% |
+| [60%](memoria-60-personas-1-recorrido-completo-intento-1/README.md) | 3,90 s | 6,54 tokens/s | 61,8 s | 56,7% | 34,5% |
+| [70%](memoria-70-personas-1-recorrido-completo-intento-1/README.md) | 3,87 s | 6,55 tokens/s | 63,7 s | 66,8% | 27,1% |
+| [85%](memoria-85-personas-1-recorrido-completo-intento-1/README.md) | 4,90 s | 6,02 tokens/s | 71,2 s | 81,8% | 21,0% |
+| [92%](memoria-92-personas-1-recorrido-completo-intento-1/README.md) | 4,97 s | 6,05 tokens/s | 69,9 s | 88,8% | 19,0% |
 
 ## Recorridos y controles individuales
 
