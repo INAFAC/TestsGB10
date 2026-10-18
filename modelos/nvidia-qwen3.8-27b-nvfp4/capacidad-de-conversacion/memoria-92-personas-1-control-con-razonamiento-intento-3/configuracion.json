@@ -1,0 +1,15 @@
+{
+  "id": "memoria-92-personas-1-control-con-razonamiento-intento-3",
+  "memory_fraction": 0.92,
+  "input_tokens": 8192,
+  "users": 1,
+  "repetition": 3,
+  "purpose": "control-razonamiento",
+  "reasoning": "default",
+  "server_limit": 4,
+  "turns": 5,
+  "think_seconds": 30,
+  "output_tokens": 4096,
+  "seed": 23279208,
+  "schedule": "simultaneous"
+}
