@@ -72,9 +72,15 @@
     "sanitized": true
   },
   {
+    "file": "reproduccion/arranque-07.log",
+    "sha256": "00795de39103934f300e5d6dae39c8ec81d6cf8068fa26e3e1b0d2fefc230c09",
+    "original_sha256": "160cb709260b2dddfb8ba5ca1397113e89ad4157279235b4e31bc872902a86cd",
+    "sanitized": true
+  },
+  {
     "file": "reproduccion/metadata.json",
-    "sha256": "b90854a87ca0d34e03031eda47a0e54bbcd845ccdb6cb8f5b4f700356a160d59",
-    "original_sha256": "b90854a87ca0d34e03031eda47a0e54bbcd845ccdb6cb8f5b4f700356a160d59",
+    "sha256": "f059a017fc4c8871610cd19fdb8327d39e1510c2c64b638b25889ea72806d7ef",
+    "original_sha256": "f059a017fc4c8871610cd19fdb8327d39e1510c2c64b638b25889ea72806d7ef",
     "sanitized": false
   },
   {
