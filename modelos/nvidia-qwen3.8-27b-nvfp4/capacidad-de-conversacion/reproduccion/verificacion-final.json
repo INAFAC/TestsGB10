@@ -1,0 +1,41 @@
+{
+  "checked_utc": "2026-10-18T16:59:02.201268+00:00",
+  "verified": true,
+  "verification_script_sha256": "e1b1ab7d0d91a855d63b574a014f72abb6ca96df47e51c3b63602f61ea88587c",
+  "container_status": "running",
+  "command": [
+    "vllm",
+    "serve",
+    "nvidia/Qwen3.8-27B-NVFP4",
+    "--gpu-memory-utilization",
+    "0.40",
+    "--max-num-seqs",
+    "4",
+    "--enable-auto-tool-choice",
+    "--tool-call-parser",
+    "qwen3_coder",
+    "--reasoning-parser",
+    "qwen3"
+  ],
+  "image_id": "sha256:557747337846eecf34486866f3d992383c6f8af869fdb0e365b5093fcaee02c2",
+  "compose_sha256": "1caf0951ec1175b71b97d53ffcc557e9d9ea2e506dd046b2647603c8551fd696",
+  "health_http_status": 200,
+  "max_model_len": 262144,
+  "requests_before_generation": {
+    "num_requests_running": 0.0,
+    "num_requests_waiting": 0.0
+  },
+  "generation_seconds": 1.348561852995772,
+  "generation_usage": {
+    "prompt_tokens": 14,
+    "total_tokens": 30,
+    "completion_tokens": 16,
+    "prompt_tokens_details": null,
+    "completion_tokens_details": null
+  },
+  "generation_ok": true,
+  "requests": {
+    "num_requests_running": 0.0,
+    "num_requests_waiting": 0.0
+  }
+}

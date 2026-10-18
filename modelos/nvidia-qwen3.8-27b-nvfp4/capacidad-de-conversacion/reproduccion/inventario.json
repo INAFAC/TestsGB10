@@ -121,14 +121,20 @@
   },
   {
     "file": "reproduccion/metadata.json",
-    "sha256": "4bfc5bd0e1a35af878812e4d2fd004eb406b5a7885bb91df7e8855de33bd2a4a",
-    "original_sha256": "4bfc5bd0e1a35af878812e4d2fd004eb406b5a7885bb91df7e8855de33bd2a4a",
+    "sha256": "fef6d12458a6c06fa95d29cb5661181eee6432c2f1b695d4818496721aa3de2c",
+    "original_sha256": "fef6d12458a6c06fa95d29cb5661181eee6432c2f1b695d4818496721aa3de2c",
     "sanitized": false
   },
   {
     "file": "reproduccion/plan.json",
     "sha256": "6db1f439cf421aa689e15fe713845224b5ad800db6d9ee075e31fa9fddae45b2",
     "original_sha256": "6db1f439cf421aa689e15fe713845224b5ad800db6d9ee075e31fa9fddae45b2",
+    "sanitized": false
+  },
+  {
+    "file": "reproduccion/verificacion-final.json",
+    "sha256": "1644555e1ab8ac9ba75b39a797b7f9e7ffac1dd026acdfc758199f4a4c796aac",
+    "original_sha256": "1644555e1ab8ac9ba75b39a797b7f9e7ffac1dd026acdfc758199f4a4c796aac",
     "sanitized": false
   },
   {
