@@ -17,7 +17,7 @@ Las respuestas deben tener texto visible y terminar naturalmente. En cada bloque
 | 35% | 1 | 2 | Comprobado: el siguiente grupo no cumple |
 | 40% | 1 | 2 | Comprobado: el siguiente grupo no cumple |
 | 50% | 1 | 2 | Comprobado: el siguiente grupo no cumple |
-| 60% | Al menos 1 | 2 (en curso) | Buscando el máximo; mínimo ya comprobado; repetición del medidor pendiente; frontera sin cerrar |
+| 60% | 1 | 2 | Comprobado: el siguiente grupo no cumple |
 | 70% | 1 | 2 | Comprobado: el siguiente grupo no cumple |
 | 85% | 1 | 2 | Comprobado: el siguiente grupo no cumple |
 | 92% | 1 | 2 | Comprobado: el siguiente grupo no cumple |
@@ -52,7 +52,7 @@ Estos son los últimos 16 turnos de los recorridos completos, aproximadamente de
 | [Recorrido desde el principio](memoria-50-personas-2-recorrido-completo-intento-1/README.md) | 50% | 2 | 210 | 214.876 | 5,5 s | 5,25 tokens/s | 221,3 min | Tres rondas seguidas con tiempos fuera de referencia |
 | [Control con razonamiento](memoria-50-personas-1-control-con-razonamiento-intento-3/README.md) | 50% | 1 | 5 | 11.538 | 46,2 s | 11,90 tokens/s | 6,6 min | No cumple |
 | [Recorrido desde el principio](memoria-60-personas-1-recorrido-completo-intento-1/README.md) | 60% | 1 | 257 | 262.026 | 3,3 s | 6,68 tokens/s | 273,6 min | Cumple |
-| [Recorrido desde el principio](memoria-60-personas-2-recorrido-completo-intento-1/README.md) | 60% | 2 | 130 | 133.608 | 3,7 s | 6,65 tokens/s | 202,1 min | Medidor interrumpido; repetición pendiente |
+| [Recorrido desde el principio](memoria-60-personas-2-recorrido-completo-intento-1/README.md) | 60% | 2 | 130 | 133.608 | 3,7 s | 6,65 tokens/s | 202,1 min | Medidor interrumpido; intento repetido |
 | [Control con razonamiento](memoria-60-personas-1-control-con-razonamiento-intento-3/README.md) | 60% | 1 | 5 | 10.807 | 38,3 s | 11,87 tokens/s | 5,6 min | No cumple |
 | [Recorrido desde el principio](memoria-85-personas-1-recorrido-completo-intento-1/README.md) | 85% | 1 | 257 | 262.029 | 4,2 s | 6,16 tokens/s | 293,2 min | Cumple |
 | [Recorrido desde el principio](memoria-85-personas-2-recorrido-completo-intento-1/README.md) | 85% | 2 | 186 | 190.125 | 6,4 s | 5,45 tokens/s | 164,4 min | Tres rondas seguidas con tiempos fuera de referencia |
@@ -63,11 +63,7 @@ Estos son los últimos 16 turnos de los recorridos completos, aproximadamente de
 | [Recorrido desde el principio](memoria-92-personas-1-recorrido-completo-intento-1/README.md) | 92% | 1 | 257 | 262.029 | 4,2 s | 6,19 tokens/s | 275,6 min | Cumple |
 | [Recorrido desde el principio](memoria-92-personas-2-recorrido-completo-intento-1/README.md) | 92% | 2 | 173 | 176.853 | 5,9 s | 5,75 tokens/s | 167,5 min | Tres rondas seguidas con tiempos fuera de referencia |
 | [Control con razonamiento](memoria-92-personas-1-control-con-razonamiento-intento-3/README.md) | 92% | 1 | 5 | 11.336 | 41,2 s | 11,86 tokens/s | 6,4 min | No cumple |
-| Recorrido desde el principio | 60% | 2 | 208 | 212.622 | 5,0 s | 5,30 tokens/s | 229,5 min | En curso; 2 bloques completos fuera de referencia |
-
-El intento de **60% con 2 personas** fue interrumpido por el medidor. [Causa y repetición pendiente](correccion-del-medidor.md). No se usa ese error para atribuir un límite al GB10.
-
-En la prueba en curso al **60% con 2 personas**, el último bloque completo fuera de referencia es **178–193**: espera p95 de **5,57 s**, peor espera de **5,75 s**, velocidad p05 de **5,17 tokens/s** y respuesta completa p95 de **65,4 s**. Los valores del conjunto del recorrido pueden ocultar esta ralentización; se exige cumplir también en cada bloque.
+| [Recorrido desde el principio](memoria-60-personas-2-recorrido-completo-intento-2/README.md) | 60% | 2 | 209 | 213.659 | 5,0 s | 5,28 tokens/s | 231,0 min | Tres rondas seguidas con tiempos fuera de referencia |
 
 ## Cómo avanza cada conversación
 

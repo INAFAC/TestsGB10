@@ -17,7 +17,7 @@
   "image": "nvcr.io/nvidia/vllm:26.09-py3",
   "image_id": "sha256:557747337846eecf34486866f3d992383c6f8af869fdb0e365b5093fcaee02c2",
   "compose_sha256": "1caf0951ec1175b71b97d53ffcc557e9d9ea2e506dd046b2647603c8551fd696",
-  "state": "running",
+  "state": "restoring",
   "restore_status": "pending",
   "profiles": [
     {
@@ -377,14 +377,29 @@
     {
       "memory_fraction": 0.6,
       "input_tokens": 512,
-      "state": "running",
+      "state": "complete",
       "attempts": [
-        "memoria-60-personas-1-recorrido-completo-intento-1"
+        "memoria-60-personas-1-recorrido-completo-intento-1",
+        "memoria-60-personas-2-recorrido-completo-intento-2"
       ],
-      "largest_confirmed_acceptable": 0,
-      "first_confirmed_unacceptable": null,
+      "largest_confirmed_acceptable": 1,
+      "first_confirmed_unacceptable": 2,
       "recovery_of": [
         "memoria-60-personas-2-recorrido-completo-intento-1"
+      ],
+      "observations": {
+        "1": [
+          true
+        ],
+        "2": [
+          false
+        ]
+      },
+      "first_not_confirmed_acceptable": 2,
+      "reached_search_ceiling": false,
+      "nonmonotonic": false,
+      "default_reasoning_controls": [
+        "memoria-60-personas-1-control-con-razonamiento-intento-3"
       ]
     }
   ],
@@ -487,7 +502,8 @@
       "exit_code": 1,
       "timed_out": false,
       "duration_seconds": 12131.543941252981,
-      "acceptable_reference": false
+      "acceptable_reference": false,
+      "resolved_by": "memoria-60-personas-2-recorrido-completo-intento-2"
     },
     {
       "id": "memoria-60-personas-1-control-con-razonamiento-intento-3",
@@ -581,12 +597,16 @@
     },
     {
       "id": "memoria-60-personas-2-recorrido-completo-intento-2",
-      "state": "running",
+      "state": "finished",
       "started_utc": "2026-10-18T13:01:50.104930+00:00",
-      "recovery": true
+      "recovery": true,
+      "exit_code": 1,
+      "timed_out": false,
+      "duration_seconds": 13858.509080885968,
+      "acceptable_reference": false
     }
   ],
-  "measurements_complete": false,
+  "measurements_complete": true,
   "restore_seconds": 381.09490308800014,
   "recoveries": [
     {
@@ -595,7 +615,7 @@
       "pending": [
         "memoria-60-personas-2-recorrido-completo-intento-1"
       ],
-      "state": "running"
+      "state": "complete"
     }
   ],
   "error": null
