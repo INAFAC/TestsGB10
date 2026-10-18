@@ -15,7 +15,25 @@ Resultados para decidir cuánta memoria reservar y cuántas conversaciones puede
 <!-- conclusiones-inicio -->
 ## Personas que pueden conversar hasta llenar el contexto
 
-La [comprobación por presupuesto de memoria](modelos/nvidia-qwen3.8-27b-nvfp4/capacidad-de-conversacion/README.md) sigue conversaciones desde el principio, conserva sus mensajes y respuestas y aumenta los usuarios para encontrar dónde deja de mantenerse una experiencia útil. Compara **35%, 40%, 50%, 60%, 70%, 85% y 92%**. Las filas pendientes todavía no demuestran capacidad hasta el final del contexto.
+La [comprobación por presupuesto de memoria](modelos/nvidia-qwen3.8-27b-nvfp4/capacidad-de-conversacion/README.md) sigue conversaciones desde unos 512 tokens hasta casi 262.144, conservando todos los mensajes y las respuestas reales.
+
+| Memoria configurada | Personas que completaron todo el recorrido útil | Resultado con dos personas |
+|---:|---:|---|
+| 35% | 1 | Caché llena y plazos de espera agotados |
+| 40% | 1 | Caché llena y un plazo de espera agotado |
+| 50% | 1 | Dejó de cumplir los tiempos establecidos |
+| 60% | Al menos 1 | Repetición en curso por un error del medidor anterior |
+| 70% | 1 | Dejó de cumplir los tiempos establecidos |
+| 85% | 1 | Dejó de cumplir los tiempos establecidos |
+| 92% | 1 | Dejó de cumplir los tiempos establecidos |
+
+**Esta tabla usa razonamiento desactivado**, respuestas solicitadas de hasta 100 palabras, mensajes simultáneos y al menos 30 segundos de pausa entre rondas. Se exige primer texto visible en un máximo de 5 segundos para el 95% de las peticiones, ninguna espera superior a 10 segundos, al menos 5 tokens/s para el 95% y respuesta completa en 120 segundos para el 95%. Debe cumplirse en todo el recorrido y en cada tramo de hasta 16 rondas.
+
+Es la capacidad comprobada bajo esa referencia, no un máximo universal de personas conectadas. Una prueba detenida por lentitud no demuestra que las conversaciones no puedan terminar si se aceptan esperas mayores. Los controles siguientes comprueban otras cargas.
+
+**El límite del servidor fue cuatro solicitudes activas en estos recorridos de una y dos personas.** No obligó a las dos conversaciones a ejecutarse de una en una. Los perfiles con una persona completaron 257 rondas y terminaron naturalmente a menos de 160 tokens del máximo; no se forzó una respuesta para rellenar exactamente el contexto.
+
+[Comparar los tiempos cerca del límite, la memoria realmente ocupada y cada intento](modelos/nvidia-qwen3.8-27b-nvfp4/capacidad-de-conversacion/README.md).
 
 ## Controles anteriores con 20 personas
 

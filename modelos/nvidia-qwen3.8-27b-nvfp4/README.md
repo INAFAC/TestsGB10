@@ -8,7 +8,7 @@
 
 **Modelo exacto:** `nvidia/Qwen3.8-27B-NVFP4`.
 
-**[Personas que pueden conversar hasta el límite, según la memoria](capacidad-de-conversacion/README.md):** recorridos desde el principio, tiempos de cada tramo y estado de las pruebas pendientes.
+**[Personas que pueden conversar hasta el límite, según la memoria](capacidad-de-conversacion/README.md):** recorridos desde el principio, tiempos de cada tramo y estado de la repetición pendiente del 60%.
 
 
 **Máximo por conversación: 262.144 tokens, sumando historial y respuesta.** La memoria asignada puede obligar a configurar un límite menor.
@@ -37,7 +37,13 @@ En las pruebas iniciales de salida fija, “terminó” significa que entregó t
 <!-- interpretacion-inicio -->
 ### Capacidad durante una conversación completa
 
-La [batería de conversaciones completas](capacidad-de-conversacion/README.md) responde a la pregunta de cuántas personas pueden conversar de forma útil según la memoria, avanzando poco a poco hasta el límite. Incluye **35%, 40%, 50%, 60%, 70%, 85% y 92%**, conserva las respuestas reales y mide cada tramo del historial. Sus resultados pendientes no deben deducirse de las cargas aisladas de las tablas anteriores.
+En la [batería de conversaciones completas](capacidad-de-conversacion/README.md), **una persona completó las 257 rondas hasta casi 262.144 tokens con cada presupuesto: 35%, 40%, 50%, 60%, 70%, 85% y 92%**. Conservó todos sus mensajes y las respuestas reales, sin cortes de salida, y cumplió los tiempos en todos los tramos.
+
+Con dos personas, el 35% y el 40% llegaron a llenar la caché y tuvieron plazos de espera agotados. El 50%, 70%, 85% y 92% se detuvieron por tiempos fuera de la referencia antes de completar el recorrido. **El 60% con dos personas se está repitiendo por un error del programa de pruebas; su frontera sigue pendiente.** Todos estos recorridos permitían cuatro solicitudes activas, suficientes para las dos personas medidas.
+
+La referencia usa **razonamiento desactivado**, respuestas solicitadas de hasta 100 palabras, al menos 30 segundos entre rondas y un primer texto visible en 5 segundos para el 95% de las peticiones. También exige velocidad mínima, tiempo de respuesta completa y cumplimiento por tramos; [consultar todos los criterios y resultados](capacidad-de-conversacion/README.md). Cambiar solo el porcentaje de memoria no reproduce el modo de razonamiento de estas pruebas. Se desactiva en cada petición mediante `chat_template_kwargs: {"enable_thinking": false}`.
+
+El 35% es el menor presupuesto ensayado que completó este recorrido útil; no se han probado todos los porcentajes intermedios. Reservar el 92% no aumentó el grupo que cumplió. Estas observaciones no demuestran un máximo universal para cualquier ritmo de conversación ni que dos personas no puedan terminar si aceptan mayores esperas.
 
 ### Conversaciones recurrentes con 10, 20 y 30 personas
 
