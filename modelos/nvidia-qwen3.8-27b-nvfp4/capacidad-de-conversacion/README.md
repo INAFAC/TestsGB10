@@ -20,7 +20,7 @@ Las respuestas deben tener texto visible y terminar naturalmente. En cada bloque
 | 60% | Al menos 1 | 2 | Repetición pendiente por error del medidor; frontera sin cerrar |
 | 85% | 1 | 2 | Comprobado: el siguiente grupo no cumple |
 | 35% | 1 | 2 | Comprobado: el siguiente grupo no cumple |
-| 92% | Pendiente de completar el recorrido | 1 (en curso) | En curso |
+| 92% | Al menos 1 | 2 (en curso) | Buscando el máximo; mínimo ya comprobado |
 
 El presupuesto de memoria no es un límite estricto de toda la RAM del GB10. El límite activo del servidor es el mayor entre cuatro y las personas de la prueba; nunca es inferior al grupo enviado. La búsqueda llega hasta 32 personas: si se alcanza ese techo se informa como un mínimo demostrado, nunca como el máximo del equipo. La búsqueda acota los grupos ensayados; no demuestra todas las configuraciones posibles.
 
@@ -46,7 +46,8 @@ El presupuesto de memoria no es un límite estricto de toda la RAM del GB10. El 
 | [Recorrido desde el principio](memoria-35-personas-1-recorrido-completo-intento-1/README.md) | 35% | 1 | 257 | 262.028 | 3,3 s | 6,70 tokens/s | 262,6 min | Cumple |
 | [Recorrido desde el principio](memoria-35-personas-2-recorrido-completo-intento-1/README.md) | 35% | 2 | 135 | 136.869 | 4,1 s | 6,56 tokens/s | 120,4 min | Plazo de espera agotado: 2 peticiones, turno 135 |
 | [Control con razonamiento](memoria-35-personas-1-control-con-razonamiento-intento-3/README.md) | 35% | 1 | 5 | 10.885 | 45,3 s | 11,97 tokens/s | 5,7 min | No cumple |
-| Recorrido desde el principio | 92% | 1 | 256 | 261.478 | 4,2 s | 6,19 tokens/s | 275,3 min | En curso; no es un resultado final |
+| [Recorrido desde el principio](memoria-92-personas-1-recorrido-completo-intento-1/README.md) | 92% | 1 | 257 | 262.029 | 4,2 s | 6,19 tokens/s | 275,6 min | Cumple |
+| Recorrido desde el principio | 92% | 2 | 1 | 662 | — s | — tokens/s | 0,6 min | En curso; no es un resultado final |
 
 El intento de **60% con 2 personas** fue interrumpido por el medidor. [Causa y repetición pendiente](correccion-del-medidor.md). No se usa ese error para atribuir un límite al GB10.
 

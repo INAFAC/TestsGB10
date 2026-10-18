@@ -330,9 +330,16 @@
       "memory_fraction": 0.92,
       "input_tokens": 512,
       "state": "running",
-      "attempts": [],
+      "attempts": [
+        "memoria-92-personas-1-recorrido-completo-intento-1"
+      ],
       "largest_confirmed_acceptable": 0,
-      "first_confirmed_unacceptable": null
+      "first_confirmed_unacceptable": null,
+      "observations": {
+        "1": [
+          true
+        ]
+      }
     }
   ],
   "script_sha256": "630ec2bac8e44151d6fbe0189d1d16b9617ce5cf58d3cb7715c147cdeac185ef",
@@ -501,8 +508,17 @@
     },
     {
       "id": "memoria-92-personas-1-recorrido-completo-intento-1",
+      "state": "finished",
+      "started_utc": "2026-10-18T05:15:29.598847+00:00",
+      "exit_code": 0,
+      "timed_out": false,
+      "duration_seconds": 16541.640926590015,
+      "acceptable_reference": true
+    },
+    {
+      "id": "memoria-92-personas-2-recorrido-completo-intento-1",
       "state": "running",
-      "started_utc": "2026-10-18T05:15:29.598847+00:00"
+      "started_utc": "2026-10-18T09:51:11.465515+00:00"
     }
   ]
 }
