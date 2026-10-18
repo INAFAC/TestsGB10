@@ -47,7 +47,7 @@ El presupuesto de memoria no es un límite estricto de toda la RAM del GB10. El 
 | [Recorrido desde el principio](memoria-35-personas-2-recorrido-completo-intento-1/README.md) | 35% | 2 | 135 | 136.869 | 4,1 s | 6,56 tokens/s | 120,4 min | Plazo de espera agotado: 2 peticiones, turno 135 |
 | [Control con razonamiento](memoria-35-personas-1-control-con-razonamiento-intento-3/README.md) | 35% | 1 | 5 | 10.885 | 45,3 s | 11,97 tokens/s | 5,7 min | No cumple |
 | [Recorrido desde el principio](memoria-92-personas-1-recorrido-completo-intento-1/README.md) | 92% | 1 | 257 | 262.029 | 4,2 s | 6,19 tokens/s | 275,6 min | Cumple |
-| Recorrido desde el principio | 92% | 2 | 16 | 16.042 | 2,2 s | 10,86 tokens/s | 12,3 min | En curso; no es un resultado final |
+| Recorrido desde el principio | 92% | 2 | 32 | 32.421 | 2,4 s | 9,98 tokens/s | 25,4 min | En curso; no es un resultado final |
 
 El intento de **60% con 2 personas** fue interrumpido por el medidor. [Causa y repetición pendiente](correccion-del-medidor.md). No se usa ese error para atribuir un límite al GB10.
 
