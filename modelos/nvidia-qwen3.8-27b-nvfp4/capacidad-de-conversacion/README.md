@@ -63,7 +63,7 @@ Estos son los últimos 16 turnos de los recorridos completos, aproximadamente de
 | [Recorrido desde el principio](memoria-92-personas-1-recorrido-completo-intento-1/README.md) | 92% | 1 | 257 | 262.029 | 4,2 s | 6,19 tokens/s | 275,6 min | Cumple |
 | [Recorrido desde el principio](memoria-92-personas-2-recorrido-completo-intento-1/README.md) | 92% | 2 | 173 | 176.853 | 5,9 s | 5,75 tokens/s | 167,5 min | Tres rondas seguidas con tiempos fuera de referencia |
 | [Control con razonamiento](memoria-92-personas-1-control-con-razonamiento-intento-3/README.md) | 92% | 1 | 5 | 11.336 | 41,2 s | 11,86 tokens/s | 6,4 min | No cumple |
-| Recorrido desde el principio | 60% | 2 | 177 | 180.888 | 4,6 s | 5,74 tokens/s | 185,1 min | En curso; 1 bloque completo fuera de referencia |
+| Recorrido desde el principio | 60% | 2 | 192 | 196.494 | 4,8 s | 5,51 tokens/s | 206,4 min | En curso; 1 bloque completo fuera de referencia |
 
 El intento de **60% con 2 personas** fue interrumpido por el medidor. [Causa y repetición pendiente](correccion-del-medidor.md). No se usa ese error para atribuir un límite al GB10.
 
