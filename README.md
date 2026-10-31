@@ -12,6 +12,12 @@ Resultados para decidir cuánta memoria reservar y cuántas conversaciones puede
 |---|---:|---|
 | Qwen3.8-27B-NVFP4 | 262.144 tokens | [Resultados y configuración](modelos/nvidia-qwen3.8-27b-nvfp4/README.md) · [Conversaciones con varios usuarios](modelos/nvidia-qwen3.8-27b-nvfp4/conversaciones-recurrentes/README.md) |
 
+## Otras comparaciones
+
+| Comparación | Qué responde |
+|---|---|
+| [Lector OCR: PP-OCRv6 frente a Unlimited OCR 2](comparaciones/ocr-pp-ocrv6-vs-unlimited-ocr-2/README.md) | ¿Merece la pena cambiar el programa que lee las facturas escaneadas? Exactitud con documentos buenos y malos. |
+
 <!-- conclusiones-inicio -->
 ## Personas que pueden conversar hasta llenar el contexto
 

@@ -1,0 +1,9495 @@
+{
+ "A": [
+  {
+   "imagen": "INV-001_p1_escaneo.jpg",
+   "exactos": 65,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 19
+    },
+    "cantidad": {
+     "exact": 10
+    },
+    "precio": {
+     "exact": 10
+    },
+    "porcentaje": {
+     "exact": 20
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.23460410557184752,
+   "wer": 0.23783783783783785,
+   "bow_f1": 0.981132075471698,
+   "tablas": {
+    "filas": 10,
+    "celdas": 47,
+    "filas_halladas": 10,
+    "celdas_en_fila": 47,
+    "filas_integras": 10,
+    "filas_mismo_ancho": 10,
+    "celdas_en_columna": 47,
+    "celdas_mismo_ancho": 47
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 22.10836746986024,
+   "mem": {
+    "cgroup_pico_global": 3622.03515625,
+    "rss_pico": 2721.87109375,
+    "sistema_disponible": 17488.26171875
+   },
+   "tokens_salida": null,
+   "factura": "INV-001",
+   "variante": "escaneo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-001_p1_escaneo_malo.jpg",
+   "exactos": 55,
+   "cambiados": 2,
+   "ausentes": 8,
+   "inventados": 1,
+   "inventados_lista": [
+    "11500"
+   ],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 12,
+     "absent": 7
+    },
+    "cantidad": {
+     "exact": 10
+    },
+    "precio": {
+     "exact": 9,
+     "changed": 1
+    },
+    "porcentaje": {
+     "exact": 19,
+     "changed": 1
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "absent": 1
+    }
+   },
+   "cer": 0.3841642228739003,
+   "wer": 0.4918918918918919,
+   "bow_f1": 0.782122905027933,
+   "tablas": {
+    "filas": 10,
+    "celdas": 47,
+    "filas_halladas": 6,
+    "celdas_en_fila": 26,
+    "filas_integras": 5,
+    "filas_mismo_ancho": 6,
+    "celdas_en_columna": 26,
+    "celdas_mismo_ancho": 28
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 11.71945210895501,
+   "mem": {
+    "cgroup_pico_global": 3622.03515625,
+    "rss_pico": 2721.87109375,
+    "sistema_disponible": 17294.12890625
+   },
+   "tokens_salida": null,
+   "factura": "INV-001",
+   "variante": "escaneo_malo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-001_p1_foto.jpg",
+   "exactos": 65,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 19
+    },
+    "cantidad": {
+     "exact": 10
+    },
+    "precio": {
+     "exact": 10
+    },
+    "porcentaje": {
+     "exact": 20
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.22287390029325513,
+   "wer": 0.20540540540540542,
+   "bow_f1": 0.9863013698630138,
+   "tablas": {
+    "filas": 10,
+    "celdas": 47,
+    "filas_halladas": 10,
+    "celdas_en_fila": 47,
+    "filas_integras": 10,
+    "filas_mismo_ancho": 10,
+    "celdas_en_columna": 47,
+    "celdas_mismo_ancho": 47
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 15.88696459797211,
+   "mem": {
+    "cgroup_pico_global": 3787.4609375,
+    "rss_pico": 2875.18359375,
+    "sistema_disponible": 17120.70703125
+   },
+   "tokens_salida": null,
+   "factura": "INV-001",
+   "variante": "foto",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-001_p1_limpia.png",
+   "exactos": 65,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 19
+    },
+    "cantidad": {
+     "exact": 10
+    },
+    "precio": {
+     "exact": 10
+    },
+    "porcentaje": {
+     "exact": 20
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.1906158357771261,
+   "wer": 0.1783783783783784,
+   "bow_f1": 0.9891891891891892,
+   "tablas": {
+    "filas": 10,
+    "celdas": 47,
+    "filas_halladas": 10,
+    "celdas_en_fila": 47,
+    "filas_integras": 10,
+    "filas_mismo_ancho": 10,
+    "celdas_en_columna": 47,
+    "celdas_mismo_ancho": 47
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 18.767048122826964,
+   "mem": {
+    "cgroup_pico_global": 4584.63671875,
+    "rss_pico": 3673.3203125,
+    "sistema_disponible": 16761.34375
+   },
+   "tokens_salida": null,
+   "factura": "INV-001",
+   "variante": "limpia",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-002_p1_escaneo.jpg",
+   "exactos": 20,
+   "cambiados": 0,
+   "ausentes": 1,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 7
+    },
+    "cantidad": {
+     "exact": 4
+    },
+    "precio": {
+     "exact": 4
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "absent": 1
+    }
+   },
+   "cer": 0.12558139534883722,
+   "wer": 0.125,
+   "bow_f1": 0.9547738693467337,
+   "tablas": {
+    "filas": 4,
+    "celdas": 12,
+    "filas_halladas": 4,
+    "celdas_en_fila": 12,
+    "filas_integras": 4,
+    "filas_mismo_ancho": 4,
+    "celdas_en_columna": 12,
+    "celdas_mismo_ancho": 12
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 7.458531766897067,
+   "mem": {
+    "cgroup_pico_global": 4584.63671875,
+    "rss_pico": 3673.3203125,
+    "sistema_disponible": 16863.80078125
+   },
+   "tokens_salida": null,
+   "factura": "INV-002",
+   "variante": "escaneo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-002_p1_escaneo_malo.jpg",
+   "exactos": 19,
+   "cambiados": 1,
+   "ausentes": 1,
+   "inventados": 7,
+   "inventados_lista": [
+    "2",
+    "2.5",
+    "100",
+    "100",
+    "10",
+    "25",
+    "3"
+   ],
+   "inventados_importe": 1,
+   "por_tipo": {
+    "importe": {
+     "exact": 7
+    },
+    "cantidad": {
+     "exact": 4
+    },
+    "precio": {
+     "exact": 4
+    },
+    "fecha": {
+     "changed": 1,
+     "exact": 1
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "absent": 1
+    }
+   },
+   "cer": 0.4604651162790698,
+   "wer": 0.5961538461538461,
+   "bow_f1": 0.6915887850467289,
+   "tablas": {
+    "filas": 4,
+    "celdas": 12,
+    "filas_halladas": 4,
+    "celdas_en_fila": 7,
+    "filas_integras": 1
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 6.919587468029931,
+   "mem": {
+    "cgroup_pico_global": 4584.63671875,
+    "rss_pico": 3673.3203125,
+    "sistema_disponible": 16939.47265625
+   },
+   "tokens_salida": null,
+   "factura": "INV-002",
+   "variante": "escaneo_malo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-002_p1_foto.jpg",
+   "exactos": 20,
+   "cambiados": 0,
+   "ausentes": 1,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 7
+    },
+    "cantidad": {
+     "exact": 4
+    },
+    "precio": {
+     "exact": 4
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "absent": 1
+    }
+   },
+   "cer": 0.324031007751938,
+   "wer": 0.33653846153846156,
+   "bow_f1": 0.9547738693467337,
+   "tablas": {
+    "filas": 4,
+    "celdas": 12,
+    "filas_halladas": 4,
+    "celdas_en_fila": 12,
+    "filas_integras": 4,
+    "filas_mismo_ancho": 4,
+    "celdas_en_columna": 12,
+    "celdas_mismo_ancho": 12
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 7.5590248089283705,
+   "mem": {
+    "cgroup_pico_global": 4584.63671875,
+    "rss_pico": 3673.3203125,
+    "sistema_disponible": 16783.58984375
+   },
+   "tokens_salida": null,
+   "factura": "INV-002",
+   "variante": "foto",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-002_p1_limpia.png",
+   "exactos": 21,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 7
+    },
+    "cantidad": {
+     "exact": 4
+    },
+    "precio": {
+     "exact": 4
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.31317829457364343,
+   "wer": 0.2980769230769231,
+   "bow_f1": 0.9951690821256038,
+   "tablas": {
+    "filas": 4,
+    "celdas": 12,
+    "filas_halladas": 4,
+    "celdas_en_fila": 12,
+    "filas_integras": 4,
+    "filas_mismo_ancho": 4,
+    "celdas_en_columna": 12,
+    "celdas_mismo_ancho": 12
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 7.981476280838251,
+   "mem": {
+    "cgroup_pico_global": 4584.63671875,
+    "rss_pico": 3673.3203125,
+    "sistema_disponible": 16602.0859375
+   },
+   "tokens_salida": null,
+   "factura": "INV-002",
+   "variante": "limpia",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-003_p1_escaneo.jpg",
+   "exactos": 24,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 10
+    },
+    "cantidad": {
+     "exact": 5
+    },
+    "precio": {
+     "exact": 5
+    },
+    "porcentaje": {
+     "exact": 1
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 1
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.1345707656612529,
+   "wer": 0.16,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 5,
+    "celdas": 15,
+    "filas_halladas": 5,
+    "celdas_en_fila": 15,
+    "filas_integras": 5,
+    "filas_mismo_ancho": 5,
+    "celdas_en_columna": 15,
+    "celdas_mismo_ancho": 15
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 7.89789203600958,
+   "mem": {
+    "cgroup_pico_global": 4584.63671875,
+    "rss_pico": 3673.3203125,
+    "sistema_disponible": 16953.1953125
+   },
+   "tokens_salida": null,
+   "factura": "INV-003",
+   "variante": "escaneo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-003_p1_escaneo_malo.jpg",
+   "exactos": 19,
+   "cambiados": 4,
+   "ausentes": 1,
+   "inventados": 2,
+   "inventados_lista": [
+    "772026",
+    "104"
+   ],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 9,
+     "changed": 1
+    },
+    "cantidad": {
+     "exact": 3,
+     "changed": 2
+    },
+    "precio": {
+     "exact": 5
+    },
+    "porcentaje": {
+     "changed": 1
+    },
+    "fecha": {
+     "absent": 1
+    },
+    "nif": {
+     "exact": 1
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.3294663573085847,
+   "wer": 0.5733333333333334,
+   "bow_f1": 0.6569343065693432,
+   "tablas": {
+    "filas": 5,
+    "celdas": 15,
+    "filas_halladas": 4,
+    "celdas_en_fila": 9,
+    "filas_integras": 1
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 3.8582745948806405,
+   "mem": {
+    "cgroup_pico_global": 4584.63671875,
+    "rss_pico": 3673.3203125,
+    "sistema_disponible": 17002.87109375
+   },
+   "tokens_salida": null,
+   "factura": "INV-003",
+   "variante": "escaneo_malo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-003_p1_foto.jpg",
+   "exactos": 24,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 10
+    },
+    "cantidad": {
+     "exact": 5
+    },
+    "precio": {
+     "exact": 5
+    },
+    "porcentaje": {
+     "exact": 1
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 1
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.03248259860788863,
+   "wer": 0.02666666666666667,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 5,
+    "celdas": 15,
+    "filas_halladas": 5,
+    "celdas_en_fila": 15,
+    "filas_integras": 5,
+    "filas_mismo_ancho": 5,
+    "celdas_en_columna": 15,
+    "celdas_mismo_ancho": 15
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 8.072454349836335,
+   "mem": {
+    "cgroup_pico_global": 4584.63671875,
+    "rss_pico": 3673.3203125,
+    "sistema_disponible": 16846.1875
+   },
+   "tokens_salida": null,
+   "factura": "INV-003",
+   "variante": "foto",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-003_p1_limpia.png",
+   "exactos": 24,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 1,
+   "inventados_lista": [
+    "0"
+   ],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 10
+    },
+    "cantidad": {
+     "exact": 5
+    },
+    "precio": {
+     "exact": 5
+    },
+    "porcentaje": {
+     "exact": 1
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 1
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.027842227378190254,
+   "wer": 0.02666666666666667,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 5,
+    "celdas": 15,
+    "filas_halladas": 5,
+    "celdas_en_fila": 15,
+    "filas_integras": 5,
+    "filas_mismo_ancho": 5,
+    "celdas_en_columna": 15,
+    "celdas_mismo_ancho": 15
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 11.076241755858064,
+   "mem": {
+    "cgroup_pico_global": 4584.63671875,
+    "rss_pico": 3673.3203125,
+    "sistema_disponible": 17018.23828125
+   },
+   "tokens_salida": null,
+   "factura": "INV-003",
+   "variante": "limpia",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-004_p1_escaneo.jpg",
+   "exactos": 10,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 5
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.3676190476190476,
+   "wer": 0.35,
+   "bow_f1": 0.9189189189189189,
+   "tablas": {
+    "filas": 1,
+    "celdas": 1,
+    "filas_halladas": 1,
+    "celdas_en_fila": 1,
+    "filas_integras": 1,
+    "filas_mismo_ancho": 1,
+    "celdas_en_columna": 1,
+    "celdas_mismo_ancho": 1
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 11.513445830205455,
+   "mem": {
+    "cgroup_pico_global": 4584.63671875,
+    "rss_pico": 3673.3203125,
+    "sistema_disponible": 16713.73046875
+   },
+   "tokens_salida": null,
+   "factura": "INV-004",
+   "variante": "escaneo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-004_p1_escaneo_malo.jpg",
+   "exactos": 9,
+   "cambiados": 0,
+   "ausentes": 1,
+   "inventados": 4,
+   "inventados_lista": [
+    "9999",
+    "7253",
+    "1150",
+    "2990.6135"
+   ],
+   "inventados_importe": 1,
+   "por_tipo": {
+    "importe": {
+     "exact": 5
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "absent": 1
+    }
+   },
+   "cer": 0.4247619047619048,
+   "wer": 0.525,
+   "bow_f1": 0.7671232876712328,
+   "tablas": {
+    "filas": 1,
+    "celdas": 1,
+    "filas_halladas": 1,
+    "celdas_en_fila": 1,
+    "filas_integras": 1,
+    "filas_mismo_ancho": 1,
+    "celdas_en_columna": 1,
+    "celdas_mismo_ancho": 1
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 10.338239097036421,
+   "mem": {
+    "cgroup_pico_global": 4584.63671875,
+    "rss_pico": 3673.3203125,
+    "sistema_disponible": 16886.58203125
+   },
+   "tokens_salida": null,
+   "factura": "INV-004",
+   "variante": "escaneo_malo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-004_p1_foto.jpg",
+   "exactos": 10,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 5
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.3466666666666667,
+   "wer": 0.375,
+   "bow_f1": 0.9054054054054055,
+   "tablas": {
+    "filas": 1,
+    "celdas": 1,
+    "filas_halladas": 1,
+    "celdas_en_fila": 1,
+    "filas_integras": 1,
+    "filas_mismo_ancho": 1,
+    "celdas_en_columna": 1,
+    "celdas_mismo_ancho": 1
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 11.720077777979895,
+   "mem": {
+    "cgroup_pico_global": 4584.63671875,
+    "rss_pico": 3673.3203125,
+    "sistema_disponible": 16768.796875
+   },
+   "tokens_salida": null,
+   "factura": "INV-004",
+   "variante": "foto",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-004_p1_limpia.png",
+   "exactos": 10,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 5
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.37523809523809526,
+   "wer": 0.3375,
+   "bow_f1": 0.9811320754716981,
+   "tablas": {
+    "filas": 1,
+    "celdas": 1,
+    "filas_halladas": 1,
+    "celdas_en_fila": 1,
+    "filas_integras": 1,
+    "filas_mismo_ancho": 1,
+    "celdas_en_columna": 1,
+    "celdas_mismo_ancho": 1
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 12.552833480993286,
+   "mem": {
+    "cgroup_pico_global": 4584.63671875,
+    "rss_pico": 3673.3203125,
+    "sistema_disponible": 16798.40625
+   },
+   "tokens_salida": null,
+   "factura": "INV-004",
+   "variante": "limpia",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-005_p1_escaneo.jpg",
+   "exactos": 134,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 31
+    },
+    "cantidad": {
+     "exact": 30
+    },
+    "precio": {
+     "exact": 30
+    },
+    "porcentaje": {
+     "exact": 38
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.07249584947426674,
+   "wer": 0.04885057471264368,
+   "bow_f1": 0.9855072463768115,
+   "tablas": {
+    "filas": 30,
+    "celdas": 128,
+    "filas_halladas": 30,
+    "celdas_en_fila": 128,
+    "filas_integras": 30,
+    "filas_mismo_ancho": 30,
+    "celdas_en_columna": 128,
+    "celdas_mismo_ancho": 128
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 19.823145819129422,
+   "mem": {
+    "cgroup_pico_global": 4584.63671875,
+    "rss_pico": 3673.3203125,
+    "sistema_disponible": 17095.3203125
+   },
+   "tokens_salida": null,
+   "factura": "INV-005",
+   "variante": "escaneo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-005_p2_escaneo.jpg",
+   "exactos": 88,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 29
+    },
+    "cantidad": {
+     "exact": 15
+    },
+    "precio": {
+     "exact": 15
+    },
+    "porcentaje": {
+     "exact": 28
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.01456726649528706,
+   "wer": 0.02252252252252252,
+   "bow_f1": 0.9909090909090909,
+   "tablas": {
+    "filas": 15,
+    "celdas": 67,
+    "filas_halladas": 15,
+    "celdas_en_fila": 67,
+    "filas_integras": 15,
+    "filas_mismo_ancho": 15,
+    "celdas_en_columna": 67,
+    "celdas_mismo_ancho": 67
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 14.219253888120875,
+   "mem": {
+    "cgroup_pico_global": 4584.63671875,
+    "rss_pico": 3673.3203125,
+    "sistema_disponible": 17143.15234375
+   },
+   "tokens_salida": null,
+   "factura": "INV-005",
+   "variante": "escaneo",
+   "pagina": 2
+  },
+  {
+   "imagen": "INV-005_p1_escaneo_malo.jpg",
+   "exactos": 130,
+   "cambiados": 1,
+   "ausentes": 3,
+   "inventados": 5,
+   "inventados_lista": [
+    "910",
+    "39",
+    "40",
+    "24",
+    "75"
+   ],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 28,
+     "absent": 3
+    },
+    "cantidad": {
+     "exact": 30
+    },
+    "precio": {
+     "exact": 29,
+     "changed": 1
+    },
+    "porcentaje": {
+     "exact": 38
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.36081903707802987,
+   "wer": 0.5057471264367817,
+   "bow_f1": 0.8187134502923976,
+   "tablas": {
+    "filas": 30,
+    "celdas": 128,
+    "filas_halladas": 27,
+    "celdas_en_fila": 114,
+    "filas_integras": 26,
+    "filas_mismo_ancho": 27,
+    "celdas_en_columna": 114,
+    "celdas_mismo_ancho": 115
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 17.219122467096895,
+   "mem": {
+    "cgroup_pico_global": 4584.63671875,
+    "rss_pico": 3673.3203125,
+    "sistema_disponible": 17375.91015625
+   },
+   "tokens_salida": null,
+   "factura": "INV-005",
+   "variante": "escaneo_malo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-005_p2_escaneo_malo.jpg",
+   "exactos": 75,
+   "cambiados": 3,
+   "ausentes": 10,
+   "inventados": 92,
+   "inventados_lista": [
+    "16553.06",
+    "16553.06",
+    "16553.06",
+    "16553.06",
+    "34",
+    "34",
+    "34",
+    "34",
+    "5",
+    "5",
+    "5",
+    "5",
+    "5",
+    "5",
+    "5",
+    "5",
+    "2.5",
+    "2.5",
+    "2.5",
+    "2.5"
+   ],
+   "inventados_importe": 24,
+   "por_tipo": {
+    "importe": {
+     "exact": 20,
+     "absent": 9
+    },
+    "cantidad": {
+     "exact": 15
+    },
+    "precio": {
+     "exact": 14,
+     "changed": 1
+    },
+    "porcentaje": {
+     "exact": 26,
+     "changed": 2
+    },
+    "iban": {
+     "absent": 1
+    }
+   },
+   "cer": 1.8757497857754928,
+   "wer": 2.175675675675676,
+   "bow_f1": 0.4226044226044226,
+   "tablas": {
+    "filas": 15,
+    "celdas": 67,
+    "filas_halladas": 11,
+    "celdas_en_fila": 47,
+    "filas_integras": 9
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": true,
+    "error_tecnico": false
+   },
+   "tiempo_s": 12.72766061895527,
+   "mem": {
+    "cgroup_pico_global": 4584.63671875,
+    "rss_pico": 3673.3203125,
+    "sistema_disponible": 17109.953125
+   },
+   "tokens_salida": null,
+   "factura": "INV-005",
+   "variante": "escaneo_malo",
+   "pagina": 2
+  },
+  {
+   "imagen": "INV-005_p1_foto.jpg",
+   "exactos": 133,
+   "cambiados": 0,
+   "ausentes": 1,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 30,
+     "absent": 1
+    },
+    "cantidad": {
+     "exact": 30
+    },
+    "precio": {
+     "exact": 30
+    },
+    "porcentaje": {
+     "exact": 38
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.07415605976757056,
+   "wer": 0.04597701149425287,
+   "bow_f1": 0.9884057971014494,
+   "tablas": {
+    "filas": 30,
+    "celdas": 128,
+    "filas_halladas": 30,
+    "celdas_en_fila": 128,
+    "filas_integras": 30,
+    "filas_mismo_ancho": 30,
+    "celdas_en_columna": 128,
+    "celdas_mismo_ancho": 128
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 20.548702987842262,
+   "mem": {
+    "cgroup_pico_global": 4584.63671875,
+    "rss_pico": 3673.3203125,
+    "sistema_disponible": 17330.8671875
+   },
+   "tokens_salida": null,
+   "factura": "INV-005",
+   "variante": "foto",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-005_p2_foto.jpg",
+   "exactos": 88,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 29
+    },
+    "cantidad": {
+     "exact": 15
+    },
+    "precio": {
+     "exact": 15
+    },
+    "porcentaje": {
+     "exact": 28
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.1268209083119109,
+   "wer": 0.13063063063063063,
+   "bow_f1": 0.9886104783599089,
+   "tablas": {
+    "filas": 15,
+    "celdas": 67,
+    "filas_halladas": 15,
+    "celdas_en_fila": 67,
+    "filas_integras": 15,
+    "filas_mismo_ancho": 15,
+    "celdas_en_columna": 67,
+    "celdas_mismo_ancho": 67
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 15.574423851910979,
+   "mem": {
+    "cgroup_pico_global": 4584.63671875,
+    "rss_pico": 3673.3203125,
+    "sistema_disponible": 16913.7734375
+   },
+   "tokens_salida": null,
+   "factura": "INV-005",
+   "variante": "foto",
+   "pagina": 2
+  },
+  {
+   "imagen": "INV-005_p1_limpia.png",
+   "exactos": 134,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 31
+    },
+    "cantidad": {
+     "exact": 30
+    },
+    "precio": {
+     "exact": 30
+    },
+    "porcentaje": {
+     "exact": 38
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.02933038184836746,
+   "wer": 0.028735632183908046,
+   "bow_f1": 0.9884393063583815,
+   "tablas": {
+    "filas": 30,
+    "celdas": 128,
+    "filas_halladas": 30,
+    "celdas_en_fila": 128,
+    "filas_integras": 30,
+    "filas_mismo_ancho": 30,
+    "celdas_en_columna": 128,
+    "celdas_mismo_ancho": 128
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 20.90882675605826,
+   "mem": {
+    "cgroup_pico_global": 4584.63671875,
+    "rss_pico": 3673.3203125,
+    "sistema_disponible": 17194.0234375
+   },
+   "tokens_salida": null,
+   "factura": "INV-005",
+   "variante": "limpia",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-005_p2_limpia.png",
+   "exactos": 88,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 29
+    },
+    "cantidad": {
+     "exact": 15
+    },
+    "precio": {
+     "exact": 15
+    },
+    "porcentaje": {
+     "exact": 28
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.1293916023993145,
+   "wer": 0.13513513513513514,
+   "bow_f1": 0.9909090909090909,
+   "tablas": {
+    "filas": 15,
+    "celdas": 67,
+    "filas_halladas": 15,
+    "celdas_en_fila": 67,
+    "filas_integras": 15,
+    "filas_mismo_ancho": 15,
+    "celdas_en_columna": 67,
+    "celdas_mismo_ancho": 67
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 16.54771834705025,
+   "mem": {
+    "cgroup_pico_global": 4710.55859375,
+    "rss_pico": 3793.41796875,
+    "sistema_disponible": 16561.1484375
+   },
+   "tokens_salida": null,
+   "factura": "INV-005",
+   "variante": "limpia",
+   "pagina": 2
+  },
+  {
+   "imagen": "INV-006_p1_escaneo.jpg",
+   "exactos": 102,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 33
+    },
+    "cantidad": {
+     "exact": 32
+    },
+    "precio": {
+     "exact": 32
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.06522882693319305,
+   "wer": 0.054285714285714284,
+   "bow_f1": 0.9957081545064378,
+   "tablas": {
+    "filas": 32,
+    "celdas": 96,
+    "filas_halladas": 32,
+    "celdas_en_fila": 96,
+    "filas_integras": 32,
+    "filas_mismo_ancho": 32,
+    "celdas_en_columna": 96,
+    "celdas_mismo_ancho": 96
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 14.850310473004356,
+   "mem": {
+    "cgroup_pico_global": 4710.55859375,
+    "rss_pico": 3793.41796875,
+    "sistema_disponible": 16894.03125
+   },
+   "tokens_salida": null,
+   "factura": "INV-006",
+   "variante": "escaneo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-006_p2_escaneo.jpg",
+   "exactos": 70,
+   "cambiados": 0,
+   "ausentes": 1,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 28
+    },
+    "cantidad": {
+     "exact": 21
+    },
+    "precio": {
+     "exact": 21
+    },
+    "iban": {
+     "absent": 1
+    }
+   },
+   "cer": 0.089540412044374,
+   "wer": 0.08016877637130802,
+   "bow_f1": 0.9718004338394794,
+   "tablas": {
+    "filas": 21,
+    "celdas": 63,
+    "filas_halladas": 21,
+    "celdas_en_fila": 63,
+    "filas_integras": 21
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 12.501197840087116,
+   "mem": {
+    "cgroup_pico_global": 4710.55859375,
+    "rss_pico": 3793.41796875,
+    "sistema_disponible": 16755.0234375
+   },
+   "tokens_salida": null,
+   "factura": "INV-006",
+   "variante": "escaneo",
+   "pagina": 2
+  },
+  {
+   "imagen": "INV-006_p1_escaneo_malo.jpg",
+   "exactos": 95,
+   "cambiados": 6,
+   "ausentes": 1,
+   "inventados": 5,
+   "inventados_lista": [
+    "11",
+    "40",
+    "40",
+    "27",
+    "88.6"
+   ],
+   "inventados_importe": 1,
+   "por_tipo": {
+    "importe": {
+     "exact": 33
+    },
+    "cantidad": {
+     "exact": 31,
+     "changed": 1
+    },
+    "precio": {
+     "exact": 27,
+     "changed": 5
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "absent": 1,
+     "exact": 1
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.27406628090478696,
+   "wer": 0.4,
+   "bow_f1": 0.814388489208633,
+   "tablas": {
+    "filas": 32,
+    "celdas": 96,
+    "filas_halladas": 31,
+    "celdas_en_fila": 81,
+    "filas_integras": 22,
+    "filas_mismo_ancho": 31,
+    "celdas_en_columna": 81,
+    "celdas_mismo_ancho": 93
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 11.970400771126151,
+   "mem": {
+    "cgroup_pico_global": 4710.55859375,
+    "rss_pico": 3793.41796875,
+    "sistema_disponible": 17022.55078125
+   },
+   "tokens_salida": null,
+   "factura": "INV-006",
+   "variante": "escaneo_malo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-006_p2_escaneo_malo.jpg",
+   "exactos": 68,
+   "cambiados": 2,
+   "ausentes": 1,
+   "inventados": 1,
+   "inventados_lista": [
+    "40"
+   ],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 28
+    },
+    "cantidad": {
+     "exact": 21
+    },
+    "precio": {
+     "exact": 19,
+     "changed": 2
+    },
+    "iban": {
+     "absent": 1
+    }
+   },
+   "cer": 0.3050713153724247,
+   "wer": 0.42616033755274263,
+   "bow_f1": 0.8333333333333331,
+   "tablas": {
+    "filas": 21,
+    "celdas": 63,
+    "filas_halladas": 19,
+    "celdas_en_fila": 49,
+    "filas_integras": 12,
+    "filas_mismo_ancho": 19,
+    "celdas_en_columna": 49,
+    "celdas_mismo_ancho": 57
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 12.785922132898122,
+   "mem": {
+    "cgroup_pico_global": 4710.55859375,
+    "rss_pico": 3793.41796875,
+    "sistema_disponible": 16973.23828125
+   },
+   "tokens_salida": null,
+   "factura": "INV-006",
+   "variante": "escaneo_malo",
+   "pagina": 2
+  },
+  {
+   "imagen": "INV-006_p1_foto.jpg",
+   "exactos": 102,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 33
+    },
+    "cantidad": {
+     "exact": 32
+    },
+    "precio": {
+     "exact": 32
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.0021041557075223566,
+   "wer": 0.002857142857142857,
+   "bow_f1": 0.9985693848354792,
+   "tablas": {
+    "filas": 32,
+    "celdas": 96,
+    "filas_halladas": 32,
+    "celdas_en_fila": 96,
+    "filas_integras": 32,
+    "filas_mismo_ancho": 32,
+    "celdas_en_columna": 96,
+    "celdas_mismo_ancho": 96
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 14.654395811026916,
+   "mem": {
+    "cgroup_pico_global": 4710.55859375,
+    "rss_pico": 3793.41796875,
+    "sistema_disponible": 16989.390625
+   },
+   "tokens_salida": null,
+   "factura": "INV-006",
+   "variante": "foto",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-006_p2_foto.jpg",
+   "exactos": 70,
+   "cambiados": 0,
+   "ausentes": 1,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 28
+    },
+    "cantidad": {
+     "exact": 21
+    },
+    "precio": {
+     "exact": 21
+    },
+    "iban": {
+     "absent": 1
+    }
+   },
+   "cer": 0.089540412044374,
+   "wer": 0.08016877637130802,
+   "bow_f1": 0.9718004338394794,
+   "tablas": {
+    "filas": 21,
+    "celdas": 63,
+    "filas_halladas": 21,
+    "celdas_en_fila": 63,
+    "filas_integras": 21
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 13.046959225088358,
+   "mem": {
+    "cgroup_pico_global": 4710.55859375,
+    "rss_pico": 3793.41796875,
+    "sistema_disponible": 16911.0390625
+   },
+   "tokens_salida": null,
+   "factura": "INV-006",
+   "variante": "foto",
+   "pagina": 2
+  },
+  {
+   "imagen": "INV-006_p1_limpia.png",
+   "exactos": 102,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 33
+    },
+    "cantidad": {
+     "exact": 32
+    },
+    "precio": {
+     "exact": 32
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.0583903208837454,
+   "wer": 0.04,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 32,
+    "celdas": 96,
+    "filas_halladas": 32,
+    "celdas_en_fila": 96,
+    "filas_integras": 32,
+    "filas_mismo_ancho": 32,
+    "celdas_en_columna": 96,
+    "celdas_mismo_ancho": 96
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 15.501516865100712,
+   "mem": {
+    "cgroup_pico_global": 4710.55859375,
+    "rss_pico": 3793.41796875,
+    "sistema_disponible": 16904.0078125
+   },
+   "tokens_salida": null,
+   "factura": "INV-006",
+   "variante": "limpia",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-006_p2_limpia.png",
+   "exactos": 70,
+   "cambiados": 0,
+   "ausentes": 1,
+   "inventados": 2,
+   "inventados_lista": [
+    "0",
+    "9999440"
+   ],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 28
+    },
+    "cantidad": {
+     "exact": 21
+    },
+    "precio": {
+     "exact": 21
+    },
+    "iban": {
+     "absent": 1
+    }
+   },
+   "cer": 0.0277337559429477,
+   "wer": 0.0379746835443038,
+   "bow_f1": 0.9808102345415779,
+   "tablas": {
+    "filas": 21,
+    "celdas": 63,
+    "filas_halladas": 21,
+    "celdas_en_fila": 63,
+    "filas_integras": 21
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 13.415715799899772,
+   "mem": {
+    "cgroup_pico_global": 4751.171875,
+    "rss_pico": 3834.63671875,
+    "sistema_disponible": 16733.71484375
+   },
+   "tokens_salida": null,
+   "factura": "INV-006",
+   "variante": "limpia",
+   "pagina": 2
+  },
+  {
+   "imagen": "INV-007_p1_escaneo.jpg",
+   "exactos": 27,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 11
+    },
+    "cantidad": {
+     "exact": 6
+    },
+    "precio": {
+     "exact": 6
+    },
+    "porcentaje": {
+     "exact": 1
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 1
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.1366906474820144,
+   "wer": 0.17142857142857143,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 6,
+    "celdas": 18,
+    "filas_halladas": 6,
+    "celdas_en_fila": 18,
+    "filas_integras": 6,
+    "filas_mismo_ancho": 6,
+    "celdas_en_columna": 18,
+    "celdas_mismo_ancho": 18
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 7.82805993501097,
+   "mem": {
+    "cgroup_pico_global": 4751.171875,
+    "rss_pico": 3834.63671875,
+    "sistema_disponible": 16811.80859375
+   },
+   "tokens_salida": null,
+   "factura": "INV-007",
+   "variante": "escaneo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-007_p1_escaneo_malo.jpg",
+   "exactos": 18,
+   "cambiados": 5,
+   "ausentes": 4,
+   "inventados": 1,
+   "inventados_lista": [
+    "291197"
+   ],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 9,
+     "changed": 1,
+     "absent": 1
+    },
+    "cantidad": {
+     "exact": 1,
+     "changed": 4,
+     "absent": 1
+    },
+    "precio": {
+     "exact": 6
+    },
+    "porcentaje": {
+     "exact": 1
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "absent": 1
+    },
+    "numero_factura": {
+     "absent": 1
+    }
+   },
+   "cer": 0.5539568345323741,
+   "wer": 0.7285714285714285,
+   "bow_f1": 0.6870229007633588,
+   "tablas": {
+    "filas": 6,
+    "celdas": 18
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 3.318229430122301,
+   "mem": {
+    "cgroup_pico_global": 4751.171875,
+    "rss_pico": 3834.63671875,
+    "sistema_disponible": 17015.63671875
+   },
+   "tokens_salida": null,
+   "factura": "INV-007",
+   "variante": "escaneo_malo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-007_p1_foto.jpg",
+   "exactos": 27,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 11
+    },
+    "cantidad": {
+     "exact": 6
+    },
+    "precio": {
+     "exact": 6
+    },
+    "porcentaje": {
+     "exact": 1
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 1
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.07913669064748201,
+   "wer": 0.08571428571428572,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 6,
+    "celdas": 18,
+    "filas_halladas": 6,
+    "celdas_en_fila": 18,
+    "filas_integras": 6,
+    "filas_mismo_ancho": 6,
+    "celdas_en_columna": 18,
+    "celdas_mismo_ancho": 18
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 7.744116455782205,
+   "mem": {
+    "cgroup_pico_global": 4751.171875,
+    "rss_pico": 3834.63671875,
+    "sistema_disponible": 17019.4296875
+   },
+   "tokens_salida": null,
+   "factura": "INV-007",
+   "variante": "foto",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-007_p1_limpia.png",
+   "exactos": 27,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 11
+    },
+    "cantidad": {
+     "exact": 6
+    },
+    "precio": {
+     "exact": 6
+    },
+    "porcentaje": {
+     "exact": 1
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 1
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.02877697841726619,
+   "wer": 0.02857142857142857,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 6,
+    "celdas": 18,
+    "filas_halladas": 6,
+    "celdas_en_fila": 18,
+    "filas_integras": 6,
+    "filas_mismo_ancho": 6,
+    "celdas_en_columna": 18,
+    "celdas_mismo_ancho": 18
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 10.623081940924749,
+   "mem": {
+    "cgroup_pico_global": 4751.171875,
+    "rss_pico": 3834.63671875,
+    "sistema_disponible": 17115.078125
+   },
+   "tokens_salida": null,
+   "factura": "INV-007",
+   "variante": "limpia",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-008_p1_escaneo.jpg",
+   "exactos": 10,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 5
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.6062378167641326,
+   "wer": 0.7051282051282052,
+   "bow_f1": 0.9241379310344827,
+   "tablas": {
+    "filas": 1,
+    "celdas": 1,
+    "filas_halladas": 1,
+    "celdas_en_fila": 1,
+    "filas_integras": 1,
+    "filas_mismo_ancho": 1,
+    "celdas_en_columna": 1,
+    "celdas_mismo_ancho": 1
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 10.957067325012758,
+   "mem": {
+    "cgroup_pico_global": 4751.171875,
+    "rss_pico": 3834.63671875,
+    "sistema_disponible": 17101.73046875
+   },
+   "tokens_salida": null,
+   "factura": "INV-008",
+   "variante": "escaneo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-008_p1_escaneo_malo.jpg",
+   "exactos": 10,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 5
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.580896686159844,
+   "wer": 0.6025641025641025,
+   "bow_f1": 0.863013698630137,
+   "tablas": {
+    "filas": 1,
+    "celdas": 1
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 9.784178206929937,
+   "mem": {
+    "cgroup_pico_global": 4751.171875,
+    "rss_pico": 3834.63671875,
+    "sistema_disponible": 17164.48046875
+   },
+   "tokens_salida": null,
+   "factura": "INV-008",
+   "variante": "escaneo_malo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-008_p1_foto.jpg",
+   "exactos": 10,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 5
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.391812865497076,
+   "wer": 0.38461538461538464,
+   "bow_f1": 0.974025974025974,
+   "tablas": {
+    "filas": 1,
+    "celdas": 1,
+    "filas_halladas": 1,
+    "celdas_en_fila": 1,
+    "filas_integras": 1,
+    "filas_mismo_ancho": 1,
+    "celdas_en_columna": 1,
+    "celdas_mismo_ancho": 1
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 10.89379262109287,
+   "mem": {
+    "cgroup_pico_global": 4751.171875,
+    "rss_pico": 3834.63671875,
+    "sistema_disponible": 17068.85546875
+   },
+   "tokens_salida": null,
+   "factura": "INV-008",
+   "variante": "foto",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-008_p1_limpia.png",
+   "exactos": 10,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 5
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.19103313840155944,
+   "wer": 0.1794871794871795,
+   "bow_f1": 0.9935483870967742,
+   "tablas": {
+    "filas": 1,
+    "celdas": 1,
+    "filas_halladas": 1,
+    "celdas_en_fila": 1,
+    "filas_integras": 1,
+    "filas_mismo_ancho": 1,
+    "celdas_en_columna": 1,
+    "celdas_mismo_ancho": 1
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 12.488358848029748,
+   "mem": {
+    "cgroup_pico_global": 4756.83203125,
+    "rss_pico": 3838.20703125,
+    "sistema_disponible": 16681.25390625
+   },
+   "tokens_salida": null,
+   "factura": "INV-008",
+   "variante": "limpia",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-009_p1_escaneo.jpg",
+   "exactos": 78,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 1,
+   "inventados_lista": [
+    "2"
+   ],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 25
+    },
+    "cantidad": {
+     "exact": 12
+    },
+    "precio": {
+     "exact": 12
+    },
+    "porcentaje": {
+     "exact": 23
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.19581589958158996,
+   "wer": 0.1792452830188679,
+   "bow_f1": 0.9833729216152018,
+   "tablas": {
+    "filas": 12,
+    "celdas": 53,
+    "filas_halladas": 12,
+    "celdas_en_fila": 53,
+    "filas_integras": 12,
+    "filas_mismo_ancho": 12,
+    "celdas_en_columna": 53,
+    "celdas_mismo_ancho": 53
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 17.107077622786164,
+   "mem": {
+    "cgroup_pico_global": 4756.83203125,
+    "rss_pico": 3838.20703125,
+    "sistema_disponible": 16729.796875
+   },
+   "tokens_salida": null,
+   "factura": "INV-009",
+   "variante": "escaneo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-009_p1_escaneo_malo.jpg",
+   "exactos": 74,
+   "cambiados": 1,
+   "ausentes": 3,
+   "inventados": 41,
+   "inventados_lista": [
+    "5",
+    "5",
+    "5",
+    "5",
+    "5",
+    "5",
+    "5",
+    "5",
+    "250",
+    "250",
+    "2.5",
+    "2.5",
+    "2.5",
+    "100",
+    "100",
+    "100",
+    "100",
+    "100",
+    "100",
+    "100"
+   ],
+   "inventados_importe": 3,
+   "por_tipo": {
+    "importe": {
+     "exact": 22,
+     "absent": 2,
+     "changed": 1
+    },
+    "cantidad": {
+     "exact": 12
+    },
+    "precio": {
+     "exact": 12
+    },
+    "porcentaje": {
+     "exact": 23
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "absent": 1
+    }
+   },
+   "cer": 1.3598326359832635,
+   "wer": 1.580188679245283,
+   "bow_f1": 0.5256609642301711,
+   "tablas": {
+    "filas": 12,
+    "celdas": 53,
+    "filas_halladas": 10,
+    "celdas_en_fila": 44,
+    "filas_integras": 10
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": true,
+    "error_tecnico": false
+   },
+   "tiempo_s": 15.259051418164745,
+   "mem": {
+    "cgroup_pico_global": 4756.83203125,
+    "rss_pico": 3838.20703125,
+    "sistema_disponible": 17052.75390625
+   },
+   "tokens_salida": null,
+   "factura": "INV-009",
+   "variante": "escaneo_malo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-009_p1_foto.jpg",
+   "exactos": 78,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 25
+    },
+    "cantidad": {
+     "exact": 12
+    },
+    "precio": {
+     "exact": 12
+    },
+    "porcentaje": {
+     "exact": 23
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.1682008368200837,
+   "wer": 0.17452830188679244,
+   "bow_f1": 0.9808612440191388,
+   "tablas": {
+    "filas": 12,
+    "celdas": 53,
+    "filas_halladas": 12,
+    "celdas_en_fila": 53,
+    "filas_integras": 12,
+    "filas_mismo_ancho": 12,
+    "celdas_en_columna": 53,
+    "celdas_mismo_ancho": 53
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 17.504784008022398,
+   "mem": {
+    "cgroup_pico_global": 4756.83203125,
+    "rss_pico": 3838.20703125,
+    "sistema_disponible": 17007.71875
+   },
+   "tokens_salida": null,
+   "factura": "INV-009",
+   "variante": "foto",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-009_p1_limpia.png",
+   "exactos": 78,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 25
+    },
+    "cantidad": {
+     "exact": 12
+    },
+    "precio": {
+     "exact": 12
+    },
+    "porcentaje": {
+     "exact": 23
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.15648535564853555,
+   "wer": 0.15566037735849056,
+   "bow_f1": 0.9832935560859188,
+   "tablas": {
+    "filas": 12,
+    "celdas": 53,
+    "filas_halladas": 12,
+    "celdas_en_fila": 53,
+    "filas_integras": 12,
+    "filas_mismo_ancho": 12,
+    "celdas_en_columna": 53,
+    "celdas_mismo_ancho": 53
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 18.543769031064585,
+   "mem": {
+    "cgroup_pico_global": 4756.83203125,
+    "rss_pico": 3838.20703125,
+    "sistema_disponible": 16782.75390625
+   },
+   "tokens_salida": null,
+   "factura": "INV-009",
+   "variante": "limpia",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-010_p1_escaneo.jpg",
+   "exactos": 28,
+   "cambiados": 0,
+   "ausentes": 1,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 11
+    },
+    "cantidad": {
+     "exact": 6
+    },
+    "precio": {
+     "exact": 6
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "absent": 1
+    }
+   },
+   "cer": 0.18421052631578946,
+   "wer": 0.16153846153846155,
+   "bow_f1": 0.9641434262948207,
+   "tablas": {
+    "filas": 6,
+    "celdas": 18,
+    "filas_halladas": 6,
+    "celdas_en_fila": 18,
+    "filas_integras": 6,
+    "filas_mismo_ancho": 6,
+    "celdas_en_columna": 18,
+    "celdas_mismo_ancho": 18
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 7.9850956599693745,
+   "mem": {
+    "cgroup_pico_global": 4756.83203125,
+    "rss_pico": 3838.20703125,
+    "sistema_disponible": 16866.54296875
+   },
+   "tokens_salida": null,
+   "factura": "INV-010",
+   "variante": "escaneo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-010_p1_escaneo_malo.jpg",
+   "exactos": 28,
+   "cambiados": 0,
+   "ausentes": 1,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 11
+    },
+    "cantidad": {
+     "exact": 6
+    },
+    "precio": {
+     "exact": 6
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "absent": 1
+    }
+   },
+   "cer": 0.38220551378446116,
+   "wer": 0.43846153846153846,
+   "bow_f1": 0.8502024291497975,
+   "tablas": {
+    "filas": 6,
+    "celdas": 18,
+    "filas_halladas": 5,
+    "celdas_en_fila": 15,
+    "filas_integras": 5,
+    "filas_mismo_ancho": 5,
+    "celdas_en_columna": 15,
+    "celdas_mismo_ancho": 15
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 7.038294724887237,
+   "mem": {
+    "cgroup_pico_global": 4756.83203125,
+    "rss_pico": 3838.20703125,
+    "sistema_disponible": 17110.1015625
+   },
+   "tokens_salida": null,
+   "factura": "INV-010",
+   "variante": "escaneo_malo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-010_p1_foto.jpg",
+   "exactos": 28,
+   "cambiados": 0,
+   "ausentes": 1,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 11
+    },
+    "cantidad": {
+     "exact": 6
+    },
+    "precio": {
+     "exact": 6
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "absent": 1
+    }
+   },
+   "cer": 0.21428571428571427,
+   "wer": 0.19230769230769232,
+   "bow_f1": 0.9641434262948207,
+   "tablas": {
+    "filas": 6,
+    "celdas": 18,
+    "filas_halladas": 6,
+    "celdas_en_fila": 18,
+    "filas_integras": 6
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 8.172676477115601,
+   "mem": {
+    "cgroup_pico_global": 4756.83203125,
+    "rss_pico": 3838.20703125,
+    "sistema_disponible": 17230.83984375
+   },
+   "tokens_salida": null,
+   "factura": "INV-010",
+   "variante": "foto",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-010_p1_limpia.png",
+   "exactos": 29,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 11
+    },
+    "cantidad": {
+     "exact": 6
+    },
+    "precio": {
+     "exact": 6
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.2807017543859649,
+   "wer": 0.25384615384615383,
+   "bow_f1": 0.9961389961389961,
+   "tablas": {
+    "filas": 6,
+    "celdas": 18,
+    "filas_halladas": 6,
+    "celdas_en_fila": 18,
+    "filas_integras": 6,
+    "filas_mismo_ancho": 6,
+    "celdas_en_columna": 18,
+    "celdas_mismo_ancho": 18
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 8.339396318187937,
+   "mem": {
+    "cgroup_pico_global": 4756.83203125,
+    "rss_pico": 3838.20703125,
+    "sistema_disponible": 17126.50390625
+   },
+   "tokens_salida": null,
+   "factura": "INV-010",
+   "variante": "limpia",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-011_p1_escaneo.jpg",
+   "exactos": 18,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 4,
+   "inventados_lista": [
+    "1.60",
+    "1.20",
+    "13.20",
+    "13.20"
+   ],
+   "inventados_importe": 4,
+   "por_tipo": {
+    "importe": {
+     "exact": 8
+    },
+    "cantidad": {
+     "exact": 3
+    },
+    "precio": {
+     "exact": 3
+    },
+    "porcentaje": {
+     "exact": 1
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 1
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.7106017191977078,
+   "wer": 0.6666666666666666,
+   "bow_f1": 0.76,
+   "tablas": {
+    "filas": 3,
+    "celdas": 9,
+    "filas_halladas": 3,
+    "celdas_en_fila": 9,
+    "filas_integras": 3,
+    "filas_mismo_ancho": 3,
+    "celdas_en_columna": 8,
+    "celdas_mismo_ancho": 9
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": true,
+    "error_tecnico": false
+   },
+   "tiempo_s": 7.521277827210724,
+   "mem": {
+    "cgroup_pico_global": 4756.83203125,
+    "rss_pico": 3838.20703125,
+    "sistema_disponible": 17240.5390625
+   },
+   "tokens_salida": null,
+   "factura": "INV-011",
+   "variante": "escaneo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-011_p1_escaneo_malo.jpg",
+   "exactos": 14,
+   "cambiados": 4,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 6,
+     "changed": 2
+    },
+    "cantidad": {
+     "exact": 1,
+     "changed": 2
+    },
+    "precio": {
+     "exact": 3
+    },
+    "porcentaje": {
+     "exact": 1
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 1
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.44412607449856734,
+   "wer": 0.6842105263157895,
+   "bow_f1": 0.6542056074766356,
+   "tablas": {
+    "filas": 3,
+    "celdas": 9
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 3.274413959821686,
+   "mem": {
+    "cgroup_pico_global": 4756.83203125,
+    "rss_pico": 3838.20703125,
+    "sistema_disponible": 17321.03515625
+   },
+   "tokens_salida": null,
+   "factura": "INV-011",
+   "variante": "escaneo_malo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-011_p1_foto.jpg",
+   "exactos": 18,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 8
+    },
+    "cantidad": {
+     "exact": 3
+    },
+    "precio": {
+     "exact": 3
+    },
+    "porcentaje": {
+     "exact": 1
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 1
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.4040114613180516,
+   "wer": 0.3684210526315789,
+   "bow_f1": 0.8571428571428571,
+   "tablas": {
+    "filas": 3,
+    "celdas": 9,
+    "filas_halladas": 3,
+    "celdas_en_fila": 9,
+    "filas_integras": 3
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 7.646678106859326,
+   "mem": {
+    "cgroup_pico_global": 4756.83203125,
+    "rss_pico": 3838.20703125,
+    "sistema_disponible": 17218.68359375
+   },
+   "tokens_salida": null,
+   "factura": "INV-011",
+   "variante": "foto",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-011_p1_limpia.png",
+   "exactos": 18,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 8
+    },
+    "cantidad": {
+     "exact": 3
+    },
+    "precio": {
+     "exact": 3
+    },
+    "porcentaje": {
+     "exact": 1
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 1
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.03724928366762178,
+   "wer": 0.05263157894736842,
+   "bow_f1": 0.9824561403508771,
+   "tablas": {
+    "filas": 3,
+    "celdas": 9,
+    "filas_halladas": 3,
+    "celdas_en_fila": 9,
+    "filas_integras": 3,
+    "filas_mismo_ancho": 3,
+    "celdas_en_columna": 9,
+    "celdas_mismo_ancho": 9
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 8.863824381958693,
+   "mem": {
+    "cgroup_pico_global": 4756.83203125,
+    "rss_pico": 3838.20703125,
+    "sistema_disponible": 17335.125
+   },
+   "tokens_salida": null,
+   "factura": "INV-011",
+   "variante": "limpia",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-012_p1_escaneo.jpg",
+   "exactos": 11,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 6
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.2965964343598055,
+   "wer": 0.31521739130434784,
+   "bow_f1": 0.9364161849710982,
+   "tablas": {
+    "filas": 2,
+    "celdas": 2,
+    "filas_halladas": 2,
+    "celdas_en_fila": 2,
+    "filas_integras": 2,
+    "filas_mismo_ancho": 2,
+    "celdas_en_columna": 2,
+    "celdas_mismo_ancho": 2
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 10.511289722984657,
+   "mem": {
+    "cgroup_pico_global": 4756.83203125,
+    "rss_pico": 3838.20703125,
+    "sistema_disponible": 17294.6640625
+   },
+   "tokens_salida": null,
+   "factura": "INV-012",
+   "variante": "escaneo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-012_p1_escaneo_malo.jpg",
+   "exactos": 11,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 6
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.42949756888168555,
+   "wer": 0.4891304347826087,
+   "bow_f1": 0.9080459770114943,
+   "tablas": {
+    "filas": 2,
+    "celdas": 2
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 7.460783107904717,
+   "mem": {
+    "cgroup_pico_global": 4756.83203125,
+    "rss_pico": 3838.20703125,
+    "sistema_disponible": 17291.94921875
+   },
+   "tokens_salida": null,
+   "factura": "INV-012",
+   "variante": "escaneo_malo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-012_p1_foto.jpg",
+   "exactos": 11,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 6
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.31442463533225284,
+   "wer": 0.33695652173913043,
+   "bow_f1": 0.9186046511627908,
+   "tablas": {
+    "filas": 2,
+    "celdas": 2,
+    "filas_halladas": 2,
+    "celdas_en_fila": 2,
+    "filas_integras": 2,
+    "filas_mismo_ancho": 2,
+    "celdas_en_columna": 2,
+    "celdas_mismo_ancho": 2
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 11.006474276073277,
+   "mem": {
+    "cgroup_pico_global": 4756.83203125,
+    "rss_pico": 3838.20703125,
+    "sistema_disponible": 17272.2578125
+   },
+   "tokens_salida": null,
+   "factura": "INV-012",
+   "variante": "foto",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-012_p1_limpia.png",
+   "exactos": 11,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 6
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.1766612641815235,
+   "wer": 0.18478260869565216,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 2,
+    "celdas": 2
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 7.924897104036063,
+   "mem": {
+    "cgroup_pico_global": 4756.83203125,
+    "rss_pico": 3838.20703125,
+    "sistema_disponible": 17171.18359375
+   },
+   "tokens_salida": null,
+   "factura": "INV-012",
+   "variante": "limpia",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-013_p1_escaneo.jpg",
+   "exactos": 133,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 31
+    },
+    "cantidad": {
+     "exact": 30
+    },
+    "precio": {
+     "exact": 30
+    },
+    "porcentaje": {
+     "exact": 37
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.09420713867758923,
+   "wer": 0.06647398843930635,
+   "bow_f1": 0.9855072463768114,
+   "tablas": {
+    "filas": 30,
+    "celdas": 127,
+    "filas_halladas": 30,
+    "celdas_en_fila": 125,
+    "filas_integras": 28,
+    "filas_mismo_ancho": 30,
+    "celdas_en_columna": 124,
+    "celdas_mismo_ancho": 127
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 18.84481550194323,
+   "mem": {
+    "cgroup_pico_global": 4756.83203125,
+    "rss_pico": 3838.20703125,
+    "sistema_disponible": 17396.85546875
+   },
+   "tokens_salida": null,
+   "factura": "INV-013",
+   "variante": "escaneo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-013_p2_escaneo.jpg",
+   "exactos": 74,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 26
+    },
+    "cantidad": {
+     "exact": 12
+    },
+    "precio": {
+     "exact": 12
+    },
+    "porcentaje": {
+     "exact": 23
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.14230019493177387,
+   "wer": 0.13440860215053763,
+   "bow_f1": 0.9863760217983651,
+   "tablas": {
+    "filas": 12,
+    "celdas": 53,
+    "filas_halladas": 12,
+    "celdas_en_fila": 53,
+    "filas_integras": 12,
+    "filas_mismo_ancho": 12,
+    "celdas_en_columna": 53,
+    "celdas_mismo_ancho": 53
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 13.355025241151452,
+   "mem": {
+    "cgroup_pico_global": 4756.83203125,
+    "rss_pico": 3838.20703125,
+    "sistema_disponible": 17240.42578125
+   },
+   "tokens_salida": null,
+   "factura": "INV-013",
+   "variante": "escaneo",
+   "pagina": 2
+  },
+  {
+   "imagen": "INV-013_p1_escaneo_malo.jpg",
+   "exactos": 128,
+   "cambiados": 4,
+   "ausentes": 1,
+   "inventados": 7,
+   "inventados_lista": [
+    "10",
+    "40",
+    "40",
+    "40",
+    "58",
+    "27",
+    "17000.06"
+   ],
+   "inventados_importe": 1,
+   "por_tipo": {
+    "importe": {
+     "exact": 27,
+     "changed": 3,
+     "absent": 1
+    },
+    "cantidad": {
+     "exact": 30
+    },
+    "precio": {
+     "exact": 29,
+     "changed": 1
+    },
+    "porcentaje": {
+     "exact": 37
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.34581626682270333,
+   "wer": 0.45375722543352603,
+   "bow_f1": 0.8389955686853767,
+   "tablas": {
+    "filas": 30,
+    "celdas": 127,
+    "filas_halladas": 25,
+    "celdas_en_fila": 100,
+    "filas_integras": 21,
+    "filas_mismo_ancho": 25,
+    "celdas_en_columna": 99,
+    "celdas_mismo_ancho": 106
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 17.081706586061046,
+   "mem": {
+    "cgroup_pico_global": 4756.83203125,
+    "rss_pico": 3838.20703125,
+    "sistema_disponible": 17330.12890625
+   },
+   "tokens_salida": null,
+   "factura": "INV-013",
+   "variante": "escaneo_malo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-013_p2_escaneo_malo.jpg",
+   "exactos": 70,
+   "cambiados": 0,
+   "ausentes": 4,
+   "inventados": 48,
+   "inventados_lista": [
+    "1",
+    "1",
+    "1",
+    "1",
+    "5",
+    "5",
+    "5",
+    "5",
+    "2.5",
+    "2.5",
+    "2.5",
+    "2.5",
+    "100",
+    "100",
+    "100",
+    "100",
+    "100",
+    "100",
+    "100",
+    "100"
+   ],
+   "inventados_importe": 4,
+   "por_tipo": {
+    "importe": {
+     "exact": 23,
+     "absent": 3
+    },
+    "cantidad": {
+     "exact": 12
+    },
+    "precio": {
+     "exact": 12
+    },
+    "porcentaje": {
+     "exact": 23
+    },
+    "iban": {
+     "absent": 1
+    }
+   },
+   "cer": 1.6861598440545809,
+   "wer": 1.8763440860215055,
+   "bow_f1": 0.49196141479099686,
+   "tablas": {
+    "filas": 12,
+    "celdas": 53,
+    "filas_halladas": 12,
+    "celdas_en_fila": 50,
+    "filas_integras": 11
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": true,
+    "error_tecnico": false
+   },
+   "tiempo_s": 12.670371247921139,
+   "mem": {
+    "cgroup_pico_global": 4756.83203125,
+    "rss_pico": 3838.20703125,
+    "sistema_disponible": 17313.79296875
+   },
+   "tokens_salida": null,
+   "factura": "INV-013",
+   "variante": "escaneo_malo",
+   "pagina": 2
+  },
+  {
+   "imagen": "INV-013_p1_foto.jpg",
+   "exactos": 133,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 1,
+   "inventados_lista": [
+    "17000.06"
+   ],
+   "inventados_importe": 1,
+   "por_tipo": {
+    "importe": {
+     "exact": 31
+    },
+    "cantidad": {
+     "exact": 30
+    },
+    "precio": {
+     "exact": 30
+    },
+    "porcentaje": {
+     "exact": 37
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.12170860152135751,
+   "wer": 0.09248554913294797,
+   "bow_f1": 0.9883720930232557,
+   "tablas": {
+    "filas": 30,
+    "celdas": 127,
+    "filas_halladas": 30,
+    "celdas_en_fila": 127,
+    "filas_integras": 30,
+    "filas_mismo_ancho": 30,
+    "celdas_en_columna": 127,
+    "celdas_mismo_ancho": 127
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 18.862775654066354,
+   "mem": {
+    "cgroup_pico_global": 4756.83203125,
+    "rss_pico": 3838.20703125,
+    "sistema_disponible": 17322.97265625
+   },
+   "tokens_salida": null,
+   "factura": "INV-013",
+   "variante": "foto",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-013_p2_foto.jpg",
+   "exactos": 74,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 26
+    },
+    "cantidad": {
+     "exact": 12
+    },
+    "precio": {
+     "exact": 12
+    },
+    "porcentaje": {
+     "exact": 23
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.145224171539961,
+   "wer": 0.16129032258064516,
+   "bow_f1": 0.9891304347826088,
+   "tablas": {
+    "filas": 12,
+    "celdas": 53,
+    "filas_halladas": 12,
+    "celdas_en_fila": 53,
+    "filas_integras": 12,
+    "filas_mismo_ancho": 12,
+    "celdas_en_columna": 53,
+    "celdas_mismo_ancho": 53
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 15.043910491047427,
+   "mem": {
+    "cgroup_pico_global": 4756.83203125,
+    "rss_pico": 3838.20703125,
+    "sistema_disponible": 17237.81640625
+   },
+   "tokens_salida": null,
+   "factura": "INV-013",
+   "variante": "foto",
+   "pagina": 2
+  },
+  {
+   "imagen": "INV-013_p1_limpia.png",
+   "exactos": 133,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 31
+    },
+    "cantidad": {
+     "exact": 30
+    },
+    "precio": {
+     "exact": 30
+    },
+    "porcentaje": {
+     "exact": 37
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.07723815096547688,
+   "wer": 0.046242774566473986,
+   "bow_f1": 0.991279069767442,
+   "tablas": {
+    "filas": 30,
+    "celdas": 127,
+    "filas_halladas": 30,
+    "celdas_en_fila": 127,
+    "filas_integras": 30,
+    "filas_mismo_ancho": 30,
+    "celdas_en_columna": 127,
+    "celdas_mismo_ancho": 127
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 21.016697364859283,
+   "mem": {
+    "cgroup_pico_global": 4756.83203125,
+    "rss_pico": 3838.20703125,
+    "sistema_disponible": 17269.046875
+   },
+   "tokens_salida": null,
+   "factura": "INV-013",
+   "variante": "limpia",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-013_p2_limpia.png",
+   "exactos": 74,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 26
+    },
+    "cantidad": {
+     "exact": 12
+    },
+    "precio": {
+     "exact": 12
+    },
+    "porcentaje": {
+     "exact": 23
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.17251461988304093,
+   "wer": 0.17204301075268819,
+   "bow_f1": 0.9891304347826088,
+   "tablas": {
+    "filas": 12,
+    "celdas": 53,
+    "filas_halladas": 12,
+    "celdas_en_fila": 53,
+    "filas_integras": 12,
+    "filas_mismo_ancho": 12,
+    "celdas_en_columna": 53,
+    "celdas_mismo_ancho": 53
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 16.308987413998693,
+   "mem": {
+    "cgroup_pico_global": 4756.83203125,
+    "rss_pico": 3838.20703125,
+    "sistema_disponible": 17246.9921875
+   },
+   "tokens_salida": null,
+   "factura": "INV-013",
+   "variante": "limpia",
+   "pagina": 2
+  },
+  {
+   "imagen": "INV-014_p1_escaneo.jpg",
+   "exactos": 102,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 33
+    },
+    "cantidad": {
+     "exact": 32
+    },
+    "precio": {
+     "exact": 32
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.036997319034852545,
+   "wer": 0.023054755043227664,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 32,
+    "celdas": 96,
+    "filas_halladas": 32,
+    "celdas_en_fila": 96,
+    "filas_integras": 32,
+    "filas_mismo_ancho": 32,
+    "celdas_en_columna": 96,
+    "celdas_mismo_ancho": 96
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 14.761664908146486,
+   "mem": {
+    "cgroup_pico_global": 4756.83203125,
+    "rss_pico": 3838.20703125,
+    "sistema_disponible": 17196.12109375
+   },
+   "tokens_salida": null,
+   "factura": "INV-014",
+   "variante": "escaneo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-014_p2_escaneo.jpg",
+   "exactos": 46,
+   "cambiados": 0,
+   "ausentes": 1,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 20
+    },
+    "cantidad": {
+     "exact": 13
+    },
+    "precio": {
+     "exact": 13
+    },
+    "iban": {
+     "absent": 1
+    }
+   },
+   "cer": 0.08280254777070063,
+   "wer": 0.07738095238095238,
+   "bow_f1": 0.9597523219814241,
+   "tablas": {
+    "filas": 13,
+    "celdas": 39,
+    "filas_halladas": 13,
+    "celdas_en_fila": 39,
+    "filas_integras": 13
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 10.151037451811135,
+   "mem": {
+    "cgroup_pico_global": 4756.83203125,
+    "rss_pico": 3838.20703125,
+    "sistema_disponible": 16762.27734375
+   },
+   "tokens_salida": null,
+   "factura": "INV-014",
+   "variante": "escaneo",
+   "pagina": 2
+  },
+  {
+   "imagen": "INV-014_p1_escaneo_malo.jpg",
+   "exactos": 102,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 3,
+   "inventados_lista": [
+    "1",
+    "5",
+    "40"
+   ],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 33
+    },
+    "cantidad": {
+     "exact": 32
+    },
+    "precio": {
+     "exact": 32
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.2348525469168901,
+   "wer": 0.34293948126801155,
+   "bow_f1": 0.8924418604651163,
+   "tablas": {
+    "filas": 32,
+    "celdas": 96,
+    "filas_halladas": 31,
+    "celdas_en_fila": 88,
+    "filas_integras": 28,
+    "filas_mismo_ancho": 31,
+    "celdas_en_columna": 88,
+    "celdas_mismo_ancho": 93
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 12.342000545933843,
+   "mem": {
+    "cgroup_pico_global": 4756.83203125,
+    "rss_pico": 3838.20703125,
+    "sistema_disponible": 17083.99609375
+   },
+   "tokens_salida": null,
+   "factura": "INV-014",
+   "variante": "escaneo_malo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-014_p2_escaneo_malo.jpg",
+   "exactos": 46,
+   "cambiados": 0,
+   "ausentes": 1,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 20
+    },
+    "cantidad": {
+     "exact": 13
+    },
+    "precio": {
+     "exact": 13
+    },
+    "iban": {
+     "absent": 1
+    }
+   },
+   "cer": 0.3078556263269639,
+   "wer": 0.43452380952380953,
+   "bow_f1": 0.8,
+   "tablas": {
+    "filas": 13,
+    "celdas": 39,
+    "filas_halladas": 13,
+    "celdas_en_fila": 39,
+    "filas_integras": 13,
+    "filas_mismo_ancho": 13,
+    "celdas_en_columna": 39,
+    "celdas_mismo_ancho": 39
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 8.427603712072596,
+   "mem": {
+    "cgroup_pico_global": 4756.83203125,
+    "rss_pico": 3838.20703125,
+    "sistema_disponible": 16684.72265625
+   },
+   "tokens_salida": null,
+   "factura": "INV-014",
+   "variante": "escaneo_malo",
+   "pagina": 2
+  },
+  {
+   "imagen": "INV-014_p1_foto.jpg",
+   "exactos": 102,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 33
+    },
+    "cantidad": {
+     "exact": 32
+    },
+    "precio": {
+     "exact": 32
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.10402144772117962,
+   "wer": 0.12103746397694524,
+   "bow_f1": 0.9985569985569985,
+   "tablas": {
+    "filas": 32,
+    "celdas": 96,
+    "filas_halladas": 32,
+    "celdas_en_fila": 96,
+    "filas_integras": 32,
+    "filas_mismo_ancho": 32,
+    "celdas_en_columna": 96,
+    "celdas_mismo_ancho": 96
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 15.31014285190031,
+   "mem": {
+    "cgroup_pico_global": 4756.83203125,
+    "rss_pico": 3838.20703125,
+    "sistema_disponible": 17019.3984375
+   },
+   "tokens_salida": null,
+   "factura": "INV-014",
+   "variante": "foto",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-014_p2_foto.jpg",
+   "exactos": 46,
+   "cambiados": 0,
+   "ausentes": 1,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 20
+    },
+    "cantidad": {
+     "exact": 13
+    },
+    "precio": {
+     "exact": 13
+    },
+    "iban": {
+     "absent": 1
+    }
+   },
+   "cer": 0.08280254777070063,
+   "wer": 0.07738095238095238,
+   "bow_f1": 0.9597523219814241,
+   "tablas": {
+    "filas": 13,
+    "celdas": 39,
+    "filas_halladas": 13,
+    "celdas_en_fila": 39,
+    "filas_integras": 13
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 10.437672964995727,
+   "mem": {
+    "cgroup_pico_global": 4756.83203125,
+    "rss_pico": 3838.20703125,
+    "sistema_disponible": 16513.75
+   },
+   "tokens_salida": null,
+   "factura": "INV-014",
+   "variante": "foto",
+   "pagina": 2
+  },
+  {
+   "imagen": "INV-014_p1_limpia.png",
+   "exactos": 102,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 33
+    },
+    "cantidad": {
+     "exact": 32
+    },
+    "precio": {
+     "exact": 32
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.060053619302949064,
+   "wer": 0.04610951008645533,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 32,
+    "celdas": 96,
+    "filas_halladas": 32,
+    "celdas_en_fila": 96,
+    "filas_integras": 32,
+    "filas_mismo_ancho": 32,
+    "celdas_en_columna": 96,
+    "celdas_mismo_ancho": 96
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 15.707501758122817,
+   "mem": {
+    "cgroup_pico_global": 4756.83203125,
+    "rss_pico": 3838.20703125,
+    "sistema_disponible": 16783.51171875
+   },
+   "tokens_salida": null,
+   "factura": "INV-014",
+   "variante": "limpia",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-014_p2_limpia.png",
+   "exactos": 47,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 20
+    },
+    "cantidad": {
+     "exact": 13
+    },
+    "precio": {
+     "exact": 13
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.029723991507430998,
+   "wer": 0.02976190476190476,
+   "bow_f1": 0.9970149253731343,
+   "tablas": {
+    "filas": 13,
+    "celdas": 39,
+    "filas_halladas": 13,
+    "celdas_en_fila": 39,
+    "filas_integras": 13
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 12.085521448869258,
+   "mem": {
+    "cgroup_pico_global": 4837.61328125,
+    "rss_pico": 3923.41796875,
+    "sistema_disponible": 16410.04296875
+   },
+   "tokens_salida": null,
+   "factura": "INV-014",
+   "variante": "limpia",
+   "pagina": 2
+  },
+  {
+   "imagen": "INV-015_p1_escaneo.jpg",
+   "exactos": 21,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 9
+    },
+    "cantidad": {
+     "exact": 4
+    },
+    "precio": {
+     "exact": 4
+    },
+    "porcentaje": {
+     "exact": 1
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 1
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.0705596107055961,
+   "wer": 0.056338028169014086,
+   "bow_f1": 0.9861111111111112,
+   "tablas": {
+    "filas": 4,
+    "celdas": 12,
+    "filas_halladas": 4,
+    "celdas_en_fila": 12,
+    "filas_integras": 4,
+    "filas_mismo_ancho": 4,
+    "celdas_en_columna": 12,
+    "celdas_mismo_ancho": 12
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 8.138442058116198,
+   "mem": {
+    "cgroup_pico_global": 4837.61328125,
+    "rss_pico": 3923.41796875,
+    "sistema_disponible": 16598.65234375
+   },
+   "tokens_salida": null,
+   "factura": "INV-015",
+   "variante": "escaneo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-015_p1_escaneo_malo.jpg",
+   "exactos": 18,
+   "cambiados": 3,
+   "ausentes": 0,
+   "inventados": 1,
+   "inventados_lista": [
+    "104"
+   ],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 9
+    },
+    "cantidad": {
+     "exact": 3,
+     "changed": 1
+    },
+    "precio": {
+     "exact": 3,
+     "changed": 1
+    },
+    "porcentaje": {
+     "changed": 1
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 1
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.46715328467153283,
+   "wer": 0.704225352112676,
+   "bow_f1": 0.7111111111111111,
+   "tablas": {
+    "filas": 4,
+    "celdas": 12
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 3.187800690997392,
+   "mem": {
+    "cgroup_pico_global": 4837.61328125,
+    "rss_pico": 3923.41796875,
+    "sistema_disponible": 16629.81640625
+   },
+   "tokens_salida": null,
+   "factura": "INV-015",
+   "variante": "escaneo_malo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-015_p1_foto.jpg",
+   "exactos": 21,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 9
+    },
+    "cantidad": {
+     "exact": 4
+    },
+    "precio": {
+     "exact": 4
+    },
+    "porcentaje": {
+     "exact": 1
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 1
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.0,
+   "wer": 0.0,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 4,
+    "celdas": 12,
+    "filas_halladas": 4,
+    "celdas_en_fila": 12,
+    "filas_integras": 4,
+    "filas_mismo_ancho": 4,
+    "celdas_en_columna": 12,
+    "celdas_mismo_ancho": 12
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 8.29854492796585,
+   "mem": {
+    "cgroup_pico_global": 4837.61328125,
+    "rss_pico": 3923.41796875,
+    "sistema_disponible": 16496.125
+   },
+   "tokens_salida": null,
+   "factura": "INV-015",
+   "variante": "foto",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-015_p1_limpia.png",
+   "exactos": 21,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 9
+    },
+    "cantidad": {
+     "exact": 4
+    },
+    "precio": {
+     "exact": 4
+    },
+    "porcentaje": {
+     "exact": 1
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 1
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.031630170316301706,
+   "wer": 0.04225352112676056,
+   "bow_f1": 0.9859154929577465,
+   "tablas": {
+    "filas": 4,
+    "celdas": 12,
+    "filas_halladas": 4,
+    "celdas_en_fila": 12,
+    "filas_integras": 4,
+    "filas_mismo_ancho": 4,
+    "celdas_en_columna": 12,
+    "celdas_mismo_ancho": 12
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 10.68516725092195,
+   "mem": {
+    "cgroup_pico_global": 4837.61328125,
+    "rss_pico": 3923.41796875,
+    "sistema_disponible": 16670.41796875
+   },
+   "tokens_salida": null,
+   "factura": "INV-015",
+   "variante": "limpia",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-016_p1_escaneo.jpg",
+   "exactos": 11,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 6
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.3562691131498471,
+   "wer": 0.3838383838383838,
+   "bow_f1": 0.9297297297297298,
+   "tablas": {
+    "filas": 2,
+    "celdas": 2,
+    "filas_halladas": 2,
+    "celdas_en_fila": 2,
+    "filas_integras": 2,
+    "filas_mismo_ancho": 2,
+    "celdas_en_columna": 2,
+    "celdas_mismo_ancho": 2
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 11.500974487978965,
+   "mem": {
+    "cgroup_pico_global": 4837.61328125,
+    "rss_pico": 3923.41796875,
+    "sistema_disponible": 16494.34765625
+   },
+   "tokens_salida": null,
+   "factura": "INV-016",
+   "variante": "escaneo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-016_p1_escaneo_malo.jpg",
+   "exactos": 11,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 6
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.39908256880733944,
+   "wer": 0.494949494949495,
+   "bow_f1": 0.8677248677248678,
+   "tablas": {
+    "filas": 2,
+    "celdas": 2,
+    "filas_halladas": 2,
+    "celdas_en_fila": 2,
+    "filas_integras": 2,
+    "filas_mismo_ancho": 2,
+    "celdas_en_columna": 2,
+    "celdas_mismo_ancho": 2
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 10.548354470171034,
+   "mem": {
+    "cgroup_pico_global": 4837.61328125,
+    "rss_pico": 3923.41796875,
+    "sistema_disponible": 16605.15234375
+   },
+   "tokens_salida": null,
+   "factura": "INV-016",
+   "variante": "escaneo_malo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-016_p1_foto.jpg",
+   "exactos": 11,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 6
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.3470948012232416,
+   "wer": 0.3939393939393939,
+   "bow_f1": 0.9247311827956989,
+   "tablas": {
+    "filas": 2,
+    "celdas": 2,
+    "filas_halladas": 2,
+    "celdas_en_fila": 2,
+    "filas_integras": 2,
+    "filas_mismo_ancho": 2,
+    "celdas_en_columna": 2,
+    "celdas_mismo_ancho": 2
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 11.412010974017903,
+   "mem": {
+    "cgroup_pico_global": 4837.61328125,
+    "rss_pico": 3923.41796875,
+    "sistema_disponible": 16511.3984375
+   },
+   "tokens_salida": null,
+   "factura": "INV-016",
+   "variante": "foto",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-016_p1_limpia.png",
+   "exactos": 11,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 6
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.31345565749235477,
+   "wer": 0.30303030303030304,
+   "bow_f1": 0.9411764705882353,
+   "tablas": {
+    "filas": 2,
+    "celdas": 2
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 7.760191329056397,
+   "mem": {
+    "cgroup_pico_global": 4837.61328125,
+    "rss_pico": 3923.41796875,
+    "sistema_disponible": 16537.84375
+   },
+   "tokens_salida": null,
+   "factura": "INV-016",
+   "variante": "limpia",
+   "pagina": 1
+  }
+ ],
+ "B": [
+  {
+   "imagen": "INV-001_p1_escaneo.jpg",
+   "exactos": 65,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 19
+    },
+    "cantidad": {
+     "exact": 10
+    },
+    "precio": {
+     "exact": 10
+    },
+    "porcentaje": {
+     "exact": 20
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.015640273704789834,
+   "wer": 0.010810810810810811,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 10,
+    "celdas": 47,
+    "filas_halladas": 10,
+    "celdas_en_fila": 47,
+    "filas_integras": 10,
+    "filas_mismo_ancho": 10,
+    "celdas_en_columna": 47,
+    "celdas_mismo_ancho": 47
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 22.541500627994537,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 6982.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110066.16796875
+   },
+   "tokens_salida": 829,
+   "factura": "INV-001",
+   "variante": "escaneo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-001_p1_escaneo_malo.jpg",
+   "exactos": 64,
+   "cambiados": 0,
+   "ausentes": 1,
+   "inventados": 1,
+   "inventados_lista": [
+    "1278"
+   ],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 19
+    },
+    "cantidad": {
+     "exact": 10
+    },
+    "precio": {
+     "exact": 10
+    },
+    "porcentaje": {
+     "exact": 20
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 1,
+     "absent": 1
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.10557184750733138,
+   "wer": 0.13513513513513514,
+   "bow_f1": 0.9565217391304348,
+   "tablas": {
+    "filas": 10,
+    "celdas": 47,
+    "filas_halladas": 10,
+    "celdas_en_fila": 47,
+    "filas_integras": 10,
+    "filas_mismo_ancho": 10,
+    "celdas_en_columna": 47,
+    "celdas_mismo_ancho": 47
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 23.00277324882336,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 6982.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110348.66796875
+   },
+   "tokens_salida": 934,
+   "factura": "INV-001",
+   "variante": "escaneo_malo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-001_p1_foto.jpg",
+   "exactos": 65,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 19
+    },
+    "cantidad": {
+     "exact": 10
+    },
+    "precio": {
+     "exact": 10
+    },
+    "porcentaje": {
+     "exact": 20
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.09775171065493646,
+   "wer": 0.08648648648648649,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 10,
+    "celdas": 47,
+    "filas_halladas": 10,
+    "celdas_en_fila": 47,
+    "filas_integras": 10,
+    "filas_mismo_ancho": 10,
+    "celdas_en_columna": 47,
+    "celdas_mismo_ancho": 47
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 23.535179106984288,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 6982.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110585.1015625
+   },
+   "tokens_salida": 954,
+   "factura": "INV-001",
+   "variante": "foto",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-001_p1_limpia.png",
+   "exactos": 65,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 19
+    },
+    "cantidad": {
+     "exact": 10
+    },
+    "precio": {
+     "exact": 10
+    },
+    "porcentaje": {
+     "exact": 20
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.016617790811339198,
+   "wer": 0.016216216216216217,
+   "bow_f1": 0.9945945945945946,
+   "tablas": {
+    "filas": 10,
+    "celdas": 47,
+    "filas_halladas": 10,
+    "celdas_en_fila": 47,
+    "filas_integras": 10,
+    "filas_mismo_ancho": 10,
+    "celdas_en_columna": 47,
+    "celdas_mismo_ancho": 47
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 23.458269013091922,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 6982.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110714.83984375
+   },
+   "tokens_salida": 947,
+   "factura": "INV-001",
+   "variante": "limpia",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-002_p1_escaneo.jpg",
+   "exactos": 21,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 7
+    },
+    "cantidad": {
+     "exact": 4
+    },
+    "precio": {
+     "exact": 4
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.0,
+   "wer": 0.0,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 4,
+    "celdas": 12,
+    "filas_halladas": 4,
+    "celdas_en_fila": 12,
+    "filas_integras": 4,
+    "filas_mismo_ancho": 4,
+    "celdas_en_columna": 12,
+    "celdas_mismo_ancho": 12
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 14.643275848124176,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 6982.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110902.90234375
+   },
+   "tokens_salida": 588,
+   "factura": "INV-002",
+   "variante": "escaneo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-002_p1_escaneo_malo.jpg",
+   "exactos": 16,
+   "cambiados": 1,
+   "ausentes": 4,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 2,
+     "absent": 4,
+     "changed": 1
+    },
+    "cantidad": {
+     "exact": 4
+    },
+    "precio": {
+     "exact": 4
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.17984496124031008,
+   "wer": 0.20192307692307693,
+   "bow_f1": 0.9145728643216081,
+   "tablas": {
+    "filas": 4,
+    "celdas": 12
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 11.726796455914155,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 6982.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110970.890625
+   },
+   "tokens_salida": 461,
+   "factura": "INV-002",
+   "variante": "escaneo_malo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-002_p1_foto.jpg",
+   "exactos": 21,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 7
+    },
+    "cantidad": {
+     "exact": 4
+    },
+    "precio": {
+     "exact": 4
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.0,
+   "wer": 0.0,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 4,
+    "celdas": 12,
+    "filas_halladas": 4,
+    "celdas_en_fila": 12,
+    "filas_integras": 4,
+    "filas_mismo_ancho": 4,
+    "celdas_en_columna": 12,
+    "celdas_mismo_ancho": 12
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 14.627675449009985,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 6982.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 111147.8046875
+   },
+   "tokens_salida": 577,
+   "factura": "INV-002",
+   "variante": "foto",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-002_p1_limpia.png",
+   "exactos": 20,
+   "cambiados": 0,
+   "ausentes": 1,
+   "inventados": 1,
+   "inventados_lista": [
+    "6146002"
+   ],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 7
+    },
+    "cantidad": {
+     "exact": 4
+    },
+    "precio": {
+     "exact": 4
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 1,
+     "absent": 1
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.09922480620155039,
+   "wer": 0.10576923076923077,
+   "bow_f1": 0.970873786407767,
+   "tablas": {
+    "filas": 4,
+    "celdas": 12,
+    "filas_halladas": 4,
+    "celdas_en_fila": 12,
+    "filas_integras": 4
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 12.835965541191399,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 6982.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 111243.20703125
+   },
+   "tokens_salida": 500,
+   "factura": "INV-002",
+   "variante": "limpia",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-003_p1_escaneo.jpg",
+   "exactos": 24,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 10
+    },
+    "cantidad": {
+     "exact": 5
+    },
+    "precio": {
+     "exact": 5
+    },
+    "porcentaje": {
+     "exact": 1
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 1
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.0,
+   "wer": 0.0,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 5,
+    "celdas": 15,
+    "filas_halladas": 5,
+    "celdas_en_fila": 15,
+    "filas_integras": 5,
+    "filas_mismo_ancho": 5,
+    "celdas_en_columna": 15,
+    "celdas_mismo_ancho": 15
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 15.784726785030216,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7802.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110529.671875
+   },
+   "tokens_salida": 581,
+   "factura": "INV-003",
+   "variante": "escaneo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-003_p1_escaneo_malo.jpg",
+   "exactos": 20,
+   "cambiados": 4,
+   "ausentes": 0,
+   "inventados": 2,
+   "inventados_lista": [
+    "48211",
+    "9"
+   ],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 8,
+     "changed": 2
+    },
+    "cantidad": {
+     "exact": 5
+    },
+    "precio": {
+     "exact": 5
+    },
+    "porcentaje": {
+     "changed": 1
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 1
+    },
+    "numero_factura": {
+     "changed": 1
+    }
+   },
+   "cer": 0.12296983758700696,
+   "wer": 0.3333333333333333,
+   "bow_f1": 0.72,
+   "tablas": {
+    "filas": 5,
+    "celdas": 15,
+    "filas_halladas": 5,
+    "celdas_en_fila": 15,
+    "filas_integras": 5
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 14.603644859977067,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7802.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110527.88671875
+   },
+   "tokens_salida": 550,
+   "factura": "INV-003",
+   "variante": "escaneo_malo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-003_p1_foto.jpg",
+   "exactos": 23,
+   "cambiados": 1,
+   "ausentes": 0,
+   "inventados": 1,
+   "inventados_lista": [
+    "108"
+   ],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 10
+    },
+    "cantidad": {
+     "exact": 5
+    },
+    "precio": {
+     "exact": 5
+    },
+    "porcentaje": {
+     "changed": 1
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 1
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.002320185614849188,
+   "wer": 0.013333333333333334,
+   "bow_f1": 0.9866666666666668,
+   "tablas": {
+    "filas": 5,
+    "celdas": 15,
+    "filas_halladas": 5,
+    "celdas_en_fila": 15,
+    "filas_integras": 5,
+    "filas_mismo_ancho": 5,
+    "celdas_en_columna": 15,
+    "celdas_mismo_ancho": 15
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 15.49439055705443,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7802.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110562.40234375
+   },
+   "tokens_salida": 596,
+   "factura": "INV-003",
+   "variante": "foto",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-003_p1_limpia.png",
+   "exactos": 24,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 10
+    },
+    "cantidad": {
+     "exact": 5
+    },
+    "precio": {
+     "exact": 5
+    },
+    "porcentaje": {
+     "exact": 1
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 1
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.0,
+   "wer": 0.0,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 5,
+    "celdas": 15,
+    "filas_halladas": 5,
+    "celdas_en_fila": 15,
+    "filas_integras": 5,
+    "filas_mismo_ancho": 5,
+    "celdas_en_columna": 15,
+    "celdas_mismo_ancho": 15
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 15.418732356047258,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7802.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110489.45703125
+   },
+   "tokens_salida": 593,
+   "factura": "INV-003",
+   "variante": "limpia",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-004_p1_escaneo.jpg",
+   "exactos": 10,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 5
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.0,
+   "wer": 0.0,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 1,
+    "celdas": 1,
+    "filas_halladas": 1,
+    "celdas_en_fila": 1,
+    "filas_integras": 1,
+    "filas_mismo_ancho": 1,
+    "celdas_en_columna": 1,
+    "celdas_mismo_ancho": 1
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 9.005606196122244,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7802.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110577.73828125
+   },
+   "tokens_salida": 355,
+   "factura": "INV-004",
+   "variante": "escaneo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-004_p1_escaneo_malo.jpg",
+   "exactos": 9,
+   "cambiados": 0,
+   "ausentes": 1,
+   "inventados": 4,
+   "inventados_lista": [
+    "9999",
+    "7253",
+    "1150",
+    "2990.6135"
+   ],
+   "inventados_importe": 1,
+   "por_tipo": {
+    "importe": {
+     "exact": 5
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "absent": 1
+    }
+   },
+   "cer": 0.0019047619047619048,
+   "wer": 0.025,
+   "bow_f1": 0.9811320754716981,
+   "tablas": {
+    "filas": 1,
+    "celdas": 1,
+    "filas_halladas": 1,
+    "celdas_en_fila": 1,
+    "filas_integras": 1,
+    "filas_mismo_ancho": 1,
+    "celdas_en_columna": 1,
+    "celdas_mismo_ancho": 1
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 12.729140043957159,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7802.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110546.86328125
+   },
+   "tokens_salida": 507,
+   "factura": "INV-004",
+   "variante": "escaneo_malo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-004_p1_foto.jpg",
+   "exactos": 10,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 5
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.0,
+   "wer": 0.0,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 1,
+    "celdas": 1
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 14.487758670002222,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7802.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110575.9375
+   },
+   "tokens_salida": 580,
+   "factura": "INV-004",
+   "variante": "foto",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-004_p1_limpia.png",
+   "exactos": 10,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 5
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.0,
+   "wer": 0.0,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 1,
+    "celdas": 1,
+    "filas_halladas": 1,
+    "celdas_en_fila": 1,
+    "filas_integras": 1
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 13.611256798962131,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7802.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110576.04296875
+   },
+   "tokens_salida": 540,
+   "factura": "INV-004",
+   "variante": "limpia",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-005_p1_escaneo.jpg",
+   "exactos": 134,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 31
+    },
+    "cantidad": {
+     "exact": 30
+    },
+    "precio": {
+     "exact": 30
+    },
+    "porcentaje": {
+     "exact": 38
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.008854454897620365,
+   "wer": 0.005747126436781609,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 30,
+    "celdas": 128,
+    "filas_halladas": 30,
+    "celdas_en_fila": 128,
+    "filas_integras": 30,
+    "filas_mismo_ancho": 30,
+    "celdas_en_columna": 128,
+    "celdas_mismo_ancho": 128
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 36.98721454013139,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7802.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110602.58203125
+   },
+   "tokens_salida": 1485,
+   "factura": "INV-005",
+   "variante": "escaneo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-005_p2_escaneo.jpg",
+   "exactos": 88,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 29
+    },
+    "cantidad": {
+     "exact": 15
+    },
+    "precio": {
+     "exact": 15
+    },
+    "porcentaje": {
+     "exact": 28
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.0,
+   "wer": 0.0,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 15,
+    "celdas": 67,
+    "filas_halladas": 15,
+    "celdas_en_fila": 67,
+    "filas_integras": 15,
+    "filas_mismo_ancho": 15,
+    "celdas_en_columna": 67,
+    "celdas_mismo_ancho": 67
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 22.775975961005315,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7802.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110586.2109375
+   },
+   "tokens_salida": 969,
+   "factura": "INV-005",
+   "variante": "escaneo",
+   "pagina": 2
+  },
+  {
+   "imagen": "INV-005_p1_escaneo_malo.jpg",
+   "exactos": 130,
+   "cambiados": 2,
+   "ausentes": 2,
+   "inventados": 1,
+   "inventados_lista": [
+    "40"
+   ],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 27,
+     "changed": 2,
+     "absent": 2
+    },
+    "cantidad": {
+     "exact": 30
+    },
+    "precio": {
+     "exact": 30
+    },
+    "porcentaje": {
+     "exact": 38
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.012728278915329275,
+   "wer": 0.02586206896551724,
+   "bow_f1": 0.9798850574712644,
+   "tablas": {
+    "filas": 30,
+    "celdas": 128,
+    "filas_halladas": 26,
+    "celdas_en_fila": 110,
+    "filas_integras": 26,
+    "filas_mismo_ancho": 26,
+    "celdas_en_columna": 110,
+    "celdas_mismo_ancho": 110
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 35.26926464703865,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7802.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110566.8125
+   },
+   "tokens_salida": 1411,
+   "factura": "INV-005",
+   "variante": "escaneo_malo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-005_p2_escaneo_malo.jpg",
+   "exactos": 79,
+   "cambiados": 7,
+   "ausentes": 2,
+   "inventados": 4,
+   "inventados_lista": [
+    "628",
+    "2970",
+    "7929",
+    "3689"
+   ],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 28,
+     "absent": 1
+    },
+    "cantidad": {
+     "exact": 15
+    },
+    "precio": {
+     "exact": 13,
+     "changed": 2
+    },
+    "porcentaje": {
+     "exact": 23,
+     "changed": 5
+    },
+    "iban": {
+     "absent": 1
+    }
+   },
+   "cer": 0.13624678663239073,
+   "wer": 0.22522522522522523,
+   "bow_f1": 0.8687782805429864,
+   "tablas": {
+    "filas": 15,
+    "celdas": 67,
+    "filas_halladas": 15,
+    "celdas_en_fila": 60,
+    "filas_integras": 9,
+    "filas_mismo_ancho": 15,
+    "celdas_en_columna": 60,
+    "celdas_mismo_ancho": 67
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 22.027032779995352,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7802.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110535.98828125
+   },
+   "tokens_salida": 940,
+   "factura": "INV-005",
+   "variante": "escaneo_malo",
+   "pagina": 2
+  },
+  {
+   "imagen": "INV-005_p1_foto.jpg",
+   "exactos": 134,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 31
+    },
+    "cantidad": {
+     "exact": 30
+    },
+    "precio": {
+     "exact": 30
+    },
+    "porcentaje": {
+     "exact": 38
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.008854454897620365,
+   "wer": 0.005747126436781609,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 30,
+    "celdas": 128,
+    "filas_halladas": 30,
+    "celdas_en_fila": 128,
+    "filas_integras": 30,
+    "filas_mismo_ancho": 30,
+    "celdas_en_columna": 128,
+    "celdas_mismo_ancho": 128
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 35.12147437594831,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7802.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110610.390625
+   },
+   "tokens_salida": 1404,
+   "factura": "INV-005",
+   "variante": "foto",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-005_p2_foto.jpg",
+   "exactos": 88,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 29
+    },
+    "cantidad": {
+     "exact": 15
+    },
+    "precio": {
+     "exact": 15
+    },
+    "porcentaje": {
+     "exact": 28
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.0,
+   "wer": 0.0,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 15,
+    "celdas": 67,
+    "filas_halladas": 15,
+    "celdas_en_fila": 67,
+    "filas_integras": 15,
+    "filas_mismo_ancho": 15,
+    "celdas_en_columna": 67,
+    "celdas_mismo_ancho": 67
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 23.204633529065177,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7802.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110587.4375
+   },
+   "tokens_salida": 989,
+   "factura": "INV-005",
+   "variante": "foto",
+   "pagina": 2
+  },
+  {
+   "imagen": "INV-005_p1_limpia.png",
+   "exactos": 134,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 31
+    },
+    "cantidad": {
+     "exact": 30
+    },
+    "precio": {
+     "exact": 30
+    },
+    "porcentaje": {
+     "exact": 38
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.009407858328721638,
+   "wer": 0.008620689655172414,
+   "bow_f1": 0.9971264367816092,
+   "tablas": {
+    "filas": 30,
+    "celdas": 128,
+    "filas_halladas": 30,
+    "celdas_en_fila": 128,
+    "filas_integras": 30,
+    "filas_mismo_ancho": 30,
+    "celdas_en_columna": 128,
+    "celdas_mismo_ancho": 128
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 37.102225553942844,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7802.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110588.26171875
+   },
+   "tokens_salida": 1477,
+   "factura": "INV-005",
+   "variante": "limpia",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-005_p2_limpia.png",
+   "exactos": 88,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 29
+    },
+    "cantidad": {
+     "exact": 15
+    },
+    "precio": {
+     "exact": 15
+    },
+    "porcentaje": {
+     "exact": 28
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.0,
+   "wer": 0.0,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 15,
+    "celdas": 67,
+    "filas_halladas": 15,
+    "celdas_en_fila": 67,
+    "filas_integras": 15,
+    "filas_mismo_ancho": 15,
+    "celdas_en_columna": 67,
+    "celdas_mismo_ancho": 67
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 22.211575142107904,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7802.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110587.70703125
+   },
+   "tokens_salida": 943,
+   "factura": "INV-005",
+   "variante": "limpia",
+   "pagina": 2
+  },
+  {
+   "imagen": "INV-006_p1_escaneo.jpg",
+   "exactos": 102,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 33
+    },
+    "cantidad": {
+     "exact": 32
+    },
+    "precio": {
+     "exact": 32
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.0,
+   "wer": 0.0,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 32,
+    "celdas": 96,
+    "filas_halladas": 32,
+    "celdas_en_fila": 96,
+    "filas_integras": 32,
+    "filas_mismo_ancho": 32,
+    "celdas_en_columna": 96,
+    "celdas_mismo_ancho": 96
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 32.23310598684475,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7802.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110584.83984375
+   },
+   "tokens_salida": 1371,
+   "factura": "INV-006",
+   "variante": "escaneo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-006_p2_escaneo.jpg",
+   "exactos": 71,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 28
+    },
+    "cantidad": {
+     "exact": 21
+    },
+    "precio": {
+     "exact": 21
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.0,
+   "wer": 0.0,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 21,
+    "celdas": 63,
+    "filas_halladas": 21,
+    "celdas_en_fila": 63,
+    "filas_integras": 21,
+    "filas_mismo_ancho": 21,
+    "celdas_en_columna": 63,
+    "celdas_mismo_ancho": 63
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 21.820235614897683,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7802.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110587.47265625
+   },
+   "tokens_salida": 874,
+   "factura": "INV-006",
+   "variante": "escaneo",
+   "pagina": 2
+  },
+  {
+   "imagen": "INV-006_p1_escaneo_malo.jpg",
+   "exactos": 70,
+   "cambiados": 2,
+   "ausentes": 30,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 1,
+     "absent": 30,
+     "changed": 2
+    },
+    "cantidad": {
+     "exact": 32
+    },
+    "precio": {
+     "exact": 32
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.16201998947922147,
+   "wer": 0.13714285714285715,
+   "bow_f1": 0.9341317365269461,
+   "tablas": {
+    "filas": 32,
+    "celdas": 96
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 28.325469369068742,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7802.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110563.23828125
+   },
+   "tokens_salida": 1209,
+   "factura": "INV-006",
+   "variante": "escaneo_malo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-006_p2_escaneo_malo.jpg",
+   "exactos": 71,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 28
+    },
+    "cantidad": {
+     "exact": 21
+    },
+    "precio": {
+     "exact": 21
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.004754358161648178,
+   "wer": 0.02531645569620253,
+   "bow_f1": 0.9767441860465116,
+   "tablas": {
+    "filas": 21,
+    "celdas": 63,
+    "filas_halladas": 21,
+    "celdas_en_fila": 63,
+    "filas_integras": 21,
+    "filas_mismo_ancho": 21,
+    "celdas_en_columna": 63,
+    "celdas_mismo_ancho": 63
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 21.86942548188381,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7802.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110566.1640625
+   },
+   "tokens_salida": 879,
+   "factura": "INV-006",
+   "variante": "escaneo_malo",
+   "pagina": 2
+  },
+  {
+   "imagen": "INV-006_p1_foto.jpg",
+   "exactos": 102,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 1,
+   "inventados_lista": [
+    "5329001"
+   ],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 33
+    },
+    "cantidad": {
+     "exact": 32
+    },
+    "precio": {
+     "exact": 32
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.05207785376117833,
+   "wer": 0.037142857142857144,
+   "bow_f1": 0.991404011461318,
+   "tablas": {
+    "filas": 32,
+    "celdas": 96,
+    "filas_halladas": 32,
+    "celdas_en_fila": 96,
+    "filas_integras": 32,
+    "filas_mismo_ancho": 32,
+    "celdas_en_columna": 96,
+    "celdas_mismo_ancho": 96
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 29.992815085919574,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7802.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110595.87890625
+   },
+   "tokens_salida": 1280,
+   "factura": "INV-006",
+   "variante": "foto",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-006_p2_foto.jpg",
+   "exactos": 71,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 28
+    },
+    "cantidad": {
+     "exact": 21
+    },
+    "precio": {
+     "exact": 21
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.0,
+   "wer": 0.0,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 21,
+    "celdas": 63,
+    "filas_halladas": 21,
+    "celdas_en_fila": 63,
+    "filas_integras": 21,
+    "filas_mismo_ancho": 21,
+    "celdas_en_columna": 63,
+    "celdas_mismo_ancho": 63
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 21.984767619054765,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7802.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110581.87890625
+   },
+   "tokens_salida": 882,
+   "factura": "INV-006",
+   "variante": "foto",
+   "pagina": 2
+  },
+  {
+   "imagen": "INV-006_p1_limpia.png",
+   "exactos": 101,
+   "cambiados": 0,
+   "ausentes": 1,
+   "inventados": 1,
+   "inventados_lista": [
+    "5329001"
+   ],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 33
+    },
+    "cantidad": {
+     "exact": 32
+    },
+    "precio": {
+     "exact": 32
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 1,
+     "absent": 1
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.03734876380852183,
+   "wer": 0.04,
+   "bow_f1": 0.982808022922636,
+   "tablas": {
+    "filas": 32,
+    "celdas": 96,
+    "filas_halladas": 32,
+    "celdas_en_fila": 96,
+    "filas_integras": 32
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 31.574966452782974,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7802.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110592.51171875
+   },
+   "tokens_salida": 1337,
+   "factura": "INV-006",
+   "variante": "limpia",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-006_p2_limpia.png",
+   "exactos": 71,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 28
+    },
+    "cantidad": {
+     "exact": 21
+    },
+    "precio": {
+     "exact": 21
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.000792393026941363,
+   "wer": 0.004219409282700422,
+   "bow_f1": 0.9957805907172996,
+   "tablas": {
+    "filas": 21,
+    "celdas": 63,
+    "filas_halladas": 21,
+    "celdas_en_fila": 63,
+    "filas_integras": 21,
+    "filas_mismo_ancho": 21,
+    "celdas_en_columna": 63,
+    "celdas_mismo_ancho": 63
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 21.944057906977832,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7802.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110588.30859375
+   },
+   "tokens_salida": 876,
+   "factura": "INV-006",
+   "variante": "limpia",
+   "pagina": 2
+  },
+  {
+   "imagen": "INV-007_p1_escaneo.jpg",
+   "exactos": 27,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 11
+    },
+    "cantidad": {
+     "exact": 6
+    },
+    "precio": {
+     "exact": 6
+    },
+    "porcentaje": {
+     "exact": 1
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 1
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.0,
+   "wer": 0.0,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 6,
+    "celdas": 18,
+    "filas_halladas": 6,
+    "celdas_en_fila": 18,
+    "filas_integras": 6,
+    "filas_mismo_ancho": 6,
+    "celdas_en_columna": 18,
+    "celdas_mismo_ancho": 18
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 15.805560399079695,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7804.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110525.8125
+   },
+   "tokens_salida": 606,
+   "factura": "INV-007",
+   "variante": "escaneo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-007_p1_escaneo_malo.jpg",
+   "exactos": 26,
+   "cambiados": 1,
+   "ausentes": 0,
+   "inventados": 1,
+   "inventados_lista": [
+    "108"
+   ],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 11
+    },
+    "cantidad": {
+     "exact": 6
+    },
+    "precio": {
+     "exact": 6
+    },
+    "porcentaje": {
+     "changed": 1
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 1
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.011990407673860911,
+   "wer": 0.07142857142857142,
+   "bow_f1": 0.9285714285714286,
+   "tablas": {
+    "filas": 6,
+    "celdas": 18,
+    "filas_halladas": 6,
+    "celdas_en_fila": 18,
+    "filas_integras": 6,
+    "filas_mismo_ancho": 6,
+    "celdas_en_columna": 18,
+    "celdas_mismo_ancho": 18
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 13.283681175904348,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7804.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110562.16796875
+   },
+   "tokens_salida": 508,
+   "factura": "INV-007",
+   "variante": "escaneo_malo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-007_p1_foto.jpg",
+   "exactos": 27,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 11
+    },
+    "cantidad": {
+     "exact": 6
+    },
+    "precio": {
+     "exact": 6
+    },
+    "porcentaje": {
+     "exact": 1
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 1
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.0,
+   "wer": 0.0,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 6,
+    "celdas": 18,
+    "filas_halladas": 6,
+    "celdas_en_fila": 18,
+    "filas_integras": 6,
+    "filas_mismo_ancho": 6,
+    "celdas_en_columna": 18,
+    "celdas_mismo_ancho": 18
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 13.904899660032243,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7804.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110521.1640625
+   },
+   "tokens_salida": 531,
+   "factura": "INV-007",
+   "variante": "foto",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-007_p1_limpia.png",
+   "exactos": 27,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 11
+    },
+    "cantidad": {
+     "exact": 6
+    },
+    "precio": {
+     "exact": 6
+    },
+    "porcentaje": {
+     "exact": 1
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 1
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.0,
+   "wer": 0.0,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 6,
+    "celdas": 18,
+    "filas_halladas": 6,
+    "celdas_en_fila": 18,
+    "filas_integras": 6,
+    "filas_mismo_ancho": 6,
+    "celdas_en_columna": 18,
+    "celdas_mismo_ancho": 18
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 13.411196317058057,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7804.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110517.890625
+   },
+   "tokens_salida": 511,
+   "factura": "INV-007",
+   "variante": "limpia",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-008_p1_escaneo.jpg",
+   "exactos": 10,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 5
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.0,
+   "wer": 0.0,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 1,
+    "celdas": 1,
+    "filas_halladas": 1,
+    "celdas_en_fila": 1,
+    "filas_integras": 1,
+    "filas_mismo_ancho": 1,
+    "celdas_en_columna": 1,
+    "celdas_mismo_ancho": 1
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 12.593856347957626,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7804.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110567.65234375
+   },
+   "tokens_salida": 499,
+   "factura": "INV-008",
+   "variante": "escaneo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-008_p1_escaneo_malo.jpg",
+   "exactos": 10,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 5
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.003898635477582846,
+   "wer": 0.02564102564102564,
+   "bow_f1": 0.9743589743589743,
+   "tablas": {
+    "filas": 1,
+    "celdas": 1,
+    "filas_halladas": 1,
+    "celdas_en_fila": 1,
+    "filas_integras": 1,
+    "filas_mismo_ancho": 1,
+    "celdas_en_columna": 1,
+    "celdas_mismo_ancho": 1
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 12.179898630129173,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7804.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110532.80859375
+   },
+   "tokens_salida": 485,
+   "factura": "INV-008",
+   "variante": "escaneo_malo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-008_p1_foto.jpg",
+   "exactos": 10,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 5
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.0,
+   "wer": 0.0,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 1,
+    "celdas": 1,
+    "filas_halladas": 1,
+    "celdas_en_fila": 1,
+    "filas_integras": 1,
+    "filas_mismo_ancho": 1,
+    "celdas_en_columna": 1,
+    "celdas_mismo_ancho": 1
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 12.660257932031527,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7804.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110568.8203125
+   },
+   "tokens_salida": 502,
+   "factura": "INV-008",
+   "variante": "foto",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-008_p1_limpia.png",
+   "exactos": 10,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 5
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.0,
+   "wer": 0.0,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 1,
+    "celdas": 1
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 14.434977758908644,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7804.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110540.44140625
+   },
+   "tokens_salida": 571,
+   "factura": "INV-008",
+   "variante": "limpia",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-009_p1_escaneo.jpg",
+   "exactos": 78,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 25
+    },
+    "cantidad": {
+     "exact": 12
+    },
+    "precio": {
+     "exact": 12
+    },
+    "porcentaje": {
+     "exact": 23
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.013389121338912133,
+   "wer": 0.009433962264150943,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 12,
+    "celdas": 53,
+    "filas_halladas": 12,
+    "celdas_en_fila": 53,
+    "filas_integras": 12,
+    "filas_mismo_ancho": 12,
+    "celdas_en_columna": 53,
+    "celdas_mismo_ancho": 53
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 27.804489249829203,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7804.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110576.3125
+   },
+   "tokens_salida": 1113,
+   "factura": "INV-009",
+   "variante": "escaneo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-009_p1_escaneo_malo.jpg",
+   "exactos": 74,
+   "cambiados": 0,
+   "ausentes": 4,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 21,
+     "absent": 4
+    },
+    "cantidad": {
+     "exact": 12
+    },
+    "precio": {
+     "exact": 12
+    },
+    "porcentaje": {
+     "exact": 23
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.017573221757322177,
+   "wer": 0.0330188679245283,
+   "bow_f1": 0.9764150943396226,
+   "tablas": {
+    "filas": 12,
+    "celdas": 53,
+    "filas_halladas": 8,
+    "celdas_en_fila": 36,
+    "filas_integras": 8,
+    "filas_mismo_ancho": 8,
+    "celdas_en_columna": 36,
+    "celdas_mismo_ancho": 36
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 27.131620639003813,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7804.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110544.0078125
+   },
+   "tokens_salida": 1089,
+   "factura": "INV-009",
+   "variante": "escaneo_malo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-009_p1_foto.jpg",
+   "exactos": 78,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 25
+    },
+    "cantidad": {
+     "exact": 12
+    },
+    "precio": {
+     "exact": 12
+    },
+    "porcentaje": {
+     "exact": 23
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.11046025104602511,
+   "wer": 0.10377358490566038,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 12,
+    "celdas": 53,
+    "filas_halladas": 12,
+    "celdas_en_fila": 53,
+    "filas_integras": 12,
+    "filas_mismo_ancho": 12,
+    "celdas_en_columna": 53,
+    "celdas_mismo_ancho": 53
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 27.159080682089552,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7804.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110582.3359375
+   },
+   "tokens_salida": 1087,
+   "factura": "INV-009",
+   "variante": "foto",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-009_p1_limpia.png",
+   "exactos": 78,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 25
+    },
+    "cantidad": {
+     "exact": 12
+    },
+    "precio": {
+     "exact": 12
+    },
+    "porcentaje": {
+     "exact": 23
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.013389121338912133,
+   "wer": 0.009433962264150943,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 12,
+    "celdas": 53,
+    "filas_halladas": 12,
+    "celdas_en_fila": 53,
+    "filas_integras": 12,
+    "filas_mismo_ancho": 12,
+    "celdas_en_columna": 53,
+    "celdas_mismo_ancho": 53
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 27.325164566980675,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7804.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110578.6953125
+   },
+   "tokens_salida": 1090,
+   "factura": "INV-009",
+   "variante": "limpia",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-010_p1_escaneo.jpg",
+   "exactos": 29,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 11
+    },
+    "cantidad": {
+     "exact": 6
+    },
+    "precio": {
+     "exact": 6
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.0,
+   "wer": 0.0,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 6,
+    "celdas": 18,
+    "filas_halladas": 6,
+    "celdas_en_fila": 18,
+    "filas_integras": 6,
+    "filas_mismo_ancho": 6,
+    "celdas_en_columna": 18,
+    "celdas_mismo_ancho": 18
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 15.623328931862488,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7804.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110574.3125
+   },
+   "tokens_salida": 623,
+   "factura": "INV-010",
+   "variante": "escaneo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-010_p1_escaneo_malo.jpg",
+   "exactos": 26,
+   "cambiados": 2,
+   "ausentes": 1,
+   "inventados": 1,
+   "inventados_lista": [
+    "1011500"
+   ],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 11
+    },
+    "cantidad": {
+     "exact": 6
+    },
+    "precio": {
+     "exact": 4,
+     "changed": 2
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 1,
+     "absent": 1
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.11904761904761904,
+   "wer": 0.2230769230769231,
+   "bow_f1": 0.8404669260700389,
+   "tablas": {
+    "filas": 6,
+    "celdas": 18,
+    "filas_halladas": 6,
+    "celdas_en_fila": 16,
+    "filas_integras": 4,
+    "filas_mismo_ancho": 6,
+    "celdas_en_columna": 16,
+    "celdas_mismo_ancho": 18
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 14.323499152902514,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7804.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110583.41796875
+   },
+   "tokens_salida": 574,
+   "factura": "INV-010",
+   "variante": "escaneo_malo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-010_p1_foto.jpg",
+   "exactos": 28,
+   "cambiados": 0,
+   "ausentes": 1,
+   "inventados": 1,
+   "inventados_lista": [
+    "1011500"
+   ],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 11
+    },
+    "cantidad": {
+     "exact": 6
+    },
+    "precio": {
+     "exact": 6
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 1,
+     "absent": 1
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.09273182957393483,
+   "wer": 0.08461538461538462,
+   "bow_f1": 0.9767441860465116,
+   "tablas": {
+    "filas": 6,
+    "celdas": 18,
+    "filas_halladas": 6,
+    "celdas_en_fila": 18,
+    "filas_integras": 6,
+    "filas_mismo_ancho": 6,
+    "celdas_en_columna": 18,
+    "celdas_mismo_ancho": 18
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 14.575435642851517,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7804.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110591.98046875
+   },
+   "tokens_salida": 581,
+   "factura": "INV-010",
+   "variante": "foto",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-010_p1_limpia.png",
+   "exactos": 28,
+   "cambiados": 0,
+   "ausentes": 1,
+   "inventados": 1,
+   "inventados_lista": [
+    "1011500"
+   ],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 11
+    },
+    "cantidad": {
+     "exact": 6
+    },
+    "precio": {
+     "exact": 6
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 1,
+     "absent": 1
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.09273182957393483,
+   "wer": 0.08461538461538462,
+   "bow_f1": 0.9767441860465116,
+   "tablas": {
+    "filas": 6,
+    "celdas": 18,
+    "filas_halladas": 6,
+    "celdas_en_fila": 18,
+    "filas_integras": 6,
+    "filas_mismo_ancho": 6,
+    "celdas_en_columna": 18,
+    "celdas_mismo_ancho": 18
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 14.029585430864245,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7804.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110590.21875
+   },
+   "tokens_salida": 589,
+   "factura": "INV-010",
+   "variante": "limpia",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-011_p1_escaneo.jpg",
+   "exactos": 18,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 8
+    },
+    "cantidad": {
+     "exact": 3
+    },
+    "precio": {
+     "exact": 3
+    },
+    "porcentaje": {
+     "exact": 1
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 1
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.0,
+   "wer": 0.0,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 3,
+    "celdas": 9,
+    "filas_halladas": 3,
+    "celdas_en_fila": 9,
+    "filas_integras": 3,
+    "filas_mismo_ancho": 3,
+    "celdas_en_columna": 9,
+    "celdas_mismo_ancho": 9
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 11.204317260999233,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7804.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110526.703125
+   },
+   "tokens_salida": 450,
+   "factura": "INV-011",
+   "variante": "escaneo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-011_p1_escaneo_malo.jpg",
+   "exactos": 15,
+   "cambiados": 3,
+   "ausentes": 0,
+   "inventados": 2,
+   "inventados_lista": [
+    "5.40",
+    "104"
+   ],
+   "inventados_importe": 1,
+   "por_tipo": {
+    "importe": {
+     "exact": 7,
+     "changed": 1
+    },
+    "cantidad": {
+     "exact": 3
+    },
+    "precio": {
+     "exact": 3
+    },
+    "porcentaje": {
+     "changed": 1
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "changed": 1
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.08882521489971347,
+   "wer": 0.3157894736842105,
+   "bow_f1": 0.7192982456140351,
+   "tablas": {
+    "filas": 3,
+    "celdas": 9,
+    "filas_halladas": 2,
+    "celdas_en_fila": 6,
+    "filas_integras": 2
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 11.679578283103183,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7804.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110525.21875
+   },
+   "tokens_salida": 469,
+   "factura": "INV-011",
+   "variante": "escaneo_malo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-011_p1_foto.jpg",
+   "exactos": 18,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 8
+    },
+    "cantidad": {
+     "exact": 3
+    },
+    "precio": {
+     "exact": 3
+    },
+    "porcentaje": {
+     "exact": 1
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 1
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.0,
+   "wer": 0.0,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 3,
+    "celdas": 9,
+    "filas_halladas": 3,
+    "celdas_en_fila": 9,
+    "filas_integras": 3,
+    "filas_mismo_ancho": 3,
+    "celdas_en_columna": 9,
+    "celdas_mismo_ancho": 9
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 11.044080876046792,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7804.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110561.37109375
+   },
+   "tokens_salida": 444,
+   "factura": "INV-011",
+   "variante": "foto",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-011_p1_limpia.png",
+   "exactos": 18,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 8
+    },
+    "cantidad": {
+     "exact": 3
+    },
+    "precio": {
+     "exact": 3
+    },
+    "porcentaje": {
+     "exact": 1
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 1
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.0,
+   "wer": 0.0,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 3,
+    "celdas": 9,
+    "filas_halladas": 3,
+    "celdas_en_fila": 9,
+    "filas_integras": 3,
+    "filas_mismo_ancho": 3,
+    "celdas_en_columna": 9,
+    "celdas_mismo_ancho": 9
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 11.527812925865874,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7804.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110508.30859375
+   },
+   "tokens_salida": 464,
+   "factura": "INV-011",
+   "variante": "limpia",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-012_p1_escaneo.jpg",
+   "exactos": 11,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 6
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.0,
+   "wer": 0.0,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 2,
+    "celdas": 2,
+    "filas_halladas": 2,
+    "celdas_en_fila": 2,
+    "filas_integras": 2,
+    "filas_mismo_ancho": 2,
+    "celdas_en_columna": 2,
+    "celdas_mismo_ancho": 2
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 9.297540254890919,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7804.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110584.34765625
+   },
+   "tokens_salida": 389,
+   "factura": "INV-012",
+   "variante": "escaneo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-012_p1_escaneo_malo.jpg",
+   "exactos": 11,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 6
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.0,
+   "wer": 0.0,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 2,
+    "celdas": 2,
+    "filas_halladas": 2,
+    "celdas_en_fila": 2,
+    "filas_integras": 2,
+    "filas_mismo_ancho": 2,
+    "celdas_en_columna": 2,
+    "celdas_mismo_ancho": 2
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 14.807643864070997,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7804.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110543.3515625
+   },
+   "tokens_salida": 589,
+   "factura": "INV-012",
+   "variante": "escaneo_malo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-012_p1_foto.jpg",
+   "exactos": 11,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 6
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.0,
+   "wer": 0.0,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 2,
+    "celdas": 2
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 11.288305091205984,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7804.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110558.4453125
+   },
+   "tokens_salida": 445,
+   "factura": "INV-012",
+   "variante": "foto",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-012_p1_limpia.png",
+   "exactos": 11,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 6
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.0,
+   "wer": 0.0,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 2,
+    "celdas": 2
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 15.618675749050453,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7804.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110591.87890625
+   },
+   "tokens_salida": 620,
+   "factura": "INV-012",
+   "variante": "limpia",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-013_p1_escaneo.jpg",
+   "exactos": 133,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 31
+    },
+    "cantidad": {
+     "exact": 30
+    },
+    "precio": {
+     "exact": 30
+    },
+    "porcentaje": {
+     "exact": 37
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.009362200117027502,
+   "wer": 0.005780346820809248,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 30,
+    "celdas": 127,
+    "filas_halladas": 30,
+    "celdas_en_fila": 127,
+    "filas_integras": 30,
+    "filas_mismo_ancho": 30,
+    "celdas_en_columna": 127,
+    "celdas_mismo_ancho": 127
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 33.712700912961736,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7804.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110590.6875
+   },
+   "tokens_salida": 1349,
+   "factura": "INV-013",
+   "variante": "escaneo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-013_p2_escaneo.jpg",
+   "exactos": 74,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 26
+    },
+    "cantidad": {
+     "exact": 12
+    },
+    "precio": {
+     "exact": 12
+    },
+    "porcentaje": {
+     "exact": 23
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.0,
+   "wer": 0.0,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 12,
+    "celdas": 53,
+    "filas_halladas": 12,
+    "celdas_en_fila": 53,
+    "filas_integras": 12,
+    "filas_mismo_ancho": 12,
+    "celdas_en_columna": 53,
+    "celdas_mismo_ancho": 53
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 21.50100012985058,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7804.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110598.17578125
+   },
+   "tokens_salida": 862,
+   "factura": "INV-013",
+   "variante": "escaneo",
+   "pagina": 2
+  },
+  {
+   "imagen": "INV-013_p1_escaneo_malo.jpg",
+   "exactos": 130,
+   "cambiados": 0,
+   "ausentes": 3,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 28,
+     "absent": 3
+    },
+    "cantidad": {
+     "exact": 30
+    },
+    "precio": {
+     "exact": 30
+    },
+    "porcentaje": {
+     "exact": 37
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.014043300175541252,
+   "wer": 0.028901734104046242,
+   "bow_f1": 0.976878612716763,
+   "tablas": {
+    "filas": 30,
+    "celdas": 127,
+    "filas_halladas": 27,
+    "celdas_en_fila": 113,
+    "filas_integras": 27,
+    "filas_mismo_ancho": 27,
+    "celdas_en_columna": 113,
+    "celdas_mismo_ancho": 113
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 36.40770243690349,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7804.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110577.52734375
+   },
+   "tokens_salida": 1456,
+   "factura": "INV-013",
+   "variante": "escaneo_malo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-013_p2_escaneo_malo.jpg",
+   "exactos": 73,
+   "cambiados": 0,
+   "ausentes": 1,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 25,
+     "absent": 1
+    },
+    "cantidad": {
+     "exact": 12
+    },
+    "precio": {
+     "exact": 12
+    },
+    "porcentaje": {
+     "exact": 23
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.12475633528265107,
+   "wer": 0.12365591397849462,
+   "bow_f1": 0.9865229110512129,
+   "tablas": {
+    "filas": 12,
+    "celdas": 53,
+    "filas_halladas": 12,
+    "celdas_en_fila": 53,
+    "filas_integras": 12
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 21.49571102205664,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7804.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110564.15625
+   },
+   "tokens_salida": 843,
+   "factura": "INV-013",
+   "variante": "escaneo_malo",
+   "pagina": 2
+  },
+  {
+   "imagen": "INV-013_p1_foto.jpg",
+   "exactos": 133,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 31
+    },
+    "cantidad": {
+     "exact": 30
+    },
+    "precio": {
+     "exact": 30
+    },
+    "porcentaje": {
+     "exact": 37
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.009362200117027502,
+   "wer": 0.005780346820809248,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 30,
+    "celdas": 127,
+    "filas_halladas": 30,
+    "celdas_en_fila": 127,
+    "filas_integras": 30,
+    "filas_mismo_ancho": 30,
+    "celdas_en_columna": 127,
+    "celdas_mismo_ancho": 127
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 32.65677948202938,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7804.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110570.359375
+   },
+   "tokens_salida": 1349,
+   "factura": "INV-013",
+   "variante": "foto",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-013_p2_foto.jpg",
+   "exactos": 74,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 26
+    },
+    "cantidad": {
+     "exact": 12
+    },
+    "precio": {
+     "exact": 12
+    },
+    "porcentaje": {
+     "exact": 23
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.0,
+   "wer": 0.0,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 12,
+    "celdas": 53,
+    "filas_halladas": 12,
+    "celdas_en_fila": 53,
+    "filas_integras": 12,
+    "filas_mismo_ancho": 12,
+    "celdas_en_columna": 53,
+    "celdas_mismo_ancho": 53
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 21.413730819011107,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7804.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110579.0703125
+   },
+   "tokens_salida": 847,
+   "factura": "INV-013",
+   "variante": "foto",
+   "pagina": 2
+  },
+  {
+   "imagen": "INV-013_p1_limpia.png",
+   "exactos": 133,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 31
+    },
+    "cantidad": {
+     "exact": 30
+    },
+    "precio": {
+     "exact": 30
+    },
+    "porcentaje": {
+     "exact": 37
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.011702750146284377,
+   "wer": 0.017341040462427744,
+   "bow_f1": 0.9884393063583815,
+   "tablas": {
+    "filas": 30,
+    "celdas": 127,
+    "filas_halladas": 30,
+    "celdas_en_fila": 127,
+    "filas_integras": 30,
+    "filas_mismo_ancho": 30,
+    "celdas_en_columna": 127,
+    "celdas_mismo_ancho": 127
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 36.30153729696758,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7804.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110587.16796875
+   },
+   "tokens_salida": 1446,
+   "factura": "INV-013",
+   "variante": "limpia",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-013_p2_limpia.png",
+   "exactos": 74,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 26
+    },
+    "cantidad": {
+     "exact": 12
+    },
+    "precio": {
+     "exact": 12
+    },
+    "porcentaje": {
+     "exact": 23
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.0,
+   "wer": 0.0,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 12,
+    "celdas": 53,
+    "filas_halladas": 12,
+    "celdas_en_fila": 53,
+    "filas_integras": 12,
+    "filas_mismo_ancho": 12,
+    "celdas_en_columna": 53,
+    "celdas_mismo_ancho": 53
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 20.980294706998393,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7804.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110571.82421875
+   },
+   "tokens_salida": 825,
+   "factura": "INV-013",
+   "variante": "limpia",
+   "pagina": 2
+  },
+  {
+   "imagen": "INV-014_p1_escaneo.jpg",
+   "exactos": 101,
+   "cambiados": 0,
+   "ausentes": 1,
+   "inventados": 1,
+   "inventados_lista": [
+    "2446002"
+   ],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 33
+    },
+    "cantidad": {
+     "exact": 32
+    },
+    "precio": {
+     "exact": 32
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 1,
+     "absent": 1
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.03806970509383378,
+   "wer": 0.03170028818443804,
+   "bow_f1": 0.9913294797687862,
+   "tablas": {
+    "filas": 32,
+    "celdas": 96,
+    "filas_halladas": 32,
+    "celdas_en_fila": 96,
+    "filas_integras": 32,
+    "filas_mismo_ancho": 32,
+    "celdas_en_columna": 96,
+    "celdas_mismo_ancho": 96
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 32.270192854106426,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7804.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110587.765625
+   },
+   "tokens_salida": 1275,
+   "factura": "INV-014",
+   "variante": "escaneo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-014_p2_escaneo.jpg",
+   "exactos": 47,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 20
+    },
+    "cantidad": {
+     "exact": 13
+    },
+    "precio": {
+     "exact": 13
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.0,
+   "wer": 0.0,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 13,
+    "celdas": 39,
+    "filas_halladas": 13,
+    "celdas_en_fila": 39,
+    "filas_integras": 13,
+    "filas_mismo_ancho": 13,
+    "celdas_en_columna": 39,
+    "celdas_mismo_ancho": 39
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 16.341737048933282,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7804.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110588.55859375
+   },
+   "tokens_salida": 653,
+   "factura": "INV-014",
+   "variante": "escaneo",
+   "pagina": 2
+  },
+  {
+   "imagen": "INV-014_p1_escaneo_malo.jpg",
+   "exactos": 101,
+   "cambiados": 0,
+   "ausentes": 1,
+   "inventados": 1,
+   "inventados_lista": [
+    "2446002"
+   ],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 33
+    },
+    "cantidad": {
+     "exact": 32
+    },
+    "precio": {
+     "exact": 32
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 1,
+     "absent": 1
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.07399463806970509,
+   "wer": 0.0893371757925072,
+   "bow_f1": 0.9622093023255813,
+   "tablas": {
+    "filas": 32,
+    "celdas": 96,
+    "filas_halladas": 32,
+    "celdas_en_fila": 96,
+    "filas_integras": 32,
+    "filas_mismo_ancho": 32,
+    "celdas_en_columna": 96,
+    "celdas_mismo_ancho": 96
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 32.095006430055946,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7804.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110571.2578125
+   },
+   "tokens_salida": 1269,
+   "factura": "INV-014",
+   "variante": "escaneo_malo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-014_p2_escaneo_malo.jpg",
+   "exactos": 47,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 1,
+   "inventados_lista": [
+    "22"
+   ],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 20
+    },
+    "cantidad": {
+     "exact": 13
+    },
+    "precio": {
+     "exact": 13
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.012738853503184714,
+   "wer": 0.023809523809523808,
+   "bow_f1": 0.9822485207100591,
+   "tablas": {
+    "filas": 13,
+    "celdas": 39,
+    "filas_halladas": 13,
+    "celdas_en_fila": 39,
+    "filas_integras": 13,
+    "filas_mismo_ancho": 13,
+    "celdas_en_columna": 39,
+    "celdas_mismo_ancho": 39
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 16.984563047997653,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7804.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110555.1953125
+   },
+   "tokens_salida": 679,
+   "factura": "INV-014",
+   "variante": "escaneo_malo",
+   "pagina": 2
+  },
+  {
+   "imagen": "INV-014_p1_foto.jpg",
+   "exactos": 101,
+   "cambiados": 0,
+   "ausentes": 1,
+   "inventados": 1,
+   "inventados_lista": [
+    "2446002"
+   ],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 33
+    },
+    "cantidad": {
+     "exact": 32
+    },
+    "precio": {
+     "exact": 32
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 1,
+     "absent": 1
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.03806970509383378,
+   "wer": 0.03170028818443804,
+   "bow_f1": 0.9913294797687862,
+   "tablas": {
+    "filas": 32,
+    "celdas": 96,
+    "filas_halladas": 32,
+    "celdas_en_fila": 96,
+    "filas_integras": 32,
+    "filas_mismo_ancho": 32,
+    "celdas_en_columna": 96,
+    "celdas_mismo_ancho": 96
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 31.843592385062948,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7804.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110582.50390625
+   },
+   "tokens_salida": 1278,
+   "factura": "INV-014",
+   "variante": "foto",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-014_p2_foto.jpg",
+   "exactos": 47,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 20
+    },
+    "cantidad": {
+     "exact": 13
+    },
+    "precio": {
+     "exact": 13
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.0,
+   "wer": 0.0,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 13,
+    "celdas": 39,
+    "filas_halladas": 13,
+    "celdas_en_fila": 39,
+    "filas_integras": 13,
+    "filas_mismo_ancho": 13,
+    "celdas_en_columna": 39,
+    "celdas_mismo_ancho": 39
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 16.553777177119628,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7804.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110596.51171875
+   },
+   "tokens_salida": 661,
+   "factura": "INV-014",
+   "variante": "foto",
+   "pagina": 2
+  },
+  {
+   "imagen": "INV-014_p1_limpia.png",
+   "exactos": 102,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 33
+    },
+    "cantidad": {
+     "exact": 32
+    },
+    "precio": {
+     "exact": 32
+    },
+    "fecha": {
+     "exact": 2
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.03806970509383378,
+   "wer": 0.02881844380403458,
+   "bow_f1": 0.9942363112391931,
+   "tablas": {
+    "filas": 32,
+    "celdas": 96,
+    "filas_halladas": 32,
+    "celdas_en_fila": 96,
+    "filas_integras": 32
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 33.66119660506956,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7804.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110589.9375
+   },
+   "tokens_salida": 1349,
+   "factura": "INV-014",
+   "variante": "limpia",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-014_p2_limpia.png",
+   "exactos": 47,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 20
+    },
+    "cantidad": {
+     "exact": 13
+    },
+    "precio": {
+     "exact": 13
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.0,
+   "wer": 0.0,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 13,
+    "celdas": 39,
+    "filas_halladas": 13,
+    "celdas_en_fila": 39,
+    "filas_integras": 13,
+    "filas_mismo_ancho": 13,
+    "celdas_en_columna": 39,
+    "celdas_mismo_ancho": 39
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 17.08744753804058,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7804.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110589.32421875
+   },
+   "tokens_salida": 679,
+   "factura": "INV-014",
+   "variante": "limpia",
+   "pagina": 2
+  },
+  {
+   "imagen": "INV-015_p1_escaneo.jpg",
+   "exactos": 21,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 9
+    },
+    "cantidad": {
+     "exact": 4
+    },
+    "precio": {
+     "exact": 4
+    },
+    "porcentaje": {
+     "exact": 1
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 1
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.0,
+   "wer": 0.0,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 4,
+    "celdas": 12,
+    "filas_halladas": 4,
+    "celdas_en_fila": 12,
+    "filas_integras": 4,
+    "filas_mismo_ancho": 4,
+    "celdas_en_columna": 12,
+    "celdas_mismo_ancho": 12
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 12.334245814010501,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7804.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110560.21875
+   },
+   "tokens_salida": 469,
+   "factura": "INV-015",
+   "variante": "escaneo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-015_p1_escaneo_malo.jpg",
+   "exactos": 20,
+   "cambiados": 1,
+   "ausentes": 0,
+   "inventados": 1,
+   "inventados_lista": [
+    "104"
+   ],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 9
+    },
+    "cantidad": {
+     "exact": 4
+    },
+    "precio": {
+     "exact": 4
+    },
+    "porcentaje": {
+     "changed": 1
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 1
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.08759124087591241,
+   "wer": 0.15492957746478872,
+   "bow_f1": 0.9154929577464789,
+   "tablas": {
+    "filas": 4,
+    "celdas": 12,
+    "filas_halladas": 4,
+    "celdas_en_fila": 12,
+    "filas_integras": 4,
+    "filas_mismo_ancho": 4,
+    "celdas_en_columna": 12,
+    "celdas_mismo_ancho": 12
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 14.217974059982225,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7804.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110551.71484375
+   },
+   "tokens_salida": 576,
+   "factura": "INV-015",
+   "variante": "escaneo_malo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-015_p1_foto.jpg",
+   "exactos": 21,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 9
+    },
+    "cantidad": {
+     "exact": 4
+    },
+    "precio": {
+     "exact": 4
+    },
+    "porcentaje": {
+     "exact": 1
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 1
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.0,
+   "wer": 0.0,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 4,
+    "celdas": 12,
+    "filas_halladas": 4,
+    "celdas_en_fila": 12,
+    "filas_integras": 4,
+    "filas_mismo_ancho": 4,
+    "celdas_en_columna": 12,
+    "celdas_mismo_ancho": 12
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 14.256105806911364,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7804.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110541.3671875
+   },
+   "tokens_salida": 576,
+   "factura": "INV-015",
+   "variante": "foto",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-015_p1_limpia.png",
+   "exactos": 21,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 9
+    },
+    "cantidad": {
+     "exact": 4
+    },
+    "precio": {
+     "exact": 4
+    },
+    "porcentaje": {
+     "exact": 1
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 1
+    },
+    "numero_factura": {
+     "exact": 1
+    }
+   },
+   "cer": 0.0,
+   "wer": 0.0,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 4,
+    "celdas": 12,
+    "filas_halladas": 4,
+    "celdas_en_fila": 12,
+    "filas_integras": 4,
+    "filas_mismo_ancho": 4,
+    "celdas_en_columna": 12,
+    "celdas_mismo_ancho": 12
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 14.239394237985834,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7804.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110545.67578125
+   },
+   "tokens_salida": 576,
+   "factura": "INV-015",
+   "variante": "limpia",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-016_p1_escaneo.jpg",
+   "exactos": 11,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 6
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.0,
+   "wer": 0.0,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 2,
+    "celdas": 2,
+    "filas_halladas": 2,
+    "celdas_en_fila": 2,
+    "filas_integras": 2,
+    "filas_mismo_ancho": 2,
+    "celdas_en_columna": 2,
+    "celdas_mismo_ancho": 2
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 9.54122380609624,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7804.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110593.17578125
+   },
+   "tokens_salida": 401,
+   "factura": "INV-016",
+   "variante": "escaneo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-016_p1_escaneo_malo.jpg",
+   "exactos": 11,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 6
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.0030581039755351682,
+   "wer": 0.010101010101010102,
+   "bow_f1": 0.98989898989899,
+   "tablas": {
+    "filas": 2,
+    "celdas": 2,
+    "filas_halladas": 2,
+    "celdas_en_fila": 2,
+    "filas_integras": 2,
+    "filas_mismo_ancho": 2,
+    "celdas_en_columna": 2,
+    "celdas_mismo_ancho": 2
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 13.519856401020661,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7804.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110565.1796875
+   },
+   "tokens_salida": 573,
+   "factura": "INV-016",
+   "variante": "escaneo_malo",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-016_p1_foto.jpg",
+   "exactos": 11,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 6
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.0,
+   "wer": 0.0,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 2,
+    "celdas": 2,
+    "filas_halladas": 2,
+    "celdas_en_fila": 2,
+    "filas_integras": 2,
+    "filas_mismo_ancho": 2,
+    "celdas_en_columna": 2,
+    "celdas_mismo_ancho": 2
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 9.672980958828703,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7804.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110586.90234375
+   },
+   "tokens_salida": 406,
+   "factura": "INV-016",
+   "variante": "foto",
+   "pagina": 1
+  },
+  {
+   "imagen": "INV-016_p1_limpia.png",
+   "exactos": 11,
+   "cambiados": 0,
+   "ausentes": 0,
+   "inventados": 0,
+   "inventados_lista": [],
+   "inventados_importe": 0,
+   "por_tipo": {
+    "importe": {
+     "exact": 6
+    },
+    "fecha": {
+     "exact": 1
+    },
+    "nif": {
+     "exact": 2
+    },
+    "numero_factura": {
+     "exact": 1
+    },
+    "iban": {
+     "exact": 1
+    }
+   },
+   "cer": 0.0,
+   "wer": 0.0,
+   "bow_f1": 1.0,
+   "tablas": {
+    "filas": 2,
+    "celdas": 2
+   },
+   "banderas": {
+    "truncado": false,
+    "bucle": false,
+    "larga": false,
+    "error_tecnico": false
+   },
+   "tiempo_s": 14.29729270702228,
+   "mem": {
+    "cgroup_pico_global": 6710.7734375,
+    "cuda_reservado": 7804.0,
+    "rss_pico": 6999.46484375,
+    "sistema_disponible": 110586.46875
+   },
+   "tokens_salida": 599,
+   "factura": "INV-016",
+   "variante": "limpia",
+   "pagina": 1
+  }
+ ]
+}
