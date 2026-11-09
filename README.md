@@ -17,6 +17,7 @@ Resultados para decidir cuánta memoria reservar y cuántas conversaciones puede
 | Comparación | Qué responde |
 |---|---|
 | [Lector OCR: PP-OCRv6 frente a Unlimited OCR 2](comparaciones/ocr-pp-ocrv6-vs-unlimited-ocr-2/README.md) | ¿Merece la pena cambiar el programa que lee las facturas escaneadas? Exactitud con documentos buenos y malos. |
+| [Servicio completo: nube (Azure + Claude) frente al GB10 (PP-OCRv6 + Qwen)](comparaciones/documentos-azure-claude-vs-pp-ocrv6-qwen/README.md) | ¿Cuánto texto y cuántos datos de factura acierta cada uno según la calidad del escaneo? Incluye dos fallos del servicio local encontrados y corregidos. |
 
 <!-- conclusiones-inicio -->
 ## Personas que pueden conversar hasta llenar el contexto

@@ -1,0 +1,104 @@
+{
+ "fecha": {
+  "nube": "2026-11-03",
+  "local_inicial": "2026-11-03",
+  "local_giro_corregido": "2026-11-05",
+  "local_iva_verificado": "2026-11-06"
+ },
+ "series": {
+  "nube": {
+   "lectura": "Azure AI Document Intelligence, modelo prebuilt-layout con alta resolución",
+   "interpretacion": "Claude (Anthropic): clasificación, extracción de datos y relectura de la imagen cuando duda. La versión del modelo no queda registrada en las respuestas",
+   "entorno": "servicio en la nube, medido en su entorno real y con su carga habitual"
+  },
+  "local_inicial": {
+   "lectura": "Docling 2.140.0 con PP-OCRv6 medium (RapidOCR 3.10.0, onnxruntime 1.31.0), en CPU, un documento cada vez",
+   "orientacion_de_linea": "clasificador ch_ppocr_mobile_v2.0_cls activo (recorte a 48×192 px, umbral 0,9); se descartan las líneas con confianza del reconocedor inferior a 0,5",
+   "interpretacion": "Qwen3.8 Flash Next cuantizado en FP4, servido con vLLM",
+   "verificacion_fiscal": "solo publica impuestos que un extractor estricto observa por su cuenta en la página",
+   "revision": "todos los documentos se marcan para revisión humana mientras la lectura local no esté validada",
+   "entorno": "NVIDIA GB10; los documentos no salen del equipo"
+  },
+  "local_giro_corregido": {
+   "parte_de": "local_inicial",
+   "cambio": "si el clasificador gira una línea, se lee también sin girar y se publica la lectura de mayor confianza; si la lectura girada es una cifra plausible, se marca como dudosa en lugar de elegir por confianza"
+  },
+  "local_iva_verificado": {
+   "parte_de": "local_giro_corregido",
+   "cambios": [
+    "el IVA propuesto por Qwen se conserva si el extractor estricto no lo observa pero cuadra con importes impresos: bases, cuotas, recargos y total literales en la lectura; base × tipo = cuota en cada fila; suma de bases = base imponible; bases + IVA + recargo − retención = total. No se calcula ningún dato no propuesto",
+    "una página sin indicios de varios documentos (dos QR fiscales, dos cabeceras o dos totales) se extrae como un solo documento con aviso de revisión, en lugar de clasificarse como «otro» sin extraer nada"
+   ]
+  }
+ },
+ "envio": {
+  "entrada": "PDF solo imagen, sin capa de texto",
+  "opciones": "las predeterminadas de cada servicio, sin reprocesar resultados",
+  "documentos_a_la_vez_por_servicio": 2,
+  "repeticiones": "cada serie local posterior usa copias de los PDF con un metadato distinto; los flujos de imagen son idénticos byte a byte",
+  "envios": 456,
+  "terminados": 456
+ },
+ "corpus": {
+  "descripcion": "19 documentos españoles inventados en 6 calidades; la verdad se conoce por construcción",
+  "escritos": {
+   "tipos": [
+    "carta",
+    "alegaciones",
+    "contrato de arrendamiento",
+    "acta de junta",
+    "aviso bancario"
+   ],
+   "tamanos_de_letra_pt": {
+    "pequena": [
+     7.5,
+     9
+    ],
+    "normal": [
+     9,
+     11
+    ],
+    "grande": [
+     10.5,
+     12.5
+    ]
+   },
+   "documentos": 15
+  },
+  "facturas": {
+   "estilos": [
+    "clásica con tabla con bordes",
+    "sin bordes",
+    "ticket",
+    "servicios profesionales con retención de IRPF"
+   ],
+   "documentos": 4
+  },
+  "paginas_por_calidad": 23,
+  "degradacion": {
+   "limpia": "300 dpi, PNG",
+   "escaneo": "200 dpi gris, JPEG 75, giro 0,3-1°, desenfoque, desvaído leve, ruido",
+   "fotocopia": "200 dpi gris, JPEG 70, giro 0,2-0,8°, contraste duro, tres rayas verticales de tóner, ruido",
+   "foto": "200 dpi color, JPEG 60, perspectiva hasta el 3 % por esquina, iluminación irregular, ruido",
+   "escaneo_malo": "150 dpi gris, JPEG 35, giro 1,5-3°, desenfoque, tinta al 60 %, ruido fuerte, motas",
+   "fax": "100 dpi binaria, PNG, giro 0,4-1,2°, ruido, umbral a blanco y negro"
+  },
+  "no_incluye": "sellos, firmas, manuscritos, logotipos, papel térmico ni degradación física real"
+ },
+ "puntuacion": {
+  "texto": "alineación de Levenshtein por palabras, sin puntuación de borde, entre la referencia y el Markdown devuelto; cada palabra queda correcta, con error solo de tilde o mayúscula, sustituida u omitida",
+  "datos": "un dato está en su sitio si todas sus palabras se alinean bien, y presente si su texto compacto aparece en cualquier punto de la lectura",
+  "facturas": "campos del JSON frente a la verdad; importes con tolerancia de medio céntimo; la retención se compara sin signo",
+  "comentarios_de_pagina": "el texto que la nube devuelve como comentario de cabecera, pie o número de página cuenta como leído",
+  "estadistica": {
+   "bootstrap": "4.000 remuestreos por documento de origen, con sus seis calidades juntas; intervalo del 95 % de la diferencia de acierto",
+   "wilcoxon": "por documento y calidad",
+   "mcnemar": "exacto por palabra; optimista porque supone independencia"
+  },
+  "ajustes_tras_ver_salidas": [
+   "se ignora la nota fija que el servicio local añade a las tablas reconstruidas",
+   "la retención se compara en valor absoluto"
+  ],
+  "regla_de_decision": "ninguna fijada de antemano; las conclusiones son descriptivas"
+ }
+}
