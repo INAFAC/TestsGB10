@@ -1,0 +1,36 @@
+{
+  "fecha": "2026-11-09",
+  "corpus": "Documentos inventados con contenido distinto por copia",
+  "paginas_fuente": [
+    1,
+    5,
+    20,
+    50
+  ],
+  "intervalo_observacion_s": 2,
+  "nube": {
+    "lector": "Azure AI Document Intelligence prebuilt-layout",
+    "modelo": "Claude",
+    "copias_por_condicion": 1,
+    "limite_solicitudes_activas": null
+  },
+  "gb10": {
+    "lector": "Docling con PP-OCRv6 medium en CPU",
+    "modelo": "Qwen3.8 Flash Next",
+    "copias_por_condicion": 3,
+    "trabajos_simultaneos": 1,
+    "lectores": 1,
+    "turnos_modelo": 4
+  },
+  "lotes": {
+    "ficheros": 24,
+    "paginas_fuente": 33,
+    "envios_simultaneos": [
+      1,
+      2,
+      4,
+      8
+    ],
+    "repeticiones_por_nivel": 1
+  }
+}

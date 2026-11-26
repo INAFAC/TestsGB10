@@ -1,0 +1,140 @@
+{
+  "ppocr_cpu": {
+    "imagenes": 150,
+    "errores_tecnicos": 0,
+    "paginas_hora": 260.4544993391948,
+    "palabras_acierto": 0.3541169796118282,
+    "cer": 0.48783735405562645,
+    "criticos_acierto": 0.9725274725274725,
+    "inventados": 288,
+    "columnas_omitidas": 8,
+    "columnas_omitidas_silenciosas": 2,
+    "erroneas_limpias": 36,
+    "limpias": 107,
+    "acierto_por_tipo": {
+      "cantidad": 0.9808429118773946,
+      "fecha": 0.9571428571428572,
+      "iban": 0.7888888888888889,
+      "importe": 0.9644097222222222,
+      "nif": 0.9761904761904762,
+      "numero_factura": 0.9666666666666667,
+      "porcentaje": 0.9927140255009107,
+      "precio": 0.9746666666666667
+    }
+  },
+  "ppocr_gpu": {
+    "imagenes": 150,
+    "errores_tecnicos": 0,
+    "paginas_hora": 1811.519015997399,
+    "palabras_acierto": 0.3545227211760299,
+    "cer": 0.48771665370307155,
+    "criticos_acierto": 0.9728092420400113,
+    "inventados": 285,
+    "columnas_omitidas": 8,
+    "columnas_omitidas_silenciosas": 2,
+    "erroneas_limpias": 33,
+    "limpias": 105,
+    "acierto_por_tipo": {
+      "cantidad": 0.9808429118773946,
+      "fecha": 0.9571428571428572,
+      "iban": 0.7888888888888889,
+      "importe": 0.9644097222222222,
+      "nif": 0.9809523809523809,
+      "numero_factura": 0.9666666666666667,
+      "porcentaje": 0.9927140255009107,
+      "precio": 0.9753333333333334
+    }
+  },
+  "ppocr_gpu_improved": {
+    "imagenes": 150,
+    "errores_tecnicos": 0,
+    "paginas_hora": 1747.011038846767,
+    "palabras_acierto": 0.36031861507423035,
+    "cer": 0.4848546942865023,
+    "criticos_acierto": 0.97534516765286,
+    "inventados": 298,
+    "columnas_omitidas": 8,
+    "columnas_omitidas_silenciosas": 2,
+    "erroneas_limpias": 26,
+    "limpias": 105,
+    "acierto_por_tipo": {
+      "cantidad": 0.9808429118773946,
+      "fecha": 0.9571428571428572,
+      "iban": 0.9555555555555556,
+      "importe": 0.9657118055555556,
+      "nif": 0.9809523809523809,
+      "numero_factura": 0.9666666666666667,
+      "porcentaje": 0.9927140255009107,
+      "precio": 0.9753333333333334
+    }
+  },
+  "vlm_glm": {
+    "imagenes": 150,
+    "errores_tecnicos": 0,
+    "paginas_hora": 336.02667521371967,
+    "palabras_acierto": 0.9620630717477826,
+    "cer": 0.020247313832364527,
+    "criticos_acierto": 0.9859115243730628,
+    "inventados": 37,
+    "columnas_omitidas": 12,
+    "columnas_omitidas_silenciosas": 12,
+    "erroneas_limpias": 31,
+    "limpias": 150,
+    "acierto_por_tipo": {
+      "cantidad": 0.9987228607918263,
+      "fecha": 0.9904761904761905,
+      "iban": 0.9,
+      "importe": 0.9722222222222222,
+      "nif": 1.0,
+      "numero_factura": 0.975,
+      "porcentaje": 0.9890710382513661,
+      "precio": 0.9946666666666667
+    }
+  },
+  "hybrid_glm": {
+    "imagenes": 150,
+    "errores_tecnicos": 0,
+    "paginas_hora": 283.4485499066356,
+    "palabras_acierto": 0.3545227211760299,
+    "cer": 0.48771665370307155,
+    "criticos_acierto": 0.9728092420400113,
+    "inventados": 285,
+    "columnas_omitidas": 8,
+    "columnas_omitidas_silenciosas": 0,
+    "erroneas_limpias": 10,
+    "limpias": 22,
+    "acierto_por_tipo": {
+      "cantidad": 0.9808429118773946,
+      "fecha": 0.9571428571428572,
+      "iban": 0.7888888888888889,
+      "importe": 0.9644097222222222,
+      "nif": 0.9809523809523809,
+      "numero_factura": 0.9666666666666667,
+      "porcentaje": 0.9927140255009107,
+      "precio": 0.9753333333333334
+    }
+  },
+  "hybrid_glm_sec": {
+    "imagenes": 150,
+    "errores_tecnicos": 0,
+    "paginas_hora": 281.8202987794292,
+    "palabras_acierto": 0.9615818862665971,
+    "cer": 0.02001050573626306,
+    "criticos_acierto": 0.9870386024232178,
+    "inventados": 40,
+    "columnas_omitidas": 12,
+    "columnas_omitidas_silenciosas": 0,
+    "erroneas_limpias": 0,
+    "limpias": 63,
+    "acierto_por_tipo": {
+      "cantidad": 0.9987228607918263,
+      "fecha": 0.9904761904761905,
+      "iban": 0.9888888888888889,
+      "importe": 0.9722222222222222,
+      "nif": 1.0,
+      "numero_factura": 0.975,
+      "porcentaje": 0.9890710382513661,
+      "precio": 0.9946666666666667
+    }
+  }
+}

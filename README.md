@@ -18,6 +18,9 @@ Resultados para decidir cuánta memoria reservar y cuántas conversaciones puede
 |---|---|
 | [Lector OCR: PP-OCRv6 frente a Unlimited OCR 2](comparaciones/ocr-pp-ocrv6-vs-unlimited-ocr-2/README.md) | ¿Merece la pena cambiar el programa que lee las facturas escaneadas? Exactitud con documentos buenos y malos. |
 | [Servicio completo: nube (Azure + Claude) frente al GB10 (PP-OCRv6 + Qwen)](comparaciones/documentos-azure-claude-vs-pp-ocrv6-qwen/README.md) | ¿Cuánto texto y cuántos datos de factura acierta cada uno según la calidad del escaneo? Incluye dos fallos del servicio local encontrados y corregidos. |
+| [Tiempos de procesamiento en la nube y en el GB10](comparaciones/tiempos-documentos-nube-vs-gb10/README.md) | ¿Cuánto cambia la espera según el formato, la longitud y los envíos simultáneos? |
+| [Concurrencia entre documentos en el GB10](comparaciones/concurrencia-documental-gb10/README.md) | ¿Cuántos ficheros terminan por hora y cuánto espera una factura detrás de un escaneado de 300 páginas? |
+| [OCR en CPU, GPU y con GLM-OCR](comparaciones/ocr-cpu-gpu-y-glm/README.md) | ¿Cuánto acelera la GPU y qué errores quedan en las páginas que pasan sin revisión? |
 
 <!-- conclusiones-inicio -->
 ## Personas que pueden conversar hasta llenar el contexto

@@ -1,0 +1,130 @@
+{
+  "series": [
+    {
+      "perfil": "cuatro_trabajos",
+      "carga": "lote_corto",
+      "ficheros": 48,
+      "finalizados": 48,
+      "errores": 0,
+      "paralelo": 16,
+      "paginas": 66,
+      "segundos": 899.104,
+      "finalizados_por_hora": 192.2
+    },
+    {
+      "perfil": "seis_trabajos",
+      "carga": "lote_corto",
+      "ficheros": 48,
+      "finalizados": 48,
+      "errores": 0,
+      "paralelo": 16,
+      "paginas": 66,
+      "segundos": 722.169,
+      "finalizados_por_hora": 239.3
+    },
+    {
+      "perfil": "ocho_trabajos",
+      "carga": "lote_corto",
+      "ficheros": 48,
+      "finalizados": 48,
+      "errores": 0,
+      "paralelo": 16,
+      "paginas": 66,
+      "segundos": 640.423,
+      "finalizados_por_hora": 269.8
+    },
+    {
+      "perfil": "dos_procesos",
+      "carga": "lote_corto",
+      "ficheros": 48,
+      "finalizados": 48,
+      "errores": 0,
+      "paralelo": 16,
+      "paginas": 66,
+      "segundos": 582.174,
+      "finalizados_por_hora": 296.8
+    },
+    {
+      "perfil": "seis_trabajos",
+      "carga": "seis_largos_y_seis_cortos",
+      "ficheros": 12,
+      "finalizados": 12,
+      "errores": 0,
+      "paralelo": 12,
+      "paginas": 306,
+      "segundos": 2908.283,
+      "finalizados_por_hora": 14.9
+    },
+    {
+      "perfil": "ocho_trabajos",
+      "carga": "tres_largos",
+      "ficheros": 3,
+      "finalizados": 3,
+      "errores": 0,
+      "paralelo": 3,
+      "paginas": 150,
+      "segundos": 1438.119,
+      "finalizados_por_hora": 7.5
+    },
+    {
+      "perfil": "seis_trabajos",
+      "carga": "un_largo_y_lote_corto",
+      "ficheros": 25,
+      "finalizados": 23,
+      "errores": 2,
+      "paralelo": 25,
+      "paginas": 183,
+      "segundos": 2666.511,
+      "finalizados_por_hora": 31.1
+    },
+    {
+      "perfil": "ocho_con_lector_corto",
+      "carga": "simultanea_300_paginas",
+      "ficheros": 1,
+      "finalizados": 1,
+      "errores": 0,
+      "paralelo": 1,
+      "paginas": 300,
+      "segundos": 5205.272,
+      "finalizados_por_hora": 0.7
+    },
+    {
+      "perfil": "ocho_con_lector_corto",
+      "carga": "simultanea_48_ficheros",
+      "ficheros": 48,
+      "finalizados": 48,
+      "errores": 0,
+      "paralelo": 48,
+      "paginas": 66,
+      "segundos": 862.972,
+      "finalizados_por_hora": 200.2
+    },
+    {
+      "perfil": "ocho_con_lector_corto",
+      "carga": "simultanea_12_cortos",
+      "ficheros": 12,
+      "finalizados": 12,
+      "errores": 0,
+      "paralelo": 12,
+      "paginas": 12,
+      "segundos": 391.621,
+      "finalizados_por_hora": 110.3
+    },
+    {
+      "perfil": "ocho_con_lector_corto",
+      "carga": "lote_corto_solo",
+      "ficheros": 48,
+      "finalizados": 48,
+      "errores": 0,
+      "paralelo": 48,
+      "paginas": 66,
+      "segundos": 644.763,
+      "finalizados_por_hora": 268.0
+    }
+  ],
+  "referencia_por_hora": 120,
+  "pico_worker_gib": {
+    "aceptacion_simultanea": 8.2,
+    "lote_corto_solo": 5.1
+  }
+}

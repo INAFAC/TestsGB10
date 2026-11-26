@@ -1,0 +1,27 @@
+{
+  "fecha": "2026-11-26",
+  "equipo": "GB10",
+  "semilla": 2,
+  "facturas": 16,
+  "escritos": 4,
+  "paginas_fuente": 25,
+  "imagenes": 150,
+  "variantes": [
+    "limpia",
+    "escaneo",
+    "fotocopia",
+    "foto",
+    "escaneo_malo",
+    "fax"
+  ],
+  "docling": "2.140.0",
+  "rapidocr": "3.10.0",
+  "onnxruntime_gpu": "1.31.0",
+  "pytorch_gpu": "2.14.1+cu130",
+  "lector": "PP-OCRv6 medium",
+  "hilos_lector": 4,
+  "segundo_lector": "zai-org/GLM-OCR",
+  "peticiones_vlm_simultaneas": 4,
+  "max_tokens_salida_vlm": 4096,
+  "alcance": "Lectura y arbitraje por imagen con referencia sintética"
+}

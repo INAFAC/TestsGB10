@@ -1,0 +1,53 @@
+{
+  "fecha": "2026-11-10",
+  "referencia": "Lotes del 9 de noviembre con un trabajo activo y lectura en CPU",
+  "lector": "Docling con PP-OCRv6 medium en CPU",
+  "modelo": "Qwen3.8 Flash Next en vLLM",
+  "limite_worker_gib": 10,
+  "corpus": "Facturas y escritos inventados, con documentos cortos, expedientes largos e imágenes degradadas",
+  "perfiles": {
+    "cuatro_trabajos": {
+      "procesos": 1,
+      "trabajos_por_proceso": 4,
+      "lectores": 1,
+      "hilos_por_lector": 4,
+      "turnos_modelo": 4,
+      "cpu_asignadas": 8
+    },
+    "seis_trabajos": {
+      "procesos": 1,
+      "trabajos_por_proceso": 6,
+      "lectores": 1,
+      "hilos_por_lector": 8,
+      "turnos_modelo": 4,
+      "cpu_asignadas": 14
+    },
+    "ocho_trabajos": {
+      "procesos": 1,
+      "trabajos_por_proceso": 8,
+      "lectores": 1,
+      "hilos_por_lector": 8,
+      "turnos_modelo": 8,
+      "cpu_asignadas": 14
+    },
+    "dos_procesos": {
+      "procesos": 2,
+      "trabajos_por_proceso": 4,
+      "lectores": 2,
+      "hilos_por_lector": 6,
+      "turnos_modelo": 8,
+      "cpu_asignadas": 16
+    },
+    "ocho_con_lector_corto": {
+      "procesos": 1,
+      "trabajos_por_proceso": 8,
+      "lectores": 2,
+      "hilos_por_lector": 4,
+      "turnos_modelo": 8,
+      "cpu_asignadas": 14
+    }
+  },
+  "perfil_final": "ocho_con_lector_corto",
+  "trabajos_reservados_cortos": 2,
+  "max_paginas_corto": 10
+}
