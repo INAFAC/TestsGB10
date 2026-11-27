@@ -1,10 +1,8 @@
-# Pruebas de modelos en el GB10
+# Pruebas de documentos y modelos en el GB10
 
-Resultados para decidir cuánta memoria reservar y cuántas conversaciones puede atender cada modelo, incluyendo historiales cercanos a su límite.
+Mediciones de lectura de documentos y de inferencia en el GB10. Cada informe describe la carga, los parámetros del ensayo y los resultados observados.
 
-
-
-**Cada prueba indica el límite de solicitudes activas impuesto al servidor.** Ese límite debe distinguirse de la capacidad del GB10.
+En las pruebas de conversación, cada ficha indica el límite configurado de solicitudes activas y cuántas se observaron durante la ejecución.
 
 ## Resultados por modelo
 
@@ -12,11 +10,11 @@ Resultados para decidir cuánta memoria reservar y cuántas conversaciones puede
 |---|---:|---|
 | Qwen3.8-27B-NVFP4 | 262.144 tokens | [Resultados y configuración](modelos/nvidia-qwen3.8-27b-nvfp4/README.md) · [Conversaciones con varios usuarios](modelos/nvidia-qwen3.8-27b-nvfp4/conversaciones-recurrentes/README.md) |
 
-## Otras comparaciones
+## Pruebas de documentos
 
 | Comparación | Qué responde |
 |---|---|
-| [Lector OCR: PP-OCRv6 frente a Unlimited OCR 2](comparaciones/ocr-pp-ocrv6-vs-unlimited-ocr-2/README.md) | ¿Merece la pena cambiar el programa que lee las facturas escaneadas? Exactitud con documentos buenos y malos. |
+| [Lector OCR: PP-OCRv6 frente a Unlimited OCR 2](comparaciones/ocr-pp-ocrv6-vs-unlimited-ocr-2/README.md) | ¿Cuántos importes, fechas e identificadores reconoce cada lector en cuatro calidades de escaneo? |
 | [Servicio completo: nube (Azure + Claude) frente al GB10 (PP-OCRv6 + Qwen)](comparaciones/documentos-azure-claude-vs-pp-ocrv6-qwen/README.md) | ¿Cuánto texto y cuántos datos de factura acierta cada uno según la calidad del escaneo? Incluye dos fallos del servicio local encontrados y corregidos. |
 | [Tiempos de procesamiento en la nube y en el GB10](comparaciones/tiempos-documentos-nube-vs-gb10/README.md) | ¿Cuánto cambia la espera según el formato, la longitud y los envíos simultáneos? |
 | [Concurrencia entre documentos en el GB10](comparaciones/concurrencia-documental-gb10/README.md) | ¿Cuántos ficheros terminan por hora y cuánto espera una factura detrás de un escaneado de 300 páginas? |
@@ -57,7 +55,7 @@ Estos controles usaron **70% de memoria y un límite de 32 solicitudes activas**
 
 En el chat corto, el primer turno fue más lento: 103,2 s de espera visible p95. La prueba del contexto máximo pidió 512 tokens de salida por turno y tardó 346,5 minutos en total. **Poder terminar no significa poder conversar con rapidez.**
 
-El 70% es una referencia medida, no un mínimo demostrado. El 60% obtuvo resultados cercanos en algunas cargas sintéticas, y subir al 85% no mejoró las dos comparaciones iniciales frente al 70% en estas ejecuciones. [Ver la elección de memoria, los resultados de 10 y 30 personas y sus límites](modelos/nvidia-qwen3.8-27b-nvfp4/README.md#qué-configuración-elegir).
+El 70% es una referencia medida, no un mínimo demostrado. El 60% obtuvo resultados cercanos en algunas cargas sintéticas, y subir al 85% no mejoró las dos comparaciones iniciales frente al 70% en estas ejecuciones. [Comparar las mediciones por presupuesto de memoria y número de personas](modelos/nvidia-qwen3.8-27b-nvfp4/README.md#resultados-por-configuración).
 <!-- conclusiones-fin -->
 
 ## Qué puedes comprobar
@@ -71,10 +69,10 @@ Un ejemplo: **262.016 tokens de historial + 128 de respuesta = 262.144 tokens en
 
 ## Dónde está cada cosa
 
-Entra en **modelos → nombre del modelo**. Para saber cuántas personas pueden conversar hasta el límite, elige **capacidad de conversación**. Las comparaciones iniciales y las conversaciones recurrentes conservan las otras cargas ensayadas. Cada prueba reúne su explicación en `README.md`, sus mediciones y sus registros en la misma carpeta.
+Entra en **modelos → nombre del modelo**. Para saber cuántas personas pueden conversar hasta el límite, elige **capacidad de conversación**. Las comparaciones iniciales y las conversaciones recurrentes conservan las otras cargas ensayadas. Cada prueba reúne su explicación en `README.md`, sus mediciones y sus parámetros en la misma carpeta.
 
 - [Guía de lectura](GUIA-DE-LECTURA.md): significado de las medidas y cómo se hicieron las pruebas.
-- [Herramientas de prueba](scripts): scripts para medir y actualizar los informes.
+- [Herramientas de prueba](scripts): sondas para medir un servidor compatible con vLLM.
 
 ## Licencia
 

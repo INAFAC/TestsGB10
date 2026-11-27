@@ -2,9 +2,9 @@
 
 [Volver al modelo](../README.md)
 
-El objetivo es saber cuánto espera cada persona al continuar su conversación, cómo cambia esa espera al crecer el historial y qué presupuesto de memoria conviene. La concurrencia del servidor **depende de cada prueba**; esta campaña usó un límite de 32 solicitudes activas para permitir hasta 30 usuarios sin imponer el antiguo límite de cuatro.
+El objetivo es saber cuánto espera cada persona al continuar su conversación, cómo cambia esa espera al crecer el historial y cómo varían los tiempos según el presupuesto de memoria. La concurrencia del servidor **depende de cada prueba**; esta campaña usó un límite de 32 solicitudes activas para permitir hasta 30 usuarios sin imponer el antiguo límite de cuatro.
 
-Los tiempos de esta batería corresponden al límite de 32 solicitudes activas. La elección permite enviar hasta treinta conversaciones sin el antiguo límite de cuatro; no demuestra que 32 sea el ajuste más rápido para cada historial. En las [pruebas iniciales](../README.md#por-qué-no-conviene-subir-todos-los-límites), un límite menor mejoró algunas cargas. Aplicar esa mejora a conversaciones recurrentes requeriría medirla también con sus mismos historiales y turnos.
+Los tiempos de esta batería corresponden al límite de 32 solicitudes activas. La elección permite enviar hasta treinta conversaciones sin el antiguo límite de cuatro; no demuestra que 32 sea el ajuste más rápido para cada historial. En las [pruebas iniciales](../README.md#efecto-de-los-límites-de-solicitudes), un límite menor mejoró algunas cargas. Aplicar esa mejora a conversaciones recurrentes requeriría medirla también con sus mismos historiales y turnos.
 
 ## Qué permiten concluir
 
@@ -23,19 +23,19 @@ El porcentaje de memoria configurado es el presupuesto del servidor. El porcenta
 “Espera p95” significa que el 95% de las respuestas medidas empezó antes de ese tiempo; algunas tardaron más. “Velocidad p05” muestra la velocidad que alcanzó o superó el 95% de las respuestas. Las tablas por persona permiten comprobar los casos más lentos. Los tiempos incluyen la competencia con los demás usuarios de la prueba; no se extrapolan multiplicando una prueba individual.
 
 <details>
-<summary>Método, plan de pruebas y decisiones de memoria</summary>
+<summary>Método y presupuestos de memoria comparados</summary>
 
 ## Recorrido de las pruebas
 
 | Etapa | Usuarios | Historial inicial | Memoria | Turnos por persona |
 |---|---:|---|---|---:|
-| Seleccionar memoria | 20 | 8.192 y 32.768 tokens | 40%, 70%, 85% | 3 |
-| Comparar usuarios | 10 y 30 | 8.192 y 32.768 tokens | La seleccionada con las mediciones | 3 |
-| Comprobar crecimiento | 10, 20 y 30 | 65.536 tokens | La seleccionada | 2 |
-| Comprobar historiales muy largos | 20; también los grupos que mantengan fluidez en la etapa anterior | 131.072 tokens | La seleccionada | 2 |
-| Llegar al máximo | 20 | 260.864 tokens, después 261.632 | La seleccionada | 2 |
-| Control con mensajes de chat | 20 | Aproximadamente 8.192 y 32.768 tokens | La seleccionada | 3 |
-| Afinar el presupuesto si aporta una mejora | 20 | 8.192 y 32.768 tokens | 50%; después 60% si hace falta | 3 |
+| Comparar presupuestos | 20 | 8.192 y 32.768 tokens | 40%, 70%, 85% | 3 |
+| Comparar usuarios | 10 y 30 | 8.192 y 32.768 tokens | 70% | 3 |
+| Comprobar crecimiento | 10, 20 y 30 | 65.536 tokens | 70% | 2 |
+| Comprobar historiales muy largos | 20 | 131.072 tokens | 70% | 2 |
+| Llegar al máximo | 20 | 260.864 tokens, después 261.632 | 70% | 2 |
+| Control con mensajes de chat | 20 | Aproximadamente 8.192 y 32.768 tokens | 70% | 3 |
+| Comparar presupuestos intermedios | 20 | 8.192 y 32.768 tokens | 50% y 60% | 3 |
 
 Cada respuesta solicita 512 tokens. Después de recibirla, cada usuario espera 30 segundos y añade 256 tokens de mensaje, conservando el historial y la respuesta real anterior. Los primeros mensajes de cada grupo se envían simultáneamente; los siguientes siguen el ritmo de cada usuario. Los historiales son sintéticos y permiten medir rendimiento, no calidad de las respuestas.
 
@@ -43,13 +43,13 @@ Para las etapas de crecimiento se conserva el historial medido en la etapa anter
 
 Como referencia orientativa de fluidez se usaron una espera al primer texto de hasta cinco segundos para el 95% de las solicitudes y una velocidad de al menos diez tokens/s para el 95%. Se muestran por separado el primer turno y las continuaciones, los valores de cada persona y todos los errores. Estos umbrales son una referencia elegida para comparar, no una definición universal de usabilidad.
 
-Las decisiones entre etapas se documentan con sus mediciones. Las etapas no ejecutadas se identifican como tales. Una configuración que ya incumpla la referencia en un historial menor no garantiza fluidez hasta el máximo; se realizó de todas formas una comprobación de finalización al máximo con 20 usuarios.
+Las etapas no ejecutadas se identifican como tales. Una configuración que ya incumpla la referencia en un historial menor no garantiza fluidez hasta el máximo; se realizó de todas formas una comprobación de finalización al máximo con 20 usuarios.
 
 El control de chat usa mensajes ficticios en español y conserva las respuestas reales. Solicita hasta 512 tokens, permite terminar antes y distingue la primera salida del modelo de la primera respuesta visible. Se mide con razonamiento desactivado en ambos tamaños y con el modo predeterminado en 8.192 tokens. El tratamiento del razonamiento sigue la [documentación de vLLM](https://docs.vllm.ai/en/v0.22.0/features/reasoning_outputs/); se comprobó además el comportamiento de la versión instalada.
 
 La regla fijada antes de medir el chat fue repetir con hasta 2.048 tokens cualquier control principal que completase todas las peticiones sin errores de API, pero tuviese alguna respuesta cortada por el límite de 512 tokens o sin texto visible. Se conservaron los controles originales y los demás parámetros. La regla activó las tres repeticiones; sus resultados distinguen el límite de salida de un problema de memoria y conservan las limitaciones que persistieron con 2.048 tokens.
 
-## Decisiones entre etapas
+## Resultados entre etapas
 
 Las tres repeticiones con hasta 2.048 tokens de salida están medidas. Los dos controles con razonamiento desactivado completaron las 60 respuestas con texto visible y finalización natural. En el modo predeterminado fueron 57 de 60: tres primeros turnos consumieron los 2.048 tokens íntegramente en razonamiento y no entregaron texto visible. No hubo errores de API ni recálculos en ese control y su pico de caché fue del 42,4%. Se conserva esta limitación del presupuesto de salida y los resultados originales de 512 tokens.
 
@@ -66,17 +66,13 @@ El ajuste de memoria repite las dos cargas iniciales al 50%, después de las com
 
 En la carga larga al **50%**, también terminaron las 60 respuestas, pero el grupo tardó 46,7 minutos frente a 35,0 al 70%. La espera p95 de las continuaciones fue de 11,0 minutos y su tiempo completo p95, de 17,2 minutos; hubo 85 recálculos frente a 24 al 70%. Esta carga incumplió además las tolerancias de espera y tiempo completo de la comparación. El 50% ahorra memoria y se acercó al 70% en la carga corta, pero no conservó su rendimiento con estos historiales largos.
 
-**Se seleccionó el 70% como referencia para las siguientes etapas.** Tuvo la menor espera p95 de continuaciones en las dos cargas: 7,63 segundos con 8.192 tokens y 374,22 segundos con 32.768. En la carga larga registró 24 recálculos frente a 39 al 60%. La elección prioriza la espera antes de empezar a responder. No convierte el 70% en un mínimo necesario ni demuestra que sea mejor en todas las medidas.
+**Con el 70%**, la espera p95 de las continuaciones fue de 7,63 segundos con 8.192 tokens y de 374,22 segundos con 32.768 tokens. Hubo 24 recálculos en la carga larga, frente a 39 con el 60%.
 
-El **60% es una alternativa cercana que ahorra memoria**: las pruebas duraron 395,1 y 2.120,5 segundos, frente a 391,2 y 2.102,8 al 70%. En la carga larga su tiempo completo p95 fue incluso menor, 731,7 frente a 767,3 segundos, y su velocidad p05 mayor, 1,45 frente a 1,05 tokens/s; a cambio, la espera p95 fue 399,5 frente a 374,2 segundos. Estas ejecuciones no bastan para afirmar una ventaja estable en diferencias pequeñas. Ninguno de los presupuestos hizo fluida, según la referencia elegida, la carga de 20 usuarios con historiales largos.
+Con el **60%**, las pruebas duraron 395,1 y 2.120,5 segundos, frente a 391,2 y 2.102,8 al 70%. En la carga larga su tiempo completo p95 fue incluso menor, 731,7 frente a 767,3 segundos, y su velocidad p05 mayor, 1,45 frente a 1,05 tokens/s; a cambio, la espera p95 fue 399,5 frente a 374,2 segundos. Estas ejecuciones no bastan para afirmar una ventaja estable en diferencias pequeñas. Ninguno de los presupuestos hizo fluida, según la referencia elegida, la carga de 20 usuarios con historiales largos.
 
-Con el 70% se compararán 10 y 30 personas y se harán los controles de chat antes de ampliar los historiales. Los resultados de esas etapas no se darán por medidos con otros presupuestos.
+Los controles posteriores con 10 y 30 personas se midieron al 70%.
 
-[Plan y parámetros](plan.json).
-
-## Configuración restaurada
-
-Después de las mediciones se restauró la configuración capturada al comienzo: **40% de memoria y cuatro solicitudes activas**, con máximo de 262.144 tokens. Una comprobación independiente confirmó el comando, la misma imagen y el mismo archivo de configuración, el servicio sano, una generación de 16 tokens y ninguna petición activa ni en cola. [Ver la comprobación](configuracion-y-registros/verificacion-final.json). Este límite restaurado no cambia los límites que se usaron en cada prueba.
+[Parámetros del ensayo](plan.json).
 
 </details>
 
@@ -136,17 +132,6 @@ La espera visible empieza al enviar la petición y acaba cuando llega el primer 
 
 | Configuración | Presupuesto | Límite activo | Servicio listo | Espera hasta estar listo | Reserva de caché registrada |
 |---|---:|---:|---|---:|---:|
-| [Comparación inicial de memoria](configuracion-y-registros/seleccion-memoria-40/arranque.log) | 40% | 32 | Sí | 376,0 s | 23,18 GiB |
-| [Comparación inicial de memoria](configuracion-y-registros/seleccion-memoria-70/arranque.log) | 70% | 32 | Sí | 376,2 s | 59,85 GiB |
-| [Comparación inicial de memoria](configuracion-y-registros/seleccion-memoria-85/arranque.log) | 85% | 32 | Sí | 401,3 s | 77,84 GiB |
-| [Ajuste del presupuesto](configuracion-y-registros/ajuste-memoria-50/arranque.log) | 50% | 32 | Sí | 386,2 s | 35,30 GiB |
-| [Ajuste del presupuesto](configuracion-y-registros/ajuste-memoria-60/arranque.log) | 60% | 32 | Sí | 381,1 s | 47,47 GiB |
-| [Comparación de usuarios y controles de chat](configuracion-y-registros/comparacion-usuarios-y-chat-memoria-70/arranque.log) | 70% | 32 | Sí | 376,1 s | 59,68 GiB |
-| [Ampliación del historial](configuracion-y-registros/crecimiento-memoria-70/arranque.log) | 70% | 32 | Sí | 0,0 s | 59,68 GiB |
-| [Chat con hasta 2.048 tokens de salida](configuracion-y-registros/chat-salida-2048-memoria-70/arranque.log) | 70% | 32 | Sí | 0,0 s | 59,68 GiB |
-| [Historiales muy largos](configuracion-y-registros/historial-muy-largo-memoria-70/arranque.log) | 70% | 32 | Sí | 0,0 s | 59,68 GiB |
-| [Historiales muy largos: repetición tras interrupción](configuracion-y-registros/historial-muy-largo-repeticion-memoria-70/arranque.log) | 70% | 32 | Sí | 376,0 s | 59,72 GiB |
-| [Comprobación del contexto máximo](configuracion-y-registros/contexto-maximo-memoria-70/arranque.log) | 70% | 32 | Sí | 0,0 s | 59,72 GiB |
 
 La reserva de caché procede del registro de arranque. No equivale a memoria ocupada por conversaciones ni permite deducir por sí sola cuántas personas tendrán una respuesta fluida. El pico de ocupación de esa reserva se mide durante cada prueba.
 
@@ -194,4 +179,4 @@ Estas pruebas pequeñas comprueban la captura de tiempos y la conservación de l
 | [Medidor: sin razonamiento](memoria-85-chat-comprobacion-medidor-sin-razonamiento/README.md) | 85% | 2 | 2 | 128 | 4/4 | 4/4 | 0/4 | 23,5 s |
 | [Medidor: modo predeterminado](memoria-85-chat-comprobacion-medidor-predeterminado/README.md) | 85% | 2 | 2 | 128 | 4/4 | 0/4 | 1/4 | 23,1 s |
 
-[Configuración y registros de esta campaña](configuracion-y-registros/metadata.json).
+[Resumen numérico por prueba](resumen.json)

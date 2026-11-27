@@ -1,8 +1,6 @@
 {
   "summary": {
     "status": "complete",
-    "started_utc": "2026-10-14T20:01:52.142605+00:00",
-    "script_sha256": "ca838decc27282c43e06eb2b489ab61b103673adb4bdc9acb4b4e2dfad5bae80",
     "model": "nvidia/Qwen3.8-27B-NVFP4",
     "concurrency": 4,
     "num_requests": 8,

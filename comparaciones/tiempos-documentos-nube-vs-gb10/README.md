@@ -39,6 +39,6 @@ En el GB10, con ocho envíos, la espera mediana en la cola del servidor fue de 2
 
 ## Límites de la comparación
 
-Se hizo una serie por nivel de carga. El límite interno de la nube era desconocido y el servicio tenía su carga habitual. Los ficheros por hora expresan el ritmo medido durante el lote. El ensayo no evaluó costes ni exactitud documental. En la serie individual hubo tres llamadas al modelo local que agotaron su plazo en PDF de 50 páginas y tres documentos con error de segmentación, aunque los trabajos constaban como terminados. Dos entradas del arranque del cliente quedaron sin cronometrar y se sustituyeron por entradas nuevas equivalentes.
+Se hizo una serie por nivel de carga. El límite interno de la nube era desconocido y la carga externa no se controló. Los ficheros por hora expresan el ritmo medido durante el lote. El ensayo no evaluó costes ni exactitud documental. En la serie individual hubo tres llamadas al modelo local que agotaron su plazo en PDF de 50 páginas y tres documentos con error de segmentación, aunque los trabajos constaban como terminados. Dos entradas del arranque del cliente quedaron sin cronometrar y se sustituyeron por entradas nuevas equivalentes.
 
-[Mediciones por formato, longitud y concurrencia](mediciones.json) · [Configuración](configuracion.json) · [Comparación de exactitud](../documentos-azure-claude-vs-pp-ocrv6-qwen/README.md)
+[Mediciones por formato, longitud y concurrencia](mediciones.json) · [Parámetros del ensayo](parametros.json) · [Comparación de exactitud](../documentos-azure-claude-vs-pp-ocrv6-qwen/README.md)

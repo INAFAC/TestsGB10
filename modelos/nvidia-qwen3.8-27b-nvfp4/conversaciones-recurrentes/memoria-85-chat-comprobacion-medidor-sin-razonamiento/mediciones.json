@@ -1,17 +1,13 @@
 {
   "summary": {
     "kind": "chat_recurrent",
-    "api": "/v1/chat/completions",
     "reasoning_mode": "disabled",
     "forced_output_length": false,
     "case_id": "chat-comprobacion-medidor-sin-razonamiento",
     "turns": 2,
     "think_seconds": 1.0,
     "new_message_tokens": null,
-    "parent_state": null,
     "status": "complete",
-    "started_utc": "2026-10-15T10:47:39.352100+00:00",
-    "script_sha256": "65d243d92aaa5ca7d42061b6f49f8a359735dc5329836839f91d2c1d1e291899",
     "model": "nvidia/Qwen3.8-27B-NVFP4",
     "concurrency": 2,
     "num_requests": 4,
@@ -91,11 +87,6 @@
       "user_id": 0,
       "turn": 1,
       "input_tokens": 256,
-      "prompt_sha256": "f6f44f3d601a235fbc7d1b2e286f6ef3fa8ec1443b9673147492f814052199a2",
-      "assistant_message": {
-        "role": "assistant",
-        "content": "Aqu\u00ed tienes tres acciones concretas para organizar el proyecto ficticio:\n\n1. **Priorizar la tarea 8555 (Taller 88782):** Al tener la duraci\u00f3n m\u00e1s corta (7 d\u00edas), es ideal para iniciar el flujo de trabajo y generar un avance r\u00e1pido que motive al equipo.\n2. **Verificar la disponibilidad de materiales en el Taller 55449:** Este taller tiene la mayor cantidad de piezas (63) y una tarea de larga duraci\u00f3n (21 d\u00edas), por lo que es cr\u00edtico asegurar que los recursos est\u00e9n listos para evitar cuellos de botella a"
-      },
       "ok": true,
       "started_at_s": 0.16199344900087453,
       "finished_at_s": 11.139789353997912,
@@ -115,19 +106,13 @@
       "finish_reason": "length",
       "text_events": 128,
       "has_visible_answer": true,
-      "naturally_finished": false,
-      "error": null
+      "naturally_finished": false
     },
     {
       "index": 2,
       "user_id": 1,
       "turn": 1,
       "input_tokens": 256,
-      "prompt_sha256": "d698a26a16e17a1a48e28675d25d25638a8171c21920a56bcd30e524e4b476b2",
-      "assistant_message": {
-        "role": "assistant",
-        "content": "Aqu\u00ed tienes tres acciones concretas para organizar tu proyecto ficticio:\n\n1. **Priorizar la tarea 7842**: Al ser la de menor duraci\u00f3n (12 d\u00edas), permite liberar recursos del taller 21584 m\u00e1s r\u00e1pido, facilitando la reasignaci\u00f3n de personal o materiales a otras tareas.\n2. **Verificar la disponibilidad de piezas en el taller 54655**: Con 51 piezas y una tarea de 21 d\u00edas, es crucial confirmar que el material es suficiente para evitar cuellos de botella a mitad del plazo.\n3. **Est"
-      },
       "ok": true,
       "started_at_s": 0.16160117799881846,
       "finished_at_s": 11.1399015620118,
@@ -147,19 +132,13 @@
       "finish_reason": "length",
       "text_events": 128,
       "has_visible_answer": true,
-      "naturally_finished": false,
-      "error": null
+      "naturally_finished": false
     },
     {
       "index": 1,
       "user_id": 0,
       "turn": 2,
       "input_tokens": 416,
-      "prompt_sha256": "21ff03765aaff36fcc24a8301b35662e14c0bcd41b2c79ee45a352b91b1e7b65",
-      "assistant_message": {
-        "role": "assistant",
-        "content": "Aqu\u00ed tienes una propuesta de calendario y riesgos basada en las notas:\n\n**Calendario sencillo (primeros 3 d\u00edas)**\n*   **D\u00eda 1:** Revisi\u00f3n de materiales y distribuci\u00f3n en el Taller 88782 (para iniciar la tarea 8555).\n*   **D\u00eda 2:** Confirmaci\u00f3n de plazos y recursos en el Taller 55449 (preparaci\u00f3n para la tarea 5161).\n*   **D\u00eda 3:** Revisi\u00f3n final de materiales en el Taller 78973 y ajuste de la"
-      },
       "ok": true,
       "started_at_s": 12.172789350006497,
       "finished_at_s": 23.448649502999615,
@@ -179,19 +158,13 @@
       "finish_reason": "length",
       "text_events": 128,
       "has_visible_answer": true,
-      "naturally_finished": false,
-      "error": null
+      "naturally_finished": false
     },
     {
       "index": 3,
       "user_id": 1,
       "turn": 2,
       "input_tokens": 416,
-      "prompt_sha256": "cc388eda035ef078879630b19452936fd01ebc55f3e1ab402f6d15ec36de183c",
-      "assistant_message": {
-        "role": "assistant",
-        "content": "Aqu\u00ed tienes un calendario simplificado y los riesgos a vigilar:\n\n**Calario de acciones (primeros 5 d\u00edas)**\n*   **D\u00eda 1:** Priorizar y planificar la tarea 7842 (taller 21584).\n*   **D\u00eda 2:** Verificar inventario y materiales del taller 54655 para la tarea 6892.\n*   **D\u00eda 3:** Revisar distribuci\u00f3n de recursos y plazos de la tarea 7488 (taller 63592).\n*  "
-      },
       "ok": true,
       "started_at_s": 12.158924599003512,
       "finished_at_s": 23.44940524501726,
@@ -211,8 +184,7 @@
       "finish_reason": "length",
       "text_events": 128,
       "has_visible_answer": true,
-      "naturally_finished": false,
-      "error": null
+      "naturally_finished": false
     }
   ],
   "metrics": [

@@ -13,9 +13,9 @@ Se enviaron 262.145 tokens de entrada y se pidió 1 de respuesta: la suma supera
 La API respondió HTTP 400 en 0,046 s. Esto comprueba el límite de tokens, no un fallo de memoria.
 
 <details>
-<summary>Mediciones originales y registros de esta prueba</summary>
+<summary>Mediciones y parámetros de esta prueba</summary>
 
-- [Mediciones originales](mediciones.json).
-- [Configuración de esta prueba](configuracion.json).
+- [Mediciones](mediciones.json).
+- [Parámetros de esta prueba](parametros.json).
 
 </details>

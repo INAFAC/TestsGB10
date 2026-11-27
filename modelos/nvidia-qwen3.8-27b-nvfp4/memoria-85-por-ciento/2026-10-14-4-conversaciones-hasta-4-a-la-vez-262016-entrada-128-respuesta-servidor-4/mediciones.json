@@ -1,8 +1,6 @@
 {
   "summary": {
     "status": "complete",
-    "started_utc": "2026-10-14T14:46:30.691204+00:00",
-    "script_sha256": "cb3d768b4baa20b655d1a1910f9c8c1a18c89d2c9e647dc4e45ffb8e47014eb2",
     "model": "nvidia/Qwen3.8-27B-NVFP4",
     "concurrency": 4,
     "num_requests": 4,
@@ -71,16 +69,14 @@
       "ok": false,
       "started_at_s": 0.25194698899576906,
       "finished_at_s": 1200.412171529999,
-      "total_s": 1200.1602247809933,
-      "error": "timed out"
+      "total_s": 1200.1602247809933
     },
     {
       "index": 3,
       "ok": false,
       "started_at_s": 0.33886006999819074,
       "finished_at_s": 1200.5092564249935,
-      "total_s": 1200.1703973149997,
-      "error": "timed out"
+      "total_s": 1200.1703973149997
     }
   ],
   "metrics": [

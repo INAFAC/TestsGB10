@@ -5,10 +5,7 @@
     "turns": 3,
     "think_seconds": 30.0,
     "new_message_tokens": 256,
-    "parent_state": null,
     "status": "complete",
-    "started_utc": "2026-10-15T11:55:14.535108+00:00",
-    "script_sha256": "e56de6a21940193761f3bce60b837e2c7d3c2372a82e0ad73df80b2ff00faf5a",
     "model": "nvidia/Qwen3.8-27B-NVFP4",
     "concurrency": 20,
     "num_requests": 60,
@@ -91,7 +88,6 @@
       "user_id": 11,
       "turn": 1,
       "input_tokens": 8192,
-      "prompt_sha256": "0bdba13f66313dd9ef1c1f8091abd8ae063c7d6c17792aed2346ac61ae903996",
       "generated_token_ids": [
         2829,
         82,
@@ -625,7 +621,6 @@
       "user_id": 8,
       "turn": 1,
       "input_tokens": 8192,
-      "prompt_sha256": "813694d2d3289d3ea57ce32a67bf7b53ce25cba5cc083a8f9678de664b4a0620",
       "generated_token_ids": [
         470,
         11,
@@ -1159,7 +1154,6 @@
       "user_id": 9,
       "turn": 1,
       "input_tokens": 8192,
-      "prompt_sha256": "0a0eb7cccd3823b8be6788cabb31ed7c3d557cd8994977d058ac89ff71b66d23",
       "generated_token_ids": [
         317,
         197,
@@ -1693,7 +1687,6 @@
       "user_id": 19,
       "turn": 1,
       "input_tokens": 8192,
-      "prompt_sha256": "6f7a5509f27ac961d83a35a11f208a6f2e54396c847654c11eb889b244a20566",
       "generated_token_ids": [
         8,
         197,
@@ -2227,7 +2220,6 @@
       "user_id": 12,
       "turn": 1,
       "input_tokens": 8192,
-      "prompt_sha256": "1578805fb3b85ec5d22ed366eccb6e84bf36549dc61a4dcb05377ab6f974befb",
       "generated_token_ids": [
         197,
         197,
@@ -2761,7 +2753,6 @@
       "user_id": 17,
       "turn": 1,
       "input_tokens": 8192,
-      "prompt_sha256": "e1184dc31b1bcbda92da3eb81743877b70f47d54846a877c795049ad25a11f0c",
       "generated_token_ids": [
         50,
         62,
@@ -3295,7 +3286,6 @@
       "user_id": 7,
       "turn": 1,
       "input_tokens": 8192,
-      "prompt_sha256": "806633ccff3ef71b231a04b758e0d5a007b9aaa66043305735460acbb6d6213b",
       "generated_token_ids": [
         317,
         197,
@@ -3829,7 +3819,6 @@
       "user_id": 16,
       "turn": 1,
       "input_tokens": 8192,
-      "prompt_sha256": "b858e7de76b77694e19cfacd6a13ea737367333275f2418e27456f7af54a56a5",
       "generated_token_ids": [
         198,
         197,
@@ -4363,7 +4352,6 @@
       "user_id": 1,
       "turn": 1,
       "input_tokens": 8192,
-      "prompt_sha256": "ae3c70438a58ed815d8f8e938950ea2c201c9506bdcc1932230ba626476d7e76",
       "generated_token_ids": [
         11,
         220,
@@ -4897,7 +4885,6 @@
       "user_id": 14,
       "turn": 1,
       "input_tokens": 8192,
-      "prompt_sha256": "18dd3f7ee8c60a876fe14f930f570386e7567412d304c7466d891771ac08123d",
       "generated_token_ids": [
         197,
         197,
@@ -5431,7 +5418,6 @@
       "user_id": 3,
       "turn": 1,
       "input_tokens": 8192,
-      "prompt_sha256": "ec12d4b4b7b973d5eaee1ac6f7629bece7b755c98d33899e6e7f14a2e91f581e",
       "generated_token_ids": [
         286,
         11,
@@ -5965,7 +5951,6 @@
       "user_id": 0,
       "turn": 1,
       "input_tokens": 8192,
-      "prompt_sha256": "eb68fcc61284ad47ce03fe451df0c85a9507b9a6022db06684afe753d3eea9f9",
       "generated_token_ids": [
         197,
         197,
@@ -6499,7 +6484,6 @@
       "user_id": 13,
       "turn": 1,
       "input_tokens": 8192,
-      "prompt_sha256": "3a5f6f9ef6fff610cfb9cb3cca4ade0a863909e33e630e8bb8717c7ca6ccf71a",
       "generated_token_ids": [
         286,
         11,
@@ -7033,7 +7017,6 @@
       "user_id": 4,
       "turn": 1,
       "input_tokens": 8192,
-      "prompt_sha256": "86da68944f093c934150a2da82ec5300e76d38cbe79dd815fdd1417a526faf71",
       "generated_token_ids": [
         11,
         26,
@@ -7567,7 +7550,6 @@
       "user_id": 10,
       "turn": 1,
       "input_tokens": 8192,
-      "prompt_sha256": "e96b9b065b2716ddae19c8e917584b6fad3b70d0ac474df3684b5ec3d5b27ba0",
       "generated_token_ids": [
         8,
         198,
@@ -8101,7 +8083,6 @@
       "user_id": 6,
       "turn": 1,
       "input_tokens": 8192,
-      "prompt_sha256": "dcc19b089a295d4ab7fff995fad1d8725c11ed86759609afae1a8be88ba764d2",
       "generated_token_ids": [
         286,
         197,
@@ -8635,7 +8616,6 @@
       "user_id": 2,
       "turn": 1,
       "input_tokens": 8192,
-      "prompt_sha256": "983d852e2983134b2e7b4c43a9dc5e0d517415137ba407c204d7c598a25b2f6b",
       "generated_token_ids": [
         290,
         13583,
@@ -9169,7 +9149,6 @@
       "user_id": 18,
       "turn": 1,
       "input_tokens": 8192,
-      "prompt_sha256": "1755c09ca0b00dbf5e9975f0647d618bea3d1247390d19b9077d79b8002d4f43",
       "generated_token_ids": [
         278,
         220,
@@ -9703,7 +9682,6 @@
       "user_id": 15,
       "turn": 1,
       "input_tokens": 8192,
-      "prompt_sha256": "4ec0bebb37445f22c0d0a99c706ca9bc427bd75bc258fd4520224a057fb97ec7",
       "generated_token_ids": [
         12,
         197,
@@ -10237,7 +10215,6 @@
       "user_id": 5,
       "turn": 1,
       "input_tokens": 8192,
-      "prompt_sha256": "4a1d9e5f9acf8191d60e93a339fb3a7ceaf83a6b947a038d1aade5b5885ad05b",
       "generated_token_ids": [
         768,
         2606,
@@ -10771,7 +10748,6 @@
       "user_id": 11,
       "turn": 2,
       "input_tokens": 8960,
-      "prompt_sha256": "ad12e954c63e9b15ef725b00c56a15cf9f7e75187183d9363981d32a848e34dd",
       "generated_token_ids": [
         11,
         26,
@@ -11305,7 +11281,6 @@
       "user_id": 8,
       "turn": 2,
       "input_tokens": 8960,
-      "prompt_sha256": "8298cbfce1c8580424f1b7e8130fe9142df67fa0747bf97107445d65815d0378",
       "generated_token_ids": [
         271,
         248068,
@@ -11839,7 +11814,6 @@
       "user_id": 9,
       "turn": 2,
       "input_tokens": 8960,
-      "prompt_sha256": "3ca41f6fbaac8479f94b117419f2be84fc3454ec507387c7a0b70139ac4e6096",
       "generated_token_ids": [
         470,
         83,
@@ -12373,7 +12347,6 @@
       "user_id": 19,
       "turn": 2,
       "input_tokens": 8960,
-      "prompt_sha256": "fc6c57d503a37257218b542ad0d22b26fcb6a424e939e1ad0d6cff6f14f80096",
       "generated_token_ids": [
         286,
         11,
@@ -12907,7 +12880,6 @@
       "user_id": 12,
       "turn": 2,
       "input_tokens": 8960,
-      "prompt_sha256": "a76aad3d5c01524f653bdc7212398cf89f04aa34d26264eab0bb9c10f42a8390",
       "generated_token_ids": [
         11,
         197,
@@ -13441,7 +13413,6 @@
       "user_id": 17,
       "turn": 2,
       "input_tokens": 8960,
-      "prompt_sha256": "7d2aa9469217b2f99d55ea0c3ab063de185ce9ff752b0e7066d5304a222ac2c2",
       "generated_token_ids": [
         461,
         197,
@@ -13975,7 +13946,6 @@
       "user_id": 7,
       "turn": 2,
       "input_tokens": 8960,
-      "prompt_sha256": "1de899fb7568f6c24eb63fc319c51f0bad47608ef8e9ffd0637bcce77bf8f079",
       "generated_token_ids": [
         11,
         197,
@@ -14509,7 +14479,6 @@
       "user_id": 16,
       "turn": 2,
       "input_tokens": 8960,
-      "prompt_sha256": "a674dc53f9c7d9c9277c410dfb1a3af26dc0f2803735c8c1a1fd78bb19087f49",
       "generated_token_ids": [
         286,
         198,
@@ -15043,7 +15012,6 @@
       "user_id": 1,
       "turn": 2,
       "input_tokens": 8960,
-      "prompt_sha256": "20856b9bb1f32f4a8f2f6f98b956c9391ed309883147352885d50c097e3d0431",
       "generated_token_ids": [
         11,
         16,
@@ -15577,7 +15545,6 @@
       "user_id": 14,
       "turn": 2,
       "input_tokens": 8960,
-      "prompt_sha256": "872e5beb34ed8fe68f621b1bbf083b810cba4693e855fd17d39d192c1537ae01",
       "generated_token_ids": [
         220,
         197,
@@ -16111,7 +16078,6 @@
       "user_id": 3,
       "turn": 2,
       "input_tokens": 8960,
-      "prompt_sha256": "a5b29776c1b42aa6bd48c6851d98d25cf09b205a8f5c03985d720dad7ed91ec7",
       "generated_token_ids": [
         11,
         197,
@@ -16645,7 +16611,6 @@
       "user_id": 0,
       "turn": 2,
       "input_tokens": 8960,
-      "prompt_sha256": "9ade8f8bf8f4c0e91af37766b6143f42fab82a290f2e466cf5fd36e946e38b57",
       "generated_token_ids": [
         82,
         14,
@@ -17179,7 +17144,6 @@
       "user_id": 13,
       "turn": 2,
       "input_tokens": 8960,
-      "prompt_sha256": "229da9feca5fda927582975f0bfaeb7bf9c0ac4b173e00d2cf2bffec75ed883f",
       "generated_token_ids": [
         11,
         197,
@@ -17713,7 +17677,6 @@
       "user_id": 4,
       "turn": 2,
       "input_tokens": 8960,
-      "prompt_sha256": "d87d13d77999ab43eb39d673481d9edde7c63eb8f598a02f4d93b5a6ba7c9e6d",
       "generated_token_ids": [
         793,
         71,
@@ -18247,7 +18210,6 @@
       "user_id": 10,
       "turn": 2,
       "input_tokens": 8960,
-      "prompt_sha256": "c4783ddf3b23efd2b46e20466050058be305c6b9b87e306dff0c90530f062976",
       "generated_token_ids": [
         328,
         198,
@@ -18781,7 +18743,6 @@
       "user_id": 6,
       "turn": 2,
       "input_tokens": 8960,
-      "prompt_sha256": "161b2dbbec77a87b4e56ecb2f00b36c363fe7aa4c976647b8b531c39aefb4033",
       "generated_token_ids": [
         220,
         197,
@@ -19315,7 +19276,6 @@
       "user_id": 2,
       "turn": 2,
       "input_tokens": 8960,
-      "prompt_sha256": "73b6d0d9838cd46d8639a67d06c9dd5ed22d031387d561962f4995c16c1536f1",
       "generated_token_ids": [
         11,
         197,
@@ -19849,7 +19809,6 @@
       "user_id": 18,
       "turn": 2,
       "input_tokens": 8960,
-      "prompt_sha256": "ee1bd39d23627dd1b308f780f0733141069d167a98d8fb5170ef4cd44602f63b",
       "generated_token_ids": [
         13,
         198,
@@ -20383,7 +20342,6 @@
       "user_id": 15,
       "turn": 2,
       "input_tokens": 8960,
-      "prompt_sha256": "412baaadbfbf7a0ac6e51bb0cbced200bd764e26ddcdf5dc120be3ba8bf73b1d",
       "generated_token_ids": [
         287,
         11,
@@ -20917,7 +20875,6 @@
       "user_id": 5,
       "turn": 2,
       "input_tokens": 8960,
-      "prompt_sha256": "9ae0296f365a7c509f5451b6d3f1a69923694a926179cc1181aaf83af667bcac",
       "generated_token_ids": [
         317,
         220,
@@ -21451,7 +21408,6 @@
       "user_id": 11,
       "turn": 3,
       "input_tokens": 9728,
-      "prompt_sha256": "d522e86b8f1ddcda9e9d7c6ab4145c327eef12750bc975eb292d1d3d219841b0",
       "generated_token_ids": [
         13,
         317,
@@ -21985,7 +21941,6 @@
       "user_id": 8,
       "turn": 3,
       "input_tokens": 9728,
-      "prompt_sha256": "3bbc2c306292245178c959b0551d46a8293b260c7aafdcd0e383275165357c4b",
       "generated_token_ids": [
         248046,
         198,
@@ -22519,7 +22474,6 @@
       "user_id": 9,
       "turn": 3,
       "input_tokens": 9728,
-      "prompt_sha256": "2dd220c48ccfe4a440e6f24377997e8c1c611235550bb0eacea90874170cb5dd",
       "generated_token_ids": [
         14,
         26,
@@ -23053,7 +23007,6 @@
       "user_id": 19,
       "turn": 3,
       "input_tokens": 9728,
-      "prompt_sha256": "514c04eecc7f818fff1b6ee7c3cfee5ffd6a24af109db95092dfa7ea6a137278",
       "generated_token_ids": [
         467,
         197,
@@ -23587,7 +23540,6 @@
       "user_id": 12,
       "turn": 3,
       "input_tokens": 9728,
-      "prompt_sha256": "a8660f89e1659ad3d838ec321af6d555d27ba3e71f8c8ad875a32631dac71b8c",
       "generated_token_ids": [
         197,
         197,
@@ -24121,7 +24073,6 @@
       "user_id": 17,
       "turn": 3,
       "input_tokens": 9728,
-      "prompt_sha256": "cb7abc52861c898891737df48d693b797b84e57d7b5f420dfe8b41d76946ab80",
       "generated_token_ids": [
         11,
         197,
@@ -24655,7 +24606,6 @@
       "user_id": 16,
       "turn": 3,
       "input_tokens": 9728,
-      "prompt_sha256": "cb19037922567eaf3d42bb9f4e898208aa4ceab75c560017f88da1bb08252f8f",
       "generated_token_ids": [
         294,
         970,
@@ -25189,7 +25139,6 @@
       "user_id": 7,
       "turn": 3,
       "input_tokens": 9728,
-      "prompt_sha256": "c80ad56084a4966384395e751ec716d1c3057022ddb2ddd2146b9263b55839ce",
       "generated_token_ids": [
         8,
         197,
@@ -25723,7 +25672,6 @@
       "user_id": 1,
       "turn": 3,
       "input_tokens": 9728,
-      "prompt_sha256": "261b1c441cac20210796ea84a36b8772c7b5f43d1a115e54e9296627b009a1b3",
       "generated_token_ids": [
         220,
         16,
@@ -26257,7 +26205,6 @@
       "user_id": 3,
       "turn": 3,
       "input_tokens": 9728,
-      "prompt_sha256": "1419fbd066ec775852766b85eb375421fdf9f6110b7702433cc7bcfc4f153a2d",
       "generated_token_ids": [
         197,
         11,
@@ -26791,7 +26738,6 @@
       "user_id": 14,
       "turn": 3,
       "input_tokens": 9728,
-      "prompt_sha256": "a775f33e2df448a5ccc1dc77d5f61892f0f39fab546ccf9c3ec07d7555950b8f",
       "generated_token_ids": [
         197,
         197,
@@ -27325,7 +27271,6 @@
       "user_id": 0,
       "turn": 3,
       "input_tokens": 9728,
-      "prompt_sha256": "8a728454d6782e9cc19aeecbe8a83adf6072582add810447c1db9a3989b900bb",
       "generated_token_ids": [
         82,
         14,
@@ -27859,7 +27804,6 @@
       "user_id": 10,
       "turn": 3,
       "input_tokens": 9728,
-      "prompt_sha256": "27dfd7246ab1752ce9f4589134240227b0767d331426d28973c61bb67072a949",
       "generated_token_ids": [
         8,
         198,
@@ -28393,7 +28337,6 @@
       "user_id": 13,
       "turn": 3,
       "input_tokens": 9728,
-      "prompt_sha256": "9239a0cb12da24d8a00124a9d980226c2176bc75ba302adb202a5eeb0e38e40a",
       "generated_token_ids": [
         197,
         11,
@@ -28927,7 +28870,6 @@
       "user_id": 4,
       "turn": 3,
       "input_tokens": 9728,
-      "prompt_sha256": "354ac62a2c20cbc98f2e2143977d8b3958191a3d9713633fab83bf7d1ca94f09",
       "generated_token_ids": [
         82,
         289,
@@ -29461,7 +29403,6 @@
       "user_id": 2,
       "turn": 3,
       "input_tokens": 9728,
-      "prompt_sha256": "b44a5b1cd09851becd749378f715c3c7b1e2a594ce8d58cf824433fb15067ae9",
       "generated_token_ids": [
         1462,
         8,
@@ -29995,7 +29936,6 @@
       "user_id": 6,
       "turn": 3,
       "input_tokens": 9728,
-      "prompt_sha256": "4530e57acbd8d14be7f140742e250f4f36f361ae1ed4da649cb1e13192d4a52b",
       "generated_token_ids": [
         14,
         197,
@@ -30529,7 +30469,6 @@
       "user_id": 18,
       "turn": 3,
       "input_tokens": 9728,
-      "prompt_sha256": "06b2fc84581dc40af1022334759541125b68871677dc0ba54f6e8a3b38f12092",
       "generated_token_ids": [
         287,
         197,
@@ -31063,7 +31002,6 @@
       "user_id": 15,
       "turn": 3,
       "input_tokens": 9728,
-      "prompt_sha256": "e9eadc790fd7825272ea437a940197eb0bc7581d883811cb94f3ab57c16afd6c",
       "generated_token_ids": [
         14,
         197,
@@ -31597,7 +31535,6 @@
       "user_id": 5,
       "turn": 3,
       "input_tokens": 9728,
-      "prompt_sha256": "d192bbadbaf68ba10215261e7286c420fada41ef811a1371e9d0f0642357554e",
       "generated_token_ids": [
         291,
         317,

@@ -16,24 +16,12 @@ No se pudieron enviar conversaciones con esta configuración. Que otro contexto 
 
 **Motivo:** después de preparar el modelo, no quedaba memoria dentro del presupuesto asignado para reservar la caché de los historiales. Falló antes de atender conversaciones, incluso con este límite de contexto reducido.
 
-<details>
-<summary>Mensaje exacto del error</summary>
-
-```text
-(EngineCore pid=461) ERROR 10-14 13:20:44 [core.py:1374] ValueError: No available memory for the cache blocks. Try increasing `gpu_memory_utilization` when initializing the engine (this flag also controls CPU memory reservation on the CPU backend, despite its name). See https://docs.vllm.ai/en/latest/configuration/conserving_memory/ for more details.
-(EngineCore pid=461) ValueError: No available memory for the cache blocks. Try increasing `gpu_memory_utilization` when initializing the engine (this flag also controls CPU memory reservation on the CPU backend, despite its name). See https://docs.vllm.ai/en/latest/configuration/conserving_memory/ for more details.
-(APIServer pid=1) RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}
-```
-
-</details>
-
 Arrancar solo demuestra que el servicio está disponible. Las pruebas de conversaciones comprueban si las respuestas llegan a terminar.
 
 <details>
-<summary>Mediciones originales y registros de esta prueba</summary>
+<summary>Mediciones y parámetros de esta prueba</summary>
 
-- [Mediciones originales](mediciones.json).
-- [Configuración de esta prueba](configuracion.json).
-- [Registro del servidor](registro-del-servidor.log).
+- [Mediciones](mediciones.json).
+- [Parámetros de esta prueba](parametros.json).
 
 </details>

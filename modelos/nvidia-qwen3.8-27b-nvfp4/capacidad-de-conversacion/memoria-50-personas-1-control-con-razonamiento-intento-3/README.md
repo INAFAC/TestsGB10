@@ -64,6 +64,6 @@ Los plazos de espera del cliente no demuestran un error de memoria. Un corte por
 
 </details>
 
-[Mediciones](mediciones.json) · [Configuración](configuracion.json) · [Historial reproducible](historiales.json.gz)
+[Mediciones](mediciones.json) · [Parámetros del ensayo](parametros.json)
 
 La velocidad cuenta todos los tokens de salida. Con razonamiento activado no equivale exclusivamente a la velocidad del texto visible.

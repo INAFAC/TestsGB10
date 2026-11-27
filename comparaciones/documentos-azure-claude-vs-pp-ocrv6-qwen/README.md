@@ -6,8 +6,8 @@
 
 - **Qué se probó:** dos servicios completos que convierten un documento escaneado en texto y, si es una factura, en datos (número, NIF, importes, IVA…). Uno funciona **en la nube**: Azure AI Document Intelligence lee la imagen y Claude interpreta el contenido. El otro funciona **en el GB10, sin que los documentos salgan del equipo**: Docling con PP-OCRv6 lee la imagen y Qwen interpreta el contenido.
 - **Cómo:** se les dieron 114 PDF de 19 documentos inventados (15 escritos y 4 facturas), cada uno en seis calidades, desde una imagen limpia hasta un fax. Como los documentos se inventaron, se sabe cuál es cada palabra y cada dato correcto.
-- **Qué pasó:** la nube leyó bien el **97,9 %** de las palabras y el servicio local, el **89,9 %**. La prueba destapó dos fallos del servicio local. Se corrigieron y se repitió la prueba con las mismas imágenes: el local sube al **93,1 %** de las palabras y, en los datos de las facturas, del **68,1 % al 83,5 %**, al nivel de la nube (**82,2 %**).
-- **Conclusión:** la nube sigue leyendo mejor el texto, sobre todo las cifras de los escaneos malos y los faxes. En los datos de las facturas, el servicio local corregido ya la iguala en conjunto en esta prueba. Con documentos reales las cifras pueden ser otras.
+- **Qué pasó:** la nube leyó bien el **97,9 %** de las palabras y el servicio local, el **89,9 %**. La prueba destapó dos fallos del servicio local. Se corrigieron y se repitió la prueba con las mismas imágenes: el local sube al **93,1 %** de las palabras y, en los datos de las facturas, del **68,1 % al 83,5 %**. En la nube se midió **82,2 %**.
+- **Conclusión:** la nube sigue leyendo mejor el texto, sobre todo las cifras de los escaneos malos y los faxes. En las cuatro facturas fuente y sus variantes, la serie local corregida acertó 616 de 738 comprobaciones de campos y la nube, 607 de 738. Con documentos reales las cifras pueden ser otras.
 
 Fechas de la prueba: del 3 al 6 de noviembre de 2026. Mide la **exactitud del servicio completo**, desde la imagen hasta el texto y los datos. No tiene relación con las pruebas de memoria y conversaciones de Qwen del resto del repositorio. La [comparación de lectores OCR](../ocr-pp-ocrv6-vs-unlimited-ocr-2/README.md) midió solo el primer paso, con otras facturas.
 
@@ -28,8 +28,8 @@ Se midieron cuatro series con las mismas imágenes:
 
 | Serie | Fecha | Qué cambia |
 |---|---|---|
-| **Nube** | 3 de noviembre | El servicio en la nube tal como funcionaba ese día |
-| **Local inicial** | 3 de noviembre | El servicio local tal como funcionaba ese día |
+| **Nube** | 3 de noviembre | Azure Document Intelligence y Claude |
+| **Local inicial** | 3 de noviembre | Docling con PP-OCRv6 y Qwen |
 | **Local + giro corregido** | 5 de noviembre | Corrige el fallo que hacía perder líneas enteras de texto |
 | **Local + IVA verificado** | 6 de noviembre | Además, conserva el IVA que cuadra con los importes impresos y no descarta facturas de una sola página |
 
@@ -51,7 +51,7 @@ Las dos correcciones se explican en [los dos fallos encontrados](#los-dos-fallos
 | Escaneo malo | Escáner muy malo | 150 dpi en gris, JPEG 35, giro de 1,5 a 3°, tinta desvaída al 60 %, ruido fuerte y motas |
 | Fax | Fax recibido | 100 dpi, solo blanco y negro, giro de 0,4 a 1,2° y ruido |
 
-- **Los PDF solo llevan la imagen**, sin texto incrustado, así que cada servicio tiene que leerla. Los dos servicios recibieron los mismos archivos, con sus opciones predeterminadas y dos documentos a la vez. La nube se midió en su entorno real, con su carga habitual.
+- **Los PDF solo llevan la imagen**, sin texto incrustado, así que cada servicio tiene que leerla. Los dos servicios recibieron los mismos archivos, con sus opciones predeterminadas y dos documentos a la vez. La carga externa del servicio en la nube no se controló durante la medición.
 - **Qué se cuenta:**
   - **34.854 palabras por serie** (5.809 por calidad). Una palabra cuenta como bien leída solo si aparece en su sitio. Aparte, se mide cuántas aparecen en cualquier orden.
   - **2.844 apariciones de datos** (474 por calidad): fechas, importes, NIF, IBAN, porcentajes, referencias, teléfonos…
@@ -203,7 +203,7 @@ Qué se aprende:
 - **El desglose del IVA sigue siendo mejor en la nube.** Sin contar el ticket, que ninguno de los dos desglosa, la nube acierta todas las bases y cuotas, y el local corregido, el 83,3 %. A cambio, la nube publicó un total de IVA erróneo, y el local, ninguno.
 - **En el ticket, la nube no extrae el número, el NIF del emisor ni la base** en ninguna de las seis calidades. El servicio local sí.
 - **Las cantidades y los precios de las líneas fallan en todas las series.** En parte es un defecto de la referencia: el precio se guardó redondeado a dos decimales y la factura imprime tres, y el ticket no imprime cantidad ni precio por línea.
-- **Revisión humana:** el servicio local la pide en todos los documentos, por diseño, mientras su lectura no esté validada con documentos reales. La nube la pidió en 35 de 114.
+- **Revisión humana:** las tres series locales marcaron para revisión 114 de 114 documentos cada una. La serie de la nube marcó 35 de 114.
 
 ## Los dos fallos encontrados y corregidos
 
@@ -249,7 +249,7 @@ El servicio local perdía 2.078 palabras, casi siempre líneas enteras en mitad 
 | Local corregido frente a local inicial | +3,2 (1,8 a 4,6) | +1,6 (0,5 a 2,9) | corregido 47, inicial 1, empate 66 |
 
 - **Diferencia:** puntos de acierto de la primera serie menos la segunda. Entre paréntesis, el intervalo de confianza del 95 %, calculado con *bootstrap*: se repite el cálculo 4.000 veces eligiendo al azar documentos de origen, cada uno con sus seis calidades.
-- **Ningún intervalo incluye el cero**, así que las tres diferencias son claras. La prueba de Wilcoxon por documento lo confirma, con p < 0,0001 en los tres casos.
+- Los tres intervalos agrupados por documento de origen excluyen el cero. El análisis adicional de Wilcoxon dio p < 0,0001 en las tres comparaciones. Usó 114 pares, seis variantes por original, por lo que comparte observaciones correlacionadas.
 - La prueba de McNemar, palabra a palabra, también coincide. Pero supone que las palabras de un documento son independientes, así que su resultado es optimista y no se usa como referencia.
 
 ## Lo que todavía separa al servicio local de la nube
@@ -258,14 +258,14 @@ El servicio local perdía 2.078 palabras, casi siempre líneas enteras en mitad 
 - **Orden de lectura en escaneos malos.** Docling a veces cambia el orden de los bloques. El texto está, pero fuera de sitio: con escaneo malo, el acierto en cualquier orden supera en 7,7 puntos al acierto en su sitio. En el resto de calidades la diferencia es de 0,8 a 1,5 puntos, y en la nube no llega a 0,2.
 - **Cifras en imágenes muy degradadas.** Con escaneo malo y fax, el local acierta el 67 % y el 76 % de los números, frente al 91 % y el 83 % de la nube.
 - **Decimales en fax.** El lector local confunde a veces la coma decimal con un punto.
-- **Páginas boca abajo.** El clasificador de orientación no endereza una página escaneada al revés. Con él o sin él se pierde casi todo el texto, así que hace falta detectar la orientación de la página antes de leerla. Se comprobó con seis copias giradas de documentos de la prueba.
+- **Páginas boca abajo.** El clasificador de orientación no endereza una página escaneada al revés. Con él o sin él se pierde casi todo el texto. Se comprobó con seis copias giradas de documentos de la prueba.
 - **Velocidad.** Con dos documentos a la vez, la nube tardó una mediana de 20,7 s por documento, y el local, unos 29 s. El lector local trabaja en el procesador y atiende un documento cada vez.
 
 ## Límites de la prueba
 
 - **Documentos inventados:** de una columna, con fuentes estándar y degradación simulada. No hay sellos, firmas, manuscritos, logotipos ni papel térmico. Con documentos reales las cifras pueden cambiar.
 - **Pocos documentos de origen:** son 19, y las seis calidades de un mismo documento no son independientes. Por eso la fiabilidad estadística se calcula por documento de origen.
-- **Sin regla de decisión previa.** Las medidas se definieron antes de ver los resultados completos, salvo dos ajustes hechos al ver salidas reales. Los dos son neutrales o favorables al servicio local: se ignora una nota fija que el local añade a las tablas reconstruidas, y la retención se compara sin signo.
+- **Criterios de puntuación.** Las medidas se definieron antes de ver los resultados completos, salvo dos ajustes hechos al ver salidas reales. Los dos son neutrales o favorables al servicio local: se ignora una nota fija que el local añade a las tablas reconstruidas, y la retención se compara sin signo.
 - **Las correcciones se diseñaron mirando estos mismos documentos.** Las mejoras de la tercera y la cuarta serie pueden ser optimistas hasta repetirlas con documentos nuevos.
 - **«Presente» es una medida generosa:** busca el dato en cualquier punto de la lectura, así que puede dar por buena una cifra corta que aparezca en otro sitio. «En su sitio» es la medida estricta.
 - **Defectos de la referencia** en las cantidades y los precios de las líneas, explicados arriba. Afectan a todas las series.
@@ -279,7 +279,7 @@ El servicio local perdía 2.078 palabras, casi siempre líneas enteras en mitad 
 | [`por-documento.md`](por-documento.md) | Tabla legible con el resultado de cada uno de los 114 documentos |
 | [`mediciones.json`](mediciones.json) | Todos los resultados: globales, por calidad, por tipo de documento, de letra, de palabra y de dato, los datos de factura, las comparaciones estadísticas y el diagnóstico del lector |
 | [`por-documento.json`](por-documento.json) | Lo mismo que `por-documento.md`, con todos los recuentos de cada serie |
-| [`configuracion.json`](configuracion.json) | Versiones, envío, estropeado de las imágenes y cómo se puntuó |
+| [`parametros.json`](parametros.json) | Versiones, envío, estropeado de las imágenes y cómo se puntuó |
 
 Significado de los nombres que aparecen en los archivos `.json`:
 

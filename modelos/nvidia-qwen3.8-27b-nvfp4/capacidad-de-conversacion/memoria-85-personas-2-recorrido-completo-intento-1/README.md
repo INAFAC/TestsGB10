@@ -442,6 +442,6 @@ El objetivo del cierre deja aproximadamente 128 tokens para la respuesta y pide 
 
 </details>
 
-[Mediciones](mediciones.json) · [Configuración](configuracion.json) · [Historial reproducible](historiales.json.gz)
+[Mediciones](mediciones.json) · [Parámetros del ensayo](parametros.json)
 
 La velocidad cuenta todos los tokens de salida. Con razonamiento activado no equivale exclusivamente a la velocidad del texto visible.

@@ -31,4 +31,4 @@ GLM por sí solo dejó 150 páginas sin revisión, incluidas 31 con errores seg�
 
 El error de caracteres compara el texto normalizado con la referencia en orden de lectura y se promedia por imagen. Puede penalizar un orden distinto o el marcado de tablas aunque los importes aparezcan en la página. Por eso conviene leerlo junto con el acierto de valores. El resultado de cero errores en 63 imágenes sin revisión describe este corpus, con reglas probadas sobre las mismas muestras. Su generalización a documentos nuevos queda sin medir.
 
-[Mediciones globales y acierto por tipo de valor](mediciones.json) · [Configuración y corpus](configuracion.json)
+[Mediciones globales y acierto por tipo de valor](mediciones.json) · [Configuración y corpus](parametros.json)

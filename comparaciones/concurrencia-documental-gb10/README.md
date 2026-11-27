@@ -39,4 +39,4 @@ Un ensayo intermedio con un expediente de 150 páginas y un lote corto terminó 
 
 Se hizo una serie por configuración en un equipo con inferencia compartida. Al cambiar los trabajos también variaron los hilos, los lectores o los turnos del modelo. El aumento de caudal corresponde al conjunto de la configuración y depende de la mezcla de documentos.
 
-[Mediciones por carga y perfil](mediciones.json) · [Configuraciones de los lectores y del modelo](configuracion.json) · [Línea base del día anterior](../tiempos-documentos-nube-vs-gb10/README.md)
+[Mediciones por carga y perfil](mediciones.json) · [Configuraciones de los lectores y del modelo](parametros.json) · [Línea base del día anterior](../tiempos-documentos-nube-vs-gb10/README.md)

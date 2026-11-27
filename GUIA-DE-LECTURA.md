@@ -2,9 +2,15 @@
 
 [Volver al inicio](README.md)
 
-## Lo primero: ¿terminó y llegó al máximo?
+## Pruebas de documentos
 
-Hay dos tipos de pruebas y su finalización se comprueba de forma distinta:
+Los ensayos de OCR comparan el texto leído con los valores conocidos de documentos inventados. El error de caracteres cuenta diferencias de transcripción, mientras que el acierto de valores mide si se recuperaron importes, fechas o identificadores. Los ensayos del servicio completo también miden campos extraídos, espera en cola y duración del procesamiento. Una página leída y un fichero terminado son unidades distintas.
+
+En las fichas con detalle por imagen o documento se pueden sumar los aciertos y errores publicados. En las pruebas de tiempos y concurrencia se pueden recalcular los ficheros por hora a partir del número de ficheros terminados y los segundos del lote. La comparación con GLM-OCR publica agregados por variante del lector. Para repetir exactamente las lecturas harían falta también las imágenes y sus referencias.
+
+## Pruebas de conversación
+
+Las pruebas de conversación distinguen dos formas de finalización.
 
 | Tipo de prueba | Qué significa que terminó | Cómo se comprueba el contexto |
 |---|---|---|
@@ -113,4 +119,4 @@ Si un grupo deja de cumplir los tiempos, se conserva el punto y la causa. Si fal
 
 ## Dónde están los datos
 
-Cada prueba reúne su explicación, `mediciones.json`, `configuracion.json` y sus registros en una sola carpeta. Los archivos de configuración del equipo conservan la imagen, los parámetros, el estado de los reinicios y un inventario que permite comprobar que los originales no se han alterado.
+Cada ficha enlaza las mediciones y los parámetros del ensayo.

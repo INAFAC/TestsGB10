@@ -2,7 +2,7 @@
 
 [Volver al inicio](../../README.md) · [Cómo leer las medidas](../../GUIA-DE-LECTURA.md)
 
-[Elegir configuración](#qué-configuración-elegir) · [Pruebas iniciales](#pruebas-iniciales-de-memoria-y-concurrencia) · [Cobertura inicial](#estado-de-la-batería-prevista)
+[Resultados por configuración](#resultados-por-configuración) · [Pruebas iniciales](#pruebas-iniciales-de-memoria-y-concurrencia) · [Cobertura inicial](#estado-de-la-batería-prevista)
 
 **[Conversaciones recurrentes con 10, 20 y 30 usuarios](conversaciones-recurrentes/README.md)**: tiempos de cada turno, crecimiento del historial y comparación de memoria.
 
@@ -32,7 +32,7 @@ En las pruebas iniciales de salida fija, “terminó” significa que entregó t
 [Pruebas de conversaciones recurrentes con varios usuarios](conversaciones-recurrentes/README.md).
 
 
-## Qué configuración elegir
+## Resultados por configuración
 
 <!-- interpretacion-inicio -->
 ### Capacidad durante una conversación completa
@@ -71,13 +71,13 @@ Las tres cargas alcanzaron el 100% de la caché disponible para historiales. Com
 
 **Las veinte personas alcanzaron el máximo de 262.144 tokens y completaron ambos turnos: 40/40 respuestas sin error.** Al 70% y con límite de 32 activas, el grupo tardó **346,5 minutos**. La espera p95 al continuar fue de **172,9 minutos**, y el tiempo completo p95, de **179,6 minutos**. Se observaron hasta dos respuestas solapadas, 97 recálculos y el 100% de caché. El máximo se comprobó en cada segundo turno: 261.632 tokens de entrada más 512 de salida. Esta carga sintética demuestra finalización con esperas de horas; no demuestra que veinte personas puedan usar todo ese contexto con la agilidad de una conversación normal. [Ver las veinte conversaciones y sus dos turnos](conversaciones-recurrentes/memoria-70-20-usuarios-historial-260864-dos-turnos/README.md).
 
-Se eligió el **70% para las comparaciones posteriores por su menor espera p95 en ambas cargas iniciales**. El 60% obtuvo tiempos totales cercanos con menos memoria y mejores resultados en algunas medidas de la carga larga; el 70% no es un mínimo necesario ni la mejor opción en todas las métricas. [Comparación de presupuestos y criterio de selección](conversaciones-recurrentes/README.md).
+En las dos cargas iniciales, el 70% registró la menor espera p95. Con el 60% los tiempos totales fueron similares. [Resultados por presupuesto de memoria](conversaciones-recurrentes/README.md).
 
 ### Configuraciones de la batería inicial
 
-**En la batería inicial, el 40% con límite de cuatro fue un punto de partida razonable para las cargas probadas.** Cuatro historiales de 32.768 tokens más 512 de respuesta terminaron con respuestas solapadas y sin recálculos. Con historiales mayores el servidor atiende parte del trabajo por turnos. Subir el presupuesto o el límite de solicitudes activas no mejora todas las cargas. Estos resultados iniciales no garantizan el mismo comportamiento con 10, 20 o 30 personas manteniendo una conversación.
+**Con el 40% de memoria y un límite de cuatro solicitudes activas** se midieron las siguientes cargas. Cuatro historiales de 32.768 tokens más 512 de respuesta terminaron con respuestas solapadas y sin recálculos. Con historiales mayores el servidor atiende parte del trabajo por turnos. Subir el presupuesto o el límite de solicitudes activas no mejora todas las cargas. Estos resultados iniciales no garantizan el mismo comportamiento con 10, 20 o 30 personas manteniendo una conversación.
 
-| Necesidad | Lo que muestran las pruebas |
+| Carga | Lo que muestran las pruebas |
 |---|---|
 | Reservar poca memoria | El 20% no arrancó. El 25% completó un contexto reducido de 65.536 tokens; el 30%, uno de 131.072. El arranque del 30% con 262.144 falló. |
 | Conservar el máximo de 262.144 tokens | El 35% fue el menor presupuesto probado que lo completó: 586,5 s y diez recálculos para una conversación. Al 40% fueron 560,8 s y cuatro recálculos. No se midió cada porcentaje intermedio. |
@@ -118,7 +118,7 @@ Estos son máximos **observados para esas cargas**, no un número universal de c
 
 Repetir una sola conversación con 262.016 tokens de entrada ya guardados y 128 de respuesta tardó **20,3 s al 40% y 20,0 s al 70%**, con menos de un segundo hasta el primer texto. Al ampliar el historial hasta ese tamaño se tardó mucho más: 344,0 y 236,8 s. Otros historiales pueden desplazar esa caché, por lo que esos 20 segundos no están garantizados con varios usuarios.
 
-### Por qué no conviene subir todos los límites
+### Efecto de los límites de solicitudes
 
 - **Al 40%, ocho solicitudes simultáneas de 32.768 + 256:** limitar el servidor a cuatro terminó el grupo en 187,7 s, sin recálculos. Permitir ocho tardó 261,9 s y produjo dos recálculos. La respuesta media individual pasó de 149,1 a 224,6 s.
 - **Al 70%, cuatro solicitudes de 131.072 + 256:** limitar a dos terminó el grupo en 477,1 s sin recálculos; permitir cuatro tardó 604,9 s con dos. Al 40% esa carga tardó 505,2 s, pero su media individual fue menor: 315,5 frente a 376,3 s con 70% y límite de dos. Terminar antes el grupo y reducir la espera individual son objetivos distintos.
@@ -129,7 +129,7 @@ Los controles al final de la campaña fueron muy cercanos a los iniciales: 26,24
 
 ## Pruebas iniciales de memoria y concurrencia
 
-Abre el nombre de una prueba para ver cada conversación, sus tiempos, los tokens recibidos y sus registros.
+Abre el nombre de una prueba para ver cada conversación, sus tiempos, los tokens recibidos y los parámetros del ensayo.
 
 Las tablas principales muestran la batería con medición detallada. Cada fila enlaza los datos de todas sus conversaciones. Los arranques y rechazos tienen medidas que no corresponden a una generación: se marcan como «No aplica».
 
@@ -414,9 +414,7 @@ Esta tabla distingue las pruebas terminadas de las que todavía faltan. No inclu
 - [85% de memoria](memoria-85-por-ciento/README.md).
 - [92% de memoria](memoria-92-por-ciento/README.md).
 
-## Equipo y configuración
+## Equipo y versión del motor
 
 GB10: 121,63 GiB. Pesos del modelo: 19,95 GiB.
 Imagen: `nvcr.io/nvidia/vllm:26.09-py3`. vLLM: `0.29.0+5013de39.dev`.
-
-[Configuración y registros del equipo](configuracion-del-equipo).

@@ -293,5 +293,5 @@
   }
  },
  "bootstrap_limite_inferior_diferencia_errores": -48,
- "veredicto_protocolo": "descartar B"
+ "bootstrap_limite_superior_diferencia_errores": 49
 }

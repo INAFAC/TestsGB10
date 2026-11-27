@@ -67,9 +67,9 @@ La caché guarda información del historial. Un recálculo significa que el moto
 Los tiempos individuales se solapan: su suma puede superar el tiempo total de la prueba. Las velocidades cuentan tokens de respuesta, no tokens de entrada.
 
 <details>
-<summary>Mediciones originales y registros de esta prueba</summary>
+<summary>Mediciones y parámetros de esta prueba</summary>
 
-- [Mediciones originales](mediciones.json).
-- [Configuración de esta prueba](configuracion.json).
+- [Mediciones](mediciones.json).
+- [Parámetros de esta prueba](parametros.json).
 
 </details>

@@ -118,8 +118,6 @@ Las medias incluyen las peticiones sin error. El tiempo de sesión va desde el p
 
 **Llegaron exactamente al máximo de 262.144 tokens y completaron la respuesta: 20 conversaciones.**
 
-## Datos y reproducción
+## Datos de la prueba
 
-[Mediciones originales](mediciones.json) · [Configuración](configuracion.json) · [Registro de ejecución](registro-de-ejecucion.log) · [Comando ejecutado](comando-ejecutado.json)
-
-[Historiales finales comprimidos](historiales-reproducibles.json.gz): permiten continuar las mismas conversaciones en la siguiente etapa.
+[Mediciones](mediciones.json) · [Parámetros del ensayo](parametros.json)

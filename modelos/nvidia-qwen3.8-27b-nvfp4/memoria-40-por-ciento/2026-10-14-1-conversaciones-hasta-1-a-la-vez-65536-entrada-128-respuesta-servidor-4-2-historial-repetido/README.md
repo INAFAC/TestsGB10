@@ -73,10 +73,9 @@ Segundos desde el inicio de la prueba.
 </details>
 
 <details>
-<summary>Mediciones originales y registros de esta prueba</summary>
+<summary>Mediciones y parámetros de esta prueba</summary>
 
-- [Mediciones originales](mediciones.json).
-- [Configuración de esta prueba](configuracion.json).
-- [Registro de ejecucion](registro-de-ejecucion.log).
+- [Mediciones](mediciones.json).
+- [Parámetros de esta prueba](parametros.json).
 
 </details>

@@ -15,10 +15,9 @@ Tiempo de comprobación: **391,0 segundos**.
 Arrancar solo demuestra que el servicio está disponible. Las pruebas de conversaciones comprueban si las respuestas llegan a terminar.
 
 <details>
-<summary>Mediciones originales y registros de esta prueba</summary>
+<summary>Mediciones y parámetros de esta prueba</summary>
 
-- [Mediciones originales](mediciones.json).
-- [Configuración de esta prueba](configuracion.json).
-- [Registro del servidor](registro-del-servidor.log).
+- [Mediciones](mediciones.json).
+- [Parámetros de esta prueba](parametros.json).
 
 </details>

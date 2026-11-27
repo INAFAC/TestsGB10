@@ -145,8 +145,6 @@ Las medias incluyen las peticiones sin error. El tiempo de sesión va desde el p
 | 20 | 2 | 33.141 + 425 | 362,2 s | 362,2 s | 833,8 s | 0,90 | Terminó naturalmente |
 | 20 | 3 | 33.594 + 170 | 337,0 s | 337,0 s | 599,7 s | 0,64 | Terminó naturalmente |
 
-## Datos y reproducción
+## Datos de la prueba
 
-[Mediciones originales](mediciones.json) · [Configuración](configuracion.json) · [Registro de ejecución](registro-de-ejecucion.log) · [Comando ejecutado](comando-ejecutado.json)
-
-[Historiales finales comprimidos](historiales-reproducibles.json.gz): permiten continuar las mismas conversaciones en la siguiente etapa.
+[Mediciones](mediciones.json) · [Parámetros del ensayo](parametros.json)

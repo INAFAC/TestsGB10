@@ -4,7 +4,6 @@
 
 **Prueba interrumpida por el controlador.** Se conservan **30/40** respuestas recibidas y la última medición, tomada a los **8.335,3 s**. No se completó el grupo.
 
-El lanzador perdió su canal de salida (`BrokenPipeError`) y detuvo el cliente. Este es un fallo de ejecución de la prueba; no demuestra falta de memoria del modelo. Las mediciones originales se conservan sin cambios y su estado interno puede seguir indicando «running», porque son el último registro anterior a la interrupción. El tiempo mostrado corresponde a ese registro, no a una finalización normal. Se repite el ensayo completo como una prueba separada. [Evidencia de la interrupción](interrupcion.json).
 
 
 Límite impuesto al servidor: **32 activas**. Cada usuario mantiene una sola petición pendiente y espera **30 s** después de su respuesta antes de añadir 256 tokens de mensaje. Se conservan los tokens reales de la respuesta anterior.
@@ -111,6 +110,6 @@ Las medias incluyen las peticiones sin error. El tiempo de sesión va desde el p
 
 No hay un resultado final registrado para 10 turnos previstos. Pueden incluir peticiones pendientes al interrumpirse la prueba y turnos posteriores que no llegaron a enviarse. No se cuentan como respuestas recibidas.
 
-## Datos y reproducción
+## Datos de la prueba
 
-[Mediciones originales](mediciones.json) · [Configuración](configuracion.json) · [Registro de ejecución](registro-de-ejecucion.log) · [Comando ejecutado](comando-ejecutado.json)
+[Mediciones](mediciones.json) · [Parámetros del ensayo](parametros.json)

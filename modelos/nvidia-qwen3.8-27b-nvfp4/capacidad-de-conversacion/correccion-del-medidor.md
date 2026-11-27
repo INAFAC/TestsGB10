@@ -18,8 +18,7 @@ Si el propio medidor vuelve a fallar, guarda un estado de error del medidor en v
 
 - La [comprobación local de regresión](../../../scripts/check_capacity_probe_v2.py) reprodujo una respuesta larga, comprobó la continuidad del historial y verificó la reserva para el cierre.
 - **Comprobación con el tokenizador real superada.** Reconstruyó la ronda 131 del intento fallido conservando los 261 mensajes anteriores, incluida la respuesta de 1.003 tokens. La entrada necesitaba 133.652 tokens, veinte más que el objetivo nominal de 133.632. No generó otra respuesta ni midió capacidad.
-- **Piloto real superado y verificado:** dos personas, nueve rondas y 18 respuestas visibles terminadas naturalmente, sin errores. Un [verificador independiente](../../../scripts/verify_capacity_pilot.py) comprobó los historiales, los recuentos de tokens y los tiempos. Este piloto solo llegó a unos 8.192 tokens. [Resultados y comprobaciones](reproduccion/comprobacion-del-medidor-corregido/README.md).
-- El [controlador de repetición](../../../scripts/capacity_recovery.py) archivó el estado y la comprobación de restauración anteriores. Conserva todos los intentos y restaura la configuración original al terminar.
+- **Piloto real superado y verificado:** dos personas, nueve rondas y 18 respuestas visibles terminadas naturalmente, sin errores. Un verificador independiente comprobó los historiales, los recuentos de tokens y los tiempos. Este piloto solo llegó a unos 8.192 tokens. [Resultados y comprobaciones](reproduccion/comprobacion-del-medidor-corregido/README.md).
 
 ## Resultado de la repetición
 
@@ -41,5 +40,3 @@ Las respuestas reales variaron entre ejecuciones. Comparando el mismo bloque de 
 | Tiempo completo p95 | 122,1 s | 49,5 s |
 
 La repetición produjo respuestas más cortas en ese bloque. **La diferencia de tiempo no demuestra que corregir el medidor acelerase el modelo.** Las observaciones lentas del primer intento siguen siendo válidas y se conservan. La repetición no necesitó aumentar ningún objetivo nominal; la corrección del caso de 1.003 tokens se comprobó por separado con su historial exacto y el tokenizador real.
-
-La comprobación final de restauración, realizada después de todas las pruebas, se publica en los [registros de reproducción](reproduccion/README.md).
